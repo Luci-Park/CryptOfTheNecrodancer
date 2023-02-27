@@ -1,0 +1,26 @@
+Target Goal : Zone 1, tutorial
+due date: 4/30
+Asset Check
+Audio Convert(~2/28)
+Scene Movement
+	- Title
+	- Lobby
+	- Monster
+	- Level
+Animation Creation( ~ 3/4)
+	- player animation
+	- monster animation
+	- midboss animation
+	- boss animation
+	- tile animation
+Map Creation
+Cheat Menu
+Player Tile based movement
+Music Beat based Movement
+UI Creation
+Monster movement
+Interaction
+	with monsters
+	with items
+Item Usage
+Weapon swap
