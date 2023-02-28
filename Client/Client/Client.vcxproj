@@ -130,6 +130,8 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LAnimation.h" />
+    <ClInclude Include="LAnimator.h" />
     <ClInclude Include="LApplication.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LEntity.h" />
@@ -152,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="LAnimation.cpp" />
+    <ClCompile Include="LAnimator.cpp" />
     <ClCompile Include="LApplication.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LEntity.cpp" />
@@ -159,6 +163,7 @@
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
     <ClCompile Include="LLayer.cpp" />
+    <ClCompile Include="LMath.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />

@@ -1,5 +1,5 @@
 #pragma once
-#include <Windows.h>
+#include <windows.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
@@ -10,5 +10,6 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <functional>
 
 #pragma comment(lib, "Msimg32.lib")

@@ -2,6 +2,7 @@
 #include "LEntity.h"
 namespace ci
 {
+	class GameObject;
 	class Component : public Entity
 	{
 	public:
@@ -14,8 +15,11 @@ namespace ci
 		virtual void Release();
 
 		eComponentType GetType() { return mType; }
+		void SetOwner(GameObject* owner) { mOwner = owner; }
+		GameObject* GetOwner() { return mOwner; }
 	private:
 		const eComponentType mType;
+		GameObject* mOwner;
 	};
 }
 

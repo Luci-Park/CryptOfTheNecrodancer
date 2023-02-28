@@ -18,8 +18,8 @@ namespace ci
 	{
 		mHwnd = hWnd;
 		mHdc = GetDC(hWnd);
-		mWidth = 1280;
-		mHeight = 720;
+		mWidth = 1600;
+		mHeight = 900;
 
 		RECT rect = { 0, 0, mWidth, mHeight };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -34,7 +34,6 @@ namespace ci
 		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
 		mBackHDC = CreateCompatibleDC(mHdc);
 
-		//기존 비트맵을 받고 새로 생성한 걸로 변경.
 		HBITMAP defaultBitmap = (HBITMAP)SelectObject(mBackHDC, mBackBuffer);
 		DeleteObject(defaultBitmap);
 
@@ -62,14 +61,24 @@ namespace ci
 
 	void Application::Render()
 	{
-		Rectangle(mBackHDC, -1, -1, mWidth + 2, mHeight + 2);
+		Clear();
+
 		Time::Render(mHdc);
 		Input::Render(mHdc);
 		SceneManager::Render(mHdc);
+
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHDC, 0, 0, SRCCOPY);
 	}
 	void Application::Release()
 	{
 		SceneManager::Release();
+	}
+	void Application::Clear()
+	{
+		HBRUSH blackBrush = CreateSolidBrush(RGB(0, 0, 0));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC, blackBrush);
+		Rectangle(mBackHDC, -1, -1, mWidth, mHeight);
+		SelectObject(mBackHDC, oldBrush);
+		DeleteObject(blackBrush);
 	}
 }

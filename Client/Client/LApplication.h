@@ -20,6 +20,8 @@ namespace ci
 		UINT GetScreenHeight() { return mHeight; }
 
 	private:
+		void Clear();
+	private:
 		HWND mHwnd;
 		HDC mHdc;
 

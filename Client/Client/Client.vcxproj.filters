@@ -109,6 +109,8 @@
     <ClInclude Include="LTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="LAnimation.h" />
+    <ClInclude Include="LAnimator.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -165,6 +167,11 @@
     </ClCompile>
     <ClCompile Include="LTransform.cpp">
       <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="LAnimation.cpp" />
+    <ClCompile Include="LAnimator.cpp" />
+    <ClCompile Include="LMath.cpp">
+      <Filter>Engine\Common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
