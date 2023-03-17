@@ -6,7 +6,7 @@ namespace cl
 	class CadenceHead : public GameObject
 	{
 	public:
-		CadenceHead();
+		CadenceHead(Scene* scene);
 		~CadenceHead();
 
 		virtual void Initialize() override;

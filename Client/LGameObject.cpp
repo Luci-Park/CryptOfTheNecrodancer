@@ -3,8 +3,9 @@
 
 namespace cl
 {
-	GameObject::GameObject(bool isUI)
+	GameObject::GameObject(Scene* scene, bool isUI)
 		: mState(eState::Active)
+		, mScene(scene)
 		, mbisUI(isUI)
 	{
 		mComponents.resize((UINT)eComponentType::Size);

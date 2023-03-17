@@ -8,36 +8,25 @@ namespace cl
 	class Animation : public Entity
 	{
 	public:
-		struct Frame
-		{
-			Sprite sp;
-			float duration;
-
-			Frame()
-				: sp()
-				, duration(0.0f)
-			{
-
-			}
-		};
-
 		Animation();
 		~Animation();
 
 		void Initialize();
 		void Update();
 		void Render(HDC hdc);
-		void Create(Image* sheet, Vector2 leftTop, UINT coulmn, UINT row, UINT spriteLength, Vector2 offset, float duration);
+		void Create(Image* sheet, UINT coulmn, UINT row, UINT sCol, UINT sRow, UINT spriteLength, Vector2 offset, float duration);
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }
 		void SetAnimator(Animator* animator) { mAnimator = animator; }
+		void SetDuration(float duration) { mDuration = duration / mSpriteSheet.size(); }
 
 	private:
 		Animator* mAnimator;
 		Image* mSheetImage;
-		std::vector<Frame> mSpriteSheet;
+		std::vector<Sprite> mSpriteSheet;
 		float mTime;
+		float mDuration;
 		bool mbComplete;
 		int mSpriteIndex;
 	};

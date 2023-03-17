@@ -62,9 +62,6 @@
     <Filter Include="Contents\Background">
       <UniqueIdentifier>{cb1d7920-32e3-4217-b6ef-fd4585aa826c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Notes">
-      <UniqueIdentifier>{d00e5fa8-60e3-4263-beff-1d813615851a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -151,17 +148,8 @@
     <ClInclude Include="LSprite.h">
       <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="LBoyfriend.h">
-      <Filter>Contents\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="LSinger.h">
-      <Filter>Contents\Characters</Filter>
-    </ClInclude>
     <ClInclude Include="LTutorialScene.h">
       <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LStageBG.h">
-      <Filter>Contents\Background</Filter>
     </ClInclude>
     <ClInclude Include="CommonInclude.h">
       <Filter>Engine\Common</Filter>
@@ -172,10 +160,10 @@
     <ClInclude Include="LGameManager.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="LArrowUI.h">
-      <Filter>Contents\Notes</Filter>
-    </ClInclude>
     <ClInclude Include="LCadenceHead.h">
+      <Filter>Contents\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceBody.h">
       <Filter>Contents\Characters</Filter>
     </ClInclude>
   </ItemGroup>
@@ -256,17 +244,8 @@
     <ClCompile Include="LSpriteRenderer.cpp">
       <Filter>Engine\Component\Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="LBoyfriend.cpp">
-      <Filter>Contents\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="LSinger.cpp">
-      <Filter>Contents\Characters</Filter>
-    </ClCompile>
     <ClCompile Include="LTutorialScene.cpp">
       <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LStageBG.cpp">
-      <Filter>Contents\Background</Filter>
     </ClCompile>
     <ClCompile Include="LSplashScene.cpp">
       <Filter>Contents\Scene</Filter>
@@ -274,10 +253,10 @@
     <ClCompile Include="LGameManager.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
-    <ClCompile Include="LArrowUI.cpp">
-      <Filter>Contents\Notes</Filter>
-    </ClCompile>
     <ClCompile Include="LCadenceHead.cpp">
+      <Filter>Contents\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceBody.cpp">
       <Filter>Contents\Characters</Filter>
     </ClCompile>
   </ItemGroup>

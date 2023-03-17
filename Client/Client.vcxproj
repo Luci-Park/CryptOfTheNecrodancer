@@ -132,14 +132,11 @@
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client.h" />
-    <ClInclude Include="LArrowUI.h" />
-    <ClInclude Include="LBoyfriend.h" />
+    <ClInclude Include="LCadenceBody.h" />
     <ClInclude Include="LCadenceHead.h" />
     <ClInclude Include="LGameManager.h" />
-    <ClInclude Include="LSinger.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSpriteRenderer.h" />
-    <ClInclude Include="LStageBG.h" />
     <ClInclude Include="LTutorialScene.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="LSprite.h" />
@@ -168,14 +165,11 @@
     <ClInclude Include="LTransform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LArrowUI.cpp" />
-    <ClCompile Include="LBoyfriend.cpp" />
+    <ClCompile Include="LCadenceBody.cpp" />
     <ClCompile Include="LCadenceHead.cpp" />
     <ClCompile Include="LGameManager.cpp" />
-    <ClCompile Include="LSinger.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
-    <ClCompile Include="LStageBG.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LAnimation.cpp" />

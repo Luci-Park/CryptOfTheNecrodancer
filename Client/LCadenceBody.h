@@ -2,20 +2,20 @@
 #include "LGameObject.h"
 namespace cl
 {
-	class Image;
-	class ArrowUI : public GameObject
+	class Animator;
+	class CadenceBody : public GameObject
 	{
 	public:
-		ArrowUI();
-		virtual ~ArrowUI();
+		CadenceBody(Scene* scene);
+		~CadenceBody();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
-
 	private:
-		Image* mImage;
+		Animator* mAnimator;
 	};
+
 }
 

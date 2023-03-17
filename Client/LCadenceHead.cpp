@@ -2,8 +2,9 @@
 #include "LAnimator.h"
 namespace cl
 {
-	CadenceHead::CadenceHead()
-		:GameObject(false)
+	CadenceHead::CadenceHead(Scene* scene)
+		:GameObject(scene, false)
+		, mAnimator(nullptr)
 	{
 
 	}
@@ -14,7 +15,8 @@ namespace cl
 	{
 		mAnimator = AddComponent<Animator>();
 		std::wstring path = L"..\\Assets\\Arts\\Player\\Cadence.bmp";
-		mAnimator->CreateAnimation(L"CadenceHead", L"CadenceHead", path, Vector2::Zero, 16, 17,4, Vector2::Zero, 0.1f);
+		mAnimator->CreateAnimation(L"CadenceHead", L"Cadence", path, 16, 16, 0, 0, 4, Vector2::Zero, 0.36f);
+		mAnimator->Play(L"CadenceHead", true);
 		GameObject::Initialize();
 	}
 	void CadenceHead::Update()

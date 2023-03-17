@@ -32,7 +32,7 @@ namespace cl
             return;
 
         mTime += Time::DeltaTime();
-        if (mSpriteSheet[mSpriteIndex].duration < mTime)
+        if (mDuration < mTime)
         {
             mTime = 0.0f;
 
@@ -56,40 +56,39 @@ namespace cl
         Vector2 pos = tr->GetPos();
         if (!mAnimator->GetOwner()->IsUI())
         pos = Camera::CaluatePos(pos);
-        pos += mSpriteSheet[mSpriteIndex].sp.offset;
+        pos += mSpriteSheet[mSpriteIndex].offset;
 
         TransparentBlt(hdc, pos.x, pos.y
-            , mSpriteSheet[mSpriteIndex].sp.size.x * scale.x
-            , mSpriteSheet[mSpriteIndex].sp.size.y * scale.y
+            , mSpriteSheet[mSpriteIndex].size.x * scale.x
+            , mSpriteSheet[mSpriteIndex].size.y * scale.y
             , mSheetImage->GetHdc()
-            , mSpriteSheet[mSpriteIndex].sp.leftTop.x, mSpriteSheet[mSpriteIndex].sp.leftTop.y
-            , mSpriteSheet[mSpriteIndex].sp.size.x, mSpriteSheet[mSpriteIndex].sp.size.y,
+            , mSpriteSheet[mSpriteIndex].leftTop.x, mSpriteSheet[mSpriteIndex].leftTop.y
+            , mSpriteSheet[mSpriteIndex].size.x, mSpriteSheet[mSpriteIndex].size.y,
             RGB(255, 0, 255));
     }
 
-    void Animation::Create(Image* sheet, Vector2 leftTop
-        , UINT coulmn, UINT row, UINT spriteLength
+    void Animation::Create(Image* sheet, UINT coulmn, UINT row, 
+        UINT sCol, UINT sRow, UINT spriteLength
         , Vector2 offset, float duration)
     {
         mSheetImage = sheet;
-
-        //UINT coulmn = mSheetImage->GetWidth() / size.x;
+        if (sCol > coulmn || sRow > row) return;
         Vector2 size = Vector2::One;
         size.x = mSheetImage->GetWidth() / (float)coulmn;
         size.y = mSheetImage->GetHeight() / (float)row;
+        Vector2 leftTop = Vector2(size.x * sCol, size.y * sRow);
 
         for (size_t i = 0; i < spriteLength; i++)
         {
-            Frame spriteInfo;
+            Sprite spriteInfo;
 
-            spriteInfo.sp.leftTop.x = leftTop.x + (size.x * i);
-            spriteInfo.sp.leftTop.y = leftTop.y;
-            spriteInfo.sp.size = size;
-            spriteInfo.sp.offset = offset - size / 2;
-            spriteInfo.duration = duration;
-
+            spriteInfo.leftTop.x = leftTop.x + (size.x * i);
+            spriteInfo.leftTop.y = leftTop.y;
+            spriteInfo.size = size;
+            spriteInfo.offset = offset - size / 2;
             mSpriteSheet.push_back(spriteInfo);
         }
+        SetDuration(duration);
     }
 
     void Animation::Reset()

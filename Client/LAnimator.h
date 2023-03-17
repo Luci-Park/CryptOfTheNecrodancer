@@ -38,16 +38,14 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
 
-		void CreateAnimation(const std::wstring& name
-			, Image* sheet
-			, Vector2 leftTop
-			, UINT coulmn, UINT row, UINT spriteLength
-			, Vector2 offset, float duration);
+		void CreateAnimation(const std::wstring& name, Image* sheet,
+			UINT coulmn, UINT row, 
+			UINT sCol, UINT sRow, 
+			UINT spriteLength, Vector2 offset, float duration);
 		void CreateAnimation(const std::wstring& name,
-			const std::wstring& sheetName,
-			const std::wstring& path, Vector2 leftTop
-			, UINT coulmn, UINT row, UINT spriteLength
-			, Vector2 offset, float duration);
+			const std::wstring& sheetName,const std::wstring& path, 
+			UINT coulmn, UINT row, UINT sCol, UINT sRow,
+			UINT spriteLength, Vector2 offset, float duration);
 		void CreateAnimations(const std::wstring& path, const std::wstring& key, Vector2 offset, float duration);
 
 		Animation* FindAnimation(const std::wstring& name);

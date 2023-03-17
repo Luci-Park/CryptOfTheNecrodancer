@@ -5,6 +5,7 @@
 
 namespace cl
 {
+	class Scene;
 	class GameObject : public Entity
 	{
 	public:
@@ -15,7 +16,7 @@ namespace cl
 			Death,
 		};
 
-		GameObject(bool isUI);
+		GameObject(Scene* scene, bool isUI);
 		virtual ~GameObject();
 
 		virtual void Initialize();
@@ -53,6 +54,7 @@ namespace cl
 		eState GetState() { return mState; }
 		void SetState(eState state) { mState = state; }
 		
+		Scene* GetCurrentScene(){ return mScene; }
 		bool IsUI() { return mbisUI; }
 	public:
 		Transform* mTransform;
@@ -60,5 +62,6 @@ namespace cl
 		std::vector<Component*> mComponents;
 		eState mState;
 		bool mbisUI;
+		Scene* mScene;
 	};
 }

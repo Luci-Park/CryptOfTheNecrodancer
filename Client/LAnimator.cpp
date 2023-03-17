@@ -59,8 +59,7 @@ namespace cl
 	{
 	}
 	void Animator::CreateAnimation(const std::wstring& name
-		, Image* sheet, Vector2 leftTop
-		, UINT coulmn, UINT row, UINT spriteLength
+		, Image* sheet, UINT coulmn, UINT row, UINT sCol, UINT sRow, UINT spriteLength
 		, Vector2 offset, float duration)
 	{
 		Animation* animation = FindAnimation(name);
@@ -69,7 +68,7 @@ namespace cl
 			return;
 
 		animation = new Animation();
-		animation->Create(sheet, leftTop, coulmn, row, spriteLength, offset, duration);
+		animation->Create(sheet,coulmn, row, sCol, sRow, spriteLength, offset, duration);
 		animation->SetName(name);
 		animation->SetAnimator(this);
 
@@ -78,9 +77,9 @@ namespace cl
 		mEvents.insert(std::make_pair(name, event));
 	}
 	void Animator::CreateAnimation(const std::wstring& animationName,
-		const std::wstring& sheetName,
-		const std::wstring& sheetPath, Vector2 leftTop
-		, UINT coulmn, UINT row, UINT spriteLength
+		const std::wstring& sheetName, const std::wstring& sheetPath
+		, UINT coulmn, UINT row
+		, UINT sCol, UINT sRow, UINT spriteLength
 		, Vector2 offset, float duration)
 	{
 		Animation* animation = FindAnimation(animationName);
@@ -89,7 +88,7 @@ namespace cl
 			return;
 
 		animation = new Animation();
-		animation->Create(sheet, leftTop, coulmn, row, spriteLength, offset, duration);
+		animation->Create(sheet, coulmn, row, sCol, sRow, spriteLength, offset, duration);
 		animation->SetName(animationName);
 		animation->SetAnimator(this);
 
@@ -146,7 +145,7 @@ namespace cl
 			index++;
 		}
 
-		CreateAnimation(key, mSpriteSheet, Vector2::Zero, index, 1, index, offset, duration);
+		CreateAnimation(key, mSpriteSheet, index, 1, 0, 0, index, offset, duration);
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& name)
