@@ -26,7 +26,6 @@ namespace cl
 		mHdc = GetDC(hWnd);
 		mWidth = 1280;
 		mHeight = 720;
-		//(160:9)
 
 		RECT rect = { 0, 0, mWidth , mHeight };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
@@ -92,10 +91,10 @@ namespace cl
 	}
 	void Application::clear()
 	{
-		HBRUSH grayBrush = CreateSolidBrush(RGB(121, 121, 121));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC, grayBrush);
+		HBRUSH newBrush	 = CreateSolidBrush(RGB(0, 0, 0));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC, newBrush);
 		Rectangle(mBackHDC, -1, -1, mWidth + 2, mHeight + 2);
 		SelectObject(mBackHDC, oldBrush);
-		DeleteObject(grayBrush);
+		DeleteObject(newBrush);
 	}
 }

@@ -54,7 +54,7 @@ namespace cl
 		eState GetState() { return mState; }
 		void SetState(eState state) { mState = state; }
 		
-		Scene* GetCurrentScene(){ return mScene; }
+		Scene* GetScene(){ return mScene; }
 		bool IsUI() { return mbisUI; }
 	public:
 		Transform* mTransform;

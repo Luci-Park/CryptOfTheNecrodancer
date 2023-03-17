@@ -22,8 +22,19 @@ namespace cl::object
 		T* gameObj = new T(sc);
 		Scene* scene = sc;
 		scene->AddGameObject(gameObj, type);
-		gameObj->Initialize();
 		gameObj->mTransform->SetPos(pos);
+		gameObj->Initialize();
+		return gameObj;
+	}
+
+	template <typename T>
+	static inline T* Instantiate(Scene* sc, Transform* parent, Vector2 pos, eLayerType type)
+	{
+		T* gameObj = new T(sc);
+		gameObj->mTransform->SetParent(parent);
+		sc->AddGameObject(gameObj, type);
+		gameObj->mTransform->SetPos(pos);
+		gameObj->Initialize();
 		return gameObj;
 	}
 	template <typename T>

@@ -132,9 +132,9 @@
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="LCadence.h" />
     <ClInclude Include="LCadenceBody.h" />
     <ClInclude Include="LCadenceHead.h" />
-    <ClInclude Include="LGameManager.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSpriteRenderer.h" />
     <ClInclude Include="LTutorialScene.h" />
@@ -165,9 +165,9 @@
     <ClInclude Include="LTransform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LCadence.cpp" />
     <ClCompile Include="LCadenceBody.cpp" />
     <ClCompile Include="LCadenceHead.cpp" />
-    <ClCompile Include="LGameManager.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />

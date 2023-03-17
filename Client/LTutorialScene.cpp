@@ -1,8 +1,7 @@
 #include "LTutorialScene.h"
 #include "LObject.h"
 #include "LApplication.h"
-#include "LCadenceHead.h"
-#include "LCadenceBody.h"
+#include "LCadence.h"
 extern cl::Application application;
 namespace cl
 {
@@ -15,8 +14,7 @@ namespace cl
 	}
 	void TutorialScene::Initialize()
 	{
-		object::Instantiate<CadenceBody>(this, application.GetCenter(), eLayerType::Player);
-		object::Instantiate<CadenceHead>(this, application.GetCenter(), eLayerType::Player);
+		object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
 		/*bf = object::Instantiate<Boyfriend>(this, application.GetCenter(), eLayerType::Player);
 		object::Instantiate<StageBG>(this, application.GetCenter(), eLayerType::BG);
 		object::Instantiate<ArrowUI>(this, application.GetCenter(), eLayerType::UI);*/

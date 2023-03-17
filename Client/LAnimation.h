@@ -3,8 +3,8 @@
 #include "LSprite.h"
 namespace cl
 {
-	class Image;
 	class Animator;
+	class Image;
 	class Animation : public Entity
 	{
 	public:
