@@ -16,9 +16,9 @@ namespace cl
 	}
 	void TutorialScene::Initialize()
 	{
-		bf = object::Instantiate<Boyfriend>(this, application.GetCenter(), eLayerType::Player);
+		/*bf = object::Instantiate<Boyfriend>(this, application.GetCenter(), eLayerType::Player);
 		object::Instantiate<StageBG>(this, application.GetCenter(), eLayerType::BG);
-		object::Instantiate<ArrowUI>(this, application.GetCenter(), eLayerType::UI);
+		object::Instantiate<ArrowUI>(this, application.GetCenter(), eLayerType::UI);*/
 		Scene::Initialize();
 	}
 	void TutorialScene::Update()

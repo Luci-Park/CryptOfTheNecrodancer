@@ -43,7 +43,7 @@ namespace cl::object
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(gameObj, type);
 		gameObj->Initialize();
-		gameObj->GameObject::GetComponent<Transform>()->SetPos(pos);
+		gameObj->GameObject::GetComponent<Transform>()->SetWorldPos(pos);
 		return gameObj;
 	}
 

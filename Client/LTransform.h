@@ -14,14 +14,28 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
 
-		void SetPos(Vector2 pos) { mPos = pos; }
-		void SetScale(Vector2 size) { mScale = size; }
-		Vector2 GetPos() { return mPos; }
-		Vector2 GetScale() { return mScale; }
+		void SetPos(Vector2 pos) { mWorldPos = pos; CalculateLocalPos(); }
+		void SetLocalPos(Vector2 pos) { mLocalPos = pos; CalculateWorldPos(); }
+		void SetScale(Vector2 scale) { mWorldScale = scale; CalculateLocalScale(); }
+		void SetLocalScale(Vector2 scale) { mLocalScale = scale; CalculateWorldScale(); }
+		Vector2 GetPos() { return mWorldPos; }
+		Vector2 GetScale() { return mWorldScale; }
+		Vector2 GetLocalPos() { return mWorldPos; }
+		Vector2 GetLocalScale() { return mWorldScale; }
 
-
+		void SetParent(Transform* parent) { mParent = parent; }
+		void SetChildren(Transform* child) { mChildren.push_back(child); }
 	private:
-		Vector2 mPos;
-		Vector2 mScale;
+		void CalculateWorldPos();
+		void CalculateLocalPos();
+		void CalculateWorldScale();
+		void CalculateLocalScale();
+	private:
+		Transform* mParent;
+		std::vector<Transform*> mChildren;
+		Vector2 mLocalPos;
+		Vector2 mLocalScale;
+		Vector2 mWorldPos;
+		Vector2 mWorldScale;
 	};
 }

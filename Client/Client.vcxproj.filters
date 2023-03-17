@@ -175,6 +175,9 @@
     <ClInclude Include="LArrowUI.h">
       <Filter>Contents\Notes</Filter>
     </ClInclude>
+    <ClInclude Include="LCadenceHead.h">
+      <Filter>Contents\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -273,6 +276,9 @@
     </ClCompile>
     <ClCompile Include="LArrowUI.cpp">
       <Filter>Contents\Notes</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceHead.cpp">
+      <Filter>Contents\Characters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

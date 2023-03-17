@@ -134,6 +134,7 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="LArrowUI.h" />
     <ClInclude Include="LBoyfriend.h" />
+    <ClInclude Include="LCadenceHead.h" />
     <ClInclude Include="LGameManager.h" />
     <ClInclude Include="LSinger.h" />
     <ClInclude Include="LSplashScene.h" />
@@ -169,6 +170,7 @@
   <ItemGroup>
     <ClCompile Include="LArrowUI.cpp" />
     <ClCompile Include="LBoyfriend.cpp" />
+    <ClCompile Include="LCadenceHead.cpp" />
     <ClCompile Include="LGameManager.cpp" />
     <ClCompile Include="LSinger.cpp" />
     <ClCompile Include="LSplashScene.cpp" />

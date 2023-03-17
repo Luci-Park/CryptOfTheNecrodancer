@@ -1,26 +1,29 @@
 Target Goal : Zone 1, tutorial
 due date: 4/30
-Asset Check
-Audio Convert(~2/28)
-Scene Movement
-	- Title
-	- Lobby
-	- Monster
-	- Level
-Animation Creation( ~ 3/4)
-	- player animation
-	- monster animation
-	- midboss animation
-	- boss animation
-	- tile animation
-Map Creation
-Cheat Menu
-Player Tile based movement
-Music Beat based Movement
-UI Creation
-Monster movement
-Interaction
-	with monsters
-	with items
-Item Usage
-Weapon swap
+
+Cadence Animation
+	CheckFlipped
+	Transform Parent RelationShip
+	Head Animation
+	Body Animation
+	Movement
+	Move Along Tile(Get Tile Size)
+
+Map
+	Set 
+
+Enemy Idle Animation
+	Bat
+	Red Bat
+	Ghost
+	Monkey
+	White Monkey(1-3)
+	Skeleton(1-1)
+	Yellow Skeleton(1-2)
+	BlackSkeleton(1-3)
+	GreenSlime
+	BlueSlime
+	OrangeSlime(1-2)
+	Wraith
+	Zombie
+	Mimic
