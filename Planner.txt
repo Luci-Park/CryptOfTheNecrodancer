@@ -3,14 +3,22 @@ due date: 4/30
 
 Cadence Animation
 	CheckFlipped
-	Transform Parent RelationShip
-	Head Animation
-	Body Animation
-	Movement
+	Transform Parent RelationShip(3/17)
+	Head Animation(3/17)
+	Body Animation(3/17)
+	Movement (3/17)
 	Move Along Tile(Get Tile Size)
+	Create Jump Animation
 
 Map
-	Set 
+	Set Tile Reader
+	Set Static Functions for Tile Size
+	Array for Types Of Objects
+
+All
+	Animation Speed Changes with bmp
+	Each beat is one Animation.
+
 
 Enemy Idle Animation
 	Bat

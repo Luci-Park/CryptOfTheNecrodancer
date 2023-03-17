@@ -15,6 +15,7 @@ namespace cl
 	}
 	void Cadence::Initialize()
 	{
+		mTransform->SetScale(Vector2(2.5f, 2.5f));
 		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 	}
@@ -38,16 +39,16 @@ namespace cl
 	void Cadence::Move()
 	{
 		Vector2 pos = mTransform->GetPos();
-		if (Input::GetKey(eKeyCode::A))
-			pos.x -= 100.0f * Time::DeltaTime();
+		if (Input::GetKeyDown(eKeyCode::A))
+			pos.x -= 100.0f;
 
-		if (Input::GetKey(eKeyCode::D))
-			pos.x += 100.0f * Time::DeltaTime();
+		if (Input::GetKeyDown(eKeyCode::D))
+			pos.x += 100.0f;
 
-		if (Input::GetKey(eKeyCode::W))
-			pos.y -= 100.0f * Time::DeltaTime();
-		if (Input::GetKey(eKeyCode::S))
-			pos.y += 100.0f * Time::DeltaTime();
+		if (Input::GetKeyDown(eKeyCode::W))
+			pos.y -= 100.0f;
+		if (Input::GetKeyDown(eKeyCode::S))
+			pos.y += 100.0f;
 
 		mTransform->SetPos(pos);
 	}

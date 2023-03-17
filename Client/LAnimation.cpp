@@ -54,9 +54,9 @@ namespace cl
         Vector2 scale = tr->GetScale();
 
         Vector2 pos = tr->GetPos();
+        pos += Vector2(mSpriteSheet[mSpriteIndex].offset.x * scale.x, mSpriteSheet[mSpriteIndex].offset.y * scale.y);
         if (!mAnimator->GetOwner()->IsUI())
-        pos = Camera::CaluatePos(pos);
-        pos += mSpriteSheet[mSpriteIndex].offset;
+            pos = Camera::CaluatePos(pos);
 
         TransparentBlt(hdc, pos.x, pos.y
             , mSpriteSheet[mSpriteIndex].size.x * scale.x
