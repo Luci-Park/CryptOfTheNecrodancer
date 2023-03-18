@@ -20,7 +20,8 @@ namespace cl
 		bool IsComplete() { return mbComplete; }
 		void SetAnimator(Animator* animator) { mAnimator = animator; }
 		void SetDuration(float duration) { mDuration = duration / mSpriteSheet.size(); }
-
+		bool IsInReverse() { return mbReverse; }
+		void SetReverse(bool reverse) { mbReverse = reverse; }
 	private:
 		Animator* mAnimator;
 		Image* mSheetImage;
@@ -28,6 +29,7 @@ namespace cl
 		float mTime;
 		float mDuration;
 		bool mbComplete;
+		bool mbReverse;
 		int mSpriteIndex;
 	};
 }

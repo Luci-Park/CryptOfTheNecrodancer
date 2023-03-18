@@ -35,14 +35,27 @@ namespace cl
         if (mDuration < mTime)
         {
             mTime = 0.0f;
-
-            if (mSpriteSheet.size() <= mSpriteIndex + 1)
+            if (mbReverse)
             {
-                mbComplete = true;
+                if (0 == mSpriteIndex)
+                {
+                    mbComplete = true;
+                }
+                else
+                {
+                    mSpriteIndex--;
+                }
             }
             else
             {
-                mSpriteIndex++;
+                if (mSpriteSheet.size() <= mSpriteIndex + 1)
+                {
+                    mbComplete = true;
+                }
+                else
+                {
+                    mSpriteIndex++;
+                }
             }
         }
     }
@@ -93,7 +106,7 @@ namespace cl
 
     void Animation::Reset()
     {
-        mSpriteIndex = 0;
+        mSpriteIndex = mbReverse ? mSpriteSheet.size() - 1: 0;
         mTime = 0.0f;
         mbComplete = false;
     }

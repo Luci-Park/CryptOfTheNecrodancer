@@ -13,8 +13,17 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
+
+		void Flip(bool right) { isRight = right; }
+	private:
+		void PlayRight();
+		void PlayLeft();
 	private:
 		Animator* mAnimator;
+		static const std::wstring mLeftAnimation;
+		static const std::wstring mRightAnimation;
+		bool isRight = true;
+		
 	};
 
 }

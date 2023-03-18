@@ -49,7 +49,7 @@ namespace cl
 		void CreateAnimations(const std::wstring& path, const std::wstring& key, Vector2 offset, float duration);
 
 		Animation* FindAnimation(const std::wstring& name);
-		void Play(const std::wstring& name, bool loop);
+		void Play(const std::wstring& name, bool loop, bool reverse);
 
 		Events* FindEvents(const std::wstring& name);
 		std::function<void()>& GetStartEvent(const std::wstring& name);

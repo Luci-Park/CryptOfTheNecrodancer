@@ -40,10 +40,18 @@ namespace cl
 	{
 		Vector2 pos = mTransform->GetPos();
 		if (Input::GetKeyDown(eKeyCode::A))
+		{
 			pos.x -= 100.0f;
+			mBody->Flip(false);
+			mHead->Flip(false);
+		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
+		{
 			pos.x += 100.0f;
+			mBody->Flip(true);
+			mHead->Flip(true);
+		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
 			pos.y -= 100.0f;

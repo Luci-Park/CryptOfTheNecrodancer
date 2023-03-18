@@ -159,7 +159,7 @@ namespace cl
 		return iter->second;
 	}
 
-	void Animator::Play(const std::wstring& name, bool loop)
+	void Animator::Play(const std::wstring& name, bool loop, bool reverse)
 	{
 		if (mActiveAnimation != nullptr)
 		{
@@ -171,6 +171,7 @@ namespace cl
 		}
 
 		mActiveAnimation = FindAnimation(name);
+		mActiveAnimation->SetReverse(reverse);
 		mActiveAnimation->Reset();
 		mbLoop = loop;
 
