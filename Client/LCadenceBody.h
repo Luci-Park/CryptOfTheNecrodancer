@@ -1,5 +1,6 @@
 #pragma once
 #include "LGameObject.h"
+#include "LBodyItem.h"
 namespace cl
 {
 	class Animator;
@@ -22,9 +23,14 @@ namespace cl
 		Animator* mAnimator;
 		static const std::wstring mLeftAnimation;
 		static const std::wstring mRightAnimation;
+		static const int bodyIndex[];
 		bool isRight = true;
 		
 	};
 
 }
+
+class LCadenceBody
+{
+};
 

@@ -98,10 +98,30 @@ namespace cl
             spriteInfo.leftTop.x = leftTop.x + (size.x * i);
             spriteInfo.leftTop.y = leftTop.y;
             spriteInfo.size = size;
-            spriteInfo.offset = offset - size / 2;
+            if (offset == Vector2::Zero)
+                spriteInfo.offset = offset - size / 2;
+            else
+                spriteInfo.offset = offset;
             mSpriteSheet.push_back(spriteInfo);
         }
         SetDuration(duration);
+    }
+    void Animation::Create(Image* sheet, Vector2 leftTop, Vector2 size, UINT spriteLength, Vector2 offset, float duration)
+    {
+        mSheetImage = sheet;
+        for (int i = 0; i < spriteLength; i++)
+        {
+            Sprite spriteInfo;
+
+            spriteInfo.leftTop = leftTop + size * i;
+            spriteInfo.size = size;
+            if (offset == Vector2::Zero)
+                spriteInfo.offset = offset - size / 2;
+            else
+                spriteInfo.offset = offset;
+            mSpriteSheet.push_back(spriteInfo);
+        }
+        SetDuration(duration);        
     }
 
     void Animation::Reset()

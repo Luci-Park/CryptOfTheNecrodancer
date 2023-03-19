@@ -18,10 +18,42 @@ namespace cl
 		mTransform->SetScale(Vector2(2.5f, 2.5f));
 		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
+		mePlayerState = IDLE;
+		moveTowardsPosition = mTransform->GetPos();
 	}
 	void Cadence::Update()
 	{
-		Move();
+		Vector2 reslt = Vector2::MoveTowards(mTransform->GetPos(), moveTowardsPosition, mMoveSpeed * Time::DeltaTime());
+		mTransform->SetPos(reslt);
+		if (Vector2::Distance(mTransform->GetPos(), moveTowardsPosition) <= 0.001f)
+		{
+			if (Input::GetKeyDown(eKeyCode::A))
+			{
+				moveTowardsPosition.x -= mMoveLength;
+				mBody->Flip(false);
+				mHead->Flip(false);
+				mbMoving = true;
+			}
+
+			if (Input::GetKeyDown(eKeyCode::D))
+			{
+				moveTowardsPosition.x += mMoveLength;
+				mBody->Flip(true);
+				mHead->Flip(true);
+				mbMoving = true;
+			}
+
+			if (Input::GetKeyDown(eKeyCode::W))
+			{
+				moveTowardsPosition.y -= mMoveLength;
+				mbMoving = true;
+			}
+			if (Input::GetKeyDown(eKeyCode::S))
+			{
+				moveTowardsPosition.y += mMoveLength;
+				mbMoving = true;
+			}
+		}
 	}
 	void Cadence::Render(HDC hdc)
 	{
@@ -39,6 +71,7 @@ namespace cl
 	void Cadence::Move()
 	{
 		Vector2 pos = mTransform->GetPos();
+		float tile = 100.0f;
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
 			pos.x -= 100.0f;

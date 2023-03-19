@@ -15,6 +15,7 @@ namespace cl
 		void Update();
 		void Render(HDC hdc);
 		void Create(Image* sheet, UINT coulmn, UINT row, UINT sCol, UINT sRow, UINT spriteLength, Vector2 offset, float duration);
+		void Create(Image* sheet, Vector2 leftTop, Vector2 Size, UINT spriteLength, Vector2 offset, float duration);
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }

@@ -8,6 +8,8 @@ namespace cl
 	class Cadence : public GameObject
 	{
 	public:
+		enum PlayerState
+		{IDLE, Moving, Attacking};
 		Cadence(Scene* scene);
 		~Cadence();
 
@@ -16,9 +18,13 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
 
-
 		void Move();
 	private:
+		float mMoveSpeed = 100.0f;
+		bool mbMoving = false;
+		float mMoveLength = 100.0f;
+		PlayerState mePlayerState;
+		Vector2 moveTowardsPosition;
 		Animator* mAnimator;
 		CadenceHead* mHead;
 		CadenceBody* mBody;

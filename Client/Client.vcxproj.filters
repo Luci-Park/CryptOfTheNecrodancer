@@ -65,6 +65,9 @@
     <Filter Include="Contents\Characters\Cadence">
       <UniqueIdentifier>{2901287b-f74c-4b0f-a459-27f4565cf7c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Items">
+      <UniqueIdentifier>{7a0e3267-f23b-48c2-8bd9-a5aeb4c0150f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -169,6 +172,18 @@
     <ClInclude Include="LCadence.h">
       <Filter>Contents\Characters\Cadence</Filter>
     </ClInclude>
+    <ClInclude Include="LBodyItem.h">
+      <Filter>Contents\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceSprite.h">
+      <Filter>Contents\Characters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCharacterSprite.h">
+      <Filter>Contents\Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="LGameCharacter.h">
+      <Filter>Contents\Characters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -261,6 +276,15 @@
     </ClCompile>
     <ClCompile Include="LCadence.cpp">
       <Filter>Contents\Characters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceSprite.cpp">
+      <Filter>Contents\Characters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCharacterSprite.cpp">
+      <Filter>Contents\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="LGameCharacter.cpp">
+      <Filter>Contents\Characters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@ namespace cl
 {
 	const std::wstring CadenceBody::mLeftAnimation = L"CadenceLeftBody";
 	const std::wstring CadenceBody::mRightAnimation = L"CadenceRightBody";
+	const int CadenceBody::bodyIndex[] = { 2, 3, 4, 5, 6, 7, 9, 11 };
 	CadenceBody::CadenceBody(Scene* scene)
 		:GameObject(scene, false)
 	{

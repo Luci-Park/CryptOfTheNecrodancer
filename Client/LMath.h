@@ -34,7 +34,9 @@ struct Vector2
     // Addition operator overload
     Vector2 operator+(const Vector2& other) const
     {
-        return Vector2{ x + other.x, y + other.y };
+        float newx = x + other.x;
+        float newy = y + other.y;
+        return Vector2{ newx, newy };
     }
 
     // Subtraction operator overload
@@ -44,13 +46,13 @@ struct Vector2
     }
 
     // Multiplication operator overload (scalar multiplication)
-    Vector2 operator*(const int scalar) const
+    Vector2 operator*(const float scalar) const
     {
         return Vector2{ x * scalar, y * scalar };
     }
 
     // Division operator overload (scalar division)
-    Vector2 operator/(const int scalar) const
+    Vector2 operator/(const float scalar) const
     {
         return Vector2{ x / scalar, y / scalar };
     }
@@ -121,19 +123,30 @@ struct Vector2
         return Vector2{ -x, -y };
     }
 
-	float Length()
+	float Magnitude()
 	{
 		return sqrtf(x * x + y * y);
 	}
 
 	Vector2& Normalize()
 	{
-		float length = Length();
-		x /= length;
-		y /= length;
+		float length = Magnitude();
+        if (length == 0)
+        {
+            x = 0;
+            y = 0;
+        }
+        else {
+            x /= length;
+            y /= length;
+        }
 
 		return *this;
 	}
+
+    static Vector2 MoveTowards(Vector2 src, Vector2 dest, float distance);
+  
+    static float Distance(Vector2 src, Vector2 dest);
 };
 
 namespace cl::math
@@ -152,7 +165,5 @@ namespace cl::math
 		//atan();
 		return Vector2(x, y);
 	}
-
-
 }
 
