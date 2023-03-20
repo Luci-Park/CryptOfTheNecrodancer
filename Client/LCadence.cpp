@@ -18,9 +18,9 @@ namespace cl
 	{
 		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2(2.5f, 2.5f));
-		mSpriteRenderer = AddComponent<SpriteRenderer>();/*
-		mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\shadow.bmp");
-		mSpriteRenderer->SetOffset(Vector2::Down * 2.5f);*/
+		mSpriteRenderer = AddComponent<SpriteRenderer>();
+		mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
+		mSpriteRenderer->AddAlpha(100);
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 	}
 	void Cadence::Update()
@@ -28,14 +28,14 @@ namespace cl
 		GameCharacter::Update();
 	}
 	void Cadence::Render(HDC hdc)
-	{
+	{/*
 		Vector2 pos = mTransform->GetPos();
 		Vector2 width = Vector2(100, 100);
 		HBRUSH newBrush = CreateSolidBrush(RGB(255, 0, 0));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, newBrush);
 		Rectangle(hdc, pos.x - width.x * 0.5, pos.y - width.y * 0.5, pos.x + width.x * 0.5, pos.y + width.y * 0.5);
 		SelectObject(hdc, oldBrush);
-		DeleteObject(newBrush);
+		DeleteObject(newBrush);*/
 		GameCharacter::Render(hdc);
 	}
 	void Cadence::Release()

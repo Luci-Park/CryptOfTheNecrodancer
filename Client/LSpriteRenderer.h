@@ -18,11 +18,12 @@ namespace cl
 		void SetImage(Image* image, Sprite sp);
 		void SetImage(const std::wstring& key, const std::wstring& path);
 		void SetSprite(Sprite sprite) { mSprite = sprite; }
-		void SetOffset(Vector2 offset) { mOffset = offset; }
+		void AddAlpha(int alpha) { mAlpha = alpha; }
 	private:
 		Image* mImage;
 		Sprite mSprite;
-		Vector2 mOffset;
+		int mAlpha;
+		
 	};
 }
 

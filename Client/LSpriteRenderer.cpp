@@ -9,7 +9,7 @@ namespace cl
 	SpriteRenderer::SpriteRenderer()
 		: Component(eComponentType::SpriteRenderer)
 		, mImage(nullptr)
-		, mOffset(Vector2::Zero)
+		, mAlpha(255)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -23,15 +23,31 @@ namespace cl
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{ 
-		Transform* tr = GetOwner()->mTransform;
+		Transform* tr
+			=GetOwner()->GetComponent<Transform>();
 		Vector2 scale = tr->GetScale();
+
 		Vector2 pos = tr->GetPos();
-		pos += mOffset + mSprite.offset;
-		pos.x *= scale.x; pos.y *= scale.y;
-		if(!GetOwner()->IsUI())
+		pos += Vector2(mSprite.offset.x * scale.x, mSprite.offset.y * scale.y);
+		if (GetOwner()->IsUI())
 			pos = Camera::CaluatePos(pos);
-		TransparentBlt(hdc, pos.x, pos.y, mSprite.size.x * scale.x , mSprite.size.y * scale.y,
-			mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
+
+		if (mAlpha == 255)
+		{
+			TransparentBlt(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
+				mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
+		}
+		else
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = 0;
+			func.SourceConstantAlpha = (BYTE)mAlpha;
+
+			AlphaBlend(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
+				mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, func);
+		}
 	}
 	void SpriteRenderer::Release()
 	{
