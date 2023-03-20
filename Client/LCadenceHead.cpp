@@ -37,11 +37,6 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
-	void CadenceHead::Release()
-	{
-		GameObject::Release();
-	}
-
 	void CadenceHead::Reset()
 	{
 		mAnimator->Reset();

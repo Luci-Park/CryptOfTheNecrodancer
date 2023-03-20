@@ -12,8 +12,6 @@ namespace cl
 	}
 	GameCharacter::~GameCharacter()
 	{
-		mSprite = nullptr;
-		mGameManager = nullptr;
 	}
 	void GameCharacter::Initialize()
 	{
@@ -32,10 +30,6 @@ namespace cl
 	void GameCharacter::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
-	}
-	void GameCharacter::Release()
-	{
-		GameObject::Release();
 	}
 	void GameCharacter::SetManager(GameManager* m)
 	{ 

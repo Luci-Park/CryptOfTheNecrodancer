@@ -13,7 +13,6 @@ namespace cl
 		virtual void Initialize();
 		virtual void Update();
 		virtual void Render(HDC hdc);
-		virtual void Release();
 
 		eComponentType GetType() { return mType; }
 		void SetOwner(GameObject* owner) { mOwner = owner; }

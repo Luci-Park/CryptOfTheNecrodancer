@@ -48,7 +48,6 @@ namespace cl
 		{
 			if (mScenes[i] == nullptr)
 				continue;
-			mScenes[i]->Release();
 			delete mScenes[i];
 			mScenes[i] = nullptr;
 		}

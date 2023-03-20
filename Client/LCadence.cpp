@@ -38,10 +38,6 @@ namespace cl
 		DeleteObject(newBrush);*/
 		GameCharacter::Render(hdc);
 	}
-	void Cadence::Release()
-	{
-		GameCharacter::Release();
-	}
 	void Cadence::Move()
 	{
 		if (Input::GetKeyDown(eKeyCode::A))

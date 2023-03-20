@@ -14,7 +14,6 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-		virtual void Release()override;
 
 		virtual void Move() = 0;
 		void SetManager(GameManager* m);

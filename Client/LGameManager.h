@@ -12,7 +12,6 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc)override;
-		virtual void Release() override;
 
 		void SetBPM(int bpm);
 		int BPM() { return mBPM; }

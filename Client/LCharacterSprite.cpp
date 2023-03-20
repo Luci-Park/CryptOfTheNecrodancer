@@ -27,10 +27,6 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
-	void CharacterSprite::Release()
-	{
-		GameObject::Release();
-	}
 	void CharacterSprite::Jump()
 	{
 		if (!mbIsJumping)

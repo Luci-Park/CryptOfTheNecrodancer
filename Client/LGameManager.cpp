@@ -25,10 +25,6 @@ namespace cl
 	{
 	}
 
-	void GameManager::Release()
-	{
-	}
-
 	void GameManager::SetBPM(int bpm)
 	{
 		mBPM = bpm;

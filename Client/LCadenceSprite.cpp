@@ -26,12 +26,6 @@ namespace cl
 	{
 		CharacterSprite::Render(hdc);
 	}
-	void CadenceSprite::Release()
-	{
-		mHead = nullptr;
-		mBody = nullptr;
-		CharacterSprite::Release();
-	}
 	void CadenceSprite::Turn(Vector2 dir)
 	{
 		mHead->Flip(dir);
