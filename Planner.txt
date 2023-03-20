@@ -11,8 +11,8 @@ Cadence Animation
 	Create Jump Animation
 
 Map
-	Set Tile Reader
-	Set Static Functions for Tile Size
+	Set Tile Reader => tiel = 26 x 26
+	Set Static Functions for Tile Size(3/20)
 	Array for Types Of Objects
 
 All
