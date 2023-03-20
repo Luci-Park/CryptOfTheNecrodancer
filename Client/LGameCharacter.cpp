@@ -17,9 +17,8 @@ namespace cl
 	}
 	void GameCharacter::Initialize()
 	{
-		mMoveTarget = mTransform->GetPos();
-		mSprite->SetManager(mGameManager);
 		GameObject::Initialize();
+		mMoveTarget = mTransform->GetPos();
 	}
 	void GameCharacter::Update()
 	{		

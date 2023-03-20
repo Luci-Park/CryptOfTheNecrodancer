@@ -14,10 +14,9 @@ namespace cl
 	}
 	void Cadence::Initialize()
 	{
+		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2(2.5f, 2.5f));
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mSprite->SetManager(mGameManager);
-		GameCharacter::Initialize();
 	}
 	void Cadence::Update()
 	{

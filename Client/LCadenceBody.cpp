@@ -16,6 +16,7 @@ namespace cl
 	}
 	void CadenceBody::Initialize()
 	{
+		GameObject::Initialize();
 		mAnimator = AddComponent<Animator>();
 
 		std::wstring leftPath = L"..\\Assets\\Arts\\Player\\Cadence_Left.bmp";
@@ -24,7 +25,6 @@ namespace cl
 		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, Vector2::Zero, 0.36f);
 
 		PlayRight();
-		GameObject::Initialize();
 	}
 	void CadenceBody::Update()
 	{

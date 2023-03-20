@@ -14,9 +14,9 @@ namespace cl
 	}
 	void CadenceSprite::Initialize()
 	{
+		CharacterSprite::Initialize();
 		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		CharacterSprite::Initialize();
 	}
 	void CadenceSprite::Update()
 	{

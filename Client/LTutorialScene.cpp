@@ -16,12 +16,12 @@ namespace cl
 	}
 	void TutorialScene::Initialize()
 	{
+		Scene::Initialize();
 		mGameManager = object::Instantiate<GameManager>(this, Vector2::Zero, eLayerType::System);
 		mGameManager->SetBPM(100);
 		Cadence* cadence = object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
 		cadence->SetManager(mGameManager);
 		cadence->OnBeatChanged();
-		Scene::Initialize();
 	}
 	void TutorialScene::Update()
 	{
