@@ -44,13 +44,13 @@ namespace cl
 
 	void SceneManager::Release()
 	{
-		for (Scene* scene : mScenes)
+		for (int i = 0; i < (UINT)eSceneType::Size; ++i)
 		{
-			if (scene == nullptr)
+			if (mScenes[i] == nullptr)
 				continue;
-			scene->Release();
-			delete scene;
-			scene = nullptr;
+			mScenes[i]->Release();
+			delete mScenes[i];
+			mScenes[i] = nullptr;
 		}
 	}
 
