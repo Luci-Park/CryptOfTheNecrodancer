@@ -7,6 +7,7 @@ namespace cl
 	const int CadenceBody::bodyIndex[] = { 2, 3, 4, 5, 6, 7, 9, 11 };
 	CadenceBody::CadenceBody(Scene* scene)
 		:GameObject(scene, false)
+		, mAnimator(nullptr)
 	{
 
 	}
@@ -27,9 +28,9 @@ namespace cl
 	}
 	void CadenceBody::Update()
 	{
-		if (isRight)
+		if(Vector2::Right == mDir)
 			PlayRight();
-		else
+		else if(-Vector2::Right == mDir)
 			PlayLeft();
 		GameObject::Update();
 	}
@@ -40,6 +41,14 @@ namespace cl
 	void CadenceBody::Release()
 	{
 		GameObject::Release();
+	}
+	void CadenceBody::Reset()
+	{
+		mAnimator->Reset();
+	}
+	void CadenceBody::SetDuration(float dur)
+	{
+		mAnimator->SetDuration(dur);
 	}
 	void CadenceBody::PlayRight()
 	{

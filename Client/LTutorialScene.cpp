@@ -2,11 +2,13 @@
 #include "LObject.h"
 #include "LApplication.h"
 #include "LCadence.h"
+#include "LGameManager.h"
 extern cl::Application application;
 namespace cl
 {
 	TutorialScene::TutorialScene()
 		:Scene(L"Tutorial")
+		, mGameManager(nullptr)
 	{
 	}
 	TutorialScene::~TutorialScene()
@@ -14,10 +16,11 @@ namespace cl
 	}
 	void TutorialScene::Initialize()
 	{
-		object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
-		/*bf = object::Instantiate<Boyfriend>(this, application.GetCenter(), eLayerType::Player);
-		object::Instantiate<StageBG>(this, application.GetCenter(), eLayerType::BG);
-		object::Instantiate<ArrowUI>(this, application.GetCenter(), eLayerType::UI);*/
+		mGameManager = object::Instantiate<GameManager>(this, Vector2::Zero, eLayerType::System);
+		mGameManager->SetBPM(100);
+		Cadence* cadence = object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
+		cadence->SetManager(mGameManager);
+		cadence->OnBeatChanged();
 		Scene::Initialize();
 	}
 	void TutorialScene::Update()
@@ -34,6 +37,7 @@ namespace cl
 	}
 	void TutorialScene::Release()
 	{
+		mGameManager = nullptr;
 		Scene::Release();
 	}
 	void TutorialScene::OnEnter()

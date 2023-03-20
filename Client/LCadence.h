@@ -1,15 +1,10 @@
 #pragma once
-#include "LGameObject.h"
+#include "LGameCharacter.h"
 namespace cl
 {
-	class Animator;
-	class CadenceHead;
-	class CadenceBody;
-	class Cadence : public GameObject
+	class Cadence : public GameCharacter
 	{
 	public:
-		enum PlayerState
-		{IDLE, Moving, Attacking};
 		Cadence(Scene* scene);
 		~Cadence();
 
@@ -18,16 +13,8 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
 
-		void Move();
+		virtual void Move() override;
 	private:
-		float mMoveSpeed = 100.0f;
-		bool mbMoving = false;
-		float mMoveLength = 100.0f;
-		PlayerState mePlayerState;
-		Vector2 moveTowardsPosition;
-		Animator* mAnimator;
-		CadenceHead* mHead;
-		CadenceBody* mBody;
 	};
 
 }

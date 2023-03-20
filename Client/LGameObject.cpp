@@ -14,11 +14,6 @@ namespace cl
 
 	GameObject::~GameObject()
 	{
-		for (Component* comp : mComponents)
-		{
-			delete comp;
-			comp = nullptr;
-		}
 	}
 
 	void GameObject::Initialize()
@@ -56,6 +51,15 @@ namespace cl
 
 	void GameObject::Release()
 	{
+		for (Component* comp : mComponents)
+		{
+			if (comp != nullptr)
+			{
+				comp->Release();
+				delete comp;
+				comp = nullptr;
+			}
+		}
 
 	}
 	void GameObject::OnCollisionEnter(Collider* other)

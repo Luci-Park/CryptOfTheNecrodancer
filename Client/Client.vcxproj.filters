@@ -68,6 +68,9 @@
     <Filter Include="Contents\Items">
       <UniqueIdentifier>{7a0e3267-f23b-48c2-8bd9-a5aeb4c0150f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\GameManager">
+      <UniqueIdentifier>{7b5d58be-4523-4f85-9759-69396872a484}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -184,6 +187,9 @@
     <ClInclude Include="LGameCharacter.h">
       <Filter>Contents\Characters</Filter>
     </ClInclude>
+    <ClInclude Include="LGameManager.h">
+      <Filter>Contents\GameManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -285,6 +291,9 @@
     </ClCompile>
     <ClCompile Include="LGameCharacter.cpp">
       <Filter>Contents\Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="LGameManager.cpp">
+      <Filter>Contents\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

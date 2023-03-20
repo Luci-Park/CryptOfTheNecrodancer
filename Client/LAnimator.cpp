@@ -11,6 +11,7 @@ namespace cl
 	{
 
 	}
+
 	Animator::~Animator()
 	{
 		for (auto animation : mAnimations)
@@ -24,9 +25,11 @@ namespace cl
 			events.second = nullptr;
 		}
 	}
+
 	void Animator::Initialize()
 	{
 	}
+
 	void Animator::Update()
 	{
 		if (mActiveAnimation)
@@ -48,6 +51,7 @@ namespace cl
 			
 		}
 	}
+	
 	void Animator::Render(HDC hdc)
 	{
 		if (mActiveAnimation)
@@ -55,9 +59,11 @@ namespace cl
 			mActiveAnimation->Render(hdc);
 		}
 	}
+	
 	void Animator::Release()
 	{
 	}
+
 	void Animator::CreateAnimation(const std::wstring& name
 		, Image* sheet, UINT coulmn, UINT row, UINT sCol, UINT sRow, UINT spriteLength
 		, Vector2 offset, float duration)
@@ -76,6 +82,7 @@ namespace cl
 		Events* event = new Events();
 		mEvents.insert(std::make_pair(name, event));
 	}
+
 	void Animator::CreateAnimation(const std::wstring& animationName,
 		const std::wstring& sheetName, const std::wstring& sheetPath
 		, UINT coulmn, UINT row
@@ -96,6 +103,7 @@ namespace cl
 		Events* event = new Events();
 		mEvents.insert(std::make_pair(animationName, event));
 	}
+
 	void Animator::CreateAnimations(const std::wstring& path, const std::wstring& key, Vector2 offset, float duration)
 	{
 		UINT width = 0;
@@ -182,6 +190,7 @@ namespace cl
 			events->mStartEvent();
 
 	}
+
 	Animator::Events* Animator::FindEvents(const std::wstring& name)
 	{
 		std::map<std::wstring, Events*>::iterator iter
@@ -218,5 +227,20 @@ namespace cl
 			= FindEvents(animation->GetName());
 
 		return events->mEndEvent.mEvent;
+	}
+
+	void Animator::Reset()
+	{
+		if(mActiveAnimation != nullptr)
+			mActiveAnimation->Reset();
+	}
+
+	void Animator::SetDuration(float dur)
+	{
+		mAnimationDur = dur;
+		for (auto animation : mAnimations)
+		{
+			animation.second->SetDuration(mAnimationDur);
+		}
 	}
 }

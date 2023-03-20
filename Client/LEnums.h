@@ -19,12 +19,11 @@ enum class eSceneType
 
 enum class eLayerType
 {
-	BG,
+	System,
+	Background,
 	Player,
-	Opponent,
-	GameCanvas,
-	Notes,
-	Effect,
+	Monster,
+	Effects,
 	UI,
 	Size = 16,
 };

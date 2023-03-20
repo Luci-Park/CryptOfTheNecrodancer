@@ -27,9 +27,9 @@ namespace cl
 	}
 	void CadenceHead::Update()
 	{
-		if (isRight)
+		if (Vector2::Right == mDir)
 			PlayRight();
-		else
+		else if (-Vector2::Right == mDir)
 			PlayLeft();
 		GameObject::Update();
 	}
@@ -42,10 +42,22 @@ namespace cl
 		GameObject::Release();
 	}
 
+	void CadenceHead::Reset()
+	{
+		mAnimator->Reset();
+	}
+
+	void CadenceHead::SetDuration(float dur)
+	{
+		mAnimator->SetDuration(dur);
+	}
+
 	void CadenceHead::PlayRight()
 	{
-		if(!mAnimator->IsAnimationPlaying(mRightAnimation))
+		if (!mAnimator->IsAnimationPlaying(mRightAnimation))
+		{
 			mAnimator->Play(mRightAnimation, true, false);
+		}
 	}
 
 	void CadenceHead::PlayLeft()

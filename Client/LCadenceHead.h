@@ -14,15 +14,18 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 		virtual void Release() override;
 
-		void Flip(bool right) { isRight = right; }
+		void Flip(Vector2 dir) { mDir = dir; }
+		void Reset();
+		void SetDuration(float dur);
 	private:
 		void PlayRight();
 		void PlayLeft();
+
 	private:
 		Animator* mAnimator;
 		static const std::wstring mLeftAnimation;
 		static const std::wstring mRightAnimation;
-		bool isRight = true;
+		Vector2 mDir;
 	};
 
 }

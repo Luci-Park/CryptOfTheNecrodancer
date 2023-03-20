@@ -2,7 +2,7 @@
 #include "LScene.h"
 namespace cl
 {
-	class Boyfriend;
+	class GameManager;
 	class TutorialScene : public Scene
 	{
 	public:
@@ -19,7 +19,7 @@ namespace cl
 		virtual void OnExit()override;
 
 	private:
-		Boyfriend* bf;
+		GameManager* mGameManager;
 	};
 }
 

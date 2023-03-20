@@ -8,11 +8,6 @@ namespace cl
 	}
 	Layer::~Layer()
 	{
-		for (GameObject* gameObj : mGameObjects)
-		{
-			delete gameObj;
-			gameObj = nullptr;
-		}
 	}
 	void Layer::Initialize()
 	{
@@ -58,7 +53,15 @@ namespace cl
 	}
 	void Layer::Release()
 	{
-
+		for (GameObject* gameObj : mGameObjects)
+		{
+			if (gameObj != nullptr)
+			{
+				gameObj->Release();
+				delete gameObj;
+				gameObj = nullptr;
+			}
+		}
 	}
 	void Layer::AddGameObject(GameObject* gameObj)
 	{

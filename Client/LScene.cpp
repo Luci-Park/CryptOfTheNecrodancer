@@ -70,7 +70,10 @@ namespace cl
 	}
 	void Scene::Release()
 	{
-
+		for (int i = 0; i < (UINT)eLayerType::Size; ++i)
+		{
+			mLayers[i].Release();
+		}
 	}
 	void Scene::OnEnter()
 	{

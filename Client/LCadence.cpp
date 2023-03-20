@@ -1,13 +1,12 @@
 #include "LCadence.h"
-#include "LCadenceHead.h"
-#include "LCadenceBody.h"
+#include "LCadenceSprite.h"
 #include "LObject.h"
 #include "LInput.h"
 #include "LTime.h"
 namespace cl
 {
 	Cadence::Cadence(Scene* scene)
-		:GameObject(scene, false)
+		:GameCharacter(scene)
 	{
 	}
 	Cadence::~Cadence()
@@ -16,44 +15,13 @@ namespace cl
 	void Cadence::Initialize()
 	{
 		mTransform->SetScale(Vector2(2.5f, 2.5f));
-		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mePlayerState = IDLE;
-		moveTowardsPosition = mTransform->GetPos();
+		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
+		mSprite->SetManager(mGameManager);
+		GameCharacter::Initialize();
 	}
 	void Cadence::Update()
 	{
-		Vector2 reslt = Vector2::MoveTowards(mTransform->GetPos(), moveTowardsPosition, mMoveSpeed * Time::DeltaTime());
-		mTransform->SetPos(reslt);
-		if (Vector2::Distance(mTransform->GetPos(), moveTowardsPosition) <= 0.001f)
-		{
-			if (Input::GetKeyDown(eKeyCode::A))
-			{
-				moveTowardsPosition.x -= mMoveLength;
-				mBody->Flip(false);
-				mHead->Flip(false);
-				mbMoving = true;
-			}
-
-			if (Input::GetKeyDown(eKeyCode::D))
-			{
-				moveTowardsPosition.x += mMoveLength;
-				mBody->Flip(true);
-				mHead->Flip(true);
-				mbMoving = true;
-			}
-
-			if (Input::GetKeyDown(eKeyCode::W))
-			{
-				moveTowardsPosition.y -= mMoveLength;
-				mbMoving = true;
-			}
-			if (Input::GetKeyDown(eKeyCode::S))
-			{
-				moveTowardsPosition.y += mMoveLength;
-				mbMoving = true;
-			}
-		}
+		GameCharacter::Update();
 	}
 	void Cadence::Render(HDC hdc)
 	{
@@ -64,33 +32,29 @@ namespace cl
 		Rectangle(hdc, pos.x - width.x * 0.5, pos.y - width.y * 0.5, pos.x + width.x * 0.5, pos.y + width.y * 0.5);
 		SelectObject(hdc, oldBrush);
 		DeleteObject(newBrush);
+		GameCharacter::Render(hdc);
 	}
 	void Cadence::Release()
 	{
+		GameCharacter::Release();
 	}
 	void Cadence::Move()
 	{
-		Vector2 pos = mTransform->GetPos();
-		float tile = 100.0f;
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			pos.x -= 100.0f;
-			mBody->Flip(false);
-			mHead->Flip(false);
+			mMoveTarget.x -= mGameManager->Displacement();
+			mSprite->Turn(Vector2::Left);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
-			pos.x += 100.0f;
-			mBody->Flip(true);
-			mHead->Flip(true);
+			mMoveTarget.x += mGameManager->Displacement();
+			mSprite->Turn(Vector2::Right);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
-			pos.y -= 100.0f;
+			mMoveTarget.y -= mGameManager->Displacement();
 		if (Input::GetKeyDown(eKeyCode::S))
-			pos.y += 100.0f;
-
-		mTransform->SetPos(pos);
+			mMoveTarget.y += mGameManager->Displacement();
 	}
 }

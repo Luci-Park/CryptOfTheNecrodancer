@@ -23,6 +23,7 @@ namespace cl
 		void SetDuration(float duration) { mDuration = duration / mSpriteSheet.size(); }
 		bool IsInReverse() { return mbReverse; }
 		void SetReverse(bool reverse) { mbReverse = reverse; }
+
 	private:
 		Animator* mAnimator;
 		Image* mSheetImage;

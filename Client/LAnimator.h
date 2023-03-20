@@ -55,11 +55,14 @@ namespace cl
 		std::function<void()>& GetStartEvent(const std::wstring& name);
 		std::function<void()>& GetCompleteEvent(const std::wstring& name);
 		std::function<void()>& GetEndEvent(const std::wstring& name);
+		
 		bool IsComplete() { return mActiveAnimation->IsComplete(); }
 		bool IsAnimationPlaying(const std::wstring& name) { 
 			return(mActiveAnimation != nullptr &&
 			mActiveAnimation->GetName() == name); }
 
+		void SetDuration(float dur);
+		void Reset();
 
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
@@ -68,5 +71,6 @@ namespace cl
 		Animation* mActiveAnimation;
 		Image* mSpriteSheet;
 		bool mbLoop;
+		float mAnimationDur;
 	};
 }

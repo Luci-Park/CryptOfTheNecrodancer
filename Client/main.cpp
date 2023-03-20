@@ -1,6 +1,7 @@
 ﻿// FridayNightFunkin'.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
+#define _CRTDBG_MAP_ALLOC
 #include "framework.h"
 #include "Client.h"
 #include "LApplication.h"
@@ -31,7 +32,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    // TODO: 여기에 코드를 입력합니다.
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -69,6 +69,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     application.Release();
+    _CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+    _CrtDumpMemoryLeaks();
     return (int) msg.wParam;
 }
 
