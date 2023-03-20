@@ -151,9 +151,6 @@
     <ClInclude Include="LTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="LSpriteRenderer.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
     <ClInclude Include="LSprite.h">
       <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
@@ -189,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="LGameManager.h">
       <Filter>Contents\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="LSpriteRenderer.h">
+      <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

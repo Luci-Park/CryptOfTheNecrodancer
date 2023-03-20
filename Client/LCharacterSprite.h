@@ -22,6 +22,9 @@ namespace cl
 		void SetManager(GameManager* m) { mGameManager = m; }
 	protected:
 		GameManager* mGameManager;
+		bool mbIsJumping;
+		bool mbDirIsUp;
+		float mHeight;
 
 	};
 }

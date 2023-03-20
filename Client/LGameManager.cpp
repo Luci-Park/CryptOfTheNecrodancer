@@ -34,6 +34,6 @@ namespace cl
 		mBPM = bpm;
 		float bps = bpm / 60.0f;
 		mBeatDuration = 1 / bps;
-		mSpeedPerTile = mDistPerTile / mBeatDuration;
+		mSpeedPerTile = mDistPerTile / mBeatDuration * 0.75;
 	}
 }

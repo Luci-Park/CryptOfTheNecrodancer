@@ -39,7 +39,7 @@ namespace cl
 	}
 	void CadenceSprite::OnBeatChanged()
 	{
-		float dur = mGameManager->BeatDuration();
+		float dur = mGameManager->BeatDuration() * 0.75;
 		mHead->SetDuration(dur);
 		mBody->SetDuration(dur);
 	}

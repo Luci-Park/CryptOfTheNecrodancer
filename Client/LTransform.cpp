@@ -32,7 +32,7 @@ namespace cl
 	void Transform::CalculateWorldPos()
 	{
 		if (mParent != this)
-			mWorldPos = mLocalPos + mParent->GetLocalPos();
+			mWorldPos = mLocalPos + mParent->GetPos();
 		else
 			mWorldPos = mLocalPos;
 	}
@@ -47,7 +47,7 @@ namespace cl
 	{
 		if (mParent != this)
 		{
-			Vector2 parentScale = mParent->GetLocalScale();
+			Vector2 parentScale = mParent->GetScale();
 			mWorldScale.x = mLocalScale.x * parentScale.x;
 			mWorldScale.y = mLocalScale.y * parentScale.y;
 		}

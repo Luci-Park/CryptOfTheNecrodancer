@@ -20,8 +20,8 @@ namespace cl
 		void SetLocalScale(Vector2 scale) { mLocalScale = scale; CalculateWorldScale(); }
 		Vector2 GetPos() { return mWorldPos; }
 		Vector2 GetScale() { return mWorldScale; }
-		Vector2 GetLocalPos() { return mWorldPos; }
-		Vector2 GetLocalScale() { return mWorldScale; }
+		Vector2 GetLocalPos() { return mLocalPos; }
+		Vector2 GetLocalScale() { return mLocalScale; }
 
 		void SetParent(Transform* parent) { mParent = parent; }
 		void SetChildren(Transform* child) { mChildren.push_back(child); }

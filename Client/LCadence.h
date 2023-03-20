@@ -2,6 +2,7 @@
 #include "LGameCharacter.h"
 namespace cl
 {
+	class SpriteRenderer;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -15,6 +16,7 @@ namespace cl
 
 		virtual void Move() override;
 	private:
+		SpriteRenderer* mSpriteRenderer;
 	};
 
 }
