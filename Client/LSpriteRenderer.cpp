@@ -29,7 +29,7 @@ namespace cl
 
 		Vector2 pos = tr->GetPos();
 		pos += Vector2(mSprite.offset.x * scale.x, mSprite.offset.y * scale.y);
-		if (GetOwner()->IsUI())
+		if (!GetOwner()->IsUI())
 			pos = Camera::CaluatePos(pos);
 
 		if (mAlpha == 255)

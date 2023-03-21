@@ -17,9 +17,12 @@ namespace cl
 
 		static void StartFadeIn();
 		static void StartFadeOut();
+
+		static void StartShake();
 	private:
 		static void FadeIn(HDC hdc);
 		static void FadeOut(HDC hdc);
+		static void ShakeCamera();
 	private:
 		static Vector2 mResolution;
 		static Vector2 mLookPosition;
@@ -30,5 +33,8 @@ namespace cl
 		static enum eFilmState {FadingIn, FadingOut, Idle};
 		static eFilmState meFilmState;
 		static float mFilmAlpha;
+		static bool mIsShaking;
+		static Vector2 mdefaultPos;
+		//static float 
 	};
 }

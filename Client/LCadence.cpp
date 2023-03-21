@@ -5,6 +5,7 @@
 #include "LTime.h"
 #include "LSpriteRenderer.h"
 #include "LCadenceAttackEffect.h"
+#include "LCamera.h"
 namespace cl
 {
 	Cadence::Cadence(Scene* scene)
@@ -64,22 +65,26 @@ namespace cl
 		}
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
+			Camera::StartShake();
 			mAttactEffect->Attack(Vector2::Up);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::E))
 		{
+			Camera::StartShake();
 			mAttactEffect->Attack(Vector2::Down);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::R))
 		{
+			Camera::StartShake();
 			mSprite->Turn(Vector2::Left);
 			mAttactEffect->Attack(Vector2::Left);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::T))
 		{
+			Camera::StartShake();
 			mSprite->Turn(Vector2::Right);
 			mAttactEffect->Attack(Vector2::Right);
 		}

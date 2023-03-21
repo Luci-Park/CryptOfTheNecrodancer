@@ -15,7 +15,11 @@ namespace cl
 	GameObject* Camera::mTarget = nullptr;
 	Image* Camera::mFilm = nullptr; 
 	cl::Camera::eFilmState Camera::meFilmState = Camera::eFilmState::Idle;
+
+	Vector2 Camera::mdefaultPos = Vector2::Zero;
+	bool Camera::mIsShaking = false;
 	float Camera::mFilmAlpha = 0;
+
 
 	void Camera::Initiailize()
 	{
@@ -27,7 +31,6 @@ namespace cl
 
 	void Camera::Update()
 	{
-
 		if (Input::GetKey(eKeyCode::LEFT))
 			mLookPosition.x -= 100.0f * Time::DeltaTime();
 
@@ -40,12 +43,17 @@ namespace cl
 		if (Input::GetKey(eKeyCode::DOWN))
 			mLookPosition.y += 100.0f * Time::DeltaTime();
 
-
 		if (mTarget != nullptr)
 		{
 			mLookPosition
 				= mTarget->GetComponent<Transform>()->GetPos();
 		}
+
+		if (mIsShaking)
+		{
+			ShakeCamera();
+		}
+		if(meFilmState )	
 
 		mDistance = mLookPosition - (mResolution / 2.0f);
 	}
@@ -70,6 +78,11 @@ namespace cl
 	{
 		if (meFilmState == Idle)
 			meFilmState = FadingOut;
+	}
+	void Camera::StartShake()
+	{
+		mIsShaking = true;
+		mdefaultPos = mLookPosition;
 	}
 	void Camera::FadeIn(HDC hdc)
 	{
@@ -136,5 +149,34 @@ namespace cl
 		AlphaBlend(hdc, 0, 0, mResolution.x, mResolution.y,
 			mFilm->GetHdc(), 0, 0, mResolution.x, mResolution.y,
 			func);
+	}
+	void Camera::ShakeCamera()
+	{
+		static const float shakeDuration = 0.1f;
+		static const float minShakeOffset = 800.0f;
+		static const float maxShakeOffset = 1000.0f;
+		static float shakeTimer = 0;
+
+		if (shakeTimer >= shakeDuration)
+		{
+			shakeTimer -= shakeTimer;
+			mIsShaking = false;
+			mLookPosition = mdefaultPos;
+			return;
+		}
+		shakeTimer += Time::DeltaTime();
+
+		float offsetX = (float)rand() / RAND_MAX * maxShakeOffset * 2 - maxShakeOffset;
+		float offsetY = (float)rand() / RAND_MAX * maxShakeOffset * 2 - maxShakeOffset;
+		
+		if (std::abs(offsetX) < minShakeOffset)
+			offsetX = std::copysign(minShakeOffset, offsetX);
+		if (std::abs(offsetY) < minShakeOffset)
+			offsetY = std::copysign(minShakeOffset, offsetY);
+		
+		offsetX *= Time::DeltaTime();
+		offsetY *= Time::DeltaTime();
+
+		mLookPosition += Vector2(offsetX, offsetY);
 	}
 }
