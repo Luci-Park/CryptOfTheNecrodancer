@@ -134,6 +134,7 @@
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBodyItem.h" />
     <ClInclude Include="LCadence.h" />
     <ClInclude Include="LCadenceBody.h" />

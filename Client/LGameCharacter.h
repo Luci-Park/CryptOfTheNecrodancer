@@ -1,11 +1,12 @@
 #pragma once
 #include "LGameObject.h"
 #include "LGameManager.h"
+#include "LBeatObject.h"
 namespace cl
 {
 	class GameManager;
 	class CharacterSprite;
-	class GameCharacter : public GameObject
+	class GameCharacter : public GameObject, public BeatObject
 	{
 	public:
 		GameCharacter(Scene* sc);
@@ -17,7 +18,6 @@ namespace cl
 
 		virtual void Move() = 0;
 		virtual void OnBeatChanged();
-		virtual void OnBeat() = 0;
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;

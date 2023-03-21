@@ -56,20 +56,23 @@
     <Filter Include="Contents\Scene">
       <UniqueIdentifier>{aedea299-4152-4572-a610-c429d256939e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Characters">
-      <UniqueIdentifier>{44e46fb7-c7f5-4f5f-b1ea-2b1d166b6571}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Background">
       <UniqueIdentifier>{cb1d7920-32e3-4217-b6ef-fd4585aa826c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Characters\Cadence">
-      <UniqueIdentifier>{2901287b-f74c-4b0f-a459-27f4565cf7c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Items">
       <UniqueIdentifier>{7a0e3267-f23b-48c2-8bd9-a5aeb4c0150f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\GameManager">
       <UniqueIdentifier>{7b5d58be-4523-4f85-9759-69396872a484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects">
+      <UniqueIdentifier>{5849a54a-f1ef-4d9d-833c-b8f877e1e6fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Characters">
+      <UniqueIdentifier>{44e46fb7-c7f5-4f5f-b1ea-2b1d166b6571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Characters\Cadence">
+      <UniqueIdentifier>{2901287b-f74c-4b0f-a459-27f4565cf7c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -164,31 +167,34 @@
       <Filter>Contents\Scene</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceBody.h">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceHead.h">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LCadence.h">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LBodyItem.h">
       <Filter>Contents\Items</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceSprite.h">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LCharacterSprite.h">
-      <Filter>Contents\Characters</Filter>
+      <Filter>Contents\Objects\Characters</Filter>
     </ClInclude>
     <ClInclude Include="LGameCharacter.h">
-      <Filter>Contents\Characters</Filter>
+      <Filter>Contents\Objects\Characters</Filter>
     </ClInclude>
     <ClInclude Include="LGameManager.h">
       <Filter>Contents\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="LSpriteRenderer.h">
       <Filter>Engine\Component\Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="LBeatObject.h">
+      <Filter>Contents\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -275,22 +281,22 @@
       <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="LCadenceBody.cpp">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LCadenceHead.cpp">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LCadence.cpp">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LCadenceSprite.cpp">
-      <Filter>Contents\Characters\Cadence</Filter>
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LCharacterSprite.cpp">
-      <Filter>Contents\Characters</Filter>
+      <Filter>Contents\Objects\Characters</Filter>
     </ClCompile>
     <ClCompile Include="LGameCharacter.cpp">
-      <Filter>Contents\Characters</Filter>
+      <Filter>Contents\Objects\Characters</Filter>
     </ClCompile>
     <ClCompile Include="LGameManager.cpp">
       <Filter>Contents\GameManager</Filter>

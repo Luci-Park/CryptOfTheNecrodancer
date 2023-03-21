@@ -3,6 +3,7 @@
 #include "LApplication.h"
 #include "LCadence.h"
 #include "LGameManager.h"
+#include "LInput.h"
 extern cl::Application application;
 namespace cl
 {
@@ -20,10 +21,14 @@ namespace cl
 		GameManager::SetBPM(100);
 		mGameManager = object::Instantiate<GameManager>(this, Vector2::Zero, eLayerType::System);
 		Cadence* cadence = object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
-		cadence->OnBeatChanged();
+		mGameManager->AddCharacters(cadence);
 	}
 	void TutorialScene::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::O))
+		{
+			GameManager::SetBPM(GameManager::BPM() + 50);
+		}
 		Scene::Update();
 	}
 	void TutorialScene::Render(HDC hdc)

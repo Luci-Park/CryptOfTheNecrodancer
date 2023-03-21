@@ -1,5 +1,5 @@
 #include "LGameManager.h"
-#include "LGameCharacter.h"
+#include "LBeatObject.h"
 #include "LTime.h"
 
 namespace cl
@@ -39,8 +39,9 @@ namespace cl
 	{
 	}
 
-	void GameManager::AddCharacters(GameCharacter* character)
+	void GameManager::AddCharacters(BeatObject* character)
 	{
+		mCharacters.push_back(character);
 	}
 
 	void GameManager::CheckBeat()

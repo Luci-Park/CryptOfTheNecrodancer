@@ -3,7 +3,7 @@
 #define UNIT 26;
 namespace cl
 {
-	class GameCharacter;
+	class BeatObject;
 	class GameManager : public GameObject
 	{
 	public:
@@ -14,13 +14,13 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc)override;
 
-		void AddCharacters(GameCharacter* character);
+		void AddCharacters(BeatObject* character);
 	private:
 		void CheckBeat();
 		void CountBeat();
 		void CheckIfMoveable();
 	private:
-		std::vector<GameCharacter*> mCharacters;
+		std::vector<BeatObject*> mCharacters;
 		float mGameTimer;
 		float mNextBeat;
 		int mBPM;
