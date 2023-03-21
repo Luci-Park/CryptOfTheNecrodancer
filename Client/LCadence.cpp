@@ -17,7 +17,7 @@ namespace cl
 	void Cadence::Initialize()
 	{
 		GameCharacter::Initialize();
-		mTransform->SetScale(Vector2(2.5f, 2.5f));
+		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
 		mSpriteRenderer->AddAlpha(100);
@@ -28,41 +28,37 @@ namespace cl
 		GameCharacter::Update();
 	}
 	void Cadence::Render(HDC hdc)
-	{/*
-		Vector2 pos = mTransform->GetPos();
-		Vector2 width = Vector2(100, 100);
-		HBRUSH newBrush = CreateSolidBrush(RGB(255, 0, 0));
-		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, newBrush);
-		Rectangle(hdc, pos.x - width.x * 0.5, pos.y - width.y * 0.5, pos.x + width.x * 0.5, pos.y + width.y * 0.5);
-		SelectObject(hdc, oldBrush);
-		DeleteObject(newBrush);*/
+	{
 		GameCharacter::Render(hdc);
 	}
 	void Cadence::Move()
 	{
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			mMoveTarget.x -= mGameManager->Displacement();
+			mMoveTarget.x -= GameManager::UnitLength();
 			mSprite->Turn(Vector2::Left);
 			mSprite->Jump();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
-			mMoveTarget.x += mGameManager->Displacement();
+			mMoveTarget.x += GameManager::UnitLength();
 			mSprite->Turn(Vector2::Right);
 			mSprite->Jump();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			mMoveTarget.y -= mGameManager->Displacement();
+			mMoveTarget.y -= GameManager::UnitLength();
 			mSprite->Jump();
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
-			mMoveTarget.y += mGameManager->Displacement();
+			mMoveTarget.y += GameManager::UnitLength();
 			mSprite->Jump();
 		}
+	}
+	void Cadence::OnBeat()
+	{
 	}
 }

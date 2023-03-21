@@ -12,9 +12,9 @@ namespace cl
 
 	GameManager::GameManager(Scene* sc)
 		: GameObject(sc, false)
-		, mTimer(0.0f)
-		, mPlayerTimer(0.0f)
+		, mGameTimer(0.0f)
 		, mBPM(1)
+		, mNextBeat(0)
 	{
 	}
 
@@ -24,6 +24,8 @@ namespace cl
 
 	void GameManager::Initialize()
 	{
+		mBPM = _bpm;
+		mNextBeat = _beatDuration;
 	}
 
 	void GameManager::Update()
@@ -55,29 +57,20 @@ namespace cl
 
 	void GameManager::CountBeat()
 	{
-		mTimer += Time::DeltaTime();
-		if (_beatDuration <= mTimer)
+		mGameTimer += Time::DeltaTime();
+		if (mNextBeat <= mGameTimer)
 		{
-			mTimer -= mTimer;
+			mGameTimer -= mGameTimer;
 			for (int i = 0; i < mCharacters.size(); ++i)
 			{
 				mCharacters[i]->OnBeat();
 			}
+			//mNextBeat += _beatDuration;
 		}
 	}
 
 	void GameManager::CheckIfMoveable()
 	{
-		if (_beatDuration * 0.5 <= mPlayerTimer &&
-			mPlayerTimer < _beatDuration * 1.5)
-		{
-			_movable = true;
-			mPlayerTimer = mTimer;
-		}
-		else
-		{
-			_movable = false;
-		}
 	}
 
 

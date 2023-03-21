@@ -14,6 +14,7 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Move() override;
+		virtual void OnBeat() override;
 	private:
 		SpriteRenderer* mSpriteRenderer;
 	};

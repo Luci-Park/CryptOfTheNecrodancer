@@ -2,6 +2,7 @@
 #include "LCadenceHead.h"
 #include "LCadenceBody.h"
 #include "LObject.h"
+#include "LGameManager.h"
 namespace cl
 {
 	CadenceSprite::CadenceSprite(Scene* sc)
@@ -33,7 +34,7 @@ namespace cl
 	}
 	void CadenceSprite::OnBeatChanged()
 	{
-		float dur = mGameManager->BeatDuration() * 0.75;
+		float dur = GameManager::BeatDuration() * 0.5;
 		mHead->SetDuration(dur);
 		mBody->SetDuration(dur);
 	}

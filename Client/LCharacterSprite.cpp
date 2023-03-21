@@ -1,5 +1,6 @@
 #include "LCharacterSprite.h"
 #include "LTime.h"
+#include "LGameManager.h"
 namespace cl
 {
 	CharacterSprite::CharacterSprite(Scene *sc)
@@ -32,12 +33,12 @@ namespace cl
 			mbIsJumping = true;
 			return;
 		}
-		Vector2 target = mbDirIsUp ? Vector2::Up * mGameManager->Displacement() * 0.5 : Vector2::Zero;
+		Vector2 target = mbDirIsUp ? Vector2::Up * GameManager::UnitLength() * 0.5 : Vector2::Zero;
 		if (Vector2::Distance(mTransform->GetLocalPos(), target) < 0.01f)
 		{
 			mbDirIsUp = !mbDirIsUp;
 			if (mbDirIsUp) mbIsJumping = false;
 		}
-		mTransform->SetLocalPos(Vector2::MoveTowards(mTransform->GetLocalPos(), target, mGameManager->MoveSpeed() * Time::DeltaTime()));
+		mTransform->SetLocalPos(Vector2::MoveTowards(mTransform->GetLocalPos(), target, GameManager::MoveSpeed() * 2 * Time::DeltaTime()));
 	}
 }

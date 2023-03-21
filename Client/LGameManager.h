@@ -21,8 +21,8 @@ namespace cl
 		void CheckIfMoveable();
 	private:
 		std::vector<GameCharacter*> mCharacters;
-		float mTimer;
-		float mPlayerTimer;
+		float mGameTimer;
+		float mNextBeat;
 		int mBPM;
 
 

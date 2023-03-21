@@ -5,7 +5,6 @@ namespace cl
 {
 	GameCharacter::GameCharacter(Scene* sc)
 		: GameObject(sc, false)
-		, mGameManager(nullptr)
 		, mMoveTarget(Vector2::Zero)
 		, mSprite(nullptr)
 	{
@@ -20,7 +19,7 @@ namespace cl
 	}
 	void GameCharacter::Update()
 	{		
-		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mGameManager->MoveSpeed() * Time::DeltaTime()));
+		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, GameManager::MoveSpeed() * 2 * Time::DeltaTime()));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
 			Move();
