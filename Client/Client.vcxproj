@@ -137,6 +137,7 @@
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBodyItem.h" />
     <ClInclude Include="LCadence.h" />
+    <ClInclude Include="LCadenceAttackEffect.h" />
     <ClInclude Include="LCadenceBody.h" />
     <ClInclude Include="LCadenceHead.h" />
     <ClInclude Include="LCadenceSprite.h" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LCadence.cpp" />
+    <ClCompile Include="LCadenceAttackEffect.cpp" />
     <ClCompile Include="LCadenceBody.cpp" />
     <ClCompile Include="LCadenceHead.cpp" />
     <ClCompile Include="LCadenceSprite.cpp" />

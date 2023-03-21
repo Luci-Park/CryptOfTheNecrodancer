@@ -196,6 +196,9 @@
     <ClInclude Include="LBeatObject.h">
       <Filter>Contents\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="LCadenceAttackEffect.h">
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -300,6 +303,9 @@
     </ClCompile>
     <ClCompile Include="LGameManager.cpp">
       <Filter>Contents\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceAttackEffect.cpp">
+      <Filter>Contents\Objects\Characters\Cadence</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

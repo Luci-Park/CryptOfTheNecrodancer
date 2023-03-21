@@ -3,6 +3,7 @@
 namespace cl
 {
 	class SpriteRenderer;
+	class CadenceAttackEffect;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -15,8 +16,10 @@ namespace cl
 
 		virtual void Move() override;
 		virtual void OnBeat() override;
+		virtual void OnBeatChanged() override;
 	private:
 		SpriteRenderer* mSpriteRenderer;
+		CadenceAttackEffect* mAttactEffect;
 	};
 
 }

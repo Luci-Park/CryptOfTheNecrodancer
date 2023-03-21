@@ -97,6 +97,12 @@ namespace cl
 
             spriteInfo.leftTop.x = leftTop.x + (size.x * i);
             spriteInfo.leftTop.y = leftTop.y;
+            if (spriteInfo.leftTop.x >= sheet->GetWidth())
+            {
+                leftTop.y += size.y;
+                spriteInfo.leftTop.x = leftTop.x;
+                spriteInfo.leftTop.y = leftTop.y;
+            }
             spriteInfo.size = size;
             if (offset == Vector2::Zero)
                 spriteInfo.offset = offset - size / 2;
