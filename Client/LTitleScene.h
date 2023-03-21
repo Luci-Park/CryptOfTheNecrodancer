@@ -3,11 +3,11 @@
 namespace cl
 {
 	class Image;
-	class SplashScene : public Scene
+	class TitleScene : public Scene
 	{
 	public:
-		SplashScene();
-		~SplashScene();
+		TitleScene();
+		~TitleScene();
 
 		virtual void Initialize()override;
 		virtual void Update()override;
@@ -16,11 +16,11 @@ namespace cl
 
 		virtual void OnEnter()override;
 		virtual void OnExit()override;
-	
-	private:
-		Image* mImage;
-		float mTimer;
 
+	private:
+		Image* mBackground;
+		Image* mButton;
+		float timer;
 	};
 }
 

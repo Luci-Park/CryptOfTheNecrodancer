@@ -61,6 +61,8 @@ namespace cl
 	{
 		if (meFilmState == FadingIn)
 			FadeIn(hdc);
+		else if (meFilmState == FadingOut)
+			FadeOut(hdc);
 	}
 	void Camera::Clear()
 	{
@@ -76,7 +78,7 @@ namespace cl
 	}
 	void Camera::StartFadeOut()
 	{
-		if (meFilmState == Idle)
+		if (meFilmState != FadingOut)
 			meFilmState = FadingOut;
 	}
 	void Camera::StartShake()

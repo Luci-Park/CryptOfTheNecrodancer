@@ -1,8 +1,18 @@
 #include "LSplashScene.h"
+#include "LImage.h"
+#include "LResources.h"
+#include "LCamera.h"
+#include "LApplication.h"
+#include "LInput.h"
+#include "LSceneManager.h"
+
+extern cl::Application application;
 namespace cl
 {
 	SplashScene::SplashScene()
 		:Scene(L"Splash")
+		, mImage(nullptr)
+		, mTimer(0.0f)
 	{
 	}
 	SplashScene::~SplashScene()
@@ -10,26 +20,27 @@ namespace cl
 	}
 	void SplashScene::Initialize()
 	{
-		Scene::Initialize();
+		Camera::StartFadeIn();
+		mImage = Resources::Load<Image>(L"Warning", L"..\\Assets\\Arts\\Effects\\Warning_Screen.bmp");
 	}
 	void SplashScene::Update()
 	{
-		Scene::Update();
+		if (Input::GetKeyDown(eKeyCode::ENTER))
+		{
+			SceneManager::LoadScene(eSceneType::Title);
+		}
 	}
 	void SplashScene::Render(HDC hdc)
 	{
-		Scene::Render(hdc);
+		TransparentBlt(hdc, 0, 0, application.GetWidth(), application.GetHeight(), mImage->GetHdc(), 0, 0, mImage->GetWidth(), mImage->GetHeight(), RGB(255, 0, 255));
 	}
 	void SplashScene::Destroy()
 	{
-		Scene::Destroy();
 	}
 	void SplashScene::OnEnter()
 	{
-		Scene::OnEnter();
 	}
 	void SplashScene::OnExit()
 	{
-		Scene::OnExit();
 	}
 }

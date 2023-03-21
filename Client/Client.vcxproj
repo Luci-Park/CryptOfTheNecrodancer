@@ -144,8 +144,10 @@
     <ClInclude Include="LCharacterSprite.h" />
     <ClInclude Include="LGameCharacter.h" />
     <ClInclude Include="LGameManager.h" />
+    <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSpriteRenderer.h" />
+    <ClInclude Include="LTitleScene.h" />
     <ClInclude Include="LTutorialScene.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="LSprite.h" />
@@ -182,8 +184,10 @@
     <ClCompile Include="LCharacterSprite.cpp" />
     <ClCompile Include="LGameCharacter.cpp" />
     <ClCompile Include="LGameManager.cpp" />
+    <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
+    <ClCompile Include="LTitleScene.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LAnimation.cpp" />

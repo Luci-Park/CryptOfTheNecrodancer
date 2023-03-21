@@ -3,17 +3,14 @@
 
 enum class eSceneType
 {
-	Splash1,
-	Splash2,
-	Splash3,
-	Splash4,
+	Splash,
 	Title,
-	Campaign,
+	Lobby,
 	Tutorial,
-	Week1,
-	Week2,
-	Week3,
-	GameOver,
+	Depth1,
+	Depth2,
+	Depth3,
+	BossRoom,
 	Size
 };
 

@@ -1,8 +1,9 @@
 #include "LSceneManager.h"
 #include "LCollisionManager.h"
 #include "LCamera.h"
-#include "LTutorialScene.h"
 #include "LSplashScene.h"
+#include "LTitleScene.h"
+#include "LTutorialScene.h"
 namespace cl
 {	
 	//SceneManager scsene;
@@ -14,8 +15,9 @@ namespace cl
 	{
 		mScenes.resize((UINT)eSceneType::Size);
 
+		mScenes[(UINT)eSceneType::Splash] = new SplashScene();
+		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
-		mScenes[(UINT)eSceneType::Splash1] = new SplashScene();
 		for ( Scene* scene : mScenes )
 		{
 			if (scene == nullptr)
@@ -24,7 +26,7 @@ namespace cl
 			scene->Initialize();
 		}
 
-		mActiveScene = mScenes[(UINT)eSceneType::Tutorial];
+		mActiveScene = mScenes[(UINT)eSceneType::Splash];
 	}
 
 	void SceneManager::Update()
@@ -61,13 +63,5 @@ namespace cl
 		mActiveScene = mScenes[(UINT)type];
 		Camera::StartFadeIn();
 		mActiveScene->OnEnter();		
-	}
-	void SceneManager::TempSceneChange()
-	{
-		if (sceneNum == 0)
-			LoadScene(eSceneType::Splash1);
-		else
-			LoadScene(eSceneType::Tutorial);
-		sceneNum = (sceneNum + 1) % 2;
 	}
 }
