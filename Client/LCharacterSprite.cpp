@@ -4,14 +4,12 @@ namespace cl
 {
 	CharacterSprite::CharacterSprite(Scene *sc)
 		: GameObject(sc, false)
-		, mGameManager(nullptr)
 		, mbDirIsUp(true)
 		, mbIsJumping(false)
 	{
 	}
 	CharacterSprite::~CharacterSprite()
 	{
-		mGameManager = nullptr;
 	}
 	void CharacterSprite::Initialize()
 	{

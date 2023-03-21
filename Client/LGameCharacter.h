@@ -16,11 +16,10 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Move() = 0;
-		void SetManager(GameManager* m);
-		void OnBeatChanged();
+		virtual void OnBeatChanged();
+		virtual void OnBeat() = 0;
 	protected:
 		CharacterSprite* mSprite;
-		GameManager* mGameManager;
 		Vector2 mMoveTarget;
 	};
 }

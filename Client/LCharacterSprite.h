@@ -1,6 +1,5 @@
 #pragma once
 #include "LGameObject.h"
-#include "LGameManager.h"
 namespace cl
 {
 	class GameManager;
@@ -18,9 +17,7 @@ namespace cl
 		virtual void OnBeatChanged() = 0;
 
 		void Jump();
-		void SetManager(GameManager* m) { mGameManager = m; }
 	protected:
-		GameManager* mGameManager;
 		bool mbIsJumping;
 		bool mbDirIsUp;
 		float mHeight;

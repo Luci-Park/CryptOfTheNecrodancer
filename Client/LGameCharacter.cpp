@@ -31,11 +31,6 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
-	void GameCharacter::SetManager(GameManager* m)
-	{ 
-		mGameManager = m;
-		mSprite->SetManager(m);
-	}
 	void GameCharacter::OnBeatChanged()
 	{
 		mSprite->OnBeatChanged();
