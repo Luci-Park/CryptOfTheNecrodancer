@@ -22,7 +22,6 @@ namespace cl
 	}
 	void TitleScene::Initialize()
 	{
-		Camera::StartFadeIn();
 		//mBackground = Resources::Load<Image>(L"Title", L"..\\Assets\\Arts\\Effects\\Title_Screen.bmp");
 		mButton = Resources::Load<Image>(L"ButtonTitle", L"..\\Assets\\Arts\\Effects\\Title_Screen_Button.bmp");
 	}
@@ -43,10 +42,9 @@ namespace cl
 	}
 	void TitleScene::OnEnter()
 	{
-		Scene::OnEnter();
+		Camera::StartFadeIn();
 	}
 	void TitleScene::OnExit()
 	{
-		Scene::OnExit();
 	}
 }

@@ -34,6 +34,7 @@ namespace cl
 		static eFilmState meFilmState;
 		static float mFilmAlpha;
 		static bool mIsShaking;
+		static bool mIsFading;
 		static Vector2 mdefaultPos;
 		//static float 
 	};

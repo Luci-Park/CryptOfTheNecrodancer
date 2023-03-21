@@ -18,6 +18,7 @@ namespace cl
 
 	Vector2 Camera::mdefaultPos = Vector2::Zero;
 	bool Camera::mIsShaking = false;
+	bool Camera::mIsFading = false;
 	float Camera::mFilmAlpha = 0;
 
 
@@ -43,7 +44,7 @@ namespace cl
 		if (Input::GetKey(eKeyCode::DOWN))
 			mLookPosition.y += 100.0f * Time::DeltaTime();
 
-		if (mTarget != nullptr)
+		if (mTarget != nullptr&& !mIsShaking)
 		{
 			mLookPosition
 				= mTarget->GetComponent<Transform>()->GetPos();
@@ -73,8 +74,8 @@ namespace cl
 	}
 	void Camera::StartFadeIn()
 	{
-		if (meFilmState == Idle)
-			meFilmState = FadingIn;
+		meFilmState = FadingIn;
+		mIsFading = false;
 	}
 	void Camera::StartFadeOut()
 	{
@@ -90,14 +91,13 @@ namespace cl
 	{
 		const static float animationTime = 1.0f;
 		static float timer = 0;
-		static bool isFading = false;
-		if (isFading == false)
+		if (mIsFading == false)
 		{
 			mFilmAlpha = 255;
-			isFading = true;
+			mIsFading = true;
 			timer = 0;
 		}
-		if (isFading)
+		if (mIsFading)
 		{
 			timer += Time::DeltaTime();
 			float ratio = timer / animationTime;
@@ -105,7 +105,7 @@ namespace cl
 			if (timer >= animationTime)
 			{
 				mFilmAlpha = 0;
-				isFading = false;
+				mIsFading = false;
 				meFilmState = Idle;
 			}
 		}

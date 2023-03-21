@@ -61,7 +61,7 @@ namespace cl
 		mActiveScene->OnExit();
 		CollisionManager::Clear();
 		mActiveScene = mScenes[(UINT)type];
-		Camera::StartFadeIn();
+		//Camera::StartFadeIn();
 		mActiveScene->OnEnter();		
 	}
 }
