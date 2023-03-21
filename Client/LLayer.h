@@ -13,7 +13,6 @@ namespace cl
 		virtual void Initialize();
 		virtual void Update();
 		virtual void Render(HDC hdc);
-		virtual void Release();
 
 		void AddGameObject(GameObject* gameObj);
 		std::vector<GameObject*>& GetGameObjects() { return mGameObjects; }

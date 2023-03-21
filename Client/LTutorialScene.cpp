@@ -35,11 +35,6 @@ namespace cl
 	{
 		Scene::Destroy();
 	}
-	void TutorialScene::Release()
-	{
-		mGameManager = nullptr;
-		Scene::Release();
-	}
 	void TutorialScene::OnEnter()
 	{
 		Scene::OnEnter();

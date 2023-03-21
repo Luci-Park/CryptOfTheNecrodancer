@@ -49,9 +49,6 @@ namespace cl
 				mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, func);
 		}
 	}
-	void SpriteRenderer::Release()
-	{
-	}
 	void SpriteRenderer::SetImage(Image* image, Sprite sp)
 	{
 		mImage = image;

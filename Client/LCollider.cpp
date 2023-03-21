@@ -43,9 +43,6 @@ namespace cl
 		(HBRUSH)SelectObject(hdc, oldBrush);
 		DeleteObject(pen);
 	}
-	void Collider::Release()
-	{
-	}
 	void Collider::OnCollisionEnter(Collider* other)
 	{
 		GetOwner()->OnCollisionEnter(other);

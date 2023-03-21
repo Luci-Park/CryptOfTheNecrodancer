@@ -26,9 +26,6 @@ namespace cl
 	void Transform::Render(HDC hdc)
 	{
 	}
-	void Transform::Release()
-	{
-	}
 	void Transform::CalculateWorldPos()
 	{
 		if (mParent != this)

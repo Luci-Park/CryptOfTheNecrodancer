@@ -60,10 +60,6 @@ namespace cl
 		}
 	}
 	
-	void Animator::Release()
-	{
-	}
-
 	void Animator::CreateAnimation(const std::wstring& name
 		, Image* sheet, UINT coulmn, UINT row, UINT sCol, UINT sRow, UINT spriteLength
 		, Vector2 offset, float duration)

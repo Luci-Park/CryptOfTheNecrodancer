@@ -13,7 +13,6 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-		virtual void Release() override;
 
 		void SetImage(Image* image, Sprite sp);
 		void SetImage(const std::wstring& key, const std::wstring& path);

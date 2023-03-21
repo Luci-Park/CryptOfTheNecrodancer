@@ -36,7 +36,6 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-		virtual void Release() override;
 
 		void CreateAnimation(const std::wstring& name, Image* sheet,
 			UINT coulmn, UINT row, 

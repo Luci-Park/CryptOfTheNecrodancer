@@ -12,7 +12,6 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
-		virtual void Release() override;
 
 		void SetPos(Vector2 pos) { mWorldPos = pos; CalculateLocalPos(); }
 		void SetLocalPos(Vector2 pos) { mLocalPos = pos; CalculateWorldPos(); }

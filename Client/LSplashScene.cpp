@@ -24,10 +24,6 @@ namespace cl
 	{
 		Scene::Destroy();
 	}
-	void SplashScene::Release()
-	{
-		Scene::Release();
-	}
 	void SplashScene::OnEnter()
 	{
 		Scene::OnEnter();
