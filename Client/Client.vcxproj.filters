@@ -208,7 +208,9 @@
     <ClInclude Include="LTiles.h">
       <Filter>Contents\Environment</Filter>
     </ClInclude>
-    <ClInclude Include="LFloorTile.h" />
+    <ClInclude Include="LFloorTile.h">
+      <Filter>Contents\Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -326,6 +328,8 @@
     <ClCompile Include="LTiles.cpp">
       <Filter>Contents\Environment</Filter>
     </ClCompile>
-    <ClCompile Include="LFloorTile.cpp" />
+    <ClCompile Include="LFloorTile.cpp">
+      <Filter>Contents\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
