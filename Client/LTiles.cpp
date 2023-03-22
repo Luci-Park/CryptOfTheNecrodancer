@@ -5,7 +5,7 @@ namespace cl
 	const Vector2 TileInfo::floorSpriteSize = Vector2(27.0f, 27.0f);
 	const Vector2 TileInfo::wallSpriteSize = Vector2(24.0f, 48.0f);
 	const float TileInfo::tileScale = 2.0f;
-	const Vector2 TileInfo::floorIndex[eFloorTypes::Size] = {
+	const Vector2 TileInfo::floorIndex[eFloorSpriteTypes::Size] = {
 		Vector2(0, 0), // DarkFloor1
 		Vector2(0, 3), // DarkFloor2
 		Vector2(1, 0), // DarkFloor3
@@ -24,7 +24,7 @@ namespace cl
 		Vector2(2, 8),// ClosedStairs
 		Vector2(2, 6)// OpenedStairs
 	};
-	const Vector2 TileInfo::wallIndex[eWallTypes::Size] = {
+	const Vector2 TileInfo::wallIndex[eWallSpriteTypes::Size] = {
 		Vector2(0, 0), //Wall1,
 		Vector2(0, 1), //Wall2,
 		Vector2(0, 2), //Wall3,
@@ -62,7 +62,7 @@ namespace cl
 		Vector2(6, 13), // DoorVertical
 	};
 
-	Sprite TileInfo::GetFloorTile(eFloorTypes tileType)
+	Sprite TileInfo::GetFloorTile(eFloorSpriteTypes tileType)
 	{
 		Sprite sprite;
 		Vector2 index = floorIndex[(int)tileType];
@@ -73,7 +73,7 @@ namespace cl
 		return sprite;
 	}
 
-	Sprite TileInfo::GetWallTile(eWallTypes tileType)
+	Sprite TileInfo::GetWallTile(eWallSpriteTypes tileType)
 	{
 		Sprite sprite;
 		Vector2 index = wallIndex[(int)tileType];

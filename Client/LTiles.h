@@ -3,7 +3,7 @@
 #include "LSprite.h"
 namespace cl
 {
-	enum eFloorTypes
+	enum eFloorSpriteTypes
 	{
 		DarkFloor1,
 		DarkFloor2,
@@ -74,7 +74,7 @@ namespace cl
 		static const Vector2 floorIndex[];
 		static const Vector2 wallIndex[];
 
-		static Sprite GetFloorTile(eFloorTypes tileType);
+		static Sprite GetFloorTile(eFloorSpriteTypes tileType);
 		static Sprite GetWallTile(eWallTypes tileType);
 	};
 }
