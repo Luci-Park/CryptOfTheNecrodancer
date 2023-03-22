@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{68fd95e2-9512-4467-95eb-ee2ce6d6a265}</ProjectGuid>
-    <RootNamespace>FridayNightFunkin</RootNamespace>
+    <ProjectGuid>{aa0b23de-a4ba-4ced-8e01-7e5900af90d0}</ProjectGuid>
+    <RootNamespace>Client</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Client</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -45,7 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -107,7 +106,6 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -131,9 +129,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Client.h" />
     <ClInclude Include="CommonInclude.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="LAnimation.h" />
+    <ClInclude Include="LAnimator.h" />
+    <ClInclude Include="LApplication.h" />
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBodyItem.h" />
     <ClInclude Include="LCadence.h" />
@@ -141,76 +142,73 @@
     <ClInclude Include="LCadenceBody.h" />
     <ClInclude Include="LCadenceHead.h" />
     <ClInclude Include="LCadenceSprite.h" />
-    <ClInclude Include="LCharacterSprite.h" />
-    <ClInclude Include="LGameCharacter.h" />
-    <ClInclude Include="LGameManager.h" />
-    <ClInclude Include="LMapManager.h" />
-    <ClInclude Include="LSplashScene.h" />
-    <ClInclude Include="LSpriteRenderer.h" />
-    <ClInclude Include="LTiles.h" />
-    <ClInclude Include="LTitleScene.h" />
-    <ClInclude Include="LTutorialScene.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="LSprite.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="LAnimation.h" />
-    <ClInclude Include="LAnimator.h" />
-    <ClInclude Include="LApplication.h" />
     <ClInclude Include="LCamera.h" />
+    <ClInclude Include="LCharacterSprite.h" />
     <ClInclude Include="LCollider.h" />
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
+    <ClInclude Include="LGameCharacter.h" />
+    <ClInclude Include="LGameManager.h" />
     <ClInclude Include="LGameObject.h" />
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
     <ClInclude Include="LLayer.h" />
+    <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LMath.h" />
-    <ClInclude Include="LuciEngine.h" />
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LScene.h" />
     <ClInclude Include="LSceneManager.h" />
+    <ClInclude Include="LSplashScene.h" />
+    <ClInclude Include="LSprite.h" />
+    <ClInclude Include="LSpriteRenderer.h" />
+    <ClInclude Include="LTiles.h" />
     <ClInclude Include="LTime.h" />
+    <ClInclude Include="LTitleScene.h" />
     <ClInclude Include="LTransform.h" />
+    <ClInclude Include="LTutorialScene.h" />
+    <ClInclude Include="LuciEngine.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="LAnimation.cpp" />
+    <ClCompile Include="LAnimator.cpp" />
+    <ClCompile Include="LApplication.cpp" />
     <ClCompile Include="LCadence.cpp" />
     <ClCompile Include="LCadenceAttackEffect.cpp" />
     <ClCompile Include="LCadenceBody.cpp" />
     <ClCompile Include="LCadenceHead.cpp" />
     <ClCompile Include="LCadenceSprite.cpp" />
-    <ClCompile Include="LCharacterSprite.cpp" />
-    <ClCompile Include="LGameCharacter.cpp" />
-    <ClCompile Include="LGameManager.cpp" />
-    <ClCompile Include="LMapManager.cpp" />
-    <ClCompile Include="LSplashScene.cpp" />
-    <ClCompile Include="LSpriteRenderer.cpp" />
-    <ClCompile Include="LTiles.cpp" />
-    <ClCompile Include="LTitleScene.cpp" />
-    <ClCompile Include="LTutorialScene.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="LAnimation.cpp" />
-    <ClCompile Include="LAnimator.cpp" />
-    <ClCompile Include="LApplication.cpp" />
     <ClCompile Include="LCamera.cpp" />
+    <ClCompile Include="LCharacterSprite.cpp" />
     <ClCompile Include="LCollider.cpp" />
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LEntity.cpp" />
+    <ClCompile Include="LGameCharacter.cpp" />
+    <ClCompile Include="LGameManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
     <ClCompile Include="LLayer.cpp" />
+    <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LMath.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />
     <ClCompile Include="LSceneManager.cpp" />
+    <ClCompile Include="LSplashScene.cpp" />
+    <ClCompile Include="LSpriteRenderer.cpp" />
+    <ClCompile Include="LTiles.cpp" />
     <ClCompile Include="LTime.cpp" />
+    <ClCompile Include="LTitleScene.cpp" />
     <ClCompile Include="LTransform.cpp" />
+    <ClCompile Include="LTutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

@@ -5,94 +5,88 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{2835ddbf-d9ad-4317-bddd-5ba0a015d84c}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Contents">
-      <UniqueIdentifier>{e2e189a4-7170-444c-9f0b-2ff3312027c8}</UniqueIdentifier>
+      <UniqueIdentifier>{c937da0a-461c-462e-ba63-8395164c87ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine">
-      <UniqueIdentifier>{e1efb817-e854-48a5-a0ef-3fb32e8f717e}</UniqueIdentifier>
+      <UniqueIdentifier>{8f4dfee6-fcbb-4d21-85b8-b5fb2641bab8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Camera">
-      <UniqueIdentifier>{d1b11abc-e6bd-4915-ba37-c8d9c5b2504f}</UniqueIdentifier>
+      <UniqueIdentifier>{01158b37-500c-4955-98bf-02d2a8addf19}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Common">
-      <UniqueIdentifier>{b58a90b1-47d7-41d5-99a5-1f0dba8d74ee}</UniqueIdentifier>
+      <UniqueIdentifier>{311d0239-ede0-40e7-bf65-626689fc3386}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Component">
-      <UniqueIdentifier>{af8cb290-fd56-4e3b-baf7-b66936e423fb}</UniqueIdentifier>
+      <UniqueIdentifier>{b47b18ca-d545-4dcc-ba38-2a4e383a7530}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\GameObject">
-      <UniqueIdentifier>{f760c9a3-45fa-4b3b-b74c-73b4eb0372eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="main">
-      <UniqueIdentifier>{a1dab0df-ce36-40d0-9fcc-930081bdbded}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Input">
-      <UniqueIdentifier>{259024a1-32f9-4e99-9072-9b7152d0838f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Layer">
-      <UniqueIdentifier>{301c7abb-3c62-4541-9287-bdc7057385b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Resource">
-      <UniqueIdentifier>{144fe912-9cbb-45f6-bfdb-94880424d955}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Scene">
-      <UniqueIdentifier>{729491c6-c5ba-4952-b55c-c52dcc6c5b1a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Time">
-      <UniqueIdentifier>{6f85fd96-c60d-4bdc-b864-92b0d2d65c24}</UniqueIdentifier>
+      <UniqueIdentifier>{cdfe1ee5-6c84-405a-bd8f-000600d7a982}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\High Level Interface">
-      <UniqueIdentifier>{71bb8d76-4cde-4532-83dd-df93392e392b}</UniqueIdentifier>
+      <UniqueIdentifier>{cfc97ccb-fa11-4d2b-b0d3-bd5b9a8f4939}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Component\Collider">
-      <UniqueIdentifier>{e99e21d2-0269-408a-a9ca-62a09ef5e2ad}</UniqueIdentifier>
+    <Filter Include="Engine\Input">
+      <UniqueIdentifier>{5f9f8fbc-6131-4607-817e-aa71aec3d486}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Component\Sprites">
-      <UniqueIdentifier>{7182a8e8-1768-4886-96b1-384c4bdee201}</UniqueIdentifier>
+    <Filter Include="Engine\Layer">
+      <UniqueIdentifier>{db066923-ce89-42b4-9794-1fa67301d9e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Component\Sprites\Animator">
-      <UniqueIdentifier>{3c58dc06-9ff5-4884-96e5-87dc162bdbdb}</UniqueIdentifier>
+    <Filter Include="Engine\Resource">
+      <UniqueIdentifier>{a60c49df-3521-44d2-9bf5-3d0db32c7d0b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Scene">
-      <UniqueIdentifier>{aedea299-4152-4572-a610-c429d256939e}</UniqueIdentifier>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{c53de17c-d58f-4389-84d1-1837e9370d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{ef75bc87-b02e-4fdf-a266-b7e6133099d7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Items">
-      <UniqueIdentifier>{7a0e3267-f23b-48c2-8bd9-a5aeb4c0150f}</UniqueIdentifier>
+      <UniqueIdentifier>{8d911b60-5b18-457f-b532-640b12a4d4f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{48cf8b35-417b-4a51-8645-d712b3f8fe24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Sprites">
+      <UniqueIdentifier>{19e00d87-6cce-40eb-ae3a-f1e57cc7f208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Sprites\Animator">
+      <UniqueIdentifier>{4c6cbf2a-7b7c-4aa5-9329-b6f2d59ea388}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Objects">
-      <UniqueIdentifier>{5849a54a-f1ef-4d9d-833c-b8f877e1e6fd}</UniqueIdentifier>
+      <UniqueIdentifier>{e525022a-683d-4122-a567-0818e8351263}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\Characters">
-      <UniqueIdentifier>{44e46fb7-c7f5-4f5f-b1ea-2b1d166b6571}</UniqueIdentifier>
+    <Filter Include="Contents\Objects\GameCharacters">
+      <UniqueIdentifier>{5134a243-43b4-497d-9fe2-c54af5dddbe6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\Characters\Cadence">
-      <UniqueIdentifier>{2901287b-f74c-4b0f-a459-27f4565cf7c5}</UniqueIdentifier>
+    <Filter Include="Contents\Objects\GameCharacters\Cadence">
+      <UniqueIdentifier>{17e552fe-17eb-48de-8c21-e77a1554fc11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene">
+      <UniqueIdentifier>{3c28cd5f-7af6-43f5-bd44-0fc8f0a6463b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\SystemObjects">
-      <UniqueIdentifier>{7b5d58be-4523-4f85-9759-69396872a484}</UniqueIdentifier>
+      <UniqueIdentifier>{19635237-2ecb-465e-8e6c-400206a28474}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
-      <Filter>main</Filter>
+      <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
-      <Filter>main</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>main</Filter>
+      <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>main</Filter>
+      <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="LApplication.h">
-      <Filter>Engine\High Level Interface</Filter>
+    <ClInclude Include="targetver.h">
+      <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="LCamera.h">
-      <Filter>Engine\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="LCollider.h">
-      <Filter>Engine\Component\Collider</Filter>
+    <ClInclude Include="CommonInclude.h">
+      <Filter>Engine\Common</Filter>
     </ClInclude>
     <ClInclude Include="LAnimation.h">
       <Filter>Engine\Component\Sprites\Animator</Filter>
@@ -100,11 +94,41 @@
     <ClInclude Include="LAnimator.h">
       <Filter>Engine\Component\Sprites\Animator</Filter>
     </ClInclude>
-    <ClInclude Include="LCollisionManager.h">
+    <ClInclude Include="LApplication.h">
+      <Filter>Engine\High Level Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="LBeatObject.h">
+      <Filter>Contents\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="LBodyItem.h">
+      <Filter>Contents\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadence.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceAttackEffect.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceBody.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceHead.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LCamera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="LCharacterSprite.h">
+      <Filter>Contents\Objects\GameCharacters</Filter>
+    </ClInclude>
+    <ClInclude Include="LCollider.h">
       <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="LComponent.h">
-      <Filter>Engine\Component</Filter>
+    <ClInclude Include="LCollisionManager.h">
+      <Filter>Engine\Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="LEntity.h">
       <Filter>Engine\Common</Filter>
@@ -112,11 +136,35 @@
     <ClInclude Include="LEnums.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
+    <ClInclude Include="LComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="LGameCharacter.h">
+      <Filter>Contents\Objects\GameCharacters</Filter>
+    </ClInclude>
+    <ClInclude Include="LTutorialScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LSplashScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LScene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LSceneManager.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LGameManager.h">
+      <Filter>Contents\SystemObjects</Filter>
+    </ClInclude>
     <ClInclude Include="LGameObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="LImage.h">
-      <Filter>Engine\Resource</Filter>
+      <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
     <ClInclude Include="LInput.h">
       <Filter>Engine\Input</Filter>
@@ -124,10 +172,10 @@
     <ClInclude Include="LLayer.h">
       <Filter>Engine\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="LMath.h">
-      <Filter>Engine\Common</Filter>
+    <ClInclude Include="LMapManager.h">
+      <Filter>Contents\SystemObjects</Filter>
     </ClInclude>
-    <ClInclude Include="LuciEngine.h">
+    <ClInclude Include="LMath.h">
       <Filter>Engine\Common</Filter>
     </ClInclude>
     <ClInclude Include="LObject.h">
@@ -139,71 +187,23 @@
     <ClInclude Include="LResources.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="LScene.h">
-      <Filter>Engine\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LSceneManager.h">
-      <Filter>Engine\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LTime.h">
-      <Filter>Engine\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="LTransform.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
     <ClInclude Include="LSprite.h">
       <Filter>Engine\Component\Sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="LTutorialScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonInclude.h">
-      <Filter>Engine\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="LSplashScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LCadenceBody.h">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClInclude>
-    <ClInclude Include="LCadenceHead.h">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClInclude>
-    <ClInclude Include="LCadence.h">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClInclude>
-    <ClInclude Include="LBodyItem.h">
-      <Filter>Contents\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="LCadenceSprite.h">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClInclude>
-    <ClInclude Include="LCharacterSprite.h">
-      <Filter>Contents\Objects\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="LGameCharacter.h">
-      <Filter>Contents\Objects\Characters</Filter>
-    </ClInclude>
-    <ClInclude Include="LGameManager.h">
-      <Filter>Contents\SystemObjects</Filter>
     </ClInclude>
     <ClInclude Include="LSpriteRenderer.h">
       <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="LBeatObject.h">
-      <Filter>Contents\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="LCadenceAttackEffect.h">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClInclude>
-    <ClInclude Include="LMapManager.h">
-      <Filter>Contents\SystemObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="LTitleScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="LTiles.h">
-      <Filter>Contents\SystemObjects</Filter>
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="LTime.h">
+      <Filter>Engine\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="LuciEngine.h">
+      <Filter>Engine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="LTransform.h">
+      <Filter>Engine\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -220,17 +220,8 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>main</Filter>
-    </ClCompile>
-    <ClCompile Include="LApplication.cpp">
-      <Filter>Engine\High Level Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="LCamera.cpp">
-      <Filter>Engine\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="LCollider.cpp">
-      <Filter>Engine\Component\Collider</Filter>
+    <ClCompile Include="Client.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="LAnimation.cpp">
       <Filter>Engine\Component\Sprites\Animator</Filter>
@@ -238,26 +229,77 @@
     <ClCompile Include="LAnimator.cpp">
       <Filter>Engine\Component\Sprites\Animator</Filter>
     </ClCompile>
+    <ClCompile Include="LApplication.cpp">
+      <Filter>Engine\High Level Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadence.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceAttackEffect.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceBody.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceHead.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LCamera.cpp">
+      <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="LCharacterSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters</Filter>
+    </ClCompile>
+    <ClCompile Include="LCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
     <ClCompile Include="LCollisionManager.cpp">
       <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="LEntity.cpp">
+      <Filter>Engine\Common</Filter>
     </ClCompile>
     <ClCompile Include="LComponent.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="LEntity.cpp">
-      <Filter>Engine\Common</Filter>
+    <ClCompile Include="LGameCharacter.cpp">
+      <Filter>Contents\Objects\GameCharacters</Filter>
+    </ClCompile>
+    <ClCompile Include="LTutorialScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LTitleScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LSplashScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LScene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LSceneManager.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LGameManager.cpp">
+      <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
     <ClCompile Include="LGameObject.cpp">
       <Filter>Engine\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="LImage.cpp">
-      <Filter>Engine\Resource</Filter>
+      <Filter>Engine\Component\Sprites</Filter>
     </ClCompile>
     <ClCompile Include="LInput.cpp">
       <Filter>Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="LLayer.cpp">
       <Filter>Engine\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="LMapManager.cpp">
+      <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
     <ClCompile Include="LMath.cpp">
       <Filter>Engine\Common</Filter>
@@ -268,59 +310,17 @@
     <ClCompile Include="LResources.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
-    <ClCompile Include="LScene.cpp">
-      <Filter>Engine\Scene</Filter>
+    <ClCompile Include="LSpriteRenderer.cpp">
+      <Filter>Engine\Component\Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="LSceneManager.cpp">
-      <Filter>Engine\Scene</Filter>
+    <ClCompile Include="LTiles.cpp">
+      <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="LTime.cpp">
       <Filter>Engine\Time</Filter>
     </ClCompile>
     <ClCompile Include="LTransform.cpp">
       <Filter>Engine\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="LSpriteRenderer.cpp">
-      <Filter>Engine\Component\Sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="LTutorialScene.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LSplashScene.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LCadenceBody.cpp">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClCompile>
-    <ClCompile Include="LCadenceHead.cpp">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClCompile>
-    <ClCompile Include="LCadence.cpp">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClCompile>
-    <ClCompile Include="LCadenceSprite.cpp">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClCompile>
-    <ClCompile Include="LCharacterSprite.cpp">
-      <Filter>Contents\Objects\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="LGameCharacter.cpp">
-      <Filter>Contents\Objects\Characters</Filter>
-    </ClCompile>
-    <ClCompile Include="LGameManager.cpp">
-      <Filter>Contents\SystemObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="LCadenceAttackEffect.cpp">
-      <Filter>Contents\Objects\Characters\Cadence</Filter>
-    </ClCompile>
-    <ClCompile Include="LMapManager.cpp">
-      <Filter>Contents\SystemObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="LTitleScene.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LTiles.cpp">
-      <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
