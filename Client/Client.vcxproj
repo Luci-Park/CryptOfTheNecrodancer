@@ -149,6 +149,7 @@
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
+    <ClInclude Include="LFloorTile.h" />
     <ClInclude Include="LGameCharacter.h" />
     <ClInclude Include="LGameManager.h" />
     <ClInclude Include="LGameObject.h" />
@@ -190,6 +191,7 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LEntity.cpp" />
+    <ClCompile Include="LFloorTile.cpp" />
     <ClCompile Include="LGameCharacter.cpp" />
     <ClCompile Include="LGameManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />

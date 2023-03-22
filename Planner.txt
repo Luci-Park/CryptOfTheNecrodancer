@@ -11,14 +11,13 @@ Cadence Animation
 	Create Jump Animation
 
 Map
-	Set Tile Reader => tiel = 26 x 26
+	Set Tile Reader => tiel = 24 x 24
 	Set Static Functions for Tile Size(3/20)
-	Array for Types Of Objects
+	Array for Types Of Objects(3/22)
 
 All
 	Animation Speed Changes with bmp
 	Each beat is one Animation.
-
 
 Enemy Idle Animation
 	Bat
@@ -35,3 +34,14 @@ Enemy Idle Animation
 	Wraith
 	Zombie
 	Mimic
+
+GameManager
+	- Has Player as static
+	- Scene마다 SoundManager와 MapManager가 존재
+	- Static인 GameManager가 SoundManager, MapManager와 GameCharacter들을 연결
+	- Player Move-> GameManager->SoundManager(OnBeat)-> MapManager(Interaction- with monster or terrain(wall included))
+	-> Player Move -> Tile(Interaction)
+	- OnBeat() -> Monster Move -> GameManager-> MapManger(interaction - with player or other OnFloorThings) 
+	-> MonsterMove() -> Tile(Interaction) 
+
+Map Size: About 35 x 35(막는 범위 추가)

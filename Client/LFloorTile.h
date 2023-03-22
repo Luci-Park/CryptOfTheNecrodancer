@@ -1,6 +1,5 @@
 #pragma once
-
-class MapManager
+class LFloorTile
 {
 };
 

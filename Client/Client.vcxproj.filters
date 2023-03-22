@@ -71,6 +71,9 @@
     <Filter Include="Contents\SystemObjects">
       <UniqueIdentifier>{19635237-2ecb-465e-8e6c-400206a28474}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Environment">
+      <UniqueIdentifier>{b7f6e13d-1db8-491a-b50b-845febf47238}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -193,9 +196,6 @@
     <ClInclude Include="LSpriteRenderer.h">
       <Filter>Engine\Component\Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="LTiles.h">
-      <Filter>Contents</Filter>
-    </ClInclude>
     <ClInclude Include="LTime.h">
       <Filter>Engine\Time</Filter>
     </ClInclude>
@@ -205,6 +205,10 @@
     <ClInclude Include="LTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="LTiles.h">
+      <Filter>Contents\Environment</Filter>
+    </ClInclude>
+    <ClInclude Include="LFloorTile.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -313,14 +317,15 @@
     <ClCompile Include="LSpriteRenderer.cpp">
       <Filter>Engine\Component\Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="LTiles.cpp">
-      <Filter>Contents</Filter>
-    </ClCompile>
     <ClCompile Include="LTime.cpp">
       <Filter>Engine\Time</Filter>
     </ClCompile>
     <ClCompile Include="LTransform.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
+    <ClCompile Include="LTiles.cpp">
+      <Filter>Contents\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="LFloorTile.cpp" />
   </ItemGroup>
 </Project>
