@@ -25,7 +25,7 @@ namespace cl
 		Size
 	};
 
-	enum eWallTypes 
+	enum eWallSpriteTypes
 	{
 		Wall1,
 		Wall2,
@@ -75,7 +75,7 @@ namespace cl
 		static const Vector2 wallIndex[];
 
 		static Sprite GetFloorTile(eFloorSpriteTypes tileType);
-		static Sprite GetWallTile(eWallTypes tileType);
+		static Sprite GetWallTile(eWallSpriteTypes tileType);
 	};
 }
 

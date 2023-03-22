@@ -147,6 +147,7 @@
     <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSpriteRenderer.h" />
+    <ClInclude Include="LTiles.h" />
     <ClInclude Include="LTitleScene.h" />
     <ClInclude Include="LTutorialScene.h" />
     <ClInclude Include="Resource.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
+    <ClCompile Include="LTiles.cpp" />
     <ClCompile Include="LTitleScene.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />
     <ClCompile Include="main.cpp" />
