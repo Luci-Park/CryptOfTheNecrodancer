@@ -32,22 +32,30 @@ namespace cl
 		if (!GetOwner()->IsUI())
 			pos = Camera::CaluatePos(pos);
 
-		if (mAlpha == 255)
+		Sprite rect = { pos, Vector2(mSprite.size.x * scale.x, mSprite.size.y * scale.y), Vector2::Zero };
+		if (Camera::IsDrawable(rect))
 		{
-			TransparentBlt(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
-				mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
-		}
-		else
-		{
-			BLENDFUNCTION func = {};
-			func.BlendOp = AC_SRC_OVER;
-			func.BlendFlags = 0;
-			func.AlphaFormat = 0;
-			func.SourceConstantAlpha = (BYTE)mAlpha;
+			if (mAlpha == 255)
+			{
+				TransparentBlt(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
+					mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
+			}
+			else
+			{
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = 0;
+				func.SourceConstantAlpha = (BYTE)mAlpha;
 
-			AlphaBlend(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
-				mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, func);
+				AlphaBlend(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
+					mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, func);
+			}
 		}
+	}
+	void SpriteRenderer::SetImage(Image* image)
+	{
+		mImage = image;
 	}
 	void SpriteRenderer::SetImage(Image* image, Sprite sp)
 	{

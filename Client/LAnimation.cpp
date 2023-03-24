@@ -70,14 +70,17 @@ namespace cl
         pos += Vector2(mSpriteSheet[mSpriteIndex].offset.x * scale.x, mSpriteSheet[mSpriteIndex].offset.y * scale.y);
         if (!mAnimator->GetOwner()->IsUI())
             pos = Camera::CaluatePos(pos);
-
-        TransparentBlt(hdc, pos.x, pos.y
-            , mSpriteSheet[mSpriteIndex].size.x * scale.x
-            , mSpriteSheet[mSpriteIndex].size.y * scale.y
-            , mSheetImage->GetHdc()
-            , mSpriteSheet[mSpriteIndex].leftTop.x, mSpriteSheet[mSpriteIndex].leftTop.y
-            , mSpriteSheet[mSpriteIndex].size.x, mSpriteSheet[mSpriteIndex].size.y,
-            RGB(255, 0, 255));
+        Sprite rect = { pos, Vector2(mSpriteSheet[mSpriteIndex].size.x * scale.x, mSpriteSheet[mSpriteIndex].size.y * scale.y), Vector2::Zero };
+        if (Camera::IsDrawable(rect))
+        {
+            TransparentBlt(hdc, pos.x, pos.y
+                , mSpriteSheet[mSpriteIndex].size.x * scale.x
+                , mSpriteSheet[mSpriteIndex].size.y * scale.y
+                , mSheetImage->GetHdc()
+                , mSpriteSheet[mSpriteIndex].leftTop.x, mSpriteSheet[mSpriteIndex].leftTop.y
+                , mSpriteSheet[mSpriteIndex].size.x, mSpriteSheet[mSpriteIndex].size.y,
+                RGB(255, 0, 255));
+        }
     }
 
     void Animation::Create(Image* sheet, UINT coulmn, UINT row, 

@@ -5,7 +5,6 @@
 #include "LInput.h"
 #include "LTime.h"
 #include "LImage.h"
-
 extern cl::Application application;
 namespace cl
 {
@@ -71,6 +70,14 @@ namespace cl
 		mResolution.y = application.GetHeight();
 		mLookPosition = (mResolution / 2.0f);
 		mDistance = Vector2::Zero;
+	}
+	bool Camera::IsDrawable(Sprite rect)
+	{
+		Vector2 rightBottom = Vector2(rect.leftTop.x + rect.size.x, rect.leftTop.y + rect.size.y);
+		if((rightBottom.x < 0 && rightBottom.y < 0 )
+		|| rect.leftTop.x > mResolution.x && rect.leftTop.y > mResolution.y)
+			return false;
+		return true;
 	}
 	void Camera::StartFadeIn()
 	{

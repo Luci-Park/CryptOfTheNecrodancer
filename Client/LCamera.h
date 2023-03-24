@@ -1,5 +1,6 @@
 #pragma once
 #include "LuciEngine.h"
+#include "LSprite.h"
 namespace cl
 {
 	class GameObject;
@@ -14,6 +15,7 @@ namespace cl
 
 		static void SetTarget(GameObject* target) { mTarget = target; }
 		static Vector2 CaluatePos(Vector2 pos) { return pos - mDistance; }
+		static bool IsDrawable(Sprite rect);
 
 		static void StartFadeIn();
 		static void StartFadeOut();
