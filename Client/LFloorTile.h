@@ -15,7 +15,8 @@ namespace cl
 			Lobby,
 			Ground,
 			Water,
-			Stairs,
+			ClosedStairs,
+			OpenedStairs,
 			None
 		};
 		enum class eSpriteCategories {

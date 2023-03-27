@@ -38,7 +38,7 @@ namespace cl
 			if (mAlpha == 255)
 			{
 				TransparentBlt(hdc, pos.x, pos.y, mSprite.size.x * scale.x, mSprite.size.y * scale.y,
-					mImage->GetHdc(), 0, 0, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
+					mImage->GetHdc(), mSprite.leftTop.x, mSprite.leftTop.y, mSprite.size.x, mSprite.size.y, RGB(255, 0, 255));
 			}
 			else
 			{

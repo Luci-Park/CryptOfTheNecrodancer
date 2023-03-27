@@ -13,7 +13,7 @@ namespace cl
 		virtual void OnBeat() = 0;
 	protected:
 		FloorTile* mTile;
-		bool mIsEvenPos;
+		bool mIsLightTile;
 	};
 
 	class LobbyStrategy : public FloorStrategy

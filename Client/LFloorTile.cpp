@@ -9,24 +9,24 @@ namespace cl
 #pragma region FloorTileStatic
 	const Vector2 FloorTile::floorTileIndex[(int)(eSpriteTypes::Size)] = {
 		Vector2(0, 0), // DarkFloor1
-		Vector2(0, 3), // DarkFloor2
-		Vector2(1, 0), // DarkFloor3
-		Vector2(1, 3), // DarkFloor4
-		Vector2(0, 1), // LightFloor1
-		Vector2(0, 2), // LightFloor2
-		Vector2(0, 4), // LightFloor3
-		Vector2(0, 5), // LightFloor4
+		Vector2(3, 0), // DarkFloor2
+		Vector2(0, 1), // DarkFloor3
+		Vector2(3, 1), // DarkFloor4
+		Vector2(1, 0), // LightFloor1
+		Vector2(2, 0), // LightFloor2
+		Vector2(4, 0), // LightFloor3
+		Vector2(5, 0), // LightFloor4
 		Vector2(1, 1), // GreenFlashFloor1
-		Vector2(1, 4), // GreenFlashFloor2
-		Vector2(1, 2), // RedFlashFloor1
-		Vector2(1, 5), // ReadFlashFloor2
+		Vector2(4, 1), // GreenFlashFloor2
+		Vector2(2, 1), // RedFlashFloor1
+		Vector2(5, 1), // ReadFlashFloor2
 		Vector2(4, 6), // Water1
 		Vector2(4, 7), // Water2
 		Vector2(4, 8), // Water3
 		Vector2(2, 8),// ClosedStairs
 		Vector2(2, 6)// OpenedStairs
 	};
-	const Vector2 FloorTile::floorSpriteSize = Vector2(27.0f, 27.0f);
+	const Vector2 FloorTile::floorSpriteSize = Vector2(26.0f, 26.0f);
 
 	Sprite FloorTile::GetFloorTile(eSpriteTypes tileType)
 	{
@@ -90,7 +90,10 @@ namespace cl
 		case eFloorTypes::Water:
 			reslt = object::Instantiate<WaterTile>(sc, pos, eLayerType::Background);
 			break;
-		case eFloorTypes::Stairs:
+		case eFloorTypes::ClosedStairs:
+			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
+			break;
+		case eFloorTypes::OpenedStairs:
 			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
 			break;
 		case eFloorTypes::None:
@@ -124,7 +127,7 @@ namespace cl
 			mSpriteRenderer->SetSprite(newSprite);
 		}
 
-		GameObject::Initialize();
+		GameObject::Update();
 	}
 
 	void FloorTile::Render(HDC hdc)

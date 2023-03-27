@@ -29,7 +29,7 @@ namespace cl
 	public:
 		static void SetBPM(int bpm);
 		static int BPM() { return _bpm; }
-		static float UnitLength() { return _unitLength; }
+		static float UnitLength() { return _unitLength*_unitScale; }
 		static float UnitScale() { return _unitScale; }
 		static float MoveSpeed() { return _speedPerTile; }
 		static float BeatDuration() { return _beatDuration; }
@@ -37,6 +37,7 @@ namespace cl
 	private:
 		static int _bpm;
 		static float _unitScale;
+		static float _spriteLength;
 		static float _unitLength;
 		static float _speedPerTile;
 		static float _beatDuration;

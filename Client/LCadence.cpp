@@ -29,7 +29,7 @@ namespace cl
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mAttactEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 
-		Camera::SetTarget(this);
+		//Camera::SetTarget(this);
 	}
 	void Cadence::Update()
 	{

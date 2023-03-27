@@ -32,22 +32,23 @@ namespace cl
 
 	LobbyMap::LobbyMap()
 	{
-		size = Vector2(13, 13);
-		mFloorBluePrint.resize(13);
-		for (int i = 0; i < 13; ++i)
+		size = Vector2(2, 2);
+		mFloorBluePrint.resize(size.y);
+		for (int i = 0; i < size.y; ++i)
 		{
-			mFloorBluePrint[i].resize(13);
-			for (int j = 0; j < 13; ++j)
+			mFloorBluePrint[i].resize(size.x);
+			for (int j = 0; j < size.x; ++j)
 			{
 				mFloorBluePrint[i][j] = FloorTile::eFloorTypes::Lobby;
 			}
 		}
-		mFloorBluePrint[0][0] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
 
-		mFloorBluePrint[5][5] = FloorTile::eFloorTypes::Stairs;
+		//mFloorBluePrint[0][0] = FloorTile::eFloorTypes::None;
+		//mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
+		//mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
+		//mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
+
+		//mFloorBluePrint[5][5] = FloorTile::eFloorTypes::OpenedStairs;
 		/*
 		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
 		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
