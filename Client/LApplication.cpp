@@ -74,7 +74,7 @@ namespace cl
 		Input::Render(mBackHDC);
 		SceneManager::Render(mBackHDC);
 		Camera::Render(mBackHDC);
-		SetTitle();
+		//SetTitle();
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHDC, 0, 0, SRCCOPY);
 	}
 	void Application::Release()

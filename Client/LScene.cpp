@@ -56,11 +56,10 @@ namespace cl
 				}
 			}
 		}
-
-		for (GameObject* deathObj : deleteGameObjects)
+		for (int i = 0; i < deleteGameObjects.size(); ++i)
 		{
-			delete deathObj;
-			deathObj = nullptr;
+			delete deleteGameObjects[i];
+			deleteGameObjects[i] = nullptr;
 		}
 	}
 

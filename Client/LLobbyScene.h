@@ -7,7 +7,7 @@ namespace cl
 	{
 	public:
 		LobbyScene();
-		~LobbyScene();
+		virtual ~LobbyScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

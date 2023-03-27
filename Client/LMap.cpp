@@ -1,5 +1,6 @@
 #include "LMap.h"
 #include "LObject.h"
+#include "LGameManager.h"
 namespace cl
 {
 	Map::Map()
@@ -30,9 +31,14 @@ namespace cl
 				mFloor[i][j]->OnBeat();
 	}
 
+	Vector2 Map::GetStartPos()
+	{
+		return Vector2(startPos.x * GameManager::UnitLength(), startPos.y * GameManager::UnitLength());
+	}
+
 	LobbyMap::LobbyMap()
 	{
-		size = Vector2(2, 2);
+		size = Vector2(13, 13);
 		mFloorBluePrint.resize(size.y);
 		for (int i = 0; i < size.y; ++i)
 		{
@@ -43,16 +49,17 @@ namespace cl
 			}
 		}
 
-		//mFloorBluePrint[0][0] = FloorTile::eFloorTypes::None;
-		//mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
-		//mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
-		//mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
-
-		//mFloorBluePrint[5][5] = FloorTile::eFloorTypes::OpenedStairs;
-		/*
+		mFloorBluePrint[0][0] = FloorTile::eFloorTypes::None;
 		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
 		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;*/
+		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
 
+		mFloorBluePrint[5][5] = FloorTile::eFloorTypes::OpenedStairs;
+		
+		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
+		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
+		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
+
+		startPos = Vector2(6, 3);
 	}
 }

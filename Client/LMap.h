@@ -13,8 +13,11 @@ namespace cl
 		virtual void CreateMap(Scene* sc);
 		virtual void OnBeat();
 		virtual void OnBeatChanged() {}
+
+		Vector2 GetStartPos();
 	protected:
 		Vector2 size;
+		Vector2 startPos;
 		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<FloorTile*>> mFloor;
 	};
