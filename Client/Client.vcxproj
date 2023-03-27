@@ -149,6 +149,7 @@
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
+    <ClInclude Include="LFloorStrategy.h" />
     <ClInclude Include="LFloorTile.h" />
     <ClInclude Include="LGameCharacter.h" />
     <ClInclude Include="LGameManager.h" />
@@ -156,6 +157,8 @@
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
     <ClInclude Include="LLayer.h" />
+    <ClInclude Include="LLobbyScene.h" />
+    <ClInclude Include="LMap.h" />
     <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LMath.h" />
     <ClInclude Include="LObject.h" />
@@ -191,6 +194,7 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LEntity.cpp" />
+    <ClCompile Include="LFloorStrategy.cpp" />
     <ClCompile Include="LFloorTile.cpp" />
     <ClCompile Include="LGameCharacter.cpp" />
     <ClCompile Include="LGameManager.cpp" />
@@ -198,6 +202,8 @@
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
     <ClCompile Include="LLayer.cpp" />
+    <ClCompile Include="LLobbyScene.cpp" />
+    <ClCompile Include="LMap.cpp" />
     <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LMath.cpp" />
     <ClCompile Include="LResource.cpp" />

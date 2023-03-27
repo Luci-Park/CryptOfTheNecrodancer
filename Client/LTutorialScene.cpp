@@ -30,7 +30,7 @@ namespace cl
 			GameManager::SetBPM(GameManager::BPM() + 50);
 		}
 		Scene::Update();
-	}
+	}/*
 	void TutorialScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
@@ -46,5 +46,5 @@ namespace cl
 	void TutorialScene::OnExit()
 	{
 		Scene::OnExit();
-	}
+	}*/
 }

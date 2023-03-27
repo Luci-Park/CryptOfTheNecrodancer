@@ -1,9 +1,12 @@
 #pragma once
 #include "LuciEngine.h"
 #include "LSprite.h"
+#include "LGameObject.h"
 namespace cl
 {
-	class FloorTile
+	class SpriteRenderer;
+	class FloorStrategy;
+	class FloorTile : public GameObject
 	{
 #pragma region StaticInfo
 	public:
@@ -11,9 +14,9 @@ namespace cl
 		{
 			Lobby,
 			Ground,
-			Flash,
 			Water,
-			Stairs
+			Stairs,
+			None
 		};
 		enum class eSpriteCategories {
 			DarkFloor,
@@ -26,6 +29,7 @@ namespace cl
 			Size
 		};
 		static Sprite GetFloorSprite(eSpriteCategories type);
+		static FloorTile* CreateFloor(eFloorTypes type, Vector2 index, Scene* sc);
 	protected:
 		enum class eSpriteTypes
 			{
@@ -55,81 +59,58 @@ namespace cl
 #pragma endregion
 
 	public:
-		FloorTile(Vector2 index, eFloorTypes type);
+		FloorTile(Scene* sc);
 		virtual ~FloorTile();
+
+		virtual void Initialize();
+		virtual void Update();
+		virtual void Render(HDC hdc);
+		
+		virtual void SetIndex(Vector2 index) = 0;
+		Vector2 GetIndex() { return mIndex; }
 		void OnBeat();
 		void OnInteract();
+
+	protected:
 		Sprite GetSprite();
-	private:
-		eFloorTypes mType;
 		FloorStrategy* mStrategy;
+		SpriteRenderer* mSpriteRenderer;
+		eFloorTypes mType;
 		Vector2 mIndex;
+	};
+
+	class LobbyTile : public FloorTile
+	{
+	public:
+		LobbyTile(Scene* sc);
+		virtual ~LobbyTile();
+
+		virtual void SetIndex(Vector2 index);
+	};
+
+	class GroundTile : public FloorTile
+	{
+	public:
+		GroundTile(Scene* sc);
+		virtual ~GroundTile();
+
+		virtual void SetIndex(Vector2 index);
 
 	};
 
-	class FloorStrategy
+	class WaterTile : public FloorTile
 	{
 	public:
-		FloorStrategy();
-		virtual ~FloorStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
+		WaterTile(Scene* sc);
+		virtual ~WaterTile();
+		virtual void SetIndex(Vector2 index);
 	};
-
-	class LobbyStrategy : public FloorStrategy
+	class StairTile : public FloorTile
 	{
 	public:
-		LobbyStrategy(Vector2 index);
-		virtual ~LobbyStrategy(){}
-		Sprite GetSprite()
-		{
-			return mSprite;
-		}
-		virtual void Interact() {}
-		virtual void OnBeat() {}
-	private:
-		Sprite mSprite;
-	};
-
-	class GroundStrategy : public FloorStrategy
-	{
-	public:
-		GroundStrategy();
-		virtual ~GroundStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
-	};
-
-	class FlashStrategy : public FloorStrategy
-	{
-	public:
-		FlashStrategy();
-		virtual ~FlashStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
-	};
-
-	class WaterStrategy : public FloorStrategy
-	{
-	public:
-		WaterStrategy();
-		virtual ~WaterStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
-	};
-
-	class StairStrategy : public FloorStrategy
-	{
-	public:
-		StairStrategy();
-		virtual ~StairStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
+		StairTile(Scene* sc);
+		virtual ~StairTile();
+		virtual void SetIndex(Vector2 index);
 	};
 }
 

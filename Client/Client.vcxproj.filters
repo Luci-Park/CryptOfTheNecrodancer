@@ -74,6 +74,9 @@
     <Filter Include="Contents\Environment">
       <UniqueIdentifier>{b7f6e13d-1db8-491a-b50b-845febf47238}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Environment\Floors">
+      <UniqueIdentifier>{347c2aec-c1f7-497e-8bdc-266a881ee8ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -209,8 +212,15 @@
       <Filter>Contents\Environment</Filter>
     </ClInclude>
     <ClInclude Include="LFloorTile.h">
-      <Filter>Contents\Environment</Filter>
+      <Filter>Contents\Environment\Floors</Filter>
     </ClInclude>
+    <ClInclude Include="LFloorStrategy.h">
+      <Filter>Contents\Environment\Floors</Filter>
+    </ClInclude>
+    <ClInclude Include="LLobbyScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -329,7 +339,14 @@
       <Filter>Contents\Environment</Filter>
     </ClCompile>
     <ClCompile Include="LFloorTile.cpp">
-      <Filter>Contents\Environment</Filter>
+      <Filter>Contents\Environment\Floors</Filter>
     </ClCompile>
+    <ClCompile Include="LFloorStrategy.cpp">
+      <Filter>Contents\Environment\Floors</Filter>
+    </ClCompile>
+    <ClCompile Include="LLobbyScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LMap.cpp" />
   </ItemGroup>
 </Project>

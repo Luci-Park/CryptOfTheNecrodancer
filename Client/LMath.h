@@ -68,7 +68,8 @@ struct Vector2
     // Inequality operator overload
     bool operator!=(const Vector2& other) const
     {
-        return !(*this == other);
+        if (x != other.x || y != other.y) return true;
+        return false;
     }
 
     // Compound addition operator overload

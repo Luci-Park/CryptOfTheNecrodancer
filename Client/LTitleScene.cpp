@@ -29,7 +29,7 @@ namespace cl
 	{
 		if (Input::GetKeyDown(eKeyCode::ENTER))
 		{
-			SceneManager::LoadScene(eSceneType::Tutorial);
+			SceneManager::LoadScene(eSceneType::Lobby);
 		}
 	}
 	void TitleScene::Render(HDC hdc)

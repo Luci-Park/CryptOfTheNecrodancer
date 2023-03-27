@@ -20,4 +20,12 @@ struct Sprite
 	{
 
 	}
+	bool operator !=(const Sprite& other)const
+	{
+		if (leftTop != other.leftTop ||
+			size != other.size ||
+			offset != other.offset)
+			return true;
+		return false;
+	}
 };

@@ -8,10 +8,10 @@ namespace cl
 	}
 	Layer::~Layer()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (int i = 0; i < mGameObjects.size(); ++i)
 		{
-			delete gameObj;
-			gameObj = nullptr;
+			delete mGameObjects[i];
+			mGameObjects[i] = nullptr;
 		}
 	}
 	void Layer::Initialize()

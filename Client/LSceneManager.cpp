@@ -4,6 +4,7 @@
 #include "LSplashScene.h"
 #include "LTitleScene.h"
 #include "LTutorialScene.h"
+#include "LLobbyScene.h"
 namespace cl
 {	
 	//SceneManager scsene;
@@ -18,6 +19,7 @@ namespace cl
 		mScenes[(UINT)eSceneType::Splash] = new SplashScene();
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
+		mScenes[(UINT)eSceneType::Lobby] = new LobbyScene();
 		for ( Scene* scene : mScenes )
 		{
 			if (scene == nullptr)

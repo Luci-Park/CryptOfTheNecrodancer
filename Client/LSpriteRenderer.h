@@ -18,6 +18,7 @@ namespace cl
 		void SetImage(Image* image, Sprite sp);
 		void SetImage(const std::wstring& key, const std::wstring& path);
 		void SetSprite(Sprite sprite) { mSprite = sprite; }
+		Sprite GetSprite() { return mSprite; }
 		void AddAlpha(int alpha) { mAlpha = alpha; }
 	private:
 		Image* mImage;

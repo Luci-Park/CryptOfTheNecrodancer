@@ -1,6 +1,12 @@
 #include "LFloorTile.h"
+#include "LSpriteRenderer.h"
+#include "LResources.h"
+#include "LFloorStrategy.h"
+#include "LObject.h"
+#include "LGameManager.h"
 namespace cl
 {
+#pragma region FloorTileStatic
 	const Vector2 FloorTile::floorTileIndex[(int)(eSpriteTypes::Size)] = {
 		Vector2(0, 0), // DarkFloor1
 		Vector2(0, 3), // DarkFloor2
@@ -69,15 +75,61 @@ namespace cl
 		int randomNumber = distrib(gen);
 		return GetFloorTile((eSpriteTypes)randomNumber);
 	}
-
-	FloorTile::FloorTile(Vector2 index, eFloorTypes type)
+	FloorTile* FloorTile::CreateFloor(eFloorTypes type, Vector2 index, Scene* sc)
 	{
-		mIndex = index;
-		mType = type;
+		FloorTile* reslt = nullptr;
+		Vector2 pos = Vector2(index.x * GameManager::UnitLength(), index.y * GameManager::UnitLength());
+		switch (type)
+		{
+		case eFloorTypes::Lobby:
+			reslt = object::Instantiate<LobbyTile>(sc, pos, eLayerType::Background);
+			break;
+		case eFloorTypes::Ground:
+			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
+			break;
+		case eFloorTypes::Water:
+			reslt = object::Instantiate<WaterTile>(sc, pos, eLayerType::Background);
+			break;
+		case eFloorTypes::Stairs:
+			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
+			break;
+		case eFloorTypes::None:
+			return nullptr;
+		}
+		reslt->SetIndex(index);
+		return reslt;
+	}
+#pragma endregion
+
+#pragma region ParentClass
+	FloorTile::FloorTile(Scene* sc)
+		:GameObject(sc, false) {
+		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
 	}
 
-	FloorTile::~FloorTile()
+	FloorTile::~FloorTile(){}
+
+	void FloorTile::Initialize()
 	{
+		mSpriteRenderer = AddComponent<SpriteRenderer>();
+		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Floors", L"..\\Assets\\Arts\\Stage Elements\\Floors.bmp"));
+		GameObject::Initialize();
+	}
+
+	void FloorTile::Update()
+	{
+		Sprite newSprite = GetSprite();
+		if (mSpriteRenderer->GetSprite() != newSprite)
+		{
+			mSpriteRenderer->SetSprite(newSprite);
+		}
+
+		GameObject::Initialize();
+	}
+
+	void FloorTile::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
 	}
 
 	void FloorTile::OnBeat()
@@ -89,7 +141,7 @@ namespace cl
 	Sprite FloorTile::GetSprite()
 	{
 		if (mStrategy != nullptr)
-			mStrategy->GetSprite();
+			return mStrategy->GetSprite();
 	}
 
 	void FloorTile::OnInteract()
@@ -97,21 +149,54 @@ namespace cl
 		if (mStrategy != nullptr)
 			mStrategy->Interact();
 	}
+#pragma endregion
 
-	FloorStrategy::FloorStrategy()
+#pragma region LobbyTile
+	LobbyTile::LobbyTile(Scene* sc)
+		:FloorTile(sc){}
+
+	LobbyTile::~LobbyTile()
+	{
+		delete mStrategy;
+		mStrategy = nullptr;
+	}
+	void LobbyTile::SetIndex(Vector2 index)
+	{
+		mIndex = index;
+		mStrategy = new LobbyStrategy(this);
+	}
+#pragma endregion
+	GroundTile::GroundTile(Scene* sc)
+		:FloorTile(sc)
 	{
 	}
-
-	FloorStrategy::~FloorStrategy()
+	GroundTile::~GroundTile()
 	{
 	}
-
-	LobbyStrategy::LobbyStrategy(Vector2 index)
+	void GroundTile::SetIndex(Vector2 index)
 	{
-		int order = index.x + 1 + index.y + 1;
-		mSprite = order % 2 ?
-			FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor) :
-			FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
+		mIndex = index;
 	}
-
+	WaterTile::WaterTile(Scene* sc)
+		:FloorTile(sc)
+	{
+	}
+	WaterTile::~WaterTile()
+	{
+	}
+	void WaterTile::SetIndex(Vector2 index)
+	{
+		mIndex = index;
+	}
+	StairTile::StairTile(Scene* sc)
+		:FloorTile(sc)
+	{
+	}
+	StairTile::~StairTile()
+	{
+	}
+	void StairTile::SetIndex(Vector2 index)
+	{
+		mIndex = index;
+	}
 }

@@ -5,7 +5,7 @@
 #include "LApplication.h"
 #include "LInput.h"
 #include "LSceneManager.h"
-
+#include "LTime.h"
 extern cl::Application application;
 namespace cl
 {
@@ -25,7 +25,8 @@ namespace cl
 	}
 	void SplashScene::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::ENTER))
+		mTimer += Time::DeltaTime();
+		if(mTimer >= 5.0f || Input::GetKeyDown(eKeyCode::ENTER))
 		{
 			SceneManager::LoadScene(eSceneType::Title);
 		}
@@ -39,6 +40,7 @@ namespace cl
 	}
 	void SplashScene::OnEnter()
 	{
+		mTimer = 0;
 	}
 	void SplashScene::OnExit()
 	{
