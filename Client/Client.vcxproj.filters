@@ -352,5 +352,8 @@
     <ClCompile Include="LMap.cpp">
       <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
+    <ClCompile Include="LStairTile.cpp">
+      <Filter>Contents\Environment\Floors</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

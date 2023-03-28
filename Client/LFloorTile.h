@@ -69,8 +69,8 @@ namespace cl
 		
 		virtual void SetIndex(Vector2 index) = 0;
 		Vector2 GetIndex() { return mIndex; }
-		void OnBeat();
-		void OnInteract();
+		virtual void OnBeat();
+		virtual void OnInteract();
 
 	protected:
 		Sprite GetSprite();
@@ -106,12 +106,21 @@ namespace cl
 		virtual ~WaterTile();
 		virtual void SetIndex(Vector2 index);
 	};
+
 	class StairTile : public FloorTile
 	{
 	public:
 		StairTile(Scene* sc);
 		virtual ~StairTile();
 		virtual void SetIndex(Vector2 index);
+		virtual void OnBeat(){}
+		virtual void OnInteract();
+		void SetDestination(eSceneType type) { mMoveScene = type; }
+		void SetLock(bool isLocked) { mIsLocked = isLocked; }
+		bool IsLocked() { return mIsLocked; }
+	private:
+		eSceneType mMoveScene;
+		bool mIsLocked;
 	};
 }
 

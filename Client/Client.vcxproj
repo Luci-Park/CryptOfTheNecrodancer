@@ -212,6 +212,7 @@
     <ClCompile Include="LSceneManager.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
+    <ClCompile Include="LStairTile.cpp" />
     <ClCompile Include="LTiles.cpp" />
     <ClCompile Include="LTime.cpp" />
     <ClCompile Include="LTitleScene.cpp" />

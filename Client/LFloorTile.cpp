@@ -20,11 +20,11 @@ namespace cl
 		Vector2(4, 1), // GreenFlashFloor2
 		Vector2(2, 1), // RedFlashFloor1
 		Vector2(5, 1), // ReadFlashFloor2
-		Vector2(4, 6), // Water1
-		Vector2(4, 7), // Water2
-		Vector2(4, 8), // Water3
-		Vector2(2, 8),// ClosedStairs
-		Vector2(2, 6)// OpenedStairs
+		Vector2(6, 4), // Water1
+		Vector2(7, 4), // Water2
+		Vector2(8, 4), // Water3
+		Vector2(8, 2),// ClosedStairs
+		Vector2(6, 2)// OpenedStairs
 	};
 	const Vector2 FloorTile::floorSpriteSize = Vector2(26.0f, 26.0f);
 
@@ -92,9 +92,11 @@ namespace cl
 			break;
 		case eFloorTypes::ClosedStairs:
 			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
+			dynamic_cast<StairTile*>(reslt)->SetLock(true);
 			break;
 		case eFloorTypes::OpenedStairs:
 			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
+			dynamic_cast<StairTile*>(reslt)->SetLock(false);
 			break;
 		case eFloorTypes::None:
 			return nullptr;
@@ -110,7 +112,13 @@ namespace cl
 		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
 	}
 
-	FloorTile::~FloorTile(){}
+	FloorTile::~FloorTile(){
+		if (mStrategy != nullptr)
+		{
+			delete mStrategy;
+			mStrategy = nullptr;
+		}
+	}
 
 	void FloorTile::Initialize()
 	{
@@ -149,8 +157,6 @@ namespace cl
 
 	void FloorTile::OnInteract()
 	{
-		if (mStrategy != nullptr)
-			mStrategy->Interact();
 	}
 #pragma endregion
 
@@ -160,8 +166,6 @@ namespace cl
 
 	LobbyTile::~LobbyTile()
 	{
-		delete mStrategy;
-		mStrategy = nullptr;
 	}
 	void LobbyTile::SetIndex(Vector2 index)
 	{
@@ -188,17 +192,6 @@ namespace cl
 	{
 	}
 	void WaterTile::SetIndex(Vector2 index)
-	{
-		mIndex = index;
-	}
-	StairTile::StairTile(Scene* sc)
-		:FloorTile(sc)
-	{
-	}
-	StairTile::~StairTile()
-	{
-	}
-	void StairTile::SetIndex(Vector2 index)
 	{
 		mIndex = index;
 	}

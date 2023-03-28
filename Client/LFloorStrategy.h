@@ -3,17 +3,17 @@
 namespace cl
 {
 	class FloorTile;
+	class StairTile;
 	class FloorStrategy
 	{
 	public:
 		FloorStrategy(FloorTile* tile);
 		virtual ~FloorStrategy(){}
 		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
 		virtual void OnBeat() = 0;
 	protected:
 		FloorTile* mTile;
-		bool mIsLightTile;
+		bool mIsEven;
 	};
 
 	class LobbyStrategy : public FloorStrategy
@@ -22,7 +22,6 @@ namespace cl
 		LobbyStrategy(FloorTile* tile);
 		virtual ~LobbyStrategy() {}
 		Sprite GetSprite(){return mSprite;}
-		virtual void Interact() {}
 		virtual void OnBeat() {}
 	private:
 		Sprite mSprite;
@@ -34,7 +33,6 @@ namespace cl
 		GroundStrategy(FloorTile* tile);
 		virtual ~GroundStrategy();
 		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
 		virtual void OnBeat() = 0;
 	};
 
@@ -44,7 +42,6 @@ namespace cl
 		FlashStrategy(FloorTile* tile);
 		virtual ~FlashStrategy();
 		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
 		virtual void OnBeat() = 0;
 	};
 
@@ -54,18 +51,21 @@ namespace cl
 		WaterStrategy(FloorTile* tile);
 		virtual ~WaterStrategy();
 		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
 		virtual void OnBeat() = 0;
 	};
 
 	class StairStrategy : public FloorStrategy
 	{
 	public:
-		StairStrategy(FloorTile* tile);
+		StairStrategy(StairTile* tile);
 		virtual ~StairStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void Interact() = 0;
-		virtual void OnBeat() = 0;
+		virtual Sprite GetSprite();
+		virtual void OnBeat();
+	private:
+		Sprite mOpenSprite;
+		Sprite mClosedSprite;
+		Sprite mCurrSprite;
+		StairTile* mStairTile;
 	};
 }
 
