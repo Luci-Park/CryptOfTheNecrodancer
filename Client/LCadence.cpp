@@ -1,10 +1,11 @@
 #include "LCadence.h"
 #include "LCadenceSprite.h"
+#include "LCadenceAttackEffect.h"
+#include "LMapManager.h"
 #include "LObject.h"
 #include "LInput.h"
 #include "LTime.h"
 #include "LSpriteRenderer.h"
-#include "LCadenceAttackEffect.h"
 #include "LCamera.h"
 namespace cl
 {
@@ -33,7 +34,7 @@ namespace cl
 	void Cadence::Initialize()
 	{
 		GameCharacter::Initialize();
-		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
+		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
 		
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
@@ -56,26 +57,26 @@ namespace cl
 	{
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			mMoveTarget.x -= GameManager::UnitLength();
+			mMoveTarget.x -= MapManager::UnitLength();
 			mSprite->Turn(Vector2::Left);
 			mSprite->Jump();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
-			mMoveTarget.x += GameManager::UnitLength();
+			mMoveTarget.x += MapManager::UnitLength();
 			mSprite->Turn(Vector2::Right);
 			mSprite->Jump();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			mMoveTarget.y -= GameManager::UnitLength();
+			mMoveTarget.y -= MapManager::UnitLength();
 			mSprite->Jump();
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
-			mMoveTarget.y += GameManager::UnitLength();
+			mMoveTarget.y += MapManager::UnitLength();
 			mSprite->Jump();
 		}
 		if (Input::GetKeyDown(eKeyCode::Q))

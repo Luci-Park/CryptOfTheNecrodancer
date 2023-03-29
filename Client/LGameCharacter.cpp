@@ -1,4 +1,5 @@
 #include "LGameCharacter.h"
+#include "LBeatManager.h"
 #include "LCharacterSprite.h"
 #include "LTime.h"
 namespace cl
@@ -19,7 +20,7 @@ namespace cl
 	}
 	void GameCharacter::Update()
 	{		
-		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, GameManager::MoveSpeed() * 2 * Time::DeltaTime()));
+		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
 			Move();

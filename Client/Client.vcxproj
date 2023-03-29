@@ -152,7 +152,7 @@
     <ClInclude Include="LFloorStrategy.h" />
     <ClInclude Include="LFloorTile.h" />
     <ClInclude Include="LGameCharacter.h" />
-    <ClInclude Include="LGameManager.h" />
+    <ClInclude Include="LBeatManager.h" />
     <ClInclude Include="LGameObject.h" />
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
@@ -198,7 +198,7 @@
     <ClCompile Include="LFloorStrategy.cpp" />
     <ClCompile Include="LFloorTile.cpp" />
     <ClCompile Include="LGameCharacter.cpp" />
-    <ClCompile Include="LGameManager.cpp" />
+    <ClCompile Include="LBeatManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />

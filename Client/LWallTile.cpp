@@ -1,7 +1,6 @@
 #include "LWallTile.h"
 #include "LSpriteRenderer.h"
 #include "LResources.h"
-#include "LGameManager.h"
 #include "LObject.h"
 #include "LMapManager.h"
 namespace cl
@@ -50,7 +49,7 @@ namespace cl
 	WallTile* WallTile::CreateWall(eWallTypes type, Vector2 index, Scene* sc)
 	{
 		WallTile* reslt = nullptr;
-		Vector2 pos = Vector2(index.x * GameManager::UnitLength(), index.y * GameManager::UnitLength());
+		Vector2 pos = Vector2(index.x * MapManager::UnitLength(), index.y * MapManager::UnitLength());
 		switch (type)
 		{
 		case eWallTypes::GoldWall:
@@ -127,7 +126,7 @@ namespace cl
 		:TileObject(sc)
 		,mSpriteRenderer(nullptr)
 	{
-		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
+		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
 	}
 
 	void WallTile::Initialize()

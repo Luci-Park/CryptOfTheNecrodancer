@@ -2,7 +2,7 @@
 #include "LGameObject.h"
 namespace cl
 {
-	class GameManager;
+	class BeatManager;
 	class CharacterSprite : public GameObject
 	{
 	public :

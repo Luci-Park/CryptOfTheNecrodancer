@@ -1,6 +1,7 @@
 #include "LMap.h"
+#include "LMapManager.h"
+#include "LBeatManager.h"
 #include "LObject.h"
-#include "LGameManager.h"
 #include "LCadence.h"
 namespace cl
 {
@@ -63,16 +64,11 @@ namespace cl
 	void Map::CreatePlayer(Scene* sc)
 	{
 		Vector2 pos;
-		pos.x = (mPlayerIndex.x ) * GameManager::UnitLength();
-		pos.y = (mPlayerIndex.y - 0.25) * GameManager::UnitLength();
-		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
-	}
-
-	void Map::OnBeat()
-	{
-		for (int i = 0; i < mMapSize.y; i++)
-			for (int j = 0; j < mMapSize.x; ++j)
-				mFloor[i][j]->OnBeat();
+		pos.x = (mPlayerIndex.x ) * MapManager::UnitLength();
+		pos.y = (mPlayerIndex.y - 0.25) * MapManager::UnitLength();
+		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
+		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
+		BeatManager::AddCharacters(cadence);
 	}
 
 	void Map::DeleteForeGround(Vector2 index)
@@ -80,14 +76,13 @@ namespace cl
 		if (mForeObjects[index.y][index.x] != nullptr)
 		{
 			mForeObjects[index.y][index.x]->Destroy();
-			//object::Destory(mFloor[index.y][index.x]);
 			mForeObjects[index.y][index.x] = nullptr;
 		}
 	}
 
 	Vector2 Map::GetStartPos()
 	{
-		return Vector2(mPlayerIndex.x * GameManager::UnitLength(), mPlayerIndex.y * GameManager::UnitLength());
+		return Vector2(mPlayerIndex.x * MapManager::UnitLength(), mPlayerIndex.y * MapManager::UnitLength());
 	}
 #pragma endregion
 

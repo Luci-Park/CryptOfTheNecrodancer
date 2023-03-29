@@ -2,7 +2,7 @@
 #include "LScene.h"
 namespace cl
 {
-	class GameManager;
+	class BeatManager;
 	class LobbyScene : public Scene
 	{
 	public:

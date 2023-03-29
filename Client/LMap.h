@@ -6,14 +6,12 @@
 namespace cl
 {
 	class TileObject;
-	class Map : public BeatObject
+	class Map
 	{
 	public:
 		Map();
 		~Map();
 		void CreateMap(Scene* sc);
-		virtual void OnBeat();
-		virtual void OnBeatChanged() {}
 
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;

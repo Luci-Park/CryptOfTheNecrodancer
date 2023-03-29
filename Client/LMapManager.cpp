@@ -3,6 +3,9 @@
 namespace cl
 {
 #pragma region MapManager
+	float MapManager::_unitLength = 24.0f;
+	float MapManager::_unitScale = 3.0f;
+
 	Map* MapManager::mMap;
 	void MapManager::CreateMap(MapType type, Scene* sc)
 	{

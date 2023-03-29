@@ -18,7 +18,7 @@ namespace cl
 
 		mScenes[(UINT)eSceneType::Splash] = new SplashScene();
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
-		mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
+		//mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
 		mScenes[(UINT)eSceneType::Lobby] = new LobbyScene();
 		for ( Scene* scene : mScenes )
 		{
@@ -27,8 +27,7 @@ namespace cl
 
 			scene->Initialize();
 		}
-
-		mActiveScene = mScenes[(UINT)eSceneType::Splash];
+		LoadScene(eSceneType::Lobby);
 	}
 
 	void SceneManager::Update()
