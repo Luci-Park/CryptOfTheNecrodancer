@@ -2,6 +2,7 @@
 #include "LMapManager.h"
 #include "LSceneManager.h"
 #include "LInput.h"
+#include "LGameManager.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()
@@ -25,6 +26,7 @@ namespace cl
 	void LobbyScene::OnEnter()
 	{
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
+		GameManager::SetBPM(130);
 	}
 	void LobbyScene::OnExit()
 	{

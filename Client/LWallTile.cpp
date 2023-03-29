@@ -120,7 +120,9 @@ namespace cl
 		sprite.offset = Vector2(-12.0f, -27.0f);
 		return sprite;
 	}
+#pragma endregion
 
+#pragma region Parent - Wall Tile
 	WallTile::WallTile(Scene* sc)
 		:TileObject(sc)
 		,mSpriteRenderer(nullptr)

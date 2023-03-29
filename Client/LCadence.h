@@ -34,7 +34,7 @@ namespace cl
 
 	private:
 		SpriteRenderer* mSpriteRenderer;
-		CadenceAttackEffect* mAttactEffect;
+		CadenceAttackEffect* mAttackEffect;
 	};
 
 }

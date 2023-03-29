@@ -2,6 +2,7 @@
 #include "LFloorTile.h"
 namespace cl
 {
+#pragma region Parent - FloorStrategy
 	FloorStrategy::FloorStrategy(FloorTile* tile)
 	{
 		mTile = tile;
@@ -11,6 +12,9 @@ namespace cl
 		else
 			mIsEven = false;
 	}
+#pragma endregion
+
+#pragma region Child - Lobby Strategy
 	LobbyStrategy::LobbyStrategy(FloorTile* tile)
 		:FloorStrategy(tile)
 	{
@@ -19,6 +23,9 @@ namespace cl
 		else
 			mSprite = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
 	}
+#pragma endregion
+
+#pragma region Child - Stair Strategy
 	StairStrategy::StairStrategy(StairTile* tile)
 		:FloorStrategy(tile)
 	{
@@ -42,4 +49,5 @@ namespace cl
 		if (mCurrSprite == mClosedSprite && !mStairTile->IsLocked())
 			mCurrSprite = mOpenSprite;
 	}
+#pragma endregion
 }

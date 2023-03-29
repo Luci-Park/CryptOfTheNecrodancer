@@ -106,7 +106,7 @@ namespace cl
 	}
 #pragma endregion
 
-#pragma region ParentClass
+#pragma region Parent - FloorTile
 	FloorTile::FloorTile(Scene* sc)
 		:GameObject(sc, false) {
 		mTransform->SetScale(Vector2::One * GameManager::UnitScale());
@@ -160,7 +160,7 @@ namespace cl
 	}
 #pragma endregion
 
-#pragma region LobbyTile
+#pragma region Child - LobbyTile
 	LobbyTile::LobbyTile(Scene* sc)
 		:FloorTile(sc){}
 
@@ -173,6 +173,8 @@ namespace cl
 		mStrategy = new LobbyStrategy(this);
 	}
 #pragma endregion
+
+#pragma region Child - Ground Tile
 	GroundTile::GroundTile(Scene* sc)
 		:FloorTile(sc)
 	{
@@ -184,6 +186,9 @@ namespace cl
 	{
 		mIndex = index;
 	}
+#pragma endregion
+
+#pragma region Child - Water Tile
 	WaterTile::WaterTile(Scene* sc)
 		:FloorTile(sc)
 	{
@@ -195,4 +200,5 @@ namespace cl
 	{
 		mIndex = index;
 	}
+#pragma endregion
 }

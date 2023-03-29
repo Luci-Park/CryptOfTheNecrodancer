@@ -23,7 +23,7 @@ namespace cl
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene)
 		, mSpriteRenderer(nullptr)
-		, mAttactEffect(nullptr)
+		, mAttackEffect(nullptr)
 	{
 	}
 	Cadence::~Cadence()
@@ -40,7 +40,7 @@ namespace cl
 		mSpriteRenderer->AddAlpha(100);
 		
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mAttactEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 
 		Camera::SetTarget(this);
 	}
@@ -81,27 +81,27 @@ namespace cl
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
 			Camera::StartShake();
-			mAttactEffect->Attack(Vector2::Up);
+			mAttackEffect->Attack(Vector2::Up);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::E))
 		{
 			Camera::StartShake();
-			mAttactEffect->Attack(Vector2::Down);
+			mAttackEffect->Attack(Vector2::Down);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::R))
 		{
 			Camera::StartShake();
 			mSprite->Turn(Vector2::Left);
-			mAttactEffect->Attack(Vector2::Left);
+			mAttackEffect->Attack(Vector2::Left);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::T))
 		{
 			Camera::StartShake();
 			mSprite->Turn(Vector2::Right);
-			mAttactEffect->Attack(Vector2::Right);
+			mAttackEffect->Attack(Vector2::Right);
 		}
 	}
 	void Cadence::OnBeat()
@@ -109,7 +109,7 @@ namespace cl
 	}
 	void Cadence::OnBeatChanged()
 	{
-		mAttactEffect->OnBeatChanged();
+		mAttackEffect->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
 	}
 	void Cadence::Interact(TileObject* object)

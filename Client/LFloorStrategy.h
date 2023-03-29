@@ -4,6 +4,7 @@ namespace cl
 {
 	class FloorTile;
 	class StairTile;
+
 	class FloorStrategy
 	{
 	public:

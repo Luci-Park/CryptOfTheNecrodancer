@@ -8,14 +8,17 @@ namespace cl
 		, mIsLocked(false)
 	{
 	}
+
 	StairTile::~StairTile()
 	{
 	}
+	
 	void StairTile::SetIndex(Vector2 index)
 	{
 		mStrategy = new StairStrategy(this);
 		mIndex = index;
 	}
+	
 	void StairTile::OnInteract()
 	{
 		if (!mIsLocked)
