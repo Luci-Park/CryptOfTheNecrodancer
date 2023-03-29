@@ -21,8 +21,8 @@ namespace cl
 		void DeleteForeGround(Vector2 index);
 		Vector2 GetStartPos();
 	protected:
-		Vector2 size;
-		Vector2 startPos;
+		Vector2 mMapSize;
+		Vector2 mPlayerStartPos;
 		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<WallTile::eWallTypes>> mWallBluePrint;
 		std::vector<std::vector<FloorTile*>> mFloor;
@@ -31,6 +31,7 @@ namespace cl
 	private:
 		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);
+		void CreatePlayer(Scene* sc);
 	};
 
 	class LobbyMap : public Map

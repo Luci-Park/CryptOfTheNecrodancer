@@ -88,6 +88,13 @@ struct Vector2
         return *this;
     }
 
+    Vector2& operator *=(const float scalar)
+    {
+        x *= scalar;
+        y *= scalar;
+        return *this;
+    }
+
     // Prefix increment operator overload
     Vector2& operator++()
     {
