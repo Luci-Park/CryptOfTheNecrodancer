@@ -63,8 +63,8 @@ namespace cl
 	void Map::CreatePlayer(Scene* sc)
 	{
 		Vector2 pos;
-		pos.x = (mPlayerIndex.x + 0.5) * GameManager::UnitLength();
-		pos.y = (mPlayerIndex.y + 0.5) * GameManager::UnitLength();
+		pos.x = (mPlayerIndex.x ) * GameManager::UnitLength();
+		pos.y = (mPlayerIndex.y - 0.25) * GameManager::UnitLength();
 		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
 	}
 

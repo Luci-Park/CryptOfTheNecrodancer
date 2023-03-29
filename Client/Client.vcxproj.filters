@@ -71,13 +71,13 @@
     <Filter Include="Contents\SystemObjects">
       <UniqueIdentifier>{19635237-2ecb-465e-8e6c-400206a28474}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Environment">
+    <Filter Include="Contents\Objects\Environment">
       <UniqueIdentifier>{b7f6e13d-1db8-491a-b50b-845febf47238}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Environment\Floors">
+    <Filter Include="Contents\Objects\Environment\Floors">
       <UniqueIdentifier>{347c2aec-c1f7-497e-8bdc-266a881ee8ee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Environment\Walls">
+    <Filter Include="Contents\Objects\Environment\Walls">
       <UniqueIdentifier>{7870289b-05e6-4758-95d1-f4e9d700905c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -212,13 +212,13 @@
       <Filter>Engine\Component</Filter>
     </ClInclude>
     <ClInclude Include="LTileObject.h">
-      <Filter>Contents\Environment</Filter>
+      <Filter>Contents\Objects\Environment</Filter>
     </ClInclude>
     <ClInclude Include="LFloorTile.h">
-      <Filter>Contents\Environment\Floors</Filter>
+      <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClInclude>
     <ClInclude Include="LFloorStrategy.h">
-      <Filter>Contents\Environment\Floors</Filter>
+      <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClInclude>
     <ClInclude Include="LLobbyScene.h">
       <Filter>Contents\Scene</Filter>
@@ -227,7 +227,7 @@
       <Filter>Contents\SystemObjects</Filter>
     </ClInclude>
     <ClInclude Include="LWallTile.h">
-      <Filter>Contents\Environment\Walls</Filter>
+      <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -344,13 +344,13 @@
       <Filter>Engine\Component</Filter>
     </ClCompile>
     <ClCompile Include="LTileObject.cpp">
-      <Filter>Contents\Environment</Filter>
+      <Filter>Contents\Objects\Environment</Filter>
     </ClCompile>
     <ClCompile Include="LFloorTile.cpp">
-      <Filter>Contents\Environment\Floors</Filter>
+      <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
     <ClCompile Include="LFloorStrategy.cpp">
-      <Filter>Contents\Environment\Floors</Filter>
+      <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
     <ClCompile Include="LLobbyScene.cpp">
       <Filter>Contents\Scene</Filter>
@@ -359,10 +359,10 @@
       <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
     <ClCompile Include="LStairTile.cpp">
-      <Filter>Contents\Environment\Floors</Filter>
+      <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
     <ClCompile Include="LWallTile.cpp">
-      <Filter>Contents\Environment\Walls</Filter>
+      <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
