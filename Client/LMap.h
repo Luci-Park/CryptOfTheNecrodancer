@@ -22,7 +22,7 @@ namespace cl
 		Vector2 GetStartPos();
 	protected:
 		Vector2 mMapSize;
-		Vector2 mPlayerStartPos;
+		Vector2 mPlayerIndex;
 		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<WallTile::eWallTypes>> mWallBluePrint;
 		std::vector<std::vector<FloorTile*>> mFloor;

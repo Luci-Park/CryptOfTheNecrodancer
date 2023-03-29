@@ -34,32 +34,12 @@ namespace cl
 		}
 	}
 
-	void Scene::Destroy()
+	void Scene::Destroy(GameObject* object)
 	{
-		std::vector<GameObject*> deleteGameObjects = {};
 		for (Layer& layer : mLayers)
 		{
-			std::vector<GameObject*>&  gameObjects
-				= layer.GetGameObjects();
-
-			for (std::vector<GameObject*>::iterator iter = gameObjects.begin()
-				; iter != gameObjects.end() ; )
-			{
-				if ((*iter)->GetState() == GameObject::eState::Death)
-				{
-					deleteGameObjects.push_back((*iter));
-					iter = gameObjects.erase(iter);
-				}
-				else
-				{
-					iter++;
-				}
-			}
-		}
-		for (int i = 0; i < deleteGameObjects.size(); ++i)
-		{
-			delete deleteGameObjects[i];
-			deleteGameObjects[i] = nullptr;
+			if (layer.Destroy(object))
+				return;
 		}
 	}
 
@@ -68,6 +48,10 @@ namespace cl
 	}
 	void Scene::OnExit()
 	{
+		for (int i = 0; i < mLayers.size(); ++i)
+		{
+			mLayers[i].Release();
+		}
 	}
 	void Scene::AddGameObject(GameObject* obj, eLayerType layer)
 	{

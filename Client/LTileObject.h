@@ -12,9 +12,9 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void Interact(TileObject* tile) = 0;
-		virtual void Dig(TileObject* tile) = 0;
-		virtual void Attack(TileObject* tile) = 0;
+		virtual void Interact(TileObject* object) = 0;
+		virtual void Dig(TileObject* object) = 0;
+		virtual void Attack(TileObject* object) = 0;
 
 		void SetIndex(Vector2 index) { mIndex = index; }
 	protected:

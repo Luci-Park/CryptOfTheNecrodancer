@@ -81,7 +81,7 @@ namespace cl
 		virtual void Interact(TileObject* object) override;
 		virtual void Dig(TileObject* object){}
 		virtual void Attack(TileObject* object){}
-		virtual void Destroy();
+		virtual void OnDestroy();
 
 		int GetHardness() { return mHardness; }
 	protected:
@@ -95,7 +95,7 @@ namespace cl
 	public:
 		GoldTile(Scene* sc);
 		~GoldTile(){}
-		virtual void Destroy() override;
+		virtual void OnDestroy() override;
 	};
 
 }

@@ -35,9 +35,6 @@ namespace cl
 	{
 		TransparentBlt(hdc, 0, 0, application.GetWidth(), application.GetHeight(), mImage->GetHdc(), 0, 0, mImage->GetWidth(), mImage->GetHeight(), RGB(255, 0, 255));
 	}
-	void SplashScene::Destroy()
-	{
-	}
 	void SplashScene::OnEnter()
 	{
 		mTimer = 0;

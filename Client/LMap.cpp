@@ -14,10 +14,16 @@ namespace cl
 		for (int i = 0; i < mMapSize.y; ++i)
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				object::Destory(mFloor[i][j]);
-				object::Destory(mForeObjects[i][j]);
-				mFloor[i][j] = nullptr;
-				mForeObjects[i][j] = nullptr;
+				if(mFloor[i][j] != nullptr)
+				{ 
+					mFloor[i][j]->Destroy();
+					mFloor[i][j] = nullptr;
+				}
+				if (mForeObjects[i][j] != nullptr)
+				{
+					mForeObjects[i][j]->Destroy();
+					mForeObjects[i][j] = nullptr;
+				}
 			}
 	}
 	
@@ -56,9 +62,10 @@ namespace cl
 
 	void Map::CreatePlayer(Scene* sc)
 	{
-		mPlayerStartPos.x = (mPlayerStartPos.x + 0.5) * GameManager::UnitLength();
-		mPlayerStartPos.y = (mPlayerStartPos.y + 0.5) * GameManager::UnitLength();
-		object::Instantiate<Cadence>(sc, mPlayerStartPos, eLayerType::Player);
+		Vector2 pos;
+		pos.x = (mPlayerIndex.x + 0.5) * GameManager::UnitLength();
+		pos.y = (mPlayerIndex.y + 0.5) * GameManager::UnitLength();
+		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
 	}
 
 	void Map::OnBeat()
@@ -70,13 +77,17 @@ namespace cl
 
 	void Map::DeleteForeGround(Vector2 index)
 	{
-		object::Destory(mFloor[index.y][index.x]);
-		mFloor[index.y][index.x] = nullptr;
+		if (mForeObjects[index.y][index.x] != nullptr)
+		{
+			mForeObjects[index.y][index.x]->Destroy();
+			//object::Destory(mFloor[index.y][index.x]);
+			mForeObjects[index.y][index.x] = nullptr;
+		}
 	}
 
 	Vector2 Map::GetStartPos()
 	{
-		return Vector2(mPlayerStartPos.x * GameManager::UnitLength(), mPlayerStartPos.y * GameManager::UnitLength());
+		return Vector2(mPlayerIndex.x * GameManager::UnitLength(), mPlayerIndex.y * GameManager::UnitLength());
 	}
 #pragma endregion
 
@@ -86,7 +97,7 @@ namespace cl
 		mMapSize = Vector2(13, 13);
 		SetFloor();
 		SetWall();
-		mPlayerStartPos = Vector2(6, 3);
+		mPlayerIndex = Vector2(6, 3);
 	}
 
 	void LobbyMap::SetFloor()

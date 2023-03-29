@@ -1,12 +1,12 @@
 #pragma once
-#include "LGameObject.h"
+#include "LTileObject.h"
 #include "LGameManager.h"
 #include "LBeatObject.h"
 namespace cl
 {
 	class GameManager;
 	class CharacterSprite;
-	class GameCharacter : public GameObject, public BeatObject
+	class GameCharacter : public TileObject, public BeatObject
 	{
 	public:
 		GameCharacter(Scene* sc);

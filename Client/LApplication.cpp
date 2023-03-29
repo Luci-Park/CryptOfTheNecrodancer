@@ -54,7 +54,6 @@ namespace cl
 	{
 		Update();
 		Render();
-		SceneManager::Destroy();
 	}
 
 	void Application::Update()

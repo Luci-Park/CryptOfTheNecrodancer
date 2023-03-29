@@ -27,6 +27,8 @@ namespace cl
 		virtual void OnCollisionStay(class Collider* other);
 		virtual void OnCollisionExit(class Collider* other);
 
+		void Destroy();
+
 		template <typename T>
 		T* AddComponent()
 		{

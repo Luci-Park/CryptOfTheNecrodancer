@@ -14,6 +14,9 @@ namespace cl
 		virtual void Update();
 		virtual void Render(HDC hdc);
 
+		bool Destroy(GameObject* object);
+		void Release();
+
 		void AddGameObject(GameObject* gameObj);
 		std::vector<GameObject*>& GetGameObjects() { return mGameObjects; }
 

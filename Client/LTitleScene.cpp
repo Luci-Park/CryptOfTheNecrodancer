@@ -36,10 +36,6 @@ namespace cl
 	{
 		TransparentBlt(hdc, 0, 0, application.GetWidth(), application.GetHeight(), mButton->GetHdc(), 0, 0, mButton->GetWidth(), mButton->GetHeight(), RGB(255, 0, 255));
 	}
-	void TitleScene::Destroy()
-	{
-		Scene::Destroy();
-	}
 	void TitleScene::OnEnter()
 	{
 		Camera::StartFadeIn();

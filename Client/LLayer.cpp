@@ -8,11 +8,7 @@ namespace cl
 	}
 	Layer::~Layer()
 	{
-		for (int i = 0; i < mGameObjects.size(); ++i)
-		{
-			delete mGameObjects[i];
-			mGameObjects[i] = nullptr;
-		}
+		Release();
 	}
 	void Layer::Initialize()
 	{
@@ -54,6 +50,27 @@ namespace cl
 				continue;
 
 			gameObj->Render(hdc);
+		}
+	}
+
+	bool Layer::Destroy(GameObject* object)
+	{
+		auto it = std::find(mGameObjects.begin(), mGameObjects.end(), object);
+		if (it != mGameObjects.end())
+		{
+			mGameObjects.erase(it);
+			delete object;
+			return true;
+		}
+		return false;
+	}
+
+	void Layer::Release()
+	{
+		for (int i = 0; i < mGameObjects.size(); ++i)
+		{
+			delete mGameObjects[i];
+			mGameObjects[i] = nullptr;
 		}
 	}
 	

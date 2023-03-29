@@ -22,8 +22,9 @@ namespace cl
 		Vector2 GetLocalPos() { return mLocalPos; }
 		Vector2 GetLocalScale() { return mLocalScale; }
 
-		void SetParent(Transform* parent) { mParent = parent; }
-		void SetChildren(Transform* child) { mChildren.push_back(child); }
+		void SetParent(Transform* parent);
+		void SetChildren(Transform* child);
+		void RemoveChildren(Transform* child);
 	private:
 		void CalculateWorldPos();
 		void CalculateLocalPos();

@@ -30,21 +30,5 @@ namespace cl
 			GameManager::SetBPM(GameManager::BPM() + 50);
 		}
 		Scene::Update();
-	}/*
-	void TutorialScene::Render(HDC hdc)
-	{
-		Scene::Render(hdc);
 	}
-	void TutorialScene::Destroy()
-	{
-		Scene::Destroy();
-	}
-	void TutorialScene::OnEnter()
-	{
-		Scene::OnEnter();
-	}
-	void TutorialScene::OnExit()
-	{
-		Scene::OnExit();
-	}*/
 }

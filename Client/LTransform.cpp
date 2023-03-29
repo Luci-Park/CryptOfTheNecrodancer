@@ -1,6 +1,5 @@
 #include "LTransform.h"
-
-
+#include "LGameObject.h"
 namespace cl
 {
 	Transform::Transform()
@@ -14,6 +13,13 @@ namespace cl
 	}
 	Transform::~Transform()
 	{
+		for (int i = 0; i < mChildren.size(); ++i)
+		{
+			if (mChildren[i] != nullptr)
+			{
+				mChildren[i]->GetOwner()->Destroy();
+			}
+		}
 	}
 	void Transform::Initialize()
 	{
@@ -25,6 +31,23 @@ namespace cl
 	}
 	void Transform::Render(HDC hdc)
 	{
+	}
+	void Transform::SetParent(Transform* parent)
+	{
+		mParent = parent;
+		parent->SetChildren(this);
+	}
+	void Transform::SetChildren(Transform* child)
+	{
+		mChildren.push_back(child);
+	}
+	void Transform::RemoveChildren(Transform* child)
+	{
+		auto it = std::find(mChildren.begin(), mChildren.end(), child);
+		if (it != mChildren.end())
+		{
+			mChildren.erase(it);
+		}
 	}
 	void Transform::CalculateWorldPos()
 	{

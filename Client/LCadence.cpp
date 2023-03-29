@@ -112,4 +112,15 @@ namespace cl
 		mAttactEffect->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
 	}
+	void Cadence::Interact(TileObject* object)
+	{
+		if (object != nullptr)
+			object->Attack(this);
+	}
+	void Cadence::Dig(TileObject* object)
+	{
+	}
+	void Cadence::Attack(TileObject* object)
+	{
+	}
 }

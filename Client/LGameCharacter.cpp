@@ -4,7 +4,7 @@
 namespace cl
 {
 	GameCharacter::GameCharacter(Scene* sc)
-		: GameObject(sc, false)
+		: TileObject(sc)
 		, mMoveTarget(Vector2::Zero)
 		, mSprite(nullptr)
 	{
@@ -14,7 +14,7 @@ namespace cl
 	}
 	void GameCharacter::Initialize()
 	{
-		GameObject::Initialize();
+		TileObject::Initialize();
 		mMoveTarget = mTransform->GetPos();
 	}
 	void GameCharacter::Update()
@@ -24,11 +24,11 @@ namespace cl
 		{
 			Move();
 		}
-		GameObject::Update();
+		TileObject::Update();
 	}
 	void GameCharacter::Render(HDC hdc)
 	{
-		GameObject::Render(hdc);
+		TileObject::Render(hdc);
 	}
 	void GameCharacter::OnBeatChanged()
 	{

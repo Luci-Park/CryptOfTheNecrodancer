@@ -1,5 +1,6 @@
 #include "LGameObject.h"
 #include "LTransform.h"
+#include "LScene.h"
 
 namespace cl
 {
@@ -61,5 +62,9 @@ namespace cl
 	}
 	void GameObject::OnCollisionExit(Collider* other)
 	{
+	}
+	void GameObject::Destroy()
+	{
+		mScene->Destroy(this);
 	}
 }

@@ -140,7 +140,7 @@ namespace cl
 	{
 		object->Dig(this);
 	}
-	void WallTile::Destroy()
+	void WallTile::OnDestroy()
 	{
 		MapManager::DestroyObject(mIndex);
 	}
@@ -153,9 +153,9 @@ namespace cl
 		mHardness = 4;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::GoldWall);
 	}
-	void GoldTile::Destroy()
+	void GoldTile::OnDestroy()
 	{
-		WallTile::Destroy();
+		WallTile::OnDestroy();
 	}
 #pragma endregion
 
