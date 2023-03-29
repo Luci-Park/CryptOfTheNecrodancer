@@ -18,11 +18,12 @@ enum class eLayerType
 {
 	System,
 	Background,
+	Wall,
 	Player,
 	Monster,
 	Effects,
 	UI,
-	Size = 16,
+	Size,
 };
 
 enum class eComponentType

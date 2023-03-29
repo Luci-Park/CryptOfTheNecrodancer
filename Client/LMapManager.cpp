@@ -23,6 +23,10 @@ namespace cl
 			mMap = nullptr;
 		}
 	}
+	void MapManager::DestroyObject(Vector2 index)
+	{
+		mMap->DeleteForeGround(index);
+	}
 #pragma endregion
 	
 }

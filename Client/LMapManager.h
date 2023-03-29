@@ -13,6 +13,7 @@ namespace cl
 		};
 		static void CreateMap(MapType type, Scene* sc);
 		static void DestroyMap();
+		static void DestroyObject(Vector2 index);
 	private:
 		static Map* mMap;
 		

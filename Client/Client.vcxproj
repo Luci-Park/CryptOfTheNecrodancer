@@ -169,12 +169,13 @@
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
     <ClInclude Include="LSpriteRenderer.h" />
-    <ClInclude Include="LTiles.h" />
+    <ClInclude Include="LTileObject.h" />
     <ClInclude Include="LTime.h" />
     <ClInclude Include="LTitleScene.h" />
     <ClInclude Include="LTransform.h" />
     <ClInclude Include="LTutorialScene.h" />
     <ClInclude Include="LuciEngine.h" />
+    <ClInclude Include="LWallTile.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -213,11 +214,12 @@
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LStairTile.cpp" />
-    <ClCompile Include="LTiles.cpp" />
+    <ClCompile Include="LTileObject.cpp" />
     <ClCompile Include="LTime.cpp" />
     <ClCompile Include="LTitleScene.cpp" />
     <ClCompile Include="LTransform.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />
+    <ClCompile Include="LWallTile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

@@ -6,6 +6,15 @@ namespace cl
 	class CadenceAttackEffect;
 	class Cadence : public GameCharacter
 	{
+#pragma region Static Functions
+	public:
+		static void Reset();
+	private:
+		static int _attackPower;
+		static int _digPower;
+		static int _health;
+		static int _heartCount;
+#pragma endregion
 	public:
 		Cadence(Scene* scene);
 		~Cadence();

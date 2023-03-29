@@ -8,6 +8,18 @@
 #include "LCamera.h"
 namespace cl
 {
+	int Cadence::_attackPower = 1;
+	int Cadence::_digPower = 1;
+	int Cadence::_health = 3;
+	int Cadence::_heartCount = 3;
+
+	void Cadence::Reset()
+	{
+		_attackPower = 1;
+		_digPower = 1;
+		_health = 3;
+		_heartCount = 3;
+	}
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene)
 		, mSpriteRenderer(nullptr)
@@ -16,6 +28,7 @@ namespace cl
 	}
 	Cadence::~Cadence()
 	{
+		Camera::SetTarget(nullptr);
 	}
 	void Cadence::Initialize()
 	{
@@ -29,7 +42,7 @@ namespace cl
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mAttactEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 
-		//Camera::SetTarget(this);
+		Camera::SetTarget(this);
 	}
 	void Cadence::Update()
 	{

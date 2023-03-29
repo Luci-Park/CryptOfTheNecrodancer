@@ -77,6 +77,9 @@
     <Filter Include="Contents\Environment\Floors">
       <UniqueIdentifier>{347c2aec-c1f7-497e-8bdc-266a881ee8ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Environment\Walls">
+      <UniqueIdentifier>{7870289b-05e6-4758-95d1-f4e9d700905c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -208,7 +211,7 @@
     <ClInclude Include="LTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
-    <ClInclude Include="LTiles.h">
+    <ClInclude Include="LTileObject.h">
       <Filter>Contents\Environment</Filter>
     </ClInclude>
     <ClInclude Include="LFloorTile.h">
@@ -222,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="LMap.h">
       <Filter>Contents\SystemObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LWallTile.h">
+      <Filter>Contents\Environment\Walls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -337,7 +343,7 @@
     <ClCompile Include="LTransform.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
-    <ClCompile Include="LTiles.cpp">
+    <ClCompile Include="LTileObject.cpp">
       <Filter>Contents\Environment</Filter>
     </ClCompile>
     <ClCompile Include="LFloorTile.cpp">
@@ -354,6 +360,9 @@
     </ClCompile>
     <ClCompile Include="LStairTile.cpp">
       <Filter>Contents\Environment\Floors</Filter>
+    </ClCompile>
+    <ClCompile Include="LWallTile.cpp">
+      <Filter>Contents\Environment\Walls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

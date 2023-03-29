@@ -5,7 +5,7 @@
 namespace cl
 {
 	int GameManager::_bpm(1);
-	float GameManager::_unitScale(2.0f);
+	float GameManager::_unitScale(3.0f);
 	float GameManager::_unitLength(24.0f);
 	float GameManager::_speedPerTile(0.0f);
 	float GameManager::_beatDuration(0.0f);

@@ -98,7 +98,7 @@ namespace cl
 			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
 			dynamic_cast<StairTile*>(reslt)->SetLock(false);
 			break;
-		case eFloorTypes::None:
+		default:
 			return nullptr;
 		}
 		reslt->SetIndex(index);
