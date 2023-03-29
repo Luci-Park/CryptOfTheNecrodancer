@@ -36,14 +36,14 @@ namespace cl
 		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
 		
-		mSpriteRenderer = AddComponent<SpriteRenderer>();
-		mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
-		mSpriteRenderer->AddAlpha(100);
+		//mSpriteRenderer = AddComponent<SpriteRenderer>();
+		//mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
+		//mSpriteRenderer->AddAlpha(100);
 		
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 
-		Camera::SetTarget(this);
+		//Camera::SetTarget(this);
 	}
 	void Cadence::Update()
 	{

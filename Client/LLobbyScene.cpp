@@ -19,6 +19,7 @@ namespace cl
 	}
 	void LobbyScene::Update()
 	{
+		BeatManager::Update();
 		Scene::Update();
 		if (Input::GetKeyDown(eKeyCode::Q))
 			SceneManager::LoadScene(eSceneType::Splash);
