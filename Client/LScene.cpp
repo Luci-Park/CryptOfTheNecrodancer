@@ -1,6 +1,6 @@
 #include "LScene.h"
 #include "LSceneManager.h"
-
+#include "LMapManager.h"
 
 namespace cl
 {
@@ -28,9 +28,16 @@ namespace cl
 	}
 	void Scene::Render(HDC hdc)
 	{
-		for (Layer& layer : mLayers)
+		for (int i = 0; i < (UINT)eLayerType::Size; ++i)
 		{
-			layer.Render(hdc);
+			if (i == (UINT)eLayerType::Foreground)
+			{
+				MapManager::Render(hdc);
+			}
+			else
+			{
+				mLayers[i].Render(hdc);
+			}
 		}
 	}
 

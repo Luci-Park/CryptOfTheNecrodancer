@@ -11,6 +11,7 @@ namespace cl
 
 		virtual void Initialize() override;
 		virtual void Update() override;
+		virtual void Render(HDC hdc) override;
 
 		virtual void OnEnter() override;
 		virtual void OnExit() override;

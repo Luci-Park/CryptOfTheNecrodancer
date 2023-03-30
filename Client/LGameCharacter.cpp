@@ -30,6 +30,8 @@ namespace cl
 	void GameCharacter::Render(HDC hdc)
 	{
 		TileObject::Render(hdc);
+		if (mSprite != nullptr)
+			mSprite->Render(hdc);
 	}
 	void GameCharacter::OnBeatChanged()
 	{

@@ -53,7 +53,7 @@ namespace cl
 		switch (type)
 		{
 		case eWallTypes::GoldWall:
-			reslt = object::Instantiate<GoldTile>(sc, pos, eLayerType::Wall);
+			reslt = object::Instantiate<GoldTile>(sc, pos, eLayerType::Foreground);
 			break;
 		default:
 			return nullptr;

@@ -16,8 +16,8 @@ namespace cl
 	void CadenceSprite::Initialize()
 	{
 		CharacterSprite::Initialize();
-		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
+		mBody = object::Instantiate<CadenceBody>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Foreground);
+		mHead = object::Instantiate<CadenceHead>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Foreground);
 	}
 	void CadenceSprite::Update()
 	{
@@ -26,6 +26,8 @@ namespace cl
 	void CadenceSprite::Render(HDC hdc)
 	{
 		CharacterSprite::Render(hdc);
+		mBody->Render(hdc);
+		mHead->Render(hdc);
 	}
 	void CadenceSprite::Turn(Vector2 dir)
 	{

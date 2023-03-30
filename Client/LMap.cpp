@@ -11,7 +11,7 @@ namespace cl
 	}
 
 	Map::~Map()
-	{
+	{/*
 		for (int i = 0; i < mMapSize.y; ++i)
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
@@ -25,17 +25,10 @@ namespace cl
 					mForeObjects[i][j]->Destroy();
 					mForeObjects[i][j] = nullptr;
 				}
-			}
-	}
-	
-	void Map::CreateMap(Scene* sc)
-	{
-		CreateFloor(sc);
-		CreateWall(sc);
-		CreatePlayer(sc);
+			}*/
 	}
 
-	void Map::CreateFloor(Scene* sc)
+	std::vector<std::vector<FloorTile*>>& Map::CreateFloor(Scene* sc)
 	{
 		mFloor.resize(mMapSize.y);
 		for (int i = 0; i < mMapSize.y; ++i)
@@ -46,6 +39,14 @@ namespace cl
 				mFloor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
 			}
 		}
+		return mFloor;
+	}
+
+	std::vector<std::vector<TileObject*>>& Map::CreateForeGround(Scene* sc)
+	{
+		CreateWall(sc);
+		CreatePlayer(sc);
+		return mForeObjects;
 	}
 
 	void Map::CreateWall(Scene* sc)
@@ -66,39 +67,15 @@ namespace cl
 		Vector2 pos;
 		pos.x = (mPlayerIndex.x ) * MapManager::UnitLength();
 		pos.y = (mPlayerIndex.y - 0.25) * MapManager::UnitLength();
-		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
+		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Foreground);
 		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
 	}
 
-	void Map::DeleteForeGround(Vector2 index)
-	{
-		if (mForeObjects[index.y][index.x] != nullptr)
-		{
-			mForeObjects[index.y][index.x]->Destroy();
-			mForeObjects[index.y][index.x] = nullptr;
-		}
-	}
-
 	Vector2 Map::GetStartPos()
 	{
 		return Vector2(mPlayerIndex.x * MapManager::UnitLength(), mPlayerIndex.y * MapManager::UnitLength());
-	}
-
-	bool Map::OnInteractObject(TileObject* object, Vector2 src, Vector2 dest)
-	{
-		if (mForeObjects[dest.y][dest.x] == nullptr)
-		{
-			mForeObjects[src.y][src.x] = nullptr;
-			mForeObjects[dest.y][dest.x] = object;
-			return false;
-		}
-		else
-		{
-			mForeObjects[dest.y][dest.x]->Interact(object);
-			return true;
-		}
 	}
 #pragma endregion
 

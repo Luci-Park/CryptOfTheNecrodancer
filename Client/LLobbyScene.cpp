@@ -11,7 +11,6 @@ namespace cl
 	}
 	LobbyScene::~LobbyScene()
 	{
-		MapManager::DestroyMap();
 	}
 	void LobbyScene::Initialize()
 	{
@@ -24,6 +23,11 @@ namespace cl
 		if (Input::GetKeyDown(eKeyCode::Q))
 			SceneManager::LoadScene(eSceneType::Splash);
 	}
+	void LobbyScene::Render(HDC hdc)
+	{
+		Scene::Render(hdc);
+	}
+
 	void LobbyScene::OnEnter()
 	{
 		BeatManager::Reset();

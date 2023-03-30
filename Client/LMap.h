@@ -11,17 +11,15 @@ namespace cl
 	public:
 		Map();
 		~Map();
-		void CreateMap(Scene* sc);
 
-		virtual void SetFloor() = 0;
-		virtual void SetWall() = 0;
+		std::vector<std::vector<FloorTile*>>& CreateFloor(Scene* sc);
+		std::vector<std::vector<TileObject*>>& CreateForeGround(Scene* sc);
 
-		void DeleteForeGround(Vector2 index);
 		Vector2 GetStartPos();
-		//Return true if interaction happened
-		bool OnInteractObject(TileObject* object, Vector2 src, Vector2 dest);
 
 	protected:
+		virtual void SetFloor() = 0;
+		virtual void SetWall() = 0;
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
@@ -30,7 +28,6 @@ namespace cl
 		std::vector<std::vector<TileObject*>> mForeObjects;
 
 	private:
-		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);
 		void CreatePlayer(Scene* sc);
 	};

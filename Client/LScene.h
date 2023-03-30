@@ -21,7 +21,7 @@ namespace cl
 		void AddGameObject(GameObject* obj, eLayerType layer);
 		std::vector<GameObject*>& GetGameObjects(eLayerType layer);
 
-	private:
+	protected:
 		std::vector<Layer> mLayers;
 	};
 }
