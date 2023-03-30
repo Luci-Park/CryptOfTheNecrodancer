@@ -27,6 +27,11 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
+	void CharacterSprite::Reset()
+	{
+		mTransform->SetLocalPos(Vector2::Zero);
+		mbIsJumping = false;
+	}
 	void CharacterSprite::Jump()
 	{
 		if (!mbIsJumping)

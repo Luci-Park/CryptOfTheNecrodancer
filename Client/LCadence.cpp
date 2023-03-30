@@ -2,6 +2,7 @@
 #include "LCadenceSprite.h"
 #include "LCadenceAttackEffect.h"
 #include "LMapManager.h"
+#include "LBeatManager.h"
 #include "LObject.h"
 #include "LCamera.h"
 #include "LInput.h"
@@ -68,6 +69,7 @@ namespace cl
 				mSprite->Jump();
 				mIndex.x -= 1;
 			}
+			BeatManager::OnPlayerMove();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
@@ -82,6 +84,7 @@ namespace cl
 				mSprite->Jump();
 				mIndex.x += 1;
 			}
+			BeatManager::OnPlayerMove();
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
@@ -95,6 +98,7 @@ namespace cl
 				mSprite->Jump();
 				mIndex.y -= 1;
 			}
+			BeatManager::OnPlayerMove();
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
@@ -107,6 +111,7 @@ namespace cl
 				mSprite->Jump();
 				mIndex.y += 1;
 			}
+			BeatManager::OnPlayerMove();
 		}
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{

@@ -11,21 +11,7 @@ namespace cl
 	}
 
 	Map::~Map()
-	{/*
-		for (int i = 0; i < mMapSize.y; ++i)
-			for (int j = 0; j < mMapSize.x; ++j)
-			{
-				if(mFloor[i][j] != nullptr)
-				{ 
-					mFloor[i][j]->Destroy();
-					mFloor[i][j] = nullptr;
-				}
-				if (mForeObjects[i][j] != nullptr)
-				{
-					mForeObjects[i][j]->Destroy();
-					mForeObjects[i][j] = nullptr;
-				}
-			}*/
+	{
 	}
 
 	std::vector<std::vector<FloorTile*>>& Map::CreateFloor(Scene* sc)
@@ -37,6 +23,8 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mFloor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
+				if (mFloor[i][j] != nullptr)
+					BeatManager::AddCharacters(mFloor[i][j]);
 			}
 		}
 		return mFloor;
@@ -96,7 +84,7 @@ namespace cl
 			mFloorBluePrint[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				mFloorBluePrint[i][j] = FloorTile::eFloorTypes::Lobby;
+				mFloorBluePrint[i][j] = FloorTile::eFloorTypes::Ground;
 			}
 		}
 

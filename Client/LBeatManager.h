@@ -14,7 +14,9 @@ namespace cl
 
 		static void Update();
 		static void Reset();
+		static void OnPlayerMove();
 		static void AddCharacters(BeatObject* character);
+		static void RemoveCharacters(BeatObject* character);
 	private:
 		static std::vector<BeatObject*> mCharacters;
 		static float mGameTimer;

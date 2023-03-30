@@ -15,7 +15,7 @@ namespace cl
 	
 	void StairTile::SetIndex(Vector2 index)
 	{
-		mStrategy = new StairStrategy(this);
+		mCurrStrategy = new StairStrategy(this);
 		mIndex = index;
 	}
 	

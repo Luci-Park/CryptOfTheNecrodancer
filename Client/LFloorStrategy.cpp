@@ -25,6 +25,25 @@ namespace cl
 	}
 #pragma endregion
 
+
+	GroundStrategy::GroundStrategy(FloorTile* tile)
+		:FloorStrategy(tile)
+	{
+		mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
+		mSprites[1] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
+		mIndex = mIsEven;
+	}
+
+	Sprite GroundStrategy::GetSprite()
+	{
+		return mSprites[mIndex];
+	}
+
+	void GroundStrategy::OnBeat()
+	{
+		mIndex = !mIndex;
+	}
+
 #pragma region Child - Stair Strategy
 	StairStrategy::StairStrategy(StairTile* tile)
 		:FloorStrategy(tile)

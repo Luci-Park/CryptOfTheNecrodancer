@@ -21,14 +21,14 @@ namespace cl
 			mCharacters[i]->OnBeatChanged();
 	}
 	void BeatManager::Update()
-	{
+	{/*
 		mGameTimer += Time::DeltaTime();
 		if (mGameTimer >= _beatDuration)
 		{
 			mGameTimer -= mGameTimer;
 			for (int i = 0; i < mCharacters.size(); ++i)
 				mCharacters[i]->OnBeat();
-		}
+		}*/
 	}
 
 	void BeatManager::Reset()
@@ -37,8 +37,22 @@ namespace cl
 		mGameTimer = 0.0f;
 	}
 
+	void BeatManager::OnPlayerMove()
+	{
+		for (int i = 0; i < mCharacters.size(); ++i)
+			if(mCharacters[i] != nullptr)
+				mCharacters[i]->OnBeat();
+	}
+
+
 	void BeatManager::AddCharacters(BeatObject* character)
 	{
 		mCharacters.push_back(character);
+	}
+	void BeatManager::RemoveCharacters(BeatObject* character)
+	{
+		auto it = std::find(mCharacters.begin(), mCharacters.end(), character);
+		if (it != mCharacters.end())
+			mCharacters.erase(it);
 	}
 }

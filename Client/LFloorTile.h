@@ -2,17 +2,17 @@
 #include "LuciEngine.h"
 #include "LSprite.h"
 #include "LGameObject.h"
+#include "LBeatObject.h"
 namespace cl
 {
 	class SpriteRenderer;
 	class FloorStrategy;
-	class FloorTile : public GameObject
+	class FloorTile : public GameObject, public BeatObject
 	{
 #pragma region StaticInfo
 	public:
 		enum class eFloorTypes
 		{
-			Lobby,
 			Ground,
 			Water,
 			ClosedStairs,
@@ -69,26 +69,17 @@ namespace cl
 		
 		virtual void SetIndex(Vector2 index) = 0;
 		Vector2 GetIndex() { return mIndex; }
-		virtual void OnBeat();
+		virtual void OnBeat() override;
+		virtual void OnBeatChanged(){}
 		virtual void OnInteract();
 
 	protected:
 		Sprite GetSprite();
-		FloorStrategy* mStrategy;
+		FloorStrategy* mCurrStrategy;
 		SpriteRenderer* mSpriteRenderer;
 		eFloorTypes mType;
 		Vector2 mIndex;
 	};
-
-	class LobbyTile : public FloorTile
-	{
-	public:
-		LobbyTile(Scene* sc);
-		virtual ~LobbyTile();
-
-		virtual void SetIndex(Vector2 index);
-	};
-
 	class GroundTile : public FloorTile
 	{
 	public:

@@ -23,6 +23,7 @@ namespace cl
 		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
+			mSprite->Reset();
 			Move();
 		}
 		TileObject::Update();

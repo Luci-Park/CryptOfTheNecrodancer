@@ -81,9 +81,6 @@ namespace cl
 		Vector2 pos = Vector2(index.x * MapManager::UnitLength(), index.y * MapManager::UnitLength());
 		switch (type)
 		{
-		case eFloorTypes::Lobby:
-			reslt = object::Instantiate<LobbyTile>(sc, pos, eLayerType::Background);
-			break;
 		case eFloorTypes::Ground:
 			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
 			break;
@@ -113,10 +110,10 @@ namespace cl
 	}
 
 	FloorTile::~FloorTile(){
-		if (mStrategy != nullptr)
+		if (mCurrStrategy != nullptr)
 		{
-			delete mStrategy;
-			mStrategy = nullptr;
+			delete mCurrStrategy;
+			mCurrStrategy = nullptr;
 		}
 	}
 
@@ -145,32 +142,18 @@ namespace cl
 
 	void FloorTile::OnBeat()
 	{
-		if (mStrategy != nullptr)
-			mStrategy->OnBeat();
+		if (mCurrStrategy != nullptr)
+			mCurrStrategy->OnBeat();
 	}
 
 	Sprite FloorTile::GetSprite()
 	{
-		if (mStrategy != nullptr)
-			return mStrategy->GetSprite();
+		if (mCurrStrategy != nullptr)
+			return mCurrStrategy->GetSprite();
 	}
 
 	void FloorTile::OnInteract()
 	{
-	}
-#pragma endregion
-
-#pragma region Child - LobbyTile
-	LobbyTile::LobbyTile(Scene* sc)
-		:FloorTile(sc){}
-
-	LobbyTile::~LobbyTile()
-	{
-	}
-	void LobbyTile::SetIndex(Vector2 index)
-	{
-		mIndex = index;
-		mStrategy = new LobbyStrategy(this);
 	}
 #pragma endregion
 
@@ -185,6 +168,7 @@ namespace cl
 	void GroundTile::SetIndex(Vector2 index)
 	{
 		mIndex = index;
+		mCurrStrategy = new GroundStrategy(this);
 	}
 #pragma endregion
 

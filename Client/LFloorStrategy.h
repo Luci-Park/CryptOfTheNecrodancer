@@ -32,9 +32,12 @@ namespace cl
 	{
 	public:
 		GroundStrategy(FloorTile* tile);
-		virtual ~GroundStrategy();
-		virtual Sprite GetSprite() = 0;
-		virtual void OnBeat() = 0;
+		virtual ~GroundStrategy(){}
+		virtual Sprite GetSprite();
+		virtual void OnBeat();
+	private:
+		Sprite mSprites[2];
+		bool mIndex;
 	};
 
 	class FlashStrategy : public FloorStrategy
