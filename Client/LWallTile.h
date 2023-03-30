@@ -83,7 +83,7 @@ namespace cl
 		virtual void Attack(TileObject* object){}
 		virtual void OnDestroy();
 
-		int GetHardness() { return mHardness; }
+		bool OnDig(int digPower);
 	protected:
 		SpriteRenderer* mSpriteRenderer;
 		int mHardness;

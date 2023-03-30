@@ -3,10 +3,11 @@
 #include "LCadenceAttackEffect.h"
 #include "LMapManager.h"
 #include "LObject.h"
+#include "LCamera.h"
 #include "LInput.h"
 #include "LTime.h"
 #include "LSpriteRenderer.h"
-#include "LCamera.h"
+#include "LWallTile.h"
 namespace cl
 {
 	int Cadence::_attackPower = 1;
@@ -57,27 +58,55 @@ namespace cl
 	{
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			mMoveTarget.x -= MapManager::UnitLength();
 			mSprite->Turn(Vector2::Left);
-			mSprite->Jump();
+			Vector2 dest = mIndex;
+			dest.x -= 1;
+			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
+			if (success)
+			{
+				mMoveTarget.x -= MapManager::UnitLength();
+				mSprite->Jump();
+				mIndex.x -= 1;
+			}
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
-			mMoveTarget.x += MapManager::UnitLength();
 			mSprite->Turn(Vector2::Right);
-			mSprite->Jump();
+			Vector2 dest = mIndex;
+			dest.x += 1;
+			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
+			if (success)
+			{
+				mMoveTarget.x += MapManager::UnitLength();
+				mSprite->Jump();
+				mIndex.x += 1;
+			}
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			mMoveTarget.y -= MapManager::UnitLength();
-			mSprite->Jump();
+			Vector2 dest = mIndex;
+			dest.y -= 1;
+			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
+			if (success)
+			{
+				mMoveTarget.y -= MapManager::UnitLength();
+				mSprite->Jump();
+				mIndex.y -= 1;
+			}
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
-			mMoveTarget.y += MapManager::UnitLength();
-			mSprite->Jump();
+			Vector2 dest = mIndex;
+			dest.y += 1;
+			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
+			if (success)
+			{
+				mMoveTarget.y += MapManager::UnitLength();
+				mSprite->Jump();
+				mIndex.y += 1;
+			}
 		}
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
@@ -120,6 +149,11 @@ namespace cl
 	}
 	void Cadence::Dig(TileObject* object)
 	{
+		WallTile* tile = dynamic_cast<WallTile*>(object);
+		if (tile != nullptr)
+		{
+			tile->OnDig(mDigPower);
+		}
 	}
 	void Cadence::Attack(TileObject* object)
 	{

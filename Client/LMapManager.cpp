@@ -30,6 +30,10 @@ namespace cl
 	{
 		mMap->DeleteForeGround(index);
 	}
+	bool MapManager::OnInteractObject(TileObject* object, Vector2 src, Vector2 dest)
+	{
+		return mMap->OnInteractObject(object, src, dest);
+	}
 #pragma endregion
 	
 }

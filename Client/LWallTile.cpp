@@ -59,7 +59,7 @@ namespace cl
 			return nullptr;
 		}
 		reslt->SetIndex(index);
-		return nullptr;
+		return reslt;
 	}
 
 	Sprite WallTile::GetWallSprite(eWallTypes type)
@@ -144,6 +144,16 @@ namespace cl
 	void WallTile::OnDestroy()
 	{
 		MapManager::DestroyObject(mIndex);
+	}
+
+	bool WallTile::OnDig(int digPower)
+	{
+		if (digPower >= mHardness)
+		{
+			OnDestroy();
+			return true;
+		}
+		return false;
 	}
 #pragma endregion
 

@@ -18,6 +18,9 @@ namespace cl
 
 		void DeleteForeGround(Vector2 index);
 		Vector2 GetStartPos();
+		//Return true if interaction happened
+		bool OnInteractObject(TileObject* object, Vector2 src, Vector2 dest);
+
 	protected:
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;

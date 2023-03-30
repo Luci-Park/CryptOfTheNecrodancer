@@ -68,6 +68,7 @@ namespace cl
 		pos.y = (mPlayerIndex.y - 0.25) * MapManager::UnitLength();
 		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
 		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
+		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
 	}
 
@@ -83,6 +84,21 @@ namespace cl
 	Vector2 Map::GetStartPos()
 	{
 		return Vector2(mPlayerIndex.x * MapManager::UnitLength(), mPlayerIndex.y * MapManager::UnitLength());
+	}
+
+	bool Map::OnInteractObject(TileObject* object, Vector2 src, Vector2 dest)
+	{
+		if (mForeObjects[dest.y][dest.x] == nullptr)
+		{
+			mForeObjects[src.y][src.x] = nullptr;
+			mForeObjects[dest.y][dest.x] = object;
+			return false;
+		}
+		else
+		{
+			mForeObjects[dest.y][dest.x]->Interact(object);
+			return true;
+		}
 	}
 #pragma endregion
 
