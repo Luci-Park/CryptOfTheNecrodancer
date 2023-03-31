@@ -15,3 +15,14 @@
 #include <filesystem>
 #include <random>
 #pragma comment(lib, "Msimg32.lib")
+
+#include <mmsystem.h>
+#include <dsound.h>
+#include <dinput.h>
+
+#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "dsound.lib")
+
+#define DEFAULTUNIT 24
+#define UNITSCALE 3
+#define UNITLENGTH 72 

@@ -39,7 +39,7 @@ namespace cl
 			mbIsJumping = true;
 			return;
 		}
-		Vector2 target = mbDirIsUp ? Vector2::Up * MapManager::UnitLength() * 0.5 : Vector2::Zero;
+		Vector2 target = mbDirIsUp ? Vector2::Up * UNITLENGTH * 0.5 : Vector2::Zero;
 		if (Vector2::Distance(mTransform->GetLocalPos(), target) < 0.01f)
 		{
 			mbDirIsUp = !mbDirIsUp;

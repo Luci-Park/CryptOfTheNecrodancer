@@ -49,7 +49,7 @@ namespace cl
 	WallTile* WallTile::CreateWall(eWallTypes type, Vector2 index, Scene* sc)
 	{
 		WallTile* reslt = nullptr;
-		Vector2 pos = Vector2(index.x * MapManager::UnitLength(), index.y * MapManager::UnitLength());
+		Vector2 pos = index * UNITLENGTH;
 		switch (type)
 		{
 		case eWallTypes::GoldWall:
@@ -126,7 +126,7 @@ namespace cl
 		:TileObject(sc)
 		,mSpriteRenderer(nullptr)
 	{
-		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
+		mTransform->SetScale(Vector2::One * UNITSCALE);
 	}
 
 	void WallTile::Initialize()

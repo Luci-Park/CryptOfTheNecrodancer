@@ -5,8 +5,6 @@ namespace cl
 #pragma region MapManager
 	std::vector<std::vector<FloorTile*>> MapManager::_Floor = std::vector<std::vector<FloorTile*>>();
 	std::vector<std::vector<TileObject*>> MapManager::_ForeObjects = std::vector<std::vector<TileObject*>>();
-	float MapManager::_unitLength = 24.0f;
-	float MapManager::_unitScale = 3.0f;
 	Vector2 MapManager::_size = Vector2::Zero;
 
 	void MapManager::CreateMap(MapType type, Scene* sc)

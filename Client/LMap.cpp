@@ -1,5 +1,4 @@
 #include "LMap.h"
-#include "LMapManager.h"
 #include "LBeatManager.h"
 #include "LObject.h"
 #include "LCadence.h"
@@ -59,8 +58,8 @@ namespace cl
 	void Map::CreatePlayer(Scene* sc)
 	{
 		Vector2 pos;
-		pos.x = (mPlayerIndex.x ) * MapManager::UnitLength();
-		pos.y = (mPlayerIndex.y - 0.25) * MapManager::UnitLength();
+		pos.x = (mPlayerIndex.x ) * UNITLENGTH;
+		pos.y = (mPlayerIndex.y - 0.25) * UNITLENGTH;
 		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Foreground);
 		mForeObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
@@ -69,7 +68,7 @@ namespace cl
 
 	Vector2 Map::GetStartPos()
 	{
-		return Vector2(mPlayerIndex.x * MapManager::UnitLength(), mPlayerIndex.y * MapManager::UnitLength());
+		return Vector2(mPlayerIndex.x * UNITLENGTH, mPlayerIndex.y * UNITLENGTH);
 	}
 #pragma endregion
 

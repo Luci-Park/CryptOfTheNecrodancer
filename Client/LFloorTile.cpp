@@ -78,7 +78,7 @@ namespace cl
 	FloorTile* FloorTile::CreateFloor(eFloorTypes type, Vector2 index, Scene* sc)
 	{
 		FloorTile* reslt = nullptr;
-		Vector2 pos = Vector2(index.x * MapManager::UnitLength(), index.y * MapManager::UnitLength());
+		Vector2 pos = index * UNITLENGTH;
 		switch (type)
 		{
 		case eFloorTypes::Ground:
@@ -106,7 +106,7 @@ namespace cl
 #pragma region Parent - FloorTile
 	FloorTile::FloorTile(Scene* sc)
 		:GameObject(sc, false) {
-		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
+		mTransform->SetScale(Vector2::One * UNITSCALE);
 	}
 
 	FloorTile::~FloorTile(){

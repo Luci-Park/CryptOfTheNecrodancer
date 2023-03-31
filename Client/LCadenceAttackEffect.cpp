@@ -1,7 +1,6 @@
 #include "LCadenceAttackEffect.h"
 #include "LAnimator.h"
 #include "LBeatManager.h"
-#include "LMapManager.h"
 namespace cl
 {
 	CadenceAttackEffect::CadenceAttackEffect(Scene* sc)
@@ -45,22 +44,22 @@ namespace cl
 	{
 		if (dir == Vector2::Right)
 		{
-			mTransform->SetLocalPos(Vector2::Right * MapManager::UnitLength());
+			mTransform->SetLocalPos(Vector2::Right * UNITLENGTH);
 			mAnimator->Play(L"Dagger_Right", false, false);
 		}
 		if (dir == Vector2::Left)
 		{
-			mTransform->SetLocalPos(Vector2::Left * MapManager::UnitLength());
+			mTransform->SetLocalPos(Vector2::Left * UNITLENGTH);
 			mAnimator->Play(L"Dagger_Left", false, false);
 		}
 		if (dir == Vector2::Up)
 		{
-			mTransform->SetLocalPos(Vector2::Up * MapManager::UnitLength());
+			mTransform->SetLocalPos(Vector2::Up * UNITLENGTH);
 			mAnimator->Play(L"Dagger_Up", false, false);
 		}
 		if (dir == Vector2::Down)
 		{
-			mTransform->SetLocalPos(Vector2::Down * MapManager::UnitLength());
+			mTransform->SetLocalPos(Vector2::Down * UNITLENGTH);
 			mAnimator->Play(L"Dagger_Down", false, false);
 		}
 	}

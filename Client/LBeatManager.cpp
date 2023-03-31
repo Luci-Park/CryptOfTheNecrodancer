@@ -16,7 +16,7 @@ namespace cl
 		_bpm = bpm;
 		float bps = bpm / 60.0f;
 		_beatDuration = 1 / bps;
-		_speedPerTile = MapManager::UnitLength() / _beatDuration;
+		_speedPerTile = UNITLENGTH / _beatDuration;
 		for (int i = 0; i < mCharacters.size(); ++i)
 			mCharacters[i]->OnBeatChanged();
 	}

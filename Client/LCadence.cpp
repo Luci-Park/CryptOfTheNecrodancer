@@ -36,7 +36,7 @@ namespace cl
 	void Cadence::Initialize()
 	{
 		GameCharacter::Initialize();
-		mTransform->SetScale(Vector2::One * MapManager::UnitScale());
+		mTransform->SetScale(Vector2::One * UNITSCALE);
 		
 		//mSpriteRenderer = AddComponent<SpriteRenderer>();
 		//mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
@@ -66,7 +66,7 @@ namespace cl
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
 			if (success)
 			{
-				mMoveTarget.x -= MapManager::UnitLength();
+				mMoveTarget.x -= UNITLENGTH;
 				mSprite->Jump();
 				mIndex.x -= 1;
 			}
@@ -82,7 +82,7 @@ namespace cl
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
 			if (success)
 			{
-				mMoveTarget.x += MapManager::UnitLength();
+				mMoveTarget.x += UNITLENGTH;
 				mSprite->Jump();
 				mIndex.x += 1;
 			}
@@ -97,7 +97,7 @@ namespace cl
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
 			if (success)
 			{
-				mMoveTarget.y -= MapManager::UnitLength();
+				mMoveTarget.y -= UNITLENGTH;
 				mSprite->Jump();
 				mIndex.y -= 1;
 			}
@@ -111,7 +111,7 @@ namespace cl
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
 			if (success)
 			{
-				mMoveTarget.y += MapManager::UnitLength();
+				mMoveTarget.y += UNITLENGTH;
 				mSprite->Jump();
 				mIndex.y += 1;
 			}

@@ -80,6 +80,9 @@
     <Filter Include="Contents\Objects\Environment\Walls">
       <UniqueIdentifier>{7870289b-05e6-4758-95d1-f4e9d700905c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters">
+      <UniqueIdentifier>{643229b1-9f82-42bc-8ca1-97ba90931fbb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -172,9 +175,6 @@
     <ClInclude Include="LGameObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="LImage.h">
-      <Filter>Engine\Component\Sprites</Filter>
-    </ClInclude>
     <ClInclude Include="LInput.h">
       <Filter>Engine\Input</Filter>
     </ClInclude>
@@ -228,6 +228,12 @@
     </ClInclude>
     <ClInclude Include="LWallTile.h">
       <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClInclude>
+    <ClInclude Include="LSound.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="LImage.h">
+      <Filter>Engine\Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -313,9 +319,6 @@
     <ClCompile Include="LGameObject.cpp">
       <Filter>Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="LImage.cpp">
-      <Filter>Engine\Component\Sprites</Filter>
-    </ClCompile>
     <ClCompile Include="LInput.cpp">
       <Filter>Engine\Input</Filter>
     </ClCompile>
@@ -363,6 +366,12 @@
     </ClCompile>
     <ClCompile Include="LWallTile.cpp">
       <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClCompile>
+    <ClCompile Include="LSound.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="LImage.cpp">
+      <Filter>Engine\Resource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
