@@ -3,10 +3,13 @@
 #include "LSceneManager.h"
 #include "LInput.h"
 #include "LBeatManager.h"
+#include "LResources.h"
+#include "LAudioClip.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()
 		:Scene(L"Lobby")
+		, mBGM(nullptr)
 	{
 	}
 	LobbyScene::~LobbyScene()
@@ -14,6 +17,7 @@ namespace cl
 	}
 	void LobbyScene::Initialize()
 	{
+		mBGM = Resources::Load<AudioClip>(L"Lobby", L"..\\Assets\\Audio\\BGM\\Rhythmortis (Lobby).wav");
 		Scene::Initialize();
 	}
 	void LobbyScene::Update()
@@ -34,10 +38,12 @@ namespace cl
 		BeatManager::Reset();
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 		BeatManager::SetBPM(130);
+		mBGM->Play(true);
 	}
 	void LobbyScene::OnExit()
 	{
 		//MapManager::DestroyMap();
+		mBGM->Stop(true);
 		Scene::OnExit();
 	}
 }

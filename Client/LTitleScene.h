@@ -21,7 +21,6 @@ namespace cl
 		Image* mBackground;
 		Image* mButton;
 		AudioClip* mBGM;
-		float timer;
 	};
 }
 

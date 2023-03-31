@@ -2,6 +2,7 @@
 #include "LScene.h"
 namespace cl
 {
+	class AudioClip;
 	class BeatManager;
 	class LobbyScene : public Scene
 	{
@@ -15,6 +16,8 @@ namespace cl
 
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
+	private:
+		AudioClip* mBGM;
 	};
 }
 

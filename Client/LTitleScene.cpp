@@ -14,7 +14,7 @@ namespace cl
 		: Scene(L"Title")
 		, mBackground(nullptr)
 		, mButton(nullptr)
-		, timer(0.0f)
+		, mBGM(nullptr)
 	{
 	}
 	TitleScene::~TitleScene()
@@ -25,7 +25,6 @@ namespace cl
 		//mBackground = Resources::Load<Image>(L"Title", L"..\\Assets\\Arts\\Effects\\Title_Screen.bmp");
 		mButton = Resources::Load<Image>(L"ButtonTitle", L"..\\Assets\\Arts\\Effects\\Title_Screen_Button.bmp");
 		mBGM = Resources::Load<AudioClip>(L"1-3", L"..\\Assets\\Audio\\BGM\\Mausoleum Mash (1-3).wav");
-		//mBGM = Resources::Load<AudioClip>(L"1-3", L"..\\Assets\\Audio\\BGM\\Title Screen.wav");
 	}
 	void TitleScene::Update()
 	{
