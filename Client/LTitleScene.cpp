@@ -41,7 +41,7 @@ namespace cl
 	void TitleScene::OnEnter()
 	{
 		Camera::StartFadeIn();
-		mBGM->Play(true);
+		mBGM->SetPosition(15.5f, true);
 	}
 	void TitleScene::OnExit()
 	{
