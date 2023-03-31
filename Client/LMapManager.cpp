@@ -27,16 +27,6 @@ namespace cl
 	}
 	void MapManager::DestroyMap()
 	{
-		for (int i = 0; i < _size.y; ++i)
-		{
-			for (int j = 0; j < _size.x; ++j)
-			{
-				if (_Floor[i][j])
-					_Floor[i][j]->Destroy();
-				if (_ForeObjects[i][j])
-					_ForeObjects[i][j]->Destroy();
-			}
-		}
 		std::vector<std::vector<FloorTile*>> mFloor = std::vector<std::vector<FloorTile*>>();
 		std::vector<std::vector<TileObject*>> mForeObjects = std::vector<std::vector<TileObject*>>();
 		_size = Vector2::Zero;
@@ -72,6 +62,13 @@ namespace cl
 		{
 			_ForeObjects[dest.y][dest.x]->Interact(object);
 			return true;
+		}
+	}
+	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
+	{
+		if (_Floor[pos.y][pos.x] != nullptr)
+		{
+			_Floor[pos.y][pos.x]->OnInteract(object);
 		}
 	}
 #pragma endregion

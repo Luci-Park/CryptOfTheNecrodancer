@@ -7,6 +7,7 @@ namespace cl
 {
 	class SpriteRenderer;
 	class FloorStrategy;
+	class TileObject;
 	class FloorTile : public GameObject, public BeatObject
 	{
 #pragma region StaticInfo
@@ -71,7 +72,7 @@ namespace cl
 		Vector2 GetIndex() { return mIndex; }
 		virtual void OnBeat() override;
 		virtual void OnBeatChanged(){}
-		virtual void OnInteract();
+		virtual void OnInteract(TileObject* object) = 0;
 
 	protected:
 		Sprite GetSprite();
@@ -87,7 +88,7 @@ namespace cl
 		virtual ~GroundTile();
 
 		virtual void SetIndex(Vector2 index);
-
+		virtual void OnInteract(TileObject* object){}
 	};
 
 	class WaterTile : public FloorTile
@@ -96,6 +97,7 @@ namespace cl
 		WaterTile(Scene* sc);
 		virtual ~WaterTile();
 		virtual void SetIndex(Vector2 index);
+		virtual void OnInteract(TileObject* object) {}
 	};
 
 	class StairTile : public FloorTile
@@ -105,7 +107,7 @@ namespace cl
 		virtual ~StairTile();
 		virtual void SetIndex(Vector2 index);
 		virtual void OnBeat(){}
-		virtual void OnInteract();
+		virtual void OnInteract(TileObject* object);
 		void SetDestination(eSceneType type) { mMoveScene = type; }
 		void SetLock(bool isLocked) { mIsLocked = isLocked; }
 		bool IsLocked() { return mIsLocked; }

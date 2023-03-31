@@ -151,10 +151,6 @@ namespace cl
 		if (mCurrStrategy != nullptr)
 			return mCurrStrategy->GetSprite();
 	}
-
-	void FloorTile::OnInteract()
-	{
-	}
 #pragma endregion
 
 #pragma region Child - Ground Tile

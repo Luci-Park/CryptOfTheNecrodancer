@@ -24,6 +24,7 @@ namespace cl
 		Vector2 mPlayerIndex;
 		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<WallTile::eWallTypes>> mWallBluePrint;
+		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		std::vector<std::vector<FloorTile*>> mFloor;
 		std::vector<std::vector<TileObject*>> mForeObjects;
 

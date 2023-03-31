@@ -19,7 +19,7 @@ namespace cl
 		mIndex = index;
 	}
 	
-	void StairTile::OnInteract()
+	void StairTile::OnInteract(TileObject* object)
 	{
 		if (!mIsLocked)
 			SceneManager::LoadScene(mMoveScene);

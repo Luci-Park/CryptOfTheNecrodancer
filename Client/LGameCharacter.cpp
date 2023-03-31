@@ -1,13 +1,16 @@
 #include "LGameCharacter.h"
 #include "LBeatManager.h"
+#include "LMapManager.h"
 #include "LCharacterSprite.h"
 #include "LTime.h"
 namespace cl
 {
-	GameCharacter::GameCharacter(Scene* sc)
+	GameCharacter::GameCharacter(Scene* sc, bool isFlying)
 		: TileObject(sc)
 		, mMoveTarget(Vector2::Zero)
 		, mSprite(nullptr)
+		, mbIsMoving(false)
+		, mbIsFlying(isFlying)
 	{
 	}
 	GameCharacter::~GameCharacter()
@@ -23,8 +26,17 @@ namespace cl
 		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
-			mSprite->Reset();
+			if (mbIsMoving)
+			{
+				mbIsMoving = false;
+				mSprite->Reset();
+				if(!mbIsFlying)
+					MapManager::OnTileStep(this, mIndex);
+			}
 			Move();
+		}
+		else {
+			mbIsMoving = true;
 		}
 		TileObject::Update();
 	}

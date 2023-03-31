@@ -16,8 +16,6 @@ namespace cl
 	}
 	void Scene::Initialize()
 	{
-		SceneManager::SetActiveScene(this);
-		
 	}
 	void Scene::Update()
 	{
@@ -52,13 +50,13 @@ namespace cl
 
 	void Scene::OnEnter()
 	{
-	}
-	void Scene::OnExit()
-	{
 		for (int i = 0; i < mLayers.size(); ++i)
 		{
 			mLayers[i].Release();
 		}
+	}
+	void Scene::OnExit()
+	{
 	}
 	void Scene::AddGameObject(GameObject* obj, eLayerType layer)
 	{

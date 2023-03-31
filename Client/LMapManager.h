@@ -20,6 +20,7 @@ namespace cl
 		static void Render(HDC hdc);
 
 		static bool OnInteractObject(TileObject* object,Vector2 src, Vector2 destination);
+		static void OnTileStep(TileObject* object, Vector2 pos);
 
 		static float UnitLength() { return _unitLength * _unitScale; }
 		static float UnitScale() { return _unitScale; }

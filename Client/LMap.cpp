@@ -27,6 +27,12 @@ namespace cl
 					BeatManager::AddCharacters(mFloor[i][j]);
 			}
 		}
+		for (int i = 0; i < mStairPos.size(); ++i)
+		{
+			Vector2 pos = mStairPos[i].first;
+			StairTile* tile = dynamic_cast<StairTile*>(mFloor[pos.y][pos.x]);
+			tile->SetDestination(mStairPos[i].second);
+		}
 		return mFloor;
 	}
 
@@ -98,6 +104,9 @@ namespace cl
 		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
 		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
 		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
+
+		mStairPos.resize(1);
+		mStairPos[0] = { Vector2(5, 5), eSceneType::Splash };
 	}
 	
 	void LobbyMap::SetWall()

@@ -14,7 +14,7 @@ namespace cl
 
 		virtual void Interact(TileObject* object) = 0;
 		virtual void Dig(TileObject* object) = 0;
-		virtual void Attack(TileObject* object) = 0;
+		virtual void Attack(TileObject* object, Vector2 target) = 0;
 
 		void SetIndex(Vector2 index) { mIndex = index; }
 	protected:

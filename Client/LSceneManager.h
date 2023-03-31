@@ -14,12 +14,13 @@ namespace cl
 		static void Release();
 
 		static void LoadScene(eSceneType type);
+		static void LoadSceneAfterUpdate(eSceneType type);
 		static Scene* GetActiveScene() { return mActiveScene; }
-		static void SetActiveScene(Scene* scene) { mActiveScene = scene; }
 		
 	private:
 		static std::vector<Scene*> mScenes;
 		static Scene* mActiveScene;
 		static int sceneNum;
+		static eSceneType mQueuedScene;
 	};
 }

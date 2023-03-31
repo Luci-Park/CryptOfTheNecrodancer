@@ -30,13 +30,14 @@ namespace cl
 
 	void LobbyScene::OnEnter()
 	{
+		Scene::OnEnter();
 		BeatManager::Reset();
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 		BeatManager::SetBPM(130);
 	}
 	void LobbyScene::OnExit()
 	{
-		MapManager::DestroyMap();
+		//MapManager::DestroyMap();
 		Scene::OnExit();
 	}
 }

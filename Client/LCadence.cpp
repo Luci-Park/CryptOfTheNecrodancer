@@ -24,7 +24,7 @@ namespace cl
 		_heartCount = 3;
 	}
 	Cadence::Cadence(Scene* scene)
-		: GameCharacter(scene)
+		: GameCharacter(scene, false)
 		, mSpriteRenderer(nullptr)
 		, mAttackEffect(nullptr)
 	{
@@ -59,6 +59,7 @@ namespace cl
 	{
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
+			pressedPos = Vector2::Left;
 			mSprite->Turn(Vector2::Left);
 			Vector2 dest = mIndex;
 			dest.x -= 1;
@@ -74,6 +75,7 @@ namespace cl
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
+			pressedPos = Vector2::Right;
 			mSprite->Turn(Vector2::Right);
 			Vector2 dest = mIndex;
 			dest.x += 1;
@@ -89,6 +91,7 @@ namespace cl
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
+			pressedPos = Vector2::Up;
 			Vector2 dest = mIndex;
 			dest.y -= 1;
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
@@ -102,6 +105,7 @@ namespace cl
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
+			pressedPos = Vector2::Down;
 			Vector2 dest = mIndex;
 			dest.y += 1;
 			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
@@ -112,31 +116,6 @@ namespace cl
 				mIndex.y += 1;
 			}
 			BeatManager::OnPlayerMove();
-		}
-		if (Input::GetKeyDown(eKeyCode::Q))
-		{
-			Camera::StartShake();
-			mAttackEffect->Attack(Vector2::Up);
-		}
-
-		if (Input::GetKeyDown(eKeyCode::E))
-		{
-			Camera::StartShake();
-			mAttackEffect->Attack(Vector2::Down);
-		}
-
-		if (Input::GetKeyDown(eKeyCode::R))
-		{
-			Camera::StartShake();
-			mSprite->Turn(Vector2::Left);
-			mAttackEffect->Attack(Vector2::Left);
-		}
-
-		if (Input::GetKeyDown(eKeyCode::T))
-		{
-			Camera::StartShake();
-			mSprite->Turn(Vector2::Right);
-			mAttackEffect->Attack(Vector2::Right);
 		}
 	}
 	void Cadence::OnBeat()
@@ -150,17 +129,22 @@ namespace cl
 	void Cadence::Interact(TileObject* object)
 	{
 		if (object != nullptr)
-			object->Attack(this);
+			object->Attack(this, mIndex);
 	}
 	void Cadence::Dig(TileObject* object)
 	{
 		WallTile* tile = dynamic_cast<WallTile*>(object);
 		if (tile != nullptr)
 		{
-			tile->OnDig(mDigPower);
+			if (tile->OnDig(mDigPower))
+			{
+				Camera::StartShake();
+			}
 		}
 	}
-	void Cadence::Attack(TileObject* object)
+	void Cadence::Attack(TileObject* object, Vector2 target)
 	{
+		Camera::StartShake();
+		mAttackEffect->Attack(pressedPos);
 	}
 }
