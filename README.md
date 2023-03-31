@@ -31,3 +31,4 @@ WindowAPI Project (2/14 ~ )
     * objects in ```foreground``` layer must render their children.
 * ```Player``` can interact with ```Wall```.
 * ```Player``` movement is the beat.
+* BGM added to title screen and lobby.

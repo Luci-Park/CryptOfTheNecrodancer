@@ -23,14 +23,14 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void Move() override;
 		virtual void OnBeat() override;
 		virtual void OnBeatChanged() override;
-
-		virtual void Interact(TileObject* object) override;
+		
 		virtual void Dig(TileObject* object) override;
 		virtual void Attack(TileObject* object, Vector2 target) override;
+		virtual void OnAttacked();
 
+		void Move();
 	private:
 		SpriteRenderer* mSpriteRenderer;
 		CadenceAttackEffect* mAttackEffect;

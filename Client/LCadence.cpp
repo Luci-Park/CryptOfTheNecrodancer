@@ -50,6 +50,11 @@ namespace cl
 	void Cadence::Update()
 	{
 		GameCharacter::Update();
+		if (!mbIsMoving)
+		{
+			mSprite->Reset();
+			Move();
+		}
 	}
 	void Cadence::Render(HDC hdc)
 	{
@@ -126,11 +131,7 @@ namespace cl
 		mAttackEffect->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
 	}
-	void Cadence::Interact(TileObject* object)
-	{
-		if (object != nullptr)
-			object->Attack(this, mIndex);
-	}
+	
 	void Cadence::Dig(TileObject* object)
 	{
 		WallTile* tile = dynamic_cast<WallTile*>(object);
@@ -146,5 +147,8 @@ namespace cl
 	{
 		Camera::StartShake();
 		mAttackEffect->Attack(pressedPos);
+	}
+	void Cadence::OnAttacked()
+	{
 	}
 }

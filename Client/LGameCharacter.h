@@ -15,13 +15,15 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void Move() = 0;
 		virtual void OnBeatChanged();
+		virtual void OnAttacked() = 0;
+		virtual void Interact(TileObject* object)override;
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;
 		bool mbIsMoving;
 		bool mbIsFlying;
+	private:
 	};
 }
 

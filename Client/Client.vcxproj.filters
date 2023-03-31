@@ -238,6 +238,12 @@
     <ClInclude Include="LAudioDevice.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="LMonster.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="LBehaviorTree.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -378,6 +384,12 @@
     </ClCompile>
     <ClCompile Include="LAudioDevice.cpp">
       <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonster.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="LBehaviorTree.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
