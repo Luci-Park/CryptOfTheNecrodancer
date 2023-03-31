@@ -229,10 +229,13 @@
     <ClInclude Include="LWallTile.h">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClInclude>
-    <ClInclude Include="LSound.h">
+    <ClInclude Include="LAudioClip.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="LImage.h">
+      <Filter>Engine\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="LAudioDevice.h">
       <Filter>Engine\Resource</Filter>
     </ClInclude>
   </ItemGroup>
@@ -367,10 +370,13 @@
     <ClCompile Include="LWallTile.cpp">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClCompile>
-    <ClCompile Include="LSound.cpp">
+    <ClCompile Include="LAudioClip.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
     <ClCompile Include="LImage.cpp">
+      <Filter>Engine\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="LAudioDevice.cpp">
       <Filter>Engine\Resource</Filter>
     </ClCompile>
   </ItemGroup>

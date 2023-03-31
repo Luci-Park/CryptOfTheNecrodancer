@@ -65,11 +65,6 @@ namespace cl
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
 	}
-
-	Vector2 Map::GetStartPos()
-	{
-		return Vector2(mPlayerIndex.x * UNITLENGTH, mPlayerIndex.y * UNITLENGTH);
-	}
 #pragma endregion
 
 #pragma region Lobby Map Class

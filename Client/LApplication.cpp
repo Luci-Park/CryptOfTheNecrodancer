@@ -1,8 +1,9 @@
 #include "LApplication.h"
+#include "LAudioDevice.h"
 #include "LSceneManager.h"
+#include "LCollisionManager.h"
 #include "LTime.h"
 #include "LInput.h"
-#include "LCollisionManager.h"
 #include "LCamera.h"
 #include "LResources.h"
 #include "LImage.h"
@@ -31,7 +32,7 @@ namespace cl
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		SetWindowPos(mHwnd
-			, nullptr, 10, 10
+			, nullptr, 10, 1900
 			, rect.right - rect.left
 			, rect.bottom - rect.top
 			, 0);
@@ -46,6 +47,7 @@ namespace cl
 
 		Time::Initiailize();
 		Input::Initialize();
+		SoundDevice::Initialize();
 		SceneManager::Initialize();
 		Camera::Initiailize();
 	}

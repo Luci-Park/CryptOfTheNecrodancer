@@ -166,7 +166,8 @@
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LScene.h" />
     <ClInclude Include="LSceneManager.h" />
-    <ClInclude Include="LSound.h" />
+    <ClInclude Include="LAudioClip.h" />
+    <ClInclude Include="LAudioDevice.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
     <ClInclude Include="LSpriteRenderer.h" />
@@ -212,7 +213,8 @@
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />
     <ClCompile Include="LSceneManager.cpp" />
-    <ClCompile Include="LSound.cpp" />
+    <ClCompile Include="LAudioClip.cpp" />
+    <ClCompile Include="LAudioDevice.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LStairTile.cpp" />

@@ -3,6 +3,7 @@
 namespace cl
 {
 	class Image;
+	class AudioClip;
 	class TitleScene : public Scene
 	{
 	public:
@@ -19,6 +20,7 @@ namespace cl
 	private:
 		Image* mBackground;
 		Image* mButton;
+		AudioClip* mBGM;
 		float timer;
 	};
 }
