@@ -13,7 +13,7 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		void OnBeatChanged();
-		void Attack(Vector2 dir);
+		void OnAttack(Vector2 dir);
 	private:
 		Animator* mAnimator;
 	};

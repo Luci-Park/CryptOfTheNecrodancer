@@ -126,6 +126,8 @@ namespace cl
 		mWallBluePrint[1][11] = WallTile::eWallTypes::GoldWall;
 		mWallBluePrint[11][1] = WallTile::eWallTypes::GoldWall;
 		mWallBluePrint[11][11] = WallTile::eWallTypes::GoldWall;
+
+		mWallBluePrint[2][2] = WallTile::eWallTypes::DirtWall;
 	}
 #pragma endregion
 }

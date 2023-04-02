@@ -136,11 +136,14 @@
     <ClInclude Include="LAnimator.h" />
     <ClInclude Include="LApplication.h" />
     <ClInclude Include="LBeatObject.h" />
+    <ClInclude Include="LBlueSlime.h" />
+    <ClInclude Include="LBlueSlimeSprite.h" />
     <ClInclude Include="LBodyItem.h" />
     <ClInclude Include="LCadence.h" />
     <ClInclude Include="LCadenceAttackEffect.h" />
     <ClInclude Include="LCadenceBody.h" />
     <ClInclude Include="LCadenceHead.h" />
+    <ClInclude Include="LCadenceShovelEffect.h" />
     <ClInclude Include="LCadenceSprite.h" />
     <ClInclude Include="LCamera.h" />
     <ClInclude Include="LCharacterSprite.h" />
@@ -170,6 +173,7 @@
     <ClInclude Include="LSceneManager.h" />
     <ClInclude Include="LAudioClip.h" />
     <ClInclude Include="LAudioDevice.h" />
+    <ClInclude Include="LShovel.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
     <ClInclude Include="LSpriteRenderer.h" />
@@ -188,10 +192,13 @@
     <ClCompile Include="LAnimation.cpp" />
     <ClCompile Include="LAnimator.cpp" />
     <ClCompile Include="LApplication.cpp" />
+    <ClCompile Include="LBlueSlime.cpp" />
+    <ClCompile Include="LBlueSlimeSprite.cpp" />
     <ClCompile Include="LCadence.cpp" />
     <ClCompile Include="LCadenceAttackEffect.cpp" />
     <ClCompile Include="LCadenceBody.cpp" />
     <ClCompile Include="LCadenceHead.cpp" />
+    <ClCompile Include="LCadenceShovelEffect.cpp" />
     <ClCompile Include="LCadenceSprite.cpp" />
     <ClCompile Include="LCamera.cpp" />
     <ClCompile Include="LCharacterSprite.cpp" />
@@ -219,6 +226,7 @@
     <ClCompile Include="LSceneManager.cpp" />
     <ClCompile Include="LAudioClip.cpp" />
     <ClCompile Include="LAudioDevice.cpp" />
+    <ClCompile Include="LShovel.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LStairTile.cpp" />

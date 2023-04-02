@@ -83,6 +83,12 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters">
       <UniqueIdentifier>{643229b1-9f82-42bc-8ca1-97ba90931fbb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes">
+      <UniqueIdentifier>{067f1840-2e46-403b-a2e8-7b10582ce1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime">
+      <UniqueIdentifier>{49246ea0-6b7f-4594-aeac-27a791a68660}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -244,6 +250,18 @@
     <ClInclude Include="LBehaviorTree.h">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClInclude>
+    <ClInclude Include="LBlueSlime.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LBlueSlimeSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LShovel.h">
+      <Filter>Contents\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceShovelEffect.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -390,6 +408,18 @@
     </ClCompile>
     <ClCompile Include="LBehaviorTree.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="LBlueSlime.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LBlueSlimeSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LShovel.cpp">
+      <Filter>Contents\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceShovelEffect.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

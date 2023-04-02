@@ -26,7 +26,7 @@ namespace cl
 	{
 		for (Component* comp : mComponents)
 		{
-			if (comp == nullptr)
+			if (comp == nullptr || !comp->IsActive())
 				continue;
 
 			comp->Initialize();
@@ -37,7 +37,7 @@ namespace cl
 	{
 		for (Component* comp : mComponents)
 		{
-			if (comp == nullptr)
+			if (comp == nullptr || !comp->IsActive())
 				continue;
 
 			comp->Update();
@@ -48,7 +48,7 @@ namespace cl
 	{
 		for (Component* comp : mComponents)
 		{
-			if (comp == nullptr)
+			if (comp == nullptr || !comp->IsActive())
 				continue;
 
 			comp->Render(hdc);

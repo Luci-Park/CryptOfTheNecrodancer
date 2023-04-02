@@ -40,8 +40,6 @@ namespace cl
 	}
 	Sprite FloorTile::GetFloorSprite(eSpriteCategories type)
 	{
-		std::random_device rd;
-		std::mt19937 gen(rd());
 		UINT min, max;
 		switch (type)
 		{
@@ -71,8 +69,7 @@ namespace cl
 			return GetFloorTile(eSpriteTypes::OpenedStairs);
 			break;
 		}
-		std::uniform_int_distribution<> distrib(min, max);
-		int randomNumber = distrib(gen);
+		int randomNumber = GetRandomInt(min, max);
 		return GetFloorTile((eSpriteTypes)randomNumber);
 	}
 	FloorTile* FloorTile::CreateFloor(eFloorTypes type, Vector2 index, Scene* sc)

@@ -29,6 +29,7 @@ namespace cl
 			if (mbIsMoving)
 			{
 				mbIsMoving = false;
+				mSprite->Reset();
 				if (!mbIsFlying)
 					MapManager::OnTileStep(this, mIndex);
 			}
@@ -47,7 +48,8 @@ namespace cl
 	
 	void GameCharacter::OnBeatChanged()
 	{
-		mSprite->OnBeatChanged();
+		if(mSprite != nullptr)
+			mSprite->OnBeatChanged();
 	}
 	void GameCharacter::Interact(TileObject* object)
 	{

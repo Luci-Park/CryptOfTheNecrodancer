@@ -37,6 +37,7 @@ namespace cl
 		if (!mbIsJumping)
 		{
 			mbIsJumping = true;
+			mbDirIsUp = true;
 			return;
 		}
 		Vector2 target = mbDirIsUp ? Vector2::Up * UNITLENGTH * 0.5 : Vector2::Zero;

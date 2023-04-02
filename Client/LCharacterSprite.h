@@ -15,9 +15,8 @@ namespace cl
 
 		virtual void Turn(Vector2 dir) = 0;
 		virtual void OnBeatChanged() = 0;
-
 		void Reset();
-		void Jump();
+		virtual void Jump();
 	protected:
 		bool mbIsJumping;
 		bool mbDirIsUp;

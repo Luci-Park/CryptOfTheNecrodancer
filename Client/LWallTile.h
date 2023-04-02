@@ -5,6 +5,7 @@
 namespace cl
 {
 	class SpriteRenderer;
+	class AudioClip;
 	class WallTile : public TileObject
 	{
 #pragma region Static Info
@@ -16,8 +17,7 @@ namespace cl
 			StoneWall,
 			BossWall,
 			GoldWall,
-			DoorHorizontal,
-			DoorVertical,
+			Door,
 			Border,
 			None
 		};
@@ -84,17 +84,29 @@ namespace cl
 		virtual void OnDestroy();
 
 		bool OnDig(int digPower);
+		Vector2 GetPlateCenter();
+		eWallTypes GetWallType() { return mWallType; }
 	protected:
 		SpriteRenderer* mSpriteRenderer;
 		int mHardness;
 		Sprite mWallSprite;
+		eWallTypes mWallType;
+		AudioClip* mDigClip;
+		AudioClip* mDigFailedClip;
 	};
 
-	class GoldTile : public WallTile
+	class GoldWall : public WallTile
 	{
 	public:
-		GoldTile(Scene* sc);
-		~GoldTile(){}
+		GoldWall(Scene* sc);
+		~GoldWall(){}
+		virtual void OnDestroy() override;
+	};
+	class DirtWall : public WallTile
+	{
+	public:
+		DirtWall(Scene* sc);
+		~DirtWall() {}
 		virtual void OnDestroy() override;
 	};
 

@@ -40,7 +40,7 @@ namespace cl
 		mAnimator->SetDuration(BeatManager::BeatDuration() * 0.25);
 	}
 
-	void CadenceAttackEffect::Attack(Vector2 dir)
+	void CadenceAttackEffect::OnAttack(Vector2 dir)
 	{
 		if (dir == Vector2::Right)
 		{

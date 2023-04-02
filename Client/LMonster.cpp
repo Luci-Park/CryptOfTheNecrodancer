@@ -14,6 +14,12 @@ namespace cl
 	{
 		mHealth = mMaxHealth;
 	}
+	void Monster::OnBeat()
+	{
+	}
+	void Monster::OnBeatChanged()
+	{
+	}
 	void Monster::Dig(TileObject* object)
 	{
 		WallTile* tile = dynamic_cast<WallTile*>(object);
@@ -25,5 +31,8 @@ namespace cl
 			else {
 			}
 		}
+	}
+	void Monster::Attack(TileObject* object, Vector2 target)
+	{
 	}
 }

@@ -3,6 +3,7 @@
 #include "LResources.h"
 #include "LObject.h"
 #include "LMapManager.h"
+#include "LAudioClip.h"
 namespace cl
 {
 #pragma region Static Info
@@ -53,7 +54,10 @@ namespace cl
 		switch (type)
 		{
 		case eWallTypes::GoldWall:
-			reslt = object::Instantiate<GoldTile>(sc, pos, eLayerType::Foreground);
+			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Foreground);
+			break;
+		case eWallTypes::DirtWall:
+			reslt = object::Instantiate<DirtWall>(sc, pos, eLayerType::Foreground);
 			break;
 		default:
 			return nullptr;
@@ -64,8 +68,6 @@ namespace cl
 
 	Sprite WallTile::GetWallSprite(eWallTypes type)
 	{
-		std::random_device rd;
-		std::mt19937 gen(rd());
 		UINT min, max;
 		switch (type)
 		{
@@ -90,22 +92,12 @@ namespace cl
 		case eWallTypes::GoldWall:
 			return GetWallSprite(eWallSpriteTypes::GoldWall);
 			break;
-
-		case eWallTypes::DoorHorizontal:
-			return GetWallSprite(eWallSpriteTypes::DoorHorizontal);
-			break;
-
-		case eWallTypes::DoorVertical:
-			return GetWallSprite(eWallSpriteTypes::DoorVertical);
-			break;
-
 		case eWallTypes::Border:
 			min = (UINT)eWallSpriteTypes::Border1;
 			max = (UINT)eWallSpriteTypes::Border8;
 			break;
 		}
-		std::uniform_int_distribution<> distrib(min, max);
-		int randomNumber = distrib(gen);
+		int randomNumber = GetRandomInt(min, max);
 		return GetWallSprite((eWallSpriteTypes)randomNumber);
 	}
 
@@ -134,6 +126,7 @@ namespace cl
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Walls", L"..\\Assets\\Arts\\Stage Elements\\Walls.bmp"));
 		mSpriteRenderer->SetSprite(mWallSprite);
+		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
 		TileObject::Initialize();
 	}
 
@@ -150,25 +143,49 @@ namespace cl
 	{
 		if (digPower >= mHardness)
 		{
+			mDigClip->Play(false);
 			OnDestroy();
 			return true;
 		}
+		mDigFailedClip->Play(false);
 		return false;
+	}
+	Vector2 WallTile::GetPlateCenter()
+	{
+		Vector2 pos = mTransform->GetPos();
+		pos.y -= 15 * UNITSCALE;
+		return pos;
 	}
 #pragma endregion
 
 #pragma region GoldTile
-	GoldTile::GoldTile(Scene* sc)
+	GoldWall::GoldWall(Scene* sc)
 		:WallTile(sc)
 	{
 		mHardness = 4;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::GoldWall);
+		mWallType = eWallTypes::GoldWall;
+		mDigClip = Resources::Load<AudioClip>(L"BrickDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
 	}
-	void GoldTile::OnDestroy()
+	void GoldWall::OnDestroy()
 	{
 		WallTile::OnDestroy();
 	}
 #pragma endregion
 
+
+	DirtWall::DirtWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 1;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::DirtWall);
+		mWallType = eWallTypes::DirtWall;
+		mDigClip = Resources::Load<AudioClip>(L"DirtDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_dirt.wav");
+	}
+
+	void DirtWall::OnDestroy()
+	{
+		WallTile::OnDestroy();
+	}
 
 }

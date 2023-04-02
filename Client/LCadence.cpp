@@ -1,6 +1,7 @@
 #include "LCadence.h"
 #include "LCadenceSprite.h"
 #include "LCadenceAttackEffect.h"
+#include "LCadenceShovelEffect.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
 #include "LObject.h"
@@ -9,6 +10,9 @@
 #include "LTime.h"
 #include "LSpriteRenderer.h"
 #include "LWallTile.h"
+#include "LShovel.h"
+#include "LResources.h"
+#include "LAudioClip.h"
 namespace cl
 {
 	int Cadence::_attackPower = 1;
@@ -28,9 +32,14 @@ namespace cl
 		, mSpriteRenderer(nullptr)
 		, mAttackEffect(nullptr)
 	{
+		Camera::SetTarget(this);
+		shovel = new Shovel();
+		SetDigClip();
 	}
 	Cadence::~Cadence()
 	{
+		delete shovel; shovel = nullptr;
+
 		Camera::SetTarget(nullptr);
 	}
 	void Cadence::Initialize()
@@ -44,15 +53,13 @@ namespace cl
 		
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Foreground);
 		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
-
-		//Camera::SetTarget(this);
+		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 	}
 	void Cadence::Update()
 	{
 		GameCharacter::Update();
 		if (!mbIsMoving)
 		{
-			mSprite->Reset();
 			Move();
 		}
 	}
@@ -64,6 +71,7 @@ namespace cl
 	{
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
+			mShovelEffect->Reset();
 			pressedPos = Vector2::Left;
 			mSprite->Turn(Vector2::Left);
 			Vector2 dest = mIndex;
@@ -80,6 +88,7 @@ namespace cl
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
+			mShovelEffect->Reset();
 			pressedPos = Vector2::Right;
 			mSprite->Turn(Vector2::Right);
 			Vector2 dest = mIndex;
@@ -96,6 +105,7 @@ namespace cl
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
+			mShovelEffect->Reset();
 			pressedPos = Vector2::Up;
 			Vector2 dest = mIndex;
 			dest.y -= 1;
@@ -110,6 +120,7 @@ namespace cl
 		}
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
+			mShovelEffect->Reset();
 			pressedPos = Vector2::Down;
 			Vector2 dest = mIndex;
 			dest.y += 1;
@@ -123,6 +134,24 @@ namespace cl
 			BeatManager::OnPlayerMove();
 		}
 	}
+	void Cadence::SetDigClip()
+	{
+		std::wstring key = L"dig_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Cadence\\Dig\\vo_cad_";
+
+		for (int i = 0; i < 6; ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mDigClip[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void Cadence::PlayDigClip()
+	{
+		int random = GetRandomInt(0, 5);
+		mDigClip[random]->SetVolume(25.f);
+		mDigClip[random]->Play(false);
+	}
 	void Cadence::OnBeat()
 	{
 	}
@@ -135,10 +164,13 @@ namespace cl
 	void Cadence::Dig(TileObject* object)
 	{
 		WallTile* tile = dynamic_cast<WallTile*>(object);
-		if (tile != nullptr)
+		if (shovel != nullptr)
 		{
-			if (tile->OnDig(mDigPower))
+			mShovelEffect->OnDig(tile, shovel);
+			bool success = shovel->Dig(tile);
+			if (success)
 			{
+				PlayDigClip();
 				Camera::StartShake();
 			}
 		}
@@ -146,7 +178,7 @@ namespace cl
 	void Cadence::Attack(TileObject* object, Vector2 target)
 	{
 		Camera::StartShake();
-		mAttackEffect->Attack(pressedPos);
+		mAttackEffect->OnAttack(pressedPos);
 	}
 	void Cadence::OnAttacked()
 	{
