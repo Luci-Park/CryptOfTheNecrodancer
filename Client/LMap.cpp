@@ -95,9 +95,9 @@ namespace cl
 
 		mFloorBluePrint[5][5] = FloorTile::eFloorTypes::OpenedStairs;
 
-		mFloorBluePrint[0][12] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[12][0] = FloorTile::eFloorTypes::None;
-		mFloorBluePrint[12][12] = FloorTile::eFloorTypes::None;
+		mFloorBluePrint[3][5] = FloorTile::eFloorTypes::Water;
+		mFloorBluePrint[3][4] = FloorTile::eFloorTypes::Water;
+		mFloorBluePrint[3][3] = FloorTile::eFloorTypes::Water;
 
 		mStairPos.resize(1);
 		mStairPos[0] = { Vector2(5, 5), eSceneType::Splash };

@@ -81,7 +81,8 @@ namespace cl
 		virtual void Interact(TileObject* object) override;
 		virtual void Dig(TileObject* object) override{}
 		virtual void Attack(TileObject* object, Vector2 target)override{}
-		virtual void OnDestroy();
+		virtual void Sink() override {}
+		virtual void OnDestroy() override;;
 
 		bool OnDig(int digPower);
 		Vector2 GetPlateCenter();

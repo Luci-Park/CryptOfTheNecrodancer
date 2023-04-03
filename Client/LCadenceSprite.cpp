@@ -40,4 +40,9 @@ namespace cl
 		mHead->SetDuration(dur);
 		mBody->SetDuration(dur);
 	}
+	void CadenceSprite::Sink()
+	{
+		CharacterSprite::Sink();
+		mBody->Sink();
+	}
 }

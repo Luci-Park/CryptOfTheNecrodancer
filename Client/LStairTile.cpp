@@ -11,6 +11,11 @@ namespace cl
 
 	StairTile::~StairTile()
 	{
+		if (mCurrStrategy != nullptr)
+		{
+			delete mCurrStrategy;
+			mCurrStrategy = nullptr;
+		}
 	}
 	
 	void StairTile::SetIndex(Vector2 index)

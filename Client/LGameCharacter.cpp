@@ -56,4 +56,9 @@ namespace cl
 		if (object != nullptr)
 			object->Attack(this, mIndex);
 	}
+	void GameCharacter::Sink()
+	{
+		mSprite->Sink();
+		mbIsSinked = true;
+	}
 }

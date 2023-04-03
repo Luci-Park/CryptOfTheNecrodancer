@@ -3,10 +3,10 @@
 #include "LSprite.h"
 #include "LGameObject.h"
 #include "LBeatObject.h"
+#include "LFloorStrategy.h"
 namespace cl
 {
 	class SpriteRenderer;
-	class FloorStrategy;
 	class TileObject;
 	class FloorTile : public GameObject, public BeatObject
 	{
@@ -15,6 +15,7 @@ namespace cl
 		enum class eFloorTypes
 		{
 			Ground,
+			Flash,
 			Water,
 			ClosedStairs,
 			OpenedStairs,
@@ -70,10 +71,12 @@ namespace cl
 		
 		virtual void SetIndex(Vector2 index) = 0;
 		Vector2 GetIndex() { return mIndex; }
-		virtual void OnBeat() override;
+		virtual void OnBeat() = 0;
 		virtual void OnBeatChanged(){}
-		virtual void OnInteract(TileObject* object) = 0;
+		virtual void OnInteract(TileObject* object);
 
+		virtual void SetFloorType(eFloorTypes type) { mType = type; }
+		eFloorTypes GetFloorType() { return mType; }
 	protected:
 		Sprite GetSprite();
 		FloorStrategy* mCurrStrategy;
@@ -86,18 +89,11 @@ namespace cl
 	public:
 		GroundTile(Scene* sc);
 		virtual ~GroundTile();
-
-		virtual void SetIndex(Vector2 index);
-		virtual void OnInteract(TileObject* object){}
-	};
-
-	class WaterTile : public FloorTile
-	{
-	public:
-		WaterTile(Scene* sc);
-		virtual ~WaterTile();
-		virtual void SetIndex(Vector2 index);
-		virtual void OnInteract(TileObject* object) {}
+		virtual void Update() override;
+		virtual void SetIndex(Vector2 index) override;
+		virtual void OnBeat() override;
+	private:
+		FloorStrategy* mStrategy[(int)eFloorTypes::None];
 	};
 
 	class StairTile : public FloorTile
@@ -107,7 +103,7 @@ namespace cl
 		virtual ~StairTile();
 		virtual void SetIndex(Vector2 index);
 		virtual void OnBeat(){}
-		virtual void OnInteract(TileObject* object);
+		virtual void OnInteract(TileObject* object) override;
 		void SetDestination(eSceneType type) { mMoveScene = type; }
 		void SetLock(bool isLocked) { mIsLocked = isLocked; }
 		bool IsLocked() { return mIsLocked; }

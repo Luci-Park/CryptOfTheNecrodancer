@@ -1,7 +1,6 @@
 #include "LFloorTile.h"
 #include "LSpriteRenderer.h"
 #include "LResources.h"
-#include "LFloorStrategy.h"
 #include "LObject.h"
 #include "LMapManager.h"
 namespace cl
@@ -80,9 +79,11 @@ namespace cl
 		{
 		case eFloorTypes::Ground:
 			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
+			reslt->SetFloorType(eFloorTypes::Ground);
 			break;
 		case eFloorTypes::Water:
-			reslt = object::Instantiate<WaterTile>(sc, pos, eLayerType::Background);
+			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
+			reslt->SetFloorType(eFloorTypes::Water);
 			break;
 		case eFloorTypes::ClosedStairs:
 			reslt = object::Instantiate<StairTile>(sc, pos, eLayerType::Background);
@@ -107,11 +108,6 @@ namespace cl
 	}
 
 	FloorTile::~FloorTile(){
-		if (mCurrStrategy != nullptr)
-		{
-			delete mCurrStrategy;
-			mCurrStrategy = nullptr;
-		}
 	}
 
 	void FloorTile::Initialize()
@@ -137,10 +133,10 @@ namespace cl
 		GameObject::Render(hdc);
 	}
 
-	void FloorTile::OnBeat()
+	void FloorTile::OnInteract(TileObject* object)
 	{
-		if (mCurrStrategy != nullptr)
-			mCurrStrategy->OnBeat();
+		if(mCurrStrategy != nullptr)
+			mCurrStrategy->OnInteract(object);
 	}
 
 	Sprite FloorTile::GetSprite()
@@ -157,25 +153,34 @@ namespace cl
 	}
 	GroundTile::~GroundTile()
 	{
+		for (int i = 0; i < (int)eFloorTypes::None; ++i)
+		{
+			if (mStrategy[i] != nullptr)
+			{
+				delete mStrategy[i];
+				mStrategy[i] = nullptr;
+			}
+		}
+	}
+	void GroundTile::Update()
+	{
+		mCurrStrategy = mStrategy[(int)mType];
+		FloorTile::Update();
 	}
 	void GroundTile::SetIndex(Vector2 index)
 	{
 		mIndex = index;
-		mCurrStrategy = new GroundStrategy(this);
-	}
-#pragma endregion
+		mStrategy[(int)eFloorTypes::Ground] = new GroundStrategy(this);
+		mStrategy[(int)eFloorTypes::Flash] = new FlashStrategy(this);
+		mStrategy[(int)eFloorTypes::Water] = new WaterStrategy(this);
 
-#pragma region Child - Water Tile
-	WaterTile::WaterTile(Scene* sc)
-		:FloorTile(sc)
-	{
+		mCurrStrategy = mStrategy[(int)mType];
 	}
-	WaterTile::~WaterTile()
+	void GroundTile::OnBeat()
 	{
-	}
-	void WaterTile::SetIndex(Vector2 index)
-	{
-		mIndex = index;
+		mStrategy[(int)eFloorTypes::Ground]->OnBeat();
+		mStrategy[(int)eFloorTypes::Flash]->OnBeat();
+		mStrategy[(int)eFloorTypes::Water]->OnBeat();
 	}
 #pragma endregion
 }

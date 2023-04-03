@@ -15,8 +15,11 @@ namespace cl
 
 		virtual void Turn(Vector2 dir) = 0;
 		virtual void OnBeatChanged() = 0;
-		void Reset();
+
 		virtual void Jump();
+		virtual void Sink();
+		virtual void UnSink();
+		void Reset();
 	protected:
 		bool mbIsJumping;
 		bool mbDirIsUp;

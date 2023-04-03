@@ -46,6 +46,9 @@ namespace cl
 	{
 		mAnimator->SetDuration(dur);
 	}
+	void CadenceBody::Sink()
+	{
+	}
 	void CadenceBody::PlayRight()
 	{
 		if (!mAnimator->IsAnimationPlaying(mRightAnimation))

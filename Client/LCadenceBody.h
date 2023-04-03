@@ -17,6 +17,7 @@ namespace cl
 		void Flip(Vector2 dir) { mDir = dir; }
 		void Reset();
 		void SetDuration(float dur);
+		void Sink();
 	private:
 		void PlayRight();
 		void PlayLeft();

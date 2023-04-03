@@ -18,6 +18,8 @@ namespace cl
 		virtual void Turn(Vector2 dir) override;
 		
 		virtual void OnBeatChanged() override;
+
+		virtual void Sink() override;
 	private:
 		CadenceHead* mHead;
 		CadenceBody* mBody;		

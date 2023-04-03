@@ -13,6 +13,10 @@ namespace cl
 	public:
 		static void Reset();
 		static Vector2 GetIndex() { return _mIndex; }
+		enum class PlayerInput
+		{
+			Up, Down, Left, Right, None
+		};
 	private:
 		static int _attackPower;
 		static int _digPower;
@@ -30,13 +34,18 @@ namespace cl
 
 		virtual void OnBeat() override;
 		virtual void OnBeatChanged() override;
+		virtual void OnAttacked() override;
 		
 		virtual void Dig(TileObject* object) override;
 		virtual void Attack(TileObject* object, Vector2 target) override;
-		virtual void OnAttacked();
+		virtual void OnDestroy() override;
+
 
 	private:
+		void GetInput();
+		void SetSprite();
 		void Move();
+		bool UnSink();
 		void SetDigClip();
 		void PlayDigClip();
 	private:
@@ -44,7 +53,7 @@ namespace cl
 		SpriteRenderer* mSpriteRenderer;
 		CadenceAttackEffect* mAttackEffect;
 		CadenceShovelEffect* mShovelEffect;
-		Vector2 pressedPos;
+		PlayerInput mInput;
 		
 		AudioClip* mDigClip[6];
 	};

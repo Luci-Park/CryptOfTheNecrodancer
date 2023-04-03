@@ -15,12 +15,11 @@ namespace cl
 		virtual void Interact(TileObject* object) = 0;
 		virtual void Dig(TileObject* object) = 0;
 		virtual void Attack(TileObject* object, Vector2 target) = 0;
+		virtual void Sink() = 0;
+		virtual void OnDestroy() = 0;
 
 		void SetIndex(Vector2 index) { mIndex = index; }
 	protected:
-		int mDigPower;
-		int mAttackPower;
-		int mDefense;
 		Vector2 mIndex;
 	};
 }

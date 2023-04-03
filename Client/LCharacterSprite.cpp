@@ -48,4 +48,12 @@ namespace cl
 		}
 		mTransform->SetLocalPos(Vector2::MoveTowards(mTransform->GetLocalPos(), target, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
 	}
+	void CharacterSprite::Sink()
+	{
+		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH * 0.25);
+	}
+	void CharacterSprite::UnSink()
+	{
+		mTransform->SetLocalPos(Vector2::Zero);
+	}
 }

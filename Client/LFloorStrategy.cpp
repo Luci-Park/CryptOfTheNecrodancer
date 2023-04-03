@@ -1,5 +1,7 @@
 #include "LFloorStrategy.h"
 #include "LFloorTile.h"
+#include "LTileObject.h"
+#include "LResources.h"
 namespace cl
 {
 #pragma region Parent - FloorStrategy
@@ -44,6 +46,49 @@ namespace cl
 		mIndex = !mIndex;
 	}
 
+	FlashStrategy::FlashStrategy(FloorTile* tile)
+		:FloorStrategy(tile)
+	{
+		if (mIsEven)
+			mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::GreenFlash);
+		else
+			mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::RedFlash);
+		mSprites[1] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
+		mIndex = mIsEven;
+	}
+
+	Sprite FlashStrategy::GetSprite()
+	{
+		return mSprites[mIndex];
+	}
+
+	void FlashStrategy::OnBeat()
+	{
+		mIndex = !mIndex;
+	}
+	
+	WaterStrategy::WaterStrategy(FloorTile* tile)
+		:FloorStrategy(tile)
+	{
+		mSprite = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::Water);
+		mInWaterClip = Resources::Load<AudioClip>(L"InWater", L"..\\Assets\\Audio\\SoundEffects\\Floor\\mov_water_in.wav");
+		mOutWaterClip = Resources::Load<AudioClip>(L"OutWater", L"..\\Assets\\Audio\\SoundEffects\\Floor\\mov_water_out.wav");
+	}
+	void WaterStrategy::OnBeat()
+	{
+		if (mbInteracted)
+		{
+			mOutWaterClip->Play(false);
+			mbInteracted = false;
+			mTile->SetFloorType(FloorTile::eFloorTypes::Ground);
+		}
+	}
+	void WaterStrategy::OnInteract(TileObject* object)
+	{
+		mInWaterClip->Play(false);
+		object->Sink();
+		mbInteracted = true;
+	}
 #pragma region Child - Stair Strategy
 	StairStrategy::StairStrategy(StairTile* tile)
 		:FloorStrategy(tile)

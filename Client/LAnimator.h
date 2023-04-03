@@ -63,7 +63,6 @@ namespace cl
 
 		void SetDuration(float dur);
 		void Reset();
-
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
