@@ -80,6 +80,7 @@ namespace cl
 	}
 	PickAxe::PickAxe()
 	{
+		mTypes = eShovelTypes::Pickaxe;
 	}
 	PickAxe::~PickAxe()
 	{
