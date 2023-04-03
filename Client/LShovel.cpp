@@ -86,6 +86,7 @@ namespace cl
 	}
 	bool PickAxe::Dig(WallTile* object)
 	{
-		return false;
+		if (object != nullptr)
+			return object->OnCrumble();
 	}
 }

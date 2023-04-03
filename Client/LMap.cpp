@@ -137,6 +137,12 @@ namespace cl
 		mWallBluePrint[11][11] = eWallTypes::GoldWall;
 
 		mWallBluePrint[2][2] = eWallTypes::DirtWall;
+		mWallBluePrint[3][2] = eWallTypes::StoneWall;
+		mWallBluePrint[4][2] = eWallTypes::CatacombWall;
+		mWallBluePrint[5][2] = eWallTypes::BossWall;/*
+		mWallBluePrint[6][2] = eWallTypes::HorizontalDoor;
+		mWallBluePrint[7][2] = eWallTypes::VerticalDoor;*/
+
 	}
 #pragma endregion
 }

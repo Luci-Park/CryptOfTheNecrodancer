@@ -33,7 +33,7 @@ namespace cl
 		, mAttackEffect(nullptr)
 	{
 		Camera::SetTarget(this);
-		shovel = new Shovel();
+		shovel = new PickAxe();
 		SetDigClip();
 	}
 	Cadence::~Cadence()

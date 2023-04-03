@@ -57,11 +57,30 @@ namespace cl
 		Vector2 pos = index * UNITLENGTH;
 		switch (type)
 		{
-		case eWallTypes::GoldWall:
-			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Wall);
-			break;
 		case eWallTypes::DirtWall:
 			reslt = object::Instantiate<DirtWall>(sc, pos, eLayerType::Wall);
+			break;
+		case eWallTypes::StoneWall:
+			reslt = object::Instantiate<StoneWall>(sc, pos, eLayerType::Wall);
+			break;
+
+		case eWallTypes::CatacombWall:
+			reslt = object::Instantiate<CatacombWall>(sc, pos, eLayerType::Wall);
+			break;
+		case eWallTypes::BossWall:
+			reslt = object::Instantiate<BossWall>(sc, pos, eLayerType::Wall);
+			break;
+		case eWallTypes::GoldWall:
+			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Wall);
+			break;/*
+		case eWallTypes::HorizontalDoor:
+			reslt = object::Instantiate<Door>(sc, pos, eLayerType::Wall);
+			break;
+		case eWallTypes::VerticalDoor:
+			reslt = object::Instantiate<Door>(sc, pos, eLayerType::Wall);
+			break;*/
+		case eWallTypes::Border:
+			reslt = object::Instantiate<Border>(sc, pos, eLayerType::Wall);
 			break;
 		default:
 			return nullptr;
@@ -124,9 +143,11 @@ namespace cl
 #pragma region Parent - Wall Tile
 	WallTile::WallTile(Scene* sc)
 		:GameObject(sc, false)
-		,mSpriteRenderer(nullptr)
+		, mSpriteRenderer(nullptr)
+		, mbIsBreakable(true)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
+		
 	}
 
 	void WallTile::Initialize()
@@ -147,7 +168,7 @@ namespace cl
 		MapManager::DestroyWallObject(mIndex);
 	}
 
-	void WallTile::OnCrumble()
+	bool WallTile::OnCrumble()
 	{
 		mSpriteRenderer->SetSprite(mCrumbleSprite);
 		mDigClip->Play(false);
@@ -155,7 +176,7 @@ namespace cl
 		{
 			OnDestroy();
 		}
-		
+		return true;
 	}
 
 	bool WallTile::OnDig(int digPower)
@@ -177,7 +198,64 @@ namespace cl
 	}
 #pragma endregion
 
-#pragma region GoldTile
+#pragma region Dirt Wall
+	DirtWall::DirtWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 1;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::DirtWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::DirtWallCrumble);
+		mWallType = eWallTypes::DirtWall;
+		mDigClip = Resources::Load<AudioClip>(L"DirtDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_dirt.wav");
+	}
+#pragma endregion
+
+#pragma region Stone Wall
+	StoneWall::StoneWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 2;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::StoneWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::StoneWallCrumble);
+		mWallType = eWallTypes::StoneWall;
+		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_stone.wav");
+	}
+#pragma endregion
+
+#pragma region Catacomb Wall
+
+	CatacombWall::CatacombWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 3;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::CatacombWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::CatacombWallCrumble);
+		mWallType = eWallTypes::CatacombWall;
+		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
+	}
+#pragma endregion
+
+#pragma region Boss Wall
+	BossWall::BossWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mbIsBreakable = false;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::BossWall);
+	}
+
+	bool BossWall::OnDig(int digPower)
+	{
+		mDigFailedClip->Play(false);
+		return false;		
+	}
+	bool BossWall::OnCrumble()
+	{
+		mDigFailedClip->Play(false);
+		return false;
+	}
+#pragma endregion
+
+#pragma region Gold Wall
 	GoldWall::GoldWall(Scene* sc)
 		:WallTile(sc)
 	{
@@ -193,48 +271,33 @@ namespace cl
 	}
 #pragma endregion
 
-	DirtWall::DirtWall(Scene* sc)
+#pragma region Door
+
+#pragma endregion
+
+#pragma region Border
+	Border::Border(Scene* sc)
 		:WallTile(sc)
 	{
-		mHardness = 1;
-		mWallSprite = WallTile::GetWallSprite(eWallTypes::DirtWall);
-		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::DirtWallCrumble);
-		mWallType = eWallTypes::DirtWall;
-		mDigClip = Resources::Load<AudioClip>(L"DirtDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_dirt.wav");
+		mbIsBreakable = false;
+		mHardness = 100;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::BossWall);
 	}
 
-	void DirtWall::OnDestroy()
+	bool Border::OnDig(int digPower)
 	{
-		WallTile::OnDestroy();
+		mDigFailedClip->Play(false);
+		return false;
 	}
+	bool Border::OnCrumble()
+	{
+		mDigFailedClip->Play(false);
+		return false;
+	}
+#pragma endregion
 
-	StoneWall::StoneWall(Scene* sc)
-		:WallTile(sc)
-	{
-		mHardness = 2;
-		mWallSprite = WallTile::GetWallSprite(eWallTypes::StoneWall);
-		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::StoneWallCrumble);
-		mWallType = eWallTypes::DirtWall;
-		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_stone.wav");
-	}
 
-	void StoneWall::OnDestroy()
-	{
-		WallTile::OnDestroy();
-	}
 
-	CatacombWall::CatacombWall(Scene* sc)
-		:WallTile(sc)
-	{
-		mHardness = 2;
-		mWallSprite = WallTile::GetWallSprite(eWallTypes::CatacombWall);
-		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::CatacombWallCrumble);
-		mWallType = eWallTypes::DirtWall;
-		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
-	}
 
-	void CatacombWall::OnDestroy()
-	{
-		WallTile::OnDestroy();
-	}
+
 }

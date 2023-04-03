@@ -71,12 +71,13 @@ namespace cl
 		virtual void Initialize();
 		virtual void Interact(TileObject* object);
 		virtual bool OnDig(int digPower);
-		virtual void OnCrumble();
+		virtual bool OnCrumble();
 		virtual void OnDestroy();
 
 		void SetIndex(Vector2 index) { mIndex = index; }
 		Vector2 GetPlateCenter();
 		eWallTypes GetWallType() { return mWallType; }
+		bool IsBreakable() { return mbIsBreakable; }
 	protected:
 		eWallTypes mWallType;
 		int mHardness;
@@ -87,21 +88,14 @@ namespace cl
 		Sprite mCrumbleSprite;
 		AudioClip* mDigClip;
 		AudioClip* mDigFailedClip;
+		bool mbIsBreakable;
 	};
 
-	class GoldWall : public WallTile
-	{
-	public:
-		GoldWall(Scene* sc);
-		~GoldWall(){}
-		virtual void OnDestroy() override;
-	};
 	class DirtWall : public WallTile
 	{
 	public:
 		DirtWall(Scene* sc);
 		~DirtWall() {}
-		virtual void OnDestroy() override;
 	};
 
 	class StoneWall : public WallTile
@@ -109,7 +103,6 @@ namespace cl
 	public:
 		StoneWall(Scene* sc);
 		~StoneWall() {}
-		virtual void OnDestroy() override;
 	};
 
 	class CatacombWall : public WallTile
@@ -117,7 +110,40 @@ namespace cl
 	public:
 		CatacombWall(Scene* sc);
 		~CatacombWall() {}
-		virtual void OnDestroy() override;
 	};	
+
+	class BossWall : public WallTile
+	{
+	public:
+		BossWall(Scene* sc);
+		~BossWall() {}
+		virtual bool OnDig(int digPower) override;
+		virtual bool OnCrumble() override;
+	};
+
+	class GoldWall : public WallTile
+	{
+	public:
+		GoldWall(Scene* sc);
+		~GoldWall() {}
+		virtual void OnDestroy() override;
+	};
+
+	//class Door : public WallTile
+	//{
+	//public:
+	//	Door(Scene* sc);
+	//	~Door() {}
+	//	virtual void OnDestroy() override;
+	//};
+
+	class Border : public WallTile
+	{
+	public:
+		Border(Scene* sc);
+		~Border() {}
+		virtual bool OnDig(int digPower) override;
+		virtual bool OnCrumble() override;
+	};
 }
 
