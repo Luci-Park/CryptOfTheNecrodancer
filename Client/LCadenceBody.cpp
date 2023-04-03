@@ -48,6 +48,11 @@ namespace cl
 	}
 	void CadenceBody::Sink()
 	{
+		//mAnimator->SetPercent(Vector2(1.0f, 0.25f));
+	}
+	void CadenceBody::UnSink()
+	{
+		//mAnimator->SetPercent(Vector2::One);
 	}
 	void CadenceBody::PlayRight()
 	{

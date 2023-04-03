@@ -32,3 +32,7 @@ WindowAPI Project (2/14 ~ )
 * ```Player``` can interact with ```Wall```.
 * ```Player``` movement is the beat.
 * BGM added to title screen and lobby.
+
+## Week 8(4/2 ~ 4/8)
+* WaterTile done
+* Player->EnemyInteract->WallInteract->Move->TileInteract

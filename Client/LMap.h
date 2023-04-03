@@ -12,25 +12,23 @@ namespace cl
 		Map();
 		~Map();
 
-		std::vector<std::vector<FloorTile*>>& CreateFloor(Scene* sc);
-		std::vector<std::vector<TileObject*>>& CreateForeGround(Scene* sc);
+		void CreateFloor(Scene* sc, std::vector<std::vector<FloorTile*>>& _Floor);
+		void CreateWall(Scene* sc, std::vector<std::vector<WallTile*>>& _Wall);
+		void CreateForeGround(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects);
 
-		Vector2 GetStartPos();
 
 	protected:
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
-		std::vector<std::vector<FloorTile::eFloorTypes>> mFloorBluePrint;
-		std::vector<std::vector<WallTile::eWallTypes>> mWallBluePrint;
+		std::vector<std::vector<eFloorTypes>> mFloorBluePrint;
+		std::vector<std::vector<eWallTypes>> mWallBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
-		std::vector<std::vector<FloorTile*>> mFloor;
-		std::vector<std::vector<TileObject*>> mForeObjects;
 
 	private:
-		void CreateWall(Scene* sc);
-		void CreatePlayer(Scene* sc);
+		void CreatePlayer(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects);
+		void CreateMonsters(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects);
 	};
 
 	class LobbyMap : public Map

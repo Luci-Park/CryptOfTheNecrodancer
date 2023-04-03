@@ -63,6 +63,8 @@ namespace cl
 
 		void SetDuration(float dur);
 		void Reset();
+		void SetPercent(Vector2 percent) { mPercent = percent; }
+		Vector2 GetPercent() { return mPercent; }
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 		std::map<std::wstring, Events*> mEvents;
@@ -71,5 +73,6 @@ namespace cl
 		Image* mSpriteSheet;
 		bool mbLoop;
 		float mAnimationDur;
+		Vector2 mPercent;
 	};
 }

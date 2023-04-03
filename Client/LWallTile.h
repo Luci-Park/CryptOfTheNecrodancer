@@ -6,22 +6,10 @@ namespace cl
 {
 	class SpriteRenderer;
 	class AudioClip;
-	class WallTile : public TileObject
+	class WallTile : public GameObject
 	{
 #pragma region Static Info
-	public:
-		enum class eWallTypes
-		{
-			DirtWall,
-			HardWall,
-			StoneWall,
-			BossWall,
-			GoldWall,
-			Door,
-			Border,
-			None
-		};
-		
+	public:		
 		static WallTile* CreateWall(eWallTypes type, Vector2 index, Scene* sc);
 	protected:
 		enum class eWallSpriteTypes
@@ -42,15 +30,19 @@ namespace cl
 				DirtWall14,
 				DirtWall15,
 				DirtWall16,
-				HarderWall,
-				StoneWall1,
-				StoneWall2,
+				DirtWallCrumble,
+				StoneWall,
+				StoneWallCrumble,
+				CatacombWall1,
+				CatacombWall2,
+				CatacombWallCrumble,
 				BossWall1,
 				BossWall2,
 				BossWall3,
 				BossWall4,
 				BossWall5,
 				GoldWall,
+				GoldWallCrumble,
 				Border1,
 				Border2,
 				Border3,
@@ -64,12 +56,12 @@ namespace cl
 				Size
 			};
 
+		static Sprite GetWallSprite(eWallSpriteTypes type);
 		static Sprite GetWallSprite(eWallTypes type);
 		static const Vector2 wallTileIndex[];
 		static const Vector2 wallSpriteSize;
 
 	private:
-		static Sprite GetWallSprite(eWallSpriteTypes type);
 #pragma endregion
 
 	public:
@@ -77,21 +69,22 @@ namespace cl
 		virtual ~WallTile(){}
 
 		virtual void Initialize();
+		virtual void Interact(TileObject* object);
+		virtual bool OnDig(int digPower);
+		virtual void OnCrumble();
+		virtual void OnDestroy();
 
-		virtual void Interact(TileObject* object) override;
-		virtual void Dig(TileObject* object) override{}
-		virtual void Attack(TileObject* object, Vector2 target)override{}
-		virtual void Sink() override {}
-		virtual void OnDestroy() override;;
-
-		bool OnDig(int digPower);
+		void SetIndex(Vector2 index) { mIndex = index; }
 		Vector2 GetPlateCenter();
 		eWallTypes GetWallType() { return mWallType; }
 	protected:
-		SpriteRenderer* mSpriteRenderer;
-		int mHardness;
-		Sprite mWallSprite;
 		eWallTypes mWallType;
+		int mHardness;
+		Vector2 mIndex;
+
+		SpriteRenderer* mSpriteRenderer;
+		Sprite mWallSprite;
+		Sprite mCrumbleSprite;
 		AudioClip* mDigClip;
 		AudioClip* mDigFailedClip;
 	};
@@ -111,5 +104,20 @@ namespace cl
 		virtual void OnDestroy() override;
 	};
 
+	class StoneWall : public WallTile
+	{
+	public:
+		StoneWall(Scene* sc);
+		~StoneWall() {}
+		virtual void OnDestroy() override;
+	};
+
+	class CatacombWall : public WallTile
+	{
+	public:
+		CatacombWall(Scene* sc);
+		~CatacombWall() {}
+		virtual void OnDestroy() override;
+	};	
 }
 

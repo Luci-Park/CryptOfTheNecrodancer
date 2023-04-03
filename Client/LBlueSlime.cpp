@@ -25,7 +25,7 @@ namespace cl
 	void BlueSlime::OnBeatChanged()
 	{
 	}
-	void BlueSlime::Dig(TileObject* object)
+	void BlueSlime::Dig(WallTile* object)
 	{
 	}
 	void BlueSlime::Attack(TileObject* object, Vector2 target)

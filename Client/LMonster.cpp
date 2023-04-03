@@ -20,12 +20,11 @@ namespace cl
 	void Monster::OnBeatChanged()
 	{
 	}
-	void Monster::Dig(TileObject* object)
+	void Monster::Dig(WallTile* object)
 	{
-		WallTile* tile = dynamic_cast<WallTile*>(object);
-		if (tile != nullptr)
+		if (object != nullptr)
 		{
-			if (tile->OnDig(mDigPower))
+			if (object->OnDig(mDigPower))
 			{
 			}
 			else {

@@ -51,7 +51,7 @@ namespace cl
 		//mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
 		//mSpriteRenderer->AddAlpha(100);
 		
-		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Foreground);
+		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 	}
@@ -167,7 +167,7 @@ namespace cl
 		if (mbIsSinked)
 		{
 			mbIsSinked = false;
-			mSprite->Jump();
+			mSprite->UnSink();
 			return true;
 		}
 			return false;
@@ -199,13 +199,12 @@ namespace cl
 		GameCharacter::OnBeatChanged();
 	}
 
-	void Cadence::Dig(TileObject* object)
+	void Cadence::Dig(WallTile* object)
 	{
-		WallTile* tile = dynamic_cast<WallTile*>(object);
 		if (shovel != nullptr)
 		{
-			mShovelEffect->OnDig(tile, shovel);
-			bool success = shovel->Dig(tile);
+			mShovelEffect->OnDig(object, shovel);
+			bool success = shovel->Dig(object);
 			if (success)
 			{
 				PlayDigClip();

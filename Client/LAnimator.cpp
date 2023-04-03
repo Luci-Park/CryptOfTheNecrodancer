@@ -8,6 +8,7 @@ namespace cl
 		, mActiveAnimation(nullptr)
 		, mSpriteSheet(nullptr)
 		, mbLoop(false)
+		, mPercent(Vector2::One)
 	{
 
 	}

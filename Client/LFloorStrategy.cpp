@@ -80,7 +80,7 @@ namespace cl
 		{
 			mOutWaterClip->Play(false);
 			mbInteracted = false;
-			mTile->SetFloorType(FloorTile::eFloorTypes::Ground);
+			mTile->SetFloorType(eFloorTypes::Ground);
 		}
 	}
 	void WaterStrategy::OnInteract(TileObject* object)

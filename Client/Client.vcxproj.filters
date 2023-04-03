@@ -262,6 +262,7 @@
     <ClInclude Include="LCadenceShovelEffect.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
+    <ClInclude Include="LMonsterFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -421,5 +422,6 @@
     <ClCompile Include="LCadenceShovelEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
+    <ClCompile Include="LMonsterFactory.cpp" />
   </ItemGroup>
 </Project>

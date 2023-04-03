@@ -18,6 +18,7 @@ namespace cl
 		void Reset();
 		void SetDuration(float dur);
 		void Sink();
+		void UnSink();
 	private:
 		void PlayRight();
 		void PlayLeft();
@@ -27,7 +28,6 @@ namespace cl
 		static const std::wstring mRightAnimation;
 		static const int bodyIndex[];
 		Vector2 mDir;
-		
 	};
 
 }

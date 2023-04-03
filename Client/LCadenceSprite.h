@@ -20,6 +20,7 @@ namespace cl
 		virtual void OnBeatChanged() override;
 
 		virtual void Sink() override;
+		virtual void UnSink() override;
 	private:
 		CadenceHead* mHead;
 		CadenceBody* mBody;		

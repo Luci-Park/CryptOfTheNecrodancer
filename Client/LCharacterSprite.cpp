@@ -54,6 +54,6 @@ namespace cl
 	}
 	void CharacterSprite::UnSink()
 	{
-		mTransform->SetLocalPos(Vector2::Zero);
+		Jump();
 	}
 }

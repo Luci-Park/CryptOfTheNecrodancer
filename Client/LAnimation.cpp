@@ -70,16 +70,17 @@ namespace cl
         pos += Vector2(mSpriteSheet[mSpriteIndex].offset.x * scale.x, mSpriteSheet[mSpriteIndex].offset.y * scale.y);
         if (!mAnimator->GetOwner()->IsUI())
             pos = Camera::CaluatePos(pos);
-        Sprite rect = { pos, Vector2(mSpriteSheet[mSpriteIndex].size.x * scale.x, mSpriteSheet[mSpriteIndex].size.y * scale.y), Vector2::Zero };
+        Vector2 size = mAnimator->GetPercent();
+        Vector2 spriteRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * size.x, mSpriteSheet[mSpriteIndex].size.y * size.y);
+        Vector2 resltRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * scale.x * size.x, mSpriteSheet[mSpriteIndex].size.y * scale.y * size.y);
+        Sprite rect = { pos, resltRightBottom, Vector2::Zero };
         if (Camera::IsDrawable(rect))
         {
             TransparentBlt(hdc, pos.x, pos.y
-                , mSpriteSheet[mSpriteIndex].size.x * scale.x
-                , mSpriteSheet[mSpriteIndex].size.y * scale.y
+                , resltRightBottom.x, resltRightBottom.y
                 , mSheetImage->GetHdc()
                 , mSpriteSheet[mSpriteIndex].leftTop.x, mSpriteSheet[mSpriteIndex].leftTop.y
-                , mSpriteSheet[mSpriteIndex].size.x, mSpriteSheet[mSpriteIndex].size.y,
-                RGB(255, 0, 255));
+                , spriteRightBottom.x, spriteRightBottom.y, RGB(255, 0, 255));
         }
     }
 

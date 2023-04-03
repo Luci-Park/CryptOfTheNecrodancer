@@ -18,7 +18,9 @@ enum class eLayerType
 {
 	System,
 	Background,
-	Foreground,
+	Player,
+	Monster,
+	Wall,
 	Effects,
 	UI,
 	Size,
@@ -32,4 +34,56 @@ enum class eComponentType
 	Collider,
 	Audio,
 	Size
+};
+
+enum class eMonsterTypes {
+	Bat, RedBat,
+	Ghost,
+	Monkey, WhiteMonkey,
+	Skeleton, YellowSkeleton, BlackSkeleton,
+	GreenSlime, BlueSlime, OrangeSlime,
+	Wraith, Zombie,
+	None
+};
+
+enum class eMidBossTypes
+{
+	DireBat, GrayDireBat,
+	Minotaur, GrayMinotaur,
+	GreenDragon, RedDragon, BlueDragon,
+	Nightmare, BloodNightmare,
+	Banshee, GreenBanshee,
+	Mommy, Ogre,
+	None
+};
+
+enum class BossTypes
+{
+	KingConga,
+	DeathMetal,
+	DeepBlues,
+	CoralRiff,
+	None
+};
+enum class eWallTypes
+{
+	DirtWall,
+	StoneWall,
+	CatacombWall,
+	BossWall,
+	GoldWall,
+	HorizontalDoor,
+	VerticalDoor,
+	Border,
+	None
+};
+
+enum class eFloorTypes
+{
+	Ground,
+	Flash,
+	Water,
+	ClosedStairs,
+	OpenedStairs,
+	None
 };

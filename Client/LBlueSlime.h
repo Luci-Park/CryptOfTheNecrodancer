@@ -17,7 +17,7 @@ namespace cl
 		virtual void OnBeat() override;
 		virtual void OnBeatChanged() override;
 
-		virtual void Dig(TileObject* object) override;
+		virtual void Dig(WallTile* object) override;
 		virtual void Attack(TileObject* object, Vector2 target) override;
 		virtual void OnAttacked();
 

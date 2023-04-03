@@ -26,15 +26,19 @@ namespace cl
 		Vector2(13, 0),//DirtWall14,
 		Vector2(14, 0),//DirtWall15,
 		Vector2(15, 0),//DirtWall16,
-		Vector2(29, 0),//HarderWall,
-		Vector2(31, 0),//StoneWall1,
-		Vector2(32, 0),//StoneWall2,
+		Vector2(16, 0),//DirtWallCrumble,
+		Vector2(29, 0),//StoneWall,
+		Vector2(30, 0), //StoneWallCrumble,
+		Vector2(31, 0),//CatacombWall1,
+		Vector2(32, 0),//CatacombWall2,
+		Vector2(33, 0), //CatacombWallCrumble
 		Vector2(34, 0),//BossWall1,
 		Vector2(35, 0),//BossWall2,
 		Vector2(36, 0),//BossWall3,
 		Vector2(37, 0),//BossWall4,
 		Vector2(38, 0),//BossWall5,
 		Vector2(0, 6),//GoldWall,
+		Vector2(1, 6),//GoldWallCrumble
 		Vector2(4, 6),//Border1,
 		Vector2(5, 6),//Border2,
 		Vector2(6, 6),//Border3,
@@ -54,10 +58,10 @@ namespace cl
 		switch (type)
 		{
 		case eWallTypes::GoldWall:
-			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Foreground);
+			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Wall);
 			break;
 		case eWallTypes::DirtWall:
-			reslt = object::Instantiate<DirtWall>(sc, pos, eLayerType::Foreground);
+			reslt = object::Instantiate<DirtWall>(sc, pos, eLayerType::Wall);
 			break;
 		default:
 			return nullptr;
@@ -75,13 +79,13 @@ namespace cl
 			min = (UINT)eWallSpriteTypes::DirtWall1;
 			max = (UINT)eWallSpriteTypes::DirtWall16;
 			break;
-		case eWallTypes::HardWall:
-			return GetWallSprite(eWallSpriteTypes::HarderWall);
+		case eWallTypes::StoneWall:
+			return GetWallSprite(eWallSpriteTypes::StoneWall);
 			break;
 
-		case eWallTypes::StoneWall:
-			min = (UINT)eWallSpriteTypes::StoneWall1;
-			max = (UINT)eWallSpriteTypes::StoneWall2;
+		case eWallTypes::CatacombWall:
+			min = (UINT)eWallSpriteTypes::CatacombWall1;
+			max = (UINT)eWallSpriteTypes::CatacombWall2;
 			break;
 
 		case eWallTypes::BossWall:
@@ -96,6 +100,10 @@ namespace cl
 			min = (UINT)eWallSpriteTypes::Border1;
 			max = (UINT)eWallSpriteTypes::Border8;
 			break;
+		case eWallTypes::HorizontalDoor:
+			return GetWallSprite(eWallTypes::HorizontalDoor);
+		case eWallTypes::VerticalDoor:
+			return GetWallSprite(eWallTypes::VerticalDoor);
 		}
 		int randomNumber = GetRandomInt(min, max);
 		return GetWallSprite((eWallSpriteTypes)randomNumber);
@@ -115,7 +123,7 @@ namespace cl
 
 #pragma region Parent - Wall Tile
 	WallTile::WallTile(Scene* sc)
-		:TileObject(sc)
+		:GameObject(sc, false)
 		,mSpriteRenderer(nullptr)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
@@ -127,7 +135,7 @@ namespace cl
 		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Walls", L"..\\Assets\\Arts\\Stage Elements\\Walls.bmp"));
 		mSpriteRenderer->SetSprite(mWallSprite);
 		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
-		TileObject::Initialize();
+		GameObject::Initialize();
 	}
 
 	void WallTile::Interact(TileObject* object)
@@ -136,7 +144,18 @@ namespace cl
 	}
 	void WallTile::OnDestroy()
 	{
-		MapManager::DestroyObject(mIndex);
+		MapManager::DestroyWallObject(mIndex);
+	}
+
+	void WallTile::OnCrumble()
+	{
+		mSpriteRenderer->SetSprite(mCrumbleSprite);
+		mDigClip->Play(false);
+		if (--mHardness <= 0)
+		{
+			OnDestroy();
+		}
+		
 	}
 
 	bool WallTile::OnDig(int digPower)
@@ -164,6 +183,7 @@ namespace cl
 	{
 		mHardness = 4;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::GoldWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::GoldWallCrumble);
 		mWallType = eWallTypes::GoldWall;
 		mDigClip = Resources::Load<AudioClip>(L"BrickDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
 	}
@@ -173,12 +193,12 @@ namespace cl
 	}
 #pragma endregion
 
-
 	DirtWall::DirtWall(Scene* sc)
 		:WallTile(sc)
 	{
 		mHardness = 1;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::DirtWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::DirtWallCrumble);
 		mWallType = eWallTypes::DirtWall;
 		mDigClip = Resources::Load<AudioClip>(L"DirtDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_dirt.wav");
 	}
@@ -188,4 +208,33 @@ namespace cl
 		WallTile::OnDestroy();
 	}
 
+	StoneWall::StoneWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 2;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::StoneWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::StoneWallCrumble);
+		mWallType = eWallTypes::DirtWall;
+		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_stone.wav");
+	}
+
+	void StoneWall::OnDestroy()
+	{
+		WallTile::OnDestroy();
+	}
+
+	CatacombWall::CatacombWall(Scene* sc)
+		:WallTile(sc)
+	{
+		mHardness = 2;
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::CatacombWall);
+		mCrumbleSprite = WallTile::GetWallSprite(eWallSpriteTypes::CatacombWallCrumble);
+		mWallType = eWallTypes::DirtWall;
+		mDigClip = Resources::Load<AudioClip>(L"StoneDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
+	}
+
+	void CatacombWall::OnDestroy()
+	{
+		WallTile::OnDestroy();
+	}
 }

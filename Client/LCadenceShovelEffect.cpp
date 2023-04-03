@@ -33,8 +33,7 @@ namespace cl
 		mbIsShowing = true;
 		mTransform->SetPos(wallTile->GetPlateCenter());
 		Sprite sprite = Shovel::GetShovelSprite(shovel->GetType(), false);
-		if(wallTile->GetWallType() != WallTile::eWallTypes::Door)
-			mSpriteRenderer->SetSprite(sprite);
+		mSpriteRenderer->SetSprite(sprite);
 	}
 	void CadenceShovelEffect::Show()
 	{

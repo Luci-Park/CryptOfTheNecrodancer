@@ -12,15 +12,6 @@ namespace cl
 	{
 #pragma region StaticInfo
 	public:
-		enum class eFloorTypes
-		{
-			Ground,
-			Flash,
-			Water,
-			ClosedStairs,
-			OpenedStairs,
-			None
-		};
 		enum class eSpriteCategories {
 			DarkFloor,
 			LightFloor,

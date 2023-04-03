@@ -3,6 +3,7 @@
 #include "LMath.h"
 namespace cl
 {
+	class WallTile;
 	class TileObject : public GameObject
 	{
 	public:
@@ -13,7 +14,7 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Interact(TileObject* object) = 0;
-		virtual void Dig(TileObject* object) = 0;
+		virtual void Dig(WallTile* object) = 0;
 		virtual void Attack(TileObject* object, Vector2 target) = 0;
 		virtual void Sink() = 0;
 		virtual void OnDestroy() = 0;
