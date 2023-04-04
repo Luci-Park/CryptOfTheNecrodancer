@@ -51,10 +51,10 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::Interact(TileObject* object)
+	void GameCharacter::OnMove(Vector2 direction)
 	{
-		if (object != nullptr)
-			object->Attack(this, mIndex);
+		if (!TryAttack(direction) && !TryDig(direction))
+			TryMove(direction);
 	}
 	void GameCharacter::Sink()
 	{

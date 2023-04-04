@@ -15,14 +15,19 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void TryDig() = 0;
-		virtual void TryAttack() = 0;
 		virtual void Sink() override;
+
+		virtual void OnAttacked(int attackPower) = 0;
 		virtual void OnDestroy() = 0;
 
 		virtual void OnBeat() = 0;
 		virtual void OnBeatChanged();
-		virtual void OnAttacked() = 0;
+
+		void OnMove(Vector2 direction);		
+	protected:
+		virtual bool TryAttack(Vector2 Direction) = 0;
+		virtual bool TryDig(Vector2 direction) = 0;
+		virtual bool TryMove(Vector2 direction) = 0;
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;

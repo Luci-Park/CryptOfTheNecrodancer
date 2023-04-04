@@ -69,7 +69,6 @@ namespace cl
 		virtual ~WallTile(){}
 
 		virtual void Initialize();
-		virtual void Interact(TileObject* object);
 		virtual bool OnDig(int digPower);
 		virtual bool OnCrumble();
 		virtual void OnDestroy();

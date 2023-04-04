@@ -158,11 +158,6 @@ namespace cl
 		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
 		GameObject::Initialize();
 	}
-
-	void WallTile::Interact(TileObject* object)
-	{
-		object->Dig(this);
-	}
 	void WallTile::OnDestroy()
 	{
 		MapManager::DestroyWallObject(mIndex);

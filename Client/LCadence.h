@@ -9,21 +9,6 @@ namespace cl
 	class CadenceShovelEffect;
 	class Cadence : public GameCharacter
 	{
-#pragma region Static Functions
-	public:
-		static void Reset();
-		static Vector2 GetIndex() { return _mIndex; }
-		enum class PlayerInput
-		{
-			Up, Down, Left, Right, None
-		};
-	private:
-		static int _attackPower;
-		static int _digPower;
-		static int _health;
-		static int _heartCount;
-		static Vector2 _mIndex;
-#pragma endregion
 	public:
 		Cadence(Scene* scene);
 		~Cadence();
@@ -32,19 +17,20 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void OnBeat() override;
-		virtual void OnBeatChanged() override;
-		virtual void OnAttacked() override;
-		
-		virtual void Dig(WallTile* object) override;
-		virtual void Attack(TileObject* object, Vector2 target) override;
+		virtual void OnAttacked(int attackPower) override;
 		virtual void OnDestroy() override;
 
+		virtual void OnBeat() override;
+		virtual void OnBeatChanged() override;
+		
+	protected:
+		virtual bool TryAttack(Vector2 direction)override;
+		virtual bool TryDig(Vector2 direction) override;
+		virtual bool TryMove(Vector2 direction) override;
 
 	private:
 		void GetInput();
 		void SetSprite();
-		void Move();
 		bool UnSink();
 		void SetDigClip();
 		void PlayDigClip();
@@ -53,7 +39,7 @@ namespace cl
 		SpriteRenderer* mSpriteRenderer;
 		CadenceAttackEffect* mAttackEffect;
 		CadenceShovelEffect* mShovelEffect;
-		PlayerInput mInput;
+		Vector2 mInput;
 		
 		AudioClip* mDigClip[6];
 	};

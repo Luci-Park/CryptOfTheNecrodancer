@@ -60,16 +60,6 @@ namespace cl
 			}
 		}
 	}
-	bool MapManager::OnInteractObject(TileObject* object, Vector2 src, Vector2 dest)
-	{
-		if (DoesInteractForeground(object, src, dest))
-			return true;
-		if (DoesInteractWall(object, src, dest))
-			return true;
-		_ForeObjects[src.y][src.x] = nullptr;
-		_ForeObjects[dest.y][dest.x] = object;
-		return false;
-	}
 	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
 	{
 		if (_Floor[pos.y][pos.x] != nullptr)
@@ -87,32 +77,8 @@ namespace cl
 	}
 	void MapManager::Move(Vector2 src, Vector2 dest)
 	{
-		_ForeObjects[dest.y][dest.y] = _ForeObjects[src.y][src.x];
+		_ForeObjects[dest.y][dest.x] = _ForeObjects[src.y][src.x];
 		_ForeObjects[src.y][src.x] = nullptr;
-	}
-	bool MapManager::DoesInteractForeground(TileObject* object, Vector2 src, Vector2 dest)
-	{
-		if (_ForeObjects[dest.y][dest.x] == nullptr)
-		{
-			return false;
-		}
-		else
-		{
-			_ForeObjects[dest.y][dest.x]->Interact(object);
-			return true;
-		}
-	}
-	bool MapManager::DoesInteractWall(TileObject* object, Vector2 src, Vector2 dest)
-	{
-		if (_Wall[dest.y][dest.x] == nullptr)
-		{
-			return false;
-		}
-		else
-		{
-			_Wall[dest.y][dest.x]->Interact(object);
-			return true;
-		}
 	}
 #pragma endregion
 	

@@ -48,6 +48,7 @@ namespace cl
 
 	bool Dagger::TryAttack(TileObject* object, Vector2 srcIdx, Vector2 input)
 	{
+		return false;
 	}
 
 }
