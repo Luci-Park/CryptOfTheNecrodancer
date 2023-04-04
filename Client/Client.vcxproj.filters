@@ -89,6 +89,9 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime">
       <UniqueIdentifier>{49246ea0-6b7f-4594-aeac-27a791a68660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Items\Weapons">
+      <UniqueIdentifier>{c1ece01c-4963-414f-a12e-720cd2cf3be0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -263,6 +266,12 @@
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterFactory.h" />
+    <ClInclude Include="LDagger.h">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="LWeapon.h">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -423,5 +432,11 @@
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterFactory.cpp" />
+    <ClCompile Include="LDagger.cpp">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="LWeapon.cpp">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

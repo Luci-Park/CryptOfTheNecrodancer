@@ -15,9 +15,8 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void Interact(TileObject* object)override;
-		virtual void Dig(WallTile* object) = 0;
-		virtual void Attack(TileObject* object, Vector2 target) = 0;
+		virtual void TryDig() = 0;
+		virtual void TryAttack() = 0;
 		virtual void Sink() override;
 		virtual void OnDestroy() = 0;
 

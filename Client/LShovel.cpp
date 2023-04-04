@@ -76,7 +76,10 @@ namespace cl
 	}
 	bool ObsidianShovel::Dig(WallTile* object)
 	{
-		return false;
+		if (object != nullptr)
+		{
+			return object->OnDig(mDigPower);
+		}
 	}
 	PickAxe::PickAxe()
 	{

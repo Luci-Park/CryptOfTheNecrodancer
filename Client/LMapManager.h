@@ -24,6 +24,10 @@ namespace cl
 		static bool OnInteractObject(TileObject* object,Vector2 src, Vector2 dest);
 		static void OnTileStep(TileObject* object, Vector2 pos);
 
+		static WallTile* GetWall(Vector2 index);
+		static TileObject* GetEnemy(Vector2 index);
+		static void Move(Vector2 src, Vector2 dest);
+
 	private:
 		static bool DoesInteractForeground(TileObject* object, Vector2 src, Vector2 dest);
 		static bool DoesInteractWall(TileObject* object, Vector2 src, Vector2 dest);

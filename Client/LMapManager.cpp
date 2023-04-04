@@ -77,6 +77,19 @@ namespace cl
 			_Floor[pos.y][pos.x]->OnInteract(object);
 		}
 	}
+	WallTile* MapManager::GetWall(Vector2 index)
+	{
+		return _Wall[index.y][index.x];
+	}
+	TileObject* MapManager::GetEnemy(Vector2 index)
+	{
+		return _ForeObjects[index.y][index.x];
+	}
+	void MapManager::Move(Vector2 src, Vector2 dest)
+	{
+		_ForeObjects[dest.y][dest.y] = _ForeObjects[src.y][src.x];
+		_ForeObjects[src.y][src.x] = nullptr;
+	}
 	bool MapManager::DoesInteractForeground(TileObject* object, Vector2 src, Vector2 dest)
 	{
 		if (_ForeObjects[dest.y][dest.x] == nullptr)

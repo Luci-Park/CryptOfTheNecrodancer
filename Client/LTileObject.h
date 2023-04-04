@@ -17,6 +17,8 @@ namespace cl
 		virtual void Dig(WallTile* object) = 0;
 		virtual void Attack(TileObject* object, Vector2 target) = 0;
 		virtual void Sink() = 0;
+
+		virtual void OnAttacked(int attackPower) = 0;
 		virtual void OnDestroy() = 0;
 
 		void SetIndex(Vector2 index) { mIndex = index; }
