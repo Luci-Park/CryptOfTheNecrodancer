@@ -3,6 +3,7 @@
 namespace cl
 {
 	class Shovels;
+	class Weapon;
 	class SpriteRenderer;
 	class AudioClip;
 	class CadenceAttackEffect;
@@ -17,7 +18,7 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void OnAttacked(int attackPower) override;
+		virtual void OnAttacked(float attackPower) override;
 		virtual void OnDestroy() override;
 
 		virtual void OnBeat() override;
@@ -25,6 +26,7 @@ namespace cl
 		
 	protected:
 		virtual bool TryAttack(Vector2 direction)override;
+		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) override;
 		virtual bool TryMove(Vector2 direction) override;
 
@@ -35,12 +37,11 @@ namespace cl
 		void SetDigClip();
 		void PlayDigClip();
 	private:
-		Shovels* shovel;
+		Shovels* mShovel;
+		Weapon* mWeapon;
 		SpriteRenderer* mSpriteRenderer;
-		CadenceAttackEffect* mAttackEffect;
 		CadenceShovelEffect* mShovelEffect;
 		Vector2 mInput;
-		
 		AudioClip* mDigClip[6];
 	};
 

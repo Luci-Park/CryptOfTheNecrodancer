@@ -15,7 +15,7 @@ namespace cl
 
 		virtual void Sink() = 0;
 
-		virtual void OnAttacked(int attackPower) = 0;
+		virtual void OnAttacked(float attackPower) = 0;
 		virtual void OnDestroy() = 0;
 
 		void SetIndex(Vector2 index) { mIndex = index; }

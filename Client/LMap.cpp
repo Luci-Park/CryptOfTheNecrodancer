@@ -51,6 +51,8 @@ namespace cl
 	{
 		CreateMonsters(sc, _TileObjects);
 		CreatePlayer(sc, _TileObjects);
+		mPlayerIndex.y -= 1;
+		CreatePlayer(sc, _TileObjects);
 	}
 
 

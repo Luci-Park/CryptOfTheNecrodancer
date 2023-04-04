@@ -1,6 +1,5 @@
 #include "LCadence.h"
 #include "LCadenceSprite.h"
-#include "LCadenceAttackEffect.h"
 #include "LCadenceShovelEffect.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
@@ -13,21 +12,21 @@
 #include "LShovel.h"
 #include "LResources.h"
 #include "LAudioClip.h"
+#include "LDagger.h"
+#include "LWeapon.h"
 namespace cl
 {
 	Cadence::Cadence(Scene* scene)
-		: GameCharacter(scene, false)
+		: GameCharacter(scene, true)
 		, mSpriteRenderer(nullptr)
-		, mAttackEffect(nullptr)
 	{
 		Camera::SetTarget(this);
-		shovel = new PickAxe();
+		mShovel = new Shovel();
 		SetDigClip();
 	}
 	Cadence::~Cadence()
 	{
-		delete shovel; shovel = nullptr;
-
+		delete mShovel; mShovel = nullptr;
 		Camera::SetTarget(nullptr);
 	}
 	void Cadence::Initialize()
@@ -40,7 +39,7 @@ namespace cl
 		//mSpriteRenderer->AddAlpha(100);
 		
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 	}
 	void Cadence::Update()
@@ -64,7 +63,7 @@ namespace cl
 		GameCharacter::Render(hdc);
 	}
 
-	void Cadence::OnAttacked(int attackPower)
+	void Cadence::OnAttacked(float attackPower)
 	{
 	}
 	void Cadence::OnDestroy()
@@ -76,27 +75,31 @@ namespace cl
 	}
 	void Cadence::OnBeatChanged()
 	{
-		mAttackEffect->OnBeatChanged();
+		mWeapon->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
 	}
 
 	bool Cadence::TryAttack(Vector2 direction)
 	{
-		return false;
+		return mWeapon->Attack(mIndex, direction);
 	}
+
 	bool Cadence::TryDig(Vector2 direction)
 	{
 		WallTile* wall = MapManager::GetWall(mIndex + direction);
-		if (wall && shovel)
+		if (wall)
 		{
-			mShovelEffect->OnDig(wall, shovel);
-			bool success = shovel->Dig(wall);
-			if (success)
+			if (mShovel)
 			{
-				PlayDigClip();
-				Camera::StartShake();
+				mShovelEffect->OnDig(wall, mShovel);
+				bool success = mShovel->Dig(wall);
+				if (success)
+				{
+					PlayDigClip();
+					Camera::StartShake();
+				}
 			}
-			return success;
+			return true;//I tried dig
 		}
 		return false;
 	}

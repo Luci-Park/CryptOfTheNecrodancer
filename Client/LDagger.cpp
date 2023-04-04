@@ -1,10 +1,13 @@
 #include "LDagger.h"
 #include "LAnimator.h"
+#include "LTileObject.h"
+#include "LMapManager.h"
 namespace cl
 {
 	Dagger::Dagger(Scene* sc)
 		:Weapon(sc)
 	{
+		mPower = 1;
 	}
 
 	Dagger::~Dagger()
@@ -46,8 +49,15 @@ namespace cl
 		return std::wstring();
 	}
 
-	bool Dagger::TryAttack(TileObject* object, Vector2 srcIdx, Vector2 input)
+	bool Dagger::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
+		Vector2 dest = srcIdx + input;
+		TileObject* enemy = MapManager::GetEnemy(dest);
+		if (enemy != nullptr)
+		{
+			enemy->OnAttacked(mPower);
+			return true;
+		}
 		return false;
 	}
 

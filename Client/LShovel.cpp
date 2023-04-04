@@ -23,7 +23,7 @@ namespace cl
 	}
 	Shovel::Shovel()
 	{
-		mDigPower = 10;
+		mDigPower = 1;
 		mTypes = eShovelTypes::Shovel;
 	}
 	Shovel::~Shovel()

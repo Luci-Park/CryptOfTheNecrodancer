@@ -12,7 +12,7 @@ namespace cl
 		virtual void SetAnimation();
 		virtual Vector2 EffectPos(Vector2 dir);
 		virtual std::wstring SelectAnimation(Vector2 dir);
-		virtual bool TryAttack(TileObject* object, Vector2 srcIdx, Vector2 input);
+		virtual bool TryAttack(Vector2 srcIdx, Vector2 input);
 	private:
 		std::wstring mUpAnimation;
 		std::wstring mDownAnimation;

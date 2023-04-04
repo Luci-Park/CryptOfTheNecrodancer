@@ -8,7 +8,7 @@ namespace cl
 	class GameCharacter : public TileObject, public BeatObject
 	{
 	public:
-		GameCharacter(Scene* sc, bool isFlying);
+		GameCharacter(Scene* sc, bool isTouchingGround);
 		virtual ~GameCharacter();
 
 		virtual void Initialize() override;
@@ -17,7 +17,7 @@ namespace cl
 
 		virtual void Sink() override;
 
-		virtual void OnAttacked(int attackPower) = 0;
+		virtual void OnAttacked(float attackPower) = 0;
 		virtual void OnDestroy() = 0;
 
 		virtual void OnBeat() = 0;
@@ -26,13 +26,14 @@ namespace cl
 		void OnMove(Vector2 direction);		
 	protected:
 		virtual bool TryAttack(Vector2 Direction) = 0;
+		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;
 		virtual bool TryMove(Vector2 direction) = 0;
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;
 		bool mbIsMoving;
-		bool mbIsFlying;
+		bool mbIsTouchingGround;
 		bool mbIsSinked;
 	private:
 	};
