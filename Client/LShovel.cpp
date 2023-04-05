@@ -23,7 +23,7 @@ namespace cl
 	}
 	Shovel::Shovel()
 	{
-		mDigPower = 10;
+		mDigPower = 1;
 		mTypes = eShovelTypes::Shovel;
 	}
 	Shovel::~Shovel()
@@ -76,7 +76,10 @@ namespace cl
 	}
 	bool ObsidianShovel::Dig(WallTile* object)
 	{
-		return false;
+		if (object != nullptr)
+		{
+			return object->OnDig(mDigPower);
+		}
 	}
 	PickAxe::PickAxe()
 	{

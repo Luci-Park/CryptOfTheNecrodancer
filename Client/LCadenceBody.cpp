@@ -54,6 +54,9 @@ namespace cl
 	{
 		//mAnimator->SetPercent(Vector2::One);
 	}
+	void CadenceBody::Flash()
+	{
+	}
 	void CadenceBody::PlayRight()
 	{
 		if (!mAnimator->IsAnimationPlaying(mRightAnimation))

@@ -1,10 +1,8 @@
 #include "LMonster.h"
-#include "LWallTile.h"
 namespace cl
 {
-
-	Monster::Monster(Scene* sc, bool isFlying)
-		:GameCharacter(sc, isFlying)
+	Monster::Monster(Scene* sc, bool isTouchingGround)
+		: GameCharacter(sc, isTouchingGround)
 	{
 	}
 	Monster::~Monster()
@@ -12,26 +10,22 @@ namespace cl
 	}
 	void Monster::Initialize()
 	{
-		mHealth = mMaxHealth;
+		GameCharacter::Initialize();
 	}
-	void Monster::OnBeat()
+	void Monster::Update()
 	{
+		GameCharacter::Update();
+	}
+	void Monster::Render(HDC hdc)
+	{
+		GameCharacter::Render(hdc);
+	}
+	void Monster::Sink()
+	{
+		GameCharacter::Sink();
 	}
 	void Monster::OnBeatChanged()
 	{
-	}
-	void Monster::Dig(WallTile* object)
-	{
-		if (object != nullptr)
-		{
-			if (object->OnDig(mDigPower))
-			{
-			}
-			else {
-			}
-		}
-	}
-	void Monster::Attack(TileObject* object, Vector2 target)
-	{
+		GameCharacter::OnBeatChanged();
 	}
 }

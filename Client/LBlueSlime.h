@@ -14,15 +14,23 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void OnBeat() override;
-		virtual void OnBeatChanged() override;
+		virtual void Sink() override;
 
-		virtual void Dig(WallTile* object) override;
-		virtual void Attack(TileObject* object, Vector2 target) override;
-		virtual void OnAttacked();
+		virtual void OnAttacked(float attackPower)override;
+		virtual void OnDestroy() override;
 
+		virtual void OnBeat();
 	private:
-		Selector mBehavior;
+		virtual bool TryAttack(Vector2 Direction) override;
+		//Returns true if InteractedWithDig;
+		virtual bool TryDig(Vector2 direction) override;
+		virtual bool TryMove(Vector2 direction) override;
+	private:
+		BlueSlimeSprite* mSlimeSprite;
+		Vector2 GetNextPos();
+		int mMovementIndex;
+		std::vector<Vector2> nextPos;
+		bool mbMoveFailed;
 	};
 }
 

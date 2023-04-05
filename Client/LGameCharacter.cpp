@@ -5,12 +5,12 @@
 #include "LTime.h"
 namespace cl
 {
-	GameCharacter::GameCharacter(Scene* sc, bool isFlying)
+	GameCharacter::GameCharacter(Scene* sc, bool isTouchingGround)
 		: TileObject(sc)
 		, mMoveTarget(Vector2::Zero)
 		, mSprite(nullptr)
 		, mbIsMoving(false)
-		, mbIsFlying(isFlying)
+		, mbIsTouchingGround(isTouchingGround)
 	{
 	}
 	GameCharacter::~GameCharacter()
@@ -30,7 +30,7 @@ namespace cl
 			{
 				mbIsMoving = false;
 				mSprite->Reset();
-				if (!mbIsFlying)
+				if (mbIsTouchingGround)
 					MapManager::OnTileStep(this, mIndex);
 			}
 		}
@@ -51,14 +51,23 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::Interact(TileObject* object)
+	void GameCharacter::MoveFailed()
 	{
-		if (object != nullptr)
-			object->Attack(this, mIndex);
+
 	}
 	void GameCharacter::Sink()
 	{
 		mSprite->Sink();
 		mbIsSinked = true;
+	}
+	bool GameCharacter::UnSink()
+	{
+		if (mbIsSinked)
+		{
+			mbIsSinked = false;
+			mSprite->UnSink();
+			return true;
+		}
+		return false;
 	}
 }

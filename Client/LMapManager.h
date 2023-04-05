@@ -21,12 +21,12 @@ namespace cl
 		 
 		static void Render(HDC hdc);
 
-		static bool OnInteractObject(TileObject* object,Vector2 src, Vector2 dest);
 		static void OnTileStep(TileObject* object, Vector2 pos);
 
-	private:
-		static bool DoesInteractForeground(TileObject* object, Vector2 src, Vector2 dest);
-		static bool DoesInteractWall(TileObject* object, Vector2 src, Vector2 dest);
+		static WallTile* GetWall(Vector2 index);
+		static TileObject* GetEnemy(Vector2 index);
+		static void Move(Vector2 src, Vector2 dest);
+
 	private:
 		static std::vector<std::vector<FloorTile*>> _Floor;
 		static std::vector<std::vector<WallTile*>> _Wall;

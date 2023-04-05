@@ -1,6 +1,5 @@
 #include "LCadence.h"
 #include "LCadenceSprite.h"
-#include "LCadenceAttackEffect.h"
 #include "LCadenceShovelEffect.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
@@ -13,46 +12,34 @@
 #include "LShovel.h"
 #include "LResources.h"
 #include "LAudioClip.h"
+#include "LDagger.h"
+#include "LWeapon.h"
 namespace cl
 {
-	int Cadence::_attackPower = 1;
-	int Cadence::_digPower = 1;
-	int Cadence::_health = 3;
-	int Cadence::_heartCount = 3;
-
-	void Cadence::Reset()
-	{
-		_attackPower = 1;
-		_digPower = 1;
-		_health = 3;
-		_heartCount = 3;
-	}
 	Cadence::Cadence(Scene* scene)
-		: GameCharacter(scene, false)
+		: GameCharacter(scene, true)
 		, mSpriteRenderer(nullptr)
-		, mAttackEffect(nullptr)
 	{
-		Camera::SetTarget(this);
-		shovel = new PickAxe();
+		//Camera::SetTarget(this);
+		mShovel = new Shovel();
 		SetDigClip();
 	}
 	Cadence::~Cadence()
 	{
-		delete shovel; shovel = nullptr;
-
+		delete mShovel; mShovel = nullptr;
 		Camera::SetTarget(nullptr);
 	}
 	void Cadence::Initialize()
 	{
 		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2::One * UNITSCALE);
-		
+
 		//mSpriteRenderer = AddComponent<SpriteRenderer>();
 		//mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
 		//mSpriteRenderer->AddAlpha(100);
-		
+
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mAttackEffect = object::Instantiate<CadenceAttackEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 	}
 	void Cadence::Update()
@@ -61,11 +48,11 @@ namespace cl
 		if (!mbIsMoving)
 		{
 			GetInput();
-			if (mInput != PlayerInput::None)
+			if (mInput != Vector2::One)
 			{
 				SetSprite();
 				if (!UnSink())
-					Move();
+					OnMove(mInput);
 				BeatManager::OnPlayerMove();
 			}
 
@@ -75,103 +62,95 @@ namespace cl
 	{
 		GameCharacter::Render(hdc);
 	}
+
+	void Cadence::OnAttacked(float attackPower)
+	{
+	}
+	void Cadence::OnDestroy()
+	{
+	}
+
+	void Cadence::OnBeat()
+	{
+	}
+	void Cadence::OnBeatChanged()
+	{
+		mWeapon->OnBeatChanged();
+		GameCharacter::OnBeatChanged();
+	}
+
+	void Cadence::OnMove(Vector2 direction)
+	{
+		if (!TryAttack(direction) && !TryDig(direction))
+			TryMove(direction);
+	}
+
+	bool Cadence::TryAttack(Vector2 direction)
+	{
+		return mWeapon->Attack(mIndex, direction);
+	}
+
+	bool Cadence::TryDig(Vector2 direction)
+	{
+		WallTile* wall = MapManager::GetWall(mIndex + direction);
+		if (wall)
+		{
+			if (mShovel)
+			{
+				mShovelEffect->OnDig(wall, mShovel);
+				bool success = mShovel->Dig(wall);
+				if (success)
+				{
+					PlayDigClip();
+					Camera::StartShake();
+				}
+			}
+			return true;//I tried dig
+		}
+		return false;
+	}
+	bool Cadence::TryMove(Vector2 direction)
+	{
+		Vector2 dest = mIndex + direction;
+		MapManager::Move(mIndex, dest);
+		mSprite->Jump();
+		mIndex = dest;
+		mMoveTarget += direction * UNITLENGTH;
+		return true;
+	}
+
 	void Cadence::GetInput()
 	{
-		mInput = PlayerInput::None;
+		mInput = Vector2::One;
 		if (Input::GetKeyDown(eKeyCode::A))
 		{
-			mInput = PlayerInput::Left;
+			mInput = Vector2::Left;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::D))
 		{
-			mInput = PlayerInput::Right;
+			mInput = Vector2::Right;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::W))
 		{
-			mInput = PlayerInput::Up;
+			mInput = Vector2::Up;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::S))
 		{
-			mInput = PlayerInput::Down;
+			mInput = Vector2::Down;
 		}
 	}
 	void Cadence::SetSprite()
 	{
-		if (mInput != PlayerInput::None)
+		if (mInput != Vector2::One)
 		{
 			mShovelEffect->Reset();
-			if (mInput == PlayerInput::Left)
-				mSprite->Turn(Vector2::Left);
-			else if(mInput == PlayerInput::Right)
-				mSprite->Turn(Vector2::Right);
+			mSprite->Turn(mInput);
 		}
 	}
-	void Cadence::Move()
-	{
-		if (Input::GetKeyDown(eKeyCode::A))
-		{
-			Vector2 dest = mIndex;
-			dest.x -= 1;
-			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
-			if (success)
-			{
-				mMoveTarget.x -= UNITLENGTH;
-				mSprite->Jump();
-				mIndex.x -= 1;
-			}
-		}
 
-		if (Input::GetKeyDown(eKeyCode::D))
-		{
-			Vector2 dest = mIndex;
-			dest.x += 1;
-			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
-			if (success)
-			{
-				mMoveTarget.x += UNITLENGTH;
-				mSprite->Jump();
-				mIndex.x += 1;
-			}
-		}
-
-		if (Input::GetKeyDown(eKeyCode::W))
-		{
-			Vector2 dest = mIndex;
-			dest.y -= 1;
-			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
-			if (success)
-			{
-				mMoveTarget.y -= UNITLENGTH;
-				mSprite->Jump();
-				mIndex.y -= 1;
-			}
-		}
-		if (Input::GetKeyDown(eKeyCode::S))
-		{
-			Vector2 dest = mIndex;
-			dest.y += 1;
-			bool success = !MapManager::OnInteractObject(this, mIndex, dest);
-			if (success)
-			{
-				mMoveTarget.y += UNITLENGTH;
-				mSprite->Jump();
-				mIndex.y += 1;
-			}
-		}
-	}
-	bool Cadence::UnSink()
-	{
-		if (mbIsSinked)
-		{
-			mbIsSinked = false;
-			mSprite->UnSink();
-			return true;
-		}
-			return false;
-	}
 	void Cadence::SetDigClip()
 	{
 		std::wstring key = L"dig_0";
@@ -190,46 +169,13 @@ namespace cl
 		mDigClip[random]->SetVolume(25.f);
 		mDigClip[random]->Play(false);
 	}
-	void Cadence::OnBeat()
+	void Cadence::SetAttackClip()
 	{
+
 	}
-	void Cadence::OnBeatChanged()
+	void Cadence::PlayAttackClip()
 	{
-		mAttackEffect->OnBeatChanged();
-		GameCharacter::OnBeatChanged();
+
 	}
 
-	void Cadence::Dig(WallTile* object)
-	{
-		if (shovel != nullptr)
-		{
-			mShovelEffect->OnDig(object, shovel);
-			bool success = shovel->Dig(object);
-			if (success)
-			{
-				PlayDigClip();
-				Camera::StartShake();
-			}
-		}
-	}
-	void Cadence::Attack(TileObject* object, Vector2 target)
-	{
-		Camera::StartShake();
-		Vector2 pressedPos;
-		if (mInput == PlayerInput::Up)
-			pressedPos = Vector2::Up;
-		else if (mInput == PlayerInput::Down)
-			pressedPos = Vector2::Down;
-		else if (mInput == PlayerInput::Left)
-			pressedPos = Vector2::Left;
-		else if (mInput == PlayerInput::Right)
-			pressedPos = Vector2::Right;
-		mAttackEffect->OnAttack(pressedPos);
-	}
-	void Cadence::OnDestroy()
-	{
-	}
-	void Cadence::OnAttacked()
-	{
-	}
 }

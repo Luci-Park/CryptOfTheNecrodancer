@@ -19,6 +19,7 @@ namespace cl
 		void SetDuration(float dur);
 		void Sink();
 		void UnSink();
+		void Flash();
 	private:
 		void PlayRight();
 		void PlayLeft();
