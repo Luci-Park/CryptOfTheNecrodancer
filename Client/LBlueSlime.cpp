@@ -61,6 +61,7 @@ namespace cl
 			mSlimeSprite->Jump();
 			MapManager::Move(mIndex, mIndex + direction);
 			mIndex += direction;
+			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		}
 		return true;
 	}
@@ -75,7 +76,6 @@ namespace cl
 	Vector2 BlueSlime::GetNextDir()
 	{
 		Vector2 movement = nextPos[mMovementIndex];
-		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		return movement;
 	}
 }
