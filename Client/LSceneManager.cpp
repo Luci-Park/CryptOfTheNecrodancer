@@ -28,7 +28,7 @@ namespace cl
 
 			scene->Initialize();
 		}
-		LoadScene(eSceneType::Splash);
+		LoadScene(eSceneType::Lobby);
 	}
 
 	void SceneManager::Update()

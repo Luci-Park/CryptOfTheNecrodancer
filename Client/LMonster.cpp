@@ -1,4 +1,5 @@
 #include "LMonster.h"
+#include "LCharacterSprite.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
@@ -11,6 +12,7 @@ namespace cl
 	void Monster::Initialize()
 	{
 		GameCharacter::Initialize();
+		SetStats();
 	}
 	void Monster::Update()
 	{
@@ -23,6 +25,18 @@ namespace cl
 	void Monster::Sink()
 	{
 		GameCharacter::Sink();
+	}
+	void Monster::OnBeat()
+	{
+		mSprite->Reset();
+		if (!UnSink())
+		{
+			Vector2 nextDir = GetNextDir();
+			if (!TryAttack(nextDir) && !TryDig(nextDir))
+			{
+				TryMove(nextDir);
+			}
+		}
 	}
 	void Monster::OnBeatChanged()
 	{

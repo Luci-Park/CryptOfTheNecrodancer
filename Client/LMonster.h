@@ -17,10 +17,12 @@ namespace cl
 		virtual void OnAttacked(float attackPower) = 0;
 		virtual void OnDestroy() = 0;
 
-		virtual void OnBeat() = 0;
+		virtual void OnBeat() override;
 		virtual void OnBeatChanged();
 
 	protected:
+		virtual void SetStats() = 0;
+		virtual Vector2 GetNextDir() = 0;
 		virtual bool TryAttack(Vector2 Direction) = 0;
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;

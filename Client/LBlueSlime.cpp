@@ -6,7 +6,7 @@
 namespace cl
 {
 	BlueSlime::BlueSlime(Scene* sc)
-		: GameCharacter(sc, true)
+		: Monster(sc, true)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		nextPos.resize(4);
@@ -21,22 +21,22 @@ namespace cl
 	}
 	void BlueSlime::Initialize()
 	{
-		GameCharacter::Initialize();
+		Monster::Initialize();
 		mSlimeSprite = object::Instantiate<BlueSlimeSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSlimeSprite;
 		BeatManager::AddCharacters(this);
 	}
 	void BlueSlime::Update()
 	{
-		GameCharacter::Update();
+		Monster::Update();
 	}
 	void BlueSlime::Render(HDC hdc)
 	{
-		GameCharacter::Render(hdc);
+		Monster::Render(hdc);
 	}
 	void BlueSlime::Sink()
 	{
-		GameCharacter::Sink();
+		Monster::Sink();
 	}
 	void BlueSlime::OnAttacked(float attackPower)
 	{
@@ -46,20 +46,7 @@ namespace cl
 	}
 	void BlueSlime::OnBeat()
 	{
-		mSprite->Reset();
-		if (!UnSink())
-		{
-			Vector2 nextPos = GetNextPos();
-			mMoveTarget += nextPos * UNITLENGTH;
-			if (nextPos == Vector2::Zero)
-				mSlimeSprite->Idle();
-			else
-			{
-				mSlimeSprite->Jump();
-				MapManager::Move(mIndex, mIndex + nextPos);
-			}
-			mIndex += nextPos;
-		}
+		Monster::OnBeat();
 	}
 	bool BlueSlime::TryAttack(Vector2 Direction)
 	{
@@ -71,9 +58,26 @@ namespace cl
 	}
 	bool BlueSlime::TryMove(Vector2 direction)
 	{
-		return false;
+		if (direction == Vector2::Zero)
+			mSlimeSprite->Idle();
+		else
+		{
+			mMoveTarget += direction * UNITLENGTH;
+			mSlimeSprite->Jump();
+			MapManager::Move(mIndex, mIndex + direction);
+			mIndex += direction;
+		}
+		return true;
 	}
-	Vector2 BlueSlime::GetNextPos()
+	void BlueSlime::SetStats()
+	{
+		mMaxHealth = 4;
+		mHealth = 4;
+		mAttack = 1;
+		mDigPower = 0;
+		mDrop = 2;
+	}
+	Vector2 BlueSlime::GetNextDir()
 	{
 		Vector2 movement = nextPos[mMovementIndex];
 		mMovementIndex = (mMovementIndex + 1) % nextPos.size();

@@ -1,10 +1,10 @@
 #pragma once
-#include "LGameCharacter.h"
+#include "LMonster.h"
 #include "LBehaviorTree.h"
 namespace cl
 {
 	class BlueSlimeSprite;
-	class BlueSlime : public GameCharacter
+	class BlueSlime : public Monster
 	{
 	public:
 		BlueSlime(Scene* sc);
@@ -21,13 +21,14 @@ namespace cl
 
 		virtual void OnBeat();
 	private:
+		virtual void SetStats() override;
+		virtual Vector2 GetNextDir() override;
 		virtual bool TryAttack(Vector2 Direction) override;
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) override;
 		virtual bool TryMove(Vector2 direction) override;
 	private:
 		BlueSlimeSprite* mSlimeSprite;
-		Vector2 GetNextPos();
 		int mMovementIndex;
 		std::vector<Vector2> nextPos;
 		bool mbMoveFailed;
