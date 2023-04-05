@@ -1,6 +1,7 @@
 #include "LBlueSlimeSprite.h"
 #include "LBeatManager.h"
 #include "LAnimator.h"
+#include "LCamera.h"
 namespace cl
 {
 	BlueSlimeSprite::BlueSlimeSprite(Scene* sc)
@@ -23,13 +24,16 @@ namespace cl
 		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 8, 16, 4, 2, 4, Vector2::Zero, 0.36f);
 		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 8, 16, 4, 2, 4, Vector2::Zero, 0.36f);
 		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 8, 16, 0, 2, 4, Vector2::Zero, 0.36f);
-
+		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
+		Idle();
 	}
 	void BlueSlimeSprite::Update()
 	{
+		CharacterSprite::Update();
 	}
 	void BlueSlimeSprite::Render(HDC hdc)
 	{
+		CharacterSprite::Render(hdc);
 	}
 	void BlueSlimeSprite::Turn(Vector2 dir)
 	{
@@ -43,16 +47,18 @@ namespace cl
 	void BlueSlimeSprite::Idle()
 	{
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftIdle", false, false);
+			mAnimator->Play(L"LeftIdle", true, false);
 		else
-			mAnimator->Play(L"RightIdle", false, true);
+			mAnimator->Play(L"RightIdle", true, true);
 	}
 	void BlueSlimeSprite::Jump()
 	{
 		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftJump", false, false);
+			mAnimator->Play(L"LeftJump", true, false);
 		else
-			mAnimator->Play(L"RightJump", false, true);
+			mAnimator->Play(L"RightJump", true, true);
+		if (mbIsJumping == false)
+			Idle();
 	}
 }

@@ -167,7 +167,6 @@
     <ClInclude Include="LMath.h" />
     <ClInclude Include="LMonster.h" />
     <ClInclude Include="LBehaviorTree.h" />
-    <ClInclude Include="LMonsterFactory.h" />
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
@@ -187,6 +186,7 @@
     <ClInclude Include="LuciEngine.h" />
     <ClInclude Include="LWallTile.h" />
     <ClInclude Include="LWeapon.h" />
+    <ClInclude Include="LWeaponFilter.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -224,7 +224,6 @@
     <ClCompile Include="LMath.cpp" />
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LBehaviorTree.cpp" />
-    <ClCompile Include="LMonsterFactory.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />
@@ -242,6 +241,7 @@
     <ClCompile Include="LTutorialScene.cpp" />
     <ClCompile Include="LWallTile.cpp" />
     <ClCompile Include="LWeapon.cpp" />
+    <ClCompile Include="LWeaponFilter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

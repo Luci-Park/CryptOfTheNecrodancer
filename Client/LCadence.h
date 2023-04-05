@@ -23,7 +23,7 @@ namespace cl
 
 		virtual void OnBeat() override;
 		virtual void OnBeatChanged() override;
-		
+
 	protected:
 		virtual bool TryAttack(Vector2 direction)override;
 		//Returns true if InteractedWithDig;
@@ -31,11 +31,13 @@ namespace cl
 		virtual bool TryMove(Vector2 direction) override;
 
 	private:
+		void OnMove(Vector2 direction);
 		void GetInput();
 		void SetSprite();
-		bool UnSink();
 		void SetDigClip();
 		void PlayDigClip();
+		void SetAttackClip();
+		void PlayAttackClip();
 	private:
 		Shovels* mShovel;
 		Weapon* mWeapon;
@@ -43,6 +45,10 @@ namespace cl
 		CadenceShovelEffect* mShovelEffect;
 		Vector2 mInput;
 		AudioClip* mDigClip[6];
+		AudioClip* mMeeleAttackClip[17];
+		AudioClip* mRangedAttackClip[7];
+		AudioClip* mDeathClip[3];
+		AudioClip* mDamagedClip[6];
 	};
 
 }

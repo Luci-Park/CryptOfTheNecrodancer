@@ -51,14 +51,23 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::OnMove(Vector2 direction)
+	void GameCharacter::MoveFailed()
 	{
-		if (!TryAttack(direction) && !TryDig(direction))
-			TryMove(direction);
+
 	}
 	void GameCharacter::Sink()
 	{
 		mSprite->Sink();
 		mbIsSinked = true;
+	}
+	bool GameCharacter::UnSink()
+	{
+		if (mbIsSinked)
+		{
+			mbIsSinked = false;
+			mSprite->UnSink();
+			return true;
+		}
+		return false;
 	}
 }

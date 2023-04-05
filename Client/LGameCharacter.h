@@ -16,6 +16,7 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() override;
+		virtual bool UnSink();
 
 		virtual void OnAttacked(float attackPower) = 0;
 		virtual void OnDestroy() = 0;
@@ -23,9 +24,10 @@ namespace cl
 		virtual void OnBeat() = 0;
 		virtual void OnBeatChanged();
 
-		void OnMove(Vector2 direction);		
 	protected:
 		virtual bool TryAttack(Vector2 Direction) = 0;
+		void MoveFailed();
+
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;
 		virtual bool TryMove(Vector2 direction) = 0;

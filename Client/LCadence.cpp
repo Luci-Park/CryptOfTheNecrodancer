@@ -20,7 +20,7 @@ namespace cl
 		: GameCharacter(scene, true)
 		, mSpriteRenderer(nullptr)
 	{
-		Camera::SetTarget(this);
+		//Camera::SetTarget(this);
 		mShovel = new Shovel();
 		SetDigClip();
 	}
@@ -33,11 +33,11 @@ namespace cl
 	{
 		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2::One * UNITSCALE);
-		
+
 		//mSpriteRenderer = AddComponent<SpriteRenderer>();
 		//mSpriteRenderer->SetImage(L"shadow", L"..\\Assets\\Arts\\Player\\Player_Shadow.bmp");
 		//mSpriteRenderer->AddAlpha(100);
-		
+
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mWeapon = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
@@ -69,7 +69,7 @@ namespace cl
 	void Cadence::OnDestroy()
 	{
 	}
-	
+
 	void Cadence::OnBeat()
 	{
 	}
@@ -77,6 +77,12 @@ namespace cl
 	{
 		mWeapon->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
+	}
+
+	void Cadence::OnMove(Vector2 direction)
+	{
+		if (!TryAttack(direction) && !TryDig(direction))
+			TryMove(direction);
 	}
 
 	bool Cadence::TryAttack(Vector2 direction)
@@ -112,7 +118,7 @@ namespace cl
 		mMoveTarget += direction * UNITLENGTH;
 		return true;
 	}
-	
+
 	void Cadence::GetInput()
 	{
 		mInput = Vector2::One;
@@ -144,16 +150,7 @@ namespace cl
 			mSprite->Turn(mInput);
 		}
 	}
-	bool Cadence::UnSink()
-	{
-		if (mbIsSinked)
-		{
-			mbIsSinked = false;
-			mSprite->UnSink();
-			return true;
-		}
-			return false;
-	}
+
 	void Cadence::SetDigClip()
 	{
 		std::wstring key = L"dig_0";
@@ -172,7 +169,13 @@ namespace cl
 		mDigClip[random]->SetVolume(25.f);
 		mDigClip[random]->Play(false);
 	}
+	void Cadence::SetAttackClip()
+	{
 
+	}
+	void Cadence::PlayAttackClip()
+	{
 
+	}
 
 }
