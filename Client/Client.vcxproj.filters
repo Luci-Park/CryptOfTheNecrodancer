@@ -274,7 +274,12 @@
     <ClInclude Include="LWeapon.h">
       <Filter>Contents\Items\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="LWeaponFilter.h" />
+    <ClInclude Include="LMonsterWeapon.h">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="LWeaponFilter.h">
+      <Filter>Contents\Items\Weapons\Decorators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -440,6 +445,11 @@
     <ClCompile Include="LWeapon.cpp">
       <Filter>Contents\Items\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="LWeaponFilter.cpp" />
+    <ClCompile Include="LWeaponFilter.cpp">
+      <Filter>Contents\Items\Weapons\Decorators</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonsterWeapon.cpp">
+      <Filter>Contents\Items\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

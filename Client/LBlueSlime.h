@@ -17,15 +17,11 @@ namespace cl
 		virtual void Sink() override;
 
 		virtual void OnAttacked(float attackPower)override;
-		virtual void OnDestroy() override;
 
 		virtual void OnBeat();
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
-		virtual bool TryAttack(Vector2 Direction) override;
-		//Returns true if InteractedWithDig;
-		virtual bool TryDig(Vector2 direction) override;
 		virtual bool TryMove(Vector2 direction) override;
 	private:
 		BlueSlimeSprite* mSlimeSprite;

@@ -5,6 +5,7 @@ namespace cl
 	class FloorTile;
 	class WallTile;
 	class TileObject;
+	class Cadence;
 	class MapManager
 	{
 	public:
@@ -25,6 +26,9 @@ namespace cl
 
 		static WallTile* GetWall(Vector2 index);
 		static TileObject* GetEnemy(Vector2 index);
+		static Cadence* GetPlayer(Vector2 index);
+		static Vector2 GetPlayerIndex() { return _playerIndex; }
+		static void PlayerMove(Vector2 src, Vector2 dest);
 		static void Move(Vector2 src, Vector2 dest);
 
 	private:
@@ -32,6 +36,7 @@ namespace cl
 		static std::vector<std::vector<WallTile*>> _Wall;
 		static std::vector<std::vector<TileObject*>> _ForeObjects;
 		static Vector2 _size;
+		static Vector2 _playerIndex;
 	};
 
 }

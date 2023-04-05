@@ -3,6 +3,7 @@
 #include "LObject.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
+#include "LCadence.h"
 namespace cl
 {
 	BlueSlime::BlueSlime(Scene* sc)
@@ -40,21 +41,15 @@ namespace cl
 	}
 	void BlueSlime::OnAttacked(float attackPower)
 	{
-	}
-	void BlueSlime::OnDestroy()
-	{
+		mHealth -= attackPower;
+		if (mHealth <= 0)
+		{
+			OnDestroy();
+		}
 	}
 	void BlueSlime::OnBeat()
 	{
 		Monster::OnBeat();
-	}
-	bool BlueSlime::TryAttack(Vector2 Direction)
-	{
-		return false;
-	}
-	bool BlueSlime::TryDig(Vector2 direction)
-	{
-		return false;
 	}
 	bool BlueSlime::TryMove(Vector2 direction)
 	{
@@ -73,7 +68,7 @@ namespace cl
 	{
 		mMaxHealth = 4;
 		mHealth = 4;
-		mAttack = 1;
+		mAttackPower = 1;
 		mDigPower = 0;
 		mDrop = 2;
 	}

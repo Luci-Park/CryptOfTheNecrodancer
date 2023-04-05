@@ -112,7 +112,7 @@ namespace cl
 	bool Cadence::TryMove(Vector2 direction)
 	{
 		Vector2 dest = mIndex + direction;
-		MapManager::Move(mIndex, dest);
+		MapManager::PlayerMove(mIndex, dest);
 		mSprite->Jump();
 		mIndex = dest;
 		mMoveTarget += direction * UNITLENGTH;

@@ -1,5 +1,10 @@
 #include "LMonster.h"
 #include "LCharacterSprite.h"
+#include "LCadence.h"
+#include "LMapManager.h"
+#include "LWallTile.h"
+#include "LObject.h"
+#include "LMonsterWeapon.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
@@ -13,6 +18,7 @@ namespace cl
 	{
 		GameCharacter::Initialize();
 		SetStats();
+		SetWeapon();
 	}
 	void Monster::Update()
 	{
@@ -25,6 +31,11 @@ namespace cl
 	void Monster::Sink()
 	{
 		GameCharacter::Sink();
+	}
+	void Monster::OnDestroy()
+	{
+		MapManager::DestroyTileObject(mIndex);
+		//LeaveGold
 	}
 	void Monster::OnBeat()
 	{
@@ -41,5 +52,35 @@ namespace cl
 	void Monster::OnBeatChanged()
 	{
 		GameCharacter::OnBeatChanged();
+	}
+	void Monster::SetWeapon()
+	{
+		mWeapon = object::Instantiate<MonsterWeapon>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon->SetPower(mAttackPower);
+	}
+	bool Monster::TryAttack(Vector2 direction)
+	{
+		Cadence* player = MapManager::GetPlayer(mIndex + direction);
+		if (player)
+		{
+			mWeapon->Attack(mIndex, direction);
+			//Effect;
+			return true;
+		}
+		return false;
+	}
+	bool Monster::TryDig(Vector2 direction)
+	{
+		WallTile* wall = MapManager::GetWall(mIndex + direction);
+		if (wall)
+		{
+			bool success = wall->OnDig(mDigPower);
+			if (!success)
+			{
+				//MoveFailed;
+			}
+			return true;
+		}
+		return false;
 	}
 }

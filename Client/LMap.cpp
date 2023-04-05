@@ -54,7 +54,6 @@ namespace cl
 		CreatePlayer(sc, _TileObjects);
 	}
 
-
 	void Map::CreatePlayer(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
 	{
 		Vector2 pos;
@@ -65,6 +64,7 @@ namespace cl
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
 	}
+
 	void Map::CreateMonsters(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
 	{
 		_TileObjects.resize(mMapSize.y);

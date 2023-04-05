@@ -15,7 +15,7 @@ namespace cl
 		void CreateFloor(Scene* sc, std::vector<std::vector<FloorTile*>>& _Floor);
 		void CreateWall(Scene* sc, std::vector<std::vector<WallTile*>>& _Wall);
 		void CreateForeGround(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects);
-
+		Vector2 GetPlayerPos() { return mPlayerIndex; }
 
 	protected:
 		virtual void SetFloor() = 0;

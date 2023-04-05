@@ -1,20 +1,20 @@
-#include "LDagger.h"
+#include "LMonsterWeapon.h"
 #include "LAnimator.h"
 #include "LTileObject.h"
 #include "LMapManager.h"
+#include "LCadence.h"
 namespace cl
 {
-	Dagger::Dagger(Scene* sc)
+	MonsterWeapon::MonsterWeapon(Scene* sc)
 		:Weapon(sc)
 	{
-		mPower = 2;
 	}
 
-	Dagger::~Dagger()
+	MonsterWeapon::~MonsterWeapon()
 	{
 	}
 
-	void Dagger::SetAnimation()
+	void MonsterWeapon::SetAnimation()
 	{
 		mUpAnimation = L"Dagger_Up";
 		mDownAnimation = L"Dagger_Down";
@@ -31,12 +31,12 @@ namespace cl
 		OnBeatChanged();
 	}
 
-	Vector2 Dagger::EffectPos(Vector2 dir)
+	Vector2 MonsterWeapon::EffectPos(Vector2 dir)
 	{
 		return dir * UNITLENGTH;
 	}
 
-	std::wstring Dagger::SelectAnimation(Vector2 dir)
+	std::wstring MonsterWeapon::SelectAnimation(Vector2 dir)
 	{
 		if (dir == Vector2::Right)
 			return mRightAnimation;
@@ -49,10 +49,10 @@ namespace cl
 		return std::wstring();
 	}
 
-	bool Dagger::TryAttack(Vector2 srcIdx, Vector2 input)
+	bool MonsterWeapon::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
 		Vector2 dest = srcIdx + input;
-		TileObject* enemy = MapManager::GetEnemy(dest);
+		Cadence* enemy = MapManager::GetPlayer(dest);
 		if (enemy != nullptr)
 		{
 			enemy->OnAttacked(mPower);

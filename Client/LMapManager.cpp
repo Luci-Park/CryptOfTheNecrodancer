@@ -7,6 +7,7 @@ namespace cl
 	std::vector<std::vector<WallTile*>> MapManager::_Wall = std::vector<std::vector<WallTile*>>();
 	std::vector<std::vector<TileObject*>> MapManager::_ForeObjects = std::vector<std::vector<TileObject*>>();
 	Vector2 MapManager::_size = Vector2::Zero;
+	Vector2 MapManager::_playerIndex = Vector2::Zero;
 
 	void MapManager::CreateMap(MapType type, Scene* sc)
 	{
@@ -21,6 +22,7 @@ namespace cl
 		mMap->CreateFloor(sc, _Floor);
 		mMap->CreateWall(sc, _Wall);
 		mMap->CreateForeGround(sc, _ForeObjects);
+		_playerIndex = mMap->GetPlayerPos();
 		_size.y = _Floor.size();
 		_size.x = _Floor[0].size();
 		delete mMap;
@@ -74,6 +76,17 @@ namespace cl
 	TileObject* MapManager::GetEnemy(Vector2 index)
 	{
 		return _ForeObjects[index.y][index.x];
+	}
+	Cadence* MapManager::GetPlayer(Vector2 index)
+	{
+		if (index == _playerIndex)
+			return (Cadence*)_ForeObjects[index.y][index.x];
+		return nullptr;
+	}
+	void MapManager::PlayerMove(Vector2 src, Vector2 dest)
+	{
+		Move(src, dest);
+		_playerIndex = dest;
 	}
 	void MapManager::Move(Vector2 src, Vector2 dest)
 	{
