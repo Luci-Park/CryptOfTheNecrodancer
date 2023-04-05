@@ -7,7 +7,7 @@ namespace cl
 	Dagger::Dagger(Scene* sc)
 		:Weapon(sc)
 	{
-		mPower = 2;
+		mPower = 1;
 	}
 
 	Dagger::~Dagger()
@@ -20,13 +20,13 @@ namespace cl
 		mDownAnimation = L"Dagger_Down";
 		mLeftAnimation = L"Dagger_Left";
 		mRightAnimation = L"Dagger_Right";
-		mAnimator->CreateAnimation(mRightAnimation, L"Dagger_Right", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Right.bmp",
+		mAnimator->CreateAnimation(mRightAnimation, mRightAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger\\Dagger_Right.bmp",
 			3, 1, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mLeftAnimation, L"Dagger_Left", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Left.bmp",
+		mAnimator->CreateAnimation(mLeftAnimation, mLeftAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger\\Dagger_Left.bmp",
 			3, 1, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mUpAnimation, L"Dagger_Up", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Up.bmp",
+		mAnimator->CreateAnimation(mUpAnimation, mUpAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger\\Dagger_Up.bmp",
 			1, 3, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mDownAnimation, L"Dagger_Down", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Down.bmp",
+		mAnimator->CreateAnimation(mDownAnimation, mDownAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger\\Dagger_Down.bmp",
 			1, 3, 0, 0, 3, Vector2::Zero, 0.25);
 		OnBeatChanged();
 	}

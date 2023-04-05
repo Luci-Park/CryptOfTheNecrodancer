@@ -67,6 +67,8 @@ namespace cl
 			//Effect;
 			return true;
 		}
+		if(MapManager::GetEnemy(mIndex + direction))
+			return true;
 		return false;
 	}
 	bool Monster::TryDig(Vector2 direction)

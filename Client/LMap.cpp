@@ -3,6 +3,8 @@
 #include "LObject.h"
 #include "LCadence.h"
 #include "LBlueSlime.h"
+#include "LGreenSlime.h"
+#include "LOrangeSlime.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -80,6 +82,22 @@ namespace cl
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
 					_TileObjects[i][j] = object::Instantiate<BlueSlime>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j]->SetIndex(Vector2(j, i));
+				}
+				if (j == 6 && i == 8)
+				{
+					Vector2 pos;
+					pos.x = j * UNITLENGTH;
+					pos.y = (i - 0.25) * UNITLENGTH;
+					_TileObjects[i][j] = object::Instantiate<GreenSlime>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j]->SetIndex(Vector2(j, i));
+				}
+				if (j == 5 && i == 5)
+				{
+					Vector2 pos;
+					pos.x = j * UNITLENGTH;
+					pos.y = (i - 0.25) * UNITLENGTH;
+					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
 				}
 			}
