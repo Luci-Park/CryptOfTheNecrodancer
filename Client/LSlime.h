@@ -16,6 +16,7 @@ namespace cl
 		AudioClip* mSlimeAttackSound;
 		AudioClip* mSlimeDeathSound[3];
 		AudioClip* mSlimeHitSound[3];
+		float voiceVol = 60.0f;
 	};
 }
 

@@ -42,12 +42,12 @@ namespace cl
 	}
 	void CadenceSprite::Sink()
 	{
-		CharacterSprite::Sink();
+		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH * 0.25);
 		mBody->Sink();
 	}
 	void CadenceSprite::UnSink()
 	{
-		CharacterSprite::UnSink();
+		Jump();
 		mBody->UnSink();
 	}
 }

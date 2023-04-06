@@ -70,9 +70,9 @@ namespace cl
         pos += Vector2(mSpriteSheet[mSpriteIndex].offset.x * scale.x, mSpriteSheet[mSpriteIndex].offset.y * scale.y);
         if (!mAnimator->GetOwner()->IsUI())
             pos = Camera::CaluatePos(pos);
-        Vector2 size = mAnimator->GetPercent();
-        Vector2 spriteRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * size.x, mSpriteSheet[mSpriteIndex].size.y * size.y);
-        Vector2 resltRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * scale.x * size.x, mSpriteSheet[mSpriteIndex].size.y * scale.y * size.y);
+        Vector2 Percent = mAnimator->GetPercent();
+        Vector2 spriteRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * Percent.x, mSpriteSheet[mSpriteIndex].size.y * Percent.y);
+        Vector2 resltRightBottom = Vector2(mSpriteSheet[mSpriteIndex].size.x * scale.x * Percent.x, mSpriteSheet[mSpriteIndex].size.y * scale.y * Percent.y);
         Sprite rect = { pos, resltRightBottom, Vector2::Zero };
         if (Camera::IsDrawable(rect))
         {
@@ -140,5 +140,4 @@ namespace cl
         mTime = 0.0f;
         mbComplete = false;
     }
-
 }

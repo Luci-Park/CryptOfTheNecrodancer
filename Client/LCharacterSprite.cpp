@@ -2,6 +2,7 @@
 #include "LTime.h"
 #include "LBeatManager.h"
 #include "LMapManager.h"
+#include "LAnimator.h"
 namespace cl
 {
 	CharacterSprite::CharacterSprite(Scene *sc)
@@ -51,9 +52,11 @@ namespace cl
 	void CharacterSprite::Sink()
 	{
 		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH * 0.25);
+		mAnimator->SetPercent({ 1.0f, 0.72f });
 	}
 	void CharacterSprite::UnSink()
 	{
 		Jump();
+		mAnimator->SetPercent(Vector2::One);
 	}
 }

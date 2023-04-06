@@ -5,11 +5,17 @@
 #include "LWallTile.h"
 #include "LObject.h"
 #include "LMonsterWeapon.h"
+#include "LResources.h"
+#include "LAudioClip.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
 	{
+		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
+		mGeneralDeath = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_death.wav");
+		mGeneralDeath->SetVolume(100);
+		mGeneralHit->SetVolume(100);
 	}
 	Monster::~Monster()
 	{

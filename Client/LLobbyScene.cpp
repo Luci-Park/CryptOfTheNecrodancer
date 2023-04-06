@@ -5,6 +5,7 @@
 #include "LBeatManager.h"
 #include "LResources.h"
 #include "LAudioClip.h"
+#include "LImage.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()

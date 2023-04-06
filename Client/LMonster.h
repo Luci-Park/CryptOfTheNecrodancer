@@ -3,6 +3,7 @@
 namespace cl
 {
 	class MonsterWeapon;
+	class AudioClip;
 	class Monster : public GameCharacter
 	{
 	public:
@@ -33,6 +34,8 @@ namespace cl
 		virtual void PlayOnHitSound() = 0;
 		virtual void PlayOnDeathSound() = 0;
 	protected:
+		AudioClip* mGeneralHit;
+		AudioClip* mGeneralDeath;
 		float mAttackPower;
 		int mDigPower;
 		int mDrop;

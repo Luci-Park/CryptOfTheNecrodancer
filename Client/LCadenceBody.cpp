@@ -23,7 +23,7 @@ namespace cl
 		std::wstring rightPath = L"..\\Assets\\Arts\\Player\\Cadence_Right.bmp";
 		mAnimator->CreateAnimation(mLeftAnimation, L"CadenceLeft", leftPath, 16, 16, 12, 2, 4, Vector2::Zero, 0.36f);
 		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, Vector2::Zero, 0.36f);
-
+	
 		PlayRight();
 	}
 	void CadenceBody::Update()
@@ -48,11 +48,11 @@ namespace cl
 	}
 	void CadenceBody::Sink()
 	{
-		//mAnimator->SetPercent(Vector2(1.0f, 0.25f));
+		mAnimator->SetPercent({ 1.0f, 0.72f });
 	}
 	void CadenceBody::UnSink()
 	{
-		//mAnimator->SetPercent(Vector2::One);
+		mAnimator->SetPercent(Vector2::One);
 	}
 	void CadenceBody::Flash()
 	{

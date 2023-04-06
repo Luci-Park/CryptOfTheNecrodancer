@@ -5,9 +5,9 @@
 namespace cl
 {
 	Weapon::Weapon(Scene* sc)
-		:GameObject(sc, false)
+		: GameObject(sc, false)
+		, mbIsMelee(true)
 	{
-
 	}
 	Weapon::~Weapon()
 	{

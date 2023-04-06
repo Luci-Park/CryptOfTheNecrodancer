@@ -30,28 +30,36 @@ namespace cl
 		virtual bool TryDig(Vector2 direction) override;
 		virtual bool TryMove(Vector2 direction) override;
 
-		virtual void PlayOnAttackSound();
-		virtual void PlayOnHitSound();
-		virtual void PlayOnDeathSound();
 	private:
 		void OnMove(Vector2 direction);
 		void GetInput();
 		void SetSprite();
-		void SetDigClip();
 		void PlayOnDigSound();
-		void SetAttackClip();
-		void PlayAttackClip();
+		virtual void PlayOnAttackSound();
+		virtual void PlayOnHitSound();
+		virtual void PlayOnDeathSound();
+		void SetAudioClip();
+		void SetDigSound();
+		void SetAttackSound();
+		void SetDeathSound();
+		void SetOnHitSound();
 	private:
 		Shovels* mShovel;
 		Weapon* mWeapon;
 		SpriteRenderer* mSpriteRenderer;
 		CadenceShovelEffect* mShovelEffect;
 		Vector2 mInput;
-		AudioClip* mDigClip[6];
-		AudioClip* mMeeleAttackClip[17];
-		AudioClip* mRangedAttackClip[7];
-		AudioClip* mDeathClip[3];
-		AudioClip* mDamagedClip[6];
+		int consecutiveHits;
+#pragma region Sounds
+		std::vector<AudioClip*> mDigVoice;
+		std::vector<std::vector<AudioClip*>>mMeleeHitVoice;
+		std::vector<AudioClip*>mRangedHitVoice;
+		std::vector<AudioClip*>mDeathVoice;
+		std::vector<AudioClip*>mOnAttackedVoice;
+		AudioClip*mHitSFX;
+		AudioClip*mDeathSFX;
+#pragma endregion
+
 	};
 
 }

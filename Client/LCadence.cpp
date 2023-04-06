@@ -19,10 +19,13 @@ namespace cl
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene, true)
 		, mSpriteRenderer(nullptr)
+		, consecutiveHits(0)
 	{
 		//Camera::SetTarget(this);
 		mShovel = new Shovel();
-		SetDigClip();
+		SetAudioClip();
+		mMaxHealth = 3;
+		mHealth = 3;
 	}
 	Cadence::~Cadence()
 	{
@@ -94,8 +97,17 @@ namespace cl
 
 	void Cadence::OnMove(Vector2 direction)
 	{
-		if (!TryAttack(direction) && !TryDig(direction))
-			TryMove(direction);
+		if (TryAttack(direction))
+		{
+			consecutiveHits++;
+			if (consecutiveHits >= mMeleeHitVoice.size())
+				consecutiveHits = mMeleeHitVoice.size() - 1;
+		}
+		else {
+			consecutiveHits = 0;
+			if (!TryDig(direction))
+				TryMove(direction);
+		}
 	}
 
 	bool Cadence::TryAttack(Vector2 direction)
@@ -135,18 +147,6 @@ namespace cl
 		return true;
 	}
 
-	void Cadence::PlayOnAttackSound()
-	{
-	}
-
-	void Cadence::PlayOnHitSound()
-	{
-	}
-
-	void Cadence::PlayOnDeathSound()
-	{
-	}
-
 	void Cadence::GetInput()
 	{
 		mInput = Vector2::One;
@@ -179,31 +179,117 @@ namespace cl
 		}
 	}
 
-	void Cadence::SetDigClip()
+	void Cadence::SetAudioClip()
 	{
-		std::wstring key = L"dig_0";
-		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\vo_cad_";
+		SetDigSound();
+		SetAttackSound();
+		SetDeathSound();
+		SetOnHitSound();
+		mDeathSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_death_ST.wav");
+		mHitSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_hit_ST.wav");
 
-		for (int i = 0; i < 6; ++i)
-		{
-			std::wstring newKey = key + std::to_wstring(i + 1);
-			std::wstring newPath = path + newKey + L".wav";
-			mDigClip[i] = Resources::Load<AudioClip>(newKey, newPath);
-		}
 	}
 	void Cadence::PlayOnDigSound()
 	{
-		int random = GetRandomInt(0, 5);
-		mDigClip[random]->SetVolume(25.f);
-		mDigClip[random]->Play(false);
+		int random = GetRandomInt(0, mDigVoice.size());
+		mDigVoice[random]->SetVolume(25.f);
+		mDigVoice[random]->Play(false);
 	}
-	void Cadence::SetAttackClip()
+
+	void Cadence::PlayOnAttackSound()
 	{
-
+		if (mWeapon->isMelee())
+		{
+			int random = GetRandomInt(0, mMeleeHitVoice[0].size() - 1);
+			mMeleeHitVoice[consecutiveHits][random]->Play(false);
+		}
+		else
+		{
+			int random = GetRandomInt(0, mRangedHitVoice.size() - 1);
+			mRangedHitVoice[random]->Play(false);
+		}
 	}
-	void Cadence::PlayAttackClip()
+
+	void Cadence::PlayOnHitSound()
 	{
-
+		mHitSFX->Play(false);
+		int random = GetRandomInt(0, mOnAttackedVoice.size() - 1);
+		mOnAttackedVoice[random]->Play(false);
 	}
 
+	void Cadence::PlayOnDeathSound()
+	{
+		mDeathSFX->Play(false);
+		int random = GetRandomInt(0, mDeathVoice.size() - 1);
+		mDeathVoice[random]->Play(false);
+	}
+	void Cadence::SetDigSound()
+	{
+		mDigVoice.resize(6);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"dig_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+
+		for (int i = 0; i < mDigVoice.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mDigVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void Cadence::SetAttackSound()
+	{
+		mMeleeHitVoice.resize(4);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"melee_";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+		for (int i = 0; i < mMeleeHitVoice.size(); ++i)
+		{
+			mMeleeHitVoice[i].resize(4);
+			std::wstring number = std::to_wstring(i + 1) + L"_0";
+			for (int j = 0; j < mMeleeHitVoice[i].size(); j++)
+			{
+				std::wstring newKey = key + number + std::to_wstring(j + 1);
+				std::wstring newPath = path + newKey + L".wav";
+				mMeleeHitVoice[i][j] = Resources::Load<AudioClip>(newKey, newPath);
+			}
+		}
+
+		mRangedHitVoice.resize(7);
+		key = cad + L"ranged_0";
+		for (int i = 0; i < mRangedHitVoice.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mRangedHitVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void Cadence::SetDeathSound()
+	{
+		mDeathVoice.resize(3);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"death_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+
+		for (int i = 0; i < mDeathVoice.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mDeathVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void Cadence::SetOnHitSound()
+	{
+		mOnAttackedVoice.resize(3);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"hurt_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+
+		for (int i = 0; i < mOnAttackedVoice.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mOnAttackedVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
 }

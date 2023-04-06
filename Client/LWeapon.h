@@ -16,7 +16,7 @@ namespace cl
 		void OnBeatChanged();
 		void PlayAttackAnimation(Vector2 dir);
 		bool Attack(Vector2 srcIdx, Vector2 input);
-
+		bool isMelee() { return mbIsMelee; }
 	protected:
 		virtual void SetAnimation() = 0;
 		virtual Vector2 EffectPos(Vector2 dir) = 0;
@@ -25,6 +25,7 @@ namespace cl
 	protected:
 		float mPower;
 		Animator* mAnimator;
+		bool mbIsMelee;
 	};
 }
 

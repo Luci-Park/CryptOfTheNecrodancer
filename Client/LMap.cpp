@@ -75,7 +75,7 @@ namespace cl
 			_TileObjects[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				_TileObjects[i][j] = nullptr;
+				_TileObjects[i][j] = nullptr;/*
 				if (j == 6 && i == 9)
 				{
 					Vector2 pos;
@@ -99,7 +99,7 @@ namespace cl
 					pos.y = (i - 0.25) * UNITLENGTH;
 					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}
+				}*/
 			}
 		}
 	}

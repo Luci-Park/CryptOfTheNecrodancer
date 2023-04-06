@@ -3,6 +3,7 @@
 namespace cl
 {
 	class BeatManager;
+	class Animator;
 	class CharacterSprite : public GameObject
 	{
 	public :
@@ -20,6 +21,7 @@ namespace cl
 		virtual void Sink();
 		virtual void UnSink();
 		//virtual void Flash() = 0;
+
 		void Reset();
 		void MoveFailed(Vector2 dir);
 	protected:
@@ -29,6 +31,7 @@ namespace cl
 		bool mbMoveFailed;
 		Vector2 mbMoveDir;
 		float mHeight;
+		Animator* mAnimator;
 
 	};
 }
