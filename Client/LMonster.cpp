@@ -43,6 +43,7 @@ namespace cl
 		if (!UnSink())
 		{
 			Vector2 nextDir = GetNextDir();
+			mSprite->Turn(nextDir);
 			if (!TryAttack(nextDir) && !TryDig(nextDir))
 			{
 				TryMove(nextDir);
@@ -64,7 +65,7 @@ namespace cl
 		if (player)
 		{
 			mWeapon->Attack(mIndex, direction);
-			//Effect;
+			PlayOnAttackSound();
 			return true;
 		}
 		if(MapManager::GetEnemy(mIndex + direction))

@@ -36,3 +36,8 @@ WindowAPI Project (2/14 ~ )
 ## Week 8(4/2 ~ 4/8)
 * WaterTile done
 * Player->EnemyInteract->WallInteract->Move->TileInteract
+* Monster Creation
+    * GreenSlime
+    * BlueSlime
+* Monster Attack Pattern
+* AudioAssets organized

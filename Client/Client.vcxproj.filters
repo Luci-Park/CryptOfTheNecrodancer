@@ -101,6 +101,9 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime">
       <UniqueIdentifier>{8426796c-8d31-4997-a2a1-9c513d89e363}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Items\Shovels">
+      <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -268,9 +271,6 @@
     <ClInclude Include="LBlueSlimeSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
     </ClInclude>
-    <ClInclude Include="LShovel.h">
-      <Filter>Contents\Items</Filter>
-    </ClInclude>
     <ClInclude Include="LCadenceShovelEffect.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
@@ -297,6 +297,14 @@
     </ClInclude>
     <ClInclude Include="LOrangeSlimeSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LShovel.h">
+      <Filter>Contents\Items\Shovels</Filter>
+    </ClInclude>
+    <ClInclude Include="LAnimatorChecker.h" />
+    <ClInclude Include="LTempScene.h" />
+    <ClInclude Include="LSlime.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -451,9 +459,6 @@
     <ClCompile Include="LBlueSlimeSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
     </ClCompile>
-    <ClCompile Include="LShovel.cpp">
-      <Filter>Contents\Items</Filter>
-    </ClCompile>
     <ClCompile Include="LCadenceShovelEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
@@ -480,6 +485,14 @@
     </ClCompile>
     <ClCompile Include="LOrangeSlimeSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LShovel.cpp">
+      <Filter>Contents\Items\Shovels</Filter>
+    </ClCompile>
+    <ClCompile Include="LAnimatorChecker.cpp" />
+    <ClCompile Include="LTempScene.cpp" />
+    <ClCompile Include="LSlime.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

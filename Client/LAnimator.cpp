@@ -20,11 +20,6 @@ namespace cl
 			delete animation.second;
 			animation.second = nullptr;
 		}
-		for (auto events : mEvents)
-		{
-			delete events.second;
-			events.second = nullptr;
-		}
 	}
 
 	void Animator::Initialize()
@@ -39,11 +34,6 @@ namespace cl
 
 			if (mActiveAnimation->IsComplete())
 			{
-				Animator::Events* events
-					= FindEvents(mActiveAnimation->GetName());
-
-				if (events != nullptr)
-					events->mCompleteEvent();
 				if (mbLoop)
 					mActiveAnimation->Reset();
 				else
@@ -76,8 +66,6 @@ namespace cl
 		animation->SetAnimator(this);
 
 		mAnimations.insert(std::make_pair(name, animation));
-		Events* event = new Events();
-		mEvents.insert(std::make_pair(name, event));
 	}
 
 	void Animator::CreateAnimation(const std::wstring& animationName,
@@ -87,18 +75,32 @@ namespace cl
 		, Vector2 offset, float duration)
 	{
 		Animation* animation = FindAnimation(animationName);
-		Image* sheet = Resources::Load<Image>(sheetName, sheetPath);
 		if (animation != nullptr)
 			return;
 
+		Image* sheet = Resources::Load<Image>(sheetName, sheetPath);
 		animation = new Animation();
 		animation->Create(sheet, coulmn, row, sCol, sRow, spriteLength, offset, duration);
 		animation->SetName(animationName);
 		animation->SetAnimator(this);
 
 		mAnimations.insert(std::make_pair(animationName, animation));
-		Events* event = new Events();
-		mEvents.insert(std::make_pair(animationName, event));
+	}
+
+	void Animator::CreateAnimation(const std::wstring& animationName, const std::wstring& sheetName, const std::wstring& sheetPath, Vector2 leftTop, Vector2 size, UINT spriteLength, float duration)
+	{
+		Animation* animation = FindAnimation(animationName);
+		if (animation != nullptr)
+			return;
+
+		Image* sheet = Resources::Load<Image>(sheetName, sheetPath);
+		animation = new Animation();
+		animation->Create(sheet, leftTop, size, spriteLength, size * -0.5f, duration);
+		animation->SetName(animationName);
+		animation->SetAnimator(this);
+
+		mAnimations.insert(std::make_pair(animationName, animation));
+
 	}
 
 	void Animator::CreateAnimations(const std::wstring& path, const std::wstring& key, Vector2 offset, float duration)
@@ -168,11 +170,6 @@ namespace cl
 	{
 		if (mActiveAnimation != nullptr)
 		{
-			Animator::Events* prevEvents
-				= FindEvents(mActiveAnimation->GetName());
-
-			if (prevEvents != nullptr)
-				prevEvents->mEndEvent();
 		}
 
 		mActiveAnimation = FindAnimation(name);
@@ -180,50 +177,6 @@ namespace cl
 		mActiveAnimation->Reset();
 		mbLoop = loop;
 
-		Animator::Events* events
-			= FindEvents(mActiveAnimation->GetName());
-
-		if (events != nullptr)
-			events->mStartEvent();
-
-	}
-
-	Animator::Events* Animator::FindEvents(const std::wstring& name)
-	{
-		std::map<std::wstring, Events*>::iterator iter
-			= mEvents.find(name);
-
-		if (iter == mEvents.end())
-			return nullptr;
-
-		return iter->second;
-	}
-	std::function<void()>& Animator::GetStartEvent(const std::wstring& name)
-	{
-		Animation* animation = FindAnimation(name);
-
-		Animator::Events* events
-			= FindEvents(animation->GetName());
-
-		return events->mStartEvent.mEvent;
-	}
-	std::function<void()>& Animator::GetCompleteEvent(const std::wstring& name)
-	{
-		Animation* animation = FindAnimation(name);
-
-		Animator::Events* events
-			= FindEvents(animation->GetName());
-
-		return events->mCompleteEvent.mEvent;
-	}
-	std::function<void()>& Animator::GetEndEvent(const std::wstring& name)
-	{
-		Animation* animation = FindAnimation(name);
-
-		Animator::Events* events
-			= FindEvents(animation->GetName());
-
-		return events->mEndEvent.mEvent;
 	}
 
 	void Animator::Reset()

@@ -7,7 +7,7 @@
 namespace cl
 {
 	OrangeSlime::OrangeSlime(Scene* sc)
-		: Monster(sc, true)
+		: Slime(sc)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		nextPos.resize(4);
@@ -44,16 +44,7 @@ namespace cl
 	{
 		Monster::Sink();
 	}
-	
-	void OrangeSlime::OnAttacked(float attackPower)
-	{
-		mHealth -= attackPower;
-		if (mHealth <= 0)
-		{
-			OnDestroy();
-		}
-	}
-	
+
 	void OrangeSlime::OnBeat()
 	{
 		Monster::OnBeat();

@@ -28,12 +28,7 @@ namespace cl
 	{
 		for (int i = 0; i < (UINT)eLayerType::Size; ++i)
 		{
-			if (i == (UINT)eLayerType::Player)
-				MapManager::Render(hdc);
-			else if (i == (UINT)eLayerType::Monster || i == (UINT)eLayerType::Wall)
-				continue;
-			else
-				mLayers[i].Render(hdc);
+			mLayers[i].Render(hdc);
 		}
 	}
 

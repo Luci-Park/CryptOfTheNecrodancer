@@ -134,6 +134,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LAnimation.h" />
     <ClInclude Include="LAnimator.h" />
+    <ClInclude Include="LAnimatorChecker.h" />
     <ClInclude Include="LApplication.h" />
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBlueSlime.h" />
@@ -180,9 +181,11 @@
     <ClInclude Include="LAudioClip.h" />
     <ClInclude Include="LAudioDevice.h" />
     <ClInclude Include="LShovel.h" />
+    <ClInclude Include="LSlime.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
     <ClInclude Include="LSpriteRenderer.h" />
+    <ClInclude Include="LTempScene.h" />
     <ClInclude Include="LTileObject.h" />
     <ClInclude Include="LTime.h" />
     <ClInclude Include="LTitleScene.h" />
@@ -199,6 +202,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="LAnimation.cpp" />
     <ClCompile Include="LAnimator.cpp" />
+    <ClCompile Include="LAnimatorChecker.cpp" />
     <ClCompile Include="LApplication.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />
     <ClCompile Include="LBlueSlimeSprite.cpp" />
@@ -241,9 +245,11 @@
     <ClCompile Include="LAudioClip.cpp" />
     <ClCompile Include="LAudioDevice.cpp" />
     <ClCompile Include="LShovel.cpp" />
+    <ClCompile Include="LSlime.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LStairTile.cpp" />
+    <ClCompile Include="LTempScene.cpp" />
     <ClCompile Include="LTileObject.cpp" />
     <ClCompile Include="LTime.cpp" />
     <ClCompile Include="LTitleScene.cpp" />

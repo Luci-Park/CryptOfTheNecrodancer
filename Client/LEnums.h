@@ -18,6 +18,7 @@ enum class eLayerType
 {
 	System,
 	Background,
+	Items,
 	Player,
 	Monster,
 	Wall,

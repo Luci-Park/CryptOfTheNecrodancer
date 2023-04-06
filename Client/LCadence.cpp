@@ -55,8 +55,9 @@ namespace cl
 					OnMove(mInput);
 				BeatManager::OnPlayerMove();
 			}
-
 		}
+		if (Input::GetKeyDown(eKeyCode::O))
+			BeatManager::OnPlayerMove();
 	}
 	void Cadence::Render(HDC hdc)
 	{
@@ -65,6 +66,18 @@ namespace cl
 
 	void Cadence::OnAttacked(float attackPower)
 	{
+		mHealth -= attackPower;
+		if (mHealth > 0)
+		{
+			Camera::StartShake();
+			PlayOnHitSound();
+			//mSprite->Flash
+		}
+		else
+		{
+			PlayOnDeathSound();
+			OnDestroy();
+		}
 	}
 	void Cadence::OnDestroy()
 	{
@@ -87,7 +100,10 @@ namespace cl
 
 	bool Cadence::TryAttack(Vector2 direction)
 	{
-		return mWeapon->Attack(mIndex, direction);
+		bool didAttack = mWeapon->Attack(mIndex, direction);
+		if (didAttack)
+			PlayOnAttackSound();
+		return didAttack;
 	}
 
 	bool Cadence::TryDig(Vector2 direction)
@@ -101,7 +117,7 @@ namespace cl
 				bool success = mShovel->Dig(wall);
 				if (success)
 				{
-					PlayDigClip();
+					PlayOnDigSound();
 					Camera::StartShake();
 				}
 			}
@@ -117,6 +133,18 @@ namespace cl
 		mIndex = dest;
 		mMoveTarget += direction * UNITLENGTH;
 		return true;
+	}
+
+	void Cadence::PlayOnAttackSound()
+	{
+	}
+
+	void Cadence::PlayOnHitSound()
+	{
+	}
+
+	void Cadence::PlayOnDeathSound()
+	{
 	}
 
 	void Cadence::GetInput()
@@ -154,7 +182,7 @@ namespace cl
 	void Cadence::SetDigClip()
 	{
 		std::wstring key = L"dig_0";
-		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Cadence\\Dig\\vo_cad_";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\vo_cad_";
 
 		for (int i = 0; i < 6; ++i)
 		{
@@ -163,7 +191,7 @@ namespace cl
 			mDigClip[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
-	void Cadence::PlayDigClip()
+	void Cadence::PlayOnDigSound()
 	{
 		int random = GetRandomInt(0, 5);
 		mDigClip[random]->SetVolume(25.f);

@@ -30,12 +30,15 @@ namespace cl
 		virtual bool TryDig(Vector2 direction) override;
 		virtual bool TryMove(Vector2 direction) override;
 
+		virtual void PlayOnAttackSound();
+		virtual void PlayOnHitSound();
+		virtual void PlayOnDeathSound();
 	private:
 		void OnMove(Vector2 direction);
 		void GetInput();
 		void SetSprite();
 		void SetDigClip();
-		void PlayDigClip();
+		void PlayOnDigSound();
 		void SetAttackClip();
 		void PlayAttackClip();
 	private:

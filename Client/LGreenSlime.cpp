@@ -4,10 +4,12 @@
 #include "LMapManager.h"
 #include "LBeatManager.h"
 #include "LCadence.h"
+#include "LResources.h"
+#include "LAudioClip.h"
 namespace cl
 {
 	GreenSlime::GreenSlime(Scene* sc)
-		: Monster(sc, true)
+		: Slime(sc)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 	}
@@ -32,14 +34,6 @@ namespace cl
 	void GreenSlime::Sink()
 	{
 		Monster::Sink();
-	}
-	void GreenSlime::OnAttacked(float attackPower)
-	{
-		mHealth -= attackPower;
-		if (mHealth <= 0)
-		{
-			OnDestroy();
-		}
 	}
 	void GreenSlime::OnBeat()
 	{

@@ -15,7 +15,6 @@ namespace cl
 
 		virtual void Sink() override;
 
-		virtual void OnAttacked(float attackPower) = 0;
 		virtual void OnDestroy();
 
 		virtual void OnBeat() override;
@@ -30,9 +29,10 @@ namespace cl
 		virtual bool TryDig(Vector2 direction);
 		virtual bool TryMove(Vector2 direction) = 0;
 
+		virtual void PlayOnAttackSound() = 0;
+		virtual void PlayOnHitSound() = 0;
+		virtual void PlayOnDeathSound() = 0;
 	protected:
-		float mMaxHealth;
-		float mHealth;
 		float mAttackPower;
 		int mDigPower;
 		int mDrop;

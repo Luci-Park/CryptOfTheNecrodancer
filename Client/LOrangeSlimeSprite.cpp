@@ -22,7 +22,7 @@ namespace cl
 
 		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 8, 16, 0, 4, 4, Vector2::Zero, 0.36f);
 		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 8, 16, 4, 4, 4, Vector2::Zero, 0.36f);
-		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
+		mAnimator->Play(L"LeftJump", true, false);
 	}
 	void OrangeSlimeSprite::Update()
 	{

@@ -7,7 +7,7 @@
 namespace cl
 {
 	BlueSlime::BlueSlime(Scene* sc)
-		: Monster(sc, true)
+		: Slime(sc)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		nextPos.resize(4);
@@ -39,14 +39,7 @@ namespace cl
 	{
 		Monster::Sink();
 	}
-	void BlueSlime::OnAttacked(float attackPower)
-	{
-		mHealth -= attackPower;
-		if (mHealth <= 0)
-		{
-			OnDestroy();
-		}
-	}
+
 	void BlueSlime::OnBeat()
 	{
 		Monster::OnBeat();

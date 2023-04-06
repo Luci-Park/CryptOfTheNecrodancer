@@ -1,6 +1,7 @@
 #include "LFloorTile.h"
 #include "LSceneManager.h"
 #include "LFloorStrategy.h"
+#include "LCadence.h"
 namespace cl
 {
 	StairTile::StairTile(Scene* sc)
@@ -26,7 +27,8 @@ namespace cl
 	
 	void StairTile::OnInteract(TileObject* object)
 	{
-		if (!mIsLocked)
+		Cadence* c = dynamic_cast<Cadence*>(object);
+		if (c && !mIsLocked)
 			SceneManager::LoadScene(mMoveScene);
 	}
 }

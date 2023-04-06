@@ -18,7 +18,7 @@ namespace cl
 		virtual void Sink() override;
 		virtual bool UnSink();
 
-		virtual void OnAttacked(float attackPower) = 0;
+		virtual void OnAttacked(float attackPower);
 		virtual void OnDestroy() = 0;
 
 		virtual void OnBeat() = 0;
@@ -31,13 +31,18 @@ namespace cl
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;
 		virtual bool TryMove(Vector2 direction) = 0;
+
+		virtual void PlayOnAttackSound() = 0;
+		virtual void PlayOnHitSound() = 0;
+		virtual void PlayOnDeathSound() = 0;
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;
 		bool mbIsMoving;
 		bool mbIsTouchingGround;
 		bool mbIsSinked;
-	private:
+		float mMaxHealth;
+		float mHealth;
 	};
 }
 

@@ -8,28 +8,6 @@ namespace cl
 	class Animator : public Component
 	{
 	public:
-		struct Event
-		{
-			void operator=(std::function<void()> func)
-			{
-				mEvent = std::move(func);
-			}
-			void operator()()
-			{
-				if (mEvent)
-					mEvent();
-			}
-			
-			std::function<void()> mEvent;
-		};
-
-		struct Events
-		{
-			Event mStartEvent;
-			Event mCompleteEvent;
-			Event mEndEvent;
-		};
-
 		Animator();
 		~Animator();
 
@@ -46,15 +24,14 @@ namespace cl
 			, UINT coulmn, UINT row
 			, UINT sCol, UINT sRow, UINT spriteLength
 			, Vector2 offset, float duration);
+		void CreateAnimation(const std::wstring& animationName
+			, const std::wstring& sheetName, const std::wstring& sheetPath
+			, Vector2 leftTop, Vector2 size, UINT spriteLength, float duration);
 		void CreateAnimations(const std::wstring& path, const std::wstring& key, Vector2 offset, float duration);
+
 
 		Animation* FindAnimation(const std::wstring& name);
 		void Play(const std::wstring& name, bool loop, bool reverse);
-
-		Events* FindEvents(const std::wstring& name);
-		std::function<void()>& GetStartEvent(const std::wstring& name);
-		std::function<void()>& GetCompleteEvent(const std::wstring& name);
-		std::function<void()>& GetEndEvent(const std::wstring& name);
 		
 		bool IsComplete() { return mActiveAnimation->IsComplete(); }
 		bool IsAnimationPlaying(const std::wstring& name) { 
@@ -67,7 +44,6 @@ namespace cl
 		Vector2 GetPercent() { return mPercent; }
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
-		std::map<std::wstring, Events*> mEvents;
 
 		Animation* mActiveAnimation;
 		Image* mSpriteSheet;

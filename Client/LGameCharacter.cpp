@@ -70,4 +70,18 @@ namespace cl
 		}
 		return false;
 	}
+	void GameCharacter::OnAttacked(float attackPower)
+	{
+		mHealth -= attackPower;
+		if (mHealth > 0)
+		{
+			PlayOnHitSound();
+			//mSprite->Flash
+		}
+		else
+		{
+			PlayOnDeathSound();
+			OnDestroy();
+		}			
+	}
 }

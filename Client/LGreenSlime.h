@@ -1,10 +1,9 @@
 #pragma once
-#include "LMonster.h"
-#include "LBehaviorTree.h"
+#include "LSlime.h"
 namespace cl
 {
 	class GreenSlimeSprite;
-	class GreenSlime : public Monster
+	class GreenSlime : public Slime
 	{
 	public:
 		GreenSlime(Scene* sc);
@@ -16,8 +15,6 @@ namespace cl
 
 		virtual void Sink() override;
 
-		virtual void OnAttacked(float attackPower)override;
-
 		virtual void OnBeat();
 	private:
 		virtual void SetStats() override;
@@ -26,6 +23,10 @@ namespace cl
 	private:
 		GreenSlimeSprite* mSlimeSprite;
 		bool mbMoveFailed;
+		AudioClip* mSlimeAttackSound;
+		AudioClip* mSlimeDeathSound[3];
+		AudioClip* mSlimeHitSound[3];
+
 	};
 }
 
