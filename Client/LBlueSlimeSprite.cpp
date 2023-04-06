@@ -6,7 +6,6 @@ namespace cl
 {
 	BlueSlimeSprite::BlueSlimeSprite(Scene* sc)
 		: CharacterSprite(sc)
-		, mAnimator(nullptr)
 	{
 	}
 	BlueSlimeSprite::~BlueSlimeSprite()

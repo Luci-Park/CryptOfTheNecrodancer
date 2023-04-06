@@ -2,7 +2,6 @@
 #include "LCharacterSprite.h"
 namespace cl
 {
-	class Animator;
 	class OrangeSlimeSprite : public CharacterSprite
 	{
 	public:
@@ -18,7 +17,6 @@ namespace cl
 
 		virtual void Jump() override;
 	private:
-		Animator* mAnimator;
 		Vector2 mLookDir;
 	};
 }

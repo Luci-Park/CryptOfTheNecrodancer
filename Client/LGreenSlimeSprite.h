@@ -20,7 +20,6 @@ namespace cl
 
 		void Idle();
 	private:
-		Animator* mAnimator;
 		Vector2 mLookDir;
 	};
 }

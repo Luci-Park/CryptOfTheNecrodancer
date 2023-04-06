@@ -74,7 +74,8 @@ namespace cl
 			PlayOnAttackSound();
 			return true;
 		}
-		if(MapManager::GetEnemy(mIndex + direction))
+		TileObject* monster = MapManager::GetEnemy(mIndex + direction);
+		if(monster != nullptr && monster != this)
 			return true;
 		return false;
 	}

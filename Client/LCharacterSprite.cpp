@@ -9,6 +9,7 @@ namespace cl
 		: GameObject(sc, false)
 		, mbDirIsUp(true)
 		, mbIsJumping(false)
+		, mAnimator(nullptr)
 	{
 	}
 	CharacterSprite::~CharacterSprite()

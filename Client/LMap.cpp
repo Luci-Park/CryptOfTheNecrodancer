@@ -75,15 +75,15 @@ namespace cl
 			_TileObjects[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				_TileObjects[i][j] = nullptr;/*
-				if (j == 6 && i == 9)
+				_TileObjects[i][j] = nullptr;
+				if (j == 4 && i == 4)
 				{
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<BlueSlime>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}
+				}/*
 				if (j == 6 && i == 8)
 				{
 					Vector2 pos;

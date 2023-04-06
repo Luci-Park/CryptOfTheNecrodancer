@@ -6,7 +6,6 @@ namespace cl
 {
 	OrangeSlimeSprite::OrangeSlimeSprite(Scene* sc)
 		: CharacterSprite(sc)
-		, mAnimator(nullptr)
 	{
 	}
 	OrangeSlimeSprite::~OrangeSlimeSprite()

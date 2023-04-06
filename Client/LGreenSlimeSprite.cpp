@@ -6,7 +6,6 @@ namespace cl
 {
 	GreenSlimeSprite::GreenSlimeSprite(Scene* sc)
 		: CharacterSprite(sc)
-		, mAnimator(nullptr)
 	{
 	}
 	GreenSlimeSprite::~GreenSlimeSprite()

@@ -19,7 +19,6 @@ namespace cl
 		void Idle();
 		virtual void Jump() override;
 	private:
-		Animator* mAnimator;
 		Vector2 mLookDir;
 	};
 }
