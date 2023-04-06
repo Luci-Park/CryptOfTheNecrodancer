@@ -16,18 +16,18 @@ namespace cl
 
 	void MonsterWeapon::SetAnimation()
 	{
-		mUpAnimation = L"Dagger_Up";
-		mDownAnimation = L"Dagger_Down";
-		mLeftAnimation = L"Dagger_Left";
-		mRightAnimation = L"Dagger_Right";
-		mAnimator->CreateAnimation(mRightAnimation, L"Dagger_Right", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Right.bmp",
-			3, 1, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mLeftAnimation, L"Dagger_Left", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Left.bmp",
-			3, 1, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mUpAnimation, L"Dagger_Up", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Up.bmp",
-			1, 3, 0, 0, 3, Vector2::Zero, 0.25);
-		mAnimator->CreateAnimation(mDownAnimation, L"Dagger_Down", L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger_Down.bmp",
-			1, 3, 0, 0, 3, Vector2::Zero, 0.25);
+		mUpAnimation = L"Enemy_Up";
+		mDownAnimation = L"Enemy_Down";
+		mLeftAnimation = L"Enemy_Left";
+		mRightAnimation = L"Enemy_Right";
+		mAnimator->CreateAnimation(mRightAnimation, mRightAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Right.bmp",
+			5, 1, 0, 0, 3, Vector2::Zero, 0.25);
+		mAnimator->CreateAnimation(mLeftAnimation, mLeftAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Left.bmp",
+			5, 1, 0, 0, 3, Vector2::Zero, 0.25);
+		mAnimator->CreateAnimation(mUpAnimation, mUpAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Up.bmp",
+			1, 5, 0, 0, 3, Vector2::Zero, 0.25);
+		mAnimator->CreateAnimation(mDownAnimation, mDownAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Down.bmp",
+			1, 5, 0, 0, 3, Vector2::Zero, 0.25);
 		OnBeatChanged();
 	}
 

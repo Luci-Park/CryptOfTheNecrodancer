@@ -158,6 +158,8 @@
     <ClInclude Include="LGameCharacter.h" />
     <ClInclude Include="LBeatManager.h" />
     <ClInclude Include="LGameObject.h" />
+    <ClInclude Include="LGreenSlime.h" />
+    <ClInclude Include="LGreenSlimeSprite.h" />
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
     <ClInclude Include="LLayer.h" />
@@ -169,6 +171,8 @@
     <ClInclude Include="LBehaviorTree.h" />
     <ClInclude Include="LMonsterWeapon.h" />
     <ClInclude Include="LObject.h" />
+    <ClInclude Include="LOrangeSlime.h" />
+    <ClInclude Include="LOrangeSlimeSprite.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LScene.h" />
@@ -216,6 +220,8 @@
     <ClCompile Include="LGameCharacter.cpp" />
     <ClCompile Include="LBeatManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
+    <ClCompile Include="LGreenSlime.cpp" />
+    <ClCompile Include="LGreenSlimeSprite.cpp" />
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
     <ClCompile Include="LLayer.cpp" />
@@ -226,6 +232,8 @@
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LBehaviorTree.cpp" />
     <ClCompile Include="LMonsterWeapon.cpp" />
+    <ClCompile Include="LOrangeSlime.cpp" />
+    <ClCompile Include="LOrangeSlimeSprite.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />

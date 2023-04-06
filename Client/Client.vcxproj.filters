@@ -95,6 +95,12 @@
     <Filter Include="Contents\Items\Weapons\Decorators">
       <UniqueIdentifier>{e4be7208-6862-489c-a1c4-6577b4222aef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime">
+      <UniqueIdentifier>{57185331-1270-4281-b4d2-01b390b9e0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime">
+      <UniqueIdentifier>{8426796c-8d31-4997-a2a1-9c513d89e363}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -280,6 +286,18 @@
     <ClInclude Include="LWeaponFilter.h">
       <Filter>Contents\Items\Weapons\Decorators</Filter>
     </ClInclude>
+    <ClInclude Include="LGreenSlime.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LOrangeSlime.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LGreenSlimeSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+    </ClInclude>
+    <ClInclude Include="LOrangeSlimeSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -450,6 +468,18 @@
     </ClCompile>
     <ClCompile Include="LMonsterWeapon.cpp">
       <Filter>Contents\Items\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="LGreenSlime.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LOrangeSlime.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LGreenSlimeSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+    </ClCompile>
+    <ClCompile Include="LOrangeSlimeSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

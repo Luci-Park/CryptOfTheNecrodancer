@@ -61,14 +61,14 @@ namespace cl
 			mSlimeSprite->Jump();
 			MapManager::Move(mIndex, mIndex + direction);
 			mIndex += direction;
-			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		}
+		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		return true;
 	}
 	void BlueSlime::SetStats()
 	{
-		mMaxHealth = 4;
-		mHealth = 4;
+		mMaxHealth = 2;
+		mHealth = 2;
 		mAttackPower = 1;
 		mDigPower = 0;
 		mDrop = 2;
