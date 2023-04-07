@@ -163,6 +163,7 @@
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
     <ClInclude Include="LItem.h" />
+    <ClInclude Include="LItemIncludes.h" />
     <ClInclude Include="LLayer.h" />
     <ClInclude Include="LLobbyScene.h" />
     <ClInclude Include="LMap.h" />

@@ -308,6 +308,9 @@
       <Filter>Contents\Items</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceSound.h" />
+    <ClInclude Include="LItemIncludes.h">
+      <Filter>Contents\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
