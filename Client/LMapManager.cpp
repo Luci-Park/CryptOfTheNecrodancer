@@ -83,6 +83,15 @@ namespace cl
 			return (Cadence*)_ForeObjects[index.y][index.x];
 		return nullptr;
 	}
+	Item* MapManager::GetItem(Vector2 index)
+	{
+		return _Items[index.y][index.x];
+	}
+	Vector2 MapManager::SetItem(Item* item, Vector2 pos)
+	{
+		_Items[pos.y][pos.x] = item;
+		return pos * UNITLENGTH;
+	}
 	void MapManager::PlayerMove(Vector2 src, Vector2 dest)
 	{
 		Move(src, dest);

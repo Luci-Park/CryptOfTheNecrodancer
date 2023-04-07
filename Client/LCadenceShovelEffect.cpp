@@ -27,7 +27,7 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
-	void CadenceShovelEffect::OnDig(WallTile* wallTile, Shovels* shovel)
+	void CadenceShovelEffect::OnDig(WallTile* wallTile, Tool* shovel)
 	{
 		mSpriteRenderer->SetActive(true);
 		mbIsShowing = true;

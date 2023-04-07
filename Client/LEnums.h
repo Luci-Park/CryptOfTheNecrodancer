@@ -18,6 +18,7 @@ enum class eLayerType
 {
 	System,
 	Background,
+	Gold,
 	Items,
 	Player,
 	Monster,
@@ -87,4 +88,17 @@ enum class eFloorTypes
 	ClosedStairs,
 	OpenedStairs,
 	None
+};
+
+enum class eItemTypes
+{
+	Tool,
+	Weapon,
+	Armor,
+	Headware,
+	Footware,
+	Torches,
+	Rings,
+	Consumables,
+	Size
 };

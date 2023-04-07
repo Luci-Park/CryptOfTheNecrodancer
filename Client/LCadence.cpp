@@ -14,6 +14,7 @@
 #include "LAudioClip.h"
 #include "LDagger.h"
 #include "LWeapon.h"
+#include "LItem.h"
 namespace cl
 {
 	Cadence::Cadence(Scene* scene)
@@ -93,6 +94,14 @@ namespace cl
 	{
 		mWeapon->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
+	}
+
+	void Cadence::SwitchItem(Item* item, eItemTypes type)
+	{
+		int idx = (int)type;
+		if (mItems[idx] != nullptr)
+			MapManager::SetItem(mItems[idx], mIndex);
+		mItems[idx] = item;
 	}
 
 	void Cadence::OnMove(Vector2 direction)

@@ -139,7 +139,6 @@
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBlueSlime.h" />
     <ClInclude Include="LBlueSlimeSprite.h" />
-    <ClInclude Include="LBodyItem.h" />
     <ClInclude Include="LCadence.h" />
     <ClInclude Include="LCadenceAttackEffect.h" />
     <ClInclude Include="LCadenceBody.h" />
@@ -163,6 +162,7 @@
     <ClInclude Include="LGreenSlimeSprite.h" />
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
+    <ClInclude Include="LItem.h" />
     <ClInclude Include="LLayer.h" />
     <ClInclude Include="LLobbyScene.h" />
     <ClInclude Include="LMap.h" />
@@ -229,6 +229,7 @@
     <ClCompile Include="LGreenSlimeSprite.cpp" />
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
+    <ClCompile Include="LItem.cpp" />
     <ClCompile Include="LLayer.cpp" />
     <ClCompile Include="LLobbyScene.cpp" />
     <ClCompile Include="LMap.cpp" />

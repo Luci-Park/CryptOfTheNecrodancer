@@ -14,7 +14,7 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void OnDig(WallTile* wallTile, Shovels* shovel);
+		void OnDig(WallTile* wallTile, Tool* shovel);
 		void Show();
 		void Reset();
 	private:

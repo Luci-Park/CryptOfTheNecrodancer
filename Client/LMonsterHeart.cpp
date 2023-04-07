@@ -31,9 +31,9 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 		Vector2 startPos = mStartPos + mTransform->GetPos();
-		for (int i = 0; i < mMaxHeart; ++i)
+		for (int i = mMaxHeart; i > 0; --i)
 		{
-			if (i + 1 <= mCurrHeart)
+			if (i <= mCurrHeart)
 				DrawHeart(hdc, startPos, mFullHeart);
 			else
 				DrawHeart(hdc, startPos, mEmptyHeart);

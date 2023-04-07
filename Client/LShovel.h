@@ -4,7 +4,7 @@ namespace cl
 {
 	class WallTile;
 	class AudioClip;
-	class Shovels
+	class Tool
 	{
 	public:
 		enum class eShovelTypes {
@@ -25,8 +25,8 @@ namespace cl
 		static Sprite shovelSprites[];
 
 	public:
-		Shovels(){}
-		virtual ~Shovels(){}
+		Tool(){}
+		virtual ~Tool(){}
 
 		virtual bool Dig(WallTile* object) = 0;
 
@@ -36,7 +36,7 @@ namespace cl
 		eShovelTypes mTypes;
 		AudioClip* mDigFailedClip;
 	};
-	class Shovel : public Shovels
+	class Shovel : public Tool
 	{
 	public:
 		Shovel();
@@ -45,7 +45,7 @@ namespace cl
 		virtual bool Dig(WallTile* object);
 	};
 
-	class TitaniumShovel : public Shovels
+	class TitaniumShovel : public Tool
 	{
 	public:
 		TitaniumShovel();
@@ -54,7 +54,7 @@ namespace cl
 		virtual bool Dig(WallTile* object);
 	};
 
-	class CrystalShovel : public Shovels
+	class CrystalShovel : public Tool
 	{
 	public:
 		CrystalShovel();
@@ -63,7 +63,7 @@ namespace cl
 		virtual bool Dig(WallTile* object);
 	};
 
-	class ObsidianShovel : public Shovels
+	class ObsidianShovel : public Tool
 	{
 	public:
 		ObsidianShovel();
@@ -72,7 +72,7 @@ namespace cl
 		virtual bool Dig(WallTile* object);
 	};
 
-	class PickAxe : public Shovels
+	class PickAxe : public Tool
 	{
 	public:
 		PickAxe();

@@ -18,7 +18,7 @@ namespace cl
 		{Vector2(227, 6), Vector2(9, 18), Vector2(-5, -9)},
 		{Vector2(241, 3), Vector2(23, 24), Vector2(-12, -12)}
 	};
-	Sprite Shovels::GetShovelSprite(eShovelTypes type, bool isShadow)
+	Sprite Tool::GetShovelSprite(eShovelTypes type, bool isShadow)
 	{
 		Sprite sprite = shovelSprites[(int)type];
 		return sprite;
