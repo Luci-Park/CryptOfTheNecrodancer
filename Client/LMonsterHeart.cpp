@@ -8,8 +8,8 @@ namespace cl
 		, mCurrHeart(0)
 		, mMaxHeart(0)
 	{
-		mFullHeart = Vector2(226, 31);
-		mEmptyHeart = Vector2(240, 31);
+		mFullHeart = Vector2(226, 29);
+		mEmptyHeart = Vector2(240, 29);
 		mSpriteSize = Vector2(12, 11);
 		mOffset = Vector2(mSpriteSize.x * 0.5, mSpriteSize.y);
 	}
@@ -53,8 +53,8 @@ namespace cl
 	{
 		mMaxHeart = maxHealth;
 		mCurrHeart = currHealth;
-		mStartPos.x = mMaxHeart * mSpriteSize.x * UNITSCALE* 0.5;
-		mStartPos.y = -mSpriteSize.y * UNITSCALE;
+		mStartPos.x = mMaxHeart * mSpriteSize.x * UNITSCALE* 0.5 * -1;
+		mStartPos.y = mSpriteSize.y * UNITSCALE * -1;
 	}
 
 

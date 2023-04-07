@@ -26,7 +26,8 @@ namespace cl
 		GameCharacter::Initialize();
 		SetStats();
 		SetWeapon();
-		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Effects);
+		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH * 0.7), eLayerType::Effects);
+		mHeart->SetHearts(mMaxHealth, mHealth);
 	}
 	void Monster::Update()
 	{

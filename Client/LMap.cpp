@@ -76,7 +76,7 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				_TileObjects[i][j] = nullptr;
-				if (j == 4 && i == 4)
+				if (j == 5 && i == 4)
 				{
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
