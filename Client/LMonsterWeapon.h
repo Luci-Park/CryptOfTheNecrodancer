@@ -7,9 +7,11 @@ namespace cl
 	public:
 		MonsterWeapon(Scene* sc);
 		~MonsterWeapon();
+		
 
 		void SetPower(float power) { mPower = power; }
 	protected:
+		virtual void SetSprite() override;
 		virtual void SetAnimation();
 		virtual Vector2 EffectPos(Vector2 dir);
 		virtual std::wstring SelectAnimation(Vector2 dir);

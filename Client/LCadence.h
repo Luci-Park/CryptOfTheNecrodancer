@@ -26,6 +26,8 @@ namespace cl
 		virtual void OnBeatChanged() override;
 
 		void SwitchItem(Item* item, eItemTypes type);
+		Vector2 GetPos() { return mIndex; }
+		Vector2 GetInput() { return mInput; }
 	protected:
 		virtual bool TryAttack(Vector2 direction)	override;
 		//Returns true if InteractedWithDig;
@@ -34,7 +36,7 @@ namespace cl
 
 	private:
 		void OnMove(Vector2 direction);
-		void GetInput();
+		void SetInput();
 		void SetSprite();
 		void PlayOnDigSound();
 		virtual void PlayOnAttackSound()			override;
@@ -48,7 +50,6 @@ namespace cl
 	private:
 		Item* mItems[(int)eItemTypes::Size];
 		Tool* mShovel;
-		Weapon* mWeapon;
 		SpriteRenderer* mSpriteRenderer;
 		CadenceShovelEffect* mShovelEffect;
 		Vector2 mInput;

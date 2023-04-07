@@ -14,6 +14,10 @@ namespace cl
 	{
 	}
 
+	void MonsterWeapon::SetSprite()
+	{
+	}
+
 	void MonsterWeapon::SetAnimation()
 	{
 		mUpAnimation = L"Enemy_Up";

@@ -3,6 +3,7 @@
 #include "LFloorTile.h"
 #include "LBeatObject.h"
 #include "LWallTile.h"
+#include "LItem.h"
 namespace cl
 {
 	class TileObject;
@@ -15,6 +16,7 @@ namespace cl
 		void CreateFloor(Scene* sc, std::vector<std::vector<FloorTile*>>& _Floor);
 		void CreateWall(Scene* sc, std::vector<std::vector<WallTile*>>& _Wall);
 		void CreateForeGround(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects);
+		void CreateItems(Scene* sc, std::vector<std::vector<Item*>>& _Items);
 		Vector2 GetPlayerPos() { return mPlayerIndex; }
 
 	protected:

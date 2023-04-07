@@ -6,9 +6,8 @@ namespace cl
 	Item::Item(Scene* sc, eItemTypes type)
 		: GameObject(sc, false)
 		, mType(type)
-		, mbIsSetDown(true)
+		, mbIsSetDown(false)
 	{
-		SetSprite();
 	}
 	Item::~Item()
 	{
@@ -16,10 +15,13 @@ namespace cl
 	void Item::Initialize()
 	{
 		GameObject::Initialize();
+		SetSprite();
 	}
 
 	void Item::Update()
 	{
+		if(mSpriteRenderer != nullptr)
+			mSpriteRenderer->SetActive(mbIsSetDown);
 		GameObject::Update();
 	}
 

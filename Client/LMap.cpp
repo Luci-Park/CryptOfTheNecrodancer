@@ -56,6 +56,15 @@ namespace cl
 		CreatePlayer(sc, _TileObjects);
 	}
 
+	void Map::CreateItems(Scene* sc, std::vector<std::vector<Item*>>& _Items)
+	{
+		_Items.resize(mMapSize.y);
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			_Items[i].resize(mMapSize.x);
+		}
+	}
+
 	void Map::CreatePlayer(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
 	{
 		Vector2 pos;

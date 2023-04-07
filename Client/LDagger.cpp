@@ -2,6 +2,7 @@
 #include "LAnimator.h"
 #include "LTileObject.h"
 #include "LMapManager.h"
+#include "LSpriteRenderer.h"
 namespace cl
 {
 	Dagger::Dagger(Scene* sc)
@@ -29,6 +30,13 @@ namespace cl
 		mAnimator->CreateAnimation(mDownAnimation, mDownAnimation, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Dagger\\Dagger_Down.bmp",
 			1, 3, 0, 0, 3, Vector2::Zero, 0.25);
 		OnBeatChanged();
+	}
+
+	void Dagger::SetSprite()
+	{
+		mSpriteRenderer = AddComponent<SpriteRenderer>();
+		mSpriteRenderer->SetImage(L"Weapons", L"..\\Assets\\Arts\\Items\\Weapons.bmp");
+		//SetSprite
 	}
 
 	Vector2 Dagger::EffectPos(Vector2 dir)

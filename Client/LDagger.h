@@ -10,6 +10,7 @@ namespace cl
 
 	protected:
 		virtual void SetAnimation();
+		virtual void SetSprite() override;
 		virtual Vector2 EffectPos(Vector2 dir);
 		virtual std::wstring SelectAnimation(Vector2 dir);
 		virtual bool TryAttack(Vector2 srcIdx, Vector2 input);

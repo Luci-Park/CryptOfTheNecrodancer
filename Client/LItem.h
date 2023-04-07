@@ -17,11 +17,13 @@ namespace cl
 		virtual void Update()override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void SetSprite() = 0;
 		virtual void PickUpItem(Cadence* player);
 		virtual void SetItem(Vector2 pos);
+		virtual bool Use(Cadence* player) = 0;
 
 		SpriteRenderer* GetSpriteRenderer() { return mSpriteRenderer; }
+	protected:
+		virtual void SetSprite() = 0;
 	protected:
 		bool mbIsSetDown;
 		eItemTypes mType;

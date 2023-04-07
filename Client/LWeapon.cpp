@@ -2,12 +2,17 @@
 #include "LAnimator.h"
 #include "LBeatManager.h"
 #include "LCamera.h"
+#include "LCadence.h"
+#include "LResources.h"
+#include "LAudioClip.h"
 namespace cl
 {
 	Weapon::Weapon(Scene* sc)
-		: GameObject(sc, false)
+		: Item(sc, eItemTypes::Weapon)
 		, mbIsMelee(true)
 	{
+		mGetItemClip = Resources::Load<AudioClip>(L"sfx_pickup_weapon"
+			, L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_pickup_weapon.wav");
 	}
 	Weapon::~Weapon()
 	{
@@ -16,15 +21,21 @@ namespace cl
 	{
 		mAnimator = AddComponent<Animator>();
 		SetAnimation();
-		GameObject::Initialize();
+		Item::Initialize();
 	}
 	void Weapon::Update()
 	{
-		GameObject::Update();
+		Item::Update();
 	}
 	void Weapon::Render(HDC hdc)
 	{
-		GameObject::Render(hdc);
+		Item::Render(hdc);
+	}
+	bool Weapon::Use(Cadence* player)
+	{
+		Vector2 src = player->GetPos();
+		Vector2 input = player->GetInput();
+		return Attack(src, input);
 	}
 	void Weapon::OnBeatChanged()
 	{

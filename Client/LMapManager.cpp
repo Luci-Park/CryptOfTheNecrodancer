@@ -6,6 +6,7 @@ namespace cl
 	std::vector<std::vector<FloorTile*>> MapManager::_Floor = std::vector<std::vector<FloorTile*>>();
 	std::vector<std::vector<WallTile*>> MapManager::_Wall = std::vector<std::vector<WallTile*>>();
 	std::vector<std::vector<TileObject*>> MapManager::_ForeObjects = std::vector<std::vector<TileObject*>>();
+	std::vector<std::vector<Item*>> MapManager::_Items = std::vector<std::vector<Item*>>();
 	Vector2 MapManager::_size = Vector2::Zero;
 	Vector2 MapManager::_playerIndex = Vector2::Zero;
 
@@ -22,6 +23,8 @@ namespace cl
 		mMap->CreateFloor(sc, _Floor);
 		mMap->CreateWall(sc, _Wall);
 		mMap->CreateForeGround(sc, _ForeObjects);
+		mMap->CreateItems(sc, _Items);
+		
 		_playerIndex = mMap->GetPlayerPos();
 		_size.y = _Floor.size();
 		_size.x = _Floor[0].size();

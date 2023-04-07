@@ -43,23 +43,39 @@ namespace cl
 		//mSpriteRenderer->AddAlpha(100);
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mWeapon = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 	}
 	void Cadence::Update()
 	{
-		GameCharacter::Update();
-		if (!mbIsMoving)
+		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
+		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
-			GetInput();
-			if (mInput != Vector2::One)
+			if (mbIsMoving)
 			{
-				SetSprite();
-				if (!UnSink())
-					OnMove(mInput);
-				BeatManager::OnPlayerMove();
+				mbIsMoving = false;
+				mSprite->Reset();
+				if (mbIsTouchingGround)
+					MapManager::OnTileStep(this, mIndex);
+				Item* item = MapManager::GetItem(mIndex);
+				if (item) item->PickUpItem(this);
+			}
+			else
+			{
+				SetInput();
+				if (mInput != Vector2::One)
+				{
+					SetSprite();
+					if (!UnSink())
+						OnMove(mInput);
+					BeatManager::OnPlayerMove();
+				}
 			}
 		}
+		else {
+			mbIsMoving = true;
+		}
+		TileObject::Update();
 		if (Input::GetKeyDown(eKeyCode::O))
 			BeatManager::OnPlayerMove();
 	}
@@ -92,7 +108,6 @@ namespace cl
 	}
 	void Cadence::OnBeatChanged()
 	{
-		mWeapon->OnBeatChanged();
 		GameCharacter::OnBeatChanged();
 	}
 
@@ -121,7 +136,7 @@ namespace cl
 
 	bool Cadence::TryAttack(Vector2 direction)
 	{
-		bool didAttack = mWeapon->Attack(mIndex, direction);
+		bool didAttack = mItems[(int)eItemTypes::Weapon]->Use(this);
 		if (didAttack)
 			PlayOnAttackSound();
 		return didAttack;
@@ -156,7 +171,7 @@ namespace cl
 		return true;
 	}
 
-	void Cadence::GetInput()
+	void Cadence::SetInput()
 	{
 		mInput = Vector2::One;
 		if (Input::GetKeyDown(eKeyCode::A))
@@ -207,7 +222,8 @@ namespace cl
 
 	void Cadence::PlayOnAttackSound()
 	{
-		if (mWeapon->isMelee())
+		Weapon* weapon = (Weapon*)mItems[(int)eItemTypes::Weapon];
+		if (weapon->isMelee())
 		{
 			int random = GetRandomInt(0, mMeleeHitVoice[0].size() - 1);
 			mMeleeHitVoice[consecutiveHits][random]->Play(false);
