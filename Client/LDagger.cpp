@@ -34,8 +34,6 @@ namespace cl
 
 	void Dagger::SetSprite()
 	{
-		mSpriteRenderer = AddComponent<SpriteRenderer>();
-		mSpriteRenderer->SetImage(L"Weapons", L"..\\Assets\\Arts\\Items\\Weapons.bmp");
 		//SetSprite
 	}
 

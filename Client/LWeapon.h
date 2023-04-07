@@ -13,7 +13,6 @@ namespace cl
 		void Initialize() override;
 		void Update() override;
 		void Render(HDC hdc) override;
-		virtual bool Use(Cadence* player) override;
 
 		void OnBeatChanged();
 		void PlayAttackAnimation(Vector2 dir);

@@ -1,10 +1,8 @@
 #pragma once
 #include "LGameCharacter.h"
+#include "LItemIncludes.h"
 namespace cl
 {
-	class Item;
-	class Tool;
-	class SpriteRenderer;
 	class AudioClip;
 	class CadenceShovelEffect;
 	class CadenceSound;
@@ -37,14 +35,16 @@ namespace cl
 		void OnMove(Vector2 direction);
 		void SetInput();
 		void SetSprite();
+
+		Tool* mShovel() { return (Tool*)mItems[(int)eItemTypes::Tool]; }
+		Weapon* mWeapon() { return (Weapon*)mItems[(int)eItemTypes::Weapon]; }
+
 		virtual void PlayOnAttackSound()			override;
 		virtual void PlayOnHitSound()				override;
 		virtual void PlayOnDeathSound()				override;
 
 	private:
 		Item* mItems[(int)eItemTypes::Size];
-		Tool* mShovel;
-		SpriteRenderer* mSpriteRenderer;
 		CadenceShovelEffect* mShovelEffect;
 		CadenceSound* mSound;
 		Vector2 mInput;

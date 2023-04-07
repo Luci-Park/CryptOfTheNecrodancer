@@ -19,7 +19,6 @@ namespace cl
 
 		virtual void PickUpItem(Cadence* player);
 		virtual void SetItem(Vector2 pos);
-		virtual bool Use(Cadence* player) = 0;
 
 		SpriteRenderer* GetSpriteRenderer() { return mSpriteRenderer; }
 	protected:

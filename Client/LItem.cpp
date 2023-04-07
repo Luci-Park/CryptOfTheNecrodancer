@@ -15,7 +15,6 @@ namespace cl
 	void Item::Initialize()
 	{
 		GameObject::Initialize();
-		SetSprite();
 	}
 
 	void Item::Update()

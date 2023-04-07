@@ -19,8 +19,11 @@ namespace cl
 	}
 	void Weapon::Initialize()
 	{
-		mAnimator = AddComponent<Animator>();
 		SetAnimation();
+		mSpriteRenderer = AddComponent<SpriteRenderer>();
+		mAnimator = AddComponent<Animator>();
+		mSpriteRenderer->SetImage(L"Weapons", L"..\\Assets\\Arts\\Items\\Weapons.bmp");
+		SetSprite();
 		Item::Initialize();
 	}
 	void Weapon::Update()
@@ -30,12 +33,6 @@ namespace cl
 	void Weapon::Render(HDC hdc)
 	{
 		Item::Render(hdc);
-	}
-	bool Weapon::Use(Cadence* player)
-	{
-		Vector2 src = player->GetPos();
-		Vector2 input = player->GetInput();
-		return Attack(src, input);
 	}
 	void Weapon::OnBeatChanged()
 	{

@@ -8,7 +8,6 @@
 #include "LCamera.h"
 #include "LInput.h"
 #include "LTime.h"
-#include "LSpriteRenderer.h"
 #include "LWallTile.h"
 #include "LShovel.h"
 #include "LDagger.h"
@@ -18,17 +17,14 @@ namespace cl
 {
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene, true)
-		, mSpriteRenderer(nullptr)
 		, consecutiveHits(0)
 	{
 		//Camera::SetTarget(this);
-		mShovel = new Shovel();
 		mMaxHealth = 3;
 		mHealth = 3;
 	}
 	Cadence::~Cadence()
 	{
-		delete mShovel; mShovel = nullptr;
 		delete mSound; 
 		mSound = nullptr;
 		Camera::SetTarget(nullptr);
@@ -38,6 +34,7 @@ namespace cl
 		GameCharacter::Initialize();
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mSound = new CadenceSound();
+
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
 		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
@@ -131,7 +128,8 @@ namespace cl
 
 	bool Cadence::TryAttack(Vector2 direction)
 	{
-		bool didAttack = mItems[(int)eItemTypes::Weapon]->Use(this);
+		if (mWeapon() == nullptr) return false;
+		bool didAttack = mWeapon()->Attack(mIndex, direction);
 		if (didAttack)
 			PlayOnAttackSound();
 		return didAttack;
@@ -142,10 +140,10 @@ namespace cl
 		WallTile* wall = MapManager::GetWall(mIndex + direction);
 		if (wall)
 		{
-			if (mShovel)
+			if (mShovel() != nullptr)
 			{
-				mShovelEffect->OnDig(wall, mShovel);
-				bool success = mShovel->Dig(wall);
+				mShovelEffect->OnDig(wall, mShovel());
+				bool success = mShovel()->Dig(wall);
 				if (success)
 				{
 					mSound->PlayOnDigSound();
@@ -200,8 +198,7 @@ namespace cl
 
 	void Cadence::PlayOnAttackSound()
 	{
-		Weapon* weapon = (Weapon*)mItems[(int)eItemTypes::Weapon];
-		if (weapon->isMelee())
+		if (mWeapon()->isMelee())
 		{
 			mSound->PlayMeleeSound(consecutiveHits);
 		}

@@ -1,10 +1,11 @@
 #pragma once
 #include "LSprite.h"
+#include "LItem.h"
 namespace cl
 {
 	class WallTile;
 	class AudioClip;
-	class Tool
+	class Tool : public Item
 	{
 	public:
 		enum class eShovelTypes {
@@ -25,17 +26,20 @@ namespace cl
 		static Sprite shovelSprites[];
 
 	public:
-		Tool(){}
+		Tool(Scene* sc);
 		virtual ~Tool(){}
 
 		virtual bool Dig(WallTile* object) = 0;
 
+		void Initialize() override;
+		virtual bool Dig(WallTile* tile) = 0;
 		eShovelTypes GetType() { return mTypes; }
 	protected:
 		int mDigPower;
 		eShovelTypes mTypes;
 		AudioClip* mDigFailedClip;
 	};
+
 	class Shovel : public Tool
 	{
 	public:
