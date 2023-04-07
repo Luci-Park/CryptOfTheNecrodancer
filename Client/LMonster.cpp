@@ -38,6 +38,14 @@ namespace cl
 	{
 		GameCharacter::Sink();
 	}
+	void Monster::OnAttacked(float attackPower)
+	{
+		GameCharacter::OnAttacked(attackPower);
+		if (mHealth > 0)
+		{
+
+		}
+	}
 	void Monster::OnDestroy()
 	{
 		MapManager::DestroyTileObject(mIndex);
@@ -46,6 +54,7 @@ namespace cl
 	void Monster::OnBeat()
 	{
 		mSprite->Reset();
+		//mTransform->SetPos(mMoveTarget);
 		if (!UnSink())
 		{
 			Vector2 nextDir = GetNextDir();
@@ -75,8 +84,11 @@ namespace cl
 			return true;
 		}
 		TileObject* monster = MapManager::GetEnemy(mIndex + direction);
-		if(monster != nullptr && monster != this)
+		if (monster != nullptr && monster != this)
+		{
+			MoveFailed(direction);
 			return true;
+		}
 		return false;
 	}
 	bool Monster::TryDig(Vector2 direction)
@@ -87,7 +99,7 @@ namespace cl
 			bool success = wall->OnDig(mDigPower);
 			if (!success)
 			{
-				//MoveFailed;
+				MoveFailed(direction);
 			}
 			return true;
 		}

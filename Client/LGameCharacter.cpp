@@ -11,6 +11,7 @@ namespace cl
 		, mSprite(nullptr)
 		, mbIsMoving(false)
 		, mbIsTouchingGround(isTouchingGround)
+		, mbMoveFailed(false)
 	{
 	}
 	GameCharacter::~GameCharacter()
@@ -30,8 +31,14 @@ namespace cl
 			{
 				mbIsMoving = false;
 				mSprite->Reset();
-				if (mbIsTouchingGround)
-					MapManager::OnTileStep(this, mIndex);
+				if (mbMoveFailed)
+				{
+					MoveFailed(prevDir);
+				}
+				else {
+					if (mbIsTouchingGround)
+						MapManager::OnTileStep(this, mIndex);
+				}
 			}
 		}
 		else {
@@ -51,9 +58,19 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::MoveFailed()
+	void GameCharacter::MoveFailed(Vector2 dir)
 	{
-
+		if (!mbMoveFailed)
+		{
+			mMoveTarget += dir * UNITLENGTH / 2;
+			mbMoveFailed = true;
+			prevDir = dir;
+		}
+		else
+		{
+			mMoveTarget -= dir * UNITLENGTH / 2;
+			mbMoveFailed = false;
+		}
 	}
 	void GameCharacter::Sink()
 	{
@@ -76,7 +93,6 @@ namespace cl
 		if (mHealth > 0)
 		{
 			PlayOnHitSound();
-			//mSprite->Flash
 		}
 		else
 		{

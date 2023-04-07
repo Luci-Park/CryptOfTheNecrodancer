@@ -42,12 +42,16 @@ namespace cl
 		void Reset();
 		void SetPercent(Vector2 percent) { mPercent = percent; }
 		Vector2 GetPercent() { return mPercent; }
+		void SetShow(bool show) { mbShow = show; }
+		void SwitchShow() { mbShow = !mbShow; }
 	private:
 		std::map<std::wstring, Animation*> mAnimations;
 
 		Animation* mActiveAnimation;
 		Image* mSpriteSheet;
 		bool mbLoop;
+		bool mbShow;
+
 		float mAnimationDur;
 		Vector2 mPercent;
 	};

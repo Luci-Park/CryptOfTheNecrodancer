@@ -20,14 +20,17 @@ namespace cl
 		virtual void Jump();
 		virtual void Sink();
 		virtual void UnSink();
-		//virtual void Flash() = 0;
+		virtual void Flash();
 
 		void Reset();
-		void MoveFailed(Vector2 dir);
 	protected:
 		bool mbIsJumping;
 		bool mbDirIsUp;
 		
+		bool mbIsFlashing;
+		float mFlashTimer;
+		float mFlashDuration;
+
 		bool mbMoveFailed;
 		Vector2 mbMoveDir;
 		float mHeight;

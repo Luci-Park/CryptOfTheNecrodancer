@@ -83,7 +83,7 @@ namespace cl
 					pos.y = (i - 0.25) * UNITLENGTH;
 					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}/*
+				}
 				if (j == 6 && i == 8)
 				{
 					Vector2 pos;
@@ -92,14 +92,14 @@ namespace cl
 					_TileObjects[i][j] = object::Instantiate<GreenSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
 				}
-				if (j == 5 && i == 5)
+				if (j == 1 && i == 2)
 				{
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j] = object::Instantiate<BlueSlime>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}*/
+				}
 			}
 		}
 	}

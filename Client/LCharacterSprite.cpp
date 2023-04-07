@@ -5,11 +5,12 @@
 #include "LAnimator.h"
 namespace cl
 {
-	CharacterSprite::CharacterSprite(Scene *sc)
+	CharacterSprite::CharacterSprite(Scene* sc)
 		: GameObject(sc, false)
 		, mbDirIsUp(true)
 		, mbIsJumping(false)
 		, mAnimator(nullptr)
+		, mbIsFlashing(false)
 	{
 	}
 	CharacterSprite::~CharacterSprite()
@@ -23,6 +24,8 @@ namespace cl
 	{
 		if (mbIsJumping)
 			Jump();
+		if (mbIsFlashing)
+			Flash();
 		GameObject::Update();
 	}
 	void CharacterSprite::Render(HDC hdc)
@@ -59,5 +62,27 @@ namespace cl
 	{
 		Jump();
 		mAnimator->SetPercent(Vector2::One);
+	}
+	void CharacterSprite::Flash()
+	{
+		if (!mbIsFlashing)
+		{
+			mbIsFlashing = true;
+			mFlashDuration = BeatManager::BeatDuration()/4.0f;
+			mFlashTimer = 0.0f;
+			mAnimator->SwitchShow();
+			return;
+		}
+		mFlashTimer += Time::DeltaTime();
+		if (mFlashDuration <= mFlashTimer)
+		{
+			mFlashDuration += mFlashDuration;
+			mAnimator->SwitchShow();
+		}
+		if (BeatManager::BeatDuration() <= mFlashDuration)
+		{
+			mbIsFlashing = false;
+			mAnimator->SetShow(true);
+		}
 	}
 }

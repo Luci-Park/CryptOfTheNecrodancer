@@ -26,7 +26,7 @@ namespace cl
 
 	protected:
 		virtual bool TryAttack(Vector2 Direction) = 0;
-		void MoveFailed();
+		void MoveFailed(Vector2 dir);
 
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;
@@ -38,9 +38,12 @@ namespace cl
 	protected:
 		CharacterSprite* mSprite;
 		Vector2 mMoveTarget;
+		Vector2 prevDir;
 		bool mbIsMoving;
 		bool mbIsTouchingGround;
 		bool mbIsSinked;
+		bool mbMoveFailed;
+
 		float mMaxHealth;
 		float mHealth;
 	};

@@ -16,6 +16,7 @@ namespace cl
 
 		virtual void Sink() override;
 
+		virtual void OnAttacked(float attackPower) override;
 		virtual void OnDestroy();
 
 		virtual void OnBeat() override;

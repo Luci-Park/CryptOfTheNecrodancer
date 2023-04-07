@@ -9,6 +9,7 @@ namespace cl
 		, mSpriteSheet(nullptr)
 		, mbLoop(false)
 		, mPercent(Vector2::One)
+		, mbShow(true)
 	{
 
 	}
@@ -45,7 +46,7 @@ namespace cl
 	
 	void Animator::Render(HDC hdc)
 	{
-		if (mActiveAnimation)
+		if (mActiveAnimation && mbShow)
 		{
 			mActiveAnimation->Render(hdc);
 		}

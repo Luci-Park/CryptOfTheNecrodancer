@@ -37,7 +37,6 @@ namespace cl
 	}
 	void GreenSlime::OnBeat()
 	{
-		Monster::OnBeat();
 	}
 	bool GreenSlime::TryMove(Vector2 direction)
 	{

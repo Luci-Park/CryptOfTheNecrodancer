@@ -19,8 +19,8 @@ namespace cl
 		std::wstring leftPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Right.bmp";
 
-		mAnimator->CreateAnimation(L"LeftIdle", L"Slime_Left", leftPath, 8, 16, 0, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 8, 16, 4, 0, 4, Vector2::Zero, 0.36f);
+		mAnimator->CreateAnimation(L"LeftIdle", L"Slime_Left", leftPath, 4, 8, 0, 4, 4, Vector2::Zero, 0.36f);
+		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 4, 8, 0, 4, 4, Vector2::Zero, 0.36f);
 		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
 		Idle();
 	}
