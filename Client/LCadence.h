@@ -4,11 +4,10 @@ namespace cl
 {
 	class Item;
 	class Tool;
-	class Weapon;
 	class SpriteRenderer;
 	class AudioClip;
-	class CadenceAttackEffect;
 	class CadenceShovelEffect;
+	class CadenceSound;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -38,31 +37,18 @@ namespace cl
 		void OnMove(Vector2 direction);
 		void SetInput();
 		void SetSprite();
-		void PlayOnDigSound();
 		virtual void PlayOnAttackSound()			override;
 		virtual void PlayOnHitSound()				override;
 		virtual void PlayOnDeathSound()				override;
-		void SetAudioClip();
-		void SetDigSound();
-		void SetAttackSound();
-		void SetDeathSound();
-		void SetOnHitSound();
+
 	private:
 		Item* mItems[(int)eItemTypes::Size];
 		Tool* mShovel;
 		SpriteRenderer* mSpriteRenderer;
 		CadenceShovelEffect* mShovelEffect;
+		CadenceSound* mSound;
 		Vector2 mInput;
 		int consecutiveHits;
-#pragma region Sounds
-		std::vector<AudioClip*> mDigVoice;
-		std::vector<std::vector<AudioClip*>>mMeleeHitVoice;
-		std::vector<AudioClip*>mRangedHitVoice;
-		std::vector<AudioClip*>mDeathVoice;
-		std::vector<AudioClip*>mOnAttackedVoice;
-		AudioClip*mHitSFX;
-		AudioClip*mDeathSFX;
-#pragma endregion
 
 	};
 

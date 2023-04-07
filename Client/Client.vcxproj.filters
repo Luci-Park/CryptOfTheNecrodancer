@@ -298,8 +298,6 @@
     <ClInclude Include="LShovel.h">
       <Filter>Contents\Items\Shovels</Filter>
     </ClInclude>
-    <ClInclude Include="LAnimatorChecker.h" />
-    <ClInclude Include="LTempScene.h" />
     <ClInclude Include="LSlime.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClInclude>
@@ -309,6 +307,7 @@
     <ClInclude Include="LItem.h">
       <Filter>Contents\Items</Filter>
     </ClInclude>
+    <ClInclude Include="LCadenceSound.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -492,8 +491,6 @@
     <ClCompile Include="LShovel.cpp">
       <Filter>Contents\Items\Shovels</Filter>
     </ClCompile>
-    <ClCompile Include="LAnimatorChecker.cpp" />
-    <ClCompile Include="LTempScene.cpp" />
     <ClCompile Include="LSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClCompile>
@@ -503,5 +500,6 @@
     <ClCompile Include="LItem.cpp">
       <Filter>Contents\Items</Filter>
     </ClCompile>
+    <ClCompile Include="LCadenceSound.cpp" />
   </ItemGroup>
 </Project>
