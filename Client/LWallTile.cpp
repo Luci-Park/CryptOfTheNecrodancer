@@ -155,7 +155,6 @@ namespace cl
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
 		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Walls", L"..\\Assets\\Arts\\Stage Elements\\Walls.bmp"));
 		mSpriteRenderer->SetSprite(mWallSprite);
-		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
 		GameObject::Initialize();
 	}
 	void WallTile::OnDestroy()
@@ -182,7 +181,6 @@ namespace cl
 			OnDestroy();
 			return true;
 		}
-		mDigFailedClip->Play(false);
 		return false;
 	}
 	Vector2 WallTile::GetPlateCenter()
@@ -240,12 +238,10 @@ namespace cl
 
 	bool BossWall::OnDig(int digPower)
 	{
-		mDigFailedClip->Play(false);
 		return false;		
 	}
 	bool BossWall::OnCrumble()
 	{
-		mDigFailedClip->Play(false);
 		return false;
 	}
 #pragma endregion
@@ -281,12 +277,10 @@ namespace cl
 
 	bool Border::OnDig(int digPower)
 	{
-		mDigFailedClip->Play(false);
 		return false;
 	}
 	bool Border::OnCrumble()
 	{
-		mDigFailedClip->Play(false);
 		return false;
 	}
 #pragma endregion

@@ -306,6 +306,7 @@
     <ClInclude Include="LSlime.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClInclude>
+    <ClInclude Include="LMonsterHeart.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -494,5 +495,6 @@
     <ClCompile Include="LSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
     </ClCompile>
+    <ClCompile Include="LMonsterHeart.cpp" />
   </ItemGroup>
 </Project>

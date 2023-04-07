@@ -7,6 +7,7 @@
 #include "LMonsterWeapon.h"
 #include "LResources.h"
 #include "LAudioClip.h"
+#include "LMonsterHeart.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
@@ -25,6 +26,7 @@ namespace cl
 		GameCharacter::Initialize();
 		SetStats();
 		SetWeapon();
+		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Effects);
 	}
 	void Monster::Update()
 	{
@@ -43,7 +45,7 @@ namespace cl
 		GameCharacter::OnAttacked(attackPower);
 		if (mHealth > 0)
 		{
-
+			mHeart->SetHearts(mMaxHealth, mHealth);
 		}
 	}
 	void Monster::OnDestroy()

@@ -86,7 +86,6 @@ namespace cl
 		Sprite mWallSprite;
 		Sprite mCrumbleSprite;
 		AudioClip* mDigClip;
-		AudioClip* mDigFailedClip;
 		bool mbIsBreakable;
 	};
 

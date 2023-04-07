@@ -1,5 +1,7 @@
 #include "LShovel.h"
 #include "LWallTile.h"
+#include "LAudioClip.h"
+#include "LResources.h"
 namespace cl
 {
 	Sprite Shovel::shovelSprites[(int)eShovelTypes::Size] =
@@ -25,6 +27,7 @@ namespace cl
 	{
 		mDigPower = 1;
 		mTypes = eShovelTypes::Shovel;
+		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
 	}
 	Shovel::~Shovel()
 	{
@@ -33,8 +36,11 @@ namespace cl
 	{
 		if (object != nullptr)
 		{
-			return object->OnDig(mDigPower);
+			bool success = object->OnDig(mDigPower);
+			if (!success)
+				mDigFailedClip->Play(false);
 		}
+		return false;
 	}
 	TitaniumShovel::TitaniumShovel()
 	{

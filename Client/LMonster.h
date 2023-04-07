@@ -4,6 +4,7 @@ namespace cl
 {
 	class MonsterWeapon;
 	class AudioClip;
+	class MonsterHeart;
 	class Monster : public GameCharacter
 	{
 	public:
@@ -41,6 +42,7 @@ namespace cl
 		int mDigPower;
 		int mDrop;
 		MonsterWeapon* mWeapon;
+		MonsterHeart* mHeart;
 	};
 }
 

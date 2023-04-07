@@ -3,6 +3,7 @@
 namespace cl
 {
 	class WallTile;
+	class AudioClip;
 	class Shovels
 	{
 	public:
@@ -33,6 +34,7 @@ namespace cl
 	protected:
 		int mDigPower;
 		eShovelTypes mTypes;
+		AudioClip* mDigFailedClip;
 	};
 	class Shovel : public Shovels
 	{
