@@ -19,11 +19,10 @@ namespace cl
 	}
 	void Weapon::Initialize()
 	{
-		SetAnimation();
 		mSpriteRenderer = AddComponent<SpriteRenderer>();
-		mAnimator = AddComponent<Animator>();
 		mSpriteRenderer->SetImage(L"Weapons", L"..\\Assets\\Arts\\Items\\Weapons.bmp");
 		SetSprite();
+		SetAnimation();
 		Item::Initialize();
 	}
 	void Weapon::Update()
@@ -33,15 +32,6 @@ namespace cl
 	void Weapon::Render(HDC hdc)
 	{
 		Item::Render(hdc);
-	}
-	void Weapon::OnBeatChanged()
-	{
-		mAnimator->SetDuration(BeatManager::BeatDuration() * 0.25);
-	}
-	void Weapon::PlayAttackAnimation(Vector2 dir)
-	{
-		mTransform->SetLocalPos(EffectPos(dir));
-		mAnimator->Play(SelectAnimation(dir), false, false);
 	}
 	bool Weapon::Attack(Vector2 srcIdx, Vector2 input)
 	{

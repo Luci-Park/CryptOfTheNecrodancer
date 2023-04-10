@@ -2,6 +2,7 @@
 #include "LWeapon.h"
 namespace cl
 {
+	class ShortMeleeEffect;
 	class Dagger : public Weapon
 	{
 	public:
@@ -9,15 +10,12 @@ namespace cl
 		~Dagger();
 
 	protected:
-		virtual void SetAnimation();
+		virtual void SetAnimation() override;
 		virtual void SetSprite() override;
-		virtual Vector2 EffectPos(Vector2 dir);
-		virtual std::wstring SelectAnimation(Vector2 dir);
-		virtual bool TryAttack(Vector2 srcIdx, Vector2 input);
+		virtual void OnBeatChanged() override;
+		virtual bool TryAttack(Vector2 srcIdx, Vector2 input) override;
+		virtual void PlayAttackAnimation(Vector2 dir) override;
 	private:
-		std::wstring mUpAnimation;
-		std::wstring mDownAnimation;
-		std::wstring mLeftAnimation;
-		std::wstring mRightAnimation;
+		ShortMeleeEffect* mEffect;
 	};
 }

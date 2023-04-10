@@ -21,6 +21,7 @@ namespace cl
 		virtual void SetItem(Vector2 pos);
 
 		SpriteRenderer* GetSpriteRenderer() { return mSpriteRenderer; }
+		Sprite GetSprite() { return mSpriteRenderer->GetSprite(); }
 	protected:
 		virtual void SetSprite() = 0;
 	protected:

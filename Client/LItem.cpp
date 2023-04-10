@@ -7,6 +7,7 @@ namespace cl
 		: GameObject(sc, false)
 		, mType(type)
 		, mbIsSetDown(false)
+		, mSpriteRenderer(nullptr)
 	{
 	}
 	Item::~Item()
@@ -14,13 +15,12 @@ namespace cl
 	}
 	void Item::Initialize()
 	{
+		mSpriteRenderer->SetActive(mbIsSetDown);
 		GameObject::Initialize();
 	}
 
 	void Item::Update()
 	{
-		if(mSpriteRenderer != nullptr)
-			mSpriteRenderer->SetActive(mbIsSetDown);
 		GameObject::Update();
 	}
 
@@ -32,9 +32,10 @@ namespace cl
 	void Item::PickUpItem(Cadence* player)
 	{
 		mbIsSetDown = false;
-		mSpriteRenderer->SetActive(mbIsSetDown);
+		mSpriteRenderer->SetActive(false);
 		mTransform->SetParent(player->mTransform);
 		mTransform->SetLocalPos(Vector2::Zero);
+		mTransform->SetLocalScale(Vector2::One);
 		player->SwitchItem(this, mType);
 		mGetItemClip->Play(false);
 	}
@@ -42,9 +43,10 @@ namespace cl
 	void Item::SetItem(Vector2 pos)
 	{
 		mbIsSetDown = true;
-		mSpriteRenderer->SetActive(mbIsSetDown);
+		mSpriteRenderer->SetActive(true);
 		mTransform->SetParent(mTransform);
 		mTransform->SetPos(pos);
+		mTransform->SetLocalScale(Vector2::One * UNITSCALE);
 	}
 
 }

@@ -104,6 +104,12 @@
     <Filter Include="Contents\Items\Shovels">
       <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Items\Weapons\WeaponEffects">
+      <UniqueIdentifier>{336c36b3-3acd-41f1-b3de-b69100f4af16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Items\Weapons\Base">
+      <UniqueIdentifier>{3f3a653a-5136-4204-b97d-e7e42354fb30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -271,13 +277,7 @@
     <ClInclude Include="LCadenceShovelEffect.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
-    <ClInclude Include="LDagger.h">
-      <Filter>Contents\Items\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="LWeapon.h">
-      <Filter>Contents\Items\Weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="LMonsterWeapon.h">
       <Filter>Contents\Items\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="LWeaponFilter.h">
@@ -307,9 +307,26 @@
     <ClInclude Include="LItem.h">
       <Filter>Contents\Items</Filter>
     </ClInclude>
-    <ClInclude Include="LCadenceSound.h" />
     <ClInclude Include="LItemIncludes.h">
       <Filter>Contents\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LWeaponEffect.h">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="LDagger.h">
+      <Filter>Contents\Items\Weapons\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="LMonsterMeleeEffect.h">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="LShortMeleeEffect.h">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="LCadenceSound.h">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClInclude>
+    <ClInclude Include="LMonsterWeapon.h">
+      <Filter>Contents\Items\Weapons\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -467,17 +484,11 @@
     <ClCompile Include="LCadenceShovelEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
-    <ClCompile Include="LDagger.cpp">
-      <Filter>Contents\Items\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="LWeapon.cpp">
       <Filter>Contents\Items\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="LWeaponFilter.cpp">
       <Filter>Contents\Items\Weapons\Decorators</Filter>
-    </ClCompile>
-    <ClCompile Include="LMonsterWeapon.cpp">
-      <Filter>Contents\Items\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="LGreenSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
@@ -503,6 +514,23 @@
     <ClCompile Include="LItem.cpp">
       <Filter>Contents\Items</Filter>
     </ClCompile>
-    <ClCompile Include="LCadenceSound.cpp" />
+    <ClCompile Include="LWeaponEffect.cpp">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="LDagger.cpp">
+      <Filter>Contents\Items\Weapons\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonsterMeleeEffect.cpp">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="LShortMeleeEffect.cpp">
+      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="LCadenceSound.cpp">
+      <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonsterWeapon.cpp">
+      <Filter>Contents\Items\Weapons\Base</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,6 +5,7 @@
 #include "LBlueSlime.h"
 #include "LGreenSlime.h"
 #include "LOrangeSlime.h"
+#include "LShovel.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -62,6 +63,12 @@ namespace cl
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			_Items[i].resize(mMapSize.x);
+			if (i == 3)
+			{
+				PickAxe* object = object::Instantiate<PickAxe>(sc, eLayerType::Items);
+				_Items[i][10] = object;
+				object->SetItem(Vector2(10, 3) * UNITLENGTH);
+			}
 		}
 	}
 

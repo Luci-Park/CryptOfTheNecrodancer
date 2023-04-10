@@ -12,7 +12,7 @@ namespace cl
 	}
 	void CadenceSound::PlayOnDigSound()
 	{
-		int random = GetRandomInt(0, mDigVoice.size());
+		int random = GetRandomInt(0, mDigVoice.size() - 1);
 		mDigVoice[random]->SetVolume(25.f);
 		mDigVoice[random]->Play(false);
 	}

@@ -14,19 +14,17 @@ namespace cl
 		void Update() override;
 		void Render(HDC hdc) override;
 
-		void OnBeatChanged();
-		void PlayAttackAnimation(Vector2 dir);
 		bool Attack(Vector2 srcIdx, Vector2 input);
 		bool isMelee() { return mbIsMelee; }
 	protected:
 		virtual void SetSprite() = 0;
 		virtual void SetAnimation() = 0;
-		virtual Vector2 EffectPos(Vector2 dir) = 0;
-		virtual std::wstring SelectAnimation(Vector2 dir) = 0;
+		virtual void OnBeatChanged() = 0;
+
 		virtual bool TryAttack(Vector2 srcIdx, Vector2 input) = 0;
+		virtual void PlayAttackAnimation(Vector2 dir) = 0;
 	protected:
 		float mPower;
-		Animator* mAnimator;
 		bool mbIsMelee;
 	};
 }
