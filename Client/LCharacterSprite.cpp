@@ -37,6 +37,10 @@ namespace cl
 		mTransform->SetLocalPos(Vector2::Zero);
 		mbIsJumping = false;
 	}
+	void CharacterSprite::OnBeatChanged()
+	{
+		mAnimator->SetDuration(BeatManager::BeatDuration());
+	}
 	void CharacterSprite::Jump()
 	{
 		if (!mbIsJumping)

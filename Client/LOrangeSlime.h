@@ -1,6 +1,5 @@
 #pragma once
 #include "LSlime.h"
-#include "LBehaviorTree.h"
 namespace cl
 {
 	class OrangeSlimeSprite;

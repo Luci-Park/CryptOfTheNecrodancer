@@ -15,7 +15,7 @@ namespace cl
 		virtual void Render(HDC hdc)override;
 
 		virtual void Turn(Vector2 dir) = 0;
-		virtual void OnBeatChanged() = 0;
+		virtual void OnBeatChanged();
 
 		virtual void Jump();
 		virtual void Sink();

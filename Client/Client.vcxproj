@@ -135,6 +135,8 @@
     <ClInclude Include="LAnimation.h" />
     <ClInclude Include="LAnimator.h" />
     <ClInclude Include="LApplication.h" />
+    <ClInclude Include="LBat.h" />
+    <ClInclude Include="LBatSprite.h" />
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBlueSlime.h" />
     <ClInclude Include="LBlueSlimeSprite.h" />
@@ -207,6 +209,8 @@
     <ClCompile Include="LAnimation.cpp" />
     <ClCompile Include="LAnimator.cpp" />
     <ClCompile Include="LApplication.cpp" />
+    <ClCompile Include="LBat.cpp" />
+    <ClCompile Include="LBatSprite.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />
     <ClCompile Include="LBlueSlimeSprite.cpp" />
     <ClCompile Include="LCadence.cpp" />

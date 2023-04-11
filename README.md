@@ -34,10 +34,14 @@ WindowAPI Project (2/14 ~ )
 * BGM added to title screen and lobby.
 
 ## Week 8(4/2 ~ 4/8)
-* WaterTile done
+* ```WaterTile``` done
 * Player->EnemyInteract->WallInteract->Move->TileInteract
 * Monster Creation
-    * GreenSlime
-    * BlueSlime
+    * ```GreenSlime```
+    * `BlueSlime`
 * Monster Attack Pattern
 * AudioAssets organized
+* Item structurizing start
+
+## Week 9(4/9 ~ 4/15)
+* Items on board implemented.

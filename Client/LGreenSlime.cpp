@@ -11,7 +11,6 @@ namespace cl
 	GreenSlime::GreenSlime(Scene* sc)
 		: Slime(sc)
 	{
-		mTransform->SetScale(Vector2::One * UNITSCALE);
 	}
 	GreenSlime::~GreenSlime()
 	{
@@ -21,7 +20,6 @@ namespace cl
 		Monster::Initialize();
 		mSlimeSprite = object::Instantiate<GreenSlimeSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSlimeSprite;
-		BeatManager::AddCharacters(this);
 	}
 	void GreenSlime::Update()
 	{
