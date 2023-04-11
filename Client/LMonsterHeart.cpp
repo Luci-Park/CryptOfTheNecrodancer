@@ -10,7 +10,7 @@ namespace cl
 	{
 		mFullHeart = Vector2(226, 29);
 		mEmptyHeart = Vector2(240, 29);
-		mSpriteSize = Vector2(12, 11);
+		mSpriteSize = Vector2(13, 11);
 		mOffset = Vector2(mSpriteSize.x * 0.5, mSpriteSize.y);
 	}
 	MonsterHeart::~MonsterHeart()

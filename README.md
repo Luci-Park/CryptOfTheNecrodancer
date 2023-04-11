@@ -39,9 +39,13 @@ WindowAPI Project (2/14 ~ )
 * Monster Creation
     * ```GreenSlime```
     * `BlueSlime`
+    * `OrangeSlime`
 * Monster Attack Pattern
 * AudioAssets organized
 * Item structurizing start
 
 ## Week 9(4/9 ~ 4/15)
 * Items on board implemented.
+* Monster Creation
+    * ```Bat```
+    * `RedBat`

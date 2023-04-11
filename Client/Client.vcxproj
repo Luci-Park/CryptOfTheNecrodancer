@@ -179,6 +179,8 @@
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LOrangeSlime.h" />
     <ClInclude Include="LOrangeSlimeSprite.h" />
+    <ClInclude Include="LRedBat.h" />
+    <ClInclude Include="LRedBatSprite.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LScene.h" />
@@ -249,6 +251,8 @@
     <ClCompile Include="LMonsterWeapon.cpp" />
     <ClCompile Include="LOrangeSlime.cpp" />
     <ClCompile Include="LOrangeSlimeSprite.cpp" />
+    <ClCompile Include="LRedBat.cpp" />
+    <ClCompile Include="LRedBatSprite.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LScene.cpp" />

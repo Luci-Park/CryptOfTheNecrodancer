@@ -76,8 +76,9 @@ namespace cl
 	{
 		return _Wall[index.y][index.x];
 	}
-	TileObject* MapManager::GetEnemy(Vector2 index)
+	TileObject* MapManager::GetMonster(Vector2 index)
 	{
+		if (index == _playerIndex) return nullptr;
 		return _ForeObjects[index.y][index.x];
 	}
 	Cadence* MapManager::GetPlayer(Vector2 index)
@@ -102,6 +103,7 @@ namespace cl
 	}
 	void MapManager::Move(Vector2 src, Vector2 dest)
 	{
+		if (src == dest) return;
 		_ForeObjects[dest.y][dest.x] = _ForeObjects[src.y][src.x];
 		_ForeObjects[src.y][src.x] = nullptr;
 	}

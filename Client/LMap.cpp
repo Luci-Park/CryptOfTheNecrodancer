@@ -3,7 +3,7 @@
 #include "LObject.h"
 #include "LCadence.h"
 #include "LShovel.h"
-#include "LBat.h"
+#include "LRedBat.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -95,7 +95,7 @@ namespace cl
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<Bat>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j] = object::Instantiate<RedBat>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
 				}
 			}

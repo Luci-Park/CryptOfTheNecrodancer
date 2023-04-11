@@ -2,11 +2,11 @@
 #include "LCharacterSprite.h"
 namespace cl
 {
-	class BatSprite : public CharacterSprite
+	class RedBatSprite : public CharacterSprite
 	{
 	public:
-		BatSprite(Scene* sc);
-		~BatSprite() {};
+		RedBatSprite(Scene* sc);
+		~RedBatSprite() {};
 
 		virtual void Initialize() override;
 
@@ -18,7 +18,7 @@ namespace cl
 	private:
 		Vector2 mLookDir;
 		std::wstring leftAnimation;
-		std::wstring rightAnimation;		
+		std::wstring rightAnimation;
 	};
 }
 

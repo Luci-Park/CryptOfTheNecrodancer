@@ -1,14 +1,13 @@
-#include "LBat.h"
+#include "LRedBat.h"
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LMapManager.h"
-#include "LBatSprite.h"
+#include "LRedBatSprite.h"
 #include "LObject.h"
 namespace cl
 {
-	Bat::Bat(Scene* sc)
+	RedBat::RedBat(Scene* sc)
 		:Monster(sc, false)
-		, mbMove(true)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Bat\\";
 		std::wstring extend = L".wav";
@@ -17,40 +16,37 @@ namespace cl
 		mHitSound = Resources::Load<AudioClip>(L"en_bat_hit", path + L"en_bat_hit" + extend);
 		mDeathSound = Resources::Load<AudioClip>(L"en_bat_death", path + L"en_bat_death" + extend);
 	}
-	Bat::~Bat()
+	RedBat::~RedBat()
 	{
 	}
-	void Bat::Initialize()
+	void RedBat::Initialize()
 	{
 		Monster::Initialize();
-		mSprite = object::Instantiate<BatSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		mSprite = object::Instantiate<RedBatSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 	}
-	void Bat::PlayOnAttackSound()
+	void RedBat::PlayOnAttackSound()
 	{
 		mAttackSound->SetVolume(voiceVol);
 		mAttackSound->Play(false);
 	}
-	void Bat::PlayOnHitSound()
+	void RedBat::PlayOnHitSound()
 	{
 		mHitSound->SetVolume(voiceVol);
 		mHitSound->Play(false);
 	}
-	void Bat::PlayOnDeathSound()
+	void RedBat::PlayOnDeathSound()
 	{
 		mDeathSound->SetVolume(voiceVol);
 		mDeathSound->Play(false);
 	}
-	void Bat::SetStats()
+	void RedBat::SetStats()
 	{
 		mMaxHealth = 1;
-		mAttackPower = 0.5f;
-		mDrop = 2;
+		mAttackPower = 1.0f;
+		mDrop = 3;
 	}
-	Vector2 Bat::GetNextDir()
+	Vector2 RedBat::GetNextDir()
 	{
-		if (!mbMove) {
-			return Vector2::Zero;
-		}
 		int dx[4] = { 0, 1, 0, -1 };
 		int dy[4] = { 1, 0, -1, 0 };
 		std::vector<int>possible;
@@ -65,9 +61,8 @@ namespace cl
 		int idx = GetRandomInt(0, possible.size() - 1);
 		return Vector2(dx[possible[idx]], dy[possible[idx]]);
 	}
-	bool Bat::TryMove(Vector2 direction)
+	bool RedBat::TryMove(Vector2 direction)
 	{
-		mbMove = !mbMove;
 		mMoveTarget += direction * UNITLENGTH;
 		MapManager::Move(mIndex, mIndex + direction);
 		mIndex += direction;

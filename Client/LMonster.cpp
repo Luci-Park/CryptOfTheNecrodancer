@@ -89,7 +89,7 @@ namespace cl
 			PlayOnAttackSound();
 			return true;
 		}
-		TileObject* monster = MapManager::GetEnemy(mIndex + direction);
+		TileObject* monster = MapManager::GetMonster(mIndex + direction);
 		if (monster != nullptr && monster != this)
 		{
 			MoveFailed(direction);

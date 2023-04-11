@@ -116,6 +116,15 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\Bats">
       <UniqueIdentifier>{e6093403-cd9f-49a5-979b-00a750e0cdcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Skeletons">
+      <UniqueIdentifier>{96dac444-dc98-4a12-b591-e73531b345bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Zombies">
+      <UniqueIdentifier>{34904a58-6faa-4cf3-8845-ad975bda1eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Monkeys">
+      <UniqueIdentifier>{8a2ae1c1-c383-4b14-bf36-16822ef3656f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -340,6 +349,12 @@
     <ClInclude Include="LBatSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
     </ClInclude>
+    <ClInclude Include="LRedBat.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+    </ClInclude>
+    <ClInclude Include="LRedBatSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -548,6 +563,12 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
     </ClCompile>
     <ClCompile Include="LBatSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+    </ClCompile>
+    <ClCompile Include="LRedBat.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+    </ClCompile>
+    <ClCompile Include="LRedBatSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
     </ClCompile>
   </ItemGroup>
