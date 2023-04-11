@@ -9,7 +9,6 @@ namespace cl
 	BlueSlime::BlueSlime(Scene* sc)
 		: Slime(sc)
 	{
-		mTransform->SetScale(Vector2::One * UNITSCALE);
 		nextPos.resize(4);
 		nextPos[0] = Vector2::Up;
 		nextPos[1] = Vector2::Zero;
@@ -25,7 +24,6 @@ namespace cl
 		Monster::Initialize();
 		mSlimeSprite = object::Instantiate<BlueSlimeSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSlimeSprite;
-		BeatManager::AddCharacters(this);
 	}
 	void BlueSlime::Update()
 	{

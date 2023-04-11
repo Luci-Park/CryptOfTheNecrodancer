@@ -36,7 +36,9 @@ namespace cl
 		mSound = new CadenceSound();
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
+		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
+		
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 
 	}
@@ -52,7 +54,7 @@ namespace cl
 				if (mbIsTouchingGround)
 					MapManager::OnTileStep(this, mIndex);
 				Item* item = MapManager::GetItem(mIndex);
-				if (item) item->PickUpItem(this);
+				if (item != nullptr) item->PickUpItem(this);
 			}
 			else
 			{
@@ -109,7 +111,10 @@ namespace cl
 	{
 		int idx = (int)type;
 		if (mItems[idx] != nullptr)
-			MapManager::SetItem(mItems[idx], mIndex);
+		{
+			mItems[idx]->SetItem(MapManager::SetItem(mItems[idx], mIndex));
+		
+		}
 		mItems[idx] = item;
 	}
 
@@ -142,7 +147,7 @@ namespace cl
 		{
 			if (mShovel() != nullptr)
 			{
-				mShovelEffect->OnDig(wall, mShovel());
+				mShovelEffect->OnDig(wall, mShovel()->GetSprite());
 				bool success = mShovel()->Dig(wall);
 				if (success)
 				{

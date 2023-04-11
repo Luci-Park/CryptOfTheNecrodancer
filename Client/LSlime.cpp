@@ -9,7 +9,7 @@ namespace cl
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Slime\\";
 		std::wstring extend = L".wav";
 
-		mSlimeAttackSound = Resources::Load<AudioClip>(L"SlimeAttack", path + L"en_slime_attack" + extend);
+		mSlimeAttackSound = Resources::Load<AudioClip>(L"en_slime_attack", path + L"en_slime_attack" + extend);
 		std::wstring key = L"en_slime_death_0";
 		for (int i = 0; i < 3; ++i)
 		{
@@ -28,7 +28,7 @@ namespace cl
 	Slime::~Slime()
 	{
 	}
-	void cl::Slime::PlayOnAttackSound()
+	void Slime::PlayOnAttackSound()
 	{
 		mSlimeAttackSound->SetVolume(voiceVol);
 		mSlimeAttackSound->Play(false);

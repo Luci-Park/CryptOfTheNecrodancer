@@ -13,6 +13,7 @@ namespace cl
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
 	{
+		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
 		mGeneralDeath = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_death.wav");
 		mGeneralDeath->SetVolume(100);
@@ -25,9 +26,11 @@ namespace cl
 	{
 		GameCharacter::Initialize();
 		SetStats();
+		mHealth = mMaxHealth;
 		SetWeapon();
 		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH * 0.7), eLayerType::Effects);
 		mHeart->SetHearts(mMaxHealth, mHealth);
+		BeatManager::AddCharacters(this);
 	}
 	void Monster::Update()
 	{

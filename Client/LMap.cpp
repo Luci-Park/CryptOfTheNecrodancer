@@ -2,9 +2,8 @@
 #include "LBeatManager.h"
 #include "LObject.h"
 #include "LCadence.h"
-#include "LBlueSlime.h"
-#include "LGreenSlime.h"
-#include "LOrangeSlime.h"
+#include "LShovel.h"
+#include "LBat.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -62,6 +61,12 @@ namespace cl
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			_Items[i].resize(mMapSize.x);
+			if (i == 3)
+			{
+				PickAxe* object = object::Instantiate<PickAxe>(sc, eLayerType::Items);
+				_Items[i][10] = object;
+				object->SetItem(Vector2(10, 3) * UNITLENGTH);
+			}
 		}
 	}
 
@@ -90,23 +95,7 @@ namespace cl
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<OrangeSlime>(sc, pos, eLayerType::Monster);
-					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}
-				if (j == 6 && i == 8)
-				{
-					Vector2 pos;
-					pos.x = j * UNITLENGTH;
-					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<GreenSlime>(sc, pos, eLayerType::Monster);
-					_TileObjects[i][j]->SetIndex(Vector2(j, i));
-				}
-				if (j == 1 && i == 2)
-				{
-					Vector2 pos;
-					pos.x = j * UNITLENGTH;
-					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<BlueSlime>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j] = object::Instantiate<Bat>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
 				}
 			}

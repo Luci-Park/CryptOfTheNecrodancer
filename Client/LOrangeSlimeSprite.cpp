@@ -13,8 +13,8 @@ namespace cl
 	}
 	void OrangeSlimeSprite::Initialize()
 	{
-		CharacterSprite::Initialize();
 		mAnimator = AddComponent<Animator>();
+		CharacterSprite::Initialize();
 
 		std::wstring leftPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Right.bmp";

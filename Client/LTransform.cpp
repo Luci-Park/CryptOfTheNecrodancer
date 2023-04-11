@@ -13,13 +13,6 @@ namespace cl
 	}
 	Transform::~Transform()
 	{
-		for (int i = 0; i < mChildren.size(); ++i)
-		{
-			if (mChildren[i] != nullptr)
-			{
-				mChildren[i]->GetOwner()->Destroy();
-			}
-		}
 	}
 	void Transform::Initialize()
 	{
@@ -34,6 +27,10 @@ namespace cl
 	}
 	void Transform::SetParent(Transform* parent)
 	{
+		if (mParent != nullptr && mParent != this && mParent != parent)
+		{
+			mParent->RemoveChildren(this);
+		}
 		mParent = parent;
 		parent->SetChildren(this);
 	}

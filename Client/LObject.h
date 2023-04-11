@@ -9,7 +9,7 @@ namespace cl::object
 	template <typename T>
 	static inline T* Instantiate(Scene* sc, eLayerType type)
 	{
-		T* gameObj = new T();
+		T* gameObj = new T(sc);
 		Scene* scene = sc;
 		scene->AddGameObject(gameObj, type);
 		gameObj->Initialize();
@@ -40,8 +40,8 @@ namespace cl::object
 	template <typename T>
 	static inline T* Instantiate(eLayerType type)
 	{
-		T* gameObj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
+		T* gameObj = new T(scene);
 		scene->AddGameObject(gameObj, type);
 		gameObj->Initialize();
 		return gameObj;
@@ -50,8 +50,8 @@ namespace cl::object
 	template <typename T>
 	static inline T* Instantiate(Vector2 pos, eLayerType type)
 	{
-		T* gameObj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
+		T* gameObj = new T(scene);
 		scene->AddGameObject(gameObj, type);
 		gameObj->Initialize();
 		gameObj->GameObject::GetComponent<Transform>()->SetWorldPos(pos);

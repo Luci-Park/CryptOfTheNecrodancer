@@ -135,6 +135,8 @@
     <ClInclude Include="LAnimation.h" />
     <ClInclude Include="LAnimator.h" />
     <ClInclude Include="LApplication.h" />
+    <ClInclude Include="LBat.h" />
+    <ClInclude Include="LBatSprite.h" />
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBlueSlime.h" />
     <ClInclude Include="LBlueSlimeSprite.h" />
@@ -172,6 +174,7 @@
     <ClInclude Include="LMonster.h" />
     <ClInclude Include="LBehaviorTree.h" />
     <ClInclude Include="LMonsterHeart.h" />
+    <ClInclude Include="LMonsterMeleeEffect.h" />
     <ClInclude Include="LMonsterWeapon.h" />
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LOrangeSlime.h" />
@@ -182,6 +185,7 @@
     <ClInclude Include="LSceneManager.h" />
     <ClInclude Include="LAudioClip.h" />
     <ClInclude Include="LAudioDevice.h" />
+    <ClInclude Include="LShortMeleeEffect.h" />
     <ClInclude Include="LShovel.h" />
     <ClInclude Include="LSlime.h" />
     <ClInclude Include="LSplashScene.h" />
@@ -195,6 +199,7 @@
     <ClInclude Include="LuciEngine.h" />
     <ClInclude Include="LWallTile.h" />
     <ClInclude Include="LWeapon.h" />
+    <ClInclude Include="LWeaponEffect.h" />
     <ClInclude Include="LWeaponFilter.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -204,6 +209,8 @@
     <ClCompile Include="LAnimation.cpp" />
     <ClCompile Include="LAnimator.cpp" />
     <ClCompile Include="LApplication.cpp" />
+    <ClCompile Include="LBat.cpp" />
+    <ClCompile Include="LBatSprite.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />
     <ClCompile Include="LBlueSlimeSprite.cpp" />
     <ClCompile Include="LCadence.cpp" />
@@ -238,6 +245,7 @@
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LBehaviorTree.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
+    <ClCompile Include="LMonsterMeleeEffect.cpp" />
     <ClCompile Include="LMonsterWeapon.cpp" />
     <ClCompile Include="LOrangeSlime.cpp" />
     <ClCompile Include="LOrangeSlimeSprite.cpp" />
@@ -247,6 +255,7 @@
     <ClCompile Include="LSceneManager.cpp" />
     <ClCompile Include="LAudioClip.cpp" />
     <ClCompile Include="LAudioDevice.cpp" />
+    <ClCompile Include="LShortMeleeEffect.cpp" />
     <ClCompile Include="LShovel.cpp" />
     <ClCompile Include="LSlime.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
@@ -259,6 +268,7 @@
     <ClCompile Include="LTutorialScene.cpp" />
     <ClCompile Include="LWallTile.cpp" />
     <ClCompile Include="LWeapon.cpp" />
+    <ClCompile Include="LWeaponEffect.cpp" />
     <ClCompile Include="LWeaponFilter.cpp" />
   </ItemGroup>
   <ItemGroup>

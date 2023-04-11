@@ -27,12 +27,11 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
-	void CadenceShovelEffect::OnDig(WallTile* wallTile, Tool* shovel)
+	void CadenceShovelEffect::OnDig(WallTile* wallTile, Sprite sprite)
 	{
 		mSpriteRenderer->SetActive(true);
 		mbIsShowing = true;
 		mTransform->SetPos(wallTile->GetPlateCenter());
-		Sprite sprite = Shovel::GetShovelSprite(shovel->GetType(), false);
 		mSpriteRenderer->SetSprite(sprite);
 	}
 	void CadenceShovelEffect::Show()

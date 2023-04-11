@@ -9,7 +9,6 @@ namespace cl
 	OrangeSlime::OrangeSlime(Scene* sc)
 		: Slime(sc)
 	{
-		mTransform->SetScale(Vector2::One * UNITSCALE);
 		nextPos.resize(4);
 		nextPos[0] = Vector2::Up;
 		nextPos[1] = Vector2::Right;
@@ -27,7 +26,6 @@ namespace cl
 		Monster::Initialize();
 		mSlimeSprite = object::Instantiate<OrangeSlimeSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSlimeSprite;
-		BeatManager::AddCharacters(this);
 	}
 	
 	void OrangeSlime::Update()

@@ -3,8 +3,6 @@
 #include "LAudioClip.h"
 #include "LResources.h"
 #include "LSpriteRenderer.h"
-#include "LCadence.h"
-#include "LMapManager.h"
 namespace cl
 {
 	//Sprite Shovel::shovelSprites[(int)eShovelTypes::Size] =
@@ -32,6 +30,7 @@ namespace cl
 	{
 		mGetItemClip = Resources::Load<AudioClip>(L"sfx_pickup_weapon"
 			, L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_pickup_general_ST.wav");
+		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
 	}
 
 	void Tool::Initialize()
@@ -42,16 +41,7 @@ namespace cl
 		Item::Initialize();
 	}
 
-	Shovel::Shovel()
-	{
-		mDigPower = 1;
-		mTypes = eShovelTypes::Shovel;
-		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
-	}
-	Shovel::~Shovel()
-	{
-	}
-	bool Shovel::Dig(WallTile* object)
+	bool Tool::Dig(WallTile* object)
 	{
 		if (object != nullptr)
 		{
@@ -61,54 +51,24 @@ namespace cl
 		}
 		return false;
 	}
-	TitaniumShovel::TitaniumShovel()
+
+
+	Shovel::Shovel(Scene* sc)
+		:Tool(sc)
 	{
-		mDigPower = 2;
-		mTypes = eShovelTypes::Titanium;
+		mDigPower = 1;
 	}
-	TitaniumShovel::~TitaniumShovel()
-	{
-	}
-	bool TitaniumShovel::Dig(WallTile* object)
-	{
-		if (object != nullptr)
-		{
-			return object->OnDig(mDigPower);
-		}
-	}
-	CrystalShovel::CrystalShovel()
-	{
-		mDigPower = 3;
-		mTypes = eShovelTypes::Crystal;
-	}
-	CrystalShovel::~CrystalShovel()
+	Shovel::~Shovel()
 	{
 	}
-	bool CrystalShovel::Dig(WallTile* object)
-	{
-		if (object != nullptr)
-		{
-			return object->OnDig(mDigPower);
-		}
+	void Shovel::SetSprite()
+	{  
+		mSpriteRenderer->SetSprite({ Vector2(0, 3), Vector2(24, 24), Vector2(-12, -12) });
 	}
-	ObsidianShovel::ObsidianShovel()
+
+	PickAxe::PickAxe(Scene* sc)
+		:Tool(sc)
 	{
-		mDigPower = 2;
-		mTypes = eShovelTypes::Obsedian1;
-	}
-	ObsidianShovel::~ObsidianShovel()
-	{
-	}
-	bool ObsidianShovel::Dig(WallTile* object)
-	{
-		if (object != nullptr)
-		{
-			return object->OnDig(mDigPower);
-		}
-	}
-	PickAxe::PickAxe()
-	{
-		mTypes = eShovelTypes::Pickaxe;
 	}
 	PickAxe::~PickAxe()
 	{
@@ -117,5 +77,9 @@ namespace cl
 	{
 		if (object != nullptr)
 			return object->OnCrumble();
+	}
+	void PickAxe::SetSprite()
+	{
+		mSpriteRenderer->SetSprite({ Vector2(241, 3), Vector2(23, 24), Vector2(-12, -12) });
 	}
 }

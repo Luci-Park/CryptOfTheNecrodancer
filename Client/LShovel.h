@@ -8,81 +8,37 @@ namespace cl
 	class Tool : public Item
 	{
 	public:
-		enum class eShovelTypes {
-			Shovel,
-			Titanium,
-			Glass,
-			Obsedian1,
-			Obsedian2,
-			Obsedian3,
-			Blood,
-			Crystal,
-			Shattered,
-			Pickaxe,
-			Size = 14
-		};
-		static Sprite GetShovelSprite(eShovelTypes type, bool isShadow);
-	private:
-		static Sprite shovelSprites[];
-
-	public:
 		Tool(Scene* sc);
 		virtual ~Tool(){}
 
-		virtual bool Dig(WallTile* object) = 0;
-
 		void Initialize() override;
-		virtual bool Dig(WallTile* tile) = 0;
-		eShovelTypes GetType() { return mTypes; }
+
+		virtual bool Dig(WallTile* object);
+	protected:
+		virtual void SetSprite() = 0;
 	protected:
 		int mDigPower;
-		eShovelTypes mTypes;
 		AudioClip* mDigFailedClip;
 	};
 
 	class Shovel : public Tool
 	{
 	public:
-		Shovel();
+		Shovel(Scene* sc);
 		virtual ~Shovel();
-
-		virtual bool Dig(WallTile* object);
-	};
-
-	class TitaniumShovel : public Tool
-	{
-	public:
-		TitaniumShovel();
-		virtual ~TitaniumShovel();
-
-		virtual bool Dig(WallTile* object);
-	};
-
-	class CrystalShovel : public Tool
-	{
-	public:
-		CrystalShovel();
-		virtual ~CrystalShovel();
-
-		virtual bool Dig(WallTile* object);
-	};
-
-	class ObsidianShovel : public Tool
-	{
-	public:
-		ObsidianShovel();
-		virtual ~ObsidianShovel();
-
-		virtual bool Dig(WallTile* object);
+	protected:
+		virtual void SetSprite() override;
 	};
 
 	class PickAxe : public Tool
 	{
 	public:
-		PickAxe();
+		PickAxe(Scene* sc);
 		virtual ~PickAxe();
 
-		virtual bool Dig(WallTile* object);
+		virtual bool Dig(WallTile* object) override;
+	protected:
+		virtual void SetSprite() override;
 	};
 }
 
