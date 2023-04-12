@@ -95,7 +95,7 @@ namespace cl
 					Vector2 pos;
 					pos.x = j * UNITLENGTH;
 					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<Skeleton>(sc, pos, eLayerType::Monster);
+					_TileObjects[i][j] = object::Instantiate<BlackSkeleton>(sc, pos, eLayerType::Monster);
 					_TileObjects[i][j]->SetIndex(Vector2(j, i));
 				}
 			}

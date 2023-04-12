@@ -4,12 +4,14 @@
 #include "LObject.h"
 #include "LSkeletonSprite.h"
 #include "LMapManager.h"
+#include "LCadence.h"
 namespace cl
 {
 	SkeletonBase::SkeletonBase(Scene* sc)
 		: Monster(sc, true)
 		, mbNoHead(false)
 		, mbPause(true)
+		, mMoveDir(Vector2::Left)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Skeleton\\";
 		std::wstring extend = L".wav";
@@ -40,6 +42,13 @@ namespace cl
 		mSprite = mSkelSprite;
 		mSkelSprite->SetSkeleY(GetY());
 	}
+	void SkeletonBase::Update()
+	{
+		Monster::Update();
+		if(!mbNoHead)
+			mMoveDir = MoveTowardsPlayer();
+			
+	}
 	void SkeletonBase::PlayOnAttackSound()
 	{
 		mAttackSound->SetVolume(voiceVol);
@@ -47,7 +56,7 @@ namespace cl
 	}
 	void SkeletonBase::PlayOnHitSound()
 	{
-		int idx = GetRandomInt(0, 2);
+		int idx = GetRandomInt(0, 2);  
 		mHitSound[idx]->SetVolume(voiceVol);
 		mHitSound[idx]->Play(false);
 		Monster::PlayOnHitSound();
@@ -67,13 +76,13 @@ namespace cl
 	}
 	void SkeletonBase::OnAttacked(float attackPower)
 	{
-		GameCharacter::OnAttacked(attackPower);
+		Monster::OnAttacked(attackPower);
 		if (mHealth > 0 && mHealth <= 1 && !mbNoHead)
 		{
 			mSkelSprite->LostHead();
 			PlayOnHeadLossSound();
 			mbNoHead = true;
-			mRunDir = mIndex - MapManager::GetPlayerIndex().Normalize();
+			mRunDir = MapManager::GetPlayer(MapManager::GetPlayerIndex())->GetInput();
 		}
 	}
 	Vector2 SkeletonBase::GetNextDir()
@@ -83,6 +92,7 @@ namespace cl
 			return MoveAwayFromPlayer();
 		}
 		else {
+			mMoveDir = MoveTowardsPlayer();
 			if (mbPause)
 			{
 				mSkelSprite->RaiseHand();
@@ -91,29 +101,30 @@ namespace cl
 			else
 			{
 				mSkelSprite->Idle();
-				return MoveTowardsPlayer();
+				return mMoveDir;
 			}
 		}
 	}
 	bool SkeletonBase::TryMove(Vector2 direction)
 	{
 		mbPause = !mbPause;
-		if (direction != Vector2::Zero) mSprite->Jump();
+		if (direction != Vector2::Zero)
+		{
+			mSprite->Jump();
+			mMoveDir = direction;
+		}
 		mMoveTarget += direction * UNITLENGTH;
 		MapManager::Move(mIndex, mIndex + direction);
 		mIndex += direction;
-		mBefDir = direction;
 		return true;
 	}
 	Vector2 SkeletonBase::MoveTowardsPlayer()
 	{
-		Vector2 dist = MapManager::GetPlayerIndex() - mIndex;
-		if (dist.x > dist.y)
-			return Vector2::Right * (signbit(dist.y) ? -1 : 1);
-		else if (dist.x < dist.y)
-			return Vector2::Down * (signbit(dist.x) ? -1 : 1);
+		Vector2 player = MapManager::GetPlayerIndex();
+		if (player.x == mIndex.x || player.y == mIndex.y)
+			return (player - mIndex).Normalize();
 		else
-			return mBefDir;
+			return mMoveDir;
 	}
 	Vector2 SkeletonBase::MoveAwayFromPlayer()
 	{

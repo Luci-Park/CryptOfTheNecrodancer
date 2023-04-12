@@ -49,3 +49,6 @@ WindowAPI Project (2/14 ~ )
 * Monster Creation
     * ```Bat```
     * `RedBat`
+    * `Skeleton`
+    * `GreenSkeleton`
+    * `BlackSkeleton`

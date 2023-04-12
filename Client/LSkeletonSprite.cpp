@@ -37,12 +37,7 @@ namespace cl
     }
     void SkeletonSprite::Turn(Vector2 dir)
     {
-        if (dir == Vector2::Down)
-        {
-            if (mLookDir == Vector2::Up)
-                mLookDir = Vector2::Right;
-        }
-        else if(dir == Vector2::Left || dir == Vector2::Right || dir == Vector2::Up)
+        if(dir == Vector2::Left || dir == Vector2::Right)
         {
             mLookDir = dir;
         }

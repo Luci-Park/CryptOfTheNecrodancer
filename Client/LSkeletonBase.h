@@ -11,7 +11,7 @@ namespace cl
 		virtual ~SkeletonBase();
 
 		virtual void Initialize() override;
-
+		virtual void Update() override;
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
@@ -35,6 +35,6 @@ namespace cl
 		bool mbNoHead;
 		bool mbPause;
 		Vector2 mRunDir;
-		Vector2 mBefDir;
+		Vector2 mMoveDir;
 	};
 }
