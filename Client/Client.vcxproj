@@ -189,6 +189,9 @@
     <ClInclude Include="LAudioDevice.h" />
     <ClInclude Include="LShortMeleeEffect.h" />
     <ClInclude Include="LShovel.h" />
+    <ClInclude Include="LSkeleton.h" />
+    <ClInclude Include="LSkeletonBase.h" />
+    <ClInclude Include="LSkeletonSprite.h" />
     <ClInclude Include="LSlime.h" />
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
@@ -261,6 +264,9 @@
     <ClCompile Include="LAudioDevice.cpp" />
     <ClCompile Include="LShortMeleeEffect.cpp" />
     <ClCompile Include="LShovel.cpp" />
+    <ClCompile Include="LSkeleton.cpp" />
+    <ClCompile Include="LSkeletonBase.cpp" />
+    <ClCompile Include="LSkeletonSprite.cpp" />
     <ClCompile Include="LSlime.cpp" />
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />

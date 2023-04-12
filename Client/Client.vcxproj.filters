@@ -355,6 +355,15 @@
     <ClInclude Include="LRedBatSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
     </ClInclude>
+    <ClInclude Include="LSkeletonSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+    </ClInclude>
+    <ClInclude Include="LSkeleton.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+    </ClInclude>
+    <ClInclude Include="LSkeletonBase.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -570,6 +579,15 @@
     </ClCompile>
     <ClCompile Include="LRedBatSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+    </ClCompile>
+    <ClCompile Include="LSkeletonSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+    </ClCompile>
+    <ClCompile Include="LSkeleton.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+    </ClCompile>
+    <ClCompile Include="LSkeletonBase.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -34,11 +34,13 @@ namespace cl
 	{
 		mHitSound->SetVolume(voiceVol);
 		mHitSound->Play(false);
+		Monster::PlayOnHitSound();
 	}
 	void Bat::PlayOnDeathSound()
 	{
 		mDeathSound->SetVolume(voiceVol);
 		mDeathSound->Play(false);
+		Monster::PlayOnDeathSound();
 	}
 	void Bat::SetStats()
 	{
@@ -71,6 +73,6 @@ namespace cl
 		mMoveTarget += direction * UNITLENGTH;
 		MapManager::Move(mIndex, mIndex + direction);
 		mIndex += direction;
-		return false;
+		return true;
 	}
 }

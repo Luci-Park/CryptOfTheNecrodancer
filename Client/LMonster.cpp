@@ -111,4 +111,12 @@ namespace cl
 		}
 		return false;
 	}
+	void Monster::PlayOnHitSound()
+	{
+		mGeneralHit->Play(false);
+	}
+	void Monster::PlayOnDeathSound()
+	{
+		mGeneralDeath->Play(false);
+	}
 }

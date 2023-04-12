@@ -98,6 +98,7 @@ namespace cl
 		{
 			PlayOnDeathSound();
 			OnDestroy();
+			return;
 		}			
 	}
 }

@@ -4,6 +4,8 @@
 
 struct Vector2
 {
+    enum class Direction{Up, Down, Left, Right, Zero};
+
     static Vector2 Up;
     static Vector2 Down;
     static Vector2 Right;

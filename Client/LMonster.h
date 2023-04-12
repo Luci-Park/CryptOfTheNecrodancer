@@ -33,8 +33,8 @@ namespace cl
 		virtual bool TryMove(Vector2 direction) = 0;
 
 		virtual void PlayOnAttackSound() = 0;
-		virtual void PlayOnHitSound() = 0;
-		virtual void PlayOnDeathSound() = 0;
+		virtual void PlayOnHitSound();
+		virtual void PlayOnDeathSound();
 	protected:
 		AudioClip* mGeneralHit;
 		AudioClip* mGeneralDeath;

@@ -38,13 +38,13 @@ namespace cl
 		int index = GetRandomInt(0, 2);
 		mSlimeHitSound[index]->SetVolume(voiceVol);
 		mSlimeHitSound[index]->Play(false);
-		mGeneralHit->Play(false);
+		Monster::PlayOnHitSound();
 	}
 	void Slime::PlayOnDeathSound()
 	{
 		int index = GetRandomInt(0, 2);
 		mSlimeDeathSound[index]->SetVolume(voiceVol);
 		mSlimeDeathSound[index]->Play(false);
-		mGeneralDeath->Play(false);
+		Monster::PlayOnDeathSound();
 	}
 }
