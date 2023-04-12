@@ -42,7 +42,7 @@ namespace cl
 	}
 	void Monster::Sink()
 	{
-		GameCharacter::Sink();
+		GameCharacter::Sink(); 
 	}
 	void Monster::OnAttacked(float attackPower)
 	{
