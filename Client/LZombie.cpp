@@ -26,7 +26,6 @@ namespace cl
 		mZombieSprite = object::Instantiate<ZombieSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mZombieSprite;
 		mSprite->Turn(mMoveDir);
-		mZombieSprite->OnBeat();
 	}
 	bool Zombie::TryAttack(Vector2 Direction)
 	{

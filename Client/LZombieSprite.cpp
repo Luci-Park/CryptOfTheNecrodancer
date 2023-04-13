@@ -5,6 +5,7 @@ namespace cl
 {
 	ZombieSprite::ZombieSprite(Scene* sc)
 		: CharacterSprite(sc)
+		, isBeat(true)
 	{
 		mIdleAnim[GetIndex(Vector2::Right)] = L"RightIdle";
 		mIdleAnim[GetIndex(Vector2::Left)] = L"LeftIdle";
