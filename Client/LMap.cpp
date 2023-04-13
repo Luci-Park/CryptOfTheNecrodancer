@@ -3,7 +3,7 @@
 #include "LObject.h"
 #include "LCadence.h"
 #include "LShovel.h"
-#include "LSkeleton.h"
+#include "LZombie.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -90,13 +90,16 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				_TileObjects[i][j] = nullptr;
-				if (j == 5 && i == 4)
+				if (i == 4)
 				{
-					Vector2 pos;
-					pos.x = j * UNITLENGTH;
-					pos.y = (i - 0.25) * UNITLENGTH;
-					_TileObjects[i][j] = object::Instantiate<BlackSkeleton>(sc, pos, eLayerType::Monster);
-					_TileObjects[i][j]->SetIndex(Vector2(j, i));
+					if(j > 3 && j< 7)
+					{
+						Vector2 pos;
+						pos.x = j * UNITLENGTH;
+						pos.y = (i - 0.25) * UNITLENGTH;
+						_TileObjects[i][j] = object::Instantiate<Zombie>(sc, pos, eLayerType::Monster);
+						_TileObjects[i][j]->SetIndex(Vector2(j, i));
+					}
 				}
 			}
 		}

@@ -26,3 +26,11 @@ float Vector2::Distance(Vector2 src, Vector2 dest)
     return sqrtf(dx * dx + dy * dy);
 
 }
+
+bool Vector2::IsCardinal(Vector2 vect)
+{
+    if (vect == Vector2::Up || vect == Vector2::Down
+        || vect == Vector2::Left || vect == Vector2::Right)
+        return true;
+    return false;
+}

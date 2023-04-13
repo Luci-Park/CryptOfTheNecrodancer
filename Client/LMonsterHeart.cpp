@@ -1,6 +1,7 @@
 #include "LMonsterHeart.h"
 #include "LImage.h"
 #include "LResources.h"
+#include "LCamera.h"
 namespace cl
 {
 	MonsterHeart::MonsterHeart(Scene* sc)
@@ -31,6 +32,7 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 		Vector2 startPos = mStartPos + mTransform->GetPos();
+		startPos = Camera::CaluatePos(startPos);
 		for (int i = mMaxHeart; i > 0; --i)
 		{
 			if (i <= mCurrHeart)

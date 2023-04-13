@@ -5,6 +5,10 @@ namespace cl
 	class SkeletonSprite : public CharacterSprite
 	{
 	public:
+		enum class Status
+		{
+			RaiseHand, Idle, NoHead
+		};
 		SkeletonSprite(Scene* sc);
 		~SkeletonSprite() {};
 
@@ -15,15 +19,16 @@ namespace cl
 		void Idle();
 		void RaiseHand();
 		void LostHead();
-	protected:
-		int skeleY;
+
 	private:
 		int GetIndex(Vector2 dir);
+
 	private:
+		int skeleY;
 		Vector2 mLookDir;
-		std::wstring idleAnimation[3];
-		std::wstring raiseHandAnimation[3];
+		std::wstring idleAnimation[2];
+		std::wstring raiseHandAnimation[2];
 		std::wstring noHead;
-		bool mbLostHead;
+		Status mStatus;
 	};
 }

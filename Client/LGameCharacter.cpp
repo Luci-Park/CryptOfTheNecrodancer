@@ -69,6 +69,7 @@ namespace cl
 		else
 		{
 			mMoveTarget -= dir * UNITLENGTH / 2;
+			mSprite->Jump();
 			mbMoveFailed = false;
 		}
 	}

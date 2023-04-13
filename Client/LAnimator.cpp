@@ -172,7 +172,6 @@ namespace cl
 		if (mActiveAnimation != nullptr)
 		{
 		}
-
 		mActiveAnimation = FindAnimation(name);
 		mActiveAnimation->SetReverse(reverse);
 		mActiveAnimation->Reset();

@@ -48,10 +48,7 @@ namespace cl
 			mSlimeSprite->Idle();
 		else
 		{
-			mMoveTarget += direction * UNITLENGTH;
-			mSlimeSprite->Jump();
-			MapManager::Move(mIndex, mIndex + direction);
-			mIndex += direction;
+			Monster::TryMove(direction);
 		}
 		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		return true;

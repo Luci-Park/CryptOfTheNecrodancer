@@ -61,11 +61,4 @@ namespace cl
 		int idx = GetRandomInt(0, possible.size() - 1);
 		return Vector2(dx[possible[idx]], dy[possible[idx]]);
 	}
-	bool RedBat::TryMove(Vector2 direction)
-	{
-		mMoveTarget += direction * UNITLENGTH;
-		MapManager::Move(mIndex, mIndex + direction);
-		mIndex += direction;
-		return false;
-	}
 }

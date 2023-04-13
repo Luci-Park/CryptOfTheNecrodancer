@@ -83,23 +83,11 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters">
       <UniqueIdentifier>{643229b1-9f82-42bc-8ca1-97ba90931fbb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes">
-      <UniqueIdentifier>{067f1840-2e46-403b-a2e8-7b10582ce1c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime">
-      <UniqueIdentifier>{49246ea0-6b7f-4594-aeac-27a791a68660}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Items\Weapons">
       <UniqueIdentifier>{c1ece01c-4963-414f-a12e-720cd2cf3be0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Items\Weapons\Decorators">
       <UniqueIdentifier>{e4be7208-6862-489c-a1c4-6577b4222aef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime">
-      <UniqueIdentifier>{57185331-1270-4281-b4d2-01b390b9e0f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime">
-      <UniqueIdentifier>{8426796c-8d31-4997-a2a1-9c513d89e363}</UniqueIdentifier>
     </Filter>
     <Filter Include="Contents\Items\Shovels">
       <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
@@ -113,17 +101,38 @@
     <Filter Include="Contents\UI">
       <UniqueIdentifier>{8b46c7f0-9dcc-4042-b748-f5dd393f2619}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Bats">
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies">
+      <UniqueIdentifier>{979903b4-31f8-4767-868a-5be5f51ed934}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Bats">
       <UniqueIdentifier>{e6093403-cd9f-49a5-979b-00a750e0cdcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Skeletons">
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Monkeys">
+      <UniqueIdentifier>{8a2ae1c1-c383-4b14-bf36-16822ef3656f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons">
       <UniqueIdentifier>{96dac444-dc98-4a12-b591-e73531b345bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Zombies">
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Slimes">
+      <UniqueIdentifier>{067f1840-2e46-403b-a2e8-7b10582ce1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime">
+      <UniqueIdentifier>{49246ea0-6b7f-4594-aeac-27a791a68660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime">
+      <UniqueIdentifier>{57185331-1270-4281-b4d2-01b390b9e0f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime">
+      <UniqueIdentifier>{8426796c-8d31-4997-a2a1-9c513d89e363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Enemies\Zombies">
       <UniqueIdentifier>{34904a58-6faa-4cf3-8845-ad975bda1eae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\Monkeys">
-      <UniqueIdentifier>{8a2ae1c1-c383-4b14-bf36-16822ef3656f}</UniqueIdentifier>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Bosses">
+      <UniqueIdentifier>{dadc4c52-5ab7-4f6c-8f83-590d8230beb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues">
+      <UniqueIdentifier>{e24d2640-fb6f-4b4a-9d32-5cafadd76cc9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -284,10 +293,10 @@
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="LBlueSlime.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClInclude>
     <ClInclude Include="LBlueSlimeSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceShovelEffect.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
@@ -299,22 +308,22 @@
       <Filter>Contents\Items\Weapons\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="LGreenSlime.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
     </ClInclude>
     <ClInclude Include="LOrangeSlime.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClInclude>
     <ClInclude Include="LGreenSlimeSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
     </ClInclude>
     <ClInclude Include="LOrangeSlimeSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClInclude>
     <ClInclude Include="LShovel.h">
       <Filter>Contents\Items\Shovels</Filter>
     </ClInclude>
     <ClInclude Include="LSlime.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterHeart.h">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
@@ -344,25 +353,31 @@
       <Filter>Contents\Items\Weapons\Base</Filter>
     </ClInclude>
     <ClInclude Include="LBat.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
     <ClInclude Include="LBatSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
     <ClInclude Include="LRedBat.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
     <ClInclude Include="LRedBatSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
     <ClInclude Include="LSkeletonSprite.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
     </ClInclude>
     <ClInclude Include="LSkeleton.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
     </ClInclude>
     <ClInclude Include="LSkeletonBase.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
+    </ClInclude>
+    <ClInclude Include="LZombie.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
+    </ClInclude>
+    <ClInclude Include="LZombieSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -512,10 +527,10 @@
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="LBlueSlime.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClCompile>
     <ClCompile Include="LBlueSlimeSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\BlueSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClCompile>
     <ClCompile Include="LCadenceShovelEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
@@ -527,22 +542,22 @@
       <Filter>Contents\Items\Weapons\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="LGreenSlime.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
     </ClCompile>
     <ClCompile Include="LOrangeSlime.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClCompile>
     <ClCompile Include="LGreenSlimeSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\GreenSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
     </ClCompile>
     <ClCompile Include="LOrangeSlimeSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes\OrangeSlime</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClCompile>
     <ClCompile Include="LShovel.cpp">
       <Filter>Contents\Items\Shovels</Filter>
     </ClCompile>
     <ClCompile Include="LSlime.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Slimes</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterHeart.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
@@ -569,25 +584,31 @@
       <Filter>Contents\Items\Weapons\Base</Filter>
     </ClCompile>
     <ClCompile Include="LBat.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
     <ClCompile Include="LBatSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
     <ClCompile Include="LRedBat.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
     <ClCompile Include="LRedBatSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bats</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
     <ClCompile Include="LSkeletonSprite.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
     </ClCompile>
     <ClCompile Include="LSkeleton.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
     </ClCompile>
     <ClCompile Include="LSkeletonBase.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Skeletons</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Skeletons</Filter>
+    </ClCompile>
+    <ClCompile Include="LZombie.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
+    </ClCompile>
+    <ClCompile Include="LZombieSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

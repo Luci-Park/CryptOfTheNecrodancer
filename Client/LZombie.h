@@ -2,32 +2,28 @@
 #include "LMonster.h"
 namespace cl
 {
-	class AudioClip;
-	class RedBat : public Monster
+	class ZombieSprite;
+	class Zombie : public Monster
 	{
 	public:
-		RedBat(Scene* sc);
-		virtual ~RedBat();
-
+		Zombie(Scene* sc);
+		virtual ~Zombie();
 
 		virtual void Initialize() override;
-
-		virtual void Sink() override {}
-		virtual bool UnSink() override { return false; }
-		virtual void MoveFailed(Vector2 dir) override {};
-
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
-	private:
+
+		virtual void MoveFailed(Vector2 dir) override;
+	protected:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
-
 	private:
+		ZombieSprite* mZombieSprite;
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
-		AudioClip* mHitSound;
-		float voiceVol = 60.0f;
+		Vector2 mMoveDir;
+		bool mbBeat;
 	};
 }
 

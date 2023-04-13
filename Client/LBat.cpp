@@ -70,9 +70,7 @@ namespace cl
 	bool Bat::TryMove(Vector2 direction)
 	{
 		mbMove = !mbMove;
-		mMoveTarget += direction * UNITLENGTH;
-		MapManager::Move(mIndex, mIndex + direction);
-		mIndex += direction;
+		Monster::TryMove(direction);
 		return true;
 	}
 }

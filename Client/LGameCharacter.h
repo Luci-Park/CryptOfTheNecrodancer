@@ -26,7 +26,7 @@ namespace cl
 
 	protected:
 		virtual bool TryAttack(Vector2 Direction) = 0;
-		void MoveFailed(Vector2 dir);
+		virtual void MoveFailed(Vector2 dir);
 
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction) = 0;

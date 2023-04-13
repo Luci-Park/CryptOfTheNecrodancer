@@ -31,8 +31,8 @@ namespace cl
 		static Vector2 GetPlayerIndex() { return _playerIndex; }
 		static Item* GetItem(Vector2 index);
 		static Vector2 SetItem(Item* item, Vector2 pos);
-		static void PlayerMove(Vector2 src, Vector2 dest);
-		static void Move(Vector2 src, Vector2 dest);
+		static void PlayerMove(TileObject* object, Vector2 src, Vector2 dest);
+		static void Move(TileObject* object, Vector2 src, Vector2 dest);
 
 	private:
 		static std::vector<std::vector<FloorTile*>> _Floor;

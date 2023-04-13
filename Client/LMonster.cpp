@@ -28,7 +28,7 @@ namespace cl
 		SetStats();
 		mHealth = mMaxHealth;
 		SetWeapon();
-		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH * 0.7), eLayerType::Effects);
+		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH * 0.7), eLayerType::Hearts);
 		mHeart->SetHearts(mMaxHealth, mHealth);
 		BeatManager::AddCharacters(this);
 	}
@@ -60,7 +60,7 @@ namespace cl
 	void Monster::OnBeat()
 	{
 		mSprite->Reset();
-		//mTransform->SetPos(mMoveTarget);
+		mTransform->SetPos(mMoveTarget);
 		if (!UnSink())
 		{
 			Vector2 nextDir = GetNextDir();
@@ -87,6 +87,7 @@ namespace cl
 		{
 			mWeapon->Attack(mIndex, direction);
 			PlayOnAttackSound();
+			MoveFailed(direction);
 			return true;
 		}
 		TileObject* monster = MapManager::GetMonster(mIndex + direction);
@@ -110,6 +111,15 @@ namespace cl
 			return true;
 		}
 		return false;
+	}
+	bool Monster::TryMove(Vector2 direction)
+	{
+		mMoveTarget += direction * UNITLENGTH;
+		MapManager::Move(this, mIndex, mIndex + direction);
+		mIndex += direction;
+		if(direction != Vector2::Zero)
+			mSprite->Jump();
+		return true;
 	}
 	void Monster::PlayOnHitSound()
 	{

@@ -30,7 +30,7 @@ namespace cl
 		virtual bool TryAttack(Vector2 Direction);
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction);
-		virtual bool TryMove(Vector2 direction) = 0;
+		virtual bool TryMove(Vector2 direction);
 
 		virtual void PlayOnAttackSound() = 0;
 		virtual void PlayOnHitSound();

@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include "CommonInclude.h"
 #define PI 3.141592
 
 struct Vector2
@@ -159,6 +160,7 @@ struct Vector2
     static Vector2 MoveTowards(Vector2 src, Vector2 dest, float distance);
   
     static float Distance(Vector2 src, Vector2 dest);
+    static bool IsCardinal(Vector2 vect);
 };
 
 int GetRandomInt(int min, int max)

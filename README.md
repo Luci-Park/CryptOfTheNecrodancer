@@ -52,3 +52,4 @@ WindowAPI Project (2/14 ~ )
     * `Skeleton`
     * `GreenSkeleton`
     * `BlackSkeleton`
+    * `Zombie`

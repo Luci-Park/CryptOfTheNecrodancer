@@ -50,10 +50,7 @@ namespace cl
 
 	bool OrangeSlime::TryMove(Vector2 direction)
 	{
-		mMoveTarget += direction * UNITLENGTH;
-		mSlimeSprite->Jump();
-		MapManager::Move(mIndex, mIndex + direction);
-		mIndex += direction;
+		Monster::TryMove(direction);
 		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 		return true;
 	}

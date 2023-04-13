@@ -10,8 +10,7 @@ namespace cl
 	SkeletonBase::SkeletonBase(Scene* sc)
 		: Monster(sc, true)
 		, mbNoHead(false)
-		, mbPause(true)
-		, mMoveDir(Vector2::Left)
+		, mbPause(false)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Skeleton\\";
 		std::wstring extend = L".wav";
@@ -41,12 +40,13 @@ namespace cl
 		mSkelSprite = object::Instantiate<SkeletonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSkelSprite;
 		mSkelSprite->SetSkeleY(GetY());
+		mSkelSprite->Turn(MoveTowardsPlayer());
+		mSkelSprite->RaiseHand();
 	}
 	void SkeletonBase::Update()
 	{
 		Monster::Update();
-		if(!mbNoHead)
-			mMoveDir = MoveTowardsPlayer();
+		mSprite->Turn(MoveTowardsPlayer());
 			
 	}
 	void SkeletonBase::PlayOnAttackSound()
@@ -92,31 +92,19 @@ namespace cl
 			return MoveAwayFromPlayer();
 		}
 		else {
-			mMoveDir = MoveTowardsPlayer();
+			Vector2 targ = MoveTowardsPlayer();
 			if (mbPause)
 			{
 				mSkelSprite->RaiseHand();
-				return Vector2::Zero;
+				targ = Vector2::Zero;
 			}
 			else
 			{
 				mSkelSprite->Idle();
-				return mMoveDir;
 			}
+			mbPause = !mbPause;
+			return targ;
 		}
-	}
-	bool SkeletonBase::TryMove(Vector2 direction)
-	{
-		mbPause = !mbPause;
-		if (direction != Vector2::Zero)
-		{
-			mSprite->Jump();
-			mMoveDir = direction;
-		}
-		mMoveTarget += direction * UNITLENGTH;
-		MapManager::Move(mIndex, mIndex + direction);
-		mIndex += direction;
-		return true;
 	}
 	Vector2 SkeletonBase::MoveTowardsPlayer()
 	{
@@ -124,7 +112,12 @@ namespace cl
 		if (player.x == mIndex.x || player.y == mIndex.y)
 			return (player - mIndex).Normalize();
 		else
-			return mMoveDir;
+		{
+			if (player.x < mIndex.x)
+				return Vector2::Left;
+			else
+				return Vector2::Right;
+		}
 	}
 	Vector2 SkeletonBase::MoveAwayFromPlayer()
 	{

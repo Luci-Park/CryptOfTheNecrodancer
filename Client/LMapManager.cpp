@@ -96,16 +96,16 @@ namespace cl
 		_Items[pos.y][pos.x] = item;
 		return pos * UNITLENGTH;
 	}
-	void MapManager::PlayerMove(Vector2 src, Vector2 dest)
+	void MapManager::PlayerMove(TileObject* object, Vector2 src, Vector2 dest)
 	{
-		Move(src, dest);
+		Move(object, src, dest);
 		_playerIndex = dest;
 	}
-	void MapManager::Move(Vector2 src, Vector2 dest)
+	void MapManager::Move(TileObject* object, Vector2 src, Vector2 dest)
 	{
 		if (src == dest) return;
-		_ForeObjects[dest.y][dest.x] = _ForeObjects[src.y][src.x];
-		_ForeObjects[src.y][src.x] = nullptr;
+		_ForeObjects[dest.y][dest.x] = object;
+		if (_ForeObjects[src.y][src.x] == object) _ForeObjects[src.y][src.x] = nullptr;
 	}
 #pragma endregion
 	

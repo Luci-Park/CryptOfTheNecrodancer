@@ -19,7 +19,7 @@ namespace cl
 		: GameCharacter(scene, true)
 		, consecutiveHits(0)
 	{
-		//Camera::SetTarget(this);
+		Camera::SetTarget(this);
 		mMaxHealth = 3;
 		mHealth = 3;
 	}
@@ -162,7 +162,7 @@ namespace cl
 	bool Cadence::TryMove(Vector2 direction)
 	{
 		Vector2 dest = mIndex + direction;
-		MapManager::PlayerMove(mIndex, dest);
+		MapManager::PlayerMove(this, mIndex, dest);
 		mSprite->Jump();
 		mIndex = dest;
 		mMoveTarget += direction * UNITLENGTH;

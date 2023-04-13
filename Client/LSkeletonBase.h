@@ -22,7 +22,6 @@ namespace cl
 		virtual void SetStats() = 0;
 		virtual void OnAttacked(float attackPower) override;
 		virtual Vector2 GetNextDir() override;
-		virtual bool TryMove(Vector2 direction) override;
 		Vector2 MoveTowardsPlayer();
 		Vector2 MoveAwayFromPlayer();
 	private:
@@ -35,6 +34,5 @@ namespace cl
 		bool mbNoHead;
 		bool mbPause;
 		Vector2 mRunDir;
-		Vector2 mMoveDir;
 	};
 }

@@ -23,6 +23,7 @@ enum class eLayerType
 	Player,
 	Monster,
 	Wall,
+	Hearts,
 	Effects,
 	UI,
 	Size,
