@@ -9,6 +9,7 @@ namespace cl
 	Zombie::Zombie(Scene* sc)
 		: Monster(sc, true)
 		, mbBeat(true)
+		, mbFlip(false)
 	{
 		mMoveDir = Vector2::Right;//GetRandomInt(0, 1) ? Vector2::Down : Vector2::Right;
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Zombie\\";
@@ -46,28 +47,55 @@ namespace cl
 	}
 	Vector2 Zombie::GetNextDir()
 	{
-		Vector2 targ;
 		if (mbBeat)
 		{
 			mZombieSprite->OnBeat();
-			targ = Vector2::Zero;
+			return Vector2::Zero;
 		}
 		else
 		{
 			mZombieSprite->Idle();
-			targ = mMoveDir;
+			return mMoveDir;
 		}
-		mbBeat = !mbBeat;
-		return targ;
 
+	}
+	void Zombie::OnBeat()
+	{
+		mbFlip = false;
+		mbMoved = false;
+		mSprite->Reset();
+		mTransform->SetPos(mMoveTarget);
+		if (!UnSink())
+		{
+			Vector2 nextDir = GetNextDir();
+			mSprite->Turn(nextDir);
+			if (!TryAttack(nextDir))
+			{
+				if (TryDig(nextDir)) mbFlip = true;
+				else
+				{
+					mbMoved = TryMove(nextDir);
+				}
+			}
+			else
+			{
+				mbMoved = true;
+			}
+		}
+	}
+	void Zombie::OnLateBeat()
+	{
+		Monster::OnLateBeat();
+		mbBeat = !mbBeat;
+		if (!mbMoved) mbFlip = true;
+		if (mbFlip)
+		{
+			mMoveDir * -1;
+			mSprite->Turn(mMoveDir);
+		}
 	}
 	void Zombie::MoveFailed(Vector2 dir)
 	{
-		if (mbMoveFailed)
-		{
-			mMoveDir *= -1;
-			mSprite->Turn(mMoveDir);
-		}
 		GameCharacter::MoveFailed(dir);
 	}
 }

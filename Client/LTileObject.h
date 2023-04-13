@@ -3,7 +3,6 @@
 #include "LMath.h"
 namespace cl
 {
-	class WallTile;
 	class TileObject : public GameObject
 	{
 	public:
@@ -14,10 +13,10 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() = 0;
-
+		virtual bool IsMoveable() = 0;
 		virtual void OnAttacked(float attackPower) = 0;
-		virtual void OnDestroy() = 0;
 
+		virtual void OnDestroy() = 0;
 		void SetIndex(Vector2 index) { mIndex = index; }
 	protected:
 		Vector2 mIndex;

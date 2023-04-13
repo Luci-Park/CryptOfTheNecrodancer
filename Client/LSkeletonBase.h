@@ -15,6 +15,7 @@ namespace cl
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
+		virtual void OnLateBeat() override;
 	protected:
 		virtual int GetY() = 0;
 	private:

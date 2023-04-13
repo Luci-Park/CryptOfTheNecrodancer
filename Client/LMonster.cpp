@@ -12,6 +12,7 @@ namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
+		, mbMoved(false)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
@@ -44,6 +45,20 @@ namespace cl
 	{
 		GameCharacter::Sink(); 
 	}
+	bool Monster::WillMove()
+	{
+		if(mIndex == mNextPos)
+			return false;
+		else
+		{
+			TileObject* object = MapManager::GetMonster(mNextPos);
+			if (object != nullptr && !object->WillMove())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 	void Monster::OnAttacked(float attackPower)
 	{
 		GameCharacter::OnAttacked(attackPower);
@@ -61,14 +76,29 @@ namespace cl
 	{
 		mSprite->Reset();
 		mTransform->SetPos(mMoveTarget);
+		mNextPos = mIndex;
 		if (!UnSink())
 		{
 			Vector2 nextDir = GetNextDir();
 			mSprite->Turn(nextDir);
 			if (!TryAttack(nextDir) && !TryDig(nextDir))
 			{
-				TryMove(nextDir);
+				mNextPos += nextDir;
 			}
+		}
+	}
+	void Monster::OnMidBeat()
+	{
+		if (mNextPos != mIndex)
+		{
+			TileObject*
+		}
+	}
+	void Monster::OnLateBeat()
+	{
+		if (mNextPos != mIndex)
+		{
+			TryMove(mNextPos);
 		}
 	}
 	void Monster::OnBeatChanged()
@@ -90,12 +120,7 @@ namespace cl
 			MoveFailed(direction);
 			return true;
 		}
-		TileObject* monster = MapManager::GetMonster(mIndex + direction);
-		if (monster != nullptr && monster != this)
-		{
-			MoveFailed(direction);
-			return true;
-		}
+		
 		return false;
 	}
 	bool Monster::TryDig(Vector2 direction)
@@ -114,6 +139,12 @@ namespace cl
 	}
 	bool Monster::TryMove(Vector2 direction)
 	{
+		TileObject* object = MapManager::GetMonster(mIndex + direction);
+		if (object != nullptr && object != this)
+		{
+			MoveFailed(direction);
+			return false;
+		}
 		mMoveTarget += direction * UNITLENGTH;
 		MapManager::Move(this, mIndex, mIndex + direction);
 		mIndex += direction;

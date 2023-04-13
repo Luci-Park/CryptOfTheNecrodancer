@@ -42,6 +42,11 @@ namespace cl
 		mDeathSound->Play(false);
 		Monster::PlayOnDeathSound();
 	}
+	void Bat::OnLateBeat()
+	{
+		Monster::OnLateBeat();
+		mbMove = !mbMove;
+	}
 	void Bat::SetStats()
 	{
 		mMaxHealth = 1;
@@ -69,7 +74,6 @@ namespace cl
 	}
 	bool Bat::TryMove(Vector2 direction)
 	{
-		mbMove = !mbMove;
 		Monster::TryMove(direction);
 		return true;
 	}

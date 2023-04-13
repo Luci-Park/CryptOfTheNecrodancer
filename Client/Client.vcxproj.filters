@@ -379,6 +379,39 @@
     <ClInclude Include="LZombieSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
     </ClInclude>
+    <ClInclude Include="LBishop.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LBishopSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LKing.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LKingSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LKnight.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LKnightSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LPawn.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LPawnSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LQueenSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LRook.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LRookSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -609,6 +642,39 @@
     </ClCompile>
     <ClCompile Include="LZombieSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Zombies</Filter>
+    </ClCompile>
+    <ClCompile Include="LBishop.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LBishopSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LKing.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LKingSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LKnight.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LKnightSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LPawn.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LPawnSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LQueenSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LRook.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LRookSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -15,6 +15,9 @@ namespace cl
 		virtual void PlayOnDeathSound() override;
 
 		virtual void MoveFailed(Vector2 dir) override;
+
+		virtual void OnBeat() override;
+		virtual void OnLateBeat() override;
 	protected:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
@@ -24,6 +27,7 @@ namespace cl
 		AudioClip* mDeathSound;
 		Vector2 mMoveDir;
 		bool mbBeat;
+		bool mbFlip;
 	};
 }
 

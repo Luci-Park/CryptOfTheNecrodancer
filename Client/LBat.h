@@ -19,6 +19,8 @@ namespace cl
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
+
+		virtual void OnLateBeat() override;
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;

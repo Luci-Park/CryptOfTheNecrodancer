@@ -40,8 +40,15 @@ namespace cl
 	void BeatManager::OnPlayerMove()
 	{
 		for (int i = 0; i < mCharacters.size(); ++i)
-			if(mCharacters[i] != nullptr)
+		{
+			if (mCharacters[i] != nullptr)
 				mCharacters[i]->OnBeat();
+		}
+		for (int i = 0; i < mCharacters.size(); ++i)
+		{
+			if (mCharacters[i] != nullptr)
+				mCharacters[i]->OnLateBeat();
+		}
 	}
 
 

@@ -102,6 +102,9 @@ namespace cl
 	void Cadence::OnBeat()
 	{
 	}
+	void Cadence::OnLateBeat()
+	{
+	}
 	void Cadence::OnBeatChanged()
 	{
 		GameCharacter::OnBeatChanged();

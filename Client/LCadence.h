@@ -19,8 +19,9 @@ namespace cl
 		virtual void OnAttacked(float attackPower)	override;
 		virtual void OnDestroy() override;
 
-		virtual void OnBeat() override;
-		virtual void OnBeatChanged() override;
+		virtual void OnBeat()						override;
+		virtual void OnLateBeat()					override;
+		virtual void OnBeatChanged()				override;
 
 		void SwitchItem(Item* item, eItemTypes type);
 		Vector2 GetPos() { return mIndex; }

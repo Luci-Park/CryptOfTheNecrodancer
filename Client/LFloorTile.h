@@ -64,6 +64,7 @@ namespace cl
 		Vector2 GetIndex() { return mIndex; }
 		virtual void OnBeat() = 0;
 		virtual void OnBeatChanged(){}
+		virtual void OnLateBeat(){}
 		virtual void OnInteract(TileObject* object);
 
 		virtual void SetFloorType(eFloorTypes type) { mType = type; }

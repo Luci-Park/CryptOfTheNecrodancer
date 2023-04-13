@@ -67,6 +67,11 @@ namespace cl
 		mDeathSound->Play(false);
 		Monster::PlayOnDeathSound();
 	}
+	void SkeletonBase::OnLateBeat()
+	{
+		Monster::OnLateBeat();
+		mbPause = !mbPause;
+	}
 	void SkeletonBase::PlayOnHeadLossSound()
 	{
 		int idx = GetRandomInt(0, 2);
@@ -92,18 +97,16 @@ namespace cl
 			return MoveAwayFromPlayer();
 		}
 		else {
-			Vector2 targ = MoveTowardsPlayer();
 			if (mbPause)
 			{
 				mSkelSprite->RaiseHand();
-				targ = Vector2::Zero;
+				return Vector2::Zero;
 			}
 			else
 			{
 				mSkelSprite->Idle();
+				return MoveTowardsPlayer();
 			}
-			mbPause = !mbPause;
-			return targ;
 		}
 	}
 	Vector2 SkeletonBase::MoveTowardsPlayer()

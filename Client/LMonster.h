@@ -16,17 +16,21 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() override;
-
+		virtual bool WillMove();
 		virtual void OnAttacked(float attackPower) override;
 		virtual void OnDestroy();
 
 		virtual void OnBeat() override;
+		virtual void OnMidBeat() override;
+		virtual void OnLateBeat() override;
 		virtual void OnBeatChanged();
 
+		Vector2 GetNextPos() { return mNextPos; }
 	protected:
+		//Do not advance next level at GetNextDir
+		virtual Vector2 GetNextDir() = 0;
 		virtual void SetStats() = 0;
 		virtual void SetWeapon();
-		virtual Vector2 GetNextDir() = 0;
 		virtual bool TryAttack(Vector2 Direction);
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction);
@@ -43,6 +47,9 @@ namespace cl
 		int mDrop;
 		MonsterWeapon* mWeapon;
 		MonsterHeart* mHeart;
+
+		Vector2 mNextPos;
+		bool mbMoved;
 	};
 }
 
