@@ -12,7 +12,6 @@ namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
-		, mbMoved(false)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
@@ -47,11 +46,11 @@ namespace cl
 	}
 	bool Monster::WillMove()
 	{
-		if(mIndex == mNextPos)
+		if(mNextDir == Vector2::Zero)
 			return false;
 		else
 		{
-			TileObject* object = MapManager::GetMonster(mNextPos);
+			TileObject* object = MapManager::GetMonster(mNextDir + mIndex);
 			if (object != nullptr && !object->WillMove())
 			{
 				return false;
@@ -76,30 +75,20 @@ namespace cl
 	{
 		mSprite->Reset();
 		mTransform->SetPos(mMoveTarget);
-		mNextPos = mIndex;
+		mNextDir = Vector2::Zero;
 		if (!UnSink())
 		{
 			Vector2 nextDir = GetNextDir();
 			mSprite->Turn(nextDir);
 			if (!TryAttack(nextDir) && !TryDig(nextDir))
 			{
-				mNextPos += nextDir;
+				mNextDir = nextDir;
 			}
-		}
-	}
-	void Monster::OnMidBeat()
-	{
-		if (mNextPos != mIndex)
-		{
-			TileObject*
 		}
 	}
 	void Monster::OnLateBeat()
 	{
-		if (mNextPos != mIndex)
-		{
-			TryMove(mNextPos);
-		}
+		TryMove(mNextDir);
 	}
 	void Monster::OnBeatChanged()
 	{
@@ -117,7 +106,6 @@ namespace cl
 		{
 			mWeapon->Attack(mIndex, direction);
 			PlayOnAttackSound();
-			MoveFailed(direction);
 			return true;
 		}
 		
@@ -129,28 +117,24 @@ namespace cl
 		if (wall)
 		{
 			bool success = wall->OnDig(mDigPower);
-			if (!success)
-			{
-				MoveFailed(direction);
-			}
 			return true;
 		}
 		return false;
 	}
 	bool Monster::TryMove(Vector2 direction)
 	{
-		TileObject* object = MapManager::GetMonster(mIndex + direction);
-		if (object != nullptr && object != this)
-		{
+		if (!WillMove()) {
 			MoveFailed(direction);
 			return false;
 		}
-		mMoveTarget += direction * UNITLENGTH;
-		MapManager::Move(this, mIndex, mIndex + direction);
-		mIndex += direction;
-		if(direction != Vector2::Zero)
-			mSprite->Jump();
-		return true;
+		else {
+			mMoveTarget += direction * UNITLENGTH;
+			MapManager::Move(this, mIndex, mIndex + direction);
+			mIndex += direction;
+			if (direction != Vector2::Zero)
+				mSprite->Jump();
+			return true;
+		}
 	}
 	void Monster::PlayOnHitSound()
 	{

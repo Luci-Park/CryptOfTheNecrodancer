@@ -10,7 +10,6 @@ namespace cl
 			BeatManager::RemoveCharacters(this);
 		}
 		virtual void OnBeat() = 0;
-		virtual void OnMidBeat() = 0;
 		virtual void OnLateBeat() = 0;
 		virtual void OnBeatChanged() = 0;
 	};

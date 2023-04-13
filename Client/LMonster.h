@@ -21,11 +21,9 @@ namespace cl
 		virtual void OnDestroy();
 
 		virtual void OnBeat() override;
-		virtual void OnMidBeat() override;
 		virtual void OnLateBeat() override;
 		virtual void OnBeatChanged();
 
-		Vector2 GetNextPos() { return mNextPos; }
 	protected:
 		//Do not advance next level at GetNextDir
 		virtual Vector2 GetNextDir() = 0;
@@ -48,8 +46,7 @@ namespace cl
 		MonsterWeapon* mWeapon;
 		MonsterHeart* mHeart;
 
-		Vector2 mNextPos;
-		bool mbMoved;
+		Vector2 mNextDir;
 	};
 }
 

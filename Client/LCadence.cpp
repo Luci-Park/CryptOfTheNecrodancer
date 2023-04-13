@@ -80,6 +80,11 @@ namespace cl
 		GameCharacter::Render(hdc);
 	}
 
+	bool Cadence::WillMove()
+	{
+		return false;
+	}
+
 	void Cadence::OnAttacked(float attackPower)
 	{
 		mHealth -= attackPower;

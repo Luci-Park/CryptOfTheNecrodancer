@@ -16,6 +16,7 @@ namespace cl
 		virtual void Update()						override;
 		virtual void Render(HDC hdc)				override;
 
+		virtual bool WillMove()					 	override;
 		virtual void OnAttacked(float attackPower)	override;
 		virtual void OnDestroy() override;
 

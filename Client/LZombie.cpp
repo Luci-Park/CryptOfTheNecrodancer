@@ -28,22 +28,18 @@ namespace cl
 		mSprite->Turn(mMoveDir);
 		mZombieSprite->OnBeat();
 	}
-	void Zombie::PlayOnAttackSound()
+	bool Zombie::TryAttack(Vector2 Direction)
 	{
-		mAttackSound->Play(false);
+		bool success = Monster::TryAttack(Direction);
+		if (success)
+			mbFlip = false;
+		return success;
 	}
-	void Zombie::PlayOnHitSound()
+	bool Zombie::TryMove(Vector2 direction)
 	{
-	}
-	void Zombie::PlayOnDeathSound()
-	{
-		mDeathSound->Play(false);
-	}
-	void Zombie::SetStats()
-	{
-		mMaxHealth = 1;
-		mAttackPower = 1;
-		mDrop = 1;
+		bool success = Monster::TryMove(direction);
+		if (success) mbFlip = false;
+		return success;
 	}
 	Vector2 Zombie::GetNextDir()
 	{
@@ -61,41 +57,34 @@ namespace cl
 	}
 	void Zombie::OnBeat()
 	{
-		mbFlip = false;
-		mbMoved = false;
-		mSprite->Reset();
-		mTransform->SetPos(mMoveTarget);
-		if (!UnSink())
-		{
-			Vector2 nextDir = GetNextDir();
-			mSprite->Turn(nextDir);
-			if (!TryAttack(nextDir))
-			{
-				if (TryDig(nextDir)) mbFlip = true;
-				else
-				{
-					mbMoved = TryMove(nextDir);
-				}
-			}
-			else
-			{
-				mbMoved = true;
-			}
-		}
+		mbFlip = true;
+		Monster::OnBeat();
 	}
 	void Zombie::OnLateBeat()
 	{
 		Monster::OnLateBeat();
 		mbBeat = !mbBeat;
-		if (!mbMoved) mbFlip = true;
 		if (mbFlip)
 		{
 			mMoveDir * -1;
 			mSprite->Turn(mMoveDir);
 		}
 	}
-	void Zombie::MoveFailed(Vector2 dir)
+	void Zombie::PlayOnAttackSound()
 	{
-		GameCharacter::MoveFailed(dir);
+		mAttackSound->Play(false);
+	}
+	void Zombie::PlayOnHitSound()
+	{
+	}
+	void Zombie::PlayOnDeathSound()
+	{
+		mDeathSound->Play(false);
+	}
+	void Zombie::SetStats()
+	{
+		mMaxHealth = 1;
+		mAttackPower = 1;
+		mDrop = 1;
 	}
 }
