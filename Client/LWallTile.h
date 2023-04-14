@@ -51,8 +51,8 @@ namespace cl
 				Border6,
 				Border7,
 				Border8,
-				DoorHorizontal,
-				DoorVertical,
+				HorizontalDoor,
+				VerticalDoor,
 				Size
 			};
 
@@ -126,14 +126,6 @@ namespace cl
 		~GoldWall() {}
 		virtual void OnDestroy() override;
 	};
-
-	//class Door : public WallTile
-	//{
-	//public:
-	//	Door(Scene* sc);
-	//	~Door() {}
-	//	virtual void OnDestroy() override;
-	//};
 
 	class Border : public WallTile
 	{

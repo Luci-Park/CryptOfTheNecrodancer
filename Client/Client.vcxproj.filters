@@ -412,6 +412,9 @@
     <ClInclude Include="LRookSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
+    <ClInclude Include="LDoor.h">
+      <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -675,6 +678,9 @@
     </ClCompile>
     <ClCompile Include="LRookSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LDoor.cpp">
+      <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

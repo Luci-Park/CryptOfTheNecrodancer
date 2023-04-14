@@ -16,7 +16,7 @@ namespace cl
 	{
 	}
 
-
+#pragma region MapInteraction
 	void Map::DestroyTileObject(Vector2 index)
 	{
 		if (mTileObjects[index.y][index.x] != nullptr)
@@ -91,6 +91,9 @@ namespace cl
 		mTileObjects[dest.y][dest.x] = object;
 		if (mTileObjects[src.y][src.x] == object) mTileObjects[src.y][src.x] = nullptr;
 	}
+#pragma endregion
+#pragma region Map Creation
+
 
 	void Map::CreateMap(Scene* sc)
 	{
@@ -190,6 +193,7 @@ namespace cl
 		}
 	}
 #pragma endregion
+#pragma endregion
 
 #pragma region Lobby Map Class
 	LobbyMap::LobbyMap()
@@ -254,9 +258,10 @@ namespace cl
 		mWallBluePrint[2][2] = eWallTypes::DirtWall;
 		mWallBluePrint[3][2] = eWallTypes::StoneWall;
 		mWallBluePrint[4][2] = eWallTypes::CatacombWall;
-		mWallBluePrint[5][2] = eWallTypes::BossWall;/*
-		mWallBluePrint[6][2] = eWallTypes::HorizontalDoor;
-		mWallBluePrint[7][2] = eWallTypes::VerticalDoor;*/
+		mWallBluePrint[5][2] = eWallTypes::BossWall;
+		mWallBluePrint[6][2] = eWallTypes::VerticalDoor;
+		mWallBluePrint[7][2] = eWallTypes::HorizontalDoor;
+
 
 	}
 #pragma endregion

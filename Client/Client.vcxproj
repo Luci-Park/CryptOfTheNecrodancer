@@ -155,6 +155,7 @@
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LDagger.h" />
+    <ClInclude Include="LDoor.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
     <ClInclude Include="LFloorStrategy.h" />
@@ -246,6 +247,7 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LDagger.cpp" />
+    <ClCompile Include="LDoor.cpp" />
     <ClCompile Include="LEntity.cpp" />
     <ClCompile Include="LFloorStrategy.cpp" />
     <ClCompile Include="LFloorTile.cpp" />

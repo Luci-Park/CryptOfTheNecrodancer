@@ -4,6 +4,7 @@
 #include "LObject.h"
 #include "LMapManager.h"
 #include "LAudioClip.h"
+#include "LDoor.h"
 namespace cl
 {
 #pragma region Static Info
@@ -72,13 +73,15 @@ namespace cl
 			break;
 		case eWallTypes::GoldWall:
 			reslt = object::Instantiate<GoldWall>(sc, pos, eLayerType::Wall);
-			break;/*
+			break;
 		case eWallTypes::HorizontalDoor:
 			reslt = object::Instantiate<Door>(sc, pos, eLayerType::Wall);
+			((Door*)reslt)->SetHorizontal(true);
 			break;
 		case eWallTypes::VerticalDoor:
 			reslt = object::Instantiate<Door>(sc, pos, eLayerType::Wall);
-			break;*/
+			((Door*)reslt)->SetHorizontal(false);
+			break;
 		case eWallTypes::Border:
 			reslt = object::Instantiate<Border>(sc, pos, eLayerType::Wall);
 			break;
@@ -120,9 +123,9 @@ namespace cl
 			max = (UINT)eWallSpriteTypes::Border8;
 			break;
 		case eWallTypes::HorizontalDoor:
-			return GetWallSprite(eWallTypes::HorizontalDoor);
+			return GetWallSprite(eWallSpriteTypes::HorizontalDoor);
 		case eWallTypes::VerticalDoor:
-			return GetWallSprite(eWallTypes::VerticalDoor);
+			return GetWallSprite(eWallSpriteTypes::VerticalDoor);
 		}
 		int randomNumber = GetRandomInt(min, max);
 		return GetWallSprite((eWallSpriteTypes)randomNumber);
@@ -260,10 +263,6 @@ namespace cl
 	{
 		WallTile::OnDestroy();
 	}
-#pragma endregion
-
-#pragma region Door
-
 #pragma endregion
 
 #pragma region Border
