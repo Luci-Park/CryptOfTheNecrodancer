@@ -21,8 +21,8 @@ namespace cl
 
 		std::wstring leftPath = L"..\\Assets\\Arts\\Player\\Cadence_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Player\\Cadence_Right.bmp";
-		mAnimator->CreateAnimation(mLeftAnimation, L"CadenceLeft", leftPath, 16, 16, 12, 2, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, Vector2::Zero, 0.36f);
+		mAnimator->CreateAnimation(mLeftAnimation, L"CadenceLeft", leftPath, 16, 16, 12, 2, 4, -Vector2(12, 24), 0.36f);
+		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, -Vector2(12, 24), 0.36f);
 	
 		PlayRight();
 	}

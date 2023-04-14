@@ -124,6 +124,7 @@ namespace cl
 	public:
 		GoldWall(Scene* sc);
 		~GoldWall() {}
+		virtual bool OnCrumble() override;
 		virtual void OnDestroy() override;
 	};
 

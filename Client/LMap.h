@@ -35,6 +35,8 @@ namespace cl
 		void Move(TileObject* object, Vector2 src, Vector2 dest);
 		void CreateMap(Scene* sc);
 		Vector2 GetPlayerPos() { return mPlayerIndex; }
+
+		static Vector2 GetTilePosOfIndex(Vector2 pos) { return pos * UNITLENGTH; }
 	protected:
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;

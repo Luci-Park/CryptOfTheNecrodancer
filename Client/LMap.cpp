@@ -5,6 +5,7 @@
 #include "LShovel.h"
 #include "LZombie.h"
 #include "LSkeleton.h"
+#include "LBat.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -160,10 +161,7 @@ namespace cl
 
 	void Map::CreatePlayer(Scene* sc)
 	{
-		Vector2 pos;
-		pos.x = (mPlayerIndex.x ) * UNITLENGTH;
-		pos.y = (mPlayerIndex.y - 0.25) * UNITLENGTH;
-		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
+		Cadence* cadence = object::Instantiate<Cadence>(sc, mPlayerIndex*UNITLENGTH, eLayerType::Player);
 		mTileObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
@@ -184,8 +182,8 @@ namespace cl
 					{
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
-						pos.y = (i - 0.25) * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<Zombie>(sc, pos, eLayerType::Monster);
+						pos.y = i * UNITLENGTH;
+						mTileObjects[i][j] = object::Instantiate<Bat>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

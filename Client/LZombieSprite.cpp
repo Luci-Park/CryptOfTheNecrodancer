@@ -25,14 +25,14 @@ namespace cl
 		mAnimator = AddComponent<Animator>();
 		CharacterSprite::Initialize();
 		std::wstring path = L"..\\Assets\\Arts\\Monsters\\Zombie\\zombie.bmp";
-		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 0, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 4, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 8, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 12, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 16, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 20, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 24, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 28, 0, 4, Vector2::Zero, 0.36f);
+		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 0, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 4, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 8, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 12, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 16, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 20, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 24, 0, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 28, 0, 4, -Vector2(12, 25), 0.36f);
 	}
 	void ZombieSprite::Turn(Vector2 dir)
 	{

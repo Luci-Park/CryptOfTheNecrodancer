@@ -16,8 +16,8 @@ namespace cl
 		leftAnimation = L"Bat_Left";
 		rightAnimation = L"Bat_Right";
 
-		mAnimator->CreateAnimation(leftAnimation, leftAnimation, leftPath, 4, 8, 0, 0, 4, Vector2::Zero, 0.36f);
-		mAnimator->CreateAnimation(rightAnimation, rightAnimation, rightPath, 4, 8, 0, 0, 4, Vector2::Zero, 0.36f);
+		mAnimator->CreateAnimation(leftAnimation, leftAnimation, leftPath, 4, 8, 0, 0, 4, -Vector2(12, 24), 0.36f);
+		mAnimator->CreateAnimation(rightAnimation, rightAnimation, rightPath, 4, 8, 0, 0, 4, -Vector2(12, 24), 0.36f);
 		Turn(Vector2::Right);
 	}
 	void BatSprite::Turn(Vector2 dir)

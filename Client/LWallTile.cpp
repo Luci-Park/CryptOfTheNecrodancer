@@ -259,6 +259,10 @@ namespace cl
 		mWallType = eWallTypes::GoldWall;
 		mDigClip = Resources::Load<AudioClip>(L"BrickDig", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_brick.wav");
 	}
+	bool GoldWall::OnCrumble()
+	{
+		return false;
+	}
 	void GoldWall::OnDestroy()
 	{
 		WallTile::OnDestroy();
