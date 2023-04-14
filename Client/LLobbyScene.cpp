@@ -15,6 +15,7 @@ namespace cl
 	}
 	LobbyScene::~LobbyScene()
 	{
+		MapManager::DestroyMap();
 	}
 	void LobbyScene::Initialize()
 	{
@@ -51,7 +52,7 @@ namespace cl
 	}
 	void LobbyScene::OnExit()
 	{
-		//MapManager::DestroyMap();
+		MapManager::DestroyMap();
 		mBGM->Stop(true);
 		Scene::OnExit();
 	}
