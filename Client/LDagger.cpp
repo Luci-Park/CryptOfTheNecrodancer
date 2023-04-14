@@ -35,7 +35,7 @@ namespace cl
 	bool Dagger::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
 		Vector2 dest = srcIdx + input;
-		TileObject* enemy = MapManager::GetObject(dest);
+		TileObject* enemy = MapManager::GetTileObject(dest);
 		if (enemy != nullptr)
 		{
 			enemy->OnAttacked(mPower);

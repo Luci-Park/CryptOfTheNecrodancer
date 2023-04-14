@@ -53,3 +53,4 @@ WindowAPI Project (2/14 ~ )
     * `GreenSkeleton`
     * `BlackSkeleton`
     * `Zombie`
+* Monsters Now Move in Sync

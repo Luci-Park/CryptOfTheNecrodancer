@@ -3,109 +3,77 @@
 namespace cl
 {
 #pragma region MapManager
-	std::vector<std::vector<FloorTile*>> MapManager::_Floor = std::vector<std::vector<FloorTile*>>();
-	std::vector<std::vector<WallTile*>> MapManager::_Wall = std::vector<std::vector<WallTile*>>();
-	std::vector<std::vector<TileObject*>> MapManager::_ForeObjects = std::vector<std::vector<TileObject*>>();
-	std::vector<std::vector<Item*>> MapManager::_Items = std::vector<std::vector<Item*>>();
-	Vector2 MapManager::_size = Vector2::Zero;
-	Vector2 MapManager::_playerIndex = Vector2::Zero;
-
+	Map* MapManager::_Map = nullptr;
 	void MapManager::CreateMap(MapType type, Scene* sc)
 	{
 		DestroyMap();
-		Map* mMap;
 		switch (type)
 		{
 		default:
 		case Lobby:
-			mMap = new LobbyMap();
+			_Map = new LobbyMap();
 		}
-		mMap->CreateFloor(sc, _Floor);
-		mMap->CreateWall(sc, _Wall);
-		mMap->CreateForeGround(sc, _ForeObjects);
-		mMap->CreateItems(sc, _Items);
-		
-		_playerIndex = mMap->GetPlayerPos();
-		_size.y = _Floor.size();
-		_size.x = _Floor[0].size();
-		delete mMap;
+		_Map->CreateMap(sc);
 	}
 	void MapManager::DestroyMap()
 	{
-		std::vector<std::vector<FloorTile*>> mFloor = std::vector<std::vector<FloorTile*>>();
-		std::vector<std::vector<TileObject*>> mForeObjects = std::vector<std::vector<TileObject*>>();
-		_size = Vector2::Zero;
+		if (_Map != nullptr)
+		{
+			delete _Map;
+			_Map = nullptr;
+		}
 	}
 	void MapManager::DestroyTileObject(Vector2 index)
 	{
-		if (_ForeObjects[index.y][index.x] != nullptr)
-		{
-			_ForeObjects[index.y][index.x]->Destroy();
-			_ForeObjects[index.y][index.x] = nullptr;
-		}
+		_Map->DestroyTileObject(index);
 	}
 	void MapManager::DestroyWallObject(Vector2 index)
 	{
-		if (_Wall[index.y][index.x] != nullptr)
-		{
-			_Wall[index.y][index.x]->Destroy();
-			_Wall[index.y][index.x] = nullptr;
-		}
+		_Map->DestroyWallObject(index);
+	}
+	void MapManager::Update()
+	{
+		_Map->Update();
 	}
 	void MapManager::Render(HDC hdc)
 	{
-		for (int i = 0; i < _size.y; ++i)
-		{
-			for (int j = 0; j < _size.x; ++j)
-			{
-				if (_Wall[i][j] != nullptr)
-					_Wall[i][j]->Render(hdc);
-				if(_ForeObjects[i][j] != nullptr)
-					_ForeObjects[i][j]->Render(hdc);
-			}
-		}
+		_Map->Render(hdc);
 	}
 	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
 	{
-		if (_Floor[pos.y][pos.x] != nullptr)
-		{
-			_Floor[pos.y][pos.x]->OnInteract(object);
-		}
+		_Map->OnTileStep(object, pos);
 	}
 	WallTile* MapManager::GetWall(Vector2 index)
 	{
-		return _Wall[index.y][index.x];
+		return _Map->GetWall(index);
 	}
-	TileObject* MapManager::GetObject(Vector2 index)
+	TileObject* MapManager::GetTileObject(Vector2 index)
 	{
-		if (index == _playerIndex) return nullptr;
-		return _ForeObjects[index.y][index.x];
+		return _Map->GetTileObject(index);
 	}
 	Cadence* MapManager::GetPlayer(Vector2 index)
 	{
-		if (index == _playerIndex)
-			return (Cadence*)_ForeObjects[index.y][index.x];
-		return nullptr;
+		return _Map->GetPlayer(index);
+	}
+	Vector2 MapManager::GetPlayerIndex()
+	{
+		return _Map->GetPlayerIndex();
 	}
 	Item* MapManager::GetItem(Vector2 index)
 	{
-		return _Items[index.y][index.x];
+		return _Map->GetItem(index);
 	}
 	Vector2 MapManager::SetItem(Item* item, Vector2 pos)
 	{
-		_Items[pos.y][pos.x] = item;
-		return pos * UNITLENGTH;
+		return _Map->SetItem(item, pos);
 	}
 	void MapManager::PlayerMove(TileObject* object, Vector2 src, Vector2 dest)
 	{
-		Move(object, src, dest);
-		_playerIndex = dest;
+		_Map->PlayerMove(object, src, dest);
 	}
 	void MapManager::Move(TileObject* object, Vector2 src, Vector2 dest)
 	{
-		if (src == dest) return;
-		_ForeObjects[dest.y][dest.x] = object;
-		if (_ForeObjects[src.y][src.x] == object) _ForeObjects[src.y][src.x] = nullptr;
+		_Map->Move(object, src, dest);
 	}
 #pragma endregion
 	

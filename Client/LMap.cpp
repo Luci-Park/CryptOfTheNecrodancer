@@ -16,81 +16,165 @@ namespace cl
 	{
 	}
 
-	void Map::CreateFloor(Scene* sc, std::vector<std::vector<FloorTile*>>& _Floor)
+
+	void Map::DestroyTileObject(Vector2 index)
 	{
-		_Floor.resize(mMapSize.y);
+		if (mTileObjects[index.y][index.x] != nullptr)
+		{
+			mTileObjects[index.y][index.x]->Destroy();
+			mTileObjects[index.y][index.x] = nullptr;
+		}
+	}
+	void Map::DestroyWallObject(Vector2 index)
+	{
+		if (mWall[index.y][index.x] != nullptr)
+		{
+			mWall[index.y][index.x]->Destroy();
+			mWall[index.y][index.x] = nullptr;
+		}
+	}
+	void Map::Update()
+	{
+	}
+	void Map::Render(HDC hdc)
+	{
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			_Floor[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				_Floor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
-				if (_Floor[i][j] != nullptr)
-					BeatManager::AddCharacters(_Floor[i][j]);
+				if (mWall[i][j] != nullptr)
+					mWall[i][j]->Render(hdc);
+				if (mTileObjects[i][j] != nullptr)
+					mTileObjects[i][j]->Render(hdc);
+			}
+		}
+	}
+	void Map::OnTileStep(TileObject* object, Vector2 pos)
+	{
+		if (mFloor[pos.y][pos.x] != nullptr)
+		{
+			mFloor[pos.y][pos.x]->OnInteract(object);
+		}
+	}
+	WallTile* Map::GetWall(Vector2 index)
+	{
+		return mWall[index.y][index.x];
+	}
+	TileObject* Map::GetTileObject(Vector2 index)
+	{
+		if (index == mPlayerIndex) return nullptr;
+		return mTileObjects[index.y][index.x];
+	}
+	Cadence* Map::GetPlayer(Vector2 index)
+	{
+		if (index == mPlayerIndex)
+			return (Cadence*)mTileObjects[index.y][index.x];
+		return nullptr;
+	}
+	Item* Map::GetItem(Vector2 index)
+	{
+		return mItems[index.y][index.x];
+	}
+	Vector2 Map::SetItem(Item* item, Vector2 pos)
+	{
+		mItems[pos.y][pos.x] = item;
+		return pos * UNITLENGTH;
+	}
+	void Map::PlayerMove(TileObject* object, Vector2 src, Vector2 dest)
+	{
+		Move(object, src, dest);
+		mPlayerIndex = dest;
+	}
+	void Map::Move(TileObject* object, Vector2 src, Vector2 dest)
+	{
+		if (src == dest) return;
+		mTileObjects[dest.y][dest.x] = object;
+		if (mTileObjects[src.y][src.x] == object) mTileObjects[src.y][src.x] = nullptr;
+	}
+
+	void Map::CreateMap(Scene* sc)
+	{
+		CreateFloor(sc);
+		CreateWall(sc);
+		CreateForeGround(sc);
+		CreateItems(sc);
+	}
+
+	void Map::CreateFloor(Scene* sc)
+	{
+		mFloor.resize(mMapSize.y);
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			mFloor[i].resize(mMapSize.x);
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				mFloor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
+				if (mFloor[i][j] != nullptr)
+					BeatManager::AddCharacters(mFloor[i][j]);
 			}
 		}
 		for (int i = 0; i < mStairPos.size(); ++i)
 		{
 			Vector2 pos = mStairPos[i].first;
-			StairTile* tile = dynamic_cast<StairTile*>(_Floor[pos.y][pos.x]);
+			StairTile* tile = dynamic_cast<StairTile*>(mFloor[pos.y][pos.x]);
 			tile->SetDestination(mStairPos[i].second);
 		}
 	}
 
-	void Map::CreateWall(Scene* sc, std::vector<std::vector<WallTile*>>& _Wall)
+	void Map::CreateWall(Scene* sc)
 	{
-		_Wall.resize(mMapSize.y);
+		mWall.resize(mMapSize.y);
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			_Wall[i].resize(mMapSize.x);
+			mWall[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				_Wall[i][j] = WallTile::CreateWall(mWallBluePrint[i][j], Vector2(j, i), sc);
+				mWall[i][j] = WallTile::CreateWall(mWallBluePrint[i][j], Vector2(j, i), sc);
 			}
 		}
 	}
 
-	void Map::CreateForeGround(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
+	void Map::CreateForeGround(Scene* sc)
 	{
-		CreateMonsters(sc, _TileObjects);
-		CreatePlayer(sc, _TileObjects);
+		CreateMonsters(sc);
+		CreatePlayer(sc);
 	}
 
-	void Map::CreateItems(Scene* sc, std::vector<std::vector<Item*>>& _Items)
+	void Map::CreateItems(Scene* sc)
 	{
-		_Items.resize(mMapSize.y);
+		mItems.resize(mMapSize.y);
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			_Items[i].resize(mMapSize.x);
+			mItems[i].resize(mMapSize.x);
 			if (i == 3)
 			{
 				PickAxe* object = object::Instantiate<PickAxe>(sc, eLayerType::Items);
-				_Items[i][10] = object;
+				mItems[i][10] = object;
 				object->SetItem(Vector2(10, 3) * UNITLENGTH);
 			}
 		}
 	}
 
-	void Map::CreatePlayer(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
+	void Map::CreatePlayer(Scene* sc)
 	{
 		Vector2 pos;
 		pos.x = (mPlayerIndex.x ) * UNITLENGTH;
 		pos.y = (mPlayerIndex.y - 0.25) * UNITLENGTH;
 		Cadence* cadence = object::Instantiate<Cadence>(sc, pos, eLayerType::Player);
-		_TileObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
+		mTileObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
 	}
 
-	void Map::CreateMonsters(Scene* sc, std::vector<std::vector<TileObject*>>& _TileObjects)
+	void Map::CreateMonsters(Scene* sc)
 	{
-		_TileObjects.resize(mMapSize.y);
+		mTileObjects.resize(mMapSize.y);
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			_TileObjects[i].resize(mMapSize.x);
+			mTileObjects[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				_TileObjects[i][j] = nullptr;
+				mTileObjects[i][j] = nullptr;
 				if (i == 4)
 				{
 					if(j > 3 && j< 7)
@@ -98,8 +182,8 @@ namespace cl
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = (i - 0.25) * UNITLENGTH;
-						_TileObjects[i][j] = object::Instantiate<Zombie>(sc, pos, eLayerType::Monster);
-						_TileObjects[i][j]->SetIndex(Vector2(j, i));
+						mTileObjects[i][j] = object::Instantiate<Zombie>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}
 			}

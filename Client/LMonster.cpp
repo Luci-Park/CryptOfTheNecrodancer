@@ -118,7 +118,7 @@ namespace cl
 	bool Monster::TryMove()
 	{
 		if (mMoveStatus != MoveStatus::NotMoved) return false;
-		TileObject* object = MapManager::GetObject(mIndex + mNextDir);
+		TileObject* object = MapManager::GetTileObject(mIndex + mNextDir);
 		if (object != nullptr && object != this)
 		{
 			mMoveStatus = MoveStatus::IsAsking;
