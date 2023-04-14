@@ -13,9 +13,8 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() = 0;
-		virtual bool WillMove() = 0;
 		virtual void OnAttacked(float attackPower) = 0;
-
+		virtual bool TryMove() = 0;
 		virtual void OnDestroy() = 0;
 		void SetIndex(Vector2 index) { mIndex = index; }
 	protected:

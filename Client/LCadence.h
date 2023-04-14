@@ -16,9 +16,9 @@ namespace cl
 		virtual void Update()						override;
 		virtual void Render(HDC hdc)				override;
 
-		virtual bool WillMove()					 	override;
 		virtual void OnAttacked(float attackPower)	override;
-		virtual void OnDestroy() override;
+		virtual bool TryMove()						override;
+		virtual void OnDestroy()					override;
 
 		virtual void OnBeat()						override;
 		virtual void OnLateBeat()					override;
@@ -31,7 +31,6 @@ namespace cl
 		virtual bool TryAttack(Vector2 direction)	override;
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction)		override;
-		virtual bool TryMove(Vector2 direction)		override;
 
 	private:
 		void OnMove(Vector2 direction);
@@ -51,6 +50,7 @@ namespace cl
 		CadenceSound* mSound;
 		Vector2 mInput;
 		int consecutiveHits;
+		bool mMoved;
 
 	};
 

@@ -4,6 +4,7 @@
 #include "LCadence.h"
 #include "LShovel.h"
 #include "LZombie.h"
+#include "LSkeleton.h"
 namespace cl
 {
 #pragma region Parent - Map Class

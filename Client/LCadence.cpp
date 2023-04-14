@@ -18,8 +18,9 @@ namespace cl
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene, true)
 		, consecutiveHits(0)
+		, mMoved(false)
 	{
-		Camera::SetTarget(this);
+		//Camera::SetTarget(this);
 		mMaxHealth = 3;
 		mHealth = 3;
 	}
@@ -80,11 +81,6 @@ namespace cl
 		GameCharacter::Render(hdc);
 	}
 
-	bool Cadence::WillMove()
-	{
-		return false;
-	}
-
 	void Cadence::OnAttacked(float attackPower)
 	{
 		mHealth -= attackPower;
@@ -99,6 +95,18 @@ namespace cl
 			PlayOnDeathSound();
 			OnDestroy();
 		}
+	}
+	bool Cadence::TryMove()
+	{
+		if (mMoved)
+			return false;
+		Vector2 dest = mIndex + mInput;
+		MapManager::PlayerMove(this, mIndex, dest);
+		mSprite->Jump();
+		mIndex = dest;
+		mMoveTarget += mInput * UNITLENGTH;
+		mMoved = true;
+		return true;
 	}
 	void Cadence::OnDestroy()
 	{
@@ -135,8 +143,9 @@ namespace cl
 		else {
 			consecutiveHits = 0;
 			if (!TryDig(direction))
-				TryMove(direction);
+				TryMove();
 		}
+		mMoved = true;
 	}
 
 	bool Cadence::TryAttack(Vector2 direction)
@@ -167,18 +176,10 @@ namespace cl
 		}
 		return false;
 	}
-	bool Cadence::TryMove(Vector2 direction)
-	{
-		Vector2 dest = mIndex + direction;
-		MapManager::PlayerMove(this, mIndex, dest);
-		mSprite->Jump();
-		mIndex = dest;
-		mMoveTarget += direction * UNITLENGTH;
-		return true;
-	}
 
 	void Cadence::SetInput()
 	{
+		mMoved = false;
 		mInput = Vector2::One;
 		if (Input::GetKeyDown(eKeyCode::A))
 		{

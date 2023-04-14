@@ -10,10 +10,7 @@ namespace cl
 		virtual ~Zombie();
 
 		virtual void Initialize() override;
-		virtual bool TryAttack(Vector2 direction) override;
-		virtual bool TryMove(Vector2 direction) override;
 
-		virtual void OnBeat() override;
 		virtual void OnLateBeat() override;
 
 		virtual void PlayOnAttackSound() override;
@@ -28,7 +25,6 @@ namespace cl
 		AudioClip* mDeathSound;
 		Vector2 mMoveDir;
 		bool mbBeat;
-		bool mbFlip;
 	};
 }
 

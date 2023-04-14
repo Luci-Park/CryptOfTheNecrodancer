@@ -45,7 +45,8 @@ namespace cl
 	void Bat::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mbMove = !mbMove;
+		if(mMoveStatus == MoveStatus::Moved)
+			mbMove = !mbMove;
 	}
 	void Bat::SetStats()
 	{
@@ -63,7 +64,7 @@ namespace cl
 		std::vector<int>possible;
 		for (int i = 0; i < 4; i++)
 		{
-			if (MapManager::GetMonster(mIndex + Vector2(dx[i], dy[i])) == nullptr
+			if (MapManager::GetObject(mIndex + Vector2(dx[i], dy[i])) == nullptr
 				&& MapManager::GetWall(mIndex + Vector2(dx[i], dy[i])) == nullptr)
 				possible.push_back(i);
 		}
@@ -71,10 +72,5 @@ namespace cl
 		Vector2 dir;
 		int idx = GetRandomInt(0, possible.size() - 1);
 		return Vector2(dx[possible[idx]], dy[possible[idx]]);
-	}
-	bool Bat::TryMove(Vector2 direction)
-	{
-		Monster::TryMove(direction);
-		return true;
 	}
 }

@@ -14,7 +14,7 @@ namespace cl
 
 		virtual void Sink() override{}
 		virtual bool UnSink() override { return false; }
-		virtual void MoveFailed(Vector2 dir) override {};
+		virtual void Recoil(Vector2 dir) override {};
 
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
@@ -24,7 +24,6 @@ namespace cl
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
-		virtual bool TryMove(Vector2 direction) override;
 
 	private:
 		AudioClip* mAttackSound;

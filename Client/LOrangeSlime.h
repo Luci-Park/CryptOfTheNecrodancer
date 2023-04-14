@@ -16,10 +16,10 @@ namespace cl
 		virtual void Sink() override;
 
 		virtual void OnBeat();
+		virtual void OnLateBeat();
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
-		virtual bool TryMove(Vector2 direction) override;
 	private:
 		OrangeSlimeSprite* mSlimeSprite;
 		int mMovementIndex;

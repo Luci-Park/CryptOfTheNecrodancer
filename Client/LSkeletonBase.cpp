@@ -70,7 +70,8 @@ namespace cl
 	void SkeletonBase::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mbPause = !mbPause;
+		if(mMoveStatus == MoveStatus::Moved)
+			mbPause = !mbPause;
 	}
 	void SkeletonBase::PlayOnHeadLossSound()
 	{

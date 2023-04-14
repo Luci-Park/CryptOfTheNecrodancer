@@ -33,7 +33,7 @@ namespace cl
 				mSprite->Reset();
 				if (mbMoveFailed)
 				{
-					MoveFailed(prevDir);
+					Recoil(prevDir);
 				}
 				else {
 					if (mbIsTouchingGround)
@@ -58,7 +58,7 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::MoveFailed(Vector2 dir)
+	void GameCharacter::Recoil(Vector2 dir)
 	{
 		if (!mbMoveFailed)
 		{

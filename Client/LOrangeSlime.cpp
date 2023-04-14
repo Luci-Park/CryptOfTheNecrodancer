@@ -48,11 +48,11 @@ namespace cl
 		Monster::OnBeat();
 	}
 
-	bool OrangeSlime::TryMove(Vector2 direction)
+	void OrangeSlime::OnLateBeat()
 	{
-		Monster::TryMove(direction);
-		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
-		return true;
+		Monster::OnLateBeat();
+		if(mMoveStatus == MoveStatus::Moved)
+			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 	}
 	
 	void OrangeSlime::SetStats()

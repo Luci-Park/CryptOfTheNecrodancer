@@ -14,12 +14,12 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() override;
+		virtual bool TryMove() override;
 
 		virtual void OnBeat();
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;
-		virtual bool TryMove(Vector2 direction) override;
 	private:
 		GreenSlimeSprite* mSlimeSprite;
 		bool mbMoveFailed;

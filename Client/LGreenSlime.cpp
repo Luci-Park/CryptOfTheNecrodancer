@@ -36,13 +36,13 @@ namespace cl
 	void GreenSlime::OnBeat()
 	{
 	}
-	bool GreenSlime::TryMove(Vector2 direction)
+	bool GreenSlime::TryMove()
 	{
-		if (direction == Vector2::Zero)
+		if (mNextDir == Vector2::Zero)
 			mSlimeSprite->Idle();
 		else
 		{
-			Monster::TryMove(direction);
+			Monster::TryMove();
 		}
 		return true;
 	}

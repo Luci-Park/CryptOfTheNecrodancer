@@ -8,6 +8,7 @@ namespace cl
 	class Monster : public GameCharacter
 	{
 	public:
+		enum class MoveStatus{NotMoved, Attacked, Dug, IsAsking, Moved, Failed, Unsunked};
 		Monster(Scene* sc, bool isTouchingGround);
 		virtual ~Monster();
 
@@ -16,7 +17,6 @@ namespace cl
 		virtual void Render(HDC hdc) override;
 
 		virtual void Sink() override;
-		virtual bool WillMove();
 		virtual void OnAttacked(float attackPower) override;
 		virtual void OnDestroy();
 
@@ -32,7 +32,7 @@ namespace cl
 		virtual bool TryAttack(Vector2 Direction);
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction);
-		virtual bool TryMove(Vector2 direction);
+		virtual bool TryMove() override;
 
 		virtual void PlayOnAttackSound() = 0;
 		virtual void PlayOnHitSound();
@@ -46,6 +46,7 @@ namespace cl
 		MonsterWeapon* mWeapon;
 		MonsterHeart* mHeart;
 
+		MoveStatus mMoveStatus;
 		Vector2 mNextDir;
 	};
 }

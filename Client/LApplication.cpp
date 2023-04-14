@@ -32,7 +32,7 @@ namespace cl
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		SetWindowPos(mHwnd
-			, nullptr, 10, 10//00
+			, nullptr, 10, 900
 			, rect.right - rect.left
 			, rect.bottom - rect.top
 			, 0);

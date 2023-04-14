@@ -76,7 +76,7 @@ namespace cl
 	{
 		return _Wall[index.y][index.x];
 	}
-	TileObject* MapManager::GetMonster(Vector2 index)
+	TileObject* MapManager::GetObject(Vector2 index)
 	{
 		if (index == _playerIndex) return nullptr;
 		return _ForeObjects[index.y][index.x];

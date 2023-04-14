@@ -42,16 +42,13 @@ namespace cl
 	{
 		Monster::OnBeat();
 	}
-	bool BlueSlime::TryMove(Vector2 direction)
+	void BlueSlime::OnLateBeat()
 	{
-		if (direction == Vector2::Zero)
+		Monster::OnLateBeat();
+		if (mNextDir == Vector2::Zero)
 			mSlimeSprite->Idle();
-		else
-		{
-			Monster::TryMove(direction);
-		}
-		mMovementIndex = (mMovementIndex + 1) % nextPos.size();
-		return true;
+		if (mMoveStatus == MoveStatus::Moved)
+			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 	}
 	void BlueSlime::SetStats()
 	{
