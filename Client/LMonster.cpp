@@ -28,7 +28,7 @@ namespace cl
 		SetStats();
 		mHealth = mMaxHealth;
 		SetWeapon();
-		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH * 0.7), eLayerType::Hearts);
+		mHeart = object::Instantiate<MonsterHeart>(GameObject::GetScene(), mTransform, mTransform->GetPos() + Vector2(0, -UNITLENGTH), eLayerType::Hearts);
 		mHeart->SetHearts(mMaxHealth, mHealth);
 		BeatManager::AddCharacters(this);
 	}

@@ -1,7 +1,6 @@
 #include "LGreenSlimeSprite.h"
 #include "LBeatManager.h"
 #include "LAnimator.h"
-#include "LCamera.h"
 namespace cl
 {
 	GreenSlimeSprite::GreenSlimeSprite(Scene* sc)

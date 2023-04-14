@@ -415,6 +415,9 @@
     <ClInclude Include="LDoor.h">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClInclude>
+    <ClInclude Include="LQueen.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -681,6 +684,9 @@
     </ClCompile>
     <ClCompile Include="LDoor.cpp">
       <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClCompile>
+    <ClCompile Include="LQueen.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -188,6 +188,7 @@
     <ClInclude Include="LOrangeSlimeSprite.h" />
     <ClInclude Include="LPawn.h" />
     <ClInclude Include="LPawnSprite.h" />
+    <ClInclude Include="LQueen.h" />
     <ClInclude Include="LQueenSprite.h" />
     <ClInclude Include="LRedBat.h" />
     <ClInclude Include="LRedBatSprite.h" />
@@ -277,6 +278,7 @@
     <ClCompile Include="LOrangeSlimeSprite.cpp" />
     <ClCompile Include="LPawn.cpp" />
     <ClCompile Include="LPawnSprite.cpp" />
+    <ClCompile Include="LQueen.cpp" />
     <ClCompile Include="LQueenSprite.cpp" />
     <ClCompile Include="LRedBat.cpp" />
     <ClCompile Include="LRedBatSprite.cpp" />

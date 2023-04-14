@@ -6,6 +6,13 @@
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LImage.h"
+#include "LBishopSprite.h"
+#include "LKingSprite.h"
+#include "LKnightSprite.h"
+#include "LPawnSprite.h"
+#include "LQueenSprite.h"
+#include "LRookSprite.h"
+#include "LObject.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()

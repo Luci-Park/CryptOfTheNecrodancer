@@ -29,10 +29,6 @@ namespace cl
 	{
 		Monster::Render(hdc);
 	}
-	void GreenSlime::Sink()
-	{
-		Monster::Sink();
-	}
 	void GreenSlime::OnBeat()
 	{
 	}

@@ -13,7 +13,6 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual void Sink() override;
 		virtual bool TryMove() override;
 
 		virtual void OnBeat();
