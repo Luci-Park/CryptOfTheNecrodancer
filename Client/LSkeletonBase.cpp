@@ -4,7 +4,6 @@
 #include "LObject.h"
 #include "LSkeletonSprite.h"
 #include "LMapManager.h"
-#include "LCadence.h"
 namespace cl
 {
 	SkeletonBase::SkeletonBase(Scene* sc)
@@ -80,15 +79,15 @@ namespace cl
 		mHeadLossSound[idx]->Play(false);
 		Monster::PlayOnHitSound();
 	}
-	void SkeletonBase::OnAttacked(float attackPower)
+	void SkeletonBase::OnAttacked(float attackPower, Vector2 dir)
 	{
-		Monster::OnAttacked(attackPower);
+		Monster::OnAttacked(attackPower, dir);
 		if (mHealth > 0 && mHealth <= 1 && !mbNoHead)
 		{
 			mSkelSprite->LostHead();
 			PlayOnHeadLossSound();
 			mbNoHead = true;
-			mRunDir = MapManager::GetPlayer(MapManager::GetPlayerIndex())->GetInput();
+			mRunDir = dir;
 		}
 	}
 	Vector2 SkeletonBase::GetNextDir()

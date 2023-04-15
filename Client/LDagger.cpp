@@ -38,7 +38,7 @@ namespace cl
 		TileObject* enemy = MapManager::GetTileObject(dest);
 		if (enemy != nullptr)
 		{
-			enemy->OnAttacked(mPower);
+			enemy->OnAttacked(mPower, input);
 			return true;
 		}
 		return false;

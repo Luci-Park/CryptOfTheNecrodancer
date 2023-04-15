@@ -25,55 +25,74 @@ namespace cl
 	}
 	void MapManager::DestroyTileObject(Vector2 index)
 	{
-		_Map->DestroyTileObject(index);
+		if(_Map != nullptr)
+			_Map->DestroyTileObject(index);
 	}
 	void MapManager::DestroyWallObject(Vector2 index)
 	{
-		_Map->DestroyWallObject(index);
+		if (_Map != nullptr)
+			_Map->DestroyWallObject(index);
 	}
 	void MapManager::Update()
 	{
-		_Map->Update();
+		if (_Map != nullptr)
+			_Map->Update();
 	}
 	void MapManager::Render(HDC hdc)
 	{
-		_Map->Render(hdc);
+		if (_Map != nullptr)
+			_Map->Render(hdc);
 	}
 	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
 	{
-		_Map->OnTileStep(object, pos);
+		if (_Map != nullptr)
+			_Map->OnTileStep(object, pos);
 	}
 	WallTile* MapManager::GetWall(Vector2 index)
 	{
-		return _Map->GetWall(index);
+		if (_Map != nullptr)
+			return _Map->GetWall(index);
+		return nullptr;
 	}
 	TileObject* MapManager::GetTileObject(Vector2 index)
 	{
-		return _Map->GetTileObject(index);
+		if (_Map != nullptr)
+			return _Map->GetTileObject(index);
+		return nullptr;
 	}
 	Cadence* MapManager::GetPlayer(Vector2 index)
 	{
-		return _Map->GetPlayer(index);
+		if (_Map != nullptr)
+			return _Map->GetPlayer(index);
+		return nullptr;
 	}
 	Vector2 MapManager::GetPlayerIndex()
 	{
-		return _Map->GetPlayerIndex();
+		if (_Map != nullptr)
+			return _Map->GetPlayerIndex();
+		return Vector2();
 	}
 	Item* MapManager::GetItem(Vector2 index)
 	{
-		return _Map->GetItem(index);
+		if (_Map != nullptr)
+			return _Map->GetItem(index);
+		return nullptr;
 	}
 	Vector2 MapManager::SetItem(Item* item, Vector2 pos)
 	{
-		return _Map->SetItem(item, pos);
+		if (_Map != nullptr)
+			return _Map->SetItem(item, pos);
+		return Vector2();
 	}
 	void MapManager::PlayerMove(TileObject* object, Vector2 src, Vector2 dest)
 	{
-		_Map->PlayerMove(object, src, dest);
+		if (_Map != nullptr)
+			_Map->PlayerMove(object, src, dest);
 	}
 	void MapManager::Move(TileObject* object, Vector2 src, Vector2 dest)
 	{
-		_Map->Move(object, src, dest);
+		if (_Map != nullptr)
+			_Map->Move(object, src, dest);
 	}
 #pragma endregion
 	

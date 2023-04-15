@@ -11,6 +11,11 @@ struct Vector2
     static Vector2 Down;
     static Vector2 Right;
     static Vector2 Left;
+    
+    static Vector2 UpRight;
+    static Vector2 UpLeft;
+    static Vector2 DownRight;
+    static Vector2 DownLeft;
 
     static Vector2 One;
     static Vector2 Zero;
@@ -161,6 +166,7 @@ struct Vector2
   
     static float Distance(Vector2 src, Vector2 dest);
     static bool IsCardinal(Vector2 vect);
+    static bool IsDiagonal(Vector2 vect);
 };
 
 int GetRandomInt(int min, int max)

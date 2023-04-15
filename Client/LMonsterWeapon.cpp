@@ -37,7 +37,7 @@ namespace cl
 		Cadence* enemy = MapManager::GetPlayer(dest);
 		if (enemy != nullptr)
 		{
-			enemy->OnAttacked(mPower);
+			enemy->OnAttacked(mPower, input);
 			return true;
 		}
 		return false;

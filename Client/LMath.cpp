@@ -5,6 +5,11 @@ Vector2 Vector2::Down = { 0.0f, 1.0f };
 Vector2 Vector2::Right = { 1.0f, 0.0f };
 Vector2 Vector2::Left = { -1.0f, 0.0f };
 
+Vector2 Vector2::UpRight = { 1.0f, -1.0f };
+
+Vector2 Vector2::UpLeft = { -1.0f, -1.0f };
+Vector2 Vector2::DownRight = { 1.0f, 1.0f };
+Vector2 Vector2::DownLeft = { -1.0f, 1.0f };
 
 Vector2 Vector2::One = { 1.0f, 1.0f };
 Vector2 Vector2::Zero = { 0.0f, 0.0f };
@@ -31,6 +36,14 @@ bool Vector2::IsCardinal(Vector2 vect)
 {
     if (vect == Vector2::Up || vect == Vector2::Down
         || vect == Vector2::Left || vect == Vector2::Right)
+        return true;
+    return false;
+}
+
+bool Vector2::IsDiagonal(Vector2 vect)
+{
+    if (vect == Vector2::UpLeft || vect == Vector2::UpRight
+        || vect == Vector2::DownLeft || vect == Vector2::DownRight)
         return true;
     return false;
 }

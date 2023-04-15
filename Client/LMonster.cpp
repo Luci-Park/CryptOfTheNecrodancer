@@ -12,6 +12,7 @@ namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
+		, mDigPower(0)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
@@ -44,9 +45,9 @@ namespace cl
 	{
 		GameCharacter::Sink(); 
 	}
-	void Monster::OnAttacked(float attackPower)
+	void Monster::OnAttacked(float attackPower, Vector2 dir)
 	{
-		GameCharacter::OnAttacked(attackPower);
+		GameCharacter::OnAttacked(attackPower, dir);
 		if (mHealth > 0)
 		{
 			mHeart->SetHearts(mMaxHealth, mHealth);

@@ -81,7 +81,7 @@ namespace cl
 		GameCharacter::Render(hdc);
 	}
 
-	void Cadence::OnAttacked(float attackPower)
+	void Cadence::OnAttacked(float attackPower, Vector2 dir)
 	{
 		mHealth -= attackPower;
 		if (mHealth > 0)

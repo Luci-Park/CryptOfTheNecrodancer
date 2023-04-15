@@ -10,6 +10,7 @@ namespace cl
 		
 		virtual void Update() override;
 
+		virtual bool OnDig(int digPower) override;
 		virtual bool OnCrumble() override;
 		
 		void SetHorizontal(bool isHorizontal);

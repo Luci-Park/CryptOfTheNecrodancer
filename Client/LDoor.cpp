@@ -27,6 +27,25 @@ namespace cl
 		GameObject::Update();
 	}
 
+	bool Door::OnDig(int digPower)
+	{	
+		if (mbIsHorizontal)
+		{
+			Door* door = dynamic_cast<Door*>(MapManager::GetWall(mIndex + Vector2::Left));
+			if (door != nullptr) door->OnDig(digPower);
+			door = dynamic_cast<Door*>(MapManager::GetWall(mIndex + Vector2::Right));
+			if (door != nullptr) door->OnDig(digPower);
+		}
+		else
+		{
+			Door* door = dynamic_cast<Door*>(MapManager::GetWall(mIndex + Vector2::Up));
+			if (door != nullptr) door->OnDig(digPower);
+			door = dynamic_cast<Door*>(MapManager::GetWall(mIndex + Vector2::Down));
+			if (door != nullptr) door->OnDig(digPower);
+		}
+		return WallTile::OnDig(digPower);
+	}
+
 	bool Door::OnCrumble()
 	{
 		return OnDig(1);
