@@ -26,7 +26,7 @@ namespace cl
         mAnimator->CreateAnimation(raiseHandAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 8, skeleY, 4, -Vector2(12, 24), 0.36f);
         mAnimator->CreateAnimation(idleAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 0, skeleY, 4, -Vector2(12, 24), 0.36f);
         mAnimator->CreateAnimation(raiseHandAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 4, skeleY, 4, -Vector2(12, 24), 0.36f);
-        mAnimator->CreateAnimation(noHead, L"skeletons", path, 17, 6, 16, skeleY, 1, Vector2(12, 26), 0.36f);
+        mAnimator->CreateAnimation(noHead, L"skeletons", path, 17, 6, 16, skeleY, 1, -Vector2(12, 26), 0.36f);
     }
     void SkeletonSprite::Turn(Vector2 dir)
     {

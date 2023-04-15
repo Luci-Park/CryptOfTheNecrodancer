@@ -55,3 +55,5 @@ WindowAPI Project (2/14 ~ )
     * `Zombie`
 * Monsters Now Move in Sync
 * `Door`
+* `Deep Blues`
+    * `Bishop`

@@ -13,6 +13,8 @@ namespace cl
 	Monster::Monster(Scene* sc, bool isTouchingGround)
 		: GameCharacter(sc, isTouchingGround)
 		, mDigPower(0)
+		, mAttackPower(0)
+		, mDrop(0)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");

@@ -29,6 +29,7 @@ namespace cl
 	{
 		Monster::Initialize();
 		mBishopSprite = object::Instantiate<BishopSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		mSprite = mBishopSprite;
 	}
 	Vector2 Bishop::GetNextDir()
 	{

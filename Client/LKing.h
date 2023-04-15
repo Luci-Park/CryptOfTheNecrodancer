@@ -20,13 +20,16 @@ namespace cl
 		virtual void PlayOnDeathSound();
 
 		virtual void Recoil(Vector2 dir)	override {};
-		virtual void OnBeat()				override;
+
+		Vector2 MoveAwayPlayer();
+		Vector2 MoveTowardsPlayer();
 	private:
 		KingSprite* mKingSprite;
 		bool mbStartAttack;
 		AudioClip* mAttackSounds[7];
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[4];
+		AudioClip* mCry;
 	};
 }
 
