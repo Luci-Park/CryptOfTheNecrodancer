@@ -17,7 +17,14 @@ namespace cl
 		virtual bool TryMove() = 0;
 		virtual void OnDestroy() = 0;
 		void SetIndex(Vector2 index) { mIndex = index; }
+		void CalLightBrightness();
+	protected:
+		virtual void SetBrightness() = 0;
 	protected:
 		Vector2 mIndex;
+	private:
+		float CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius);
+		float innerRadius;
+		float outerRadius;
 	};
 }

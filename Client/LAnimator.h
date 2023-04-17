@@ -32,6 +32,7 @@ namespace cl
 
 		Animation* FindAnimation(const std::wstring& name);
 		void Play(const std::wstring& name, bool loop, bool reverse);
+		void PlayNoDuplication(const std::wstring& name, bool loop, bool reverse);
 		
 		bool IsComplete() { return mActiveAnimation->IsComplete(); }
 		bool IsAnimationPlaying(const std::wstring& name) { 

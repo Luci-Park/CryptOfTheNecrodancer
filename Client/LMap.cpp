@@ -50,6 +50,19 @@ namespace cl
 			}
 		}
 	}
+	void Map::CalculateLight()
+	{
+		mBrightness = std::vector<std::vector<float>>(mMapSize.y, std::vector<float>(mMapSize.x, 0.0));
+		
+	}
+	void Map::SetLight(Vector2 pos, float brightness)
+	{
+		if (0 <= pos.x && pos.x < mMapSize.x
+			&& 0 <= pos.y && pos.y < mMapSize.y)
+		{
+			mBrightness[pos.y][pos.x] = std::clamp(0.0f, 1.0f, mBrightness[pos.y][pos.x] + brightness);
+		}
+	}
 	void Map::OnTileStep(TileObject* object, Vector2 pos)
 	{
 		if (mFloor[pos.y][pos.x] != nullptr)

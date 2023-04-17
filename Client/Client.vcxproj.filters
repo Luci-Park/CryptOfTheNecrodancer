@@ -685,8 +685,5 @@
     <ClCompile Include="LDoor.cpp">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClCompile>
-    <ClCompile Include="LQueen.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

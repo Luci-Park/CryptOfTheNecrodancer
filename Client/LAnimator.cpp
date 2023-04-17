@@ -179,6 +179,12 @@ namespace cl
 
 	}
 
+	void Animator::PlayNoDuplication(const std::wstring& name, bool loop, bool reverse)
+	{
+		if (!IsAnimationPlaying(name))
+			Play(name, loop, reverse);
+	}
+
 	void Animator::Reset()
 	{
 		if(mActiveAnimation != nullptr)
