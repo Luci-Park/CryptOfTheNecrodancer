@@ -21,8 +21,8 @@ namespace cl
 	
 	void StairTile::SetIndex(Vector2 index)
 	{
+		FloorTile::SetIndex(index);
 		mCurrStrategy = new StairStrategy(this);
-		mIndex = index;
 	}
 	
 	void StairTile::OnInteract(TileObject* object)

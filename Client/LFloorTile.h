@@ -8,6 +8,7 @@ namespace cl
 {
 	class SpriteRenderer;
 	class TileObject;
+	class FloorShadow;
 	class FloorTile : public GameObject, public BeatObject
 	{
 #pragma region StaticInfo
@@ -60,7 +61,7 @@ namespace cl
 		virtual void Update();
 		virtual void Render(HDC hdc);
 		
-		virtual void SetIndex(Vector2 index) = 0;
+		virtual void SetIndex(Vector2 index);
 		Vector2 GetIndex() { return mIndex; }
 		virtual void OnBeat() = 0;
 		virtual void OnBeatChanged(){}
@@ -72,7 +73,8 @@ namespace cl
 	protected:
 		Sprite GetSprite();
 		FloorStrategy* mCurrStrategy;
-		SpriteRenderer* mSpriteRenderer;
+		SpriteRenderer* mFloorRenderer;
+		FloorShadow* mFloorShadow;
 		eFloorTypes mType;
 		Vector2 mIndex;
 	};

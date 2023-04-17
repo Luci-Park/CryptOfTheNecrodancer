@@ -1,4 +1,5 @@
 #include "LTileObject.h"
+#include "LMapManager.h"
 namespace cl
 {
 	TileObject::TileObject(Scene* sc)
@@ -13,6 +14,7 @@ namespace cl
 	void TileObject::Update()
 	{
 		GameObject::Update();
+		mbIsRevealed = MapManager::GetLight(mIndex) >= 0.3f;
 	}
 	void TileObject::Render(HDC hdc)
 	{
@@ -20,13 +22,14 @@ namespace cl
 	}
 	void TileObject::CalLightBrightness()
 	{
-		Vector2 leftTop = Vector2(std::ceil(mIndex.x - outerRadius),std::ceil(mIndex.y - outerRadius));
-		Vector2 rightBottom = Vector2(std::ceil(mIndex.x + outerRadius), std::ceil(mIndex.y + outerRadius));
+		Vector2 leftTop = Vector2(std::ceil(mIndex.x - mOuterRadius),std::ceil(mIndex.y - mOuterRadius));
+		Vector2 rightBottom = Vector2(std::ceil(mIndex.x + mOuterRadius), std::ceil(mIndex.y + mOuterRadius));
 		for (int i = leftTop.y; i <= rightBottom.y; ++i)
 		{
 			for (int j = leftTop.x; j <= rightBottom.x; ++j)
 			{
-
+				Vector2 pos = Vector2(j, i);
+				MapManager::SetLight(pos, CalLightBrightness(pos, mIndex, mInnerRadius, mOuterRadius));
 			}
 		}
 		

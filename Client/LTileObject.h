@@ -22,9 +22,10 @@ namespace cl
 		virtual void SetBrightness() = 0;
 	protected:
 		Vector2 mIndex;
+		float mInnerRadius;
+		float mOuterRadius;
+		bool mbIsRevealed;
 	private:
 		float CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius);
-		float innerRadius;
-		float outerRadius;
 	};
 }

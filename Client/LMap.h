@@ -12,7 +12,7 @@ namespace cl
 	class Item;
 	class Cadence;
 	class TileObject;
-	class Map
+	class Map : public BeatObject
 	{
 	public:
 		Map();
@@ -23,9 +23,13 @@ namespace cl
 
 		virtual void Update();
 		void Render(HDC hdc);
+
+		virtual void OnBeat();
+		virtual void OnLateBeat() {};
+		virtual void OnBeatChanged() {};
 		
-		void CalculateLight();
 		void SetLight(Vector2 pos, float brightness);
+		float GetLight(Vector2 pos);
 		void OnTileStep(TileObject* object, Vector2 pos);
 
 		WallTile* GetWall(Vector2 index);
@@ -43,6 +47,7 @@ namespace cl
 	protected:
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;
+		bool IndexIsValid(Vector2 index);
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 
@@ -51,6 +56,8 @@ namespace cl
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		
 	private:
+		void CalculateLight();
+
 		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);
 		void CreateForeGround(Scene* sc);

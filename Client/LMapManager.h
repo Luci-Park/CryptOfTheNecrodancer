@@ -26,6 +26,7 @@ namespace cl
 		static void Render(HDC hdc);
 
 		static void SetLight(Vector2 index, float brightness);
+		static float GetLight(Vector2 index);
 
 		static void OnTileStep(TileObject* object, Vector2 pos);
 
