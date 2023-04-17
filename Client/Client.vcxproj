@@ -216,6 +216,7 @@
     <ClInclude Include="LTransform.h" />
     <ClInclude Include="LTutorialScene.h" />
     <ClInclude Include="LuciEngine.h" />
+    <ClInclude Include="LWallShadow.h" />
     <ClInclude Include="LWallTile.h" />
     <ClInclude Include="LWeapon.h" />
     <ClInclude Include="LWeaponEffect.h" />
@@ -306,6 +307,7 @@
     <ClCompile Include="LTitleScene.cpp" />
     <ClCompile Include="LTransform.cpp" />
     <ClCompile Include="LTutorialScene.cpp" />
+    <ClCompile Include="LWallShadow.cpp" />
     <ClCompile Include="LWallTile.cpp" />
     <ClCompile Include="LWeapon.cpp" />
     <ClCompile Include="LWeaponEffect.cpp" />

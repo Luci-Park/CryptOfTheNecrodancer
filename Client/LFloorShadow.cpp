@@ -14,7 +14,8 @@ namespace cl
 	void FloorShadow::Initialize()
 	{
 		mShadow = AddComponent<SpriteRenderer>();
-		mShadow->SetImage(Image::CreateEmptyImage(L"Shadow", DEFAULTUNIT, DEFAULTUNIT, RGB(0, 0, 0)));
+		GameObject::Initialize();
+		mShadow->SetImage(Image::CreateEmptyImage(L"FloorShadow", DEFAULTUNIT, DEFAULTUNIT, RGB(0, 0, 0)));
 		mShadow->SetSprite(Sprite(Vector2(0, 0), Vector2(DEFAULTUNIT, DEFAULTUNIT), Vector2(DEFAULTUNIT, DEFAULTUNIT) * -0.5));
 	}
 	void FloorShadow::Update()

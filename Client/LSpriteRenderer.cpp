@@ -69,4 +69,9 @@ namespace cl
 		mSprite = mImage->GetFullImageSprite();
 	}
 
+	void SpriteRenderer::SetAlpha(int alpha)
+	{
+		mAlpha = alpha;
+	}
+
 }

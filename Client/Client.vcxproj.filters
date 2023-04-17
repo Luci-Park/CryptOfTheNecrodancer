@@ -419,6 +419,7 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
     <ClInclude Include="LFloorShadow.h" />
+    <ClInclude Include="LWallShadow.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -690,5 +691,6 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
     <ClCompile Include="LFloorShadow.cpp" />
+    <ClCompile Include="LWallShadow.cpp" />
   </ItemGroup>
 </Project>

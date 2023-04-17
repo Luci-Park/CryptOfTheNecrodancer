@@ -5,6 +5,7 @@
 #include "LMapManager.h"
 #include "LAudioClip.h"
 #include "LDoor.h"
+#include "LWallShadow.h"
 namespace cl
 {
 #pragma region Static Info
@@ -159,6 +160,7 @@ namespace cl
 		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Walls", L"..\\Assets\\Arts\\Stage Elements\\Walls.bmp"));
 		mSpriteRenderer->SetSprite(mWallSprite);
 		GameObject::Initialize();
+		mShadow = object::Instantiate<WallShadow>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Wall);
 	}
 	void WallTile::OnDestroy()
 	{
@@ -185,6 +187,11 @@ namespace cl
 			return true;
 		}
 		return false;
+	}
+	void WallTile::SetIndex(Vector2 index)
+	{
+		mShadow->SetIndex(index);
+		mIndex = index;
 	}
 	Vector2 WallTile::GetPlateCenter()
 	{

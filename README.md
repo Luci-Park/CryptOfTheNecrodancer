@@ -55,3 +55,8 @@ WindowAPI Project (2/14 ~ )
     * `Zombie`
 * Monsters Now Move in Sync
 * `Door`
+
+## Week 10(4/16 ~ 4/22)
+* Floor Shadows
+* Map Brightness
+* 
