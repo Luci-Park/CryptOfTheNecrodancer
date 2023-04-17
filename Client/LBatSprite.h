@@ -17,8 +17,10 @@ namespace cl
 		virtual void UnSink()override {}
 	private:
 		Vector2 mLookDir;
-		std::wstring leftAnimation;
-		std::wstring rightAnimation;		
+		std::wstring mLeftAnimation;
+		std::wstring mRightAnimation;
+		std::wstring mLeftShadowAnimation;
+		std::wstring mRightShadowAnimation;
 	};
 }
 

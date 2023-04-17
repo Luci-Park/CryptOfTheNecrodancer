@@ -415,6 +415,7 @@
     <ClInclude Include="LDoor.h">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClInclude>
+    <ClInclude Include="LTiles.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -682,5 +683,6 @@
     <ClCompile Include="LDoor.cpp">
       <Filter>Contents\Objects\Environment\Walls</Filter>
     </ClCompile>
+    <ClCompile Include="LTiles.cpp" />
   </ItemGroup>
 </Project>

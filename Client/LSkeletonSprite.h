@@ -26,9 +26,12 @@ namespace cl
 	private:
 		int skeleY;
 		Vector2 mLookDir;
-		std::wstring idleAnimation[2];
-		std::wstring raiseHandAnimation[2];
-		std::wstring noHead;
+		std::wstring mIdleAnimation[2];
+		std::wstring mIdleShadowAnimation[2];
+		std::wstring mRaiseHandAnimation[2];
+		std::wstring mHandShadowAnimation[2];
+		std::wstring mNoHead;
+		std::wstring mNoHeadShadow;
 		Status mStatus;
 	};
 }

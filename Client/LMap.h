@@ -23,6 +23,9 @@ namespace cl
 
 		virtual void Update();
 		void Render(HDC hdc);
+		
+		void CalculateLight();
+		void SetLight(Vector2 pos, float brightness);
 		void OnTileStep(TileObject* object, Vector2 pos);
 
 		WallTile* GetWall(Vector2 index);
@@ -44,11 +47,7 @@ namespace cl
 		std::vector<std::vector<eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<eWallTypes>> mWallBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
-
-		std::vector<std::vector<FloorTile*>> mFloor;
-		std::vector<std::vector<WallTile*>> mWall;
-		std::vector<std::vector<Item*>> mItems;
-		std::vector<std::vector<TileObject*>> mTileObjects;
+		
 	private:
 		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);
@@ -56,6 +55,11 @@ namespace cl
 		void CreateItems(Scene* sc);
 		void CreatePlayer(Scene* sc);
 		void CreateMonsters(Scene* sc);
+		std::vector<std::vector<FloorTile*>> mFloor;
+		std::vector<std::vector<WallTile*>> mWall;
+		std::vector<std::vector<Item*>> mItems;
+		std::vector<std::vector<TileObject*>> mTileObjects;
+		std::vector<std::vector<float>> mBrightness;
 	};
 
 	class LobbyMap : public Map
