@@ -44,9 +44,6 @@
     <Filter Include="Engine\Time">
       <UniqueIdentifier>{ef75bc87-b02e-4fdf-a266-b7e6133099d7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Items">
-      <UniqueIdentifier>{8d911b60-5b18-457f-b532-640b12a4d4f6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Component\Collider">
       <UniqueIdentifier>{48cf8b35-417b-4a51-8645-d712b3f8fe24}</UniqueIdentifier>
     </Filter>
@@ -83,21 +80,6 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters">
       <UniqueIdentifier>{643229b1-9f82-42bc-8ca1-97ba90931fbb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Items\Weapons">
-      <UniqueIdentifier>{c1ece01c-4963-414f-a12e-720cd2cf3be0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Items\Weapons\Decorators">
-      <UniqueIdentifier>{e4be7208-6862-489c-a1c4-6577b4222aef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Items\Shovels">
-      <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Items\Weapons\WeaponEffects">
-      <UniqueIdentifier>{336c36b3-3acd-41f1-b3de-b69100f4af16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Contents\Items\Weapons\Base">
-      <UniqueIdentifier>{3f3a653a-5136-4204-b97d-e7e42354fb30}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\UI">
       <UniqueIdentifier>{8b46c7f0-9dcc-4042-b748-f5dd393f2619}</UniqueIdentifier>
     </Filter>
@@ -133,6 +115,24 @@
     </Filter>
     <Filter Include="Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues">
       <UniqueIdentifier>{e24d2640-fb6f-4b4a-9d32-5cafadd76cc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items">
+      <UniqueIdentifier>{8d911b60-5b18-457f-b532-640b12a4d4f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items\Weapons">
+      <UniqueIdentifier>{c1ece01c-4963-414f-a12e-720cd2cf3be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items\Weapons\Decorators">
+      <UniqueIdentifier>{e4be7208-6862-489c-a1c4-6577b4222aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items\Weapons\WeaponEffects">
+      <UniqueIdentifier>{336c36b3-3acd-41f1-b3de-b69100f4af16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items\Weapons\Base">
+      <UniqueIdentifier>{3f3a653a-5136-4204-b97d-e7e42354fb30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\Items\Shovels">
+      <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -302,10 +302,10 @@
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LWeapon.h">
-      <Filter>Contents\Items\Weapons</Filter>
+      <Filter>Contents\Objects\Items\Weapons</Filter>
     </ClInclude>
     <ClInclude Include="LWeaponFilter.h">
-      <Filter>Contents\Items\Weapons\Decorators</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Decorators</Filter>
     </ClInclude>
     <ClInclude Include="LGreenSlime.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
@@ -320,7 +320,7 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClInclude>
     <ClInclude Include="LShovel.h">
-      <Filter>Contents\Items\Shovels</Filter>
+      <Filter>Contents\Objects\Items\Shovels</Filter>
     </ClInclude>
     <ClInclude Include="LSlime.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes</Filter>
@@ -329,28 +329,28 @@
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClInclude>
     <ClInclude Include="LItem.h">
-      <Filter>Contents\Items</Filter>
+      <Filter>Contents\Objects\Items</Filter>
     </ClInclude>
     <ClInclude Include="LItemIncludes.h">
-      <Filter>Contents\Items</Filter>
+      <Filter>Contents\Objects\Items</Filter>
     </ClInclude>
     <ClInclude Include="LWeaponEffect.h">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClInclude>
     <ClInclude Include="LDagger.h">
-      <Filter>Contents\Items\Weapons\Base</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterMeleeEffect.h">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClInclude>
     <ClInclude Include="LShortMeleeEffect.h">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClInclude>
     <ClInclude Include="LCadenceSound.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterWeapon.h">
-      <Filter>Contents\Items\Weapons\Base</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClInclude>
     <ClInclude Include="LBat.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
@@ -418,8 +418,12 @@
     <ClInclude Include="LQueen.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
-    <ClInclude Include="LFloorShadow.h" />
-    <ClInclude Include="LWallShadow.h" />
+    <ClInclude Include="LWallShadow.h">
+      <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClInclude>
+    <ClInclude Include="LFloorShadow.h">
+      <Filter>Contents\Objects\Environment\Floors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -577,10 +581,10 @@
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LWeapon.cpp">
-      <Filter>Contents\Items\Weapons</Filter>
+      <Filter>Contents\Objects\Items\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="LWeaponFilter.cpp">
-      <Filter>Contents\Items\Weapons\Decorators</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Decorators</Filter>
     </ClCompile>
     <ClCompile Include="LGreenSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\GreenSlime</Filter>
@@ -595,7 +599,7 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\OrangeSlime</Filter>
     </ClCompile>
     <ClCompile Include="LShovel.cpp">
-      <Filter>Contents\Items\Shovels</Filter>
+      <Filter>Contents\Objects\Items\Shovels</Filter>
     </ClCompile>
     <ClCompile Include="LSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes</Filter>
@@ -604,25 +608,25 @@
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="LItem.cpp">
-      <Filter>Contents\Items</Filter>
+      <Filter>Contents\Objects\Items</Filter>
     </ClCompile>
     <ClCompile Include="LWeaponEffect.cpp">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClCompile>
     <ClCompile Include="LDagger.cpp">
-      <Filter>Contents\Items\Weapons\Base</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterMeleeEffect.cpp">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClCompile>
     <ClCompile Include="LShortMeleeEffect.cpp">
-      <Filter>Contents\Items\Weapons\WeaponEffects</Filter>
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClCompile>
     <ClCompile Include="LCadenceSound.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterWeapon.cpp">
-      <Filter>Contents\Items\Weapons\Base</Filter>
+      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClCompile>
     <ClCompile Include="LBat.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
@@ -690,7 +694,11 @@
     <ClCompile Include="LQueen.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
-    <ClCompile Include="LFloorShadow.cpp" />
-    <ClCompile Include="LWallShadow.cpp" />
+    <ClCompile Include="LWallShadow.cpp">
+      <Filter>Contents\Objects\Environment\Walls</Filter>
+    </ClCompile>
+    <ClCompile Include="LFloorShadow.cpp">
+      <Filter>Contents\Objects\Environment\Floors</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

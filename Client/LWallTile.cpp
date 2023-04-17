@@ -162,6 +162,11 @@ namespace cl
 		GameObject::Initialize();
 		mShadow = object::Instantiate<WallShadow>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Wall);
 	}
+	void WallTile::Render(HDC hdc)
+	{
+		GameObject::Render(hdc);
+		mShadow->Render(hdc);
+	}
 	void WallTile::OnDestroy()
 	{
 		MapManager::DestroyWallObject(mIndex);

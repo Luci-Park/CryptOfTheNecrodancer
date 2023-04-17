@@ -69,7 +69,8 @@ namespace cl
 		WallTile(Scene* sc);
 		virtual ~WallTile(){}
 
-		virtual void Initialize();
+		virtual void Initialize() override;
+		virtual void Render(HDC hdc) override;
 		virtual bool OnDig(int digPower);
 		virtual bool OnCrumble();
 		virtual void OnDestroy();

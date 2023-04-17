@@ -33,6 +33,8 @@ namespace cl
 		}
 		mParent = parent;
 		parent->SetChildren(this);
+		CalculateWorldPos();
+		CalculateWorldScale();
 	}
 	void Transform::SetChildren(Transform* child)
 	{

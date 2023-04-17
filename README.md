@@ -59,6 +59,7 @@ WindowAPI Project (2/14 ~ )
     * `Bishop`
 
 ## Week 10(4/16 ~ 4/22)
-* Floor Shadows
 * Map Brightness
+* Floor Shadows
+* Wall Shadows
 * 
