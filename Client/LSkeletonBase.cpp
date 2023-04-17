@@ -113,7 +113,7 @@ namespace cl
 	{
 		Vector2 player = MapManager::GetPlayerIndex();
 		if (player.x == mIndex.x || player.y == mIndex.y)
-			return (player - mIndex).Normalize();
+			return (player - mIndex).TileNormalize();
 		else
 		{
 			if (player.x < mIndex.x)
