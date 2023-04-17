@@ -19,6 +19,8 @@ namespace cl
 		Vector2 mLookDir;
 		std::wstring mIdleAnim[4];
 		std::wstring mBeatAnim[4];
+		std::wstring mIdleShadowAnim[4];
+		std::wstring mBeatShadowAnim[4];
 		bool isBeat;
 	};
 }

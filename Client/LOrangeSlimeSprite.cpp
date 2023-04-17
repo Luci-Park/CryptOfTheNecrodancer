@@ -21,6 +21,8 @@ namespace cl
 
 		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 6, 4, -Vector2(13, 22), 0.36f);
 		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 6, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 7, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 7, 4, -Vector2(13, 22), 0.36f);
 		mAnimator->Play(L"LeftJump", true, false);
 	}
 	void OrangeSlimeSprite::Update()
@@ -44,8 +46,18 @@ namespace cl
 	{
 		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftJump", true, false);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"LeftJumpShadow", true, false);
+			else
+				mAnimator->Play(L"LeftJump", true, false);
+		}
 		else
-			mAnimator->Play(L"RightJump", true, true);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"RightJumpShadow", true, false);
+			else
+				mAnimator->Play(L"RightJump", true, false);
+		}
 	}
 }

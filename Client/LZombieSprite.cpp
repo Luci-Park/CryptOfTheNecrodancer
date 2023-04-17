@@ -16,6 +16,12 @@ namespace cl
 		mBeatAnim[GetIndex(Vector2::Left)] = L"LeftBeat";
 		mBeatAnim[GetIndex(Vector2::Up)] = L"UpBeat";
 		mBeatAnim[GetIndex(Vector2::Down)] = L"DownBeat";
+
+		for (int i = 0; i < 4; ++i)
+		{
+			mIdleShadowAnim[i] = mIdleAnim[i] + L"Shadow";
+			mBeatShadowAnim[i] = mBeatAnim[i] + L"Shadow";
+		}
 	}
 	ZombieSprite::~ZombieSprite()
 	{
@@ -33,6 +39,15 @@ namespace cl
 		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 20, 0, 4, -Vector2(12, 25), 0.36f);
 		mAnimator->CreateAnimation(mIdleAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 24, 0, 4, -Vector2(12, 25), 0.36f);
 		mAnimator->CreateAnimation(mBeatAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 28, 0, 4, -Vector2(12, 25), 0.36f);
+
+		mAnimator->CreateAnimation(mBeatShadowAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 0, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleShadowAnim[GetIndex(Vector2::Up)], L"zombie", path, 32, 2, 4, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatShadowAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 8, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleShadowAnim[GetIndex(Vector2::Left)], L"zombie", path, 32, 2, 12, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatShadowAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 16, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleShadowAnim[GetIndex(Vector2::Down)], L"zombie", path, 32, 2, 20, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mIdleShadowAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 24, 1, 4, -Vector2(12, 25), 0.36f);
+		mAnimator->CreateAnimation(mBeatShadowAnim[GetIndex(Vector2::Right)], L"zombie", path, 32, 2, 28, 1, 4, -Vector2(12, 25), 0.36f);
 	}
 	void ZombieSprite::Turn(Vector2 dir)
 	{
@@ -51,8 +66,10 @@ namespace cl
 		isBeat = false;
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
-		if (!mAnimator->IsAnimationPlaying(mIdleAnim[idx]))
-			mAnimator->Play(mIdleAnim[idx], true, rev);
+		if (mbIsRevealed)
+			mAnimator->PlayNoDuplication(mIdleAnim[idx], true, rev);
+		else
+			mAnimator->PlayNoDuplication(mIdleShadowAnim[idx], true, rev);
 	}
 
 	void ZombieSprite::OnBeat()
@@ -60,8 +77,10 @@ namespace cl
 		isBeat = true;
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
-		if (!mAnimator->IsAnimationPlaying(mBeatAnim[idx]))
-			mAnimator->Play(mBeatAnim[idx], true, rev);
+		if (mbIsRevealed)
+			mAnimator->PlayNoDuplication(mBeatAnim[idx], true, rev);
+		else
+			mAnimator->PlayNoDuplication(mBeatShadowAnim[idx], true, rev);
 	}
 
 	int ZombieSprite::GetIndex(Vector2 dir)
