@@ -3,6 +3,7 @@
 #include "LResources.h"
 #include "LObject.h"
 #include "LMapManager.h"
+#include "LFloorShadow.h"
 namespace cl
 {
 #pragma region FloorTileStatic
@@ -112,25 +113,31 @@ namespace cl
 
 	void FloorTile::Initialize()
 	{
-		mSpriteRenderer = AddComponent<SpriteRenderer>();
-		mSpriteRenderer->SetImage(Resources::Load<Image>(L"Floors", L"..\\Assets\\Arts\\Stage Elements\\Floors.bmp"));
+		mFloorRenderer = AddComponent<SpriteRenderer>();
+		mFloorRenderer->SetImage(Resources::Load<Image>(L"Floors", L"..\\Assets\\Arts\\Stage Elements\\Floors.bmp"));
 		GameObject::Initialize();
+		mFloorShadow = object::Instantiate<FloorShadow>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Background);
 	}
 
 	void FloorTile::Update()
 	{
 		Sprite newSprite = GetSprite();
-		if (mSpriteRenderer->GetSprite() != newSprite)
+		if (mFloorRenderer->GetSprite() != newSprite)
 		{
-			mSpriteRenderer->SetSprite(newSprite);
+			mFloorRenderer->SetSprite(newSprite);
 		}
-
 		GameObject::Update();
 	}
 
 	void FloorTile::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
+	}
+
+	void FloorTile::SetIndex(Vector2 index)
+	{
+		mFloorShadow->SetIndex(index);
+		mIndex = index;
 	}
 
 	void FloorTile::OnInteract(TileObject* object)
@@ -169,7 +176,7 @@ namespace cl
 	}
 	void GroundTile::SetIndex(Vector2 index)
 	{
-		mIndex = index;
+		FloorTile::SetIndex(index);
 		mStrategy[(int)eFloorTypes::Ground] = new GroundStrategy(this);
 		mStrategy[(int)eFloorTypes::Flash] = new FlashStrategy(this);
 		mStrategy[(int)eFloorTypes::Water] = new WaterStrategy(this);

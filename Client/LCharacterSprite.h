@@ -21,7 +21,7 @@ namespace cl
 		virtual void Sink();
 		virtual void UnSink();
 		virtual void Flash();
-
+		virtual void SetRevealed(bool revealed) { mbIsRevealed = revealed; }
 		void Reset();
 	protected:
 		bool mbIsJumping;
@@ -30,6 +30,8 @@ namespace cl
 		bool mbIsFlashing;
 		float mFlashTimer;
 		float mFlashDuration;
+
+		bool mbIsRevealed;
 
 		bool mbMoveFailed;
 		Vector2 mbMoveDir;

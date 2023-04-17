@@ -31,7 +31,7 @@ namespace cl
 		virtual bool TryAttack(Vector2 direction)	override;
 		//Returns true if InteractedWithDig;
 		virtual bool TryDig(Vector2 direction)		override;
-
+		virtual void SetBrightness()				override;
 	private:
 		void OnMove(Vector2 direction);
 		void SetInput();

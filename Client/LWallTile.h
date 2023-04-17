@@ -6,6 +6,7 @@ namespace cl
 {
 	class SpriteRenderer;
 	class AudioClip;
+	class WallShadow;
 	class WallTile : public GameObject
 	{
 #pragma region Static Info
@@ -73,7 +74,7 @@ namespace cl
 		virtual bool OnCrumble();
 		virtual void OnDestroy();
 
-		void SetIndex(Vector2 index) { mIndex = index; }
+		void SetIndex(Vector2 index);
 		Vector2 GetPlateCenter();
 		eWallTypes GetWallType() { return mWallType; }
 		bool IsBreakable() { return mbIsBreakable; }
@@ -87,6 +88,7 @@ namespace cl
 		Sprite mCrumbleSprite;
 		AudioClip* mDigClip;
 		bool mbIsBreakable;
+		WallShadow* mShadow;
 	};
 
 	class DirtWall : public WallTile

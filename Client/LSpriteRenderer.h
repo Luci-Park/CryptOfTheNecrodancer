@@ -19,7 +19,7 @@ namespace cl
 		void SetImage(const std::wstring& key, const std::wstring& path);
 		void SetSprite(Sprite sprite) { mSprite = sprite; }
 		Sprite GetSprite() { return mSprite; }
-		void AddAlpha(int alpha) { mAlpha = alpha; }
+		void SetAlpha(int alpha);
 	private:
 		Image* mImage;
 		Sprite mSprite;

@@ -36,13 +36,13 @@ namespace cl
 		if (mBeatCount == mMoveBeat)
 		{
 			Vector2 playerIndex = MapManager::GetPlayerIndex();
-			Vector2 dir = (playerIndex - mIndex).Normalize();
+			Vector2 dir = (playerIndex - mIndex).TileNormalize();
 			if (Vector2::IsDiagonal(dir))
 				return dir;
 			else
 			{
 				Vector2 prevPlayerPos = playerIndex - MapManager::GetPlayer(playerIndex)->GetInput();
-				Vector2 prevDir = (prevPlayerPos - mIndex).Normalize();
+				Vector2 prevDir = (prevPlayerPos - mIndex).TileNormalize();
 				if (Vector2::IsDiagonal(prevDir))
 					return prevDir;
 				else

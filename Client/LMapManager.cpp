@@ -1,5 +1,6 @@
 #include "LMapManager.h"
 #include "LMap.h"
+#include "LBeatManager.h"
 namespace cl
 {
 #pragma region MapManager
@@ -14,6 +15,7 @@ namespace cl
 			_Map = new LobbyMap();
 		}
 		_Map->CreateMap(sc);
+		BeatManager::AddCharacters(_Map);
 	}
 	void MapManager::DestroyMap()
 	{
@@ -42,6 +44,17 @@ namespace cl
 	{
 		if (_Map != nullptr)
 			_Map->Render(hdc);
+	}
+	void MapManager::SetLight(Vector2 index, float brightness)
+	{
+		if (_Map != nullptr)
+			_Map->SetLight(index, brightness);
+	}
+	float MapManager::GetLight(Vector2 index)
+	{
+		if (_Map != nullptr)
+			return _Map->GetLight(index);
+		return 0.0f;
 	}
 	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
 	{

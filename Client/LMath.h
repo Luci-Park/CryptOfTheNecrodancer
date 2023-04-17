@@ -165,6 +165,22 @@ struct Vector2
 
 		return *this;
 	}
+    Vector2& TileNormalize()
+    {
+        float length = Magnitude();
+        if (length == 0)
+        {
+            x = 0;
+            y = 0;
+        }
+        else {            
+            x /= length;
+            y /= length;
+            if (x > 0) x = 1; if (x < 0) x = -1;
+            if (y > 0) y = 1; if (y < 0) y = -1;
+        }
+        return *this;
+    }
 
     static Vector2 MoveTowards(Vector2 src, Vector2 dest, float distance);
   

@@ -50,6 +50,37 @@ namespace cl
 			}
 		}
 	}
+	void Map::OnBeat()
+	{
+		CalculateLight();
+	}
+	void Map::CalculateLight()
+	{
+		mBrightness = std::vector<std::vector<float>>(mMapSize.y, std::vector<float>(mMapSize.x, 0.0));
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				if(mTileObjects[i][j] != nullptr)
+					mTileObjects[i][j]->CalLightBrightness();
+			}
+		}
+	}
+	void Map::SetLight(Vector2 pos, float brightness)
+	{
+		if (IndexIsValid(pos))
+		{
+			mBrightness[pos.y][pos.x] = std::clamp(mBrightness[pos.y][pos.x] + brightness, 0.0f, 1.0f);
+		}
+	}
+	float Map::GetLight(Vector2 pos)
+	{
+		if (IndexIsValid(pos))
+		{
+			return mBrightness[pos.y][pos.x];
+		}
+		return 0.0f;
+	}
 	void Map::OnTileStep(TileObject* object, Vector2 pos)
 	{
 		if (mFloor[pos.y][pos.x] != nullptr)
@@ -102,6 +133,15 @@ namespace cl
 		CreateWall(sc);
 		CreateForeGround(sc);
 		CreateItems(sc);
+		CalculateLight();
+	}
+
+	bool Map::IndexIsValid(Vector2 index)
+	{
+		if (0 <= index.x && index.x < mMapSize.x
+			&& 0 <= index.y && index.y < mMapSize.y)
+			return true;
+		return false;
 	}
 
 	void Map::CreateFloor(Scene* sc)
@@ -182,9 +222,9 @@ namespace cl
 					{
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
-						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<GreenSkeleton>(sc, pos, eLayerType::Monster);
-						mTileObjects[i][j]->SetIndex(Vector2(j, i));
+						pos.y = i * UNITLENGTH;/*
+						mTileObjects[i][j] = object::Instantiate<Bat>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j]->SetIndex(Vector2(j, i));*/
 					}
 				}
 			}

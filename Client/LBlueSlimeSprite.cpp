@@ -23,6 +23,11 @@ namespace cl
 		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 2, 4, -Vector2(13, 22), 0.36f);
 		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 4, 8, 0, 0, 4, -Vector2(13, 22), 0.36f);
 		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 2, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"LeftIdleShadow", L"Slime_Left", leftPath, 4, 8, 0, 1, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 3, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"RightIdleShadow", L"Slime_Right", rightPath, 4, 8, 0, 1, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 3, 4, -Vector2(13, 22), 0.36f);
+
 		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
 		Idle();
 	}
@@ -46,17 +51,37 @@ namespace cl
 	void BlueSlimeSprite::Idle()
 	{
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftIdle", true, false);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"LeftIdleShadow", true, false);
+			else
+				mAnimator->Play(L"LeftIdle", true, false);
+		}
 		else
-			mAnimator->Play(L"RightIdle", true, true);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"RightIdleShadow", true, false);
+			else
+				mAnimator->Play(L"RightIdle", true, false);
+		}
 	}
 	void BlueSlimeSprite::Jump()
 	{
 		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftJump", true, false);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"LeftJumpShadow", true, false);
+			else
+				mAnimator->Play(L"LeftJump", true, false);
+		}
 		else
-			mAnimator->Play(L"RightJump", true, true);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"RightJumpShadow", true, false);
+			else
+				mAnimator->Play(L"RightJump", true, false);
+		}
 		if (mbIsJumping == false)
 			Idle();
 	}

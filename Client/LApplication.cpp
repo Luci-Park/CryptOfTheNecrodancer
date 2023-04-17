@@ -92,7 +92,7 @@ namespace cl
 	}
 	void Application::clear()
 	{
-		HBRUSH newBrush	 = CreateSolidBrush(RGB(100, 100, 100));
+		HBRUSH newBrush	 = CreateSolidBrush(RGB(0, 0, 0));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC, newBrush);
 		Rectangle(mBackHDC, -1, -1, mWidth + 2, mHeight + 2);
 		SelectObject(mBackHDC, oldBrush);

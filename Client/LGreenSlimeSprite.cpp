@@ -20,6 +20,9 @@ namespace cl
 
 		mAnimator->CreateAnimation(L"LeftIdle", L"Slime_Left", leftPath, 4, 8, 0, 4, 4, -Vector2(13, 22), 0.36f);
 		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 4, 8, 0, 4, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"LeftIdleShadow", L"Slime_Left", leftPath, 4, 8, 0, 5, 4, -Vector2(13, 22), 0.36f);
+		mAnimator->CreateAnimation(L"RightIdleShadow", L"Slime_Right", rightPath, 4, 8, 0, 5, 4, -Vector2(13, 22), 0.36f);
+
 		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
 		Idle();
 	}
@@ -43,8 +46,18 @@ namespace cl
 	void GreenSlimeSprite::Idle()
 	{
 		if (mLookDir == Vector2::Left)
-			mAnimator->Play(L"LeftIdle", true, false);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"LeftIdleShadow", true, false);
+			else
+				mAnimator->Play(L"LeftIdle", true, false);
+		}
 		else
-			mAnimator->Play(L"RightIdle", true, true);
+		{
+			if (!mbIsRevealed)
+				mAnimator->Play(L"RightIdleShadow", true, false);
+			else
+				mAnimator->Play(L"RightIdle", true, false);
+		}
 	}
 }

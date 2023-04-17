@@ -54,7 +54,8 @@ namespace cl
 
 	void BeatManager::AddCharacters(BeatObject* character)
 	{
-		mCharacters.push_back(character);
+		if(character != nullptr)
+			mCharacters.push_back(character);
 	}
 	void BeatManager::RemoveCharacters(BeatObject* character)
 	{

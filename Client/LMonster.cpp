@@ -38,6 +38,7 @@ namespace cl
 	void Monster::Update()
 	{
 		GameCharacter::Update();
+		mSprite->SetRevealed(mbIsRevealed);
 	}
 	void Monster::Render(HDC hdc)
 	{

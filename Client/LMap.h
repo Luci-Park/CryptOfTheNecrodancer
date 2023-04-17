@@ -12,7 +12,7 @@ namespace cl
 	class Item;
 	class Cadence;
 	class TileObject;
-	class Map
+	class Map : public BeatObject
 	{
 	public:
 		Map();
@@ -23,6 +23,13 @@ namespace cl
 
 		virtual void Update();
 		void Render(HDC hdc);
+
+		virtual void OnBeat();
+		virtual void OnLateBeat() {};
+		virtual void OnBeatChanged() {};
+		
+		void SetLight(Vector2 pos, float brightness);
+		float GetLight(Vector2 pos);
 		void OnTileStep(TileObject* object, Vector2 pos);
 
 		WallTile* GetWall(Vector2 index);
@@ -40,24 +47,28 @@ namespace cl
 	protected:
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;
+		bool IndexIsValid(Vector2 index);
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 
 		std::vector<std::vector<eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<eWallTypes>> mWallBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
-
-		std::vector<std::vector<FloorTile*>> mFloor;
-		std::vector<std::vector<WallTile*>> mWall;
-		std::vector<std::vector<Item*>> mItems;
-		std::vector<std::vector<TileObject*>> mTileObjects;
+		
 	private:
+		void CalculateLight();
+
 		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);
 		void CreateForeGround(Scene* sc);
 		void CreateItems(Scene* sc);
 		void CreatePlayer(Scene* sc);
 		void CreateMonsters(Scene* sc);
+		std::vector<std::vector<FloorTile*>> mFloor;
+		std::vector<std::vector<WallTile*>> mWall;
+		std::vector<std::vector<Item*>> mItems;
+		std::vector<std::vector<TileObject*>> mTileObjects;
+		std::vector<std::vector<float>> mBrightness;
 	};
 
 	class LobbyMap : public Map

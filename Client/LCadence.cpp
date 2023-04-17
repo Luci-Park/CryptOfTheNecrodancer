@@ -41,7 +41,7 @@ namespace cl
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
-
+		BeatManager::AddCharacters(this);
 	}
 	void Cadence::Update()
 	{
@@ -175,6 +175,12 @@ namespace cl
 			return true;//I tried dig
 		}
 		return false;
+	}
+
+	void Cadence::SetBrightness()
+	{
+		mInnerRadius = 1.25;
+		mOuterRadius = 3;
 	}
 
 	void Cadence::SetInput()
