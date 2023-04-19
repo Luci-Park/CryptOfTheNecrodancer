@@ -289,9 +289,6 @@
     <ClInclude Include="LMonster.h">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClInclude>
-    <ClInclude Include="LBehaviorTree.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
-    </ClInclude>
     <ClInclude Include="LBlueSlime.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClInclude>
@@ -424,7 +421,9 @@
     <ClInclude Include="LFloorShadow.h">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClInclude>
-    <ClInclude Include="LTileLight.h" />
+    <ClInclude Include="LTileLight.h">
+      <Filter>Contents\Objects\Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -569,9 +568,6 @@
     <ClCompile Include="LMonster.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
     </ClCompile>
-    <ClCompile Include="LBehaviorTree.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
-    </ClCompile>
     <ClCompile Include="LBlueSlime.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Slimes\BlueSlime</Filter>
     </ClCompile>
@@ -701,6 +697,8 @@
     <ClCompile Include="LFloorShadow.cpp">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
-    <ClCompile Include="LTileLight.cpp" />
+    <ClCompile Include="LTileLight.cpp">
+      <Filter>Contents\Objects\Environment</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

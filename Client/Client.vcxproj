@@ -180,7 +180,6 @@
     <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LMath.h" />
     <ClInclude Include="LMonster.h" />
-    <ClInclude Include="LBehaviorTree.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
     <ClInclude Include="LMonsterWeapon.h" />
@@ -274,7 +273,6 @@
     <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LMath.cpp" />
     <ClCompile Include="LMonster.cpp" />
-    <ClCompile Include="LBehaviorTree.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
     <ClCompile Include="LMonsterWeapon.cpp" />

@@ -44,6 +44,7 @@ namespace cl
 	}
 	void GreenSlime::SetStats()
 	{
+		mActivationRadius = INFINITY;
 		mMaxHealth = 1;
 		mHealth = 1;
 		mAttackPower = 50;

@@ -14,6 +14,7 @@ namespace cl
     }
     void Skeleton::SetStats()
     {
+        mActivationRadius = 3;
         mMaxHealth = 1;
         mAttackPower = 0.5f;
         mDrop = 2;
@@ -31,6 +32,7 @@ namespace cl
     }
     void GreenSkeleton::SetStats()
     {
+        mActivationRadius = 3;
         mMaxHealth = 2;
         mAttackPower = 1.5f;
         mDrop = 3;
@@ -48,6 +50,7 @@ namespace cl
     }
     void BlackSkeleton::SetStats()
     {
+        mActivationRadius = 3;
         mMaxHealth = 3;
         mAttackPower = 2.0f;
         mDrop = 4;

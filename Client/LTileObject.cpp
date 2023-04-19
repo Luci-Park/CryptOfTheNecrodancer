@@ -5,6 +5,8 @@ namespace cl
 {
 	TileObject::TileObject(Scene* sc)
 		:GameObject(sc, false)
+		, mOuterRadius(0.0)
+		, mInnerRadius(0.0)
 	{
 	}
 	void TileObject::Initialize()
@@ -14,7 +16,6 @@ namespace cl
 	}
 	void TileObject::Update()
 	{
-		mbIsRevealed = MapManager::GetLight(mIndex)->IsInSight();
 		GameObject::Update();
 	}
 	void TileObject::Render(HDC hdc)
@@ -23,6 +24,7 @@ namespace cl
 	}
 	void TileObject::CalLightBrightness()
 	{
+		if (mInnerRadius == 0.0 && mOuterRadius == 0.0) return;
 		Vector2 leftTop = Vector2(std::ceil(mIndex.x - mOuterRadius),std::ceil(mIndex.y - mOuterRadius));
 		Vector2 rightBottom = Vector2(std::ceil(mIndex.x + mOuterRadius), std::ceil(mIndex.y + mOuterRadius));
 		for (int i = leftTop.y; i <= rightBottom.y; ++i)
@@ -34,6 +36,12 @@ namespace cl
 			}
 		}
 		
+	}
+
+	void TileObject::SetBrightness()
+	{
+		mInnerRadius = 0.0;
+		mOuterRadius = 0.0;
 	}
 
 	float TileObject::CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius)

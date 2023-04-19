@@ -16,15 +16,15 @@ namespace cl
 		virtual void OnAttacked(float attackPower, Vector2 dir) = 0;
 		virtual bool TryMove() = 0;
 		virtual void OnDestroy() = 0;
+		virtual void CalLightBrightness();
+
 		void SetIndex(Vector2 index) { mIndex = index; }
-		void CalLightBrightness();
 	protected:
-		virtual void SetBrightness() = 0;
+		virtual void SetBrightness();
 	protected:
 		Vector2 mIndex;
 		float mInnerRadius;
 		float mOuterRadius;
-		bool mbIsRevealed;
 	private:
 		float CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius);
 	};

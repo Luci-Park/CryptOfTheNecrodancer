@@ -11,7 +11,7 @@ namespace cl
 		, mbIsJumping(false)
 		, mAnimator(nullptr)
 		, mbIsFlashing(false)
-		, mbInShadows(false)
+		, mbInShadows(true)
 	{
 	}
 	CharacterSprite::~CharacterSprite()

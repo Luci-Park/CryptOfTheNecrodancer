@@ -10,7 +10,7 @@ namespace cl
 		: Monster(sc, true)
 		, mbBeat(true)
 	{
-		mMoveDir = Vector2::Right;//GetRandomInt(0, 1) ? Vector2::Down : Vector2::Right;
+		mMoveDir = GetRandomInt(0, 1) ? Vector2::Down : Vector2::Right;
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Zombie\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_zombie_attack", path + L"en_zombie_attack" + extend);
@@ -25,6 +25,7 @@ namespace cl
 		mZombieSprite = object::Instantiate<ZombieSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mZombieSprite;
 		mSprite->Turn(mMoveDir);
+		mZombieSprite->OnBeat();
 	}
 	Vector2 Zombie::GetNextDir()
 	{
@@ -63,6 +64,7 @@ namespace cl
 	}
 	void Zombie::SetStats()
 	{
+		mActivationRadius = INFINITY;
 		mMaxHealth = 1;
 		mAttackPower = 1;
 		mDrop = 1;

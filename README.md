@@ -79,3 +79,11 @@ WindowAPI Project (2/14 ~ )
         * Tile not revealed = don't show
         * If Tile revealed but not inSight or not illuminated = inShadows
         * If inSight and illuminated = full color
+    * Behavior
+        * Aggroed
+            * if in sight
+            * and inside a 20 * 12 tile rectangle
+            * permanent
+        * Activated
+            * Is within a certain radius
+        * Can act if either aggroed or activated

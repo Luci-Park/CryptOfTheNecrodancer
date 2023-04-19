@@ -23,7 +23,7 @@ namespace cl
 		TileLight* light = MapManager::GetLight(mIndex);
 		if (light->IsInSight())
 		{
-			mShadow->SetAlpha(255 * (1 - light->GetIllumination()));
+			mShadow->SetAlpha(255 * (1 - light->Illumination()));
 		}
 		else if (light->IsRevealed())
 		{

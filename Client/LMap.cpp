@@ -238,15 +238,15 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mTileObjects[i][j] = nullptr;
-				if (i == 4)
+				if (i == 8)
 				{
 					if(j > 3 && j< 7)
 					{
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
-						pos.y = i * UNITLENGTH;/*
-						mTileObjects[i][j] = object::Instantiate<Bat>(sc, pos, eLayerType::Monster);
-						mTileObjects[i][j]->SetIndex(Vector2(j, i));*/
+						pos.y = i * UNITLENGTH;
+						mTileObjects[i][j] = object::Instantiate<Skeleton>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}
 			}

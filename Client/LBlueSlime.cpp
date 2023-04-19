@@ -52,8 +52,8 @@ namespace cl
 	}
 	void BlueSlime::SetStats()
 	{
+		mActivationRadius = INFINITY;
 		mMaxHealth = 2;
-		mHealth = 2;
 		mAttackPower = 1;
 		mDigPower = 0;
 		mDrop = 2;

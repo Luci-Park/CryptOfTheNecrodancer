@@ -50,6 +50,7 @@ namespace cl
 	}
 	void Bat::SetStats()
 	{
+		mActivationRadius = 3;
 		mMaxHealth = 1;
 		mAttackPower = 0.5f;
 		mDrop = 2;

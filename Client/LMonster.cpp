@@ -40,15 +40,6 @@ namespace cl
 	}
 	void Monster::Update()
 	{
-		TileLight* light = MapManager::GetLight(mIndex);
-		if (!light->IsRevealed())
-			mSprite->SetActive(false);
-		else
-		{
-			mSprite->SetActive(true);
-			mSprite->SetShadow(!(light->IsInSight() && light->Illumination() > 0.6f));
-		}
-		mSprite->SetShadow(mbIsRevealed);
 		GameCharacter::Update();
 		
 	}
@@ -75,28 +66,35 @@ namespace cl
 	}
 	void Monster::OnBeat()
 	{
-		mMoveStatus = MoveStatus::NotMoved;
-		mSprite->Reset();
-		mTransform->SetPos(mMoveTarget);
-		mNextDir = Vector2::Zero;
-		if (!UnSink())
+		CheckAggro();
+		CheckActivation();
+		CheckShadow();
+		if (mbIsActivated || mbIsAggroed)
 		{
-			Vector2 nextDir = GetNextDir();
-			mSprite->Turn(nextDir);
-			if (nextDir == Vector2::Zero) mMoveStatus = MoveStatus::Moved;
-			else if (TryAttack(nextDir)) mMoveStatus = MoveStatus::Attacked;
-			else if (TryDig(nextDir)) mMoveStatus = MoveStatus::Dug;
+			mMoveStatus = MoveStatus::NotMoved;
+			mSprite->Reset();
+			mTransform->SetPos(mMoveTarget);
+			mNextDir = Vector2::Zero;
+			if (!UnSink())
+			{
+				Vector2 nextDir = GetNextDir();
+				mSprite->Turn(nextDir);
+				if (nextDir == Vector2::Zero) mMoveStatus = MoveStatus::Moved;
+				else if (TryAttack(nextDir)) mMoveStatus = MoveStatus::Attacked;
+				else if (TryDig(nextDir)) mMoveStatus = MoveStatus::Dug;
+				else
+					mNextDir = nextDir;
+			}
 			else
-				mNextDir = nextDir;
-		}
-		else
-		{
-			mMoveStatus = MoveStatus::Unsunked;
+			{
+				mMoveStatus = MoveStatus::Unsunked;
+			}
 		}
 	}
 	void Monster::OnLateBeat()
 	{
-		TryMove();
+		if(mbIsActivated || mbIsAggroed)
+			TryMove();
 	}
 	void Monster::OnBeatChanged()
 	{
@@ -160,5 +158,40 @@ namespace cl
 	void Monster::PlayOnDeathSound()
 	{
 		mGeneralDeath->Play(false);
+	}
+	void Monster::CheckAggro()
+	{
+		if (mbIsAggroed) return;
+		TileLight* light = MapManager::GetLight(mIndex);
+		if (light != nullptr && light->IsRevealed() && IsNearPlayer())
+		{
+			mbIsAggroed = true;
+			OnAggroed();
+		}
+	}
+	void Monster::CheckActivation()
+	{		
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		mbIsActivated = Vector2::Distance(playerPos, mIndex) <= mActivationRadius;
+	}
+	void Monster::CheckShadow()
+	{
+		TileLight* light = MapManager::GetLight(mIndex);
+		if (light != nullptr)
+		{
+			if (!light->IsRevealed())
+				mSprite->SetActive(false);
+			else
+			{
+				mSprite->SetActive(true);
+				mSprite->SetShadow(!(light->IsInSight() && light->Illumination() > 0.6f));
+			}
+		}
+	}
+	bool Monster::IsNearPlayer()
+	{
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		return(playerPos.x - 10 <= mIndex.x && mIndex.x < playerPos.x + 10
+			&& playerPos.y - 6 <= mIndex.y && mIndex.y < playerPos.y + 6);
 	}
 }

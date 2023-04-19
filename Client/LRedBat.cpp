@@ -41,6 +41,7 @@ namespace cl
 	}
 	void RedBat::SetStats()
 	{
+		mActivationRadius = 3;
 		mMaxHealth = 1;
 		mAttackPower = 1.0f;
 		mDrop = 3;

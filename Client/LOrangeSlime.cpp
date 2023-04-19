@@ -57,8 +57,8 @@ namespace cl
 	
 	void OrangeSlime::SetStats()
 	{
+		mActivationRadius = INFINITY;
 		mMaxHealth = 1;
-		mHealth = 1;
 		mAttackPower = 0.5;
 		mDigPower = 0;
 		mDrop = 2;

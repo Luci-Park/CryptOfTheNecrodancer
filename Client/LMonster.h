@@ -18,6 +18,7 @@ namespace cl
 
 		virtual void Sink() override;
 		virtual void OnAttacked(float attackPower, Vector2 dir) override;
+		virtual void OnAggroed(){};
 		virtual void OnDestroy();
 
 		virtual void OnBeat() override;
@@ -37,10 +38,16 @@ namespace cl
 		virtual void PlayOnAttackSound() = 0;
 		virtual void PlayOnHitSound();
 		virtual void PlayOnDeathSound();
+	private:
+		void CheckAggro();
+		void CheckActivation();
+		void CheckShadow();
+		bool IsNearPlayer();
 	protected:
 		bool mbIsActivated;
 		bool mbIsAggroed;
 		
+		float mActivationRadius;
 		float mAttackPower;
 		int mDigPower;
 		int mDrop;
