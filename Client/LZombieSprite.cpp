@@ -66,7 +66,7 @@ namespace cl
 		isBeat = false;
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
-		if (mbIsRevealed)
+		if (mbInShadows)
 			mAnimator->PlayNoDuplication(mIdleAnim[idx], true, rev);
 		else
 			mAnimator->PlayNoDuplication(mIdleShadowAnim[idx], true, rev);
@@ -77,7 +77,7 @@ namespace cl
 		isBeat = true;
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
-		if (mbIsRevealed)
+		if (mbInShadows)
 			mAnimator->PlayNoDuplication(mBeatAnim[idx], true, rev);
 		else
 			mAnimator->PlayNoDuplication(mBeatShadowAnim[idx], true, rev);

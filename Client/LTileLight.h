@@ -8,7 +8,7 @@ namespace cl
 		TileLight(Vector2 index);
 		~TileLight();
 		void AddIllumination(float brightness);
-		float GetIllumination() { return mIllumination; }
+		float Illumination() { return mIllumination; }
 		bool IsRevealed() { return mIsRevealed; }
 		bool IsInSight() { return mIsInSightLine && mIllumination > 0.3f; }
 		bool IsInSightLine() { return mIsInSightLine; }

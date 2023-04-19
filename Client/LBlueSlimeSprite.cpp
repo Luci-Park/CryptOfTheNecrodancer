@@ -52,14 +52,14 @@ namespace cl
 	{
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"LeftIdleShadow", true, false);
 			else
 				mAnimator->Play(L"LeftIdle", true, false);
 		}
 		else
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"RightIdleShadow", true, false);
 			else
 				mAnimator->Play(L"RightIdle", true, false);
@@ -70,14 +70,14 @@ namespace cl
 		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"LeftJumpShadow", true, false);
 			else
 				mAnimator->Play(L"LeftJump", true, false);
 		}
 		else
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"RightJumpShadow", true, false);
 			else
 				mAnimator->Play(L"RightJump", true, false);

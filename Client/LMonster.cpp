@@ -8,6 +8,7 @@
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LMonsterHeart.h"
+#include "LTileLight.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
@@ -15,6 +16,8 @@ namespace cl
 		, mDigPower(0)
 		, mAttackPower(0)
 		, mDrop(0)
+		, mbIsActivated(false)
+		, mbIsAggroed(false)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
@@ -37,8 +40,17 @@ namespace cl
 	}
 	void Monster::Update()
 	{
+		TileLight* light = MapManager::GetLight(mIndex);
+		if (!light->IsRevealed())
+			mSprite->SetActive(false);
+		else
+		{
+			mSprite->SetActive(true);
+			mSprite->SetShadow(!(light->IsInSight() && light->Illumination() > 0.6f));
+		}
+		mSprite->SetShadow(mbIsRevealed);
 		GameCharacter::Update();
-		mSprite->SetRevealed(mbIsRevealed);
+		
 	}
 	void Monster::Render(HDC hdc)
 	{

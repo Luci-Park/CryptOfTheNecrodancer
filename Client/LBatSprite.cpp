@@ -29,14 +29,14 @@ namespace cl
 	{
 		if (dir == Vector2::Left)
 		{
-			if (mbIsRevealed)
+			if (mbInShadows)
 				mAnimator->PlayNoDuplication(mLeftAnimation, true, true);
 			else
 				mAnimator->PlayNoDuplication(mLeftShadowAnimation, true, true);
 		}
 		else if (dir == Vector2::Right)
 		{
-			if (mbIsRevealed)
+			if (mbInShadows)
 				mAnimator->PlayNoDuplication(mRightAnimation, true, false);
 			else
 				mAnimator->PlayNoDuplication(mRightShadowAnimation, true, false);

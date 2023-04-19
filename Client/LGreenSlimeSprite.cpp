@@ -47,14 +47,14 @@ namespace cl
 	{
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"LeftIdleShadow", true, false);
 			else
 				mAnimator->Play(L"LeftIdle", true, false);
 		}
 		else
 		{
-			if (!mbIsRevealed)
+			if (!mbInShadows)
 				mAnimator->Play(L"RightIdleShadow", true, false);
 			else
 				mAnimator->Play(L"RightIdle", true, false);

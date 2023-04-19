@@ -38,11 +38,15 @@ namespace cl
 		virtual void PlayOnHitSound();
 		virtual void PlayOnDeathSound();
 	protected:
-		AudioClip* mGeneralHit;
-		AudioClip* mGeneralDeath;
+		bool mbIsActivated;
+		bool mbIsAggroed;
+		
 		float mAttackPower;
 		int mDigPower;
 		int mDrop;
+
+		AudioClip* mGeneralHit;
+		AudioClip* mGeneralDeath;
 		MonsterWeapon* mWeapon;
 		MonsterHeart* mHeart;
 

@@ -56,7 +56,7 @@ namespace cl
         if (mStatus == Status::NoHead) return;
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
-        if (mbIsRevealed)
+        if (mbInShadows)
             mAnimator->PlayNoDuplication(mIdleAnimation[idx], true, rev);
         else
             mAnimator->PlayNoDuplication(mIdleShadowAnimation[idx], true, rev);
@@ -67,7 +67,7 @@ namespace cl
         if (mStatus == Status::NoHead) return;
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
-        if (mbIsRevealed)
+        if (mbInShadows)
             mAnimator->PlayNoDuplication(mRaiseHandAnimation[idx], true, rev);
         else
             mAnimator->PlayNoDuplication(mHandShadowAnimation[idx], true, rev);
@@ -76,7 +76,7 @@ namespace cl
     void SkeletonSprite::LostHead()
     {
         mStatus = Status::NoHead;
-        if (mbIsRevealed)
+        if (mbInShadows)
             mAnimator->PlayNoDuplication(mNoHead, true, false);
         else
             mAnimator->PlayNoDuplication(mNoHeadShadow, true, false);
