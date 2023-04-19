@@ -4,6 +4,7 @@
 #include "LObject.h"
 #include "LMapManager.h"
 #include "LFloorShadow.h"
+#include "LTileLight.h"
 namespace cl
 {
 #pragma region FloorTileStatic
@@ -78,9 +79,9 @@ namespace cl
 		Vector2 pos = index * UNITLENGTH;
 		switch (type)
 		{
-		case eFloorTypes::Ground:
+		case eFloorTypes::ActiveDirt:
 			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
-			reslt->SetFloorType(eFloorTypes::Ground);
+			reslt->SetFloorType(eFloorTypes::ActiveDirt);
 			break;
 		case eFloorTypes::Water:
 			reslt = object::Instantiate<GroundTile>(sc, pos, eLayerType::Background);
@@ -171,13 +172,17 @@ namespace cl
 	}
 	void GroundTile::Update()
 	{
-		mCurrStrategy = mStrategy[(int)mType];
+		if (MapManager::GetLight(mIndex)->IsInSight())
+			mCurrStrategy = mStrategy[(int)mType];
+		else
+			mCurrStrategy = mStrategy[(int)eFloorTypes::InactiveDirt];
 		FloorTile::Update();
 	}
 	void GroundTile::SetIndex(Vector2 index)
 	{
 		FloorTile::SetIndex(index);
-		mStrategy[(int)eFloorTypes::Ground] = new GroundStrategy(this);
+		mStrategy[(int)eFloorTypes::InactiveDirt] = new InactiveDirtStrategy(this);
+		mStrategy[(int)eFloorTypes::ActiveDirt] = new ActiveDirtStrategy(this);
 		mStrategy[(int)eFloorTypes::Flash] = new FlashStrategy(this);
 		mStrategy[(int)eFloorTypes::Water] = new WaterStrategy(this);
 
@@ -185,7 +190,7 @@ namespace cl
 	}
 	void GroundTile::OnBeat()
 	{
-		mStrategy[(int)eFloorTypes::Ground]->OnBeat();
+		mStrategy[(int)eFloorTypes::ActiveDirt]->OnBeat();
 		mStrategy[(int)eFloorTypes::Flash]->OnBeat();
 		mStrategy[(int)eFloorTypes::Water]->OnBeat();
 	}

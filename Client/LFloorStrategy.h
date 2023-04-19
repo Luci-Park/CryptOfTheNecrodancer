@@ -19,22 +19,23 @@ namespace cl
 		bool mIsEven;
 	};
 
-	class LobbyStrategy : public FloorStrategy
+	class InactiveDirtStrategy : public FloorStrategy
 	{
 	public:
-		LobbyStrategy(FloorTile* tile);
-		virtual ~LobbyStrategy() {}
+		InactiveDirtStrategy(FloorTile* tile);
+		virtual ~InactiveDirtStrategy() {}
 		Sprite GetSprite(){return mSprite;}
 		virtual void OnBeat() {}
+		virtual void OnInteract(TileObject* object) {}
 	private:
 		Sprite mSprite;
 	};
 
-	class GroundStrategy : public FloorStrategy
+	class ActiveDirtStrategy : public FloorStrategy
 	{
 	public:
-		GroundStrategy(FloorTile* tile);
-		virtual ~GroundStrategy(){}
+		ActiveDirtStrategy(FloorTile* tile);
+		virtual ~ActiveDirtStrategy(){}
 		virtual Sprite GetSprite();
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object){}

@@ -83,7 +83,8 @@ enum class eWallTypes
 
 enum class eFloorTypes
 {
-	Ground,
+	InactiveDirt,
+	ActiveDirt,
 	Flash,
 	Water,
 	ClosedStairs,

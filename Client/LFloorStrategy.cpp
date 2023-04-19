@@ -17,18 +17,15 @@ namespace cl
 #pragma endregion
 
 #pragma region Child - Lobby Strategy
-	LobbyStrategy::LobbyStrategy(FloorTile* tile)
+	InactiveDirtStrategy::InactiveDirtStrategy(FloorTile* tile)
 		:FloorStrategy(tile)
 	{
-		if (mIsEven)
-			mSprite = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
-		else
-			mSprite = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
+		mSprite = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
 	}
 #pragma endregion
 
 
-	GroundStrategy::GroundStrategy(FloorTile* tile)
+	ActiveDirtStrategy::ActiveDirtStrategy(FloorTile* tile)
 		:FloorStrategy(tile)
 	{
 		mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
@@ -36,12 +33,12 @@ namespace cl
 		mIndex = mIsEven;
 	}
 
-	Sprite GroundStrategy::GetSprite()
+	Sprite ActiveDirtStrategy::GetSprite()
 	{
 		return mSprites[mIndex];
 	}
 
-	void GroundStrategy::OnBeat()
+	void ActiveDirtStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
 	}
@@ -80,7 +77,7 @@ namespace cl
 		{
 			mOutWaterClip->Play(false);
 			mbInteracted = false;
-			mTile->SetFloorType(eFloorTypes::Ground);
+			mTile->SetFloorType(eFloorTypes::ActiveDirt);
 		}
 	}
 	void WaterStrategy::OnInteract(TileObject* object)

@@ -285,7 +285,7 @@ namespace cl
 			mFloorBluePrint[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				mFloorBluePrint[i][j] = eFloorTypes::Ground;
+				mFloorBluePrint[i][j] = eFloorTypes::ActiveDirt;
 			}
 		}
 

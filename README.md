@@ -74,4 +74,8 @@ WindowAPI Project (2/14 ~ )
 * Tile Behavior according to light
     * If illuminated and in line of sight = is active.
     * If was revealed = show in default state.
-* 
+* Monsters
+    * Sprites
+        * Tile not revealed = don't show
+        * If Tile revealed but not inSight or not illuminated = inShadows
+        * If inSight and illuminated = full color
