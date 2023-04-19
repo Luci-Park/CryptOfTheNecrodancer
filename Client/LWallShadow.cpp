@@ -21,17 +21,20 @@ namespace cl
 	void WallShadow::Update()
 	{
 		TileLight* light = MapManager::GetLight(mIndex);
-		if (light->IsInSight())
+		if (light != nullptr)
 		{
-			mShadow->SetAlpha(255 * (1 - light->Illumination()));
-		}
-		else if (light->IsRevealed())
-		{
-			mShadow->SetAlpha(255 * 0.7);
-		}
-		else
-		{
-			mShadow->SetAlpha(255);
+			if (light->IsInSight())
+			{
+				mShadow->SetAlpha(255 * (1 - light->Illumination()));
+			}
+			else if (light->IsRevealed())
+			{
+				mShadow->SetAlpha(255 * 0.7);
+			}
+			else
+			{
+				mShadow->SetAlpha(255);
+			}
 		}
 		GameObject::Update();
 	}
