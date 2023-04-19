@@ -62,4 +62,7 @@ WindowAPI Project (2/14 ~ )
 * Map Brightness
 * Floor Shadows
 * Wall Shadows
-* 
+* Reveal
+    - Illuminated and line of sight
+    - Revealed but not illuminated or in line of sight.
+    - line of sight implemented with `Bresenham's line algorithm`

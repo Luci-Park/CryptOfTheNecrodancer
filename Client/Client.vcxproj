@@ -210,6 +210,7 @@
     <ClInclude Include="LSplashScene.h" />
     <ClInclude Include="LSprite.h" />
     <ClInclude Include="LSpriteRenderer.h" />
+    <ClInclude Include="LTileLight.h" />
     <ClInclude Include="LTileObject.h" />
     <ClInclude Include="LTime.h" />
     <ClInclude Include="LTitleScene.h" />
@@ -302,6 +303,7 @@
     <ClCompile Include="LSplashScene.cpp" />
     <ClCompile Include="LSpriteRenderer.cpp" />
     <ClCompile Include="LStairTile.cpp" />
+    <ClCompile Include="LTileLight.cpp" />
     <ClCompile Include="LTileObject.cpp" />
     <ClCompile Include="LTime.cpp" />
     <ClCompile Include="LTitleScene.cpp" />

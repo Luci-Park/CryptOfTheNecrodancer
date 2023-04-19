@@ -15,6 +15,15 @@ namespace cl
 
 	Map::~Map()
 	{
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				delete mLightStatus[i][j];
+				mLightStatus[i][j] = nullptr;
+			}
+
+		}
 	}
 
 #pragma region MapInteraction
@@ -56,7 +65,20 @@ namespace cl
 	}
 	void Map::CalculateLight()
 	{
-		mBrightness = std::vector<std::vector<float>>(mMapSize.y, std::vector<float>(mMapSize.x, 0.0));
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				mLightStatus[i][j]->Reset();
+			}
+		}
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				mLightStatus[i][j]->CheckIfInSight(mPlayerIndex);
+			}
+		}
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
@@ -70,16 +92,16 @@ namespace cl
 	{
 		if (IndexIsValid(pos))
 		{
-			mBrightness[pos.y][pos.x] = std::clamp(mBrightness[pos.y][pos.x] + brightness, 0.0f, 1.0f);
+			mLightStatus[pos.y][pos.x]->AddIllumination(brightness);
 		}
 	}
-	float Map::GetLight(Vector2 pos)
+	TileLight* Map::GetLight(Vector2 pos)
 	{
 		if (IndexIsValid(pos))
 		{
-			return mBrightness[pos.y][pos.x];
+			return mLightStatus[pos.y][pos.x];
 		}
-		return 0.0f;
+		return nullptr;
 	}
 	void Map::OnTileStep(TileObject* object, Vector2 pos)
 	{
@@ -133,7 +155,7 @@ namespace cl
 		CreateWall(sc);
 		CreateForeGround(sc);
 		CreateItems(sc);
-		CalculateLight();
+		CreateLightInfo();
 	}
 
 	bool Map::IndexIsValid(Vector2 index)
@@ -229,6 +251,19 @@ namespace cl
 				}
 			}
 		}
+	}
+	void Map::CreateLightInfo()
+	{
+		mLightStatus.resize(mMapSize.y);
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			mLightStatus[i].resize(mMapSize.x);
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				mLightStatus[i][j] = new TileLight(Vector2(j, i));
+			}
+		}
+		CalculateLight();
 	}
 #pragma endregion
 #pragma endregion

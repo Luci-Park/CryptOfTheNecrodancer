@@ -1,6 +1,7 @@
 #include "LFloorShadow.h"
 #include "LImage.h"
 #include "LMapManager.h"
+#include "LTileLight.h"
 namespace cl
 {
 	FloorShadow::FloorShadow(Scene* sc)
@@ -20,8 +21,11 @@ namespace cl
 	}
 	void FloorShadow::Update()
 	{
-		float brightness = MapManager::GetLight(mIndex);
-		mShadow->SetAlpha(brightness > 0.3f ? 255 * (1-brightness) : 255);
+		TileLight* light = MapManager::GetLight(mIndex);
+		if (light->IsInSightLine())
+			mShadow->SetAlpha(0);
+		else
+			mShadow->SetAlpha(255);
 		GameObject::Update();
 	}
 	void FloorShadow::SetIndex(Vector2 index)

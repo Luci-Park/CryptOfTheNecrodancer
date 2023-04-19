@@ -1,5 +1,6 @@
 #include "LTileObject.h"
 #include "LMapManager.h"
+#include "LTileLight.h"
 namespace cl
 {
 	TileObject::TileObject(Scene* sc)
@@ -13,8 +14,8 @@ namespace cl
 	}
 	void TileObject::Update()
 	{
+		mbIsRevealed = MapManager::GetLight(mIndex)->IsInSight();
 		GameObject::Update();
-		mbIsRevealed = MapManager::GetLight(mIndex) >= 0.3f;
 	}
 	void TileObject::Render(HDC hdc)
 	{

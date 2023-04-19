@@ -5,9 +5,11 @@ namespace cl
 	class FloorTile;
 	class WallTile;
 	class TileObject;
+	class TileLight;
 	class Item;
 	class Cadence;
 	class Map;
+	class Scene;
 	class MapManager
 	{
 	public:
@@ -26,7 +28,7 @@ namespace cl
 		static void Render(HDC hdc);
 
 		static void SetLight(Vector2 index, float brightness);
-		static float GetLight(Vector2 index);
+		static TileLight* GetLight(Vector2 index);
 
 		static void OnTileStep(TileObject* object, Vector2 pos);
 

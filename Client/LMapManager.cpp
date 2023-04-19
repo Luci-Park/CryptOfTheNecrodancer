@@ -50,11 +50,11 @@ namespace cl
 		if (_Map != nullptr)
 			_Map->SetLight(index, brightness);
 	}
-	float MapManager::GetLight(Vector2 index)
+	TileLight* MapManager::GetLight(Vector2 index)
 	{
 		if (_Map != nullptr)
 			return _Map->GetLight(index);
-		return 0.0f;
+		return nullptr;
 	}
 	void MapManager::OnTileStep(TileObject* object, Vector2 pos)
 	{

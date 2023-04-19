@@ -424,6 +424,7 @@
     <ClInclude Include="LFloorShadow.h">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClInclude>
+    <ClInclude Include="LTileLight.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -700,5 +701,6 @@
     <ClCompile Include="LFloorShadow.cpp">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
+    <ClCompile Include="LTileLight.cpp" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "LBeatObject.h"
 #include "LWallTile.h"
 #include "LItem.h"
+#include "LTileLight.h"
 namespace cl
 {
 	class FloorTile;
@@ -29,7 +30,7 @@ namespace cl
 		virtual void OnBeatChanged() {};
 		
 		void SetLight(Vector2 pos, float brightness);
-		float GetLight(Vector2 pos);
+		TileLight* GetLight(Vector2 pos);
 		void OnTileStep(TileObject* object, Vector2 pos);
 
 		WallTile* GetWall(Vector2 index);
@@ -64,11 +65,12 @@ namespace cl
 		void CreateItems(Scene* sc);
 		void CreatePlayer(Scene* sc);
 		void CreateMonsters(Scene* sc);
+		void CreateLightInfo();
 		std::vector<std::vector<FloorTile*>> mFloor;
 		std::vector<std::vector<WallTile*>> mWall;
 		std::vector<std::vector<Item*>> mItems;
 		std::vector<std::vector<TileObject*>> mTileObjects;
-		std::vector<std::vector<float>> mBrightness;
+		std::vector<std::vector<TileLight*>> mLightStatus;
 	};
 
 	class LobbyMap : public Map
