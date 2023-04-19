@@ -14,42 +14,24 @@ namespace cl
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj == nullptr)
-				continue;
-
-			if (gameObj->GetState() 
-				!= GameObject::eState::Active)
-				continue;
-
-			gameObj->Initialize();
+			if (gameObj != nullptr && gameObj->IsActive())
+				gameObj->Initialize();
 		}
 	}
 	void Layer::Update()
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj == nullptr)
-				continue;
-
-			if (gameObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
-
-			gameObj->Update();
+			if (gameObj != nullptr && gameObj->IsActive())
+				gameObj->Update();
 		}
 	}
 	void Layer::Render(HDC hdc)
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj == nullptr)
-				continue;
-
-			if (gameObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
-
-			gameObj->Render(hdc);
+			if(gameObj != nullptr && gameObj->IsActive())
+				gameObj->Render(hdc);
 		}
 	}
 

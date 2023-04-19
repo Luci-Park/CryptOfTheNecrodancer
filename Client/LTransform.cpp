@@ -38,7 +38,8 @@ namespace cl
 	}
 	void Transform::SetChildren(Transform* child)
 	{
-		mChildren.push_back(child);
+		if(child != nullptr && child != this)
+			mChildren.push_back(child);
 	}
 	void Transform::RemoveChildren(Transform* child)
 	{
@@ -50,21 +51,21 @@ namespace cl
 	}
 	void Transform::CalculateWorldPos()
 	{
-		if (mParent != this)
+		if (mParent != this && mParent != nullptr)
 			mWorldPos = mLocalPos + mParent->GetPos();
 		else
 			mWorldPos = mLocalPos;
 	}
 	void Transform::CalculateLocalPos()
 	{
-		if (mParent != this)
+		if (mParent != this && mParent != nullptr)
 			mLocalPos = mWorldPos - mParent->GetPos();
 		else
 			mLocalPos = mWorldPos;
 	}
 	void Transform::CalculateWorldScale()
 	{
-		if (mParent != this)
+		if (mParent != this && mParent != nullptr)
 		{
 			Vector2 parentScale = mParent->GetScale();
 			mWorldScale.x = mLocalScale.x * parentScale.x;
@@ -75,7 +76,7 @@ namespace cl
 	}
 	void Transform::CalculateLocalScale()
 	{
-		if (mParent != this)
+		if (mParent != this && mParent != nullptr)
 		{
 			Vector2 parentScale = mParent->GetScale();
 			mLocalScale.x = parentScale.y == 0? 0: mWorldScale.x / parentScale.x;

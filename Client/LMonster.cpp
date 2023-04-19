@@ -40,8 +40,7 @@ namespace cl
 	}
 	void Monster::Update()
 	{
-		GameCharacter::Update();
-		
+		GameCharacter::Update();		
 	}
 	void Monster::Render(HDC hdc)
 	{
@@ -180,7 +179,10 @@ namespace cl
 		if (light != nullptr)
 		{
 			if (!light->IsRevealed())
+			{
 				mSprite->SetActive(false);
+				mHeart->SetActive(false);
+			}
 			else
 			{
 				mSprite->SetActive(true);

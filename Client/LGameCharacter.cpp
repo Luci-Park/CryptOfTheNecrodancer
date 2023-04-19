@@ -49,7 +49,7 @@ namespace cl
 	void GameCharacter::Render(HDC hdc)
 	{
 		TileObject::Render(hdc);
-		if (mSprite != nullptr)
+		if (mSprite != nullptr && mSprite->IsActive())
 			mSprite->Render(hdc);
 	}
 	

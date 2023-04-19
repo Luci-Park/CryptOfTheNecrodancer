@@ -57,11 +57,4 @@ namespace cl::object
 		gameObj->GameObject::GetComponent<Transform>()->SetWorldPos(pos);
 		return gameObj;
 	}
-
-
-	static void Destory(GameObject* obj)
-	{
-		if(obj != nullptr)
-			obj->SetState(GameObject::eState::Death);
-	}
 }

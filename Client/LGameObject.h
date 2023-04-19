@@ -9,12 +9,6 @@ namespace cl
 	class GameObject : public Entity
 	{
 	public:
-		enum class eState
-		{
-			Active,
-			Pause,
-			Death,
-		};
 
 		GameObject(Scene* scene, bool isUI);
 		virtual ~GameObject();
@@ -52,16 +46,12 @@ namespace cl
 			return nullptr;
 		}
 		
-		eState GetState() { return mState; }
-		void SetState(eState state) { mState = state; }
-		
 		Scene* GetScene(){ return mScene; }
 		bool IsUI() { return mbisUI; }
 	public:
 		Transform* mTransform;
 	private:
 		std::vector<Component*> mComponents;
-		eState mState;
 		bool mbisUI;
 		Scene* mScene;
 	};
