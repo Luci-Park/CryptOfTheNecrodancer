@@ -26,19 +26,25 @@ namespace cl
 	}
 	void RedBatSprite::Turn(Vector2 dir)
 	{
-		if (dir == Vector2::Left)
+		if (dir == Vector2::Left || dir == Vector2::Right)
+			mLookDir = dir;
+		if (mLookDir == Vector2::Left)
 		{
-			if (mbInShadows)
-				mAnimator->PlayNoDuplication(mLeftAnimation, true, true);
+			if (!mbInShadows)
+				mAnimator->Play(mLeftAnimation, true, true);
 			else
-				mAnimator->PlayNoDuplication(mLeftShadowAnimation, true, true);
+				mAnimator->Play(mLeftShadowAnimation, true, true);
 		}
-		else if (dir == Vector2::Right)
+		else if (mLookDir == Vector2::Right)
 		{
-			if (mbInShadows)
-				mAnimator->PlayNoDuplication(mRightAnimation, true, false);
+			if (!mbInShadows)
+				mAnimator->Play(mRightAnimation, true, false);
 			else
-				mAnimator->PlayNoDuplication(mRightShadowAnimation, true, false);
+				mAnimator->Play(mRightShadowAnimation, true, false);
 		}
+	}
+	void RedBatSprite::PlayAnimation()
+	{
+		Turn(mLookDir);
 	}
 }

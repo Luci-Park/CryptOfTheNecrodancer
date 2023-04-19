@@ -45,7 +45,6 @@ namespace cl
 	void SkeletonBase::Update()
 	{
 		Monster::Update();
-		mSprite->Turn(MoveTowardsPlayer());
 			
 	}
 	void SkeletonBase::PlayOnAttackSound()
@@ -69,6 +68,7 @@ namespace cl
 	void SkeletonBase::OnLateBeat()
 	{
 		Monster::OnLateBeat();
+		mSprite->Turn(MoveTowardsPlayer());
 		if(mMoveStatus == MoveStatus::Moved)
 			mbPause = !mbPause;
 	}

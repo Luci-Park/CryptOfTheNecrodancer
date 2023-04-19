@@ -22,7 +22,9 @@ namespace cl
 		virtual void UnSink();
 		virtual void Flash();
 		virtual void SetShadow(bool inShadow) { mbInShadows = inShadow; }
+		virtual void PlayAnimation() = 0;
 		void Reset();
+		
 	protected:
 		bool mbIsJumping;
 		bool mbDirIsUp;

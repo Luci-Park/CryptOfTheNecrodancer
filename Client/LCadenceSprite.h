@@ -18,7 +18,7 @@ namespace cl
 		virtual void Turn(Vector2 dir) override;
 		
 		virtual void OnBeatChanged() override;
-
+		virtual void PlayAnimation() override;
 		virtual void Sink() override;
 		virtual void UnSink() override;
 	private:

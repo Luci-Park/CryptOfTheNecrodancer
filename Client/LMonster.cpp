@@ -94,6 +94,7 @@ namespace cl
 	{
 		if(mbIsActivated || mbIsAggroed)
 			TryMove();
+		mSprite->PlayAnimation();
 	}
 	void Monster::OnBeatChanged()
 	{

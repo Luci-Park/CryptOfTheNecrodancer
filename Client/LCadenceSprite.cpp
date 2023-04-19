@@ -40,6 +40,13 @@ namespace cl
 		mHead->SetDuration(dur);
 		mBody->SetDuration(dur);
 	}
+
+	void CadenceSprite::PlayAnimation()
+	{
+		mHead->Reset();
+		mBody->Reset();
+	}
+
 	void CadenceSprite::Sink()
 	{
 		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH * 0.25);

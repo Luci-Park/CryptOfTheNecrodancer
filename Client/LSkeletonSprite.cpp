@@ -51,6 +51,9 @@ namespace cl
                 Idle();
         }
     }
+    void SkeletonSprite::PlayAnimation()
+    {
+    }
     void SkeletonSprite::Idle()
     {
         if (mStatus == Status::NoHead) return;
