@@ -76,15 +76,15 @@ namespace cl
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				mLightStatus[i][j]->CheckIfInSight(mPlayerIndex);
+				if(mTileObjects[i][j] != nullptr)
+					mTileObjects[i][j]->CalLightBrightness();
 			}
 		}
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				if(mTileObjects[i][j] != nullptr)
-					mTileObjects[i][j]->CalLightBrightness();
+				mLightStatus[i][j]->CheckIfInSight(mPlayerIndex);
 			}
 		}
 	}

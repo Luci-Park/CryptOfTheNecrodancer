@@ -60,9 +60,18 @@ WindowAPI Project (2/14 ~ )
 
 ## Week 10(4/16 ~ 4/22)
 * Map Brightness
-* Floor Shadows
-* Wall Shadows
 * Reveal
     - Illuminated and line of sight
     - Revealed but not illuminated or in line of sight.
     - line of sight implemented with `Bresenham's line algorithm`
+* Tile Shadow
+    * Floor Shadow
+    * Tile Shadow
+    * Behavior
+        * If illuminated and in line of sight = show as much as the illumination.
+        * If not but was revealed, show 30%
+        * If not, don't show
+* Tile Behavior according to light
+    * If illuminated and in line of sight = is active.
+    * If was revealed = show in default state.
+* 

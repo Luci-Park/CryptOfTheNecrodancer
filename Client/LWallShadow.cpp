@@ -15,16 +15,24 @@ namespace cl
 	{
 		mShadow = AddComponent<SpriteRenderer>();
 		GameObject::Initialize();
-		mShadow->SetImage(Image::CreateEmptyImage(L"WallShadow", 24, 41, RGB(0, 0, 0)));
-		mShadow->SetSprite(Sprite(Vector2(0, 0), Vector2(24, 41), Vector2(-12.0f, -27.0f)));
+		mShadow->SetImage(Image::CreateEmptyImage(L"WallShadow", 24, 40, RGB(0, 0, 0)));
+		mShadow->SetSprite(Sprite(Vector2(0, 0), Vector2(24, 40), Vector2(-12.0f, -27.0f)));
 	}
 	void WallShadow::Update()
 	{
 		TileLight* light = MapManager::GetLight(mIndex);
-		if (light->IsInSightLine())
-			mShadow->SetAlpha(0);
+		if (light->IsInSight())
+		{
+			mShadow->SetAlpha(255 * (1 - light->GetIllumination()));
+		}
+		else if (light->IsRevealed())
+		{
+			mShadow->SetAlpha(255 * 0.7);
+		}
 		else
+		{
 			mShadow->SetAlpha(255);
+		}
 		GameObject::Update();
 	}
 	void WallShadow::SetIndex(Vector2 index)
