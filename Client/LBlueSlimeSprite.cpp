@@ -33,6 +33,8 @@ namespace cl
 	}
 	void BlueSlimeSprite::Update()
 	{
+		if (mbIsJumping)
+			JumpAnimation();
 		CharacterSprite::Update();
 	}
 	void BlueSlimeSprite::Render(HDC hdc)
@@ -43,6 +45,10 @@ namespace cl
 	{
 		if (dir == Vector2::Left || dir == Vector2::Right)
 			mLookDir = dir;
+		if (mbIsJumping)
+			Jump();
+		else
+			Idle();
 	}
 	void BlueSlimeSprite::OnBeatChanged()
 	{
@@ -52,35 +58,34 @@ namespace cl
 	{
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbInShadows)
+			if (mbInShadows)
 				mAnimator->Play(L"LeftIdleShadow", true, false);
 			else
 				mAnimator->Play(L"LeftIdle", true, false);
 		}
 		else
 		{
-			if (!mbInShadows)
+			if (mbInShadows)
 				mAnimator->Play(L"RightIdleShadow", true, false);
 			else
 				mAnimator->Play(L"RightIdle", true, false);
 		}
 	}
-	void BlueSlimeSprite::Jump()
+	void BlueSlimeSprite::JumpAnimation()
 	{
-		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbInShadows)
-				mAnimator->Play(L"LeftJumpShadow", true, false);
+			if (mbInShadows)
+				mAnimator->PlayNoDuplication(L"LeftJumpShadow", true, false);
 			else
-				mAnimator->Play(L"LeftJump", true, false);
+				mAnimator->PlayNoDuplication(L"LeftJump", true, false);
 		}
 		else
 		{
-			if (!mbInShadows)
-				mAnimator->Play(L"RightJumpShadow", true, false);
+			if (mbInShadows)
+				mAnimator->PlayNoDuplication(L"RightJumpShadow", true, false);
 			else
-				mAnimator->Play(L"RightJump", true, false);
+				mAnimator->PlayNoDuplication(L"RightJump", true, false);
 		}
 		if (mbIsJumping == false)
 			Idle();

@@ -90,4 +90,12 @@ namespace cl
 			mAnimator->SetShow(true);
 		}
 	}
+	void CharacterSprite::SetShadow(bool inShadow)
+	{
+		if (mbInShadows != inShadow)
+		{
+			mbInShadows = inShadow;
+			Turn(Vector2::Zero);
+		}
+	}
 }

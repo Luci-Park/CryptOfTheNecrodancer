@@ -37,24 +37,24 @@ namespace cl
 	{
 		if (dir == Vector2::Left || dir == Vector2::Right)
 			mLookDir = dir;
+		JumpAnimation();
 	}
 	void OrangeSlimeSprite::OnBeatChanged()
 	{
 		mAnimator->SetDuration(BeatManager::BeatDuration());
 	}
-	void OrangeSlimeSprite::Jump()
+	void OrangeSlimeSprite::JumpAnimation()
 	{
-		CharacterSprite::Jump();
 		if (mLookDir == Vector2::Left)
 		{
-			if (!mbInShadows)
+			if (mbInShadows)
 				mAnimator->Play(L"LeftJumpShadow", true, false);
 			else
 				mAnimator->Play(L"LeftJump", true, false);
 		}
 		else
 		{
-			if (!mbInShadows)
+			if (mbInShadows)
 				mAnimator->Play(L"RightJumpShadow", true, false);
 			else
 				mAnimator->Play(L"RightJump", true, false);

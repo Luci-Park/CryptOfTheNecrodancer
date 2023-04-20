@@ -45,24 +45,23 @@ namespace cl
         if(dir == Vector2::Left || dir == Vector2::Right)
         {
             mLookDir = dir;
-            if (mStatus == Status::RaiseHand)
-                RaiseHand();
-            else if(mStatus == Status::Idle)
-                Idle();
         }
-    }
-    void SkeletonSprite::PlayAnimation()
-    {
+        if (mStatus == Status::RaiseHand)
+            RaiseHand();
+        else if (mStatus == Status::Idle)
+            Idle();
+        else if (mStatus == Status::NoHead)
+            LostHead();
     }
     void SkeletonSprite::Idle()
     {
         if (mStatus == Status::NoHead) return;
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
-        if (mbInShadows)
-            mAnimator->PlayNoDuplication(mIdleAnimation[idx], true, rev);
+        if (!mbInShadows)
+            mAnimator->Play(mIdleAnimation[idx], true, rev);
         else
-            mAnimator->PlayNoDuplication(mIdleShadowAnimation[idx], true, rev);
+            mAnimator->Play(mIdleShadowAnimation[idx], true, rev);
         mStatus = Status::Idle;
     }
     void SkeletonSprite::RaiseHand()
@@ -70,19 +69,19 @@ namespace cl
         if (mStatus == Status::NoHead) return;
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
-        if (mbInShadows)
-            mAnimator->PlayNoDuplication(mRaiseHandAnimation[idx], true, rev);
+        if (!mbInShadows)
+            mAnimator->Play(mRaiseHandAnimation[idx], true, rev);
         else
-            mAnimator->PlayNoDuplication(mHandShadowAnimation[idx], true, rev);
+            mAnimator->Play(mHandShadowAnimation[idx], true, rev);
         mStatus = Status::RaiseHand;
     }
     void SkeletonSprite::LostHead()
     {
         mStatus = Status::NoHead;
-        if (mbInShadows)
-            mAnimator->PlayNoDuplication(mNoHead, true, false);
+        if (!mbInShadows)
+            mAnimator->Play(mNoHead, true, false);
         else
-            mAnimator->PlayNoDuplication(mNoHeadShadow, true, false);
+            mAnimator->Play(mNoHeadShadow, true, false);
     }
     int SkeletonSprite::GetIndex(Vector2 dir)
     {

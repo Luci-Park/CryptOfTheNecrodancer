@@ -25,17 +25,14 @@ namespace cl
 
 		PlayRight();
 	}
-	void CadenceHead::Update()
+	void CadenceHead::Flip(Vector2 dir)
 	{
-		if (Vector2::Right == mDir)
+		if (dir == Vector2::Left || dir == Vector2::Right)
+			mDir = dir;
+		if (mDir == Vector2::Right)
 			PlayRight();
-		else if (-Vector2::Right == mDir)
+		else if (mDir == Vector2::Left)
 			PlayLeft();
-		GameObject::Update();
-	}
-	void CadenceHead::Render(HDC hdc)
-	{
-		GameObject::Render(hdc);
 	}
 	void CadenceHead::Reset()
 	{
@@ -49,16 +46,12 @@ namespace cl
 
 	void CadenceHead::PlayRight()
 	{
-		if (!mAnimator->IsAnimationPlaying(mRightAnimation))
-		{
-			mAnimator->Play(mRightAnimation, true, false);
-		}
+		mAnimator->Play(mRightAnimation, true, false);
 	}
 
 	void CadenceHead::PlayLeft()
 	{
-		if (!mAnimator->IsAnimationPlaying(mLeftAnimation))
-			mAnimator->Play(mLeftAnimation, true, true);
+		mAnimator->Play(mLeftAnimation, true, true);
 	}
 	
 }

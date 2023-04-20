@@ -40,7 +40,10 @@ namespace cl
 	}
 	void Monster::Update()
 	{
-		GameCharacter::Update();		
+		GameCharacter::Update();
+		CheckAggro();
+		CheckActivation();
+		CheckShadow();
 	}
 	void Monster::Render(HDC hdc)
 	{
@@ -65,9 +68,6 @@ namespace cl
 	}
 	void Monster::OnBeat()
 	{
-		CheckAggro();
-		CheckActivation();
-		CheckShadow();
 		if (mbIsActivated || mbIsAggroed)
 		{
 			mMoveStatus = MoveStatus::NotMoved;
@@ -94,7 +94,7 @@ namespace cl
 	{
 		if(mbIsActivated || mbIsAggroed)
 			TryMove();
-		mSprite->PlayAnimation();
+		mSprite->Turn(mNextDir);
 	}
 	void Monster::OnBeatChanged()
 	{
@@ -176,18 +176,24 @@ namespace cl
 	}
 	void Monster::CheckShadow()
 	{
-		TileLight* light = MapManager::GetLight(mIndex);
+		Vector2 index = mTransform->GetPos() / UNITLENGTH;
+		TileLight* light = MapManager::GetLight(index);
 		if (light != nullptr)
 		{
-			if (!light->IsRevealed())
+			if (light->IsRevealed())
 			{
-				mSprite->SetActive(false);
-				mHeart->SetActive(false);
+				mSprite->SetActive(true);
+				bool isInlight = light->IsInSight() && light->Illumination() > 0.5f;
+				mSprite->SetShadow(!isInlight);
+				mHeart->SetActive(true);
 			}
 			else
 			{
-				mSprite->SetActive(true);
-				mSprite->SetShadow(!(light->IsInSight() && light->Illumination() > 0.6f));
+				if (!mbIsMoving)
+				{
+					mSprite->SetActive(false);
+					mHeart->SetActive(false);
+				}
 			}
 		}
 	}

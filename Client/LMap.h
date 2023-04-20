@@ -13,7 +13,7 @@ namespace cl
 	class Item;
 	class Cadence;
 	class TileObject;
-	class Map : public BeatObject
+	class Map
 	{
 	public:
 		Map();
@@ -24,10 +24,6 @@ namespace cl
 
 		virtual void Update();
 		void Render(HDC hdc);
-
-		virtual void OnBeat();
-		virtual void OnLateBeat() {};
-		virtual void OnBeatChanged() {};
 		
 		void SetLight(Vector2 pos, float brightness);
 		TileLight* GetLight(Vector2 pos);

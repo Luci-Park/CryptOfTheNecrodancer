@@ -21,8 +21,7 @@ namespace cl
 		virtual void Sink();
 		virtual void UnSink();
 		virtual void Flash();
-		virtual void SetShadow(bool inShadow) { mbInShadows = inShadow; }
-		virtual void PlayAnimation() = 0;
+		virtual void SetShadow(bool inShadow);
 		void Reset();
 		
 	protected:

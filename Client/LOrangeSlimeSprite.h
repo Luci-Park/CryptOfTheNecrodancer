@@ -15,7 +15,7 @@ namespace cl
 		virtual void Turn(Vector2 dir) override;
 		virtual void OnBeatChanged() override;
 
-		virtual void Jump() override;
+		void JumpAnimation();
 	private:
 		Vector2 mLookDir;
 	};

@@ -15,7 +15,6 @@ namespace cl
 			_Map = new LobbyMap();
 		}
 		_Map->CreateMap(sc);
-		BeatManager::AddCharacters(_Map);
 	}
 	void MapManager::DestroyMap()
 	{

@@ -44,8 +44,4 @@ namespace cl
 				mAnimator->Play(mRightShadowAnimation, true, false);
 		}
 	}
-	void BatSprite::PlayAnimation()
-	{
-		Turn(mLookDir);
-	}
 }

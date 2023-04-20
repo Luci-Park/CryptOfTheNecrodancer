@@ -60,6 +60,7 @@ namespace cl
 	}
 	void GameCharacter::Recoil(Vector2 dir)
 	{
+		if (dir == Vector2::Zero) return;
 		if (!mbMoveFailed)
 		{
 			mMoveTarget += dir * UNITLENGTH / 2;

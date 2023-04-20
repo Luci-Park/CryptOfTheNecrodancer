@@ -32,9 +32,8 @@ namespace cl
 	void LobbyScene::Update()
 	{
 		BeatManager::Update();
+		MapManager::Update();
 		Scene::Update();
-		if (Input::GetKeyDown(eKeyCode::Q))
-			SceneManager::LoadScene(eSceneType::Splash);
 	}
 	void LobbyScene::Render(HDC hdc)
 	{

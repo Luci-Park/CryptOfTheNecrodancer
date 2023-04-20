@@ -43,8 +43,4 @@ namespace cl
 				mAnimator->Play(mRightShadowAnimation, true, false);
 		}
 	}
-	void RedBatSprite::PlayAnimation()
-	{
-		Turn(mLookDir);
-	}
 }

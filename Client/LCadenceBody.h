@@ -11,10 +11,8 @@ namespace cl
 		~CadenceBody();
 
 		virtual void Initialize() override;
-		virtual void Update() override;
-		virtual void Render(HDC hdc) override;
 
-		void Flip(Vector2 dir) { mDir = dir; }
+		void Flip(Vector2 dir);
 		void Reset();
 		void SetDuration(float dur);
 		void Sink();

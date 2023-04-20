@@ -5,8 +5,9 @@
 #include "LShovel.h"
 #include "LZombie.h"
 #include "LSkeleton.h"
-#include "LBat.h"
+#include "LRedBat.h"
 #include "LOrangeSlime.h"
+#include "LBlueSlime.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -46,6 +47,7 @@ namespace cl
 	}
 	void Map::Update()
 	{
+		CalculateLight();
 	}
 	void Map::Render(HDC hdc)
 	{
@@ -59,10 +61,6 @@ namespace cl
 					mTileObjects[i][j]->Render(hdc);
 			}
 		}
-	}
-	void Map::OnBeat()
-	{
-		CalculateLight();
 	}
 	void Map::CalculateLight()
 	{
@@ -246,7 +244,7 @@ namespace cl
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<GreenSkeleton>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<Zombie>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

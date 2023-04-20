@@ -15,7 +15,6 @@ namespace cl
 		virtual void Initialize() override;
 
 		virtual void Turn(Vector2 dir) override;
-		virtual void PlayAnimation() override;
 		void SetSkeleY(int y);
 		void Idle();
 		void RaiseHand();
