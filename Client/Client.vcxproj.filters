@@ -448,6 +448,7 @@
     <ClInclude Include="LDireBat.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClInclude>
+    <ClInclude Include="LMinotaurBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -736,5 +737,6 @@
     <ClCompile Include="LDireBat.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClCompile>
+    <ClCompile Include="LMinotaurBase.cpp" />
   </ItemGroup>
 </Project>

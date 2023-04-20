@@ -1,23 +1,23 @@
 #pragma once
 #include "LMonster.h"
+
 namespace cl
 {
-	class DireBatBase : public Monster
+	class MinotaurBase : public Monster
 	{
 	public:
-		DireBatBase(Scene* sc);
-		virtual ~DireBatBase();
+		enum class State{Idle, Charge, Faint};
+		MinotaurBase(Scene* sc);
+		virtual ~MinotaurBase();
 
 		virtual void Initialize() override;
 
-		virtual void Recoil(Vector2 dir) override {};
 		virtual void OnAggroed() override;
 		virtual void OnLateBeat() override;
 
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
-
 
 	private:
 		virtual void SetStats() = 0;
@@ -27,9 +27,12 @@ namespace cl
 	private:
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
-		AudioClip* mHitSounds[3];
+		AudioClip* mHitSounds[4];
 		AudioClip* mCrySound;
-		bool mbMove;
+		AudioClip* mChargeSound;
+		AudioClip* mWallImpactSound;
+		int mBeatCount;
+		State mMoveState;
 	};
 }
 

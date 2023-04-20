@@ -6,7 +6,7 @@ namespace cl
 	DireBatBase::DireBatBase(Scene* sc)
 		:Monster(sc, false)
 	{
-		mbSize = 2;
+		mSize = 2;
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Midboss\\Direbat\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_vampbat_attack", path + L"en_vampbat_attack" + extend);
@@ -36,6 +36,9 @@ namespace cl
 	}
 	void DireBatBase::OnLateBeat()
 	{
+		Monster::OnLateBeat();
+		if (mMoveStatus == MoveStatus::Moved)
+			mbMove = !mbMove;		
 	}
 	void DireBatBase::PlayOnAttackSound()
 	{

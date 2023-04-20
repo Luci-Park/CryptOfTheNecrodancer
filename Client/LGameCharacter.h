@@ -44,7 +44,7 @@ namespace cl
 		bool mbIsSinked;
 		bool mbMoveFailed;
 
-		int mbSize;
+		int mSize;
 
 		float mMaxHealth;
 		float mHealth;

@@ -182,6 +182,7 @@
     <ClInclude Include="LMap.h" />
     <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LMath.h" />
+    <ClInclude Include="LMinotaurBase.h" />
     <ClInclude Include="LMonster.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
@@ -279,6 +280,7 @@
     <ClCompile Include="LMap.cpp" />
     <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LMath.cpp" />
+    <ClCompile Include="LMinotaurBase.cpp" />
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
