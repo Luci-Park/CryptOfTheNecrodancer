@@ -35,6 +35,8 @@ namespace cl
 	{
 		if (mbIsJumping)
 			JumpAnimation();
+		else
+			Idle();
 		CharacterSprite::Update();
 	}
 	void BlueSlimeSprite::Render(HDC hdc)
@@ -45,10 +47,7 @@ namespace cl
 	{
 		if (dir == Vector2::Left || dir == Vector2::Right)
 			mLookDir = dir;
-		if (mbIsJumping)
-			Jump();
-		else
-			Idle();
+		mAnimator->Reset();
 	}
 	void BlueSlimeSprite::OnBeatChanged()
 	{
@@ -59,16 +58,16 @@ namespace cl
 		if (mLookDir == Vector2::Left)
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"LeftIdleShadow", true, false);
+				mAnimator->PlayNoDuplication(L"LeftIdleShadow", true, false);
 			else
-				mAnimator->Play(L"LeftIdle", true, false);
+				mAnimator->PlayNoDuplication(L"LeftIdle", true, false);
 		}
 		else
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"RightIdleShadow", true, false);
+				mAnimator->PlayNoDuplication(L"RightIdleShadow", true, false);
 			else
-				mAnimator->Play(L"RightIdle", true, false);
+				mAnimator->PlayNoDuplication(L"RightIdle", true, false);
 		}
 	}
 	void BlueSlimeSprite::JumpAnimation()
@@ -87,7 +86,5 @@ namespace cl
 			else
 				mAnimator->PlayNoDuplication(L"RightJump", true, false);
 		}
-		if (mbIsJumping == false)
-			Idle();
 	}
 }
