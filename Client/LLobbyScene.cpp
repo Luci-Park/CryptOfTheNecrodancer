@@ -52,8 +52,8 @@ namespace cl
 	{
 		Scene::OnEnter();
 		BeatManager::Reset();
-		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 		BeatManager::SetBPM(130);
+		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 		mBGM->Play(true);
 	}
 	void LobbyScene::OnExit()

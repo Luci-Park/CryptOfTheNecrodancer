@@ -1,6 +1,5 @@
 #include "LCharacterSprite.h"
 #include "LTime.h"
-#include "LBeatManager.h"
 #include "LMapManager.h"
 #include "LAnimator.h"
 namespace cl

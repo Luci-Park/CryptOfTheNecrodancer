@@ -8,6 +8,7 @@
 #include "LRedBat.h"
 #include "LOrangeSlime.h"
 #include "LBlueSlime.h"
+#include "LWallTorch.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -154,6 +155,7 @@ namespace cl
 		CreateWall(sc);
 		CreateForeGround(sc);
 		CreateItems(sc);
+		CreateLight(sc);
 		CreateLightInfo();
 	}
 
@@ -250,6 +252,21 @@ namespace cl
 				}
 			}
 		}
+	}
+	void Map::CreateLight(Scene* sc)
+	{
+		Vector2 pos = Vector2(1, 0);
+		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
+		mTileObjects[pos.y][pos.x]->SetIndex(pos);
+		pos = Vector2(11, 0);
+		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
+		mTileObjects[pos.y][pos.x]->SetIndex(pos);
+		pos = Vector2(1, 12);
+		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
+		mTileObjects[pos.y][pos.x]->SetIndex(pos);
+		pos = Vector2(11, 12);
+		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
+		mTileObjects[pos.y][pos.x]->SetIndex(pos);
 	}
 	void Map::CreateLightInfo()
 	{

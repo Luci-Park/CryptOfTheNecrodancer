@@ -1,5 +1,6 @@
 #pragma once
 #include "LGameObject.h"
+#include "LBeatManager.h"
 namespace cl
 {
 	class BeatManager;

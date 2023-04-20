@@ -9,6 +9,10 @@ namespace cl
 		WallTorch(Scene* sc);
 		virtual ~WallTorch(){}
 
+		virtual void Initialize() override;
+
+		virtual void Update()override;
+		virtual void Render(HDC hdc) override;
 		virtual void Sink(){}
 		virtual void OnAttacked(float attackPower, Vector2 dir);
 		virtual bool TryMove() { return false; }

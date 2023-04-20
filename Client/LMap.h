@@ -61,6 +61,7 @@ namespace cl
 		void CreateItems(Scene* sc);
 		void CreatePlayer(Scene* sc);
 		void CreateMonsters(Scene* sc);
+		void CreateLight(Scene* sc);
 		void CreateLightInfo();
 		std::vector<std::vector<FloorTile*>> mFloor;
 		std::vector<std::vector<WallTile*>> mWall;

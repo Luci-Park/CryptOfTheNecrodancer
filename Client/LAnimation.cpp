@@ -140,4 +140,12 @@ namespace cl
         mTime = 0.0f;
         mbComplete = false;
     }
+    void Animation::SetDuration(float duration)
+    {
+        if (mDuration != duration)
+        {
+            mDuration = duration / mSpriteSheet.size();
+            Reset();
+        }
+    }
 }

@@ -20,7 +20,7 @@ namespace cl
 
 		bool IsComplete() { return mbComplete; }
 		void SetAnimator(Animator* animator) { mAnimator = animator; }
-		void SetDuration(float duration) { mDuration = duration / mSpriteSheet.size(); }
+		void SetDuration(float duration);
 		bool IsInReverse() { return mbReverse; }
 		void SetReverse(bool reverse) { mbReverse = reverse; }
 	private:

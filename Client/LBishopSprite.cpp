@@ -14,9 +14,9 @@ namespace cl
 		mIdle = L"Idle";
 		mReady = L"Ready";
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Bishop.bmp";
-		mAnimator->CreateAnimation(mIdle, L"Bishop", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 32), 0.36f);
+		mAnimator->CreateAnimation(mIdle, L"Bishop", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 32), BeatManager::BeatDuration());
 		path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Bishop_Ready.bmp";
-		mAnimator->CreateAnimation(mReady, L"Bishop_Ready", path, 1, 2, 0, 0, 1, -Vector2(17 *0.5, 32), 0.36f);
+		mAnimator->CreateAnimation(mReady, L"Bishop_Ready", path, 1, 2, 0, 0, 1, -Vector2(17 *0.5, 32), BeatManager::BeatDuration());
 		Idle();
 	}
 

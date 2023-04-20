@@ -424,6 +424,9 @@
     <ClInclude Include="LTileLight.h">
       <Filter>Contents\Objects\Environment</Filter>
     </ClInclude>
+    <ClInclude Include="LWallTorch.h">
+      <Filter>Contents\Objects\Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -698,6 +701,9 @@
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
     <ClCompile Include="LTileLight.cpp">
+      <Filter>Contents\Objects\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="LWallTorch.cpp">
       <Filter>Contents\Objects\Environment</Filter>
     </ClCompile>
   </ItemGroup>

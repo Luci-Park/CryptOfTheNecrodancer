@@ -15,9 +15,9 @@ namespace cl
 		mIdle = L"Idle";
 		mReady = L"Ready";
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Rook.bmp";
-		mAnimator->CreateAnimation(mIdle, L"Rook", path, 2, 2, 0, 0, 2, -Vector2(38 * 0.25, 52 * 0.5f), 0.36f);
+		mAnimator->CreateAnimation(mIdle, L"Rook", path, 2, 2, 0, 0, 2, -Vector2(38 * 0.25, 52 * 0.5f), BeatManager::BeatDuration());
 		path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Rook_Ready.bmp";
-		mAnimator->CreateAnimation(mReady, L"Rook_Ready", path, 1, 2, 0, 0, 1, -Vector2(9, 52 * 0.5), 0.36f);
+		mAnimator->CreateAnimation(mReady, L"Rook_Ready", path, 1, 2, 0, 0, 1, -Vector2(9, 52 * 0.5), BeatManager::BeatDuration());
 		Idle();
 	}
 

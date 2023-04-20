@@ -13,9 +13,9 @@ namespace cl
 		mIdle = L"Idle";
 		mReady = L"Ready";
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Pawn.bmp";
-		mAnimator->CreateAnimation(mIdle, L"Pawn", path, 4, 2, 0, 0, 4, -Vector2(60 * 0.25 * 0.5, 46 * 0.5f), 0.36f);
+		mAnimator->CreateAnimation(mIdle, L"Pawn", path, 4, 2, 0, 0, 4, -Vector2(60 * 0.25 * 0.5, 46 * 0.5f), BeatManager::BeatDuration());
 		path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Pawn_Ready.bmp";
-		mAnimator->CreateAnimation(mReady, L"Pawn_Ready", path, 1, 2, 0, 0, 1, -Vector2(15 * 0.5f, 45 * 0.5), 0.36f);
+		mAnimator->CreateAnimation(mReady, L"Pawn_Ready", path, 1, 2, 0, 0, 1, -Vector2(15 * 0.5f, 45 * 0.5), BeatManager::BeatDuration());
 		Idle();
 	}
 	void PawnSprite::Ready()
