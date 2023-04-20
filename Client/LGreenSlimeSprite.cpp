@@ -1,5 +1,4 @@
 #include "LGreenSlimeSprite.h"
-#include "LBeatManager.h"
 #include "LAnimator.h"
 namespace cl
 {

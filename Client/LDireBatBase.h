@@ -2,33 +2,34 @@
 #include "LMonster.h"
 namespace cl
 {
-	class AudioClip;
-	class Bat : public Monster
+	class Audioclip;
+	class DireBatBase : public Monster
 	{
 	public:
-		Bat(Scene* sc);
-		virtual ~Bat();
-
+		DireBatBase(Scene* sc);
+		virtual ~DireBatBase();
 
 		virtual void Initialize() override;
 
-		virtual void Sink() override{}
-		virtual bool UnSink() override { return false; }
 		virtual void Recoil(Vector2 dir) override {};
+		virtual void OnAggroed() override;
+		virtual void OnLateBeat() override;
 
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
 
-		virtual void OnLateBeat() override;
+
 	private:
-		virtual void SetStats() override;
+		virtual void SetStats() = 0;
 		virtual Vector2 GetNextDir() override;
+		virtual int GetY() = 0;
 
 	private:
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
-		AudioClip* mHitSound;
+		AudioClip* mHitSounds[3];
+		AudioClip* mCrySound;
 		bool mbMove;
 	};
 }

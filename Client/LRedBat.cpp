@@ -1,9 +1,6 @@
 #include "LRedBat.h"
-#include "LResources.h"
-#include "LAudioClip.h"
 #include "LMapManager.h"
 #include "LRedBatSprite.h"
-#include "LObject.h"
 namespace cl
 {
 	RedBat::RedBat(Scene* sc)

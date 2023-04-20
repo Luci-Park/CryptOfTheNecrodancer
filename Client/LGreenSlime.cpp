@@ -1,11 +1,5 @@
 #include "LGreenSlime.h"
 #include "LGreenSlimeSprite.h"
-#include "LObject.h"
-#include "LMapManager.h"
-#include "LBeatManager.h"
-#include "LCadence.h"
-#include "LResources.h"
-#include "LAudioClip.h"
 namespace cl
 {
 	GreenSlime::GreenSlime(Scene* sc)

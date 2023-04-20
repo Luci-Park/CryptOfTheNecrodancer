@@ -1,9 +1,5 @@
 #include "LBlueSlime.h"
 #include "LBlueSlimeSprite.h"
-#include "LObject.h"
-#include "LMapManager.h"
-#include "LBeatManager.h"
-#include "LCadence.h"
 namespace cl
 {
 	BlueSlime::BlueSlime(Scene* sc)

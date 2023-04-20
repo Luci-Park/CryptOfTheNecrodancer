@@ -1,9 +1,11 @@
 #pragma once
 #include "LGameCharacter.h"
+#include "LObject.h"
+#include "LAudioClip.h"
+#include "LResources.h"
 namespace cl
 {
 	class MonsterWeapon;
-	class AudioClip;
 	class MonsterHeart;
 	class Monster : public GameCharacter
 	{

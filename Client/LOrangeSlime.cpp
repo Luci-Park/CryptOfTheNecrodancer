@@ -1,9 +1,5 @@
 #include "LOrangeSlime.h"
 #include "LOrangeSlimeSprite.h"
-#include "LObject.h"
-#include "LMapManager.h"
-#include "LBeatManager.h"
-#include "LCadence.h"
 namespace cl
 {
 	OrangeSlime::OrangeSlime(Scene* sc)

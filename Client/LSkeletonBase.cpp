@@ -1,7 +1,4 @@
 #include "LSkeletonBase.h"
-#include "LAudioClip.h"
-#include "LResources.h"
-#include "LObject.h"
 #include "LSkeletonSprite.h"
 #include "LMapManager.h"
 namespace cl

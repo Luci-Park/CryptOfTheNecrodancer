@@ -3,10 +3,7 @@
 #include "LCadence.h"
 #include "LMapManager.h"
 #include "LWallTile.h"
-#include "LObject.h"
 #include "LMonsterWeapon.h"
-#include "LResources.h"
-#include "LAudioClip.h"
 #include "LMonsterHeart.h"
 #include "LTileLight.h"
 namespace cl

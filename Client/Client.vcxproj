@@ -155,6 +155,9 @@
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LDagger.h" />
+    <ClInclude Include="LDireBat.h" />
+    <ClInclude Include="LDireBatBase.h" />
+    <ClInclude Include="LDireBatSprite.h" />
     <ClInclude Include="LDoor.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
@@ -251,6 +254,9 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LDagger.cpp" />
+    <ClCompile Include="LDireBat.cpp" />
+    <ClCompile Include="LDireBatBase.cpp" />
+    <ClCompile Include="LDireBatSprite.cpp" />
     <ClCompile Include="LDoor.cpp" />
     <ClCompile Include="LEntity.cpp" />
     <ClCompile Include="LFloorShadow.cpp" />

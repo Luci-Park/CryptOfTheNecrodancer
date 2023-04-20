@@ -134,6 +134,18 @@
     <Filter Include="Contents\Objects\Items\Shovels">
       <UniqueIdentifier>{c713838a-dad8-4eda-9152-1599f020cfdf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses">
+      <UniqueIdentifier>{93b73c29-ca76-4b4a-8e9b-ad72c58416cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat">
+      <UniqueIdentifier>{e4134e28-3556-4579-bb41-90cd67ce072d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur">
+      <UniqueIdentifier>{61b7888b-bca9-4432-89b0-d44b745b4caa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon">
+      <UniqueIdentifier>{6025c1cf-30c3-4eed-8375-224e9ac0f6f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -427,6 +439,15 @@
     <ClInclude Include="LWallTorch.h">
       <Filter>Contents\Objects\Environment</Filter>
     </ClInclude>
+    <ClInclude Include="LDireBatBase.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
+    </ClInclude>
+    <ClInclude Include="LDireBatSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
+    </ClInclude>
+    <ClInclude Include="LDireBat.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -705,6 +726,15 @@
     </ClCompile>
     <ClCompile Include="LWallTorch.cpp">
       <Filter>Contents\Objects\Environment</Filter>
+    </ClCompile>
+    <ClCompile Include="LDireBatBase.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
+    </ClCompile>
+    <ClCompile Include="LDireBatSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
+    </ClCompile>
+    <ClCompile Include="LDireBat.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

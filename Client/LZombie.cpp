@@ -1,9 +1,5 @@
 #include "LZombie.h"
 #include "LZombieSprite.h"
-#include "LAudioClip.h"
-#include "LResources.h"
-#include "LObject.h"
-#include "LMapManager.h"
 namespace cl
 {
 	Zombie::Zombie(Scene* sc)

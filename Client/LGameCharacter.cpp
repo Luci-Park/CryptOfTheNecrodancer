@@ -12,6 +12,7 @@ namespace cl
 		, mbIsMoving(false)
 		, mbIsTouchingGround(isTouchingGround)
 		, mbMoveFailed(false)
+		, mbSize(1)
 	{
 	}
 	GameCharacter::~GameCharacter()
@@ -36,7 +37,7 @@ namespace cl
 					Recoil(prevDir);
 				}
 				else {
-					if (mbIsTouchingGround)
+					if (mbIsTouchingGround && mbSize == 1)
 						MapManager::OnTileStep(this, mIndex);
 				}
 			}

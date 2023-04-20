@@ -1,9 +1,6 @@
 #include "LBat.h"
-#include "LResources.h"
-#include "LAudioClip.h"
 #include "LMapManager.h"
 #include "LBatSprite.h"
-#include "LObject.h"
 namespace cl
 {
 	Bat::Bat(Scene* sc)
@@ -27,18 +24,15 @@ namespace cl
 	}
 	void Bat::PlayOnAttackSound()
 	{
-		mAttackSound->SetVolume(voiceVol);
 		mAttackSound->Play(false);
 	}
 	void Bat::PlayOnHitSound()
 	{
-		mHitSound->SetVolume(voiceVol);
 		mHitSound->Play(false);
 		Monster::PlayOnHitSound();
 	}
 	void Bat::PlayOnDeathSound()
 	{
-		mDeathSound->SetVolume(voiceVol);
 		mDeathSound->Play(false);
 		Monster::PlayOnDeathSound();
 	}
