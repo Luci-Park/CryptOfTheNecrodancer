@@ -367,9 +367,6 @@
     <ClInclude Include="LBatSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
-    <ClInclude Include="LRedBat.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
-    </ClInclude>
     <ClInclude Include="LRedBatSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
@@ -448,7 +445,17 @@
     <ClInclude Include="LDireBat.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClInclude>
-    <ClInclude Include="LMinotaurBase.h" />
+    <ClInclude Include="LBatBase.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
+    </ClInclude>
+    <ClInclude Include="LMinotaurBase.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClInclude>
+    <ClInclude Include="LDragonBase.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClInclude>
+    <ClInclude Include="LMinotaurSprite.h" />
+    <ClInclude Include="LMinotaur.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -656,9 +663,6 @@
     <ClCompile Include="LBatSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
-    <ClCompile Include="LRedBat.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
-    </ClCompile>
     <ClCompile Include="LRedBatSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
@@ -737,6 +741,16 @@
     <ClCompile Include="LDireBat.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClCompile>
-    <ClCompile Include="LMinotaurBase.cpp" />
+    <ClCompile Include="LBatBase.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
+    </ClCompile>
+    <ClCompile Include="LMinotaurBase.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClCompile>
+    <ClCompile Include="LDragonBase.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClCompile>
+    <ClCompile Include="LMinotaurSprite.cpp" />
+    <ClCompile Include="LMinotaur.cpp" />
   </ItemGroup>
 </Project>

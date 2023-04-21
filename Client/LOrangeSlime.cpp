@@ -47,7 +47,7 @@ namespace cl
 	void OrangeSlime::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		if(mMoveStatus == MoveStatus::Moved)
+		if (mMoveState != MoveState::Failed)
 			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 	}
 	

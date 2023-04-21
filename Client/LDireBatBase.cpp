@@ -37,7 +37,7 @@ namespace cl
 	void DireBatBase::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		if (mMoveStatus == MoveStatus::Moved)
+		if (mMoveState == MoveState::Moved)
 			mbMove = !mbMove;		
 	}
 	void DireBatBase::PlayOnAttackSound()
@@ -48,10 +48,12 @@ namespace cl
 	{
 		int index = GetRandomInt(0, 2);
 		mHitSounds[index]->Play(false);
+		Monster::PlayOnHitSound();
 	}
 	void DireBatBase::PlayOnDeathSound()
 	{
 		mDeathSound->Play(false);
+		Monster::PlayOnDeathSound();
 	}
 	Vector2 DireBatBase::GetNextDir()
 	{

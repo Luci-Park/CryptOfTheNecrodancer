@@ -2,16 +2,11 @@
 #include "LMonster.h"
 namespace cl
 {
-	class AudioClip;
-	class RedBat : public Monster
+	class BatBase : public Monster
 	{
 	public:
-		RedBat(Scene* sc);
-		virtual ~RedBat();
-
-
-		virtual void Initialize() override;
-
+		BatBase(Scene* sc);
+		virtual ~BatBase();
 		virtual void Sink() override {}
 		virtual bool UnSink() override { return false; }
 		virtual void Recoil(Vector2 dir) override {};
@@ -19,15 +14,15 @@ namespace cl
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
-	private:
-		virtual void SetStats() override;
+
+	protected:
+		virtual void SetStats() override = 0;
 		virtual Vector2 GetNextDir() override;
 
 	private:
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
 		AudioClip* mHitSound;
-		float voiceVol = 60.0f;
 	};
 }
 

@@ -1,9 +1,8 @@
-#include "LRedBat.h"
+#include "LBatBase.h"
 #include "LMapManager.h"
-#include "LRedBatSprite.h"
 namespace cl
 {
-	RedBat::RedBat(Scene* sc)
+	BatBase::BatBase(Scene* sc)
 		:Monster(sc, false)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Bat\\";
@@ -13,37 +12,25 @@ namespace cl
 		mHitSound = Resources::Load<AudioClip>(L"en_bat_hit", path + L"en_bat_hit" + extend);
 		mDeathSound = Resources::Load<AudioClip>(L"en_bat_death", path + L"en_bat_death" + extend);
 	}
-	RedBat::~RedBat()
+	BatBase::~BatBase()
 	{
 	}
-	void RedBat::Initialize()
+
+	void BatBase::PlayOnAttackSound()
 	{
-		Monster::Initialize();
-		mSprite = object::Instantiate<RedBatSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
-	}
-	void RedBat::PlayOnAttackSound()
-	{
-		mAttackSound->SetVolume(voiceVol);
 		mAttackSound->Play(false);
 	}
-	void RedBat::PlayOnHitSound()
+	void BatBase::PlayOnHitSound()
 	{
-		mHitSound->SetVolume(voiceVol);
 		mHitSound->Play(false);
+		Monster::PlayOnHitSound();
 	}
-	void RedBat::PlayOnDeathSound()
+	void BatBase::PlayOnDeathSound()
 	{
-		mDeathSound->SetVolume(voiceVol);
 		mDeathSound->Play(false);
+		Monster::PlayOnDeathSound();
 	}
-	void RedBat::SetStats()
-	{
-		mActivationRadius = 3;
-		mMaxHealth = 1;
-		mAttackPower = 1.0f;
-		mDrop = 3;
-	}
-	Vector2 RedBat::GetNextDir()
+	Vector2 BatBase::GetNextDir()
 	{
 		int dx[4] = { 0, 1, 0, -1 };
 		int dy[4] = { 1, 0, -1, 0 };
@@ -54,7 +41,11 @@ namespace cl
 				&& MapManager::GetWall(mIndex + Vector2(dx[i], dy[i])) == nullptr)
 				possible.push_back(i);
 		}
-		if (possible.size() == 0) return Vector2::Zero;
+		if (possible.size() == 0)
+		{
+			mMoveState = MoveState::Failed;
+			return Vector2::Zero;
+		}
 		Vector2 dir;
 		int idx = GetRandomInt(0, possible.size() - 1);
 		return Vector2(dx[possible[idx]], dy[possible[idx]]);

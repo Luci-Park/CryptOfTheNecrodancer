@@ -43,7 +43,7 @@ namespace cl
 		Monster::OnLateBeat();
 		if (mNextDir == Vector2::Zero)
 			mSlimeSprite->Idle();
-		if (mMoveStatus == MoveStatus::Moved)
+		if (mMoveState != MoveState::Failed)
 			mMovementIndex = (mMovementIndex + 1) % nextPos.size();
 	}
 	void BlueSlime::SetStats()

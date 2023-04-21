@@ -5,7 +5,7 @@
 #include "LShovel.h"
 #include "LZombie.h"
 #include "LSkeleton.h"
-#include "LRedBat.h"
+#include "LBat.h"
 #include "LOrangeSlime.h"
 #include "LBlueSlime.h"
 #include "LWallTorch.h"
@@ -246,7 +246,7 @@ namespace cl
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<BlueSlime>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<BlackSkeleton>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

@@ -136,6 +136,7 @@
     <ClInclude Include="LAnimator.h" />
     <ClInclude Include="LApplication.h" />
     <ClInclude Include="LBat.h" />
+    <ClInclude Include="LBatBase.h" />
     <ClInclude Include="LBatSprite.h" />
     <ClInclude Include="LBeatObject.h" />
     <ClInclude Include="LBishop.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="LDireBatBase.h" />
     <ClInclude Include="LDireBatSprite.h" />
     <ClInclude Include="LDoor.h" />
+    <ClInclude Include="LDragonBase.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
     <ClInclude Include="LFloorShadow.h" />
@@ -182,7 +184,9 @@
     <ClInclude Include="LMap.h" />
     <ClInclude Include="LMapManager.h" />
     <ClInclude Include="LMath.h" />
+    <ClInclude Include="LMinotaur.h" />
     <ClInclude Include="LMinotaurBase.h" />
+    <ClInclude Include="LMinotaurSprite.h" />
     <ClInclude Include="LMonster.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
@@ -194,7 +198,6 @@
     <ClInclude Include="LPawnSprite.h" />
     <ClInclude Include="LQueen.h" />
     <ClInclude Include="LQueenSprite.h" />
-    <ClInclude Include="LRedBat.h" />
     <ClInclude Include="LRedBatSprite.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
@@ -237,6 +240,7 @@
     <ClCompile Include="LAnimator.cpp" />
     <ClCompile Include="LApplication.cpp" />
     <ClCompile Include="LBat.cpp" />
+    <ClCompile Include="LBatBase.cpp" />
     <ClCompile Include="LBatSprite.cpp" />
     <ClCompile Include="LBishop.cpp" />
     <ClCompile Include="LBishopSprite.cpp" />
@@ -259,6 +263,7 @@
     <ClCompile Include="LDireBatBase.cpp" />
     <ClCompile Include="LDireBatSprite.cpp" />
     <ClCompile Include="LDoor.cpp" />
+    <ClCompile Include="LDragonBase.cpp" />
     <ClCompile Include="LEntity.cpp" />
     <ClCompile Include="LFloorShadow.cpp" />
     <ClCompile Include="LFloorStrategy.cpp" />
@@ -280,7 +285,9 @@
     <ClCompile Include="LMap.cpp" />
     <ClCompile Include="LMapManager.cpp" />
     <ClCompile Include="LMath.cpp" />
+    <ClCompile Include="LMinotaur.cpp" />
     <ClCompile Include="LMinotaurBase.cpp" />
+    <ClCompile Include="LMinotaurSprite.cpp" />
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
@@ -291,7 +298,6 @@
     <ClCompile Include="LPawnSprite.cpp" />
     <ClCompile Include="LQueen.cpp" />
     <ClCompile Include="LQueenSprite.cpp" />
-    <ClCompile Include="LRedBat.cpp" />
     <ClCompile Include="LRedBatSprite.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />

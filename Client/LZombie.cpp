@@ -39,9 +39,9 @@ namespace cl
 	void Zombie::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		if (mMoveStatus != MoveStatus::Unsunked)
+		if (mMoveState != MoveState::Failed)
 			mbBeat = !mbBeat;
-		if (mMoveStatus == MoveStatus::Dug || mMoveStatus == MoveStatus::Failed)
+		if (mMoveState == MoveState::Dug || mMoveState == MoveState::Failed)
 		{
 			mMoveDir *= -1;
 			mSprite->Turn(mMoveDir);
@@ -53,10 +53,12 @@ namespace cl
 	}
 	void Zombie::PlayOnHitSound()
 	{
+		Monster::PlayOnHitSound();
 	}
 	void Zombie::PlayOnDeathSound()
 	{
 		mDeathSound->Play(false);
+		Monster::PlayOnDeathSound();
 	}
 	void Zombie::SetStats()
 	{

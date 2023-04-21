@@ -87,3 +87,7 @@ WindowAPI Project (2/14 ~ )
         * Activated
             * Is within a certain radius
         * Can act if either aggroed or activated
+    * MidBoss added
+        * `Virebat`
+        * `Minotaur`
+        

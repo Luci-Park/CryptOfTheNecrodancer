@@ -23,7 +23,6 @@ namespace cl
 		virtual void SetStats() = 0;
 		virtual void OnAttacked(float attackPower, Vector2 dir) override;
 		virtual Vector2 GetNextDir() override;
-		Vector2 MoveTowardsPlayer();
 		Vector2 MoveAwayFromPlayer();
 	private:
 		AudioClip* mAttackSound;
@@ -34,6 +33,5 @@ namespace cl
 		float voiceVol = 60.0f;
 		bool mbNoHead;
 		bool mbPause;
-		Vector2 mRunDir;
 	};
 }

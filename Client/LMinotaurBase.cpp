@@ -1,12 +1,16 @@
 #include "LMinotaurBase.h"
+#include "LMapManager.h"
+#include "LWallTile.h"
+#include "LMinotaurSprite.h"
 namespace cl
 {
 	MinotaurBase::MinotaurBase(Scene* sc)
 		:Monster(sc, true)
 		, mBeatCount(0)
-		, mMoveState(State::Idle)
+		, mMinoState(State::Idle)
 	{
 		mSize = 2;
+		mDigPower = 2;
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Midboss\\Minotaur\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_minotaur_attack", path + L"en_minotaur_attack" + extend);
@@ -26,6 +30,10 @@ namespace cl
 	}
 	void MinotaurBase::Initialize()
 	{
+		Monster::Initialize();
+		mMinoSprite = object::Instantiate<MinotaurSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		mMinoSprite->SetY(GetY());
+		mSprite = mMinoSprite;
 	}
 	void MinotaurBase::OnAggroed()
 	{
@@ -34,14 +42,102 @@ namespace cl
 	void MinotaurBase::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mBeatCount++;
+		if(mMoveState != MoveState::Failed)
+			mBeatCount++;
+	}
+	bool MinotaurBase::TryDig(Vector2 direction)
+	{
+		if (mMinoState != State::Charge)
+			return Monster::TryDig(direction);
+		WallTile* wall = MapManager::GetWall(mIndex + direction);
+		if (wall)
+		{
+			bool success = wall->OnDig(mDigPower);
+			ChangeState(State::Faint);
+			return true;
+		}
+		return false;
+	}
+	void MinotaurBase::PlayOnAttackSound()
+	{
+		mAttackSound->Play(false);
+	}
+	void MinotaurBase::PlayOnHitSound()
+	{
+		int idx = GetRandomInt(0, 3);
+		mHitSounds[idx] ->Play(false);
+		Monster::PlayOnHitSound();
+	}
+	void MinotaurBase::PlayOnDeathSound()
+	{
+		mDeathSound->Play(false);
+		Monster::PlayOnDeathSound();
 	}
 	Vector2 MinotaurBase::GetNextDir()
 	{
-		if (mMoveState == State::Charge)
-			mDigPower = 5;
-		else
+		if (mMinoState == State::Faint)
+		{
+			if (mBeatCount == 3)
+			{
+				ChangeState(State::Idle);
+			}
+		}
+		Vector2 chargeDir;
+		if (mMinoState == State::Idle)
+		{
 			mDigPower = 2;
-		return Vector2();
+			chargeDir = IsInSight();
+			if (Vector2::IsCardinal(chargeDir))
+			{
+				ChangeState(State::Charge);
+			}
+			else
+			{
+				if(mBeatCount % 2)
+					return CardinalMoveTowards();
+				return Vector2::Zero;
+			}
+		}
+		if (mMinoState == State::Charge)
+		{
+			mDigPower = 5;
+			return chargeDir;
+		}
+		return Vector2::Zero;
+	}
+	Vector2 MinotaurBase::IsInSight()
+	{
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		Vector2 dir = (playerPos - mIndex).TileNormalize();
+		if (Vector2::IsCardinal(dir))
+		{
+			float distance = Vector2::Distance(playerPos, mIndex);
+			if (distance <= 5)
+			{
+				for (int i = 1; i <= distance; ++i)
+				{
+					if (MapManager::GetWall(mIndex + dir * i) != nullptr ||
+						MapManager::GetTileObject(mIndex + dir * i) != nullptr)
+					{
+						return Vector2::Zero;
+					}
+				}
+				return dir;
+			}
+		}
+		return Vector2::Zero;
+	}
+	void MinotaurBase::ChangeState(State state)
+	{
+		if (state != mMinoState)
+		{
+			mMinoState = state;
+			mBeatCount = 0;
+			//alert animation;
+			if (State::Charge == state)
+				mChargeSound->Play(false);
+			else if (State::Faint == state)
+				mWallImpactSound->Play(false);
+		}
 	}
 }

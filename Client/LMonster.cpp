@@ -15,6 +15,7 @@ namespace cl
 		, mDrop(0)
 		, mbIsActivated(false)
 		, mbIsAggroed(false)
+		, mPrevDir(Vector2::Zero)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
 		mGeneralHit = Resources::Load<AudioClip>(L"GeneralHit", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\en_general_hit.wav");
@@ -42,14 +43,6 @@ namespace cl
 		CheckActivation();
 		CheckShadow();
 	}
-	void Monster::Render(HDC hdc)
-	{
-		GameCharacter::Render(hdc);
-	}
-	void Monster::Sink()
-	{
-		GameCharacter::Sink(); 
-	}
 	void Monster::OnAttacked(float attackPower, Vector2 dir)
 	{
 		GameCharacter::OnAttacked(attackPower, dir);
@@ -67,7 +60,7 @@ namespace cl
 	{
 		if (mbIsActivated || mbIsAggroed)
 		{
-			mMoveStatus = MoveStatus::NotMoved;
+			mMoveState = MoveState::NotMoved;
 			mSprite->Reset();
 			mTransform->SetPos(mMoveTarget);
 			mNextDir = Vector2::Zero;
@@ -75,23 +68,28 @@ namespace cl
 			{
 				Vector2 nextDir = GetNextDir();
 				mSprite->Turn(nextDir);
-				if (nextDir == Vector2::Zero) mMoveStatus = MoveStatus::Moved;
-				else if (TryAttack(nextDir)) mMoveStatus = MoveStatus::Attacked;
-				else if (TryDig(nextDir)) mMoveStatus = MoveStatus::Dug;
+				if (nextDir == Vector2::Zero) mMoveState = MoveState::Moved;
+				else if (TryAttack(nextDir)) mMoveState = MoveState::Attacked;
+				else if (TryDig(nextDir)) mMoveState = MoveState::Dug;
 				else
 					mNextDir = nextDir;
 			}
 			else
 			{
-				mMoveStatus = MoveStatus::Unsunked;
+				mMoveState = MoveState::Unsunked;
 			}
+		}
+		else
+		{
+			mNextDir = Vector2::Zero;
+			mMoveState = MoveState::Failed;
 		}
 	}
 	void Monster::OnLateBeat()
 	{
-		if(mbIsActivated || mbIsAggroed)
-			TryMove();
+		TryMove();
 		mSprite->Turn(mNextDir);
+		mPrevDir = mNextDir;
 	}
 	void Monster::OnBeatChanged()
 	{
@@ -128,19 +126,19 @@ namespace cl
 	}
 	bool Monster::TryMove()
 	{
-		if (mMoveStatus != MoveStatus::NotMoved) return false;
+		if (mMoveState != MoveState::NotMoved) return false;
 		TileObject* object = MapManager::GetTileObject(mIndex + mNextDir);
 		if (object != nullptr && object != this)
 		{
-			mMoveStatus = MoveStatus::IsAsking;
+			mMoveState = MoveState::IsAsking;
 			if (!object->TryMove())
 			{
 				Recoil(mNextDir);
-				mMoveStatus = MoveStatus::Failed;
+				mMoveState = MoveState::Failed;
 				return false;
 			}
 		}
-		mMoveStatus = MoveStatus::Moved;
+		mMoveState = MoveState::Moved;
 		mMoveTarget += mNextDir * UNITLENGTH;
 		MapManager::Move(this, mIndex, mIndex + mNextDir);
 		mIndex += mNextDir;
@@ -155,6 +153,73 @@ namespace cl
 	void Monster::PlayOnDeathSound()
 	{
 		mGeneralDeath->Play(false);
+	}
+	Vector2 Monster::CardinalMoveTowards()
+	{
+		Vector2 player = MapManager::GetPlayerIndex();
+		if (player.x == mIndex.x || player.y == mIndex.y)
+			mPrevDir = (player - mIndex).TileNormalize();
+		else
+		{
+			if (mPrevDir == Vector2::Zero)
+			{
+				if (player.x < mIndex.x)
+					mPrevDir = Vector2::Left;
+				else
+					mPrevDir = Vector2::Right;
+			}
+		}
+		return mPrevDir;
+	}
+	Vector2 Monster::DiagonalMoveTowards()
+	{
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		return (playerPos - mIndex).TileNormalize();
+	}
+	Vector2 Monster::CardinalMoveAway()
+	{
+		return Vector2();
+	}
+	Vector2 Monster::DiagonalMoveAway()
+	{
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		Vector2 dir = (mIndex - playerPos).TileNormalize();
+		if (dir.x == 0 || dir.y == 0)
+		{
+			Vector2 nextdir = Vector2::Zero;
+			if (dir.x == 0)
+			{
+				if (mPrevDir.x != 0)
+					nextdir.x += mPrevDir.x;
+				else
+					nextdir.x += 1;
+			}
+			else
+			{
+				if (mPrevDir.y != 0)
+					nextdir.y += mPrevDir.y;
+				else
+					nextdir.y += 1;
+			}
+			if (MapManager::GetWall(mIndex + dir + nextdir) != nullptr
+				|| MapManager::GetTileObject(mIndex + dir + nextdir) != nullptr)
+				nextdir *= -1;
+			dir += nextdir;
+		}
+		return dir;
+	}
+	void Monster::Trample()
+	{
+		int dy[4] = { 0, 1, 0, -1 };
+		int dx[4] = { 1, 0, -1, 0 };
+		for (int i = 0; i < 4; ++i)
+		{
+			Vector2 target = mIndex + Vector2(dx[i], dy[i]);
+			WallTile* wall = MapManager::GetWall(target);
+			TileObject* object = MapManager::GetTileObject(target);
+			if (wall != nullptr) wall->OnDig(4);
+			if (object != nullptr) object->OnAttacked(mMaxHealth, Vector2(dx[i], dy[i]));
+		}
 	}
 	void Monster::CheckAggro()
 	{
@@ -177,7 +242,7 @@ namespace cl
 		TileLight* light = MapManager::GetLight(index);
 		if (light != nullptr)
 		{
-			if (light->IsRevealed())
+			if (mbIsActivated || mbIsAggroed || light->IsRevealed())
 			{
 				mSprite->SetActive(true);
 				bool isInlight = light->IsInSight() && light->Illumination() > 0.5f;

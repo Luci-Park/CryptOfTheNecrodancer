@@ -36,7 +36,7 @@ namespace cl
 		mSkelSprite = object::Instantiate<SkeletonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSkelSprite;
 		mSkelSprite->SetSkeleY(GetY());
-		mSkelSprite->Turn(MoveTowardsPlayer());
+		mSkelSprite->Turn(CardinalMoveTowards());
 		mSkelSprite->RaiseHand();
 	}
 	void SkeletonBase::Update()
@@ -65,8 +65,7 @@ namespace cl
 	void SkeletonBase::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mSprite->Turn(MoveTowardsPlayer());
-		if(mMoveStatus == MoveStatus::Moved)
+		if(mMoveState != MoveState::Failed)
 			mbPause = !mbPause;
 	}
 	void SkeletonBase::PlayOnHeadLossSound()
@@ -84,7 +83,7 @@ namespace cl
 			mSkelSprite->LostHead();
 			PlayOnHeadLossSound();
 			mbNoHead = true;
-			mRunDir = dir;
+			mPrevDir = dir;
 		}
 	}
 	Vector2 SkeletonBase::GetNextDir()
@@ -102,25 +101,12 @@ namespace cl
 			else
 			{
 				mSkelSprite->Idle();
-				return MoveTowardsPlayer();
+				return CardinalMoveTowards();
 			}
-		}
-	}
-	Vector2 SkeletonBase::MoveTowardsPlayer()
-	{
-		Vector2 player = MapManager::GetPlayerIndex();
-		if (player.x == mIndex.x || player.y == mIndex.y)
-			return (player - mIndex).TileNormalize();
-		else
-		{
-			if (player.x < mIndex.x)
-				return Vector2::Left;
-			else
-				return Vector2::Right;
 		}
 	}
 	Vector2 SkeletonBase::MoveAwayFromPlayer()
 	{
-		return mRunDir;
+		return mPrevDir;
 	}
 }

@@ -3,6 +3,7 @@
 
 namespace cl
 {
+	class MinotaurSprite;
 	class MinotaurBase : public Monster
 	{
 	public:
@@ -14,17 +15,22 @@ namespace cl
 
 		virtual void OnAggroed() override;
 		virtual void OnLateBeat() override;
+		virtual bool TryDig(Vector2 direction) override;
+
 
 		virtual void PlayOnAttackSound() override;
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
 
-	private:
+	protected:
 		virtual void SetStats() = 0;
 		virtual Vector2 GetNextDir() override;
 		virtual int GetY() = 0;
 
+		Vector2 IsInSight();
+		void ChangeState(State state);
 	private:
+		MinotaurSprite* mMinoSprite;
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[4];
@@ -32,7 +38,7 @@ namespace cl
 		AudioClip* mChargeSound;
 		AudioClip* mWallImpactSound;
 		int mBeatCount;
-		State mMoveState;
+		State mMinoState;
 	};
 }
 
