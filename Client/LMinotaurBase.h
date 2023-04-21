@@ -33,7 +33,7 @@ namespace cl
 		MinotaurSprite* mMinoSprite;
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
-		AudioClip* mHitSounds[4];
+		AudioClip* mHitSounds[3];
 		AudioClip* mCrySound;
 		AudioClip* mChargeSound;
 		AudioClip* mWallImpactSound;

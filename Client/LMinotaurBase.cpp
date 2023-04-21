@@ -19,7 +19,7 @@ namespace cl
 		mWallImpactSound = Resources::Load<AudioClip>(L"en_minotaur_wallimpact", path + L"en_minotaur_wallimpact" + extend);
 		mCrySound = Resources::Load<AudioClip>(L"en_minotaur_cry", path + L"en_minotaur_cry" + extend);
 		std::wstring key = L"en_minotaur_hit_0";
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			mHitSounds[i] = Resources::Load<AudioClip>(newKey, path + newKey + extend);
@@ -64,7 +64,7 @@ namespace cl
 	}
 	void MinotaurBase::PlayOnHitSound()
 	{
-		int idx = GetRandomInt(0, 3);
+		int idx = GetRandomInt(0, 2);
 		mHitSounds[idx] ->Play(false);
 		Monster::PlayOnHitSound();
 	}
@@ -134,6 +134,7 @@ namespace cl
 			mMinoState = state;
 			mBeatCount = 0;
 			//alert animation;
+			mMinoSprite->SetMinoState(state);
 			if (State::Charge == state)
 				mChargeSound->Play(false);
 			else if (State::Faint == state)

@@ -97,7 +97,7 @@ namespace cl
 	}
 	void Monster::SetWeapon()
 	{
-		mWeapon = object::Instantiate<MonsterWeapon>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon = object::Instantiate<MonsterMelee>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mWeapon->SetPower(mAttackPower);
 	}
 	bool Monster::TryAttack(Vector2 direction)

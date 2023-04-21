@@ -7,31 +7,31 @@
 #include "LObject.h"
 namespace cl
 {
-	MonsterWeapon::MonsterWeapon(Scene* sc)
+	MonsterMelee::MonsterMelee(Scene* sc)
 		:Weapon(sc)
 	{
 	}
 
-	MonsterWeapon::~MonsterWeapon()
+	MonsterMelee::~MonsterMelee()
 	{
 	}
 
-	void MonsterWeapon::SetAnimation()
+	void MonsterMelee::SetAnimation()
 	{
 		mEffect = object::Instantiate<MonsterMeleeEffect>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Effects);
 		OnBeatChanged();
 	}
 
-	void MonsterWeapon::SetSprite()
+	void MonsterMelee::SetSprite()
 	{
 	}
 
-	void MonsterWeapon::OnBeatChanged()
+	void MonsterMelee::OnBeatChanged()
 	{
 		mEffect->OnBeatChanged();
 	}
 
-	bool MonsterWeapon::TryAttack(Vector2 srcIdx, Vector2 input)
+	bool MonsterMelee::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
 		Vector2 dest = srcIdx + input;
 		Cadence* enemy = MapManager::GetPlayer(dest);
@@ -43,7 +43,7 @@ namespace cl
 		return false;
 	}
 
-	void MonsterWeapon::PlayAttackAnimation(Vector2 dir)
+	void MonsterMelee::PlayAttackAnimation(Vector2 dir)
 	{
 		mEffect->PlayEffect(dir);
 	}

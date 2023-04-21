@@ -5,7 +5,7 @@
 #include "LResources.h"
 namespace cl
 {
-	class MonsterWeapon;
+	class MonsterMelee;
 	class MonsterHeart;
 	class Monster : public GameCharacter
 	{
@@ -62,7 +62,7 @@ namespace cl
 
 		AudioClip* mGeneralHit;
 		AudioClip* mGeneralDeath;
-		MonsterWeapon* mWeapon;
+		MonsterMelee* mWeapon;
 		MonsterHeart* mHeart;
 
 		MoveState mMoveState;

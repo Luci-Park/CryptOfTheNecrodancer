@@ -146,6 +146,9 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon">
       <UniqueIdentifier>{6025c1cf-30c3-4eed-8375-224e9ac0f6f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\AttackEffects">
+      <UniqueIdentifier>{56163033-e928-4da6-873a-4fd3db03710b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -358,9 +361,6 @@
     <ClInclude Include="LCadenceSound.h">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClInclude>
-    <ClInclude Include="LMonsterWeapon.h">
-      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
-    </ClInclude>
     <ClInclude Include="LBat.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClInclude>
@@ -454,8 +454,18 @@
     <ClInclude Include="LDragonBase.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClInclude>
-    <ClInclude Include="LMinotaurSprite.h" />
-    <ClInclude Include="LMinotaur.h" />
+    <ClInclude Include="LMinotaur.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClInclude>
+    <ClInclude Include="LMinotaurSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClInclude>
+    <ClInclude Include="LDragon.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClInclude>
+    <ClInclude Include="LMonsterMelee.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -654,9 +664,6 @@
     <ClCompile Include="LCadenceSound.cpp">
       <Filter>Contents\Objects\GameCharacters\Cadence</Filter>
     </ClCompile>
-    <ClCompile Include="LMonsterWeapon.cpp">
-      <Filter>Contents\Objects\Items\Weapons\Base</Filter>
-    </ClCompile>
     <ClCompile Include="LBat.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Enemies\Bats</Filter>
     </ClCompile>
@@ -750,7 +757,17 @@
     <ClCompile Include="LDragonBase.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClCompile>
-    <ClCompile Include="LMinotaurSprite.cpp" />
-    <ClCompile Include="LMinotaur.cpp" />
+    <ClCompile Include="LMinotaur.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClCompile>
+    <ClCompile Include="LMinotaurSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Minotaur</Filter>
+    </ClCompile>
+    <ClCompile Include="LDragon.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonsterMelee.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -169,6 +169,7 @@
     <ClInclude Include="LGameCharacter.h" />
     <ClInclude Include="LBeatManager.h" />
     <ClInclude Include="LGameObject.h" />
+    <ClInclude Include="LDragon.h" />
     <ClInclude Include="LGreenSlime.h" />
     <ClInclude Include="LGreenSlimeSprite.h" />
     <ClInclude Include="LImage.h" />
@@ -190,7 +191,7 @@
     <ClInclude Include="LMonster.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
-    <ClInclude Include="LMonsterWeapon.h" />
+    <ClInclude Include="LMonsterMelee.h" />
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LOrangeSlime.h" />
     <ClInclude Include="LOrangeSlimeSprite.h" />
@@ -271,6 +272,7 @@
     <ClCompile Include="LGameCharacter.cpp" />
     <ClCompile Include="LBeatManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
+    <ClCompile Include="LDragon.cpp" />
     <ClCompile Include="LGreenSlime.cpp" />
     <ClCompile Include="LGreenSlimeSprite.cpp" />
     <ClCompile Include="LImage.cpp" />
@@ -291,7 +293,7 @@
     <ClCompile Include="LMonster.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
-    <ClCompile Include="LMonsterWeapon.cpp" />
+    <ClCompile Include="LMonsterMelee.cpp" />
     <ClCompile Include="LOrangeSlime.cpp" />
     <ClCompile Include="LOrangeSlimeSprite.cpp" />
     <ClCompile Include="LPawn.cpp" />
