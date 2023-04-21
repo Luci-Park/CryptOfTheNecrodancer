@@ -163,6 +163,7 @@
     <ClInclude Include="LDragonBase.h" />
     <ClInclude Include="LEntity.h" />
     <ClInclude Include="LEnums.h" />
+    <ClInclude Include="LFireBallEffect.h" />
     <ClInclude Include="LFloorShadow.h" />
     <ClInclude Include="LFloorStrategy.h" />
     <ClInclude Include="LFloorTile.h" />
@@ -266,6 +267,7 @@
     <ClCompile Include="LDoor.cpp" />
     <ClCompile Include="LDragonBase.cpp" />
     <ClCompile Include="LEntity.cpp" />
+    <ClCompile Include="LFireBallEffect.cpp" />
     <ClCompile Include="LFloorShadow.cpp" />
     <ClCompile Include="LFloorStrategy.cpp" />
     <ClCompile Include="LFloorTile.cpp" />

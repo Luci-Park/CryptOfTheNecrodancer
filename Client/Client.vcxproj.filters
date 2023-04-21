@@ -352,9 +352,6 @@
     <ClInclude Include="LDagger.h">
       <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClInclude>
-    <ClInclude Include="LMonsterMeleeEffect.h">
-      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
-    </ClInclude>
     <ClInclude Include="LShortMeleeEffect.h">
       <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClInclude>
@@ -466,6 +463,10 @@
     <ClInclude Include="LMonsterMelee.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClInclude>
+    <ClInclude Include="LMonsterMeleeEffect.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="LFireBallEffect.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -655,9 +656,6 @@
     <ClCompile Include="LDagger.cpp">
       <Filter>Contents\Objects\Items\Weapons\Base</Filter>
     </ClCompile>
-    <ClCompile Include="LMonsterMeleeEffect.cpp">
-      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
-    </ClCompile>
     <ClCompile Include="LShortMeleeEffect.cpp">
       <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
     </ClCompile>
@@ -769,5 +767,9 @@
     <ClCompile Include="LMonsterMelee.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClCompile>
+    <ClCompile Include="LMonsterMeleeEffect.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="LFireBallEffect.cpp" />
   </ItemGroup>
 </Project>
