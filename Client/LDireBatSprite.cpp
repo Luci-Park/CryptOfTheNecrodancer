@@ -35,18 +35,17 @@ namespace cl
 	}
 	void DireBatSprite::SetY(int y)
 	{
-		std::wstring leftPath = L"..\\Assets\\Arts\\Miniboss\\DireBat_left.bmp";
-		std::wstring rightPath = L"..\\Assets\\Arts\\Monsters\\Bats\\DireBat_right.bmp";
+		std::wstring path = L"..\\Assets\\Arts\\Miniboss\\Dire Bats.bmp";
 		mLeftAnimation = L"Dire_Left";
 		mRightAnimation = L"Dire_Right";
 		mLeftShadowAnimation = L"Dire_Left_Shadow";
 		mRightShadowAnimation = L"Dire_Right_Shadow";
 
-		mAnimator->CreateAnimation(mLeftAnimation, mLeftAnimation, leftPath, 4, 8, 0, y, 4, -Vector2(12, 24), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mRightAnimation, mRightAnimation, rightPath, 4, 8, 0, y, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mRightAnimation, L"DireBat", path, 8, 4, 0, y * 2, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mLeftAnimation, L"DireBat", path, 8, 4, 4, y * 2, 4, -Vector2(12, 24), BeatManager::BeatDuration());
 
-		mAnimator->CreateAnimation(mLeftShadowAnimation, mLeftAnimation, leftPath, 4, 8, 0, y + 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mRightShadowAnimation, mRightAnimation, rightPath, 4, 8, 0, y + 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mRightShadowAnimation, L"DireBat", path, 8, 4, 0, y * 2 + 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mLeftShadowAnimation, L"DireBat", path, 8, 4, 4, y * 2 + 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
 		Turn(Vector2::Right);
 	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "LMonster.h"
+#include "LLightSource.h"
 namespace cl
 {
 	class DireBatBase : public Monster
@@ -18,13 +19,14 @@ namespace cl
 		virtual void PlayOnHitSound() override;
 		virtual void PlayOnDeathSound() override;
 
-
 	private:
 		virtual void SetStats() = 0;
 		virtual Vector2 GetNextDir() override;
 		virtual int GetY() = 0;
 
 	private:
+		LightSource* mLightSource;
+
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[3];

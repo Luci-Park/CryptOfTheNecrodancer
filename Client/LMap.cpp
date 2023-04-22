@@ -1,13 +1,14 @@
 #include "LMap.h"
 #include "LBeatManager.h"
 #include "LObject.h"
+#include "LLightSource.h"
 #include "LCadence.h"
 #include "LShovel.h"
 #include "LZombie.h"
 #include "LSkeleton.h"
 #include "LBat.h"
 #include "LOrangeSlime.h"
-#include "LBlueSlime.h"
+#include "LMinotaur.h"
 #include "LWallTorch.h"
 namespace cl
 {
@@ -63,6 +64,17 @@ namespace cl
 			}
 		}
 	}
+	void Map::AddLightSource(LightSource* light)
+	{
+		if(light != nullptr)
+			mLightSources.push_back(light);
+	}
+	void Map::RemoveLightSource(LightSource* light)
+	{
+		auto it = std::find(mLightSources.begin(), mLightSources.end(), light);
+		if (it != mLightSources.end())
+			mLightSources.erase(it);
+	}
 	void Map::CalculateLight()
 	{
 		for (int i = 0; i < mMapSize.y; ++i)
@@ -72,13 +84,9 @@ namespace cl
 				mLightStatus[i][j]->Reset();
 			}
 		}
-		for (int i = 0; i < mMapSize.y; ++i)
+		for (int i = 0; i < mLightSources.size(); ++i)
 		{
-			for (int j = 0; j < mMapSize.x; ++j)
-			{
-				if(mTileObjects[i][j] != nullptr)
-					mTileObjects[i][j]->CalLightBrightness();
-			}
+			mLightSources[i]->CalLightBrightness();
 		}
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
@@ -147,8 +155,6 @@ namespace cl
 	}
 #pragma endregion
 #pragma region Map Creation
-
-
 	void Map::CreateMap(Scene* sc)
 	{
 		CreateFloor(sc);
@@ -241,12 +247,12 @@ namespace cl
 				mTileObjects[i][j] = nullptr;
 				if (i == 8)
 				{
-					if(j > 3 && j< 7)
+					if(j == 4)
 					{
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<BlackSkeleton>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<DarkMinotaur>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

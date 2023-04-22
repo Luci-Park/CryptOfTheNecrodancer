@@ -9,7 +9,7 @@ namespace cl
 		virtual ~YellowDireBat();
 
 	private:
-		virtual int GetY() override { return 0; }
+		virtual int GetY() override { return 1; }
 		virtual void SetStats() override;
 	};
 	class BrownDireBat : public DireBatBase
@@ -19,7 +19,7 @@ namespace cl
 		virtual ~BrownDireBat();
 
 	private:
-		virtual int GetY() override { return 1; }
+		virtual int GetY() override { return 0; }
 		virtual void SetStats() override;
 	};
 }

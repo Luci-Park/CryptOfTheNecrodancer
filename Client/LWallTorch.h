@@ -3,11 +3,12 @@
 namespace cl
 {
 	class Animator;
+	class LightSource;
 	class WallTorch : public TileObject
 	{
 	public:
 		WallTorch(Scene* sc);
-		virtual ~WallTorch(){}
+		virtual ~WallTorch();
 
 		virtual void Initialize() override;
 
@@ -18,11 +19,9 @@ namespace cl
 		virtual bool TryMove() { return false; }
 		virtual void OnDestroy();
 
-	protected:
-		virtual void SetBrightness() override;
-
 	private:
 		Animator* mAnimator;
+		LightSource* mLightSource;
 	};
 }
 

@@ -1,6 +1,7 @@
 #include "LCadence.h"
 #include "LCadenceSound.h"
 #include "LCadenceSprite.h"
+#include "LLightSource.h"
 #include "LCadenceShovelEffect.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
@@ -23,11 +24,20 @@ namespace cl
 		//Camera::SetTarget(this);
 		mMaxHealth = 3;
 		mHealth = 3;
+		mLightSource = new LightSource(mTransform, 1.25, 3);
 	}
 	Cadence::~Cadence()
 	{
-		delete mSound; 
-		mSound = nullptr;
+		if (mSound != nullptr)
+		{
+			delete mSound; 
+			mSound = nullptr;
+		}
+		if (mLightSource != nullptr)
+		{
+			delete mLightSource;
+			mLightSource = nullptr;
+		}
 		Camera::SetTarget(nullptr);
 	}
 	void Cadence::Initialize()
@@ -175,12 +185,6 @@ namespace cl
 			return true;//I tried dig
 		}
 		return false;
-	}
-
-	void Cadence::SetBrightness()
-	{
-		mInnerRadius = 1.25;
-		mOuterRadius = 3;
 	}
 
 	void Cadence::SetInput()

@@ -1,5 +1,6 @@
 #pragma once
 #include "LMonster.h"
+#include "LLightSource.h"
 namespace cl
 {
 	class DragonBase : public Monster
@@ -24,6 +25,8 @@ namespace cl
 		void PlayWalkSound();
 		void SetDragonState(State state);
 	protected:
+		LightSource* mLightSource;
+
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[3];

@@ -44,6 +44,16 @@ namespace cl
 		if (_Map != nullptr)
 			_Map->Render(hdc);
 	}
+	void MapManager::AddLightSource(LightSource* light)
+	{
+		if (_Map != nullptr)
+			_Map->AddLightSource(light);
+	}
+	void MapManager::RemoveLightSource(LightSource* light)
+	{
+		if (_Map != nullptr)
+			_Map->RemoveLightSource(light);
+	}
 	void MapManager::SetLight(Vector2 index, float brightness)
 	{
 		if (_Map != nullptr)

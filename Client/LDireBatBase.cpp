@@ -7,6 +7,8 @@ namespace cl
 		:Monster(sc, false)
 	{
 		mSize = 2;
+		mLightSource = new LightSource(mTransform, 1.0, 1.0);
+
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Midboss\\Direbat\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_vampbat_attack", path + L"en_vampbat_attack" + extend);
@@ -21,6 +23,8 @@ namespace cl
 	}
 	DireBatBase::~DireBatBase()
 	{
+		delete mLightSource;
+		mLightSource = nullptr;
 	}
 	void DireBatBase::Initialize()
 	{

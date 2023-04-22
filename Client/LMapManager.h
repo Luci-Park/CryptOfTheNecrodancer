@@ -5,6 +5,7 @@ namespace cl
 	class FloorTile;
 	class WallTile;
 	class TileObject;
+	class LightSource;
 	class TileLight;
 	class Item;
 	class Cadence;
@@ -26,6 +27,9 @@ namespace cl
 		 
 		static void Update();
 		static void Render(HDC hdc);
+
+		static void AddLightSource(LightSource* light);
+		static void RemoveLightSource(LightSource* light);
 
 		static void SetLight(Vector2 index, float brightness);
 		static TileLight* GetLight(Vector2 index);

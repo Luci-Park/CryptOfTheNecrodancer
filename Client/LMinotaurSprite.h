@@ -11,7 +11,8 @@ namespace cl
 
 		void SetMinoState(MinotaurBase::State state);
 		void SetY(int y);
-
+		
+		virtual void Initialize() override;
 		virtual void Turn(Vector2 dir);
 	private:
 		int GetIndex(Vector2 dir);

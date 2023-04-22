@@ -2,11 +2,21 @@
 #include "LMapManager.h"
 #include "LAnimator.h"
 #include "LBeatManager.h"
+#include "LLightSource.h"
 namespace cl
 {
 	WallTorch::WallTorch(Scene* sc)
 		:TileObject(sc)
 	{
+		mLightSource = new LightSource(mTransform, 0.0, 4.25);
+	}
+	WallTorch::~WallTorch()
+	{
+		if (mLightSource != nullptr)
+		{
+			delete mLightSource;
+			mLightSource = nullptr;
+		}
 	}
 	void WallTorch::Initialize()
 	{
@@ -23,6 +33,7 @@ namespace cl
 	void WallTorch::Update()
 	{
 		TileObject::Update();
+		 
 		if (MapManager::GetWall(mIndex) == nullptr)
 			OnDestroy();
 	}
@@ -36,10 +47,5 @@ namespace cl
 	void WallTorch::OnDestroy()
 	{
 		MapManager::DestroyTileObject(mIndex);
-	}
-	void WallTorch::SetBrightness()
-	{
-		mInnerRadius = 0.0;
-		mOuterRadius = 4.25;
 	}
 }

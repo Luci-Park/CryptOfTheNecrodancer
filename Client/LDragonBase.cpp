@@ -8,6 +8,7 @@ namespace cl
 		, mDragonState(State::Idle)
 	{
 		mSize = 2;
+		mLightSource = new LightSource(mTransform, 1.0, 1.0);
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Midboss\\Dragon\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_dragon_attack_melee", path + L"en_dragon_attack_melee" + extend);
@@ -30,6 +31,8 @@ namespace cl
 	}
 	DragonBase::~DragonBase()
 	{
+		delete mLightSource;
+		mLightSource = nullptr;
 	}
 	void DragonBase::Initialize()
 	{

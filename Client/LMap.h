@@ -12,7 +12,7 @@ namespace cl
 	class TileObject;
 	class Item;
 	class Cadence;
-	class TileObject;
+	class LightSource;
 	class Map
 	{
 	public:
@@ -25,6 +25,9 @@ namespace cl
 		virtual void Update();
 		void Render(HDC hdc);
 		
+		void AddLightSource(LightSource* light);
+		void RemoveLightSource(LightSource* light);
+
 		void SetLight(Vector2 pos, float brightness);
 		TileLight* GetLight(Vector2 pos);
 		void OnTileStep(TileObject* object, Vector2 pos);
@@ -35,8 +38,11 @@ namespace cl
 		Vector2 GetPlayerIndex() { return mPlayerIndex; }
 		Item* GetItem(Vector2 index);
 		Vector2 SetItem(Item* item, Vector2 pos);
+
 		void PlayerMove(TileObject* object, Vector2 src, Vector2 dest);
 		void Move(TileObject* object, Vector2 src, Vector2 dest);
+		
+		
 		void CreateMap(Scene* sc);
 		Vector2 GetPlayerPos() { return mPlayerIndex; }
 
@@ -68,6 +74,7 @@ namespace cl
 		std::vector<std::vector<Item*>> mItems;
 		std::vector<std::vector<TileObject*>> mTileObjects;
 		std::vector<std::vector<TileLight*>> mLightStatus;
+		std::vector<LightSource*>mLightSources;
 	};
 
 	class LobbyMap : public Map

@@ -182,6 +182,7 @@
     <ClInclude Include="LKnight.h" />
     <ClInclude Include="LKnightSprite.h" />
     <ClInclude Include="LLayer.h" />
+    <ClInclude Include="LLightSource.h" />
     <ClInclude Include="LLobbyScene.h" />
     <ClInclude Include="LMap.h" />
     <ClInclude Include="LMapManager.h" />
@@ -285,6 +286,7 @@
     <ClCompile Include="LKnight.cpp" />
     <ClCompile Include="LKnightSprite.cpp" />
     <ClCompile Include="LLayer.cpp" />
+    <ClCompile Include="LLightSource.cpp" />
     <ClCompile Include="LLobbyScene.cpp" />
     <ClCompile Include="LMap.cpp" />
     <ClCompile Include="LMapManager.cpp" />

@@ -1,6 +1,6 @@
 #pragma once
 #include "LMonster.h"
-
+#include "LLightSource.h"
 namespace cl
 {
 	class MinotaurSprite;
@@ -16,6 +16,7 @@ namespace cl
 		virtual void OnAggroed() override;
 		virtual void OnLateBeat() override;
 		virtual bool TryDig(Vector2 direction) override;
+		virtual bool TryAttack(Vector2 direction) override;
 
 
 		virtual void PlayOnAttackSound() override;
@@ -31,6 +32,8 @@ namespace cl
 		void ChangeState(State state);
 	private:
 		MinotaurSprite* mMinoSprite;
+		LightSource* mLightSource;
+
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[3];

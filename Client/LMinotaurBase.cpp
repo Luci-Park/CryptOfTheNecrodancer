@@ -2,6 +2,7 @@
 #include "LMapManager.h"
 #include "LWallTile.h"
 #include "LMinotaurSprite.h"
+#include "LMonsterMelee.h"
 namespace cl
 {
 	MinotaurBase::MinotaurBase(Scene* sc)
@@ -11,6 +12,7 @@ namespace cl
 	{
 		mSize = 2;
 		mDigPower = 2;
+		mLightSource = new LightSource(mTransform, 1.0, 1.0);
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Midboss\\Minotaur\\";
 		std::wstring extend = L".wav";
 		mAttackSound = Resources::Load<AudioClip>(L"en_minotaur_attack", path + L"en_minotaur_attack" + extend);
@@ -27,6 +29,8 @@ namespace cl
 	}
 	MinotaurBase::~MinotaurBase()
 	{
+		delete mLightSource;
+		mLightSource = nullptr;
 	}
 	void MinotaurBase::Initialize()
 	{
@@ -58,6 +62,19 @@ namespace cl
 		}
 		return false;
 	}
+	bool MinotaurBase::TryAttack(Vector2 direction)
+	{
+		Cadence* player = MapManager::GetPlayer(mIndex + direction);
+		if (player)
+		{
+			mWeapon->Attack(mIndex, direction);
+			PlayOnAttackSound();
+			ChangeState(State::Faint);
+			return true;
+		}
+
+		return false;
+	}
 	void MinotaurBase::PlayOnAttackSound()
 	{
 		mAttackSound->Play(false);
@@ -80,6 +97,7 @@ namespace cl
 			if (mBeatCount == 3)
 			{
 				ChangeState(State::Idle);
+				return Vector2::Zero;
 			}
 		}
 		Vector2 chargeDir;
@@ -101,13 +119,16 @@ namespace cl
 		if (mMinoState == State::Charge)
 		{
 			mDigPower = 5;
-			return chargeDir;
+			if(chargeDir != Vector2::Zero)
+				return chargeDir;
+			return mPrevDir;
 		}
 		return Vector2::Zero;
 	}
 	Vector2 MinotaurBase::IsInSight()
 	{
 		Vector2 playerPos = MapManager::GetPlayerIndex();
+		Vector2 playerPrevPos = playerPos - MapManager::GetPlayer(playerPos)->GetInput();
 		Vector2 dir = (playerPos - mIndex).TileNormalize();
 		if (Vector2::IsCardinal(dir))
 		{

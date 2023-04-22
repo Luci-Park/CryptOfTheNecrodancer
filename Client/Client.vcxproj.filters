@@ -467,6 +467,7 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClInclude>
     <ClInclude Include="LFireBallEffect.h" />
+    <ClInclude Include="LLightSource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -771,5 +772,6 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClCompile>
     <ClCompile Include="LFireBallEffect.cpp" />
+    <ClCompile Include="LLightSource.cpp" />
   </ItemGroup>
 </Project>
