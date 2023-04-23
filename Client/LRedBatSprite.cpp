@@ -31,16 +31,16 @@ namespace cl
 		if (mLookDir == Vector2::Left)
 		{
 			if (!mbInShadows)
-				mAnimator->Play(mLeftAnimation, true, true);
+				mAnimator->Play(mLeftAnimation, Animator::PlaySetting::Loop, true);
 			else
-				mAnimator->Play(mLeftShadowAnimation, true, true);
+				mAnimator->Play(mLeftShadowAnimation, Animator::PlaySetting::Loop, true);
 		}
 		else if (mLookDir == Vector2::Right)
 		{
 			if (!mbInShadows)
-				mAnimator->Play(mRightAnimation, true, false);
+				mAnimator->Play(mRightAnimation, Animator::PlaySetting::Loop, false);
 			else
-				mAnimator->Play(mRightShadowAnimation, true, false);
+				mAnimator->Play(mRightShadowAnimation, Animator::PlaySetting::Loop, false);
 		}
 	}
 }

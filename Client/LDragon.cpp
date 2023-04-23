@@ -1,5 +1,7 @@
 #include "LDragon.h"
 #include "LMapManager.h"
+#include "LGreenDragonSprite.h"
+#include "LRedDragonSprite.h"
 namespace cl
 {
 	GreenDragon::GreenDragon(Scene* sc)
@@ -9,10 +11,15 @@ namespace cl
 	GreenDragon::~GreenDragon()
 	{
 	}
+	void GreenDragon::Initialize()
+	{
+		DragonBase::Initialize();
+		mSprite = object::Instantiate<GreenDragonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+	}
 	void GreenDragon::SetStats()
 	{
 		mActivationRadius = 0;
-		mHealth = 4;
+		mMaxHealth = 4;
 		mAttackPower = 2;
 		mDrop = 15;
 	}
@@ -25,10 +32,16 @@ namespace cl
 	RedDragon::~RedDragon()
 	{
 	}
+	void RedDragon::Initialize()
+	{
+		DragonBase::Initialize();
+		mDragonSprite = object::Instantiate<RedDragonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		mSprite = mDragonSprite;
+	}
 	void RedDragon::SetStats()
 	{
 		mActivationRadius = 10;
-		mHealth = 6;
+		mMaxHealth = 6;
 		mAttackPower = 3;
 		mDrop = 20;
 	}
@@ -54,9 +67,14 @@ namespace cl
 			}
 			else
 			{
-				DragonBase::GetNextDir();
+				return DragonBase::GetNextDir();
 			}
 		}
+	}
+	void RedDragon::SetDragonState(State state)
+	{
+		DragonBase::SetDragonState(state);
+		mDragonSprite->SetDragonState(state);
 	}
 	Vector2 RedDragon::IsInSight()
 	{

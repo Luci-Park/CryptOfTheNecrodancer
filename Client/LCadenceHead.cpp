@@ -1,5 +1,6 @@
 #include "LCadenceHead.h"
 #include "LAnimator.h"
+#include "LBeatManager.h"
 namespace cl
 {
 	const std::wstring CadenceHead::mLeftAnimation = L"CadenceLeftHead";
@@ -46,12 +47,12 @@ namespace cl
 
 	void CadenceHead::PlayRight()
 	{
-		mAnimator->Play(mRightAnimation, true, false);
+		mAnimator->Play(mRightAnimation, Animator::PlaySetting::Loop, false);
 	}
 
 	void CadenceHead::PlayLeft()
 	{
-		mAnimator->Play(mLeftAnimation, true, true);
+		mAnimator->Play(mLeftAnimation, Animator::PlaySetting::Loop, true);
 	}
 	
 }

@@ -149,6 +149,9 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\AttackEffects">
       <UniqueIdentifier>{56163033-e928-4da6-873a-4fd3db03710b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Objects\Environment\Lights">
+      <UniqueIdentifier>{45c87662-c2a9-4fba-b8b0-c6f7e1f67f7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -427,12 +430,6 @@
     <ClInclude Include="LFloorShadow.h">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClInclude>
-    <ClInclude Include="LTileLight.h">
-      <Filter>Contents\Objects\Environment</Filter>
-    </ClInclude>
-    <ClInclude Include="LWallTorch.h">
-      <Filter>Contents\Objects\Environment</Filter>
-    </ClInclude>
     <ClInclude Include="LDireBatBase.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClInclude>
@@ -467,7 +464,21 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClInclude>
     <ClInclude Include="LFireBallEffect.h" />
-    <ClInclude Include="LLightSource.h" />
+    <ClInclude Include="LRedDragonSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClInclude>
+    <ClInclude Include="LGreenDragonSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClInclude>
+    <ClInclude Include="LWallTorch.h">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="LTileLight.h">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="LLightSource.h">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -732,12 +743,6 @@
     <ClCompile Include="LFloorShadow.cpp">
       <Filter>Contents\Objects\Environment\Floors</Filter>
     </ClCompile>
-    <ClCompile Include="LTileLight.cpp">
-      <Filter>Contents\Objects\Environment</Filter>
-    </ClCompile>
-    <ClCompile Include="LWallTorch.cpp">
-      <Filter>Contents\Objects\Environment</Filter>
-    </ClCompile>
     <ClCompile Include="LDireBatBase.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dirbat</Filter>
     </ClCompile>
@@ -772,6 +777,20 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClCompile>
     <ClCompile Include="LFireBallEffect.cpp" />
-    <ClCompile Include="LLightSource.cpp" />
+    <ClCompile Include="LGreenDragonSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClCompile>
+    <ClCompile Include="LRedDragonSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
+    </ClCompile>
+    <ClCompile Include="LWallTorch.cpp">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="LTileLight.cpp">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="LLightSource.cpp">
+      <Filter>Contents\Objects\Environment\Lights</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

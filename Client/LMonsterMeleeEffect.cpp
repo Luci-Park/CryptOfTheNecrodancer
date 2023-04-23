@@ -30,24 +30,24 @@ namespace cl
 	void MonsterMeleeEffect::PlayUp()
 	{
 		mTransform->SetLocalPos(Vector2::Up * UNITLENGTH);
-		mAnimator->Play(mUpAnim, false, true);
+		mAnimator->Play(mUpAnim, Animator::PlaySetting::Once, true);
 	}
 
 	void MonsterMeleeEffect::PlayDown()
 	{
 		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH);
-		mAnimator->Play(mDownAnim, false, false);
+		mAnimator->Play(mDownAnim, Animator::PlaySetting::Once, false);
 	}
 
 	void MonsterMeleeEffect::PlayRight()
 	{
 		mTransform->SetLocalPos(Vector2::Right * UNITLENGTH);
-		mAnimator->Play(mRightAnim, false, false);
+		mAnimator->Play(mRightAnim, Animator::PlaySetting::Once, false);
 	}
 
 	void MonsterMeleeEffect::PlayLeft()
 	{
 		mTransform->SetLocalPos(Vector2::Left * UNITLENGTH);
-		mAnimator->Play(mLeftAnim, false, true);
+		mAnimator->Play(mLeftAnim, Animator::PlaySetting::Once, true);
 	}
 }

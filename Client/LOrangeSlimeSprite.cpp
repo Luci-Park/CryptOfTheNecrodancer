@@ -23,7 +23,7 @@ namespace cl
 		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 6, 4, -Vector2(13, 22), BeatManager::BeatDuration());
 		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::BeatDuration());
 		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->Play(L"LeftJump", true, false);
+		mAnimator->Play(L"LeftJump", Animator::PlaySetting::Loop, false);
 	}
 	void OrangeSlimeSprite::Update()
 	{
@@ -48,16 +48,16 @@ namespace cl
 		if (mLookDir == Vector2::Left)
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"LeftJumpShadow", true, false);
+				mAnimator->Play(L"LeftJumpShadow", Animator::PlaySetting::Loop, false);
 			else
-				mAnimator->Play(L"LeftJump", true, false);
+				mAnimator->Play(L"LeftJump", Animator::PlaySetting::Loop, false);
 		}
 		else
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"RightJumpShadow", true, false);
+				mAnimator->Play(L"RightJumpShadow", Animator::PlaySetting::Loop, false);
 			else
-				mAnimator->Play(L"RightJump", true, false);
+				mAnimator->Play(L"RightJump", Animator::PlaySetting::Loop, false);
 		}
 	}
 }

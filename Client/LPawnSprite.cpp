@@ -21,11 +21,11 @@ namespace cl
 	void PawnSprite::Ready()
 	{
 		if (!mAnimator->IsAnimationPlaying(mReady))
-			mAnimator->Play(mReady, true, false);
+			mAnimator->Play(mReady, Animator::PlaySetting::Loop, false);
 	}
 	void PawnSprite::Idle()
 	{
 		if (!mAnimator->IsAnimationPlaying(mIdle))
-			mAnimator->Play(mIdle, true, false);
+			mAnimator->Play(mIdle, Animator::PlaySetting::Loop, false);
 	}
 }

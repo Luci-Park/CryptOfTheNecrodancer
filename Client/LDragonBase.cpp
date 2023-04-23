@@ -54,7 +54,7 @@ namespace cl
 		{
 			mBeatCount++;
 		}
-		if (mMoveState == MoveState::Moved)
+		if (mMoveState == MoveState::Moved && mNextDir != Vector2::Zero)
 			PlayWalkSound();
 	}
 	void DragonBase::PlayOnAttackSound()

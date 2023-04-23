@@ -67,9 +67,9 @@ namespace cl
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
 		if (!mbInShadows)
-			mAnimator->Play(mIdleAnim[idx], true, rev);
+			mAnimator->Play(mIdleAnim[idx], Animator::PlaySetting::Loop, rev);
 		else
-			mAnimator->Play(mIdleShadowAnim[idx], true, rev);
+			mAnimator->Play(mIdleShadowAnim[idx], Animator::PlaySetting::Loop, rev);
 	}
 
 	void ZombieSprite::OnBeat()
@@ -78,9 +78,9 @@ namespace cl
 		int idx = GetIndex(mLookDir);
 		bool rev = mLookDir == Vector2::Right;
 		if (!mbInShadows)
-			mAnimator->Play(mBeatAnim[idx], true, rev);
+			mAnimator->Play(mBeatAnim[idx], Animator::PlaySetting::Loop, rev);
 		else
-			mAnimator->Play(mBeatShadowAnim[idx], true, rev);
+			mAnimator->Play(mBeatShadowAnim[idx], Animator::PlaySetting::Loop, rev);
 	}
 
 	int ZombieSprite::GetIndex(Vector2 dir)

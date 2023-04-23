@@ -66,8 +66,8 @@ namespace cl
 	void MinotaurSprite::PlayAnimation()
 	{
 		if (mbInShadows)
-			mAnimator->Play(mShadowAnimations[(int)mMinoState][GetIndex(mLookDir)], true, mLookDir == Vector2::Right);
+			mAnimator->Play(mShadowAnimations[(int)mMinoState][GetIndex(mLookDir)],Animator::PlaySetting::Loop, mLookDir == Vector2::Right);
 		else
-			mAnimator->Play(mAnimations[(int)mMinoState][GetIndex(mLookDir)], true, mLookDir == Vector2::Right);
+			mAnimator->Play(mAnimations[(int)mMinoState][GetIndex(mLookDir)], Animator::PlaySetting::Loop, mLookDir == Vector2::Right);
 	}
 }

@@ -48,16 +48,16 @@ namespace cl
 		if (mLookDir == Vector2::Left)
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"LeftIdleShadow", true, false);
+				mAnimator->Play(L"LeftIdleShadow", Animator::PlaySetting::Loop, false);
 			else
-				mAnimator->Play(L"LeftIdle", true, false);
+				mAnimator->Play(L"LeftIdle", Animator::PlaySetting::Loop, false);
 		}
 		else
 		{
 			if (mbInShadows)
-				mAnimator->Play(L"RightIdleShadow", true, false);
+				mAnimator->Play(L"RightIdleShadow", Animator::PlaySetting::Loop, false);
 			else
-				mAnimator->Play(L"RightIdle", true, false);
+				mAnimator->Play(L"RightIdle", Animator::PlaySetting::Loop, false);
 		}
 	}
 }

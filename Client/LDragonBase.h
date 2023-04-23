@@ -23,7 +23,7 @@ namespace cl
 		virtual Vector2 GetNextDir() override;
 
 		void PlayWalkSound();
-		void SetDragonState(State state);
+		virtual void SetDragonState(State state);
 	protected:
 		LightSource* mLightSource;
 

@@ -8,7 +8,7 @@
 #include "LSkeleton.h"
 #include "LBat.h"
 #include "LOrangeSlime.h"
-#include "LMinotaur.h"
+#include "LDragon.h"
 #include "LWallTorch.h"
 namespace cl
 {
@@ -120,21 +120,25 @@ namespace cl
 	}
 	WallTile* Map::GetWall(Vector2 index)
 	{
+		if (!IndexIsValid(index)) return nullptr;
 		return mWall[index.y][index.x];
 	}
 	TileObject* Map::GetTileObject(Vector2 index)
 	{
+		if (!IndexIsValid(index)) return nullptr;
 		if (index == mPlayerIndex) return nullptr;
 		return mTileObjects[index.y][index.x];
 	}
 	Cadence* Map::GetPlayer(Vector2 index)
 	{
+		if (!IndexIsValid(index)) return nullptr;
 		if (index == mPlayerIndex)
 			return (Cadence*)mTileObjects[index.y][index.x];
 		return nullptr;
 	}
 	Item* Map::GetItem(Vector2 index)
 	{
+		if (!IndexIsValid(index)) return nullptr;
 		return mItems[index.y][index.x];
 	}
 	Vector2 Map::SetItem(Item* item, Vector2 pos)
@@ -252,7 +256,7 @@ namespace cl
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<DarkMinotaur>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<RedDragon>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

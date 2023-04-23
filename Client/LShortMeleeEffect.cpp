@@ -29,25 +29,25 @@ namespace cl
 	void ShortMeleeEffect::PlayUp()
 	{
 		mTransform->SetLocalPos(Vector2::Up * UNITLENGTH);
-		mAnimator->Play(mUpAnim, false, true);
+		mAnimator->Play(mUpAnim, Animator::PlaySetting::Once, true);
 	}
 
 	void ShortMeleeEffect::PlayDown()
 	{
 		mTransform->SetLocalPos(Vector2::Down * UNITLENGTH);
-		mAnimator->Play(mDownAnim, false, false);
+		mAnimator->Play(mDownAnim, Animator::PlaySetting::Once, false);
 	}
 
 	void ShortMeleeEffect::PlayRight()
 	{
 		mTransform->SetLocalPos(Vector2::Right * UNITLENGTH);
-		mAnimator->Play(mRightAnim, false, false);
+		mAnimator->Play(mRightAnim, Animator::PlaySetting::Once, false);
 	}
 
 	void ShortMeleeEffect::PlayLeft()
 	{
 		mTransform->SetLocalPos(Vector2::Left * UNITLENGTH);
-		mAnimator->Play(mLeftAnim, false, true);
+		mAnimator->Play(mLeftAnim, Animator::PlaySetting::Once, true);
 	}
 
 }

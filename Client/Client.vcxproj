@@ -171,6 +171,7 @@
     <ClInclude Include="LBeatManager.h" />
     <ClInclude Include="LGameObject.h" />
     <ClInclude Include="LDragon.h" />
+    <ClInclude Include="LGreenDragonSprite.h" />
     <ClInclude Include="LGreenSlime.h" />
     <ClInclude Include="LGreenSlimeSprite.h" />
     <ClInclude Include="LImage.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="LQueen.h" />
     <ClInclude Include="LQueenSprite.h" />
     <ClInclude Include="LRedBatSprite.h" />
+    <ClInclude Include="LRedDragonSprite.h" />
     <ClInclude Include="LResource.h" />
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LRook.h" />
@@ -276,6 +278,7 @@
     <ClCompile Include="LBeatManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
     <ClCompile Include="LDragon.cpp" />
+    <ClCompile Include="LGreenDragonSprite.cpp" />
     <ClCompile Include="LGreenSlime.cpp" />
     <ClCompile Include="LGreenSlimeSprite.cpp" />
     <ClCompile Include="LImage.cpp" />
@@ -305,6 +308,7 @@
     <ClCompile Include="LQueen.cpp" />
     <ClCompile Include="LQueenSprite.cpp" />
     <ClCompile Include="LRedBatSprite.cpp" />
+    <ClCompile Include="LRedDragonSprite.cpp" />
     <ClCompile Include="LResource.cpp" />
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LRook.cpp" />

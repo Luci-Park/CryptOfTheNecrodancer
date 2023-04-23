@@ -45,22 +45,22 @@ namespace cl
 		if (dir == Vector2::Right)
 		{
 			mTransform->SetLocalPos(Vector2::Right * UNITLENGTH);
-			mAnimator->Play(L"Dagger_Right", false, false);
+			mAnimator->Play(L"Dagger_Right", Animator::PlaySetting::Once, false);
 		}
 		if (dir == Vector2::Left)
 		{
 			mTransform->SetLocalPos(Vector2::Left * UNITLENGTH);
-			mAnimator->Play(L"Dagger_Left", false, false);
+			mAnimator->Play(L"Dagger_Left", Animator::PlaySetting::Once, false);
 		}
 		if (dir == Vector2::Up)
 		{
 			mTransform->SetLocalPos(Vector2::Up * UNITLENGTH);
-			mAnimator->Play(L"Dagger_Up", false, false);
+			mAnimator->Play(L"Dagger_Up", Animator::PlaySetting::Once, false);
 		}
 		if (dir == Vector2::Down)
 		{
 			mTransform->SetLocalPos(Vector2::Down * UNITLENGTH);
-			mAnimator->Play(L"Dagger_Down", false, false);
+			mAnimator->Play(L"Dagger_Down", Animator::PlaySetting::Once, false);
 		}
 	}
 }

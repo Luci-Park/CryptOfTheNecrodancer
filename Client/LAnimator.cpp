@@ -7,7 +7,7 @@ namespace cl
 		: Component(eComponentType::Animator)
 		, mActiveAnimation(nullptr)
 		, mSpriteSheet(nullptr)
-		, mbLoop(false)
+		, mPlaySettings(PlaySetting::Once)
 		, mPercent(Vector2::One)
 		, mbShow(true)
 	{
@@ -35,9 +35,9 @@ namespace cl
 
 			if (mActiveAnimation->IsComplete())
 			{
-				if (mbLoop)
+				if (mPlaySettings == PlaySetting::Loop)
 					mActiveAnimation->Reset();
-				else
+				else if(mPlaySettings == PlaySetting::Once)
 					mActiveAnimation = nullptr;
 			}
 			
@@ -167,22 +167,19 @@ namespace cl
 		return iter->second;
 	}
 
-	void Animator::Play(const std::wstring& name, bool loop, bool reverse)
+	void Animator::Play(const std::wstring& name, PlaySetting loop, bool reverse)
 	{
-		if (mActiveAnimation != nullptr)
-		{
-		}
 		mActiveAnimation = FindAnimation(name);
 		mActiveAnimation->SetReverse(reverse);
 		mActiveAnimation->Reset();
-		mbLoop = loop;
+		mPlaySettings = loop;
 
 	}
 
 	void Animator::PlayNoDuplication(const std::wstring& name, bool loop, bool reverse)
 	{
 		if (!IsAnimationPlaying(name))
-			Play(name, loop, reverse);
+			Play(name, mPlaySettings, reverse);
 	}
 
 	void Animator::Reset()

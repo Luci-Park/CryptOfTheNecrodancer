@@ -24,12 +24,12 @@ namespace cl
 	void KnightSprite::Ready()
 	{
 		if (!mAnimator->IsAnimationPlaying(mReady))
-			mAnimator->Play(mReady, true, false);
+			mAnimator->Play(mReady, Animator::PlaySetting::Loop, false);
 	}
 
 	void KnightSprite::Idle()
 	{
 		if (!mAnimator->IsAnimationPlaying(mIdle))
-			mAnimator->Play(mIdle, true, false);
+			mAnimator->Play(mIdle, Animator::PlaySetting::Loop, false);
 	}
 }

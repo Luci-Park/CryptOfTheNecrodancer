@@ -128,7 +128,6 @@ namespace cl
 	Vector2 MinotaurBase::IsInSight()
 	{
 		Vector2 playerPos = MapManager::GetPlayerIndex();
-		Vector2 playerPrevPos = playerPos - MapManager::GetPlayer(playerPos)->GetInput();
 		Vector2 dir = (playerPos - mIndex).TileNormalize();
 		if (Vector2::IsCardinal(dir))
 		{

@@ -8,6 +8,7 @@ namespace cl
 	class Animator : public Component
 	{
 	public:
+		enum class PlaySetting{Once, PauseAtEnd, Loop};
 		Animator();
 		~Animator();
 
@@ -31,7 +32,7 @@ namespace cl
 
 
 		Animation* FindAnimation(const std::wstring& name);
-		void Play(const std::wstring& name, bool loop, bool reverse);
+		void Play(const std::wstring& name, PlaySetting loop, bool reverse);
 		void PlayNoDuplication(const std::wstring& name, bool loop, bool reverse);
 		
 		bool IsComplete() { return mActiveAnimation->IsComplete(); }
@@ -50,7 +51,7 @@ namespace cl
 
 		Animation* mActiveAnimation;
 		Image* mSpriteSheet;
-		bool mbLoop;
+		PlaySetting mPlaySettings;
 		bool mbShow;
 
 		float mAnimationDur;

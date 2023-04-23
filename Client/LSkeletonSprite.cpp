@@ -59,9 +59,9 @@ namespace cl
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
         if (!mbInShadows)
-            mAnimator->Play(mIdleAnimation[idx], true, rev);
+            mAnimator->Play(mIdleAnimation[idx], Animator::PlaySetting::Loop, rev);
         else
-            mAnimator->Play(mIdleShadowAnimation[idx], true, rev);
+            mAnimator->Play(mIdleShadowAnimation[idx], Animator::PlaySetting::Loop, rev);
         mStatus = Status::Idle;
     }
     void SkeletonSprite::RaiseHand()
@@ -70,18 +70,18 @@ namespace cl
         int idx = GetIndex(mLookDir);
         bool rev = mLookDir == Vector2::Right;
         if (!mbInShadows)
-            mAnimator->Play(mRaiseHandAnimation[idx], true, rev);
+            mAnimator->Play(mRaiseHandAnimation[idx], Animator::PlaySetting::Loop, rev);
         else
-            mAnimator->Play(mHandShadowAnimation[idx], true, rev);
+            mAnimator->Play(mHandShadowAnimation[idx], Animator::PlaySetting::Loop, rev);
         mStatus = Status::RaiseHand;
     }
     void SkeletonSprite::LostHead()
     {
         mStatus = Status::NoHead;
         if (!mbInShadows)
-            mAnimator->Play(mNoHead, true, false);
+            mAnimator->Play(mNoHead, Animator::PlaySetting::Loop, false);
         else
-            mAnimator->Play(mNoHeadShadow, true, false);
+            mAnimator->Play(mNoHeadShadow, Animator::PlaySetting::Loop, false);
     }
     int SkeletonSprite::GetIndex(Vector2 dir)
     {

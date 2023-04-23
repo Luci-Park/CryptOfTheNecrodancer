@@ -56,11 +56,11 @@ namespace cl
 	}
 	void CadenceBody::PlayRight()
 	{
-		mAnimator->Play(mRightAnimation, true, false);
+		mAnimator->Play(mRightAnimation, Animator::PlaySetting::Loop, false);
 	}
 
 	void CadenceBody::PlayLeft()
 	{
-		mAnimator->Play(mLeftAnimation, true, true);
+		mAnimator->Play(mLeftAnimation, Animator::PlaySetting::Loop, true);
 	}
 }
