@@ -1,7 +1,6 @@
 #include "LWeapon.h"
 #include "LAnimator.h"
 #include "LBeatManager.h"
-#include "LCamera.h"
 #include "LCadence.h"
 #include "LResources.h"
 #include "LAudioClip.h"
@@ -39,7 +38,6 @@ namespace cl
 		if (success)
 		{
 			PlayAttackAnimation(input);
-			Camera::StartShake();
 		}
 		return success;
 	}

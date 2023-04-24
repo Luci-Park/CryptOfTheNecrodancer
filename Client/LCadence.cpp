@@ -163,7 +163,10 @@ namespace cl
 		if (mWeapon() == nullptr) return false;
 		bool didAttack = mWeapon()->Attack(mIndex, direction);
 		if (didAttack)
+		{
 			PlayOnAttackSound();
+			Camera::StartShake();
+		}
 		return didAttack;
 	}
 
