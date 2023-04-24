@@ -35,7 +35,7 @@ namespace cl
 		void Play(const std::wstring& name, PlaySetting loop, bool reverse);
 		void PlayNoDuplication(const std::wstring& name, bool loop, bool reverse);
 		
-		bool IsComplete() { return mActiveAnimation->IsComplete(); }
+		bool IsComplete();
 		bool IsAnimationPlaying(const std::wstring& name) { 
 			return(mActiveAnimation != nullptr &&
 			mActiveAnimation->GetName() == name); }

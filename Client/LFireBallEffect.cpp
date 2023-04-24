@@ -1,14 +1,19 @@
 #include "LFireballEffect.h"
 #include "LAnimator.h"
 #include "LBeatManager.h"
+#include "LLightSource.h"
 namespace cl
 {
 	FireballEffect::FireballEffect(Scene* sc)
-		:WeaponEffect(sc)
+		: WeaponEffect(sc)
+		, mIndex(0)
 	{
+		mLight = new LightSource(mTransform, 0, 4.25);
 	}
 	FireballEffect::~FireballEffect()
 	{
+		delete mLight;
+		mLight = nullptr;
 	}
 	void FireballEffect::Initialize()
 	{
@@ -23,6 +28,14 @@ namespace cl
 			mAnimator->CreateAnimation(mRightAnim[i], L"FireballRight", rightPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::BeatDuration());
 			mAnimator->CreateAnimation(mLeftAnim[i], L"FireballLeft", leftPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::BeatDuration());
 		}
+	}
+	void FireballEffect::Update()
+	{
+		WeaponEffect::Update();
+		if (mAnimator->IsComplete())
+			mLight->SetBrightness(0, 0);
+		else
+			mLight->SetBrightness(0, 4.25);
 	}
 	void FireballEffect::SetIndex(int index)
 	{

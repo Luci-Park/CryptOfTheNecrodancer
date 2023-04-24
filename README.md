@@ -91,3 +91,9 @@ WindowAPI Project (2/14 ~ )
         * `Virebat`
         * `Minotaur`
         * `Dragon`
+## Week 10(4/23 ~ 4/29)
+* `Dragon`
+    * `Fireball`
+        * Damage and Animation
+        * Shoots until meets wall
+        * Fireball emits light
