@@ -86,7 +86,8 @@ namespace cl
 		}
 		for (int i = 0; i < mLightSources.size(); ++i)
 		{
-			mLightSources[i]->CalLightBrightness();
+			if(mLightSources[i] != nullptr && mLightSources[i]->IsActive())
+				mLightSources[i]->CalLightBrightness();
 		}
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
@@ -123,10 +124,15 @@ namespace cl
 		if (!IndexIsValid(index)) return nullptr;
 		return mWall[index.y][index.x];
 	}
-	TileObject* Map::GetTileObject(Vector2 index)
+	TileObject* Map::GetEnemy(Vector2 index)
 	{
 		if (!IndexIsValid(index)) return nullptr;
 		if (index == mPlayerIndex) return nullptr;
+		return mTileObjects[index.y][index.x];
+	}
+	TileObject* Map::GetTileObject(Vector2 index)
+	{
+		if (!IndexIsValid(index)) return nullptr;
 		return mTileObjects[index.y][index.x];
 	}
 	Cadence* Map::GetPlayer(Vector2 index)

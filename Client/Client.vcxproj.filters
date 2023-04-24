@@ -463,7 +463,6 @@
     <ClInclude Include="LMonsterMeleeEffect.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClInclude>
-    <ClInclude Include="LFireBallEffect.h" />
     <ClInclude Include="LRedDragonSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClInclude>
@@ -776,7 +775,6 @@
     <ClCompile Include="LMonsterMeleeEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
     </ClCompile>
-    <ClCompile Include="LFireBallEffect.cpp" />
     <ClCompile Include="LGreenDragonSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClCompile>

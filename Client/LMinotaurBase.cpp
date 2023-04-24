@@ -137,7 +137,7 @@ namespace cl
 				for (int i = 1; i <= distance; ++i)
 				{
 					if (MapManager::GetWall(mIndex + dir * i) != nullptr ||
-						MapManager::GetTileObject(mIndex + dir * i) != nullptr)
+						MapManager::GetEnemy(mIndex + dir * i) != nullptr)
 					{
 						return Vector2::Zero;
 					}

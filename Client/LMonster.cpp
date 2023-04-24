@@ -127,7 +127,7 @@ namespace cl
 	bool Monster::TryMove()
 	{
 		if (mMoveState != MoveState::NotMoved) return false;
-		TileObject* object = MapManager::GetTileObject(mIndex + mNextDir);
+		TileObject* object = MapManager::GetEnemy(mIndex + mNextDir);
 		if (object != nullptr && object != this)
 		{
 			mMoveState = MoveState::IsAsking;
@@ -202,7 +202,7 @@ namespace cl
 					nextdir.y += 1;
 			}
 			if (MapManager::GetWall(mIndex + dir + nextdir) != nullptr
-				|| MapManager::GetTileObject(mIndex + dir + nextdir) != nullptr)
+				|| MapManager::GetEnemy(mIndex + dir + nextdir) != nullptr)
 				nextdir *= -1;
 			dir += nextdir;
 		}
@@ -216,7 +216,7 @@ namespace cl
 		{
 			Vector2 target = mIndex + Vector2(dx[i], dy[i]);
 			WallTile* wall = MapManager::GetWall(target);
-			TileObject* object = MapManager::GetTileObject(target);
+			TileObject* object = MapManager::GetEnemy(target);
 			if (wall != nullptr) wall->OnDig(4);
 			if (object != nullptr) object->OnAttacked(mMaxHealth, Vector2(dx[i], dy[i]));
 		}

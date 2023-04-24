@@ -2,6 +2,7 @@
 #include "LMapManager.h"
 #include "LGreenDragonSprite.h"
 #include "LRedDragonSprite.h"
+#include "LDragonFireball.h"
 namespace cl
 {
 	GreenDragon::GreenDragon(Scene* sc)
@@ -36,6 +37,7 @@ namespace cl
 	{
 		DragonBase::Initialize();
 		mDragonSprite = object::Instantiate<RedDragonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		mFireball = object::Instantiate<DragonFireball>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Items);
 		mSprite = mDragonSprite;
 	}
 	void RedDragon::SetStats()
@@ -55,6 +57,7 @@ namespace cl
 		else if (mDragonState == State::ReadyFire)
 		{
 			SetDragonState(State::Fire);
+			ShootFireball();
 			return Vector2::Zero;
 		}
 		else
@@ -63,6 +66,7 @@ namespace cl
 			if (Vector2::Left == dir || Vector2::Right == dir)
 			{
 				SetDragonState(State::ReadyFire);
+				mShootDir = dir;
 				return Vector2::Zero;
 			}
 			else
@@ -97,5 +101,7 @@ namespace cl
 	}
 	void RedDragon::ShootFireball()
 	{
+		mMoveState = MoveState::Attacked;
+		mFireball->Attack(mIndex, mShootDir);
 	}
 }

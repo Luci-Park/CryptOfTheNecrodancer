@@ -11,6 +11,7 @@ namespace cl
 		~LightSource();
 		void CalLightBrightness();
 		void SetBrightness(float innerRadius, float outerRadius);
+		bool IsActive();
 	private:
 		float CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius);
 		Transform* mTr;

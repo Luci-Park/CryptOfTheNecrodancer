@@ -37,6 +37,7 @@ namespace cl
 		static void OnTileStep(TileObject* object, Vector2 pos);
 
 		static WallTile* GetWall(Vector2 index);
+		static TileObject* GetEnemy(Vector2 index);
 		static TileObject* GetTileObject(Vector2 index);
 		static Cadence* GetPlayer(Vector2 index);
 		static Vector2 GetPlayerIndex();

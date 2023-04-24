@@ -1,6 +1,7 @@
 #include "LLightSource.h"
 #include "LMapManager.h"
 #include "LTransform.h"
+#include "LGameObject.h"
 namespace cl
 {
 	LightSource::LightSource(Transform* tr)
@@ -39,6 +40,10 @@ namespace cl
 	{
 		mInnerRadius = innerRadius;
 		mOuterRadius = outerRadius;
+	}
+	bool LightSource::IsActive()
+	{
+		return mTr->GetOwner()->IsActive();
 	}
 	float LightSource::CalLightBrightness(Vector2 tilePos, Vector2 lightPos, float innerRadius, float outerRadius)
 	{

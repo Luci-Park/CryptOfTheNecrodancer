@@ -76,6 +76,12 @@ namespace cl
 			return _Map->GetWall(index);
 		return nullptr;
 	}
+	TileObject* MapManager::GetEnemy(Vector2 index)
+	{
+		if (_Map != nullptr)
+			return _Map->GetEnemy(index);
+		return nullptr;
+	}
 	TileObject* MapManager::GetTileObject(Vector2 index)
 	{
 		if (_Map != nullptr)

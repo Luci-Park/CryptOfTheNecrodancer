@@ -37,7 +37,7 @@ namespace cl
 		std::vector<int>possible;
 		for (int i = 0; i < 4; i++)
 		{
-			if (MapManager::GetTileObject(mIndex + Vector2(dx[i], dy[i])) == nullptr
+			if (MapManager::GetEnemy(mIndex + Vector2(dx[i], dy[i])) == nullptr
 				&& MapManager::GetWall(mIndex + Vector2(dx[i], dy[i])) == nullptr)
 				possible.push_back(i);
 		}

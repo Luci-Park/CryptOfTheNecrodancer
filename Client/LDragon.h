@@ -12,6 +12,7 @@ namespace cl
 		virtual void SetStats() override;
 	};
 	class RedDragonSprite;
+	class DragonFireball;
 	class RedDragon : public DragonBase
 	{
 	public:
@@ -24,8 +25,10 @@ namespace cl
 		virtual void SetDragonState(State state) override;
 		Vector2 IsInSight();
 		void ShootFireball();
-		RedDragonSprite* mDragonSprite;
 
+		Vector2 mShootDir;
+		RedDragonSprite* mDragonSprite;
+		DragonFireball* mFireball;
 	};
 }
 
