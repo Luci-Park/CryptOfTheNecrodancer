@@ -27,17 +27,17 @@ namespace cl
 	void FireballEffect::SetIndex(int index)
 	{
 		mIndex = index;
-		if (mIndex >= 5)
-			mIndex = mIndex % 4 + 1;
 	}
 	void FireballEffect::PlayRight()
 	{
+		int playIndex = mIndex >= 5 ? (mIndex % 4) + 1 : mIndex;
 		mTransform->SetLocalPos(Vector2::Right * UNITLENGTH * (mIndex + 1));
-		mAnimator->Play(mRightAnim[mIndex], Animator::PlaySetting::Once, false);
+		mAnimator->Play(mRightAnim[playIndex], Animator::PlaySetting::Once, false);
 	}
 	void FireballEffect::PlayLeft()
 	{
+		int playIndex = mIndex >= 5 ? (mIndex % 4) + 1 : mIndex;
 		mTransform->SetLocalPos(Vector2::Left * UNITLENGTH * (mIndex + 1));
-		mAnimator->Play(mLeftAnim[mIndex], Animator::PlaySetting::Once, false);
+		mAnimator->Play(mLeftAnim[playIndex], Animator::PlaySetting::Once, true);
 	}
 }
