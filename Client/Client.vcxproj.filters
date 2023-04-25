@@ -146,11 +146,20 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon">
       <UniqueIdentifier>{6025c1cf-30c3-4eed-8375-224e9ac0f6f9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\Objects\GameCharacters\Monsters\AttackEffects">
-      <UniqueIdentifier>{56163033-e928-4da6-873a-4fd3db03710b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\Objects\Environment\Lights">
       <UniqueIdentifier>{45c87662-c2a9-4fba-b8b0-c6f7e1f67f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Health">
+      <UniqueIdentifier>{61da56ea-9673-4a99-94fd-2fb724ada014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Rythm">
+      <UniqueIdentifier>{c9811e6c-9449-4378-b672-32cf51d89f3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Items">
+      <UniqueIdentifier>{680089da-4739-44f6-baef-5c0f9cd83809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Objects\GameCharacters\Monsters\Attacks">
+      <UniqueIdentifier>{56163033-e928-4da6-873a-4fd3db03710b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -458,10 +467,10 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterMelee.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterMeleeEffect.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="LRedDragonSprite.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
@@ -478,9 +487,21 @@
     <ClInclude Include="LLightSource.h">
       <Filter>Contents\Objects\Environment\Lights</Filter>
     </ClInclude>
-    <ClInclude Include="LDragonFireball.h" />
-    <ClInclude Include="LFireballEffect.h" />
-    <ClInclude Include="LMonsterFactory.h" />
+    <ClInclude Include="LDragonFireball.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="LFireballEffect.h">
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="LMonsterFactory.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="LHealth.h">
+      <Filter>Contents\UI\Health</Filter>
+    </ClInclude>
+    <ClInclude Include="LHeartUI.h">
+      <Filter>Contents\UI\Health</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -773,10 +794,10 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterMelee.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterMeleeEffect.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters\AttackEffects</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="LGreenDragonSprite.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
@@ -793,8 +814,20 @@
     <ClCompile Include="LLightSource.cpp">
       <Filter>Contents\Objects\Environment\Lights</Filter>
     </ClCompile>
-    <ClCompile Include="LDragonFireball.cpp" />
-    <ClCompile Include="LFireballEffect.cpp" />
-    <ClCompile Include="LMonsterFactory.cpp" />
+    <ClCompile Include="LDragonFireball.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="LFireballEffect.cpp">
+      <Filter>Contents\Objects\Items\Weapons\WeaponEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="LMonsterFactory.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="LHealth.cpp">
+      <Filter>Contents\UI\Health</Filter>
+    </ClCompile>
+    <ClCompile Include="LHeartUI.cpp">
+      <Filter>Contents\UI\Health</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -175,6 +175,8 @@
     <ClInclude Include="LGreenDragonSprite.h" />
     <ClInclude Include="LGreenSlime.h" />
     <ClInclude Include="LGreenSlimeSprite.h" />
+    <ClInclude Include="LHealth.h" />
+    <ClInclude Include="LHeartUI.h" />
     <ClInclude Include="LImage.h" />
     <ClInclude Include="LInput.h" />
     <ClInclude Include="LItem.h" />
@@ -284,6 +286,8 @@
     <ClCompile Include="LGreenDragonSprite.cpp" />
     <ClCompile Include="LGreenSlime.cpp" />
     <ClCompile Include="LGreenSlimeSprite.cpp" />
+    <ClCompile Include="LHealth.cpp" />
+    <ClCompile Include="LHeartUI.cpp" />
     <ClCompile Include="LImage.cpp" />
     <ClCompile Include="LInput.cpp" />
     <ClCompile Include="LItem.cpp" />
