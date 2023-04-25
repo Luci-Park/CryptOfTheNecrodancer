@@ -193,6 +193,7 @@
     <ClInclude Include="LMinotaurBase.h" />
     <ClInclude Include="LMinotaurSprite.h" />
     <ClInclude Include="LMonster.h" />
+    <ClInclude Include="LMonsterFactory.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
     <ClInclude Include="LMonsterMelee.h" />
@@ -300,6 +301,7 @@
     <ClCompile Include="LMinotaurBase.cpp" />
     <ClCompile Include="LMinotaurSprite.cpp" />
     <ClCompile Include="LMonster.cpp" />
+    <ClCompile Include="LMonsterFactory.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
     <ClCompile Include="LMonsterMelee.cpp" />

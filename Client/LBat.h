@@ -2,11 +2,11 @@
 #include "LBatBase.h"
 namespace cl
 {
-	class Bat : public BatBase
+	class BlueBat : public BatBase
 	{
 	public:
-		Bat(Scene* sc);
-		virtual ~Bat();
+		BlueBat(Scene* sc);
+		virtual ~BlueBat();
 
 		virtual void Initialize() override;
 		virtual void OnLateBeat() override;

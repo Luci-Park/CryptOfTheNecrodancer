@@ -478,6 +478,9 @@
     <ClInclude Include="LLightSource.h">
       <Filter>Contents\Objects\Environment\Lights</Filter>
     </ClInclude>
+    <ClInclude Include="LDragonFireball.h" />
+    <ClInclude Include="LFireballEffect.h" />
+    <ClInclude Include="LMonsterFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -790,5 +793,8 @@
     <ClCompile Include="LLightSource.cpp">
       <Filter>Contents\Objects\Environment\Lights</Filter>
     </ClCompile>
+    <ClCompile Include="LDragonFireball.cpp" />
+    <ClCompile Include="LFireballEffect.cpp" />
+    <ClCompile Include="LMonsterFactory.cpp" />
   </ItemGroup>
 </Project>

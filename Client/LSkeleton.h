@@ -2,11 +2,11 @@
 #include "LSkeletonBase.h"
 namespace cl
 {
-	class Skeleton :public SkeletonBase
+	class WhiteSkeleton :public SkeletonBase
 	{
 	public:
-		Skeleton(Scene* sc);
-		virtual ~Skeleton();
+		WhiteSkeleton(Scene* sc);
+		virtual ~WhiteSkeleton();
 		
 	private:
 		virtual int GetY() override;
@@ -14,11 +14,11 @@ namespace cl
 
 	};
 
-	class GreenSkeleton :public SkeletonBase
+	class YellowSkeleton :public SkeletonBase
 	{
 	public:
-		GreenSkeleton(Scene* sc);
-		virtual ~GreenSkeleton();
+		YellowSkeleton(Scene* sc);
+		virtual ~YellowSkeleton();
 
 	private:
 		virtual int GetY() override;

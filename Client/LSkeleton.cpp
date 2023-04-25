@@ -1,36 +1,36 @@
 #include "LSkeleton.h"
 namespace cl
 {
-    Skeleton::Skeleton(Scene* sc)
+    WhiteSkeleton::WhiteSkeleton(Scene* sc)
         :SkeletonBase(sc)
     {
     }
-    Skeleton::~Skeleton()
+    WhiteSkeleton::~WhiteSkeleton()
     {
     }
-    int Skeleton::GetY()
+    int WhiteSkeleton::GetY()
     {
         return 0;
     }
-    void Skeleton::SetStats()
+    void WhiteSkeleton::SetStats()
     {
         mActivationRadius = 3;
         mMaxHealth = 1;
         mAttackPower = 0.5f;
         mDrop = 2;
     }
-    GreenSkeleton::GreenSkeleton(Scene* sc)
+    YellowSkeleton::YellowSkeleton(Scene* sc)
         :SkeletonBase(sc)
     {
     }
-    GreenSkeleton::~GreenSkeleton()
+    YellowSkeleton::~YellowSkeleton()
     {
     }
-    int GreenSkeleton::GetY()
+    int YellowSkeleton::GetY()
     {
         return 1;
     }
-    void GreenSkeleton::SetStats()
+    void YellowSkeleton::SetStats()
     {
         mActivationRadius = 3;
         mMaxHealth = 2;

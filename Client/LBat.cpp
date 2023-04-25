@@ -3,33 +3,33 @@
 #include "LRedBatSprite.h"
 namespace cl
 {
-	Bat::Bat(Scene* sc)
+	BlueBat::BlueBat(Scene* sc)
 		:BatBase(sc)
 		, mbMove(true)
 	{
 	}
-	Bat::~Bat()
+	BlueBat::~BlueBat()
 	{
 	}
-	void Bat::Initialize()
+	void BlueBat::Initialize()
 	{
 		Monster::Initialize();
 		mSprite = object::Instantiate<BatSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 	}
-	void Bat::OnLateBeat()
+	void BlueBat::OnLateBeat()
 	{
 		Monster::OnLateBeat();
 		if(mMoveState != MoveState::Failed)
 			mbMove = !mbMove;
 	}
-	void Bat::SetStats()
+	void BlueBat::SetStats()
 	{
 		mActivationRadius = 3;
 		mMaxHealth = 1;
 		mAttackPower = 0.5f;
 		mDrop = 2;
 	}
-	Vector2 Bat::GetNextDir()
+	Vector2 BlueBat::GetNextDir()
 	{
 		if (!mbMove) {
 			return Vector2::Zero;
