@@ -2,6 +2,7 @@
 #include "LuciEngine.h"
 namespace cl
 {
+	class HeartUI;
 	class Cadence;
 	class Health
 	{
@@ -20,7 +21,7 @@ namespace cl
 		static float _currentHealth;
 
 		Vector2 startPosition;
-		
+		std::vector<HeartUI> heartUI;
 		float mMaxHealth;
 		float mHealth;
 		Cadence* mPlayer;

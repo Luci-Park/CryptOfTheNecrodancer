@@ -7,6 +7,7 @@ namespace cl
 	{
 		mMaxHealth = _currentMaxHealth;
 		mHealth = _currentHealth;
+		SetHeart();
 	}
 	Health::~Health()
 	{
@@ -18,10 +19,12 @@ namespace cl
 		mHealth -= damage;
 		if (mHealth <= 0)
 			OnHealthIsZero();
+		SetHeart();
 	}
 	void Health::OnHeal(float heal)
 	{
 		mHealth = std::clamp(mHealth + heal, 0.0f, mMaxHealth);
+		SetHeart();
 	}
 	void Health::SetHeart()
 	{
