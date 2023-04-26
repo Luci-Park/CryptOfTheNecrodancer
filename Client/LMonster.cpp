@@ -139,7 +139,7 @@ namespace cl
 			}
 		}
 		mMoveState = MoveState::Moved;
-		mMoveTarget += mNextDir * UNITLENGTH;
+		SetMoveTarget(mNextDir * UNITLENGTH);
 		MapManager::Move(this, mIndex, mIndex + mNextDir);
 		mIndex += mNextDir;
 		if (mNextDir != Vector2::Zero)

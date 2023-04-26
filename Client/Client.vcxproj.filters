@@ -502,8 +502,15 @@
     <ClInclude Include="LHeartUI.h">
       <Filter>Contents\UI\Health</Filter>
     </ClInclude>
-    <ClInclude Include="LGrooveChain.h" />
-    <ClInclude Include="LPiecesSprite.h" />
+    <ClInclude Include="LGrooveChain.h">
+      <Filter>Contents\SystemObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LPiecesSprite.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
+    <ClInclude Include="LPieces.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -831,7 +838,14 @@
     <ClCompile Include="LHeartUI.cpp">
       <Filter>Contents\UI\Health</Filter>
     </ClCompile>
-    <ClCompile Include="LGrooveChain.cpp" />
-    <ClCompile Include="LPiecesSprite.cpp" />
+    <ClCompile Include="LGrooveChain.cpp">
+      <Filter>Contents\SystemObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LPiecesSprite.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LPieces.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

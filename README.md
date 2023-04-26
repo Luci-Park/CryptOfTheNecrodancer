@@ -97,3 +97,8 @@ WindowAPI Project (2/14 ~ )
         * Damage and Animation
         * Shoots until meets wall
         * Fireball emits light
+* Health UI
+* `Deep Blues`
+    * `Pawn`
+    * `Bishop`
+    * `Rook`

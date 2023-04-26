@@ -14,6 +14,7 @@ namespace cl
 		, mbMoveFailed(false)
 		, mSize(1)
 	{
+		mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
 	}
 	GameCharacter::~GameCharacter()
 	{
@@ -25,7 +26,7 @@ namespace cl
 	}
 	void GameCharacter::Update()
 	{		
-		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
+		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mMoveSpeed));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
 			if (mbIsMoving)
@@ -59,9 +60,16 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
+	void GameCharacter::SetMoveTarget(Vector2 distance)
+	{
+		float dist = Vector2::Distance(mMoveTarget, mMoveTarget + distance );
+		mMoveSpeed = dist / BeatManager::BeatDuration() * Time::DeltaTime() * 2;
+		mMoveTarget += distance;
+	}
 	void GameCharacter::Recoil(Vector2 dir)
 	{
 		if (dir == Vector2::Zero) return;
+		mMoveSpeed = BeatManager::MoveSpeed() * Time::DeltaTime() * 2;
 		if (!mbMoveFailed)
 		{
 			mMoveTarget += dir * UNITLENGTH / 2;

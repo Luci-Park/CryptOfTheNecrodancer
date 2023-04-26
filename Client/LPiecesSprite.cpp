@@ -23,6 +23,10 @@ namespace cl
 		else
 			Ready();
 	}
+	void PiecesSprite::OnBeatChanged()
+	{
+		mAnimator->SetDuration(BeatManager::BeatDuration() * 2);
+	}
 	void PiecesSprite::Ready()
 	{
 		if (mbInShadows)

@@ -7,7 +7,7 @@
 #include "LZombie.h"
 #include "LSkeleton.h"
 #include "LBat.h"
-#include "LBishop.h"
+#include "LPawn.h"
 #include "LDragon.h"
 #include "LWallTorch.h"
 namespace cl
@@ -255,14 +255,14 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mTileObjects[i][j] = nullptr;
-				if (i == 8)
+				if (i == 3)
 				{
 					if(j == 4)
 					{
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<Bishop>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<Pawn>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

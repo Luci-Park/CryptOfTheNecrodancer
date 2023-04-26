@@ -18,10 +18,4 @@ namespace cl
 		mAnimator->CreateAnimation(mShadowReady, L"Bishop_Ready", path, 1, 2, 0, 1, 1, -Vector2(17 *0.5, 32), BeatManager::BeatDuration());
 		Idle();
 	}
-
-
-	void BishopSprite::OnBeatChanged()
-	{
-		mAnimator->SetDuration(BeatManager::BeatDuration() * 2);
-	}
 }

@@ -61,7 +61,7 @@ namespace cl
 	}
 	void Cadence::Update()
 	{
-		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
+		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mMoveSpeed));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
 			if (mbIsMoving)
@@ -116,7 +116,7 @@ namespace cl
 		MapManager::PlayerMove(this, mIndex, dest);
 		mSprite->Jump();
 		mIndex = dest;
-		mMoveTarget += mInput * UNITLENGTH;
+		SetMoveTarget(mInput * UNITLENGTH);
 		mMoved = true;
 		return true;
 	}
