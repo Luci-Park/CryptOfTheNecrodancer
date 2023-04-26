@@ -18,7 +18,6 @@ namespace cl
 		virtual void SetSprite() = 0;
 	protected:
 		int mDigPower;
-		AudioClip* mDigFailedClip;
 	};
 
 	class Shovel : public Tool

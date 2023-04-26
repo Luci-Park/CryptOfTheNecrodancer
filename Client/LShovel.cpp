@@ -30,7 +30,7 @@ namespace cl
 	{
 		mGetItemClip = Resources::Load<AudioClip>(L"sfx_pickup_weapon"
 			, L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_pickup_general_ST.wav");
-		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");
+		
 	}
 
 	void Tool::Initialize()
@@ -46,8 +46,6 @@ namespace cl
 		if (object != nullptr)
 		{
 			bool success = object->OnDig(mDigPower);
-			if (!success)
-				mDigFailedClip->Play(false);
 		}
 		return false;
 	}

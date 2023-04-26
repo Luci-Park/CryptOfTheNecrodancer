@@ -118,7 +118,7 @@ namespace cl
 		WallTile* wall = MapManager::GetWall(mIndex + direction);
 		if (wall)
 		{
-			bool success = wall->OnDig(mDigPower);
+			bool success = mDigPower > 0 ? wall->OnDig(mDigPower) : false;
 			Recoil(direction);
 			return true;
 		}

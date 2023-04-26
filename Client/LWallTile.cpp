@@ -151,7 +151,7 @@ namespace cl
 		, mbIsBreakable(true)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
-		
+		mDigFailedClip = Resources::Load<AudioClip>(L"DigFailed", L"..\\Assets\\Audio\\SoundEffects\\Walls\\mov_dig_fail.wav");		
 	}
 
 	void WallTile::Initialize()
@@ -191,6 +191,7 @@ namespace cl
 			OnDestroy();
 			return true;
 		}
+		mDigFailedClip->Play(false);
 		return false;
 	}
 	void WallTile::SetIndex(Vector2 index)
@@ -253,10 +254,12 @@ namespace cl
 
 	bool BossWall::OnDig(int digPower)
 	{
+		mDigFailedClip->Play(false);
 		return false;		
 	}
 	bool BossWall::OnCrumble()
 	{
+		mDigFailedClip->Play(false);
 		return false;
 	}
 #pragma endregion
@@ -273,6 +276,7 @@ namespace cl
 	}
 	bool GoldWall::OnCrumble()
 	{
+		mDigFailedClip->Play(false);
 		return false;
 	}
 	void GoldWall::OnDestroy()
@@ -292,10 +296,12 @@ namespace cl
 
 	bool Border::OnDig(int digPower)
 	{
+		mDigFailedClip->Play(false);
 		return false;
 	}
 	bool Border::OnCrumble()
 	{
+		mDigFailedClip->Play(false);
 		return false;
 	}
 #pragma endregion
