@@ -1,6 +1,7 @@
 #include "LPawn.h"
 #include "LPawnSprite.h"
 #include "LMapManager.h"
+#include "LQueen.h"
 namespace cl
 {
 	Pawn::Pawn(Scene* sc)
