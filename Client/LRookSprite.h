@@ -1,21 +1,15 @@
 #pragma once
-#include "LCharacterSprite.h"
+#include "LPiecesSprite.h"
 namespace cl
 {
-	class RookSprite : public CharacterSprite
+	class RookSprite : public PiecesSprite
 	{
 	public:
+		enum class State { Idle, Ready };
 		RookSprite(Scene* sc);
 		~RookSprite() {};
 
 		virtual void Initialize() override;
-
-		virtual void Turn(Vector2 dir) override {};
-		void Ready();
-		void Idle();
-	private:
-		std::wstring mReady;
-		std::wstring mIdle;
 
 	};
 }

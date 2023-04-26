@@ -1,21 +1,14 @@
 #pragma once
-#include "LCharacterSprite.h"
+#include "LPiecesSprite.h"
 namespace cl
 {
-	class PawnSprite : public CharacterSprite
+	class PawnSprite : public PiecesSprite
 	{
 	public:
 		PawnSprite(Scene* sc);
 		~PawnSprite() {};
 
 		virtual void Initialize() override;
-
-		virtual void Turn(Vector2 dir) override {};
-		void Ready();
-		void Idle();
-	private:
-		std::wstring mReady;
-		std::wstring mIdle;
 
 	};
 }

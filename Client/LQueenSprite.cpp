@@ -3,15 +3,17 @@
 namespace cl
 {
 	QueenSprite::QueenSprite(Scene* sc)
-		:CharacterSprite(sc)
+		:PiecesSprite(sc)
 	{
 	}
 	void QueenSprite::Initialize()
 	{
-		mAnimator = AddComponent<Animator>();
-		CharacterSprite::Initialize();
+		PiecesSprite::Initialize();
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Queen.bmp";
-		mAnimator->CreateAnimation(L"Idle", L"Queen", path, 1, 2, 0, 0, 1, -Vector2(33 * 0.5f, 78 * 0.5f), BeatManager::BeatDuration());
-		mAnimator->Play(L"Idle", Animator::PlaySetting::Loop, false);
+		mAnimator->CreateAnimation(mIdle, L"Queen", path, 1, 2, 0, 0, 1, -Vector2(33 * 0.5f, 78 * 0.5f), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mShadowIdle, L"Queen", path, 1, 2, 0, 1, 1, -Vector2(33 * 0.5f, 78 * 0.5f), BeatManager::BeatDuration());
+		mReady = mIdle;
+		mShadowReady = mShadowIdle;
+		Idle();
 	}
 }

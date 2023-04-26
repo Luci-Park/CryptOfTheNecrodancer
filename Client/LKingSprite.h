@@ -1,16 +1,14 @@
 #pragma once
-#include "LCharacterSprite.h"
+#include "LPiecesSprite.h"
 namespace cl
 {
-	class KingSprite : public CharacterSprite
+	class KingSprite : public PiecesSprite
 	{
 	public:
 		KingSprite(Scene* sc);
 		~KingSprite() {};
 
 		virtual void Initialize() override;
-
-		virtual void Turn(Vector2 dir) override {};
 		virtual void Jump() override {};
 	private:
 	};

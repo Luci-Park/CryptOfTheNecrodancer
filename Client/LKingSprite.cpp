@@ -3,15 +3,17 @@
 namespace cl
 {
 	KingSprite::KingSprite(Scene* sc)
-		:CharacterSprite(sc)
+		:PiecesSprite(sc)
 	{
 	}
 	void KingSprite::Initialize()
 	{
-		mAnimator = AddComponent<Animator>();
-		CharacterSprite::Initialize();
+		PiecesSprite::Initialize();
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\King.bmp";
-		mAnimator->CreateAnimation(L"Idle", L"King", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 45), BeatManager::BeatDuration());
-		mAnimator->Play(L"Idle", Animator::PlaySetting::Loop, false);
+		mAnimator->CreateAnimation(mIdle, L"King", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 45), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mShadowIdle, L"King", path, 4, 2, 0, 1, 4, -Vector2(13 * 0.5, 45), BeatManager::BeatDuration());
+		mReady = mIdle;
+		mShadowReady = mShadowIdle;
+		Idle();
 	}
 }

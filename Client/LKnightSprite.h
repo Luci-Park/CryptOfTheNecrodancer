@@ -1,21 +1,14 @@
 #pragma once
-#include "LCharacterSprite.h"
+#include "LPiecesSprite.h"
 namespace cl
 {
-	class KnightSprite : public CharacterSprite
+	class KnightSprite : public PiecesSprite
 	{
 	public:
 		KnightSprite(Scene* sc);
 		~KnightSprite() {};
 
 		virtual void Initialize() override;
-
-		virtual void Turn(Vector2 dir) override {};
-		void Ready();
-		void Idle();
-	private:
-		std::wstring mReady;
-		std::wstring mIdle;
 
 	};
 }

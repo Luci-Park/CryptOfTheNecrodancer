@@ -503,6 +503,7 @@
       <Filter>Contents\UI\Health</Filter>
     </ClInclude>
     <ClInclude Include="LGrooveChain.h" />
+    <ClInclude Include="LPiecesSprite.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -831,5 +832,6 @@
       <Filter>Contents\UI\Health</Filter>
     </ClCompile>
     <ClCompile Include="LGrooveChain.cpp" />
+    <ClCompile Include="LPiecesSprite.cpp" />
   </ItemGroup>
 </Project>
