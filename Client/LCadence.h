@@ -7,6 +7,7 @@ namespace cl
 	class CadenceShovelEffect;
 	class CadenceSound;
 	class LightSource;
+	class Health;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -45,6 +46,7 @@ namespace cl
 		virtual void PlayOnDeathSound()				override;
 
 	private:
+		Health* mHealth;
 		Item* mItems[(int)eItemTypes::Size];
 		LightSource* mLightSource;
 		CadenceShovelEffect* mShovelEffect;

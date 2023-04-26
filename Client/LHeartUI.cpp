@@ -26,6 +26,9 @@ namespace cl
 		:HeartUI(sc)
 	{
 		//SetSprite
+		mFull = Sprite(Vector2(0, 0), Vector2(24, 22), Vector2(-12, -11));
+		mHalf = Sprite(Vector2(29, 0), Vector2(24, 22), Vector2(-12, -11));
+		mEmpty = Sprite(Vector2(58, 0), Vector2(24, 22), Vector2(-12, -11));
 	}
 	HeartContainerUI::~HeartContainerUI()
 	{
@@ -34,6 +37,9 @@ namespace cl
 		:HeartUI(sc)
 	{
 		//SetSprite
+		mFull = Sprite(Vector2(0, 27), Vector2(24, 22), Vector2(-12, -11));
+		mHalf = Sprite(Vector2(29, 27), Vector2(24, 22), Vector2(-12, -11));
+		mEmpty = Sprite(Vector2(58, 27), Vector2(24, 22), Vector2(-12, -11));
 	}
 	CursedHeartUI::~CursedHeartUI()
 	{

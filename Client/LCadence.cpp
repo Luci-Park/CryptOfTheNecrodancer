@@ -3,6 +3,7 @@
 #include "LCadenceSprite.h"
 #include "LLightSource.h"
 #include "LCadenceShovelEffect.h"
+#include "LHealth.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
 #include "LObject.h"
@@ -22,8 +23,7 @@ namespace cl
 		, mMoved(false)
 	{
 		//Camera::SetTarget(this);
-		mMaxHealth = 3;
-		mHealth = 3;
+		mHealth = new Health(this);
 		mLightSource = new LightSource(mTransform, 1.25, 3);
 	}
 	Cadence::~Cadence()
@@ -37,6 +37,11 @@ namespace cl
 		{
 			delete mLightSource;
 			mLightSource = nullptr;
+		}
+		if (mHealth != nullptr)
+		{
+			delete mHealth;
+			mHealth = nullptr;
 		}
 		Camera::SetTarget(nullptr);
 	}
@@ -93,17 +98,12 @@ namespace cl
 
 	void Cadence::OnAttacked(float attackPower, Vector2 dir)
 	{
-		mHealth -= attackPower;
-		if (mHealth > 0)
+		mHealth->OnDamage(attackPower);
+		if (mHealth->CurrentHealth() > 0)
 		{
 			Camera::StartShake();
 			PlayOnHitSound();
 			//mSprite->Flash
-		}
-		else
-		{
-			PlayOnDeathSound();
-			OnDestroy();
 		}
 	}
 	bool Cadence::TryMove()
@@ -120,6 +120,7 @@ namespace cl
 	}
 	void Cadence::OnDestroy()
 	{
+		PlayOnDeathSound();
 	}
 
 	void Cadence::OnBeat()

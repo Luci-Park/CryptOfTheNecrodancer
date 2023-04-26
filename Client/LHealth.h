@@ -12,6 +12,7 @@ namespace cl
 		void OnDamage(float damage);
 		void OnHeal(float heal);
 		void Reset();
+		float CurrentHealth() { return mHealth; }
 	private:
 		void SetHeart();
 		void OnHealthIsZero();
@@ -21,7 +22,8 @@ namespace cl
 		static float _currentHealth;
 
 		Vector2 startPosition;
-		std::vector<HeartUI> heartUI;
+		float unitLength;
+		std::vector<HeartUI*> mHeartUI;
 		float mMaxHealth;
 		float mHealth;
 		Cadence* mPlayer;

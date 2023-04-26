@@ -54,7 +54,7 @@ namespace cl::object
 		T* gameObj = new T(scene);
 		scene->AddGameObject(gameObj, type);
 		gameObj->Initialize();
-		gameObj->GameObject::GetComponent<Transform>()->SetWorldPos(pos);
+		gameObj->mTransform->SetPos(pos);
 		return gameObj;
 	}
 }
