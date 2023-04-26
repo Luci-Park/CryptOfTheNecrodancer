@@ -2,6 +2,7 @@
 #include "LFloorTile.h"
 #include "LTileObject.h"
 #include "LResources.h"
+#include "LGrooveChain.h"
 namespace cl
 {
 #pragma region Parent - FloorStrategy
@@ -41,6 +42,8 @@ namespace cl
 	void ActiveDirtStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
+		if (GrooveChainManager::GrooveChain() > MINGROOVE)
+			mTile->SetFloorType(eFloorTypes::Flash);
 	}
 
 	FlashStrategy::FlashStrategy(FloorTile* tile)
@@ -62,6 +65,8 @@ namespace cl
 	void FlashStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
+		if (GrooveChainManager::GrooveChain() == MINGROOVE)
+			mTile->SetFloorType(eFloorTypes::ActiveDirt);
 	}
 	
 	WaterStrategy::WaterStrategy(FloorTile* tile)

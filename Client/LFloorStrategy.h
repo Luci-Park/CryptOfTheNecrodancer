@@ -36,7 +36,7 @@ namespace cl
 	public:
 		ActiveDirtStrategy(FloorTile* tile);
 		virtual ~ActiveDirtStrategy(){}
-		virtual Sprite GetSprite();
+		virtual Sprite GetSprite(); 
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object){}
 	private:

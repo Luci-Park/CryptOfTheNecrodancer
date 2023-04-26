@@ -6,6 +6,7 @@
 #include "LHealth.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
+#include "LGrooveChain.h"
 #include "LObject.h"
 #include "LCamera.h"
 #include "LInput.h"
@@ -103,6 +104,7 @@ namespace cl
 		{
 			Camera::StartShake();
 			PlayOnHitSound();
+			GrooveChainManager::LooseGroove();
 			//mSprite->Flash
 		}
 	}
@@ -167,6 +169,11 @@ namespace cl
 		{
 			PlayOnAttackSound();
 			Camera::StartShake();
+			if (MapManager::GetEnemy(mIndex + direction) == nullptr)
+			{
+				GrooveChainManager::IncreaseKillCount();
+				//Items killcount here
+			}
 		}
 		return didAttack;
 	}
@@ -184,6 +191,10 @@ namespace cl
 				{
 					mSound->PlayOnDigSound();
 					Camera::StartShake();
+				}
+				else
+				{
+					GrooveChainManager::LooseGroove();
 				}
 			}
 			return true;//I tried dig
@@ -215,6 +226,7 @@ namespace cl
 			mInput = Vector2::Down;
 		}
 	}
+
 	void Cadence::SetSprite()
 	{
 		if (mInput != Vector2::One)

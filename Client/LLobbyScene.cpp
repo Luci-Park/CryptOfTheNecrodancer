@@ -13,6 +13,7 @@
 #include "LQueenSprite.h"
 #include "LRookSprite.h"
 #include "LObject.h"
+#include "LGrooveChain.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()
@@ -53,6 +54,7 @@ namespace cl
 		Scene::OnEnter();
 		BeatManager::Reset();
 		BeatManager::SetBPM(130);
+		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 		mBGM->Play(true);
 	}

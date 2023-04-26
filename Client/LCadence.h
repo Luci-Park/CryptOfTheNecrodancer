@@ -29,6 +29,7 @@ namespace cl
 		void SwitchItem(Item* item, eItemTypes type);
 		Vector2 GetPos() { return mIndex; }
 		Vector2 GetInput() { return mInput; }
+
 	protected:
 		virtual bool TryAttack(Vector2 direction)	override;
 		//Returns true if InteractedWithDig;
@@ -54,7 +55,6 @@ namespace cl
 		Vector2 mInput;
 		int consecutiveHits;
 		bool mMoved;
-
 	};
 
 }

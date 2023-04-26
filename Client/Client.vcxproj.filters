@@ -502,6 +502,7 @@
     <ClInclude Include="LHeartUI.h">
       <Filter>Contents\UI\Health</Filter>
     </ClInclude>
+    <ClInclude Include="LGrooveChain.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -829,5 +830,6 @@
     <ClCompile Include="LHeartUI.cpp">
       <Filter>Contents\UI\Health</Filter>
     </ClCompile>
+    <ClCompile Include="LGrooveChain.cpp" />
   </ItemGroup>
 </Project>
