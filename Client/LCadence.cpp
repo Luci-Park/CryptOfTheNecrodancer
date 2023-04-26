@@ -163,7 +163,11 @@ namespace cl
 
 	bool Cadence::TryAttack(Vector2 direction)
 	{
-		if (mWeapon() == nullptr) return false;
+		if (mWeapon() == nullptr)
+		{
+			GrooveChainManager::LooseGroove();
+			return false;
+		}
 		bool didAttack = mWeapon()->Attack(mIndex, direction);
 		if (didAttack)
 		{
