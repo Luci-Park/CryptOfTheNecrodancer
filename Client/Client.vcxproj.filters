@@ -161,6 +161,12 @@
     <Filter Include="Contents\Objects\GameCharacters\Monsters\Attacks">
       <UniqueIdentifier>{56163033-e928-4da6-873a-4fd3db03710b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\SystemObjects\Map">
+      <UniqueIdentifier>{7b53eb38-ed19-47db-aafd-bd4d7f45effe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\SystemObjects\Map\Random">
+      <UniqueIdentifier>{e6188a7a-780c-462b-b4c6-58e94b346f01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -297,9 +303,6 @@
     </ClInclude>
     <ClInclude Include="LLobbyScene.h">
       <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="LMap.h">
-      <Filter>Contents\SystemObjects</Filter>
     </ClInclude>
     <ClInclude Include="LWallTile.h">
       <Filter>Contents\Objects\Environment\Walls</Filter>
@@ -511,6 +514,21 @@
     <ClInclude Include="LPieces.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
+    <ClInclude Include="LMap.h">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="LMapIncludes.h">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="LLobbyMap.h">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="LRandomMap.h">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="LRoom.h">
+      <Filter>Contents\SystemObjects\Map\Random</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -633,9 +651,6 @@
     </ClCompile>
     <ClCompile Include="LLobbyScene.cpp">
       <Filter>Contents\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LMap.cpp">
-      <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
     <ClCompile Include="LStairTile.cpp">
       <Filter>Contents\Objects\Environment\Floors</Filter>
@@ -846,6 +861,18 @@
     </ClCompile>
     <ClCompile Include="LPieces.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LMap.cpp">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="LLobbyMap.cpp">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="LRandomMap.cpp">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="LRoom.cpp">
+      <Filter>Contents\SystemObjects\Map\Random</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

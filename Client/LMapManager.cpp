@@ -1,5 +1,5 @@
 #include "LMapManager.h"
-#include "LMap.h"
+#include "LMapIncludes.h"
 #include "LBeatManager.h"
 namespace cl
 {

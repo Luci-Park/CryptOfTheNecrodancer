@@ -40,23 +40,18 @@ enum class eComponentType
 };
 
 enum class eMonsterTypes {
-	Bat, RedBat,
-	Ghost,
-	Monkey, WhiteMonkey,
-	Skeleton, YellowSkeleton, BlackSkeleton,
-	GreenSlime, BlueSlime, OrangeSlime,
-	Wraith, Zombie,
+	BlueBat, RedBat,
+	WhiteSkeleton, YellowSkeleton, BlackSkeleton,
+	BlueSlime, GreenSlime, OrangeSlime,
+	Zombie,
 	None
 };
 
 enum class eMidBossTypes
 {
-	DireBat, GrayDireBat,
-	Minotaur, GrayMinotaur,
-	GreenDragon, RedDragon, BlueDragon,
-	Nightmare, BloodNightmare,
-	Banshee, GreenBanshee,
-	Mommy, Ogre,
+	YellowDireBat, BrownDireBat,
+	LightMinotaur, DarkMinotaur,
+	GreenDragon, RedDragon,
 	None
 };
 

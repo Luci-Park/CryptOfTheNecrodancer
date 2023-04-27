@@ -1,16 +1,13 @@
 #pragma once
 #include "LuciEngine.h"
 #include "LFloorTile.h"
-#include "LBeatObject.h"
 #include "LWallTile.h"
 #include "LItem.h"
 #include "LTileLight.h"
+#include "LMonsterFactory.h"
 namespace cl
 {
-	class FloorTile;
-	class WallTile;
 	class TileObject;
-	class Item;
 	class Cadence;
 	class LightSource;
 	class Map
@@ -57,6 +54,7 @@ namespace cl
 
 		std::vector<std::vector<eFloorTypes>> mFloorBluePrint;
 		std::vector<std::vector<eWallTypes>> mWallBluePrint;
+		std::vector<std::vector<eMonsterTypes>> mMonsterBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		
 	private:
@@ -77,14 +75,4 @@ namespace cl
 		std::vector<std::vector<TileLight*>> mLightStatus;
 		std::vector<LightSource*>mLightSources;
 	};
-
-	class LobbyMap : public Map
-	{
-	public:
-		LobbyMap();
-	private:
-		virtual void SetFloor();
-		virtual void SetWall();
-	};
-
 }

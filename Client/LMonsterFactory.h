@@ -7,28 +7,12 @@ namespace cl
 	class MonsterFactory
 	{
 	public:
-		enum class MonsterType
-		{
-			BlueBat, RedBat,
-			WhiteSkeleton, YellowSkeleton, BlackSkeleton,
-			BlueSlime, GreenSlime, OrangeSlime,
-			Zombie,
-			None
-		};
-
-		enum class MiniBossType
-		{
-			 YellowDireBat, BrownDireBat,
-			 LightMinotaur, DarkMinotaur,
-			 GreenDragon, RedDragon,
-			 None
-		};
-		static TileObject* CreateMonster(MonsterType type, Vector2 index, Scene* scene);
-		static MonsterType GetRandomMonster(int zone);
-		static TileObject* CreateMiniBoss(MiniBossType type, Vector2 index, Scene* scene);
-		static MiniBossType GetRandomMiniBoss(int zone);
+		static TileObject* CreateMonster(eMonsterTypes type, Vector2 index, Scene* scene);
+		static eMonsterTypes GetRandomMonster(int zone);
+		static TileObject* CreateMiniBoss(eMidBossTypes type, Vector2 index, Scene* scene);
+		static eMidBossTypes GetRandomMiniBoss(int zone);
 	private:
-		static std::vector<std::vector<MonsterType>> _ZoneMonsters;
-		static std::vector<std::vector<MiniBossType>> _ZoneBosses;
+		static std::vector<std::vector<eMonsterTypes>> _ZoneMonsters;
+		static std::vector<std::vector<eMidBossTypes>> _ZoneBosses;
 	};
 }
