@@ -4,7 +4,7 @@ namespace cl
 {
 	Pieces::Pieces(Scene* sc)
 		: Monster(sc, true)
-		, mBeatCount(0)
+		, mBeatCount(-1)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Boss\\DeepBlues\\";
 		std::wstring extend = L".wav";

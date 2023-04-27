@@ -52,6 +52,8 @@ namespace cl
 	{
 		mSize.x = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
 		mSize.y = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
+		mMiddlePos.x = (int)(mSize.x * 0.5);
+		mMiddlePos.y = (int)(mSize.y * 0.5);
 		SetWall((WallType)GetRandomInt(0, (int)WallType::Size));
 	}
 	RandomRoom::~RandomRoom()

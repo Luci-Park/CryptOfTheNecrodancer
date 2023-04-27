@@ -185,7 +185,9 @@
     <ClInclude Include="LKing.h" />
     <ClInclude Include="LKingSprite.h" />
     <ClInclude Include="LKnight.h" />
+    <ClInclude Include="LKnightEffect.h" />
     <ClInclude Include="LKnightSprite.h" />
+    <ClInclude Include="LKnightWeapon.h" />
     <ClInclude Include="LLayer.h" />
     <ClInclude Include="LLightSource.h" />
     <ClInclude Include="LLobbyMap.h" />
@@ -201,7 +203,7 @@
     <ClInclude Include="LMonsterFactory.h" />
     <ClInclude Include="LMonsterHeart.h" />
     <ClInclude Include="LMonsterMeleeEffect.h" />
-    <ClInclude Include="LMonsterMelee.h" />
+    <ClInclude Include="LMonsterWeapon.h" />
     <ClInclude Include="LObject.h" />
     <ClInclude Include="LOrangeSlime.h" />
     <ClInclude Include="LOrangeSlimeSprite.h" />
@@ -302,7 +304,9 @@
     <ClCompile Include="LKing.cpp" />
     <ClCompile Include="LKingSprite.cpp" />
     <ClCompile Include="LKnight.cpp" />
+    <ClCompile Include="LKnightEffect.cpp" />
     <ClCompile Include="LKnightSprite.cpp" />
+    <ClCompile Include="LKnightWeapon.cpp" />
     <ClCompile Include="LLayer.cpp" />
     <ClCompile Include="LLightSource.cpp" />
     <ClCompile Include="LLobbyMap.cpp" />
@@ -317,7 +321,7 @@
     <ClCompile Include="LMonsterFactory.cpp" />
     <ClCompile Include="LMonsterHeart.cpp" />
     <ClCompile Include="LMonsterMeleeEffect.cpp" />
-    <ClCompile Include="LMonsterMelee.cpp" />
+    <ClCompile Include="LMonsterWeapon.cpp" />
     <ClCompile Include="LOrangeSlime.cpp" />
     <ClCompile Include="LOrangeSlimeSprite.cpp" />
     <ClCompile Include="LPawn.cpp" />

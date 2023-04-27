@@ -1,4 +1,4 @@
-#include "LMonsterMelee.h"
+#include "LMonsterWeapon.h"
 #include "LAnimator.h"
 #include "LTileObject.h"
 #include "LMapManager.h"
@@ -7,31 +7,31 @@
 #include "LObject.h"
 namespace cl
 {
-	MonsterMelee::MonsterMelee(Scene* sc)
+	MonsterWeapon::MonsterWeapon(Scene* sc)
 		:Weapon(sc)
 	{
 	}
 
-	MonsterMelee::~MonsterMelee()
+	MonsterWeapon::~MonsterWeapon()
 	{
 	}
 
-	void MonsterMelee::SetAnimation()
+	void MonsterWeapon::SetAnimation()
 	{
 		mEffect = object::Instantiate<MonsterMeleeEffect>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Effects);
 		OnBeatChanged();
 	}
 
-	void MonsterMelee::SetSprite()
+	void MonsterWeapon::SetSprite()
 	{
 	}
 
-	void MonsterMelee::OnBeatChanged()
+	void MonsterWeapon::OnBeatChanged()
 	{
 		mEffect->OnBeatChanged();
 	}
 
-	bool MonsterMelee::TryAttack(Vector2 srcIdx, Vector2 input)
+	bool MonsterWeapon::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
 		Vector2 dest = srcIdx + input;
 		Cadence* enemy = MapManager::GetPlayer(dest);
@@ -43,7 +43,7 @@ namespace cl
 		return false;
 	}
 
-	void MonsterMelee::PlayAttackAnimation(Vector2 dir)
+	void MonsterWeapon::PlayAttackAnimation(Vector2 dir)
 	{
 		mEffect->PlayEffect(dir);
 	}

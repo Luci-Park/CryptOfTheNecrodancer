@@ -10,12 +10,16 @@ namespace cl
 			RightDown, RightUp, UpLeft, UpRight,
 			Size
 		};
+		static AttackDir GetDir(Vector2 dir);
 		Knight(Scene* sc);
 		virtual ~Knight();
 		virtual void Initialize() override;
+		Vector2 GetPlayerAttackDir();
+		Vector2 GetMoveDir();
 	private:
 		virtual Vector2 GetNextDir() override;
-		Vector2 mAttackDirections[(int)AttackDir::Size];
+
+		static Vector2 _AttackDirections[(int)AttackDir::Size];
 	};
 }
 

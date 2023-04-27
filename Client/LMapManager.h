@@ -45,7 +45,7 @@ namespace cl
 		static Vector2 SetItem(Item* item, Vector2 pos);
 		static void PlayerMove(TileObject* object, Vector2 src, Vector2 dest);
 		static void Move(TileObject* object, Vector2 src, Vector2 dest);
-
+		static bool IndexIsValid(Vector2 index);
 	private:
 		static Map* _Map;
 	};

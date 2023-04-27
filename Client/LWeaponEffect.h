@@ -13,7 +13,7 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		void PlayEffect(Vector2 direction);
+		virtual void PlayEffect(Vector2 direction);
 		void OnBeatChanged();
 	protected:
 		virtual void PlayUp() = 0;

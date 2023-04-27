@@ -122,6 +122,12 @@ namespace cl
 		if (_Map != nullptr)
 			_Map->Move(object, src, dest);
 	}
+	bool MapManager::IndexIsValid(Vector2 index)
+	{
+		if (_Map != nullptr)
+			return _Map->IndexIsValid(index);
+		return false;
+	}
 #pragma endregion
 	
 }

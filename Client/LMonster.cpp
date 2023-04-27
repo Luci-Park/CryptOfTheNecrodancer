@@ -3,7 +3,7 @@
 #include "LCadence.h"
 #include "LMapManager.h"
 #include "LWallTile.h"
-#include "LMonsterMelee.h"
+#include "LMonsterWeapon.h"
 #include "LMonsterHeart.h"
 #include "LTileLight.h"
 namespace cl
@@ -97,7 +97,7 @@ namespace cl
 	}
 	void Monster::SetWeapon()
 	{
-		mWeapon = object::Instantiate<MonsterMelee>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon = object::Instantiate<MonsterWeapon>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
 		mWeapon->SetPower(mAttackPower);
 	}
 	bool Monster::TryAttack(Vector2 direction)

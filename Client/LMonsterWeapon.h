@@ -3,11 +3,11 @@
 namespace cl
 {
 	class MonsterMeleeEffect;
-	class MonsterMelee : public Weapon
+	class MonsterWeapon : public Weapon
 	{
 	public:
-		MonsterMelee(Scene* sc);
-		~MonsterMelee();
+		MonsterWeapon(Scene* sc);
+		~MonsterWeapon();
 
 		void SetPower(float power) { mPower = power; }
 	protected:

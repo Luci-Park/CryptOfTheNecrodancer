@@ -469,7 +469,7 @@
     <ClInclude Include="LDragon.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClInclude>
-    <ClInclude Include="LMonsterMelee.h">
+    <ClInclude Include="LMonsterWeapon.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClInclude>
     <ClInclude Include="LMonsterMeleeEffect.h">
@@ -528,6 +528,12 @@
     </ClInclude>
     <ClInclude Include="LRoom.h">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="LKnightWeapon.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
+    </ClInclude>
+    <ClInclude Include="LKnightEffect.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -817,7 +823,7 @@
     <ClCompile Include="LDragon.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\MiniBosses\Dragon</Filter>
     </ClCompile>
-    <ClCompile Include="LMonsterMelee.cpp">
+    <ClCompile Include="LMonsterWeapon.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClCompile>
     <ClCompile Include="LMonsterMeleeEffect.cpp">
@@ -873,6 +879,12 @@
     </ClCompile>
     <ClCompile Include="LRoom.cpp">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="LKnightWeapon.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include="LKnightEffect.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

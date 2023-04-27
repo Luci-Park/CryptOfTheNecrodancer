@@ -6,7 +6,7 @@ namespace cl
 	{
 	public:
 		MonsterMeleeEffect(Scene* sc);
-		~MonsterMeleeEffect();
+		virtual ~MonsterMeleeEffect();
 		virtual void Initialize() override;
 
 	protected:

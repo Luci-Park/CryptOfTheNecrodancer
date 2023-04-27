@@ -40,6 +40,7 @@ namespace cl
 		void PlayerMove(TileObject* object, Vector2 src, Vector2 dest);
 		void Move(TileObject* object, Vector2 src, Vector2 dest);
 		
+		bool IndexIsValid(Vector2 index);
 		
 		void CreateMap(Scene* sc);
 		Vector2 GetPlayerPos() { return mPlayerIndex; }
@@ -48,7 +49,6 @@ namespace cl
 	protected:
 		virtual void SetFloor() = 0;
 		virtual void SetWall() = 0;
-		bool IndexIsValid(Vector2 index);
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 
