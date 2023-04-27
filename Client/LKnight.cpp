@@ -1,6 +1,7 @@
 #include "LKnight.h"
 #include "LKnightSprite.h"
 #include "LMapManager.h"
+#include "LKnightWeapon.h"
 namespace cl
 {
 	Vector2 Knight::_AttackDirections[(int)AttackDir::Size] =
@@ -62,6 +63,11 @@ namespace cl
 			}
 		}
 		return _AttackDirections[idx];
+	}
+	void Knight::SetWeapon()
+	{
+		mWeapon = object::Instantiate<KnightWeapon>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		mWeapon->SetPower(mAttackPower);
 	}
 	Vector2 Knight::GetNextDir()
 	{

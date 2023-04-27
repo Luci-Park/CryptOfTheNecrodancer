@@ -10,6 +10,7 @@ namespace cl
 		virtual ~King(){}
 
 		virtual void Initialize() override;
+		virtual void Update() override;
 		void StartAttack();
 	private:
 		virtual Vector2 GetNextDir()		override;

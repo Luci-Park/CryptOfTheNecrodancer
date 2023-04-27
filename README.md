@@ -102,3 +102,5 @@ WindowAPI Project (2/14 ~ )
     * `Pawn`
     * `Bishop`
     * `Rook`
+    * `Knight`
+    

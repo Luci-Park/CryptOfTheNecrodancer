@@ -17,4 +17,8 @@ namespace cl
 		mAnimator->CreateAnimation(mShadowReady, L"Pawn_Ready", path, 1, 2, 0, 1, 1, -Vector2(15 * 0.5f, 45 * 0.5), BeatManager::BeatDuration() * 2);
 		Idle();
 	}
+	void PawnSprite::OnBeatChanged()
+	{
+		mAnimator->SetDuration(BeatManager::BeatDuration() * 2);
+	}
 }

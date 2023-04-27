@@ -10,6 +10,7 @@ namespace cl
 		~BishopSprite() {};
 
 		virtual void Initialize() override;
+		virtual void OnBeatChanged() override;
 	};
 }
 

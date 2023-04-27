@@ -2,7 +2,7 @@
 #include "LMapManager.h"
 #include "LWallTile.h"
 #include "LMinotaurSprite.h"
-#include "LMonsterMelee.h"
+#include "LMonsterWeapon.h"
 namespace cl
 {
 	MinotaurBase::MinotaurBase(Scene* sc)

@@ -7,7 +7,7 @@ namespace cl
 	{
 	public:
 		MonsterWeapon(Scene* sc);
-		~MonsterWeapon();
+		virtual ~MonsterWeapon();
 
 		void SetPower(float power) { mPower = power; }
 	protected:

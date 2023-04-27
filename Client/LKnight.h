@@ -17,6 +17,7 @@ namespace cl
 		Vector2 GetPlayerAttackDir();
 		Vector2 GetMoveDir();
 	private:
+		virtual void SetWeapon() override;
 		virtual Vector2 GetNextDir() override;
 
 		static Vector2 _AttackDirections[(int)AttackDir::Size];

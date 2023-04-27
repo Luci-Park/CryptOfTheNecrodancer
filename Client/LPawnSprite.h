@@ -9,6 +9,7 @@ namespace cl
 		~PawnSprite() {};
 
 		virtual void Initialize() override;
+		virtual void OnBeatChanged() override;
 
 	};
 }

@@ -1,9 +1,7 @@
 #include "LKing.h"
-#include "LAudioClip.h"
-#include "LResources.h"
-#include "LObject.h"
 #include "LKingSprite.h"
 #include "LMapManager.h"
+#include "LInput.h"
 namespace cl
 {
 	King::King(Scene* sc)
@@ -33,9 +31,15 @@ namespace cl
 		mKingSprite = object::Instantiate<KingSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mKingSprite;
 	}
+	void King::Update()
+	{
+		Monster::Update();
+		if (Input::GetKeyDown(eKeyCode::Q))
+			StartAttack();
+	}
 	void King::StartAttack()
 	{
-		if (mbStartAttack = false)
+		if (mbStartAttack == false)
 		{
 			mbStartAttack = true;
 			mCry->Play(false);
