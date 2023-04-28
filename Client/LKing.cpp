@@ -7,6 +7,8 @@ namespace cl
 	King::King(Scene* sc)
 		:Monster(sc, false)
 		, mbStartAttack(false)
+		, mAttackedDir(Vector2::Zero)
+		, mBeatCount(0)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Boss\\DeepBlues\\";
 		std::wstring extend = L".wav";
@@ -28,14 +30,24 @@ namespace cl
 	void King::Initialize()
 	{
 		Monster::Initialize();
-		mKingSprite = object::Instantiate<KingSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
-		mSprite = mKingSprite;
+		mSprite = object::Instantiate<KingSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 	}
 	void King::Update()
 	{
 		Monster::Update();
 		if (Input::GetKeyDown(eKeyCode::Q))
 			StartAttack();
+	}
+	void King::OnAttacked(float attackPower, Vector2 dir)
+	{
+		Monster::OnAttacked(attackPower, dir);
+		mAttackedDir = dir;
+	}
+	void King::OnLateBeat()
+	{
+		Monster::OnLateBeat();
+		mBeatCount++;
+		mAttackedDir = Vector2::Zero;
 	}
 	void King::StartAttack()
 	{
@@ -48,8 +60,16 @@ namespace cl
 	Vector2 King::GetNextDir()
 	{
 		if (!mbStartAttack)
-			return MoveAwayPlayer();
-		return MoveTowardsPlayer();
+		{
+			if(mBeatCount % 2)
+				return DiagonalMoveAway();
+			return Vector2::Zero;
+		}
+		else {
+			if (mAttackedDir != Vector2::Zero)
+				return mAttackedDir;
+			return DiagonalMoveTowards();
+		}
 	}
 	void King::SetStats()
 	{
@@ -60,6 +80,7 @@ namespace cl
 	{
 		int idx = GetRandomInt(0, 6);
 		mAttackSounds[idx]->Play(false);
+		Monster::PlayOnHitSound();
 	}
 	void King::PlayOnHitSound()
 	{
@@ -69,17 +90,5 @@ namespace cl
 	void King::PlayOnDeathSound()
 	{
 		mDeathSound->Play(false);
-	}
-	Vector2 King::MoveAwayPlayer()
-	{
-		Vector2 player = MapManager::GetPlayerIndex();
-		Vector2 dir = (mIndex - player).Normalize();
-		return dir;
-	}
-	Vector2 King::MoveTowardsPlayer()
-	{
-		Vector2 player = MapManager::GetPlayerIndex();
-		Vector2 dir = (player - mIndex).Normalize();
-		return dir;
 	}
 }

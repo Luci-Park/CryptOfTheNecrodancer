@@ -173,8 +173,25 @@ namespace cl
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{
+		std::vector<Vector2> direction = {
+			   {1, 0}, {0, 1}, {-1, 0}, {0, -1},
+			   {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
+		};
+		std::vector<std::pair<float, int>> distances(direction.size());
 		Vector2 playerPos = MapManager::GetPlayerIndex();
-		return (playerPos - mIndex).TileNormalize();
+		for (int i = 0; i < direction.size(); ++i)
+		{
+			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
+			distances[i] = (std::make_pair(distance, i));
+		}
+		std::sort(distances.begin(), distances.end());
+		for (auto it = distances.begin(); it != distances.end(); ++it)
+		{
+			Vector2 dest = mIndex + direction[it->second];
+			if (dest == playerPos || (MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr))
+				return direction[it->second];
+		}
+		return Vector2::Zero;
 	}
 	Vector2 Monster::CardinalMoveAway()
 	{
@@ -182,31 +199,25 @@ namespace cl
 	}
 	Vector2 Monster::DiagonalMoveAway()
 	{
+		std::vector<Vector2> direction = {
+			   {1, 1}, {1, -1}, {-1, 1}, {-1, -1},
+			   {1, 0}, {0, 1}, {-1, 0}, {0, -1}
+		};
+		std::vector<std::pair<float, int>> distances(direction.size());
 		Vector2 playerPos = MapManager::GetPlayerIndex();
-		Vector2 dir = (mIndex - playerPos).TileNormalize();
-		if (dir.x == 0 || dir.y == 0)
+		for (int i = 0; i < direction.size(); ++i)
 		{
-			Vector2 nextdir = Vector2::Zero;
-			if (dir.x == 0)
-			{
-				if (mPrevDir.x != 0)
-					nextdir.x += mPrevDir.x;
-				else
-					nextdir.x += 1;
-			}
-			else
-			{
-				if (mPrevDir.y != 0)
-					nextdir.y += mPrevDir.y;
-				else
-					nextdir.y += 1;
-			}
-			if (MapManager::GetWall(mIndex + dir + nextdir) != nullptr
-				|| MapManager::GetEnemy(mIndex + dir + nextdir) != nullptr)
-				nextdir *= -1;
-			dir += nextdir;
+			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
+			distances[i] = (std::make_pair(-distance, i));
 		}
-		return dir;
+		std::sort(distances.begin(), distances.end());
+		for (auto it = distances.begin(); it != distances.end(); ++it)
+		{
+			Vector2 dest = mIndex + direction[it->second];
+			if ((MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr))
+				return direction[it->second];
+		}
+		return Vector2::Zero;
 	}
 	void Monster::Trample()
 	{

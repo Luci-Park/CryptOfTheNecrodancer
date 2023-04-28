@@ -7,8 +7,8 @@
 #include "LZombie.h"
 #include "LSkeleton.h"
 #include "LBat.h"
-#include "LRook.h"
-#include "LDragon.h"
+#include "LKing.h"
+#include "LPawn.h"
 #include "LWallTorch.h"
 namespace cl
 {
@@ -263,7 +263,7 @@ namespace cl
 						Vector2 pos;
 						pos.x = j * UNITLENGTH;
 						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<Rook>(sc, pos, eLayerType::Monster);
+						mTileObjects[i][j] = object::Instantiate<King>(sc, pos, eLayerType::Monster);
 						mTileObjects[i][j]->SetIndex(Vector2(j, i));
 					}
 				}

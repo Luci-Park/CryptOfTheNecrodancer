@@ -18,6 +18,20 @@ namespace cl
 		mPieceSprite = object::Instantiate<PawnSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mPieceSprite;
 	}
+	void Pawn::OnBeat()
+	{
+		if (mIndex.y >= 8)
+		{
+			Queen* q = object::Instantiate<Queen>(mTransform->GetPos(), eLayerType::Monster);
+			q->SetIndex(mIndex);
+			MapManager::Move(q, Vector2::Zero, mIndex);
+			Destroy();
+		}
+		else
+		{
+			Pieces::OnBeat();
+		}
+	}
 	Vector2 Pawn::GetNextDir()
 	{
 		if (mBeatCount == 0 && MapManager::GetTileObject(mIndex + Vector2::Down * 2) == nullptr)

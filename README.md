@@ -103,4 +103,5 @@ WindowAPI Project (2/14 ~ )
     * `Bishop`
     * `Rook`
     * `Knight`
-    
+    * `Queen`
+    * `King`

@@ -2,7 +2,6 @@
 #include "LMonster.h"
 namespace cl
 {
-	class KingSprite;
 	class King : public Monster
 	{
 	public:
@@ -11,6 +10,10 @@ namespace cl
 
 		virtual void Initialize() override;
 		virtual void Update() override;
+
+		virtual void OnAttacked(float attackPower, Vector2 dir) override;
+		virtual void OnLateBeat() override;
+
 		void StartAttack();
 	private:
 		virtual Vector2 GetNextDir()		override;
@@ -22,15 +25,14 @@ namespace cl
 
 		virtual void Recoil(Vector2 dir)	override {};
 
-		Vector2 MoveAwayPlayer();
-		Vector2 MoveTowardsPlayer();
 	private:
-		KingSprite* mKingSprite;
 		bool mbStartAttack;
 		AudioClip* mAttackSounds[7];
 		AudioClip* mDeathSound;
 		AudioClip* mHitSounds[4];
 		AudioClip* mCry;
+		Vector2 mAttackedDir;
+		int mBeatCount;
 	};
 }
 

@@ -53,8 +53,8 @@ namespace cl::object
 		Scene* scene = SceneManager::GetActiveScene();
 		T* gameObj = new T(scene);
 		scene->AddGameObject(gameObj, type);
-		gameObj->Initialize();
 		gameObj->mTransform->SetPos(pos);
+		gameObj->Initialize();
 		return gameObj;
 	}
 }

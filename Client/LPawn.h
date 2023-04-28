@@ -9,6 +9,7 @@ namespace cl
 		virtual ~Pawn();;
 
 		virtual void Initialize() override;
+		virtual void OnBeat() override;
 	private:
 		virtual Vector2 GetNextDir()		override;
 	};

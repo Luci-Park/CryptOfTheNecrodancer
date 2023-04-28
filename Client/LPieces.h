@@ -11,7 +11,7 @@ namespace cl
 		virtual void Initialize() override = 0;
 		void SetInitialBeat(int beat) { mBeatCount = -beat; }
 
-	private:
+	protected:
 		virtual Vector2 GetNextDir() override = 0;
 		virtual void SetStats() override;
 
