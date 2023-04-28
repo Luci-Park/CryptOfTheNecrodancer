@@ -18,7 +18,7 @@ namespace cl
 		virtual void Sink()							override;
 		virtual bool UnSink();
 
-		virtual void OnAttacked(float attackPower, Vector2 dir) override;
+		virtual bool OnAttacked(float attackPower, Vector2 dir) override;
 		virtual bool TryMove()						override = 0;
 		virtual void OnDestroy() = 0;
 

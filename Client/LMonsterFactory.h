@@ -9,10 +9,9 @@ namespace cl
 	public:
 		static TileObject* CreateMonster(eMonsterTypes type, Vector2 index, Scene* scene);
 		static eMonsterTypes GetRandomMonster(int zone);
-		static TileObject* CreateMiniBoss(eMidBossTypes type, Vector2 index, Scene* scene);
-		static eMidBossTypes GetRandomMiniBoss(int zone);
+		static eMonsterTypes GetRandomMiniBoss(int zone);
 	private:
 		static std::vector<std::vector<eMonsterTypes>> _ZoneMonsters;
-		static std::vector<std::vector<eMidBossTypes>> _ZoneBosses;
+		static std::vector<std::vector<eMonsterTypes>> _ZoneMiniBosses;
 	};
 }

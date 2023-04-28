@@ -3,9 +3,19 @@ namespace cl
 {
 	LobbyMap::LobbyMap()
 	{
+	}
+
+	LobbyMap::~LobbyMap()
+	{
+	}
+
+	void LobbyMap::CreateMapBluePrint()
+	{
 		mMapSize = Vector2(13, 13);
+		Map::Initialize(mMapSize);
 		SetFloor();
 		SetWall();
+		SetLights();
 		mPlayerIndex = Vector2(6, 3);
 	}
 
@@ -27,11 +37,6 @@ namespace cl
 		mFloorBluePrint[12][12] = eFloorTypes::None;
 
 		mFloorBluePrint[5][5] = eFloorTypes::OpenedStairs;
-
-		mFloorBluePrint[3][5] = eFloorTypes::Water;
-		mFloorBluePrint[3][4] = eFloorTypes::Water;
-		mFloorBluePrint[3][3] = eFloorTypes::Water;
-
 		mStairPos.resize(1);
 		mStairPos[0] = { Vector2(5, 5), eSceneType::Splash };
 	}
@@ -59,12 +64,20 @@ namespace cl
 		mWallBluePrint[1][11] = eWallTypes::GoldWall;
 		mWallBluePrint[11][1] = eWallTypes::GoldWall;
 		mWallBluePrint[11][11] = eWallTypes::GoldWall;
-
-		mWallBluePrint[2][2] = eWallTypes::DirtWall;
-		mWallBluePrint[3][2] = eWallTypes::StoneWall;
-		mWallBluePrint[4][2] = eWallTypes::CatacombWall;
-		mWallBluePrint[5][2] = eWallTypes::BossWall;
-		mWallBluePrint[6][2] = eWallTypes::VerticalDoor;
-		mWallBluePrint[7][2] = eWallTypes::HorizontalDoor;
+		mWallBluePrint[7][3] = eWallTypes::GoldWall;
+		mWallBluePrint[5][3] = eWallTypes::GoldWall;
+		mWallBluePrint[7][9] = eWallTypes::GoldWall;
+		mWallBluePrint[5][9] = eWallTypes::GoldWall;
+	}
+	void LobbyMap::SetLights()
+	{
+		mLightPos.push_back(Vector2(1, 0));
+		mLightPos.push_back(Vector2(11, 0));
+		mLightPos.push_back(Vector2(1, 12));
+		mLightPos.push_back(Vector2(11, 12));
+		mLightPos.push_back(Vector2(3, 7));
+		mLightPos.push_back(Vector2(3, 5));
+		mLightPos.push_back(Vector2(9, 7));
+		mLightPos.push_back(Vector2(9, 5));
 	}
 }

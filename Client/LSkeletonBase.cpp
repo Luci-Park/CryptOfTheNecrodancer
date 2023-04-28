@@ -75,7 +75,7 @@ namespace cl
 		mHeadLossSound[idx]->Play(false);
 		Monster::PlayOnHitSound();
 	}
-	void SkeletonBase::OnAttacked(float attackPower, Vector2 dir)
+	bool SkeletonBase::OnAttacked(float attackPower, Vector2 dir)
 	{
 		Monster::OnAttacked(attackPower, dir);
 		if (mHealth > 0 && mHealth <= 1 && !mbNoHead)
@@ -85,6 +85,7 @@ namespace cl
 			mbNoHead = true;
 			mPrevDir = dir;
 		}
+		return true;
 	}
 	Vector2 SkeletonBase::GetNextDir()
 	{

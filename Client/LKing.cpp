@@ -38,10 +38,10 @@ namespace cl
 		if (Input::GetKeyDown(eKeyCode::Q))
 			StartAttack();
 	}
-	void King::OnAttacked(float attackPower, Vector2 dir)
+	bool King::OnAttacked(float attackPower, Vector2 dir)
 	{
-		Monster::OnAttacked(attackPower, dir);
 		mAttackedDir = dir;
+		return Monster::OnAttacked(attackPower, dir);
 	}
 	void King::OnLateBeat()
 	{

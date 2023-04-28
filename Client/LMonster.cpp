@@ -43,13 +43,14 @@ namespace cl
 		CheckActivation();
 		CheckShadow();
 	}
-	void Monster::OnAttacked(float attackPower, Vector2 dir)
+	bool Monster::OnAttacked(float attackPower, Vector2 dir)
 	{
 		GameCharacter::OnAttacked(attackPower, dir);
 		if (mHealth > 0)
 		{
 			mHeart->SetHearts(mMaxHealth, mHealth);
 		}
+		return true;
 	}
 	void Monster::OnDestroy()
 	{
@@ -167,13 +168,35 @@ namespace cl
 			distances[i] = (std::make_pair(distance, i));
 		}
 		std::sort(distances.begin(), distances.end());
+		float mindistance = distances.begin()->first;
+		int prevdir = -1;
+		for (auto it = distances.begin(); it != distances.end(); ++it)
+		{
+			if (it->second > mindistance)
+			{
+				while (it != distances.end())
+					distances.erase(it);
+			}
+			else if (direction[it->second] == mPrevDir)
+				prevdir = distances.begin() - it;
+		}
+		if (prevdir >= 0)
+		{
+			auto t = distances[prevdir];
+			distances[prevdir] = distances[0];
+			distances[0] = t;
+		}
 		for (auto it = distances.begin(); it != distances.end(); ++it)
 		{
 			Vector2 dest = mIndex + direction[it->second];
-			if(MapManager::IndexIsValid(dest))
+			if (MapManager::IndexIsValid(dest)
+				&& MapManager::GetEnemy(dest) == nullptr
+				&& MapManager::GetWall(dest) == nullptr)
 				return direction[it->second];
 		}
-		return Vector2::Zero;
+
+			
+		return direction[distances.begin()->second];
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{
@@ -195,7 +218,7 @@ namespace cl
 			if (dest == playerPos || (MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr))
 				return direction[it->second];
 		}
-		return Vector2::Zero;
+		return direction[distances.begin()->second];
 	}
 	Vector2 Monster::CardinalMoveAway()
 	{
@@ -210,13 +233,18 @@ namespace cl
 			distances[i] = (std::make_pair(-distance, i));
 		}
 		std::sort(distances.begin(), distances.end());
+		float mindistance = distances.begin()->first;
 		for (auto it = distances.begin(); it != distances.end(); ++it)
 		{
+			if (it->second > mindistance)
+				break;
+
 			Vector2 dest = mIndex + direction[it->second];
-			if(MapManager::IndexIsValid(dest))
+			if (MapManager::IndexIsValid(dest)
+				&& MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr)
 				return direction[it->second];
 		}
-		return Vector2::Zero;
+		return direction[distances.begin()->second];
 	}
 	Vector2 Monster::DiagonalMoveAway()
 	{
@@ -238,7 +266,7 @@ namespace cl
 			if ((MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr))
 				return direction[it->second];
 		}
-		return Vector2::Zero;
+		return direction[distances.begin()->second];
 	}
 	void Monster::Trample()
 	{

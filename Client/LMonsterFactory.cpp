@@ -32,21 +32,21 @@ namespace cl
             eMonsterTypes::Zombie
         }
     };
-    std::vector<std::vector<eMidBossTypes>> MonsterFactory::_ZoneBosses =
+    std::vector<std::vector<eMonsterTypes>> MonsterFactory::_ZoneMiniBosses =
     {
         {
-            eMidBossTypes::LightMinotaur, 
-            eMidBossTypes::YellowDireBat,
-            eMidBossTypes::GreenDragon
+            eMonsterTypes::LightMinotaur,
+            eMonsterTypes::YellowDireBat,
+            eMonsterTypes::GreenDragon
         },
         {
-            eMidBossTypes::DarkMinotaur,
-            eMidBossTypes::BrownDireBat,
-            eMidBossTypes::RedDragon
+            eMonsterTypes::DarkMinotaur,
+            eMonsterTypes::BrownDireBat,
+            eMonsterTypes::RedDragon
         },
         {
-            eMidBossTypes::DarkMinotaur,
-            eMidBossTypes::RedDragon
+            eMonsterTypes::DarkMinotaur,
+            eMonsterTypes::RedDragon
         }
     };
     TileObject* MonsterFactory::CreateMonster(eMonsterTypes type, Vector2 index, Scene* scene)
@@ -71,7 +71,19 @@ namespace cl
             monster = object::Instantiate<OrangeSlime>(scene, pos, eLayerType::Monster);
         else if (eMonsterTypes::Zombie == type)
             monster = object::Instantiate<Zombie>(scene, pos, eLayerType::Monster);
- 
+        else if (eMonsterTypes::YellowDireBat == type)
+            monster = object::Instantiate<YellowDireBat>(scene, pos, eLayerType::Monster);
+        else if (eMonsterTypes::BrownDireBat == type)
+            monster = object::Instantiate<BrownDireBat>(scene, pos, eLayerType::Monster);
+        else if (eMonsterTypes::LightMinotaur == type)
+            monster = object::Instantiate<LightMinotaur>(scene, pos, eLayerType::Monster);
+        else if (eMonsterTypes::DarkMinotaur == type)
+            monster = object::Instantiate<DarkMinotaur>(scene, pos, eLayerType::Monster);
+        else if (eMonsterTypes::GreenDragon == type)
+            monster = object::Instantiate<GreenDragon>(scene, pos, eLayerType::Monster);
+        else if (eMonsterTypes::RedDragon == type)
+            monster = object::Instantiate<RedDragon>(scene, pos, eLayerType::Monster);
+
         if (monster != nullptr)
             monster->SetIndex(index);
         
@@ -84,32 +96,11 @@ namespace cl
         int index = GetRandomInt(0, _ZoneMonsters[zone - 1].size() - 1);
         return _ZoneMonsters[zone - 1][index];
     }
-    TileObject* MonsterFactory::CreateMiniBoss(eMidBossTypes type, Vector2 index, Scene* scene)
-    {
-        Vector2 pos = index * UNITLENGTH;
-        TileObject* monster = nullptr;
-        if (eMidBossTypes::YellowDireBat == type)
-            monster = object::Instantiate<YellowDireBat>(scene, pos, eLayerType::Monster);
-        if (eMidBossTypes::BrownDireBat == type)
-            monster = object::Instantiate<BrownDireBat>(scene, pos, eLayerType::Monster);
-        if (eMidBossTypes::LightMinotaur == type)
-            monster = object::Instantiate<LightMinotaur>(scene, pos, eLayerType::Monster);
-        if (eMidBossTypes::DarkMinotaur == type)
-            monster = object::Instantiate<DarkMinotaur>(scene, pos, eLayerType::Monster);
-        if (eMidBossTypes::GreenDragon == type)
-            monster = object::Instantiate<GreenDragon>(scene, pos, eLayerType::Monster);
-        if (eMidBossTypes::RedDragon == type)
-            monster = object::Instantiate<RedDragon>(scene, pos, eLayerType::Monster);
-
-        if (monster != nullptr)
-            monster->SetIndex(index);
-        return monster;
-    }
     
-    eMidBossTypes MonsterFactory::GetRandomMiniBoss(int zone)
+    eMonsterTypes MonsterFactory::GetRandomMiniBoss(int zone)
     {
-        if (zone > 3) return eMidBossTypes::None;
-        int index = GetRandomInt(0, _ZoneBosses[zone - 1].size() - 1);
-        return _ZoneBosses[zone - 1][index];
+        if (zone > 3) return eMonsterTypes::None;
+        int index = GetRandomInt(0, _ZoneMiniBosses[zone - 1].size() - 1);
+        return _ZoneMiniBosses[zone - 1][index];
     }
 }

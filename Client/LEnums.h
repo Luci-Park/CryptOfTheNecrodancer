@@ -44,11 +44,6 @@ enum class eMonsterTypes {
 	WhiteSkeleton, YellowSkeleton, BlackSkeleton,
 	BlueSlime, GreenSlime, OrangeSlime,
 	Zombie,
-	None
-};
-
-enum class eMidBossTypes
-{
 	YellowDireBat, BrownDireBat,
 	LightMinotaur, DarkMinotaur,
 	GreenDragon, RedDragon,

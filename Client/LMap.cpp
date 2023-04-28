@@ -3,12 +3,7 @@
 #include "LObject.h"
 #include "LLightSource.h"
 #include "LCadence.h"
-#include "LShovel.h"
-#include "LZombie.h"
-#include "LSkeleton.h"
-#include "LBat.h"
-#include "LKing.h"
-#include "LPawn.h"
+#include "LMonsterFactory.h"
 #include "LWallTorch.h"
 namespace cl
 {
@@ -168,12 +163,20 @@ namespace cl
 #pragma region Map Creation
 	void Map::CreateMap(Scene* sc)
 	{
+		CreateMapBluePrint();
 		CreateFloor(sc);
 		CreateWall(sc);
 		CreateForeGround(sc);
 		CreateItems(sc);
 		CreateLight(sc);
 		CreateLightInfo();
+	}
+
+	void Map::Initialize(Vector2 size)
+	{
+		mFloorBluePrint = std::vector<std::vector<eFloorTypes>>(size.y, std::vector<eFloorTypes>(size.x, eFloorTypes::None));
+		mWallBluePrint = std::vector<std::vector<eWallTypes>>(size.y, std::vector<eWallTypes>(size.x, eWallTypes::None));
+		mMonsterBluePrint = std::vector<std::vector<eMonsterTypes>>(size.y, std::vector<eMonsterTypes>(size.x, eMonsterTypes::None));
 	}
 
 	bool Map::IndexIsValid(Vector2 index)
@@ -230,12 +233,6 @@ namespace cl
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			mItems[i].resize(mMapSize.x);
-			if (i == 3)
-			{
-				PickAxe* object = object::Instantiate<PickAxe>(sc, eLayerType::Items);
-				mItems[i][10] = object;
-				object->SetItem(Vector2(10, 3) * UNITLENGTH);
-			}
 		}
 	}
 
@@ -255,35 +252,20 @@ namespace cl
 			mTileObjects[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				mTileObjects[i][j] = nullptr;
-				if (i == 3)
-				{
-					if(j == 4)
-					{
-						Vector2 pos;
-						pos.x = j * UNITLENGTH;
-						pos.y = i * UNITLENGTH;
-						mTileObjects[i][j] = object::Instantiate<YellowSkeleton>(sc, pos, eLayerType::Monster);
-						mTileObjects[i][j]->SetIndex(Vector2(j, i));
-					}
-				}
+				mTileObjects[i][j] = MonsterFactory::CreateMonster(mMonsterBluePrint[i][j], Vector2(j, i), sc);
 			}
 		}
 	}
 	void Map::CreateLight(Scene* sc)
 	{
-		Vector2 pos = Vector2(1, 0);
-		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
-		mTileObjects[pos.y][pos.x]->SetIndex(pos);
-		pos = Vector2(11, 0);
-		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
-		mTileObjects[pos.y][pos.x]->SetIndex(pos);
-		pos = Vector2(1, 12);
-		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
-		mTileObjects[pos.y][pos.x]->SetIndex(pos);
-		pos = Vector2(11, 12);
-		mTileObjects[pos.y][pos.x] = object::Instantiate<WallTorch>(sc, pos * UNITLENGTH, eLayerType::Monster);
-		mTileObjects[pos.y][pos.x]->SetIndex(pos);
+		for (int i = 0; i < mLightPos.size(); ++i)
+		{
+			if (IndexIsValid(mLightPos[i]))
+			{
+				mTileObjects[mLightPos[i].y][mLightPos[i].x] = object::Instantiate<WallTorch>(sc, mLightPos[i] * UNITLENGTH, eLayerType::Monster);
+				mTileObjects[mLightPos[i].y][mLightPos[i].x]->SetIndex(mLightPos[i]);
+			}
+		}
 	}
 	void Map::CreateLightInfo()
 	{

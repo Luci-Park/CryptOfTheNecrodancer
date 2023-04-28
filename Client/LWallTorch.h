@@ -15,7 +15,7 @@ namespace cl
 		virtual void Update()override;
 		virtual void Render(HDC hdc) override;
 		virtual void Sink(){}
-		virtual void OnAttacked(float attackPower, Vector2 dir);
+		virtual bool OnAttacked(float attackPower, Vector2 dir);
 		virtual bool TryMove() { return false; }
 		virtual void OnDestroy();
 

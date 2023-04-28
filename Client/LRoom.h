@@ -1,30 +1,33 @@
 #pragma once
-#include "CommonInclude.h"
-#include "LMath.h"
+#include "LuciEngine.h"
 namespace cl
 {
-	struct Room
+	class Room
 	{
 	public:
-		enum class TileObjects { Wall, Monster, Item, Crate, None };
 		enum class WallType {Rectangle, Plus, Columns, Size};
-		Room();
-		~Room();
+		Room(int zone);
+		virtual ~Room();
+
+	protected:
 		void SetWall(WallType wallType);
-		std::vector<std::vector<TileObjects>> mTiles;
+		std::vector<std::vector<eFloorTypes>> mFloors;
+		std::vector<std::vector<eWallTypes>> mWalls;
+		std::vector<std::vector<eMonsterTypes>> mMonsters;
 		Vector2 mSize;
 		Vector2 mMiddlePos;		
+		int mZone;
 	};
-	struct StartRoom : public Room
+	class StartRoom : public Room
 	{
 	public:
-		StartRoom();
+		StartRoom(int zone);
 		~StartRoom();
 	};
-	struct RandomRoom : public Room
+	class RandomRoom : public Room
 	{
 	public:
-		RandomRoom();
+		RandomRoom(int zone);
 		~RandomRoom();
 	};
 }

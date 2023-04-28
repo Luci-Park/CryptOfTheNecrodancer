@@ -3,7 +3,8 @@
 #define MAXROOMSIZE 9
 namespace cl
 {
-	Room::Room()
+	Room::Room(int zone)
+		: mZone(zone)
 	{
 	}
 	Room::~Room()
@@ -11,35 +12,36 @@ namespace cl
 	}
 	void Room::SetWall(WallType wallType)
 	{
-		mTiles.resize(mSize.y);
+		mWalls.resize(mSize.y);
 		for (int i = 0; i < mSize.y; ++i)
 		{
-			mTiles[i].resize(mSize.x);
+			mWalls[i].resize(mSize.x);
 			for (int j = 0; j < mSize.x; ++j)
 			{
-				mTiles[i][j] = TileObjects::None;
+				mWalls[i][j] = eWallTypes::None;
 				if (i == 0 || i == mSize.y - 1 || j == 0 || j == mSize.x -1)
 				{
-					mTiles[i][j] = TileObjects::Wall;
+					mWalls[i][j] = eWallTypes::DirtWall;
 				}
 			}
 		}
 		if (wallType == WallType::Plus)
 		{
-			mTiles[1][1] = TileObjects::Wall;
-			mTiles[1][mSize.x - 2] = TileObjects::Wall;
-			mTiles[mSize.y - 2][1] = TileObjects::Wall;
-			mTiles[mSize.y - 2][mSize.x - 2] = TileObjects::Wall;
+			mWalls[1][1] = eWallTypes::DirtWall;
+			mWalls[1][mSize.x - 2] = eWallTypes::DirtWall;
+			mWalls[mSize.y - 2][1] = eWallTypes::DirtWall;
+			mWalls[mSize.y - 2][mSize.x - 2] = eWallTypes::DirtWall;
 		}
 		else if (wallType == WallType::Columns)
 		{
-			mTiles[2][2] = TileObjects::Wall;
-			mTiles[2][mSize.x - 3] = TileObjects::Wall;
-			mTiles[mSize.y - 3][2] = TileObjects::Wall;
-			mTiles[mSize.y - 3][mSize.x - 3] = TileObjects::Wall;
+			mWalls[2][2] = eWallTypes::DirtWall;
+			mWalls[2][mSize.x - 3] = eWallTypes::DirtWall;
+			mWalls[mSize.y - 3][2] = eWallTypes::DirtWall;
+			mWalls[mSize.y - 3][mSize.x - 3] = eWallTypes::DirtWall;
 		}
 	}
-	StartRoom::StartRoom()
+	StartRoom::StartRoom(int zone)
+		: Room(zone)
 	{
 		mSize = Vector2(7, 7);
 		mMiddlePos = Vector2(3, 3);
@@ -48,7 +50,8 @@ namespace cl
 	StartRoom::~StartRoom()
 	{
 	}
-	RandomRoom::RandomRoom()
+	RandomRoom::RandomRoom(int zone)
+		: Room(zone)
 	{
 		mSize.x = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
 		mSize.y = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);

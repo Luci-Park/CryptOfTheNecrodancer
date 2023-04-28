@@ -41,8 +41,9 @@ namespace cl
 	{
 		TileObject::Render(hdc);
 	}
-	void WallTorch::OnAttacked(float attackPower, Vector2 dir)
+	bool WallTorch::OnAttacked(float attackPower, Vector2 dir)
 	{
+		return false;
 	}
 	void WallTorch::OnDestroy()
 	{

@@ -6,9 +6,12 @@ namespace cl
 	{
 	public:
 		LobbyMap();
+		~LobbyMap();
 	private:
-		virtual void SetFloor();
-		virtual void SetWall();
+		virtual void CreateMapBluePrint() override;
+		void SetFloor();
+		void SetWall();
+		void SetLights();
 	};
 }
 

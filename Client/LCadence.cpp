@@ -97,7 +97,7 @@ namespace cl
 		GameCharacter::Render(hdc);
 	}
 
-	void Cadence::OnAttacked(float attackPower, Vector2 dir)
+	bool Cadence::OnAttacked(float attackPower, Vector2 dir)
 	{
 		mHealth->OnDamage(attackPower);
 		if (mHealth->CurrentHealth() > 0)
@@ -107,6 +107,7 @@ namespace cl
 			GrooveChainManager::LooseGroove();
 			//mSprite->Flash
 		}
+		return true;
 	}
 	bool Cadence::TryMove()
 	{

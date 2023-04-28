@@ -47,8 +47,8 @@ namespace cl
 
 		static Vector2 GetTilePosOfIndex(Vector2 pos) { return pos * UNITLENGTH; }
 	protected:
-		virtual void SetFloor() = 0;
-		virtual void SetWall() = 0;
+		virtual void CreateMapBluePrint() = 0;
+		void Initialize(Vector2 size);
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 
@@ -56,6 +56,7 @@ namespace cl
 		std::vector<std::vector<eWallTypes>> mWallBluePrint;
 		std::vector<std::vector<eMonsterTypes>> mMonsterBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
+		std::vector<Vector2> mLightPos;
 		
 	private:
 		void CalculateLight();

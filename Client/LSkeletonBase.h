@@ -21,7 +21,7 @@ namespace cl
 	private:
 		void PlayOnHeadLossSound();
 		virtual void SetStats() = 0;
-		virtual void OnAttacked(float attackPower, Vector2 dir) override;
+		virtual bool OnAttacked(float attackPower, Vector2 dir) override;
 		virtual Vector2 GetNextDir() override;
 		Vector2 MoveAwayFromPlayer();
 	private:

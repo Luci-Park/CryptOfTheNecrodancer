@@ -98,7 +98,7 @@ namespace cl
 		}
 		return false;
 	}
-	void GameCharacter::OnAttacked(float attackPower, Vector2 dir)
+	bool GameCharacter::OnAttacked(float attackPower, Vector2 dir)
 	{
 		mHealth -= attackPower;
 		if (mHealth > 0)
@@ -109,7 +109,7 @@ namespace cl
 		{
 			PlayOnDeathSound();
 			OnDestroy();
-			return;
+			return true;
 		}			
 	}
 }

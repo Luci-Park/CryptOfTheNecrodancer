@@ -11,7 +11,7 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		virtual void OnAttacked(float attackPower, Vector2 dir) override;
+		virtual bool OnAttacked(float attackPower, Vector2 dir) override;
 		virtual void OnLateBeat() override;
 
 		void StartAttack();
