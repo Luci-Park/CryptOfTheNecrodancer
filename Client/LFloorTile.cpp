@@ -133,7 +133,7 @@ namespace cl
 	void FloorTile::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
-	}
+	} 
 
 	void FloorTile::SetIndex(Vector2 index)
 	{
@@ -172,10 +172,13 @@ namespace cl
 	}
 	void GroundTile::Update()
 	{
-		if (MapManager::GetLight(mIndex)->IsInSight())
-			mCurrStrategy = mStrategy[(int)mType];
-		else
-			mCurrStrategy = mStrategy[(int)eFloorTypes::InactiveDirt];
+		if (mType == eFloorTypes::ActiveDirt || mType == eFloorTypes::Flash)
+		{
+			if (MapManager::GetLight(mIndex)->IsInSight())
+				mCurrStrategy = mStrategy[(int)mType];
+			else
+				mCurrStrategy = mStrategy[(int)eFloorTypes::InactiveDirt];
+		}
 		FloorTile::Update();
 	}
 	void GroundTile::SetIndex(Vector2 index)

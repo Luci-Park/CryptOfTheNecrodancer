@@ -42,8 +42,11 @@ namespace cl
 	void ActiveDirtStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
-		if (GrooveChainManager::GrooveChain() > MINGROOVE)
-			mTile->SetFloorType(eFloorTypes::Flash);
+		if (mTile->GetFloorType() == eFloorTypes::ActiveDirt)
+		{
+			if (GrooveChainManager::GrooveChain() > MINGROOVE)
+				mTile->SetFloorType(eFloorTypes::Flash);
+		}
 	}
 
 	FlashStrategy::FlashStrategy(FloorTile* tile)
@@ -65,8 +68,11 @@ namespace cl
 	void FlashStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
-		if (GrooveChainManager::GrooveChain() == MINGROOVE)
-			mTile->SetFloorType(eFloorTypes::ActiveDirt);
+		if (mTile->GetFloorType() == eFloorTypes::Flash)
+		{
+			if (GrooveChainManager::GrooveChain() == MINGROOVE)
+				mTile->SetFloorType(eFloorTypes::ActiveDirt);
+		}
 	}
 	
 	WaterStrategy::WaterStrategy(FloorTile* tile)
