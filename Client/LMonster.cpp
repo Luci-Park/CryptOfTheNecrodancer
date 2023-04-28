@@ -156,20 +156,24 @@ namespace cl
 	}
 	Vector2 Monster::CardinalMoveTowards()
 	{
-		Vector2 player = MapManager::GetPlayerIndex();
-		if (player.x == mIndex.x || player.y == mIndex.y)
-			mPrevDir = (player - mIndex).TileNormalize();
-		else
+		std::vector<Vector2> direction = {
+			   {1, 0}, {0, 1}, {-1, 0}, {0, -1}
+		};
+		std::vector<std::pair<float, int>> distances(direction.size());
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		for (int i = 0; i < direction.size(); ++i)
 		{
-			if (mPrevDir == Vector2::Zero)
-			{
-				if (player.x < mIndex.x)
-					mPrevDir = Vector2::Left;
-				else
-					mPrevDir = Vector2::Right;
-			}
+			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
+			distances[i] = (std::make_pair(distance, i));
 		}
-		return mPrevDir;
+		std::sort(distances.begin(), distances.end());
+		for (auto it = distances.begin(); it != distances.end(); ++it)
+		{
+			Vector2 dest = mIndex + direction[it->second];
+			if(MapManager::IndexIsValid(dest))
+				return direction[it->second];
+		}
+		return Vector2::Zero;
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{
@@ -195,7 +199,24 @@ namespace cl
 	}
 	Vector2 Monster::CardinalMoveAway()
 	{
-		return Vector2();
+		std::vector<Vector2> direction = {
+			   {1, 0}, {0, 1}, {-1, 0}, {0, -1}
+		};
+		std::vector<std::pair<float, int>> distances(direction.size());
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		for (int i = 0; i < direction.size(); ++i)
+		{
+			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
+			distances[i] = (std::make_pair(-distance, i));
+		}
+		std::sort(distances.begin(), distances.end());
+		for (auto it = distances.begin(); it != distances.end(); ++it)
+		{
+			Vector2 dest = mIndex + direction[it->second];
+			if(MapManager::IndexIsValid(dest))
+				return direction[it->second];
+		}
+		return Vector2::Zero;
 	}
 	Vector2 Monster::DiagonalMoveAway()
 	{
