@@ -13,6 +13,10 @@ namespace cl
 		default:
 		case Lobby:
 			_Map = new LobbyMap();
+			break;
+		case Random:
+			_Map = new RandomMap();
+			break;
 		}
 		_Map->CreateMap(sc);
 	}

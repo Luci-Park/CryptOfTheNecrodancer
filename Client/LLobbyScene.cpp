@@ -55,7 +55,7 @@ namespace cl
 		BeatManager::Reset();
 		BeatManager::SetBPM(130);
 		GrooveChainManager::Initialize();
-		MapManager::CreateMap(MapManager::MapType::Lobby, this);
+		MapManager::CreateMap(MapManager::MapType::Random, this);
 		mBGM->Play(true);
 	}
 	void LobbyScene::OnExit()

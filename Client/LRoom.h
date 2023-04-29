@@ -2,33 +2,40 @@
 #include "LuciEngine.h"
 namespace cl
 {
-	class Room
+	struct Room
 	{
-	public:
-		enum class WallType {Rectangle, Plus, Columns, Size};
 		Room(int zone);
 		virtual ~Room();
 
-	protected:
-		void SetWall(WallType wallType);
+		void Reset();
+		void SetWall(eWallTypes type);
+		void SetColumn(eWallTypes type);
+		void SetCorner(eWallTypes type);
+		void SetLights(int numbers);
+		eWallTypes GetRandomDirtWall();
+
 		std::vector<std::vector<eFloorTypes>> mFloors;
 		std::vector<std::vector<eWallTypes>> mWalls;
 		std::vector<std::vector<eMonsterTypes>> mMonsters;
+		std::vector<Vector2> mLights;
 		Vector2 mSize;
 		Vector2 mMiddlePos;		
 		int mZone;
 	};
-	class StartRoom : public Room
+	struct StartRoom : public Room
 	{
-	public:
 		StartRoom(int zone);
 		~StartRoom();
 	};
-	class RandomRoom : public Room
+	struct RandomRoom : public Room
 	{
-	public:
 		RandomRoom(int zone);
 		~RandomRoom();
+
+		void CreateCatacombRoom();//0.1
+		void CreateDirtRoom();
+		void CreateRandomFloors();
+		void CreateMonsters();
 	};
 }
 

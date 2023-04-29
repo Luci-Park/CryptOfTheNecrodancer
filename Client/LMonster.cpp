@@ -169,30 +169,32 @@ namespace cl
 		}
 		std::sort(distances.begin(), distances.end());
 		float mindistance = distances.begin()->first;
-		int prevdir = -1;
-		for (auto it = distances.begin(); it != distances.end(); ++it)
+		int prevDirIdx = -1;
+		int sameDistIdx = distances.size();
+		for (int i = 0; i < distances.size(); ++i)
 		{
-			if (it->second > mindistance)
+			if (distances[i].first > mindistance)
 			{
-				while (it != distances.end())
-					distances.erase(it);
+				sameDistIdx = i;
+				break;
 			}
-			else if (direction[it->second] == mPrevDir)
-				prevdir = distances.begin() - it;
+			if (direction[distances[i].second] == mPrevDir)
+				prevDirIdx = i;
 		}
-		if (prevdir >= 0)
+
+		if (prevDirIdx >= 0)
 		{
-			auto t = distances[prevdir];
-			distances[prevdir] = distances[0];
+			auto t = distances[prevDirIdx];
+			distances[prevDirIdx] = distances[0];
 			distances[0] = t;
 		}
-		for (auto it = distances.begin(); it != distances.end(); ++it)
+		for (int i =0; i < sameDistIdx; ++i)
 		{
-			Vector2 dest = mIndex + direction[it->second];
+			Vector2 dest = mIndex + direction[distances[i].second];
 			if (MapManager::IndexIsValid(dest)
 				&& MapManager::GetEnemy(dest) == nullptr
 				&& MapManager::GetWall(dest) == nullptr)
-				return direction[it->second];
+				return direction[distances[i].second];
 		}
 
 			
