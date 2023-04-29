@@ -46,6 +46,7 @@ namespace cl
 		if (object != nullptr)
 		{
 			bool success = object->OnDig(mDigPower);
+			return success;
 		}
 		return false;
 	}
