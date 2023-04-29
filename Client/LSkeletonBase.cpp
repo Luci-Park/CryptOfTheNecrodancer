@@ -7,6 +7,7 @@ namespace cl
 		: Monster(sc, true)
 		, mbNoHead(false)
 		, mbPause(false)
+		, mHitDir(Vector2::Zero)
 	{
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Monsters\\Skeleton\\";
 		std::wstring extend = L".wav";
@@ -83,7 +84,7 @@ namespace cl
 			mSkelSprite->LostHead();
 			PlayOnHeadLossSound();
 			mbNoHead = true;
-			mPrevDir = dir;
+			mHitDir = dir;
 		}
 		return true;
 	}
@@ -91,7 +92,7 @@ namespace cl
 	{
 		if (mbNoHead)
 		{
-			return MoveAwayFromPlayer();
+			return mHitDir;
 		}
 		else {
 			if (mbPause)
@@ -105,9 +106,5 @@ namespace cl
 				return CardinalMoveTowards();
 			}
 		}
-	}
-	Vector2 SkeletonBase::MoveAwayFromPlayer()
-	{
-		return mPrevDir;
 	}
 }
