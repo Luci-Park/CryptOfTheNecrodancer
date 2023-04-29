@@ -110,8 +110,7 @@ namespace cl
 			PlayOnAttackSound();
 			Recoil(direction);
 			return true;
-		}
-		
+		}		
 		return false;
 	}
 	bool Monster::TryDig(Vector2 direction)

@@ -13,9 +13,6 @@ namespace cl
 		virtual void Update() override;
 		virtual void Render(HDC hdc) override;
 
-		virtual bool TryMove() override;
-
-		virtual void OnBeat();
 	private:
 		virtual void SetStats() override;
 		virtual Vector2 GetNextDir() override;

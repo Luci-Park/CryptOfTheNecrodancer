@@ -158,7 +158,7 @@ namespace cl
 				if (mWalls[randy][randx] == eWallTypes::None
 					&& mMonsters[randy][randx] == eMonsterTypes::None)
 				{
-					mMonsters[randy][randx] = MonsterFactory::GetRandomMonster(mZone);
+					mMonsters[randy][randx] = i == 0 ? eMonsterTypes::GreenSlime: MonsterFactory::GetRandomMonster(mZone);
 					break;
 				}
 			}

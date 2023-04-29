@@ -23,19 +23,6 @@ namespace cl
 	{
 		Monster::Render(hdc);
 	}
-	void GreenSlime::OnBeat()
-	{
-	}
-	bool GreenSlime::TryMove()
-	{
-		if (mNextDir == Vector2::Zero)
-			mSlimeSprite->Idle();
-		else
-		{
-			Monster::TryMove();
-		}
-		return true;
-	}
 	void GreenSlime::SetStats()
 	{
 		mActivationRadius = INFINITY;
