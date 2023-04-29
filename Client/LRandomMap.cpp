@@ -10,7 +10,7 @@ namespace cl
 	}
 	void RandomMap::CreateMapBluePrint()
 	{
-		Room* room = new RandomRoom(1);
+		Room* room = new ExitRoom(1);
 		mMapSize = room->mSize;
 		Map::Initialize(mMapSize);
 		CopyRoom(Vector2::Zero, room);
@@ -30,5 +30,7 @@ namespace cl
 		}
 		for (int i = 0; i < room->mLights.size(); i++)
 			mLightPos.push_back(room->mLights[i]);
+		for (int i = 0; i < room->mStairPos.size(); i++)
+			mStairPos.push_back(room->mStairPos[i]);
 	}
 }

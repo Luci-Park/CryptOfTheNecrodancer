@@ -18,6 +18,7 @@ namespace cl
 		std::vector<std::vector<eWallTypes>> mWalls;
 		std::vector<std::vector<eMonsterTypes>> mMonsters;
 		std::vector<Vector2> mLights;
+		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		Vector2 mSize;
 		Vector2 mMiddlePos;		
 		int mZone;
@@ -30,12 +31,21 @@ namespace cl
 	struct RandomRoom : public Room
 	{
 		RandomRoom(int zone);
-		~RandomRoom();
+		virtual ~RandomRoom();
 
 		void CreateCatacombRoom();//0.1
 		void CreateDirtRoom();
 		void CreateRandomFloors();
 		void CreateMonsters();
+	};
+
+	struct ExitRoom : RandomRoom
+	{
+		ExitRoom(int zone);
+		~ExitRoom();
+
+		void AddBoss();
+		void AddStairs();
 	};
 }
 

@@ -40,10 +40,15 @@ namespace cl
 	{
 		if (mSize.x <= 6 || mSize.y <= 6) return;
 		if (eWallTypes::None == type)return;
-		mWalls[2][2] = type;
-		mWalls[2][mSize.x - 3] = type;
-		mWalls[mSize.y - 3][2] = type;
-		mWalls[mSize.y - 3][mSize.x - 3] = type;
+		
+		eWallTypes types[4];
+		for (int i = 0; i < 4; ++i)
+			types[i] = type == eWallTypes::DirtWall ? GetRandomDirtWall() : type;
+		
+		mWalls[2][2] = types[0];
+		mWalls[2][mSize.x - 3] = types	[1];
+		mWalls[mSize.y - 3][2] = types[2];
+		mWalls[mSize.y - 3][mSize.x - 3] = types[3];
 	}
 	void Room::SetCorner(eWallTypes type)
 	{
@@ -158,9 +163,48 @@ namespace cl
 				if (mWalls[randy][randx] == eWallTypes::None
 					&& mMonsters[randy][randx] == eMonsterTypes::None)
 				{
-					mMonsters[randy][randx] = i == 0 ? eMonsterTypes::GreenSlime: MonsterFactory::GetRandomMonster(mZone);
+					mMonsters[randy][randx] = MonsterFactory::GetRandomMonster(mZone);
 					break;
 				}
+			}
+		}
+	}
+	ExitRoom::ExitRoom(int zone)
+		:RandomRoom(zone)
+	{
+		AddStairs();
+		AddBoss();
+	}
+	ExitRoom::~ExitRoom()
+	{
+	}
+	void ExitRoom::AddStairs()
+	{
+		while (true)
+		{
+			int randx = GetRandomInt(1, mSize.x - 2);
+			int randy = GetRandomInt(1, mSize.y - 2);
+			if (mWalls[randy][randx] == eWallTypes::None
+				&& mMonsters[randy][randx] == eMonsterTypes::None)
+			{
+				mFloors[randy][randx] = eFloorTypes::OpenedStairs;
+				mStairPos.push_back(std::make_pair(Vector2(randx, randy), eSceneType((int)eSceneType::Depth1 + mZone)));
+				break;
+			}
+		}
+
+	}
+	void ExitRoom::AddBoss()
+	{
+		while (true)
+		{
+			int randx = GetRandomInt(1, mSize.x - 2);
+			int randy = GetRandomInt(1, mSize.y - 2);
+			if (mWalls[randy][randx] == eWallTypes::None
+				&& mMonsters[randy][randx] == eMonsterTypes::None)
+			{
+				mMonsters[randy][randx] = MonsterFactory::GetRandomMiniBoss(mZone);
+				break;
 			}
 		}
 	}
