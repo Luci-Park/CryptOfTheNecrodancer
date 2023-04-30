@@ -7,7 +7,7 @@ namespace cl
 	class Scene : public Entity
 	{
 	public:
-		Scene(const std::wstring& name);
+		Scene(eSceneType type);
 		virtual ~Scene();
 		
 		virtual void Initialize();
@@ -20,8 +20,10 @@ namespace cl
 
 		void AddGameObject(GameObject* obj, eLayerType layer);
 		std::vector<GameObject*>& GetGameObjects(eLayerType layer);
+		eSceneType GetSceneType() { return mType; }
 
 	protected:
 		std::vector<Layer> mLayers;
+		eSceneType mType;
 	};
 }

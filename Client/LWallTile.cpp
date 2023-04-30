@@ -291,7 +291,7 @@ namespace cl
 	{
 		mbIsBreakable = false;
 		mHardness = 100;
-		mWallSprite = WallTile::GetWallSprite(eWallTypes::BossWall);
+		mWallSprite = WallTile::GetWallSprite(eWallTypes::Border);
 	}
 
 	bool Border::OnDig(int digPower)

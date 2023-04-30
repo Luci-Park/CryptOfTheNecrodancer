@@ -12,7 +12,7 @@ namespace cl
 		void SetColumn(eWallTypes type);
 		void SetCorner(eWallTypes type);
 		void SetLights(int numbers);
-		eWallTypes GetRandomDirtWall();
+		static eWallTypes GetRandomDirtWall();
 
 		std::vector<std::vector<eFloorTypes>> mFloors;
 		std::vector<std::vector<eWallTypes>> mWalls;
@@ -20,7 +20,8 @@ namespace cl
 		std::vector<Vector2> mLights;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		Vector2 mSize;
-		Vector2 mMiddlePos;		
+		Vector2 mMiddlePos;
+		Vector2 mOffset;
 		int mZone;
 	};
 	struct StartRoom : public Room

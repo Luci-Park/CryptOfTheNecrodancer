@@ -11,7 +11,7 @@ namespace cl
 {
 
 	TitleScene::TitleScene()
-		: Scene(L"Title")
+		: Scene(eSceneType::Title)
 		, mBackground(nullptr)
 		, mButton(nullptr)
 		, mBGM(nullptr)

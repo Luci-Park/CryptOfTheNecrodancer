@@ -17,7 +17,7 @@
 namespace cl
 {
 	LobbyScene::LobbyScene()
-		:Scene(L"Lobby")
+		:Scene(eSceneType::Lobby)
 		, mBGM(nullptr)
 	{
 	}

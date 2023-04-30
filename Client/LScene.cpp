@@ -4,9 +4,9 @@
 
 namespace cl
 {
-	Scene::Scene(const std::wstring& name)
+	Scene::Scene(eSceneType type)
+		:mType(type)
 	{
-		SetName(name);
 		mLayers.reserve((UINT)eLayerType::Size);
 		mLayers.resize((UINT)eLayerType::Size);
 	}

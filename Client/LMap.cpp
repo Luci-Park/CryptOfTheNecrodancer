@@ -204,7 +204,7 @@ namespace cl
 		{
 			Vector2 pos = mStairPos[i].first;
 			StairTile* tile = dynamic_cast<StairTile*>(mFloor[pos.y][pos.x]);
-			tile->SetDestination(mStairPos[i].second);
+			if(tile != nullptr) tile->SetDestination(mStairPos[i].second);
 		}
 	}
 

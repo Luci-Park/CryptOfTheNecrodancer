@@ -7,10 +7,17 @@ namespace cl
 	{
 	public:
 		RandomMap();
-		~RandomMap();
+		virtual ~RandomMap();
 	private:
 		virtual void CreateMapBluePrint() override;
-		void CopyRoom(Vector2 startPos, Room* room);
+		void InitializeWall();
+		void CreateRoom();
+		void SetRoom(int idx);
+		void CopyRooms();
+		void CopyRoom(Room* room);
+		void DeleteRooms();
+		std::vector<Room*> mRooms;
+		int mZone; 
 	};
 }
 

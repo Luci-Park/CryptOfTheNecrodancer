@@ -10,7 +10,7 @@ extern cl::Application application;
 namespace cl
 {
 	SplashScene::SplashScene()
-		:Scene(L"Splash")
+		:Scene(eSceneType::Splash)
 		, mImage(nullptr)
 		, mTimer(0.0f)
 	{

@@ -14,7 +14,7 @@ namespace cl
 	{
 	public:
 		Map();
-		~Map();
+		virtual ~Map();
 
 		void DestroyTileObject(Vector2 index);
 		void DestroyWallObject(Vector2 index);
