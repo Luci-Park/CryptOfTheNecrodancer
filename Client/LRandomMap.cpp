@@ -14,6 +14,14 @@ namespace cl
 			mZone = 3;
 		else
 			mZone = 1;
+		section[0][0] = 1;
+		section[0][1] = 11;
+		section[1][0] = 7;
+		section[1][1] = 17;
+		section[2][0] = 12;
+		section[2][1] = 23;
+
+
 	}
 	RandomMap::~RandomMap()
 	{
@@ -34,7 +42,7 @@ namespace cl
 		{
 			for (int j = 0; j < 25; j++)
 			{
-				if (5 <= i && i < 20 && 5 <= j && j < 20)
+				if (3 <= i && i < 20 && 3 <= j && j < 20)
 				{
 					mWallBluePrint[i][j] = Room::GetRandomDirtWall();
 				}
@@ -52,7 +60,7 @@ namespace cl
 		SetRoom(0);
 		mRooms[1] = new StartRoom(mZone);
 		SetRoom(1);
-		for (int i = 2; i < 6; i++)
+		for (int i = 2; i < 2; ++i)
 		{
 			mRooms[i] = new RandomRoom(mZone);
 			SetRoom(i);
@@ -69,14 +77,13 @@ namespace cl
 			randx = GetRandomInt(1, 24 - mRooms[idx]->mSize.x);
 			for (int i = 0; i < idx; ++i)
 			{
-				int xLeft = mRooms[i]->mOffset.x;
-				int xRight = mRooms[i]->mOffset.x + mRooms[i]->mSize.x - 1;
-				int yTop = mRooms[i]->mOffset.y;
-				int yBottom = mRooms[i]->mOffset.y + mRooms[i]->mSize.y - 1;
-				if (xLeft <= randx && randx <= xRight
-					&& yTop <= randy && randy <= yBottom)
+				Vector2 l1 = mRooms[i]->mOffset;
+				Vector2 r1 = l1 + mRooms[i]->mSize + Vector2::One;
+				Vector2 l2 = Vector2(randx, randy);
+				Vector2 r2 = l2 + mRooms[idx]->mSize + Vector2::One;
+				if (DoesRoomOverlap(l1, r1, l2, r2))
 				{
-					overlap == true;
+					overlap = true;
 					break;
 				}
 			}
@@ -85,9 +92,10 @@ namespace cl
 	}
 	void RandomMap::CopyRooms()
 	{
-		for (int i = 0; i < 6; ++i)
+		for (int i = 0; i < 2; ++i)
 		{
-			CopyRoom(mRooms[i]);
+			if (mRooms[i] != nullptr);
+				CopyRoom(mRooms[i]);
 		}
 	}
 	void RandomMap::CopyRoom(Room* room)
@@ -117,5 +125,21 @@ namespace cl
 			delete mRooms[i];
 			mRooms[i] = nullptr;
 		}
+	}
+	bool RandomMap::DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2)
+	{
+		// if rectangle has area 0, no overlap
+		if (l1.x == r1.x || l1.y == r1.y || r2.x == l2.x || l2.y == r2.y)
+			return false;
+
+		// If one rectangle is on left side of other
+		if (l1.x > r2.x || l2.x > r1.x)
+			return false;
+
+		// If one rectangle is above other
+		if (r1.y < l2.y || r2.y < l1.y)
+			return false;
+
+		return true;
 	}
 }
