@@ -156,48 +156,20 @@ namespace cl
 	}
 	Vector2 Monster::CardinalMoveTowards()
 	{
-		std::vector<Vector2> direction = {
-			   {1, 0}, {0, 1}, {-1, 0}, {0, -1}
-		};
-		std::vector<std::pair<float, int>> distances(direction.size());
-		Vector2 playerPos = MapManager::GetPlayerIndex();
-		for (int i = 0; i < direction.size(); ++i)
+		Vector2 player = MapManager::GetPlayerIndex();
+		if (player.x == mIndex.x || player.y == mIndex.y)
+			return (player - mIndex).TileNormalize();
+		else
 		{
-			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
-			distances[i] = (std::make_pair(distance, i));
-		}
-		std::sort(distances.begin(), distances.end());
-		float mindistance = distances.begin()->first;
-		int prevDirIdx = -1;
-		int sameDistIdx = distances.size();
-		for (int i = 0; i < distances.size(); ++i)
-		{
-			if (distances[i].first > mindistance)
+			if (mPrevDir == Vector2::Zero)
 			{
-				sameDistIdx = i;
-				break;
+				if (abs(player.x - mIndex.x) >= abs(player.y - mIndex.y))
+					return Vector2(player.x - mIndex.x, 0.0f);
+				else
+					return Vector2(0.0f, player.y - mIndex.y);
 			}
-			if (direction[distances[i].second] == mPrevDir)
-				prevDirIdx = i;
 		}
-
-		if (prevDirIdx >= 0)
-		{
-			auto t = distances[prevDirIdx];
-			distances[prevDirIdx] = distances[0];
-			distances[0] = t;
-		}
-		for (int i =0; i < sameDistIdx; ++i)
-		{
-			Vector2 dest = mIndex + direction[distances[i].second];
-			if (MapManager::IndexIsValid(dest)
-				&& MapManager::GetEnemy(dest) == nullptr
-				&& MapManager::GetWall(dest) == nullptr)
-				return direction[distances[i].second];
-		}
-
-			
-		return direction[distances.begin()->second];
+		return mPrevDir;
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{

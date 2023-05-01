@@ -253,6 +253,10 @@ namespace cl
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mTileObjects[i][j] = MonsterFactory::CreateMonster(mMonsterBluePrint[i][j], Vector2(j, i), sc);
+				if (mMonsterBluePrint[i][j] != eMonsterTypes::None)
+				{
+					TileObject* t = mTileObjects[i][j];
+				}
 			}
 		}
 	}

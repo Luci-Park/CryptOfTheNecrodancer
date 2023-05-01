@@ -55,18 +55,33 @@ namespace cl
 	}
 	void RandomMap::CreateRoom()
 	{
-		mRooms.resize(6);
-		mRooms[0] = new ExitRoom(mZone);
-		SetRoom(0);
-		mRooms[1] = new StartRoom(mZone);
-		SetRoom(1);
-		for (int i = 2; i < 2; ++i)
+		for (int i = 0; i < 3; ++i)
 		{
-			mRooms[i] = new RandomRoom(mZone);
-			SetRoom(i);
+			for (int j = 0; j < 3; ++j)
+			{
+				mRooms[i][j] = nullptr;
+			}
 		}
+		CreateExitRoom();
+
 	}
-	void RandomMap::SetRoom(int idx)
+	void RandomMap::CreateExitRoom()
+	{
+		int rand1 = GetRandomInt(0, 2);
+		int rand2 = GetRandomInt(0, 1);
+		int y = 2;
+		int x = 2;
+		if (rand2)
+			y = rand1;
+		else
+			x = rand1;
+		mRooms[y][x] = new ExitRoom(mZone);
+		SetRoom(y, x);
+	}
+	void RandomMap::CreateStartRoom()
+	{
+	}
+	void RandomMap::SetRoom(int sectionY, int sectionX)
 	{
 		bool overlap;
 		int randy, randx;
@@ -108,6 +123,11 @@ namespace cl
 				mWallBluePrint[i + startPos.y][j + startPos.x] = room->mWalls[i][j];
 				mFloorBluePrint[i + startPos.y][j + startPos.x] = room->mFloors[i][j];
 				mMonsterBluePrint[i + startPos.y][j + startPos.x] = room->mMonsters[i][j];
+				if (mMonsterBluePrint[i + startPos.y][j + startPos.x] != eMonsterTypes::None)
+				{
+					int y = i + startPos.y;
+					int x = j + startPos.x;
+				}
 			}
 		}
 		for (int i = 0; i < room->mLights.size(); i++)
