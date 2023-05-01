@@ -14,35 +14,26 @@ namespace cl
 			mZone = 3;
 		else
 			mZone = 1;
-		section[0][0] = 1;
-		section[0][1] = 11;
-		section[1][0] = 7;
-		section[1][1] = 17;
-		section[2][0] = 12;
-		section[2][1] = 23;
-
-
 	}
 	RandomMap::~RandomMap()
 	{
 	}
 	void RandomMap::CreateMapBluePrint()
 	{
-		mMapSize = Vector2(25, 25);
+		mMapSize = Vector2(30, 30);
 		Map::Initialize(mMapSize);
 		InitializeWall();
 		CreateRoom();
 		CopyRooms();
-		mPlayerIndex = mRooms[1]->mMiddlePos + mRooms[1]->mOffset;
 		DeleteRooms();
 	}
 	void RandomMap::InitializeWall()
 	{
-		for (int i = 0; i < 25; i++)
+		for (int i = 0; i < mMapSize.y; i++)
 		{
-			for (int j = 0; j < 25; j++)
+			for (int j = 0; j < mMapSize.x; j++)
 			{
-				if (3 <= i && i < 20 && 3 <= j && j < 20)
+				if (10 <= i && i <= 20 && 10 <= j && j <= 20)
 				{
 					mWallBluePrint[i][j] = Room::GetRandomDirtWall();
 				}
@@ -55,62 +46,63 @@ namespace cl
 	}
 	void RandomMap::CreateRoom()
 	{
-		for (int i = 0; i < 3; ++i)
+		mRooms = std::vector<Room*>(6, nullptr);
+		CreateRooms(0);
+	}
+	void RandomMap::CreateRooms(int idx)
+	{
+		if (idx == 0)
 		{
-			for (int j = 0; j < 3; ++j)
-			{
-				mRooms[i][j] = nullptr;
-			}
+			mRooms[idx] = new RandomRoom(mZone);
+			int y = GetRandomInt(20, 29 - mRooms[idx]->mSize.y);
+			int x = GetRandomInt(20, 29 - mRooms[idx]->mSize.x);
+			mRooms[idx]->mOffset = { x, y };
 		}
-		CreateExitRoom();
-
-	}
-	void RandomMap::CreateExitRoom()
-	{
-		int rand1 = GetRandomInt(0, 2);
-		int rand2 = GetRandomInt(0, 1);
-		int y = 2;
-		int x = 2;
-		if (rand2)
-			y = rand1;
 		else
-			x = rand1;
-		mRooms[y][x] = new ExitRoom(mZone);
-		SetRoom(y, x);
-	}
-	void RandomMap::CreateStartRoom()
-	{
-	}
-	void RandomMap::SetRoom(int sectionY, int sectionX)
-	{
-		bool overlap;
-		int randy, randx;
-		do
 		{
-			overlap = false;
-			randy = GetRandomInt(1, 24-mRooms[idx]->mSize.y);
-			randx = GetRandomInt(1, 24 - mRooms[idx]->mSize.x);
-			for (int i = 0; i < idx; ++i)
+			if (idx == 4)
+				mRooms[idx] = new StartRoom(mZone);
+			std::vector<Vector2> v = { Vector2::Left, Vector2::Right, Vector2::Up, Vector2::Down };
+			std::shuffle(v.begin(), v.end(), std::default_random_engine());
+			for (int i = 0; i < 4; ++i)
 			{
-				Vector2 l1 = mRooms[i]->mOffset;
-				Vector2 r1 = l1 + mRooms[i]->mSize + Vector2::One;
-				Vector2 l2 = Vector2(randx, randy);
-				Vector2 r2 = l2 + mRooms[idx]->mSize + Vector2::One;
-				if (DoesRoomOverlap(l1, r1, l2, r2))
+				if (IsDirPossible(v[i], idx))
 				{
-					overlap = true;
+					mDirections.push_back(v[i]);
 					break;
 				}
 			}
-		} while (overlap);
-		mRooms[idx]->mOffset = Vector2(randx, randy);
+			
+		}
+		CreateRooms(idx + 1);
+	}
+	bool RandomMap::IsDirPossible(Vector2 dir, int idx)
+	{
+		if (dir == Vector2::Left)
+		{
+			int x = mRooms[idx - 1]->mOffset.x - 1;
+			if (x - mRooms[idx]->mSize.x < 1)
+				return false;
+			int max = (std::min)(mRooms[idx - 1]->mOffset.y + 1, 29 - mRooms[idx]->mSize.y);
+			int min =  mRooms[idx - 1]->mOffset.y + mRooms[idx - 1]->mSize.y - 1;
+			if (min > max)
+			{
+				int t = min;
+				min = max;
+				max = t;
+			}
+			for (int i = 0; i < idx; ++i)
+			{
+
+			}
+
+		}
 	}
 	void RandomMap::CopyRooms()
 	{
-		for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < mRooms.size(); ++i)
 		{
-			if (mRooms[i] != nullptr);
-				CopyRoom(mRooms[i]);
+			CopyRoom(mRooms[i]);
 		}
 	}
 	void RandomMap::CopyRoom(Room* room)
@@ -140,7 +132,7 @@ namespace cl
 	}
 	void RandomMap::DeleteRooms()
 	{
-		for (int i = 0; i < 6; ++i)
+		for (int i = 0; i < mRooms.size(); ++i)
 		{
 			delete mRooms[i];
 			mRooms[i] = nullptr;

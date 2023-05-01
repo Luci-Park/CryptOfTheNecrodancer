@@ -14,6 +14,7 @@
 #include <functional>
 #include <filesystem>
 #include <random>
+#include <algorithm>
 #pragma comment(lib, "Msimg32.lib")
 
 #include <mmsystem.h>

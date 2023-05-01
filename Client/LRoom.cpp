@@ -105,19 +105,32 @@ namespace cl
 	{
 		mSize.x = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
 		mSize.y = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
+		SetRoom();
+	}
+	RandomRoom::RandomRoom(int zone, int XMaxSize, int YMaxSize)
+		:Room(zone)
+	{
+		int maxRoomX = XMaxSize < MAXROOMSIZE ? XMaxSize : MAXROOMSIZE;
+		int maxRoomY = YMaxSize < MAXROOMSIZE ? YMaxSize : MAXROOMSIZE;
+		mSize.x = GetRandomInt(MINROOMSIZE, maxRoomX);
+		mSize.y = GetRandomInt(MINROOMSIZE, maxRoomY);
+		SetRoom();
+	}
+	RandomRoom::~RandomRoom()
+	{
+	}
+	void RandomRoom::SetRoom()
+	{
 		mMiddlePos = mSize * 0.5;
 		mMiddlePos.x = (int)(mSize.x * 0.5);
 		mMiddlePos.y = (int)(mSize.y * 0.5);
 		Reset();
-		if (zone >= 2 && GetRandomInt(1, 10) <= 1)
+		if (mZone >= 2 && GetRandomInt(1, 10) <= 1)
 			CreateCatacombRoom();
 		else
 			CreateDirtRoom();
 		SetLights(GetRandomInt(0, 3));
 		CreateMonsters();
-	}
-	RandomRoom::~RandomRoom()
-	{
 	}
 	void RandomRoom::CreateCatacombRoom()
 	{
@@ -174,6 +187,10 @@ namespace cl
 	{
 		AddStairs();
 		AddBoss();
+	}
+	ExitRoom::ExitRoom(int zone, int XMaxSize, int YMaxSize)
+		:RandomRoom(zone, XMaxSize, YMaxSize)
+	{
 	}
 	ExitRoom::~ExitRoom()
 	{

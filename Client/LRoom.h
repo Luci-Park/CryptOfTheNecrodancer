@@ -32,8 +32,10 @@ namespace cl
 	struct RandomRoom : public Room
 	{
 		RandomRoom(int zone);
+		RandomRoom(int zone, int XMaxSize, int YMaxSize);
 		virtual ~RandomRoom();
 
+		void SetRoom();
 		void CreateCatacombRoom();//0.1
 		void CreateDirtRoom();
 		void CreateRandomFloors();
@@ -43,6 +45,7 @@ namespace cl
 	struct ExitRoom : RandomRoom
 	{
 		ExitRoom(int zone);
+		ExitRoom(int zone, int XMaxSize, int YMaxSize);
 		~ExitRoom();
 
 		void AddBoss();

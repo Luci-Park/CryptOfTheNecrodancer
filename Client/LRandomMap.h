@@ -12,15 +12,14 @@ namespace cl
 		virtual void CreateMapBluePrint() override;
 		void InitializeWall();
 		void CreateRoom();
-		void CreateExitRoom();
-		void CreateStartRoom();
-		void SetRoom(int sectionY, int sectionX);
+		void CreateRooms(int idx);
+		bool IsDirPossible(Vector2 dir, int idx);
 		void CopyRooms();
 		void CopyRoom(Room* room);
 		void DeleteRooms();
 		bool DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2);
-		Room* mRooms[3][3];
-		int section[3][2];
+		std::vector<Room*> mRooms;
+		std::vector<Vector2> mDirections;
 		int mZone; 
 	};
 }
