@@ -174,8 +174,8 @@ namespace cl
 
 	void Map::Initialize(Vector2 size)
 	{
-		mFloorBluePrint = std::vector<std::vector<eFloorTypes>>(size.y, std::vector<eFloorTypes>(size.x, eFloorTypes::None));
-		mWallBluePrint = std::vector<std::vector<eWallTypes>>(size.y, std::vector<eWallTypes>(size.x, eWallTypes::None));
+		mFloorBluePrint = std::vector<std::vector<eFloorTypes>>(size.y, std::vector<eFloorTypes>(size.x, eFloorTypes::ActiveDirt));
+		mWallBluePrint = std::vector<std::vector<eWallTypes>>(size.y, std::vector<eWallTypes>(size.x, eWallTypes::Border));
 		mMonsterBluePrint = std::vector<std::vector<eMonsterTypes>>(size.y, std::vector<eMonsterTypes>(size.x, eMonsterTypes::None));
 	}
 

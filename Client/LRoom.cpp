@@ -112,7 +112,7 @@ namespace cl
 	{
 		mSize = Vector2(7, 7);
 		Reset();
-		mMiddlePos = Vector2(3, 3);
+		mCenter = Vector2(3, 3);
 		SetWall(eWallTypes::DirtWall);
 		SetLights(GetRandomInt(1, 3));
 	}
@@ -140,9 +140,9 @@ namespace cl
 	}
 	void RandomRoom::SetRoom()
 	{
-		mMiddlePos = mSize * 0.5;
-		mMiddlePos.x = (int)(mSize.x * 0.5);
-		mMiddlePos.y = (int)(mSize.y * 0.5);
+		mCenter = mSize * 0.5;
+		mCenter.x = (int)(mSize.x * 0.5);
+		mCenter.y = (int)(mSize.y * 0.5);
 		Reset();
 		if (mZone >= 2 && GetRandomInt(1, 10) <= 1)
 			CreateCatacombRoom();

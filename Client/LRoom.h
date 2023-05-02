@@ -12,8 +12,8 @@ namespace cl
 		void SetColumn(eWallTypes type);
 		void SetCorner(eWallTypes type);
 		void SetLights(int numbers);
-		int GetIndexFromDirection(Vector2 dir);
-		Vector2 GetDirectionFromIndex(int idx);
+		static int GetIndexFromDirection(Vector2 dir);
+		static Vector2 GetDirectionFromIndex(int idx);
 		static eWallTypes GetRandomDirtWall();
 
 		std::vector<std::vector<eFloorTypes>> mFloors;
@@ -22,7 +22,7 @@ namespace cl
 		std::vector<Vector2> mLights;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		Vector2 mSize;
-		Vector2 mMiddlePos;
+		Vector2 mCenter;
 		Vector2 mOffset;
 		int mZone;
 

@@ -25,6 +25,7 @@ namespace cl
 		InitializeWall();
 		CreateRoom();
 		CopyRooms();
+		CreateCorridor();
 		DeleteRooms();
 	}
 	void RandomMap::InitializeWall()
@@ -33,7 +34,8 @@ namespace cl
 		{
 			for (int j = 0; j < mMapSize.x; j++)
 			{
-				if (5 <= i && i <= 25 && 5 <= j && j <= 25)
+				if (MARGIN <= i && i <= MAPSIZE - MARGIN
+					&& MARGIN <= j && j <= MAPSIZE - MARGIN)
 				{
 					mWallBluePrint[i][j] = Room::GetRandomDirtWall();
 				}
@@ -57,8 +59,8 @@ namespace cl
 		if (mRooms.size() == 0)
 		{			
 			newRoom = new RandomRoom(mZone);
-			int y = MAPSIZE - 1 - newRoom->mSize.x;
-			int x = MAPSIZE - 1 - newRoom->mSize.y;
+			int y = MAPSIZE - 2 - newRoom->mSize.y;
+			int x = MAPSIZE - 2 - newRoom->mSize.x;
 			if (GetRandomInt(0, 1))
 				y = GetRandomInt(1, y);
 			else
@@ -68,7 +70,7 @@ namespace cl
 		}
 		else
 		{
-			if (mRooms.size() == 4)
+			if (mRooms.size() == STARTIDX)
 				newRoom = new StartRoom(mZone);
 			else
 				newRoom = new RandomRoom(mZone);
@@ -80,7 +82,7 @@ namespace cl
 				{
 					if (IsDirPossible(v[i], parent, newRoom))
 					{
-						parent->mChildren[parent->GetIndexFromDirection(v[i])] = newRoom;
+						parent->mChildren[Room::GetIndexFromDirection(v[i])] = newRoom;
 						newRoom->mParent = parent;
 						set = true;
 						break;
@@ -91,16 +93,38 @@ namespace cl
 					parent = parent->mParent;
 				}
 			}
+			if (!set)
+			{
+				for (int i = 1; i < mRooms.size(); ++i)
+				{
+					parent = mRooms[i];
+					std::vector<Vector2> v = { Vector2::Left, Vector2::Right, Vector2::Up, Vector2::Down };
+					std::shuffle(v.begin(), v.end(), std::default_random_engine());
+					for (int i = 0; i < 4; ++i)
+					{
+						if (IsDirPossible(v[i], parent, newRoom))
+						{
+							parent->mChildren[Room::GetIndexFromDirection(v[i])] = newRoom;
+							newRoom->mParent = parent;
+							set = true;
+							break;
+						}
+					}
+					if (set) break;
+				}
+			}
 		}
 		if (set && newRoom != nullptr)
 		{
 			mRooms.push_back(newRoom);
 			CreateRooms(newRoom);
 		}
+		if (!set && newRoom != nullptr)
+			delete newRoom;
 	}
 	bool RandomMap::IsDirPossible(Vector2 dir, Room* parent, Room* child)
 	{
-		if (parent->mChildren[parent->GetIndexFromDirection(dir)] != nullptr)
+		if (parent->mChildren[Room::GetIndexFromDirection(dir)] != nullptr)
 			return false;
 		if (dir == Vector2::Left)
 		{
@@ -117,7 +141,7 @@ namespace cl
 			int x = parent->mOffset.x + parent->mSize.x + 1;
 			if (x +child->mSize.x >= MAPSIZE - 1)
 				return false;
-			if (x +child->mSize.x >= MAPSIZE - 3)
+			if (x +child->mSize.x <= MAPSIZE - 3)
 				x += GetRandomInt(0, 1);
 			return SetRoomY(x, parent, child);
 		}
@@ -136,7 +160,7 @@ namespace cl
 			int y = parent->mOffset.y + parent->mSize.y + 1;
 			if (y +child->mSize.y >= MAPSIZE - 1)
 				return false;
-			if (y +child->mSize.y >= MAPSIZE - 3)
+			if (y +child->mSize.y <= MAPSIZE - 3)
 				y += GetRandomInt(0, 1);
 			return SetRoomX(y, parent, child);
 		}
@@ -176,7 +200,7 @@ namespace cl
 	{
 		int min =parent->mOffset.x -child->mSize.x;
 		int max =parent->mOffset.x +parent->mSize.x;
-		if (max +child->mSize.x >= MAPSIZE - 1)
+		if (max +child->mSize.x >= MAPSIZE -1)
 			max = MAPSIZE - 2 -child->mSize.x;
 		if (min <= 0)
 			min = 1;
@@ -209,8 +233,8 @@ namespace cl
 		for (int i = 0; i < mRooms.size(); ++i)
 		{
 			CopyRoom(mRooms[i]);
-			if (i == 4)
-				mPlayerIndex = mRooms[i]->mMiddlePos + mRooms[i]->mOffset;
+			if (i == STARTIDX)
+				mPlayerIndex = mRooms[i]->mCenter + mRooms[i]->mOffset;
 		}
 	}
 	void RandomMap::CopyRoom(Room* room)
@@ -236,6 +260,45 @@ namespace cl
 		{
 			room->mStairPos[i].first += room->mOffset;
 			mStairPos.push_back(room->mStairPos[i]);
+		}
+	}
+	void RandomMap::CreateCorridor()
+	{
+		for (int i = 0; i < mRooms.size(); ++i)
+		{
+			Room* room = mRooms[i];
+			for (int j = 0; j < room->mChildren.size(); j++)
+			{
+				if (room->mChildren[j] != nullptr)
+					CreateCorridor(room, room->mChildren[j], Room::GetDirectionFromIndex(j));
+			}
+		}
+	}
+	void RandomMap::CreateCorridor(Room* parent, Room* child, Vector2 dir)
+	{
+		Vector2 parentCenter = parent->mOffset + parent->mCenter;
+		Vector2 childCenter = child->mOffset + child->mCenter;
+		int cursorX = parentCenter.x;
+		int cursorY = parentCenter.y;
+		while (cursorX != childCenter.x || cursorY != childCenter.y) {
+			int xDiff = abs(childCenter.x - cursorX);
+			int yDiff = abs(childCenter.y - cursorY);
+			if (xDiff > 0 && yDiff > 0)
+			{
+				if(GetRandomInt(0, 1))
+					cursorX += (childCenter.x > parentCenter.x) ? 1 : -1;
+				else
+					cursorY += (childCenter.y > parentCenter.y) ? 1 : -1;
+
+			}
+			else if(xDiff > 0)
+				cursorX += (childCenter.x > parentCenter.x) ? 1 : -1;
+			else if(yDiff > 0)
+				cursorY += (childCenter.y > parentCenter.y) ? 1 : -1;
+
+			mWallBluePrint[cursorY][cursorX] = eWallTypes::None;
+
+			// draw or do something with cursor position
 		}
 	}
 	void RandomMap::DeleteRooms()
