@@ -1,5 +1,6 @@
 #pragma once
 #include "LMap.h"
+#define MAPSIZE 30
 namespace cl
 {
 	class Room;
@@ -12,14 +13,16 @@ namespace cl
 		virtual void CreateMapBluePrint() override;
 		void InitializeWall();
 		void CreateRoom();
-		void CreateRooms(int idx);
-		bool IsDirPossible(Vector2 dir, int idx);
+		void CreateRooms(Room* parent);
+		bool IsDirPossible(Vector2 dir, Room* parent, Room* child);
+		bool SetRoomY(int x, Room* parent, Room* child);
+		bool SetRoomX(int y, Room* parent, Room* child);
 		void CopyRooms();
 		void CopyRoom(Room* room);
 		void DeleteRooms();
 		bool DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2);
-		std::vector<Room*> mRooms;
-		std::vector<Vector2> mDirections;
+		std::vector<Room*>mRooms;
+
 		int mZone; 
 	};
 }

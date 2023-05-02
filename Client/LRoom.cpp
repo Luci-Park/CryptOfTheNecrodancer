@@ -7,6 +7,8 @@ namespace cl
 	Room::Room(int zone)
 		: mZone(zone)
 	{
+		mParent = nullptr;
+		mChildren = std::vector<Room*>(4, nullptr);
 	}
 	Room::~Room()
 	{
@@ -82,6 +84,23 @@ namespace cl
 			else
 				mLights.push_back(Vector2((int)mSize.x -1, GetRandomInt(1, mSize.y - 2)));
 		}
+	}
+	int Room::GetIndexFromDirection(Vector2 dir)
+	{
+		if (dir == Vector2::Left)
+			return 0;
+		if (dir == Vector2::Right)
+			return 1;
+		if (dir == Vector2::Up)
+			return 2;
+		return 3;
+	}
+	Vector2 Room::GetDirectionFromIndex(int idx)
+	{
+		if (idx == 0) return Vector2::Left;
+		if (idx == 1) return Vector2::Right;
+		if (idx == 2) return Vector2::Up;
+		return Vector2::Down;
 	}
 	eWallTypes Room::GetRandomDirtWall()
 	{

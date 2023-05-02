@@ -12,6 +12,8 @@ namespace cl
 		void SetColumn(eWallTypes type);
 		void SetCorner(eWallTypes type);
 		void SetLights(int numbers);
+		int GetIndexFromDirection(Vector2 dir);
+		Vector2 GetDirectionFromIndex(int idx);
 		static eWallTypes GetRandomDirtWall();
 
 		std::vector<std::vector<eFloorTypes>> mFloors;
@@ -23,6 +25,9 @@ namespace cl
 		Vector2 mMiddlePos;
 		Vector2 mOffset;
 		int mZone;
+
+		Room* mParent;
+		std::vector<Room*> mChildren;
 	};
 	struct StartRoom : public Room
 	{
