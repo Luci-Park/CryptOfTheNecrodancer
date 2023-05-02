@@ -20,7 +20,7 @@ Vector2 Vector2::MoveTowards(Vector2 src, Vector2 dest, float distance)
     Vector2 move = dir * distance;
     Vector2 result = src + move;
     float dist = Vector2::Distance(dest, result);
-    if (dist <= 10.0f)
+    if (dist <= 20.0f)
         return dest;
     return result;
 }

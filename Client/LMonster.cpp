@@ -6,6 +6,7 @@
 #include "LMonsterWeapon.h"
 #include "LMonsterHeart.h"
 #include "LTileLight.h"
+#include "LTime.h"
 namespace cl
 {
 	Monster::Monster(Scene* sc, bool isTouchingGround)
@@ -61,6 +62,7 @@ namespace cl
 	{
 		if (mbIsActivated || mbIsAggroed)
 		{
+			mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
 			mMoveState = MoveState::NotMoved;
 			mSprite->Reset();
 			mTransform->SetPos(mMoveTarget);
@@ -139,7 +141,12 @@ namespace cl
 			}
 		}
 		mMoveState = MoveState::Moved;
-		SetMoveTarget(mNextDir * UNITLENGTH);
+		mMoveTarget += mNextDir * UNITLENGTH;
+		if (abs(mNextDir.x) > 1 || abs(mNextDir.y) > 1)
+		{
+			int m = abs(mNextDir.y) > abs(mNextDir.x) ? mNextDir.y : mNextDir.x;
+			mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime() * abs(m);
+		}
 		MapManager::Move(this, mIndex, mIndex + mNextDir);
 		mIndex += mNextDir;
 		if (mNextDir != Vector2::Zero)
@@ -164,9 +171,9 @@ namespace cl
 			if (mPrevDir == Vector2::Zero)
 			{
 				if (abs(player.x - mIndex.x) >= abs(player.y - mIndex.y))
-					return Vector2(player.x - mIndex.x, 0.0f);
+					return Vector2(player.x - mIndex.x, 0.0f).TileNormalize();
 				else
-					return Vector2(0.0f, player.y - mIndex.y);
+					return Vector2(0.0f, player.y - mIndex.y).TileNormalize();
 			}
 		}
 		return mPrevDir;

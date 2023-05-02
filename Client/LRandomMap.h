@@ -2,7 +2,7 @@
 #include "LMap.h"
 #define MAPSIZE 30
 #define MARGIN 8
-#define STARTIDX 3
+#define STARTIDX 4
 namespace cl
 {
 	class Room;

@@ -26,7 +26,6 @@ namespace cl
 		virtual void OnBeatChanged();
 		void SetSpeed(float speed) { mMoveSpeed = speed; }
 	protected:
-		void SetMoveTarget(Vector2 distance);
 		virtual bool TryAttack(Vector2 Direction) = 0;
 		virtual void Recoil(Vector2 dir);
 

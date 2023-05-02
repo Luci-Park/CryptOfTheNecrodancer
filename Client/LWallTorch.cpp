@@ -3,6 +3,7 @@
 #include "LAnimator.h"
 #include "LBeatManager.h"
 #include "LLightSource.h"
+#include "LTileLight.h";
 namespace cl
 {
 	WallTorch::WallTorch(Scene* sc)
@@ -33,7 +34,11 @@ namespace cl
 	void WallTorch::Update()
 	{
 		TileObject::Update();
-		 
+		
+		if (!MapManager::GetLight(mIndex)->IsInSight())
+			mAnimator->SetShow(false);
+		else
+			mAnimator->SetShow(true);
 		if (MapManager::GetWall(mIndex) == nullptr)
 			OnDestroy();
 	}

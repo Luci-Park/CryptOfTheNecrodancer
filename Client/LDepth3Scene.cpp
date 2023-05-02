@@ -49,7 +49,6 @@ namespace cl
 	}
 	void Depth3Scene::OnExit()
 	{
-		MapManager::DestroyMap();
 		mBGM->Stop(true);
 		Scene::OnExit();
 	}

@@ -182,6 +182,13 @@ namespace cl
 			Play(name, mPlaySettings, reverse);
 	}
 
+	void Animator::Stop()
+	{
+		if (mActiveAnimation)
+			mActiveAnimation->Reset();
+		mActiveAnimation = nullptr;
+	}
+
 	bool Animator::IsComplete()
 	{
 		if (mActiveAnimation != nullptr)

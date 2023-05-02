@@ -12,6 +12,10 @@ namespace cl
 	}
 	Scene::~Scene()
 	{
+		for (int i = 0; i < mLayers.size(); ++i)
+		{
+			mLayers[i].Release();
+		}
 		
 	}
 	void Scene::Initialize()
@@ -43,10 +47,6 @@ namespace cl
 
 	void Scene::OnEnter()
 	{
-		for (int i = 0; i < mLayers.size(); ++i)
-		{
-			mLayers[i].Release();
-		}
 	}
 	void Scene::OnExit()
 	{

@@ -43,13 +43,11 @@ namespace cl
 		Scene::OnEnter();
 		BeatManager::Reset();
 		BeatManager::SetBPM(130);
-		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::Random, this);
 		mBGM->Play(true);
 	}
 	void Depth2Scene::OnExit()
 	{
-		MapManager::DestroyMap();
 		mBGM->Stop(true);
 		Scene::OnExit();
 	}

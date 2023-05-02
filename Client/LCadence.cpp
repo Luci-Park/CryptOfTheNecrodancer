@@ -23,7 +23,7 @@ namespace cl
 		, consecutiveHits(0)
 		, mMoved(false)
 	{
-		//Camera::SetTarget(this);
+		Camera::SetTarget(this);
 		mHealth = new Health(this);
 		mLightSource = new LightSource(mTransform, 1.25, 3);
 	}
@@ -61,6 +61,7 @@ namespace cl
 	}
 	void Cadence::Update()
 	{
+		mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
 		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mMoveSpeed));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
@@ -117,7 +118,7 @@ namespace cl
 		MapManager::PlayerMove(this, mIndex, dest);
 		mSprite->Jump();
 		mIndex = dest;
-		SetMoveTarget(mInput * UNITLENGTH);
+		mMoveTarget += mInput * UNITLENGTH;
 		mMoved = true;
 		return true;
 	}

@@ -9,7 +9,6 @@ namespace cl
 	std::vector<Scene*> SceneManager::mScenes = {};
 	Scene* SceneManager::mActiveScene = nullptr;
 	int SceneManager::sceneNum = 0;
-	eSceneType SceneManager::mQueuedScene = eSceneType::Size;
 	void SceneManager::Initialize()
 	{
 		mScenes.resize((UINT)eSceneType::Size);
@@ -35,11 +34,6 @@ namespace cl
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
-		if (mQueuedScene != eSceneType::Size)
-		{
-			LoadScene(mQueuedScene);
-			mQueuedScene = eSceneType::Size;
-		}
 	}
 
 	void SceneManager::Render(HDC hdc)
@@ -66,9 +60,5 @@ namespace cl
 		CollisionManager::Clear();
 		mActiveScene = mScenes[(UINT)type];
 		mActiveScene->OnEnter();		
-	}
-	void SceneManager::LoadSceneAfterUpdate(eSceneType type)
-	{
-		mQueuedScene = type;
 	}
 }

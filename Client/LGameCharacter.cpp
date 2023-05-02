@@ -60,16 +60,10 @@ namespace cl
 		if(mSprite != nullptr)
 			mSprite->OnBeatChanged();
 	}
-	void GameCharacter::SetMoveTarget(Vector2 distance)
-	{
-		float dist = Vector2::Distance(mMoveTarget, mMoveTarget + distance );
-		mMoveSpeed = dist / BeatManager::BeatDuration() * Time::DeltaTime() * 2;
-		mMoveTarget += distance;
-	}
+
 	void GameCharacter::Recoil(Vector2 dir)
 	{
 		if (dir == Vector2::Zero) return;
-		mMoveSpeed = BeatManager::MoveSpeed() * Time::DeltaTime() * 4;
 		if (!mbMoveFailed)
 		{
 			mMoveTarget += dir * UNITLENGTH / 2;
