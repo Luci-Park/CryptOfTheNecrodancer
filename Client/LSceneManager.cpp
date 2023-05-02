@@ -6,22 +6,22 @@ namespace cl
 {	
 	//SceneManager scsene;
 	//SceneManager* scsene = new SceneManager();
-	std::vector<Scene*> SceneManager::mScenes = {};
-	Scene* SceneManager::mActiveScene = nullptr;
-	int SceneManager::sceneNum = 0;
+	std::vector<Scene*> SceneManager::_Scenes = {};
+	Scene* SceneManager::_ActiveScene = nullptr;
+	eSceneType SceneManager::_queuedScene = eSceneType::Size;
 	void SceneManager::Initialize()
 	{
-		mScenes.resize((UINT)eSceneType::Size);
+		_Scenes.resize((UINT)eSceneType::Size);
 
-		mScenes[(UINT)eSceneType::Splash] = new SplashScene();
-		mScenes[(UINT)eSceneType::Title] = new TitleScene();
-		//mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
-		mScenes[(UINT)eSceneType::Lobby] = new LobbyScene();
-		mScenes[(UINT)eSceneType::Depth1] = new Depth1Scene();
-		mScenes[(UINT)eSceneType::Depth2] = new Depth2Scene();
-		mScenes[(UINT)eSceneType::Depth3] = new Depth3Scene();
+		_Scenes[(UINT)eSceneType::Splash] = new SplashScene();
+		_Scenes[(UINT)eSceneType::Title] = new TitleScene();
+		_Scenes[(UINT)eSceneType::Lobby] = new LobbyScene();
+		_Scenes[(UINT)eSceneType::Depth1] = new Depth1Scene();
+		_Scenes[(UINT)eSceneType::Depth2] = new Depth2Scene();
+		_Scenes[(UINT)eSceneType::Depth3] = new Depth3Scene();
+		_Scenes[(UINT)eSceneType::BossRoom] = new BossScene();
 		
-		for ( Scene* scene : mScenes )
+		for ( Scene* scene : _Scenes )
 		{
 			if (scene == nullptr)
 				continue;
@@ -33,32 +33,41 @@ namespace cl
 
 	void SceneManager::Update()
 	{
-		mActiveScene->Update();
+		if(_ActiveScene != nullptr)
+			_ActiveScene->Update();
+		LateLoadScene();
 	}
 
 	void SceneManager::Render(HDC hdc)
 	{
-		mActiveScene->Render(hdc);
+		if(_ActiveScene != nullptr)
+			_ActiveScene->Render(hdc);
 	}
 	
 	void SceneManager::Release()
 	{
 		for (int i = 0; i < (UINT)eSceneType::Size; ++i)
 		{
-			if (mScenes[i] == nullptr)
+			if (_Scenes[i] == nullptr)
 				continue;
-			delete mScenes[i];
-			mScenes[i] = nullptr;
+			delete _Scenes[i];
+			_Scenes[i] = nullptr;
 		}
 	}
 
 	void SceneManager::LoadScene(eSceneType type)
 	{
+		_queuedScene = type;
+	}
+	void SceneManager::LateLoadScene()
+	{
+		if (_queuedScene == eSceneType::Size) return;
 		Camera::Clear();
-		if(mActiveScene != nullptr)
-			mActiveScene->OnExit();
+		if (_ActiveScene != nullptr)
+			_ActiveScene->OnExit();
 		CollisionManager::Clear();
-		mActiveScene = mScenes[(UINT)type];
-		mActiveScene->OnEnter();		
+		_ActiveScene = _Scenes[(UINT)_queuedScene];
+		_ActiveScene->OnEnter();
+		_queuedScene = eSceneType::Size;
 	}
 }

@@ -47,6 +47,8 @@ enum class eMonsterTypes {
 	YellowDireBat, BrownDireBat,
 	LightMinotaur, DarkMinotaur,
 	GreenDragon, RedDragon,
+
+	DeepBlues,
 	None
 };
 

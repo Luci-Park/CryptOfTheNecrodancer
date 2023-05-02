@@ -18,7 +18,10 @@ namespace cl
 		{
 			Lobby,
 			Tutorial,
-			Random
+			Random1,
+			Random2,
+			Random3,
+			DeepBlues
 		};
 		static void CreateMap(MapType type, Scene* sc);
 		static void DestroyMap();

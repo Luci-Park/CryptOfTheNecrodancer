@@ -7,3 +7,4 @@
 #include "LDepth1Scene.h"
 #include "LDepth2Scene.h"
 #include "LDepth3Scene.h"
+#include "LBossScene.h"

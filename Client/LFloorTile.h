@@ -83,6 +83,7 @@ namespace cl
 	public:
 		GroundTile(Scene* sc);
 		virtual ~GroundTile();
+		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void SetIndex(Vector2 index) override;
 		virtual void OnBeat() override;

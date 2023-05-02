@@ -32,6 +32,7 @@ namespace cl
 		mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::LightFloor);
 		mSprites[1] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
 		mIndex = mIsEven;
+		ChangeToFlash();
 	}
 
 	Sprite ActiveDirtStrategy::GetSprite()
@@ -42,6 +43,11 @@ namespace cl
 	void ActiveDirtStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
+		ChangeToFlash();
+	}
+
+	void ActiveDirtStrategy::ChangeToFlash()
+	{
 		if (mTile->GetFloorType() == eFloorTypes::ActiveDirt)
 		{
 			if (GrooveChainManager::GrooveChain() > MINGROOVE)
@@ -58,6 +64,7 @@ namespace cl
 			mSprites[0] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::RedFlash);
 		mSprites[1] = FloorTile::GetFloorSprite(FloorTile::eSpriteCategories::DarkFloor);
 		mIndex = mIsEven;
+		ChangeToDefault();
 	}
 
 	Sprite FlashStrategy::GetSprite()
@@ -68,6 +75,11 @@ namespace cl
 	void FlashStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
+		ChangeToDefault();
+	}
+
+	void FlashStrategy::ChangeToDefault()
+	{
 		if (mTile->GetFloorType() == eFloorTypes::Flash)
 		{
 			if (GrooveChainManager::GrooveChain() == MINGROOVE)

@@ -39,6 +39,8 @@ namespace cl
 		virtual Sprite GetSprite(); 
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object){}
+
+		void ChangeToFlash();
 	private:
 		Sprite mSprites[2];
 		bool mIndex;
@@ -52,6 +54,8 @@ namespace cl
 		virtual Sprite GetSprite();
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object) {}
+
+		void ChangeToDefault();
 	private:
 		Sprite mSprites[2];
 		bool mIndex;

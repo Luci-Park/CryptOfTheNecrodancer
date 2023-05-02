@@ -9,7 +9,7 @@ namespace cl
 	class RandomMap : public Map
 	{
 	public:
-		RandomMap();
+		RandomMap(int zone);
 		virtual ~RandomMap();
 	private:
 		virtual void CreateMapBluePrint() override;

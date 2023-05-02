@@ -547,6 +547,7 @@
     <ClInclude Include="LDepth3Scene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="LBossScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -910,5 +911,6 @@
     <ClCompile Include="LDepth3Scene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="LBossScene.cpp" />
   </ItemGroup>
 </Project>

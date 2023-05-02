@@ -14,8 +14,14 @@ namespace cl
 		case Lobby:
 			_Map = new LobbyMap();
 			break;
-		case Random:
-			_Map = new RandomMap();
+		case Random1:
+			_Map = new RandomMap(1);
+			break;
+		case Random2:
+			_Map = new RandomMap(2);
+			break;
+		case Random3:
+			_Map = new RandomMap(3);
 			break;
 		}
 		_Map->CreateMap(sc);

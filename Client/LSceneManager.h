@@ -1,8 +1,5 @@
 #pragma once
 #include "LScene.h"
-
-
-
 namespace cl
 {
 	class SceneManager
@@ -14,11 +11,12 @@ namespace cl
 		static void Release();
 
 		static void LoadScene(eSceneType type);
-		static Scene* GetActiveScene() { return mActiveScene; }
+		static void LateLoadScene();
+		static Scene* GetActiveScene() { return _ActiveScene; }
 		
 	private:
-		static std::vector<Scene*> mScenes;
-		static Scene* mActiveScene;
-		static int sceneNum;
+		static std::vector<Scene*> _Scenes;
+		static Scene* _ActiveScene;
+		static eSceneType _queuedScene;
 	};
 }

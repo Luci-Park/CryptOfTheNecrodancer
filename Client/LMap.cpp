@@ -20,8 +20,6 @@ namespace cl
 			{
 				delete mLightStatus[i][j];
 				mLightStatus[i][j] = nullptr;
-				if(mTileObjects[i][j] != nullptr)
-					mTileObjects[i][j]->Destroy();
 			}
 		}
 	}

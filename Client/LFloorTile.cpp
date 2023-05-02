@@ -170,6 +170,10 @@ namespace cl
 			}
 		}
 	}
+	void GroundTile::Initialize()
+	{
+		FloorTile::Initialize();
+	}
 	void GroundTile::Update()
 	{
 		if (mType == eFloorTypes::ActiveDirt || mType == eFloorTypes::Flash)

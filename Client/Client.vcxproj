@@ -143,6 +143,7 @@
     <ClInclude Include="LBishopSprite.h" />
     <ClInclude Include="LBlueSlime.h" />
     <ClInclude Include="LBlueSlimeSprite.h" />
+    <ClInclude Include="LBossScene.h" />
     <ClInclude Include="LCadence.h" />
     <ClInclude Include="LCadenceAttackEffect.h" />
     <ClInclude Include="LCadenceBody.h" />
@@ -268,6 +269,7 @@
     <ClCompile Include="LBishopSprite.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />
     <ClCompile Include="LBlueSlimeSprite.cpp" />
+    <ClCompile Include="LBossScene.cpp" />
     <ClCompile Include="LCadence.cpp" />
     <ClCompile Include="LCadenceAttackEffect.cpp" />
     <ClCompile Include="LCadenceBody.cpp" />

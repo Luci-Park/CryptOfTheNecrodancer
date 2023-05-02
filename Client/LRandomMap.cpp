@@ -3,17 +3,9 @@
 #include "LSceneManager.h"
 namespace cl
 {
-	RandomMap::RandomMap()
+	RandomMap::RandomMap(int zone)
+		: mZone(zone)
 	{
-		eSceneType currentScene = SceneManager::GetActiveScene()->GetSceneType();
-		if (currentScene == eSceneType::Depth1)
-			mZone = 1;
-		else if (currentScene == eSceneType::Depth2)
-			mZone = 2;
-		else if (currentScene == eSceneType::Depth3)
-			mZone = 3;
-		else
-			mZone = 1;
 	}
 	RandomMap::~RandomMap()
 	{
@@ -234,7 +226,10 @@ namespace cl
 		{
 			CopyRoom(mRooms[i]);
 			if (i == STARTIDX)
-				mPlayerIndex = mRooms[i]->mCenter + mRooms[i]->mOffset;
+			{
+				//mPlayerIndex = mRooms[i]->mCenter + mRooms[i]->mOffset;
+				mPlayerIndex = mStairPos[mStairPos.size() - 1].first + Vector2::Right;
+			}
 		}
 	}
 	void RandomMap::CopyRoom(Room* room)
@@ -247,16 +242,6 @@ namespace cl
 				mWallBluePrint[i + startPos.y][j + startPos.x] = room->mWalls[i][j];
 				mFloorBluePrint[i + startPos.y][j + startPos.x] = room->mFloors[i][j];
 				mMonsterBluePrint[i + startPos.y][j + startPos.x] = room->mMonsters[i][j];
-				if (mMonsterBluePrint[i + startPos.y][j + startPos.x] != eMonsterTypes::None)
-				{
-					int y = i + startPos.y;
-					int x = j + startPos.x;
-				}
-				if (mFloorBluePrint[i + startPos.y][j + startPos.x] != eFloorTypes::ActiveDirt)
-				{
-					int y = i + startPos.y;
-					int x = j + startPos.x;
-				}
 			}
 		}
 		for (int i = 0; i < room->mLights.size(); i++)

@@ -43,7 +43,7 @@ namespace cl
 		Scene::OnEnter();
 		BeatManager::Reset();
 		BeatManager::SetBPM(130);
-		MapManager::CreateMap(MapManager::MapType::Random, this);
+		MapManager::CreateMap(MapManager::MapType::Random2, this);
 		mBGM->Play(true);
 	}
 	void Depth2Scene::OnExit()

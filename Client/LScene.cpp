@@ -12,10 +12,6 @@ namespace cl
 	}
 	Scene::~Scene()
 	{
-		for (int i = 0; i < mLayers.size(); ++i)
-		{
-			mLayers[i].Release();
-		}
 		
 	}
 	void Scene::Initialize()
@@ -23,9 +19,9 @@ namespace cl
 	}
 	void Scene::Update()
 	{
-		for (Layer& layer : mLayers)
+		for (int i =0; i < mLayers.size(); i++)
 		{
-			layer.Update();
+			mLayers[i].Update();
 		}
 	}
 	void Scene::Render(HDC hdc)
@@ -50,6 +46,10 @@ namespace cl
 	}
 	void Scene::OnExit()
 	{
+		for (int i = 0; i < mLayers.size(); ++i)
+		{
+			mLayers[i].Release();
+		}
 	}
 	void Scene::AddGameObject(GameObject* obj, eLayerType layer)
 	{
