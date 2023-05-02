@@ -282,22 +282,49 @@ namespace cl
 		int cursorY = parentCenter.y;
 		int sX = (childCenter.x > parentCenter.x) ? 1 : -1;
 		int sY = (childCenter.y > parentCenter.y) ? 1 : -1;
+		int dx[] = { 0, 1, 0, -1, 1, 1, -1, -1 };
+		int dy[] = { 1, 0, -1, 0, 1, -1, 1, -1 };
 		while (!IsIndexInRoom({cursorX, cursorY}, child))
 		{
-			int xDiff = abs(childCenter.x - cursorX);
-			int yDiff = abs(childCenter.y - cursorY);
-			if (xDiff > 0 && yDiff > 0)
+			if (IsOnBoundary({ cursorX, cursorY }, parent))
 			{
-				if (GetRandomInt(0, 1))
-					cursorX += sX;
+				if (mWallBluePrint[cursorY][cursorX - 1] != eWallTypes::None
+					&& mWallBluePrint[cursorY][cursorX + 1] != eWallTypes::None)
+				{
+					mWallBluePrint[cursorY][cursorX] = eWallTypes::HorizontalDoor;
+					cursorY += (childCenter.y > cursorY) ? 1 : -1;
+				}
 				else
-					cursorY += sY;
+				{
+					mWallBluePrint[cursorY][cursorX] = eWallTypes::VerticalDoor;
+					cursorX += (childCenter.x > cursorX) ? 1 : -1;
+				}
 			}
-			else if (xDiff > 0)
-				cursorX += sX;
-			else if (yDiff > 0)
-				cursorY += sY;
+			else
+			{
+				int xDiff = abs(childCenter.x - cursorX);
+				int yDiff = abs(childCenter.y - cursorY);
+				if (xDiff > 0 && yDiff > 0)
+				{
+					if (GetRandomInt(0, 1))
+						cursorX += (childCenter.x > cursorX) ? 1 : -1;
+					else
+						cursorY += (childCenter.y > cursorY) ? 1 : -1;
+				}
+				else if (xDiff > 0)
+					cursorX += (childCenter.x > cursorX) ? 1 : -1;
+				else if (yDiff > 0)
+					cursorY += (childCenter.y > cursorY) ? 1 : -1;
+			}
+			if (!IndexIsValid({ cursorX, cursorY }))
+				break;
 			mWallBluePrint[cursorY][cursorX] = eWallTypes::None;
+			for (int i = 0; i < 8; ++i)
+			{
+				Vector2 v = { cursorX + dx[i], cursorY + dy[i] };
+				if (IndexIsValid(v) && mWallBluePrint[v.y][v.x] == eWallTypes::Border)
+					mWallBluePrint[v.y][v.x] = Room::GetRandomDirtWall();
+			}
 		}
 	}
 	void RandomMap::DeleteRooms()
