@@ -55,7 +55,10 @@ namespace cl
 				if (mWall[i][j] != nullptr)
 					mWall[i][j]->Render(hdc);
 				if (mTileObjects[i][j] != nullptr)
+				{
+					TileObject* t = mTileObjects[i][j];
 					mTileObjects[i][j]->Render(hdc);
+				}
 			}
 		}
 	}

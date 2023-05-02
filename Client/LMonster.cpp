@@ -275,20 +275,17 @@ namespace cl
 		TileLight* light = MapManager::GetLight(index);
 		if (light != nullptr)
 		{
-			if (mbIsActivated || mbIsAggroed || light->IsRevealed())
+			if (!light->IsRevealed())
+			{
+				mSprite->SetActive(false);
+				mHeart->SetActive(false);
+			}
+			else if (mbIsActivated || mbIsAggroed)
 			{
 				mSprite->SetActive(true);
 				bool isInlight = light->IsInSight() && light->Illumination() > 0.5f;
 				mSprite->SetShadow(!isInlight);
 				mHeart->SetActive(true);
-			}
-			else
-			{
-				if (!mbIsMoving)
-				{
-					mSprite->SetActive(false);
-					mHeart->SetActive(false);
-				}
 			}
 		}
 	}

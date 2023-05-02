@@ -535,6 +535,18 @@
     <ClInclude Include="LKnightEffect.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
     </ClInclude>
+    <ClInclude Include="LSceneIncludes.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LDepth1Scene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LDepth2Scene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LDepth3Scene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -885,6 +897,18 @@
     </ClCompile>
     <ClCompile Include="LKnightEffect.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Attacks</Filter>
+    </ClCompile>
+    <ClCompile Include=".cpp">
+      <Filter>리소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LDepth1Scene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LDepth2Scene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LDepth3Scene.cpp">
+      <Filter>Contents\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

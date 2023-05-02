@@ -1,4 +1,4 @@
-#include "LLobbyScene.h"
+#include "LDepth3Scene.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
 #include "LResources.h"
@@ -6,27 +6,27 @@
 #include "LGrooveChain.h"
 namespace cl
 {
-	LobbyScene::LobbyScene()
-		:Scene(eSceneType::Lobby)
+	Depth3Scene::Depth3Scene()
+		:Scene(eSceneType::Depth1)
 		, mBGM(nullptr)
 	{
 	}
-	LobbyScene::~LobbyScene()
+	Depth3Scene::~Depth3Scene()
 	{
 		MapManager::DestroyMap();
 	}
-	void LobbyScene::Initialize()
+	void Depth3Scene::Initialize()
 	{
-		mBGM = Resources::Load<AudioClip>(L"Lobby", L"..\\Assets\\Audio\\BGM\\Rhythmortis (Lobby).wav");
+		mBGM = Resources::Load<AudioClip>(L"1-3", L"..\\Assets\\Audio\\BGM\\Mausoleum Mash (1-3).wav");
 		Scene::Initialize();
 	}
-	void LobbyScene::Update()
+	void Depth3Scene::Update()
 	{
 		BeatManager::Update();
 		MapManager::Update();
 		Scene::Update();
 	}
-	void LobbyScene::Render(HDC hdc)
+	void Depth3Scene::Render(HDC hdc)
 	{
 		for (int i = 0; i < (UINT)eLayerType::Size; ++i)
 		{
@@ -38,20 +38,20 @@ namespace cl
 				mLayers[i].Render(hdc);
 		}
 	}
-
-	void LobbyScene::OnEnter()
+	void Depth3Scene::OnEnter()
 	{
 		Scene::OnEnter();
 		BeatManager::Reset();
-		BeatManager::SetBPM(130);
+		BeatManager::SetBPM(140);
 		GrooveChainManager::Initialize();
-		MapManager::CreateMap(MapManager::MapType::Lobby, this);
+		MapManager::CreateMap(MapManager::MapType::Random, this);
 		mBGM->Play(true);
 	}
-	void LobbyScene::OnExit()
+	void Depth3Scene::OnExit()
 	{
 		MapManager::DestroyMap();
 		mBGM->Stop(true);
 		Scene::OnExit();
 	}
+	
 }

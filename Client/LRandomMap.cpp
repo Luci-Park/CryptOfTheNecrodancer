@@ -58,7 +58,7 @@ namespace cl
 		Room* newRoom = nullptr;
 		if (mRooms.size() == 0)
 		{			
-			newRoom = new RandomRoom(mZone);
+			newRoom = new ExitRoom(mZone);
 			int y = MAPSIZE - 2 - newRoom->mSize.y;
 			int x = MAPSIZE - 2 - newRoom->mSize.x;
 			if (GetRandomInt(0, 1))
@@ -252,6 +252,11 @@ namespace cl
 					int y = i + startPos.y;
 					int x = j + startPos.x;
 				}
+				if (mFloorBluePrint[i + startPos.y][j + startPos.x] != eFloorTypes::ActiveDirt)
+				{
+					int y = i + startPos.y;
+					int x = j + startPos.x;
+				}
 			}
 		}
 		for (int i = 0; i < room->mLights.size(); i++)
@@ -286,22 +291,22 @@ namespace cl
 		int dy[] = { 1, 0, -1, 0, 1, -1, 1, -1 };
 		while (!IsIndexInRoom({cursorX, cursorY}, child))
 		{
-			if (IsOnBoundary({ cursorX, cursorY }, parent))
-			{
-				if (mWallBluePrint[cursorY][cursorX - 1] != eWallTypes::None
-					&& mWallBluePrint[cursorY][cursorX + 1] != eWallTypes::None)
-				{
-					mWallBluePrint[cursorY][cursorX] = eWallTypes::HorizontalDoor;
-					cursorY += (childCenter.y > cursorY) ? 1 : -1;
-				}
-				else
-				{
-					mWallBluePrint[cursorY][cursorX] = eWallTypes::VerticalDoor;
-					cursorX += (childCenter.x > cursorX) ? 1 : -1;
-				}
-			}
-			else
-			{
+			//if (IsOnBoundary({ cursorX, cursorY }, parent))
+			//{
+			//	if (mWallBluePrint[cursorY][cursorX - 1] != eWallTypes::None
+			//		&& mWallBluePrint[cursorY][cursorX + 1] != eWallTypes::None)
+			//	{
+			//		mWallBluePrint[cursorY][cursorX] = eWallTypes::HorizontalDoor;
+			//		cursorY += (childCenter.y > cursorY) ? 1 : -1;
+			//	}
+			//	else
+			//	{
+			//		mWallBluePrint[cursorY][cursorX] = eWallTypes::VerticalDoor;
+			//		cursorX += (childCenter.x > cursorX) ? 1 : -1;
+			//	}
+			//}
+			//else
+			//{
 				int xDiff = abs(childCenter.x - cursorX);
 				int yDiff = abs(childCenter.y - cursorY);
 				if (xDiff > 0 && yDiff > 0)
@@ -315,14 +320,14 @@ namespace cl
 					cursorX += (childCenter.x > cursorX) ? 1 : -1;
 				else if (yDiff > 0)
 					cursorY += (childCenter.y > cursorY) ? 1 : -1;
-			}
-			if (!IndexIsValid({ cursorX, cursorY }))
+//			}
+			if (!IsDigIndexValid({ cursorX, cursorY }))
 				break;
 			mWallBluePrint[cursorY][cursorX] = eWallTypes::None;
 			for (int i = 0; i < 8; ++i)
 			{
 				Vector2 v = { cursorX + dx[i], cursorY + dy[i] };
-				if (IndexIsValid(v) && mWallBluePrint[v.y][v.x] == eWallTypes::Border)
+				if (IsDigIndexValid(v) && mWallBluePrint[v.y][v.x] == eWallTypes::Border)
 					mWallBluePrint[v.y][v.x] = Room::GetRandomDirtWall();
 			}
 		}
@@ -369,6 +374,13 @@ namespace cl
 		if (pos.x == room->mOffset.x && room->mOffset.y < pos.y && pos.y < r1.y)
 			return true;
 		if (pos.x == r1.x && room->mOffset.y < pos.y && pos.y < r1.y)
+			return true;
+		return false;
+	}
+	bool RandomMap::IsDigIndexValid(Vector2 index)
+	{
+		if (0 < index.x && index.x < mMapSize.x - 1
+			&& 0 < index.y && index.y < mMapSize.y - 1)
 			return true;
 		return false;
 	}

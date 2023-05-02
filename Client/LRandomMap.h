@@ -27,6 +27,7 @@ namespace cl
 		bool DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2);
 		bool IsIndexInRoom(Vector2 pos, Room* room);
 		bool IsOnBoundary(Vector2 pos, Room* room);
+		bool IsDigIndexValid(Vector2 index);
 		std::vector<Room*>mRooms;
 
 		int mZone; 

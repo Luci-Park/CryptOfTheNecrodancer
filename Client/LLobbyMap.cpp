@@ -38,7 +38,7 @@ namespace cl
 
 		mFloorBluePrint[5][5] = eFloorTypes::OpenedStairs;
 		mStairPos.resize(1);
-		mStairPos[0] = { Vector2(5, 5), eSceneType::Splash };
+		mStairPos[0] = { Vector2(5, 5), eSceneType::Depth1 };
 	}
 
 	void LobbyMap::SetWall()

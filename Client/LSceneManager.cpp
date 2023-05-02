@@ -1,10 +1,7 @@
 #include "LSceneManager.h"
 #include "LCollisionManager.h"
 #include "LCamera.h"
-#include "LSplashScene.h"
-#include "LTitleScene.h"
-#include "LTutorialScene.h"
-#include "LLobbyScene.h"
+#include "LSceneIncludes.h"
 namespace cl
 {	
 	//SceneManager scsene;
@@ -21,6 +18,10 @@ namespace cl
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		//mScenes[(UINT)eSceneType::Tutorial] = new TutorialScene();
 		mScenes[(UINT)eSceneType::Lobby] = new LobbyScene();
+		mScenes[(UINT)eSceneType::Depth1] = new Depth1Scene();
+		mScenes[(UINT)eSceneType::Depth2] = new Depth2Scene();
+		mScenes[(UINT)eSceneType::Depth3] = new Depth3Scene();
+		
 		for ( Scene* scene : mScenes )
 		{
 			if (scene == nullptr)

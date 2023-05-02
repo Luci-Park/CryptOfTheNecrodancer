@@ -156,6 +156,8 @@
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LDagger.h" />
+    <ClInclude Include="LDepth2Scene.h" />
+    <ClInclude Include="LDepth3Scene.h" />
     <ClInclude Include="LDireBat.h" />
     <ClInclude Include="LDireBatBase.h" />
     <ClInclude Include="LDireBatSprite.h" />
@@ -249,7 +251,9 @@
     <ClInclude Include="LWeaponFilter.h" />
     <ClInclude Include="LZombie.h" />
     <ClInclude Include="LZombieSprite.h" />
+    <ClInclude Include="LDepth1Scene.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="LSceneIncludes.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +281,8 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LDagger.cpp" />
+    <ClCompile Include="LDepth2Scene.cpp" />
+    <ClCompile Include="LDepth3Scene.cpp" />
     <ClCompile Include="LDireBat.cpp" />
     <ClCompile Include="LDireBatBase.cpp" />
     <ClCompile Include="LDireBatSprite.cpp" />
@@ -365,6 +371,8 @@
     <ClCompile Include="LWeaponFilter.cpp" />
     <ClCompile Include="LZombie.cpp" />
     <ClCompile Include="LZombieSprite.cpp" />
+    <ClCompile Include="LDepth1Scene.cpp" />
+    <ClCompile Include=".cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc" />

@@ -69,7 +69,7 @@ namespace cl
 	void GameCharacter::Recoil(Vector2 dir)
 	{
 		if (dir == Vector2::Zero) return;
-		mMoveSpeed = BeatManager::MoveSpeed() * Time::DeltaTime() * 2;
+		mMoveSpeed = BeatManager::MoveSpeed() * Time::DeltaTime() * 4;
 		if (!mbMoveFailed)
 		{
 			mMoveTarget += dir * UNITLENGTH / 2;
