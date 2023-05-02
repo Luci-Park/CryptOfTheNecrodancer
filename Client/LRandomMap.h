@@ -25,6 +25,8 @@ namespace cl
 		void CreateCorridor(Room* parent, Room* child, Vector2 dir);
 		void DeleteRooms();
 		bool DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2);
+		bool IsIndexInRoom(Vector2 pos, Room* room);
+		bool IsOnBoundary(Vector2 pos, Room* room);
 		std::vector<Room*>mRooms;
 
 		int mZone; 

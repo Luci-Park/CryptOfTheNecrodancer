@@ -278,62 +278,14 @@ namespace cl
 	{
 		Vector2 parentCenter = parent->mOffset + parent->mCenter;
 		Vector2 childCenter = child->mOffset + child->mCenter;
-		Vector2 parentDoor, childDoor;
-		if (dir == Vector2::Left || dir == Vector2::Right)
+		int cursorX = parentCenter.x;
+		int cursorY = parentCenter.y;
+		int sX = (childCenter.x > parentCenter.x) ? 1 : -1;
+		int sY = (childCenter.y > parentCenter.y) ? 1 : -1;
+		while (!IsIndexInRoom({cursorX, cursorY}, child))
 		{
-			if (dir == Vector2::Left)
-			{
-				parentDoor.x = parent->mOffset.x;
-				childDoor.x = child->mOffset.x + child->mSize.x - 1;
-			}
-			else
-			{
-				parentDoor.x = parent->mOffset.x + parent->mSize.x - 1;
-				childDoor.x = child->mOffset.x;				
-			}
-
-			if (parentCenter.y < childCenter.y)
-			{
-				parentDoor.y = parent->mOffset.y + parent->mSize.y - 3;
-				childDoor.y = child->mOffset.y + 2;
-			}
-			else
-			{
-				parentDoor.y = parent->mOffset.y + 2;
-				childDoor.y = child->mOffset.y + child->mSize.y - 3;
-			}
-		}
-		else{
-			if (dir == Vector2::Up)
-			{
-				parentDoor.y = parent->mOffset.y;
-				childDoor.y = child->mOffset.y + child->mSize.y - 1;
-			}
-			else
-			{
-				parentDoor.y = parent->mOffset.y + parent->mSize.y - 1;
-				childDoor.y = child->mOffset.y;
-			}
-
-			if (parentCenter.x < childCenter.x)
-			{
-				parentDoor.x = parent->mOffset.x + parent->mSize.x - 3;
-				childDoor.x = child->mOffset.x + 2;
-			}
-			else
-			{
-				parentDoor.x = parent->mOffset.x + 2;
-				childDoor.x = child->mOffset.x + child->mSize.x - 3;
-			}
-		}
-		int cursorX = parentDoor.x;
-		int cursorY = parentDoor.y;
-		int sX = (childDoor.x > parentDoor.x) ? 1 : -1;
-		int sY = (childDoor.y > parentDoor.y) ? 1 : -1;
-		while (cursorX != childDoor.x || cursorY != childDoor.y)
-		{
-			int xDiff = abs(childDoor.x - cursorX);
-			int yDiff = abs(childDoor.y - cursorY);
+			int xDiff = abs(childCenter.x - cursorX);
+			int yDiff = abs(childCenter.y - cursorY);
 			if (xDiff > 0 && yDiff > 0)
 			{
 				if (GetRandomInt(0, 1))
@@ -371,5 +323,26 @@ namespace cl
 			return false;
 
 		return true;
+	}
+	bool RandomMap::IsIndexInRoom(Vector2 pos, Room* room)
+	{
+		Vector2 r1 = room->mOffset + room->mSize - Vector2::Zero;
+		if (room->mOffset.x < pos.x && pos.x < r1.x
+			&& room->mOffset.y < pos.y && pos.y < r1.y)
+			return true;
+		return false;
+	}
+	bool RandomMap::IsOnBoundary(Vector2 pos, Room* room)
+	{
+		Vector2 r1 = room->mOffset + room->mSize - Vector2::One;
+		if (pos.y == room->mOffset.y && room->mOffset.x < pos.x && pos.x < r1.x)
+			return true;
+		if (pos.y == r1.y && room->mOffset.x < pos.x && pos.x < r1.x)
+			return true;
+		if (pos.x == room->mOffset.x && room->mOffset.y < pos.y && pos.y < r1.y)
+			return true;
+		if (pos.x == r1.x && room->mOffset.y < pos.y && pos.y < r1.y)
+			return true;
+		return false;
 	}
 }
