@@ -278,27 +278,74 @@ namespace cl
 	{
 		Vector2 parentCenter = parent->mOffset + parent->mCenter;
 		Vector2 childCenter = child->mOffset + child->mCenter;
-		int cursorX = parentCenter.x;
-		int cursorY = parentCenter.y;
-		while (cursorX != childCenter.x || cursorY != childCenter.y) {
-			int xDiff = abs(childCenter.x - cursorX);
-			int yDiff = abs(childCenter.y - cursorY);
+		Vector2 parentDoor, childDoor;
+		if (dir == Vector2::Left || dir == Vector2::Right)
+		{
+			if (dir == Vector2::Left)
+			{
+				parentDoor.x = parent->mOffset.x;
+				childDoor.x = child->mOffset.x + child->mSize.x - 1;
+			}
+			else
+			{
+				parentDoor.x = parent->mOffset.x + parent->mSize.x - 1;
+				childDoor.x = child->mOffset.x;				
+			}
+
+			if (parentCenter.y < childCenter.y)
+			{
+				parentDoor.y = parent->mOffset.y + parent->mSize.y - 3;
+				childDoor.y = child->mOffset.y + 2;
+			}
+			else
+			{
+				parentDoor.y = parent->mOffset.y + 2;
+				childDoor.y = child->mOffset.y + child->mSize.y - 3;
+			}
+		}
+		else{
+			if (dir == Vector2::Up)
+			{
+				parentDoor.y = parent->mOffset.y;
+				childDoor.y = child->mOffset.y + child->mSize.y - 1;
+			}
+			else
+			{
+				parentDoor.y = parent->mOffset.y + parent->mSize.y - 1;
+				childDoor.y = child->mOffset.y;
+			}
+
+			if (parentCenter.x < childCenter.x)
+			{
+				parentDoor.x = parent->mOffset.x + parent->mSize.x - 3;
+				childDoor.x = child->mOffset.x + 2;
+			}
+			else
+			{
+				parentDoor.x = parent->mOffset.x + 2;
+				childDoor.x = child->mOffset.x + child->mSize.x - 3;
+			}
+		}
+		int cursorX = parentDoor.x;
+		int cursorY = parentDoor.y;
+		int sX = (childDoor.x > parentDoor.x) ? 1 : -1;
+		int sY = (childDoor.y > parentDoor.y) ? 1 : -1;
+		while (cursorX != childDoor.x || cursorY != childDoor.y)
+		{
+			int xDiff = abs(childDoor.x - cursorX);
+			int yDiff = abs(childDoor.y - cursorY);
 			if (xDiff > 0 && yDiff > 0)
 			{
-				if(GetRandomInt(0, 1))
-					cursorX += (childCenter.x > parentCenter.x) ? 1 : -1;
+				if (GetRandomInt(0, 1))
+					cursorX += sX;
 				else
-					cursorY += (childCenter.y > parentCenter.y) ? 1 : -1;
-
+					cursorY += sY;
 			}
-			else if(xDiff > 0)
-				cursorX += (childCenter.x > parentCenter.x) ? 1 : -1;
-			else if(yDiff > 0)
-				cursorY += (childCenter.y > parentCenter.y) ? 1 : -1;
-
+			else if (xDiff > 0)
+				cursorX += sX;
+			else if (yDiff > 0)
+				cursorY += sY;
 			mWallBluePrint[cursorY][cursorX] = eWallTypes::None;
-
-			// draw or do something with cursor position
 		}
 	}
 	void RandomMap::DeleteRooms()
