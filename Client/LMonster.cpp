@@ -90,7 +90,7 @@ namespace cl
 	}
 	void Monster::OnLateBeat()
 	{
-		if (mbIsActivated && mbIsAggroed)
+		if (mbIsActivated || mbIsAggroed)
 		{
 			TryMove();
 			mSprite->Turn(mNextDir);
