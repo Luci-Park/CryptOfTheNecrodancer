@@ -20,7 +20,7 @@ namespace cl
 			std::wstring nKey = key + std::to_wstring(i + 1);
 			mSingSounds[i] = Resources::Load<AudioClip>(nKey, path + nKey + extend);
 		}
-		mLight = new LightSource(mTransform, 3.0, 3.0);
+		mLight = new LightSource(mTransform, 0.0, 3.0);
 	}
 	Queen::~Queen()
 	{
