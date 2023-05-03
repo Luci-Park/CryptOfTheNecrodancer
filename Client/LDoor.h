@@ -16,5 +16,6 @@ namespace cl
 		void SetHorizontal(bool isHorizontal);
 	private:
 		bool mbIsHorizontal;
+		bool mbDug;
 	};
 }

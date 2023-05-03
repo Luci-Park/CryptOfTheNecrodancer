@@ -5,7 +5,8 @@
 namespace cl
 {
 	Door::Door(Scene* sc)
-		:WallTile(sc)
+		: WallTile(sc)
+		, mbDug(false)
 	{
 		mHardness = 0;
 		mDigClip = Resources::Load<AudioClip>(L"DoorOpen", L"..\\Assets\\Audio\\SoundEffects\\Walls\\obj_door_open.wav");
@@ -29,6 +30,8 @@ namespace cl
 
 	bool Door::OnDig(int digPower)
 	{	
+		if (mbDug) return false;
+		mbDug = true;
 		if (mbIsHorizontal)
 		{
 			Door* door = dynamic_cast<Door*>(MapManager::GetWall(mIndex + Vector2::Left));

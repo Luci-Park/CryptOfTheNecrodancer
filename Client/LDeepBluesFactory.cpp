@@ -6,6 +6,7 @@
 #include "LQueen.h"
 #include "LRook.h"
 #include "LObject.h"
+#include "LMapManager.h"
 namespace cl
 {
     //King, Queen, rook, bishops, knights, pawn
@@ -15,39 +16,47 @@ namespace cl
         King* king = object::Instantiate<King>(scene, idx * UNITLENGTH, eLayerType::Monster);
         king->SetIndex(idx);
         king->SetInitialBeat(-7);
+        MapManager::Move(king, Vector2::Zero, idx);
         
         idx = index + Vector2(4, 0);
         Queen* queen = object::Instantiate<Queen>(scene, idx * UNITLENGTH, eLayerType::Monster);
         queen->SetIndex(idx);
         queen->SetInitialBeat(-7);
+        MapManager::Move(queen, Vector2::Zero, idx);
         
         idx = index + Vector2(0, 0);
         Rook* rook1 = object::Instantiate<Rook>(scene, idx * UNITLENGTH, eLayerType::Monster);
         rook1->SetIndex(idx);
         rook1->SetInitialBeat(-7);
+        MapManager::Move(rook1, Vector2::Zero, idx);
         
         idx = index + Vector2(7, 0);
         Rook* rook2 = object::Instantiate<Rook>(scene, idx * UNITLENGTH, eLayerType::Monster);
         rook2->SetIndex(idx);
         rook2->SetInitialBeat(-7);
+        MapManager::Move(rook2, Vector2::Zero, idx);
 
         idx = index + Vector2(2, 0);
         Bishop* bishop1 = object::Instantiate<Bishop>(scene, idx * UNITLENGTH, eLayerType::Monster);
         bishop1->SetIndex(idx);
         bishop1->SetInitialBeat(-3);
+        MapManager::Move(bishop1, Vector2::Zero, idx);
 
         idx = index + Vector2(5, 0);
         Bishop* bishop2 = object::Instantiate<Bishop>(scene, idx * UNITLENGTH, eLayerType::Monster);
         bishop2->SetIndex(idx);
         bishop2->SetInitialBeat(-4);
+        MapManager::Move(bishop2, Vector2::Zero, idx);
 
         idx = index + Vector2(1, 0);
         Knight* knight1 = object::Instantiate<Knight>(scene, idx * UNITLENGTH, eLayerType::Monster);
         knight1->SetIndex(idx);
+        MapManager::Move(knight1, Vector2::Zero, idx);
 
         idx = index + Vector2(6, 0);
         Knight* knight2 = object::Instantiate<Knight>(scene, idx * UNITLENGTH, eLayerType::Monster);
         knight2->SetIndex(idx);
+        MapManager::Move(knight2, Vector2::Zero, idx);
 
         bool isKnightOpening = GetRandomInt(1, 8) == 1;
         bool knightOrder = GetRandomInt(0, 1);
@@ -77,6 +86,7 @@ namespace cl
             Pawn* pawn = object::Instantiate<Pawn>(scene, idx * UNITLENGTH, eLayerType::Monster);
             pawn->SetIndex(idx);
             pawn->SetInitialBeat(-i - isKnightOpening - 1);
+            MapManager::Move(pawn, idx, idx);
         }
       return nullptr;
     }

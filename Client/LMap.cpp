@@ -191,10 +191,9 @@ namespace cl
 
 	void Map::CreateFloor(Scene* sc)
 	{
-		mFloor.resize(mMapSize.y);
+		mFloor = std::vector<std::vector<FloorTile*>>(mMapSize.y, std::vector<FloorTile*>(mMapSize.x, nullptr));
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			mFloor[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mFloor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
@@ -202,6 +201,7 @@ namespace cl
 					BeatManager::AddCharacters(mFloor[i][j]);
 			}
 		}
+
 		for (int i = 0; i < mStairPos.size(); ++i)
 		{
 			Vector2 pos = mStairPos[i].first;
@@ -212,19 +212,15 @@ namespace cl
 
 	void Map::CreateWall(Scene* sc)
 	{
-		mWall.resize(mMapSize.y);
+		mWall = std::vector<std::vector<WallTile*>>(mMapSize.y, std::vector<WallTile*>(mMapSize.x, nullptr));
 		for (int i = 0; i < mMapSize.y; ++i)
-		{
-			mWall[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
-			{
 				mWall[i][j] = WallTile::CreateWall(mWallBluePrint[i][j], Vector2(j, i), sc);
-			}
-		}
 	}
 
 	void Map::CreateForeGround(Scene* sc)
 	{
+		mTileObjects = std::vector<std::vector<TileObject*>>(mMapSize.y, std::vector<TileObject*>(mMapSize.x, nullptr));
 		CreateMonsters(sc);
 		CreatePlayer(sc);
 	}
@@ -248,10 +244,8 @@ namespace cl
 
 	void Map::CreateMonsters(Scene* sc)
 	{
-		mTileObjects.resize(mMapSize.y);
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
-			mTileObjects[i].resize(mMapSize.x);
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
 				mTileObjects[i][j] = MonsterFactory::CreateMonster(mMonsterBluePrint[i][j], Vector2(j, i), sc);
