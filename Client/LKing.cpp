@@ -26,6 +26,12 @@ namespace cl
 			std::wstring nKey = key + std::to_wstring(i + 1);
 			mHitSounds[i] = Resources::Load<AudioClip>(nKey, path + nKey + extend);
 		}
+		mLightSource = new LightSource(mTransform, 5.0, 5.0);
+	}
+	King::~King()
+	{
+		delete mLightSource;
+		mLightSource = nullptr;
 	}
 	void King::Initialize()
 	{
@@ -46,7 +52,8 @@ namespace cl
 	void King::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mBeatCount++;
+		if(mbIsActivated || mbIsAggroed)
+			mBeatCount++;
 		mAttackedDir = Vector2::Zero;
 	}
 	void King::StartAttack()

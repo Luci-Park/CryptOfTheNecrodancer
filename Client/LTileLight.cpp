@@ -27,10 +27,11 @@ namespace cl
 	}
 	void TileLight::CheckIfInSight(Vector2 playerPos)
 	{		
-		mbIsInSightLine = true;
-		mbIllumination = 1.0f;
-		mbIsRevealed = true;
-		return;
+		//
+		//mbIsInSightLine = true;
+		//mbIllumination = 1.0f;
+		//mbIsRevealed = true;
+		//return;
 		if (!mbIsInSightLine)
 		{
 			int x0 = playerPos.x;

@@ -20,7 +20,7 @@ namespace cl
 	}
 	void Pawn::OnBeat()
 	{
-		if (mIndex.y >= 8)
+		if (mIndex.y >= 6 + 8 - 1)
 		{
 			Queen* q = object::Instantiate<Queen>(mTransform->GetPos(), eLayerType::Monster);
 			q->SetIndex(mIndex);

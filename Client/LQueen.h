@@ -1,12 +1,13 @@
 #pragma once
 #include "LMonster.h"
+#include "LLightSource.h"
 namespace cl
 {
 	class Queen: public Monster
 	{
 	public:
 		Queen(Scene* sc);
-		virtual ~Queen(){}
+		virtual ~Queen();
 
 		virtual void Initialize() override;
 		void SetInitialBeat(int beat) { mBeatCount = beat; }
@@ -24,6 +25,7 @@ namespace cl
 		AudioClip* mDeathSounds[3];
 		AudioClip* mSingSounds[6];
 		int mBeatCount;
+		LightSource* mLight;
 	};
 }
 

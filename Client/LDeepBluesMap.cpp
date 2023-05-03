@@ -2,6 +2,8 @@
 namespace cl
 {
 	DeepBluesMap::DeepBluesMap()
+		: mbEntered(false)
+		, mbExited(false)
 	{
 		topY = 5;
 		arenaY = topY + 10 - 1;
@@ -9,6 +11,10 @@ namespace cl
 	}
 	DeepBluesMap::~DeepBluesMap()
 	{
+	}
+	void DeepBluesMap::Update()
+	{
+		Map::Update();
 	}
 	void DeepBluesMap::CreateMapBluePrint()
 	{

@@ -20,6 +20,12 @@ namespace cl
 			std::wstring nKey = key + std::to_wstring(i + 1);
 			mSingSounds[i] = Resources::Load<AudioClip>(nKey, path + nKey + extend);
 		}
+		mLight = new LightSource(mTransform, 3.0, 3.0);
+	}
+	Queen::~Queen()
+	{
+		delete mLight;
+		mLight = nullptr;
 	}
 	void Queen::Initialize()
 	{
@@ -29,7 +35,8 @@ namespace cl
 	void Queen::OnLateBeat()
 	{
 		Monster::OnLateBeat();
-		mBeatCount++;
+		if(mbIsActivated || mbIsAggroed)
+			mBeatCount++;
 	}
 	Vector2 Queen::GetNextDir()
 	{

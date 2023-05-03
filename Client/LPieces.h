@@ -1,5 +1,6 @@
 #pragma once
 #include "LMonster.h"
+#include "LLightSource.h"
 namespace cl
 {
 	class PiecesSprite;
@@ -28,7 +29,7 @@ namespace cl
 
 		AudioClip* mAttackSound;
 		AudioClip* mDeathSounds[3];
-
+		LightSource* mLightSource;
 
 	};
 }

@@ -16,9 +16,12 @@ namespace cl
 			std::wstring nKey = key + std::to_wstring(i + 1);
 			mDeathSounds[i] = Resources::Load<AudioClip>(nKey, path + nKey + extend);
 		}
+		mLightSource = new LightSource(mTransform, 2.0, 2.0);
 	}
 	Pieces::~Pieces()
 	{
+		delete mLightSource;
+		mLightSource = nullptr;
 	}
 	void Pieces::SetStats()
 	{
@@ -41,11 +44,14 @@ namespace cl
 	}
 	void Pieces::OnBeat()
 	{
-		if (mBeatCount == -1 || mBeatCount % mMoveBeat == mMoveBeat - 1)
-			mPieceSprite->Ready();
-		else
-			mPieceSprite->Idle();
-		Monster::OnBeat();
-		mBeatCount++;
+		if (mbIsActivated || mbIsAggroed)
+		{
+			if (mBeatCount == -1 || mBeatCount % mMoveBeat == mMoveBeat - 1)
+				mPieceSprite->Ready();
+			else
+				mPieceSprite->Idle();
+			Monster::OnBeat();
+			mBeatCount++;
+		}
 	}
 }

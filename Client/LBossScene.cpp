@@ -43,6 +43,7 @@ namespace cl
 		Scene::OnEnter();
 		BeatManager::Reset();
 		BeatManager::SetBPM(123);
+		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::DeepBlues, this);
 		mBGM->Play(true);
 	}
