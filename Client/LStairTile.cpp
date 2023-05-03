@@ -2,12 +2,14 @@
 #include "LSceneManager.h"
 #include "LFloorStrategy.h"
 #include "LCadence.h"
+#include "LResources.h"
 namespace cl
 {
 	StairTile::StairTile(Scene* sc)
 		:FloorTile(sc)
 		, mIsLocked(false)
 	{
+		mErrorSound = Resources::Load<AudioClip>(L"sfx_error_ST", L"..\\Assets\\Audio\\SoundEffects\\Floor\\sfx_error_ST.wav");
 	}
 
 	StairTile::~StairTile()
@@ -30,5 +32,9 @@ namespace cl
 		Cadence* c = dynamic_cast<Cadence*>(object);
 		if (c && !mIsLocked)
 			SceneManager::LoadScene(mMoveScene);
+		else if(c && mIsLocked)
+		{
+			mErrorSound->Play(false);
+		}
 	}
 }

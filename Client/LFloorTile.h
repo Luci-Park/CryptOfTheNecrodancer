@@ -106,6 +106,7 @@ namespace cl
 	private:
 		eSceneType mMoveScene;
 		bool mIsLocked;
+		AudioClip* mErrorSound;
 	};
 }
 
