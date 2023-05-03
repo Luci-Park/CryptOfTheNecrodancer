@@ -9,6 +9,7 @@ namespace cl
 		virtual ~King(){}
 
 		virtual void Initialize() override;
+		void SetInitialBeat(int beat) { mBeatCount = beat; }
 		virtual void Update() override;
 
 		virtual bool OnAttacked(float attackPower, Vector2 dir) override;

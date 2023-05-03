@@ -26,8 +26,14 @@ namespace cl
 		Monster::Initialize();
 		mSprite = object::Instantiate<QueenSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 	}
+	void Queen::OnLateBeat()
+	{
+		Monster::OnLateBeat();
+		mBeatCount++;
+	}
 	Vector2 Queen::GetNextDir()
 	{
+		if (mBeatCount < 0) return Vector2::Zero;
 		return DiagonalMoveTowards();
 	}
 	void Queen::SetStats()

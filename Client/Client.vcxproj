@@ -157,6 +157,8 @@
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
     <ClInclude Include="LDagger.h" />
+    <ClInclude Include="LDeepBluesFactory.h" />
+    <ClInclude Include="LDeepBluesMap.h" />
     <ClInclude Include="LDepth2Scene.h" />
     <ClInclude Include="LDepth3Scene.h" />
     <ClInclude Include="LDireBat.h" />
@@ -283,6 +285,8 @@
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
     <ClCompile Include="LDagger.cpp" />
+    <ClCompile Include="LDeepBluesFactory.cpp" />
+    <ClCompile Include="LDeepBluesMap.cpp" />
     <ClCompile Include="LDepth2Scene.cpp" />
     <ClCompile Include="LDepth3Scene.cpp" />
     <ClCompile Include="LDireBat.cpp" />

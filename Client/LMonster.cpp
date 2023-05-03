@@ -90,9 +90,12 @@ namespace cl
 	}
 	void Monster::OnLateBeat()
 	{
-		TryMove();
-		mSprite->Turn(mNextDir);
-		mPrevDir = mNextDir;
+		if (mbIsActivated && mbIsAggroed)
+		{
+			TryMove();
+			mSprite->Turn(mNextDir);
+			mPrevDir = mNextDir;
+		}
 	}
 	void Monster::OnBeatChanged()
 	{

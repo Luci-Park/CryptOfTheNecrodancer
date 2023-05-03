@@ -59,17 +59,21 @@ namespace cl
 	}
 	Vector2 King::GetNextDir()
 	{
-		if (!mbStartAttack)
+		if (mBeatCount >= 0)
 		{
-			if(mBeatCount % 2)
-				return DiagonalMoveAway();
-			return Vector2::Zero;
+			if (!mbStartAttack)
+			{
+				if (mBeatCount % 2)
+					return DiagonalMoveAway();
+				return Vector2::Zero;
+			}
+			else {
+				if (mAttackedDir != Vector2::Zero)
+					return mAttackedDir;
+				return DiagonalMoveTowards();
+			}
 		}
-		else {
-			if (mAttackedDir != Vector2::Zero)
-				return mAttackedDir;
-			return DiagonalMoveTowards();
-		}
+		return Vector2::Zero;
 	}
 	void King::SetStats()
 	{

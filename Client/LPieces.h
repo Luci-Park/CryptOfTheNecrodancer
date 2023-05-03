@@ -9,7 +9,7 @@ namespace cl
 		Pieces(Scene* sc);
 		virtual ~Pieces();
 		virtual void Initialize() override = 0;
-		void SetInitialBeat(int beat) { mBeatCount = -beat; }
+		void SetInitialBeat(int beat) { mBeatCount = beat; }
 
 	protected:
 		virtual Vector2 GetNextDir() override = 0;

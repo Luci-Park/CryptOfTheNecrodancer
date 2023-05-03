@@ -9,6 +9,7 @@
 #include "LDireBat.h"
 #include "LMinotaur.h"
 #include "LDragon.h"
+#include "LDeepBluesFactory.h"
 namespace cl
 {
     std::vector<std::vector<eMonsterTypes>> MonsterFactory::_ZoneMonsters =
@@ -53,7 +54,7 @@ namespace cl
     {
         Vector2 pos = index * UNITLENGTH;
         TileObject* monster = nullptr;
-        if(eMonsterTypes::BlueBat == type)
+        if (eMonsterTypes::BlueBat == type)
             monster = object::Instantiate<BlueBat>(scene, pos, eLayerType::Monster);
         else if (eMonsterTypes::RedBat == type)
             monster = object::Instantiate<RedBat>(scene, pos, eLayerType::Monster);
@@ -83,7 +84,11 @@ namespace cl
             monster = object::Instantiate<GreenDragon>(scene, pos, eLayerType::Monster);
         else if (eMonsterTypes::RedDragon == type)
             monster = object::Instantiate<RedDragon>(scene, pos, eLayerType::Monster);
-
+        else if (eMonsterTypes::DeepBlues == type)
+        {
+            monster = DeepBluesFactory::CreateBoss(index, scene);
+            return monster;
+        }
         if (monster != nullptr)
             monster->SetIndex(index);
         

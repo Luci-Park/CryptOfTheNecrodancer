@@ -523,9 +523,6 @@
     <ClInclude Include="LLobbyMap.h">
       <Filter>Contents\SystemObjects\Map</Filter>
     </ClInclude>
-    <ClInclude Include="LRandomMap.h">
-      <Filter>Contents\SystemObjects\Map</Filter>
-    </ClInclude>
     <ClInclude Include="LRoom.h">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
     </ClInclude>
@@ -547,7 +544,18 @@
     <ClInclude Include="LDepth3Scene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="LBossScene.h" />
+    <ClInclude Include="LDeepBluesMap.h">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="LRandomMap.h">
+      <Filter>Contents\SystemObjects\Map\Random</Filter>
+    </ClInclude>
+    <ClInclude Include="LBossScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LDeepBluesFactory.h">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -887,9 +895,6 @@
     <ClCompile Include="LLobbyMap.cpp">
       <Filter>Contents\SystemObjects\Map</Filter>
     </ClCompile>
-    <ClCompile Include="LRandomMap.cpp">
-      <Filter>Contents\SystemObjects\Map</Filter>
-    </ClCompile>
     <ClCompile Include="LRoom.cpp">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
     </ClCompile>
@@ -911,6 +916,17 @@
     <ClCompile Include="LDepth3Scene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="LBossScene.cpp" />
+    <ClCompile Include="LDeepBluesMap.cpp">
+      <Filter>Contents\SystemObjects\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="LRandomMap.cpp">
+      <Filter>Contents\SystemObjects\Map\Random</Filter>
+    </ClCompile>
+    <ClCompile Include="LBossScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LDeepBluesFactory.cpp">
+      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

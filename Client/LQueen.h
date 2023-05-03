@@ -9,6 +9,8 @@ namespace cl
 		virtual ~Queen(){}
 
 		virtual void Initialize() override;
+		void SetInitialBeat(int beat) { mBeatCount = beat; }
+		virtual void OnLateBeat() override;
 	private:
 		virtual Vector2 GetNextDir()		override;
 		virtual void SetStats()				override;
@@ -21,6 +23,7 @@ namespace cl
 	private:
 		AudioClip* mDeathSounds[3];
 		AudioClip* mSingSounds[6];
+		int mBeatCount;
 	};
 }
 
