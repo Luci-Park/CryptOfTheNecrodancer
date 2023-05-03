@@ -25,6 +25,11 @@ namespace cl
 		delete mLightSource;
 		mLightSource = nullptr;
 	}
+	void Pieces::OnDestroy()
+	{
+		mKing->RemovePiece(this);
+		TileObject::OnDestroy();
+	}
 	void Pieces::SetStats()
 	{
 		mMaxHealth = 1;

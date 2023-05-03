@@ -39,6 +39,11 @@ namespace cl
 		if(mbIsActivated || mbIsAggroed)
 			mBeatCount++;
 	}
+	void Queen::OnDestroy()
+	{
+		mKing->RemovePiece(this);
+		TileObject::OnDestroy();
+	}
 	Vector2 Queen::GetNextDir()
 	{
 		if (mBeatCount < 0) return Vector2::Zero;

@@ -98,15 +98,16 @@ namespace cl
 		virtual ~StairTile();
 		virtual void SetIndex(Vector2 index);
 		virtual void OnBeat(){}
-		virtual void OnInteract(TileObject* object) override;
+		
 		void SetDestination(eSceneType type) { mMoveScene = type; }
-		void SetLock(bool isLocked) { mIsLocked = isLocked; }
-		bool IsLocked() { return mIsLocked; }
+		void LoadScene();
+
+		void SetLock(bool isLocked);
+		bool IsLocked() { return mbIsLocked; }
 
 	private:
 		eSceneType mMoveScene;
-		bool mIsLocked;
-		AudioClip* mErrorSound;
+		bool mbIsLocked;
 	};
 }
 

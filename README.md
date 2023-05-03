@@ -105,3 +105,8 @@ WindowAPI Project (2/14 ~ )
     * `Knight`
     * `Queen`
     * `King`
+
+## Week 11(4/30 ~ 5/3)
+* Procedurally generated map
+* Stairs are now locked and opened by killing minibosses
+* `Deep Blues` done.

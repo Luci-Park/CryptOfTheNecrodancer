@@ -23,40 +23,54 @@ namespace cl
         queen->SetIndex(idx);
         queen->SetInitialBeat(-7);
         MapManager::Move(queen, Vector2::Zero, idx);
+        queen->SetKing(king);
+        king->AddPiece(queen);
         
         idx = index + Vector2(0, 0);
         Rook* rook1 = object::Instantiate<Rook>(scene, idx * UNITLENGTH, eLayerType::Monster);
         rook1->SetIndex(idx);
         rook1->SetInitialBeat(-7);
         MapManager::Move(rook1, Vector2::Zero, idx);
+        rook1->SetKing(king);
+        king->AddPiece(rook1);
         
         idx = index + Vector2(7, 0);
         Rook* rook2 = object::Instantiate<Rook>(scene, idx * UNITLENGTH, eLayerType::Monster);
         rook2->SetIndex(idx);
         rook2->SetInitialBeat(-7);
         MapManager::Move(rook2, Vector2::Zero, idx);
+        rook2->SetKing(king);
+        king->AddPiece(rook2);
 
         idx = index + Vector2(2, 0);
         Bishop* bishop1 = object::Instantiate<Bishop>(scene, idx * UNITLENGTH, eLayerType::Monster);
         bishop1->SetIndex(idx);
         bishop1->SetInitialBeat(-3);
         MapManager::Move(bishop1, Vector2::Zero, idx);
+        bishop1->SetKing(king);
+        king->AddPiece(bishop1);
 
         idx = index + Vector2(5, 0);
         Bishop* bishop2 = object::Instantiate<Bishop>(scene, idx * UNITLENGTH, eLayerType::Monster);
         bishop2->SetIndex(idx);
         bishop2->SetInitialBeat(-4);
         MapManager::Move(bishop2, Vector2::Zero, idx);
+        bishop2->SetKing(king);
+        king->AddPiece(bishop2);
 
         idx = index + Vector2(1, 0);
         Knight* knight1 = object::Instantiate<Knight>(scene, idx * UNITLENGTH, eLayerType::Monster);
         knight1->SetIndex(idx);
         MapManager::Move(knight1, Vector2::Zero, idx);
+        knight1->SetKing(king);
+        king->AddPiece(knight1);
 
         idx = index + Vector2(6, 0);
         Knight* knight2 = object::Instantiate<Knight>(scene, idx * UNITLENGTH, eLayerType::Monster);
         knight2->SetIndex(idx);
         MapManager::Move(knight2, Vector2::Zero, idx);
+        knight2->SetKing(king);
+        king->AddPiece(knight2);
 
         bool isKnightOpening = GetRandomInt(1, 8) == 1;
         bool knightOrder = GetRandomInt(0, 1);
@@ -87,6 +101,8 @@ namespace cl
             pawn->SetIndex(idx);
             pawn->SetInitialBeat(-i - isKnightOpening - 1);
             MapManager::Move(pawn, Vector2::Zero, idx);
+            pawn->SetKing(king);
+            king->AddPiece(pawn);
         }
       return rook1;
     }

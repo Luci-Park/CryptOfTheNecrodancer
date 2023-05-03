@@ -83,12 +83,13 @@ namespace cl
 		virtual ~StairStrategy();
 		virtual Sprite GetSprite();
 		virtual void OnBeat();
-		virtual void OnInteract(TileObject* object) {}
+		virtual void OnInteract(TileObject* object);
 	private:
 		Sprite mOpenSprite;
 		Sprite mClosedSprite;
 		Sprite mCurrSprite;
 		StairTile* mStairTile;
+		AudioClip* mErrorSound;
 	};
 }
 

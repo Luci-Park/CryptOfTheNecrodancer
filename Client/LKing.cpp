@@ -65,6 +65,20 @@ namespace cl
 			mCry->Play(false);
 		}
 	}
+	void King::AddPiece(Monster* piece)
+	{
+		mOtherPieces.push_back(piece);
+	}
+	void King::RemovePiece(Monster* piece)
+	{
+		auto it = find(mOtherPieces.begin(), mOtherPieces.end(), piece);
+		if (it != mOtherPieces.end())
+		{
+			mOtherPieces.erase(it);
+			if (mOtherPieces.empty())
+				StartAttack();
+		}
+	}
 	Vector2 King::GetNextDir()
 	{
 		if (mBeatCount >= 0)

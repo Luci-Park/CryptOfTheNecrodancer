@@ -52,6 +52,7 @@ namespace cl
 		SetAttackSound();
 		SetDeathSound();
 		SetOnHitSound();
+		SetVictorySound();
 		mDeathSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_death_ST.wav");
 		mHitSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_hit_ST.wav");	
 	}
@@ -135,7 +136,7 @@ namespace cl
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
-			mOnAttackedVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
+			mVictoryVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 }

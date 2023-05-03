@@ -1,6 +1,7 @@
 #pragma once
 #include "LMonster.h"
 #include "LLightSource.h"
+#include "LKing.h"
 namespace cl
 {
 	class PiecesSprite;
@@ -11,7 +12,9 @@ namespace cl
 		virtual ~Pieces();
 		virtual void Initialize() override = 0;
 		void SetInitialBeat(int beat) { mBeatCount = beat; }
+		void SetKing(King* king) { mKing = king; }
 
+		virtual void OnDestroy() override;
 	protected:
 		virtual Vector2 GetNextDir() override = 0;
 		virtual void SetStats() override;
@@ -31,6 +34,7 @@ namespace cl
 		AudioClip* mDeathSounds[3];
 		LightSource* mLightSource;
 
+		King* mKing;
 	};
 }
 

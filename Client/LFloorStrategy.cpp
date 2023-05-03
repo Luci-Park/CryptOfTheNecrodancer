@@ -3,6 +3,7 @@
 #include "LTileObject.h"
 #include "LResources.h"
 #include "LGrooveChain.h"
+#include "LCadence.h"
 namespace cl
 {
 #pragma region Parent - FloorStrategy
@@ -120,6 +121,8 @@ namespace cl
 		else
 			mCurrSprite = mOpenSprite;
 		mStairTile = tile;
+
+		mErrorSound = Resources::Load<AudioClip>(L"sfx_error_ST", L"..\\Assets\\Audio\\SoundEffects\\Floor\\sfx_error_ST.wav");
 	}
 	StairStrategy::~StairStrategy()
 	{
@@ -130,8 +133,18 @@ namespace cl
 	}
 	void StairStrategy::OnBeat()
 	{
-		if (mCurrSprite == mClosedSprite && !mStairTile->IsLocked())
-			mCurrSprite = mOpenSprite;
+		mCurrSprite = mStairTile->IsLocked() ? mClosedSprite : mOpenSprite;
+	}
+	void StairStrategy::OnInteract(TileObject* object)
+	{
+		Cadence* c = dynamic_cast<Cadence*>(object);
+		if (c != nullptr)
+		{
+			if (mStairTile->IsLocked())
+				mErrorSound->Play(false);
+			else
+				mStairTile->LoadScene();
+		}
 	}
 #pragma endregion
 }

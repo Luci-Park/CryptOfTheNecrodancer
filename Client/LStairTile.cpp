@@ -1,15 +1,12 @@
 #include "LFloorTile.h"
 #include "LSceneManager.h"
 #include "LFloorStrategy.h"
-#include "LCadence.h"
-#include "LResources.h"
 namespace cl
 {
 	StairTile::StairTile(Scene* sc)
 		:FloorTile(sc)
-		, mIsLocked(false)
+		, mbIsLocked(false)
 	{
-		mErrorSound = Resources::Load<AudioClip>(L"sfx_error_ST", L"..\\Assets\\Audio\\SoundEffects\\Floor\\sfx_error_ST.wav");
 	}
 
 	StairTile::~StairTile()
@@ -26,15 +23,14 @@ namespace cl
 		FloorTile::SetIndex(index);
 		mCurrStrategy = new StairStrategy(this);
 	}
-	
-	void StairTile::OnInteract(TileObject* object)
+	void StairTile::LoadScene()
 	{
-		Cadence* c = dynamic_cast<Cadence*>(object);
-		if (c && !mIsLocked)
-			SceneManager::LoadScene(mMoveScene);
-		else if(c && mIsLocked)
-		{
-			mErrorSound->Play(false);
-		}
+		SceneManager::LoadScene(mMoveScene);
+	}
+	void StairTile::SetLock(bool isLocked)
+	{
+		mbIsLocked = isLocked;
+		if(mCurrStrategy != nullptr)
+			mCurrStrategy->OnBeat();
 	}
 }

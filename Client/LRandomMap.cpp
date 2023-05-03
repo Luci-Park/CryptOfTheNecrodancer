@@ -236,8 +236,8 @@ namespace cl
 			CopyRoom(mRooms[i]);
 			if (i == STARTIDX)
 			{
-				//mPlayerIndex = mRooms[i]->mCenter + mRooms[i]->mOffset;
-				mPlayerIndex = mStairPos[mStairPos.size() - 1].first + Vector2::Right;
+				mPlayerIndex = mRooms[i]->mCenter + mRooms[i]->mOffset;
+				//mPlayerIndex = mStairPos[mStairPos.size() - 1].first + Vector2::Right;
 			}
 		}
 	}

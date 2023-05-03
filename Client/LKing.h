@@ -17,6 +17,8 @@ namespace cl
 		virtual void OnLateBeat() override;
 
 		void StartAttack();
+		void AddPiece(Monster* piece);
+		void RemovePiece(Monster* piece);
 	private:
 		virtual Vector2 GetNextDir()		override;
 		virtual void SetStats()				override;
@@ -36,6 +38,7 @@ namespace cl
 		Vector2 mAttackedDir;
 		int mBeatCount;
 		LightSource* mLightSource;
+		std::vector<Monster*> mOtherPieces;
 	};
 }
 

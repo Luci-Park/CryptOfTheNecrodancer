@@ -1,6 +1,7 @@
 #pragma once
 #include "LMonster.h"
 #include "LLightSource.h"
+#include "LKing.h"
 namespace cl
 {
 	class Queen: public Monster
@@ -11,7 +12,9 @@ namespace cl
 
 		virtual void Initialize() override;
 		void SetInitialBeat(int beat) { mBeatCount = beat; }
+		void SetKing(King* king) { mKing = king; }
 		virtual void OnLateBeat() override;
+		virtual void OnDestroy() override;
 	private:
 		virtual Vector2 GetNextDir()		override;
 		virtual void SetStats()				override;
@@ -26,6 +29,7 @@ namespace cl
 		AudioClip* mSingSounds[6];
 		int mBeatCount;
 		LightSource* mLight;
+		King* mKing;
 	};
 }
 
