@@ -5,6 +5,7 @@
 #include "LCadence.h"
 #include "LMonsterFactory.h"
 #include "LWallTorch.h"
+#include "LKing.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -57,6 +58,8 @@ namespace cl
 				{
 					TileObject* t = mTileObjects[i][j];
 					mTileObjects[i][j]->Render(hdc);
+					if (dynamic_cast<King*> (mTileObjects[i][j]) != nullptr)
+						int p = 0;
 				}
 			}
 		}
@@ -248,11 +251,8 @@ namespace cl
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				mTileObjects[i][j] = MonsterFactory::CreateMonster(mMonsterBluePrint[i][j], Vector2(j, i), sc);
-				if (mMonsterBluePrint[i][j] != eMonsterTypes::None)
-				{
-					TileObject* t = mTileObjects[i][j];
-				}
+				if(mTileObjects[i][j] == nullptr)
+					mTileObjects[i][j] = MonsterFactory::CreateMonster(mMonsterBluePrint[i][j], Vector2(j, i), sc);
 			}
 		}
 	}

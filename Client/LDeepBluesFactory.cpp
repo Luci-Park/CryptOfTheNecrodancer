@@ -86,8 +86,8 @@ namespace cl
             Pawn* pawn = object::Instantiate<Pawn>(scene, idx * UNITLENGTH, eLayerType::Monster);
             pawn->SetIndex(idx);
             pawn->SetInitialBeat(-i - isKnightOpening - 1);
-            MapManager::Move(pawn, idx, idx);
+            MapManager::Move(pawn, Vector2::Zero, idx);
         }
-      return nullptr;
+      return rook1;
     }
 }
