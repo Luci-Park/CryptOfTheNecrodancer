@@ -78,5 +78,6 @@ namespace cl
             pawn->SetIndex(idx);
             pawn->SetInitialBeat(-i - isKnightOpening - 1);
         }
+      return nullptr;
     }
 }

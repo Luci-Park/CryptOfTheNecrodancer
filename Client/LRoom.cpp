@@ -177,7 +177,7 @@ namespace cl
 			for (int j = 0; j < mSize.x; ++j)
 			{
 				if (mWalls[i][j] != eWallTypes::None) continue;
-				rand = GetRandomInt(1, 10);
+				rand = GetRandomInt(1, 5);
 				if (rand == 1)
 					mFloors[i][j] = eFloorTypes::Water;
 			}

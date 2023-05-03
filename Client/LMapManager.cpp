@@ -23,6 +23,8 @@ namespace cl
 		case Random3:
 			_Map = new RandomMap(3);
 			break;
+		case DeepBlues:
+			_Map = new DeepBluesMap();
 		}
 		_Map->CreateMap(sc);
 	}

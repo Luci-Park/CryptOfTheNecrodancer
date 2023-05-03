@@ -23,7 +23,7 @@ namespace cl
 		, consecutiveHits(0)
 		, mMoved(false)
 	{
-		Camera::SetTarget(this);
+		//Camera::SetTarget(this);
 		mHealth = new Health(this);
 		mLightSource = new LightSource(mTransform, 1.25, 3);
 	}

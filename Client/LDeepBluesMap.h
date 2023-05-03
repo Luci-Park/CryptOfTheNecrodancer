@@ -9,10 +9,10 @@ namespace cl
 		~DeepBluesMap();
 	private:
 		virtual void CreateMapBluePrint() override;
-		void SetFloor();
-		void SetWall();
-		void SetLights();
-
+		void SetTop();
+		void SetArena();
+		void SetBottom();
+		int topY, arenaY, bottomY;
 	};
 }
 

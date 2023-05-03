@@ -42,7 +42,7 @@ namespace cl
 	{
 		Scene::OnEnter();
 		BeatManager::Reset();
-		BeatManager::SetBPM(140);
+		BeatManager::SetBPM(123);
 		MapManager::CreateMap(MapManager::MapType::DeepBlues, this);
 		mBGM->Play(true);
 	}

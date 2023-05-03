@@ -21,15 +21,6 @@ namespace cl
 
 	void LobbyMap::SetFloor()
 	{
-		mFloorBluePrint.resize(mMapSize.y);
-		for (int i = 0; i < mMapSize.y; ++i)
-		{
-			mFloorBluePrint[i].resize(mMapSize.x);
-			for (int j = 0; j < mMapSize.x; ++j)
-			{
-				mFloorBluePrint[i][j] = eFloorTypes::ActiveDirt;
-			}
-		}
 
 		mFloorBluePrint[0][0] = eFloorTypes::None;
 		mFloorBluePrint[0][12] = eFloorTypes::None;
