@@ -1,8 +1,10 @@
 #pragma once
+#include "LGameObject.h"
 namespace cl
 {
-	class BeatBar
+	class BeatBar : public GameObject
 	{
+		
 	};
 }
 
