@@ -3,6 +3,7 @@
 #include "LCadenceSprite.h"
 #include "LLightSource.h"
 #include "LCadenceShovelEffect.h"
+#include "LBeatingHeartUI.h"
 #include "LHealth.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
@@ -53,11 +54,11 @@ namespace cl
 		mSound = new CadenceSound();
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
+		mBeatUI = object::Instantiate<BeatingHeartUI>(eLayerType::UI);
 		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
-		BeatManager::AddCharacters(this);
 	}
 	void Cadence::Update()
 	{
@@ -217,22 +218,22 @@ namespace cl
 	{
 		mMoved = false;
 		mInput = Vector2::One;
-		if (Input::GetKeyDown(eKeyCode::A))
+		if (Input::GetKeyDown(eKeyCode::LEFT))
 		{
 			mInput = Vector2::Left;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::D))
+		if (Input::GetKeyDown(eKeyCode::RIGHT))
 		{
 			mInput = Vector2::Right;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::W))
+		if (Input::GetKeyDown(eKeyCode::UP))
 		{
 			mInput = Vector2::Up;
 		}
 
-		if (Input::GetKeyDown(eKeyCode::S))
+		if (Input::GetKeyDown(eKeyCode::DOWN))
 		{
 			mInput = Vector2::Down;
 		}

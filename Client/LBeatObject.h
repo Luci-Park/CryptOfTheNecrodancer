@@ -5,6 +5,10 @@ namespace cl
 	class BeatObject
 	{
 	public:
+		BeatObject()
+		{
+			BeatManager::AddCharacters(this);
+		}
 		virtual ~BeatObject()
 		{
 			BeatManager::RemoveCharacters(this);

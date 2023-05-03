@@ -152,9 +152,6 @@
     <Filter Include="Contents\UI\Health">
       <UniqueIdentifier>{61da56ea-9673-4a99-94fd-2fb724ada014}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Contents\UI\Rythm">
-      <UniqueIdentifier>{c9811e6c-9449-4378-b672-32cf51d89f3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Contents\UI\Items">
       <UniqueIdentifier>{680089da-4739-44f6-baef-5c0f9cd83809}</UniqueIdentifier>
     </Filter>
@@ -166,6 +163,9 @@
     </Filter>
     <Filter Include="Contents\SystemObjects\Map\Random">
       <UniqueIdentifier>{e6188a7a-780c-462b-b4c6-58e94b346f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\UI\Rhythm">
+      <UniqueIdentifier>{c9811e6c-9449-4378-b672-32cf51d89f3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -556,6 +556,9 @@
     <ClInclude Include="LDeepBluesFactory.h">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
+    <ClInclude Include="LBeatingHeartUI.h">
+      <Filter>Contents\UI\Rhythm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -927,6 +930,9 @@
     </ClCompile>
     <ClCompile Include="LDeepBluesFactory.cpp">
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
+    </ClCompile>
+    <ClCompile Include="LBeatingHeartUI.cpp">
+      <Filter>Contents\UI\Rhythm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

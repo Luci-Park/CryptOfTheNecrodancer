@@ -8,6 +8,7 @@ namespace cl
 	class CadenceSound;
 	class LightSource;
 	class Health;
+	class BeatingHeartUI;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -54,6 +55,7 @@ namespace cl
 		LightSource* mLightSource;
 		CadenceShovelEffect* mShovelEffect;
 		CadenceSound* mSound;
+		BeatingHeartUI* mBeatUI;
 		Vector2 mInput;
 		int consecutiveHits;
 		bool mMoved;

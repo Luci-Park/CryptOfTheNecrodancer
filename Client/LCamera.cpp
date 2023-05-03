@@ -31,6 +31,7 @@ namespace cl
 
 	void Camera::Update()
 	{
+		/*
 		if (Input::GetKey(eKeyCode::LEFT))
 			mLookPosition.x -= 100.0f * Time::DeltaTime();
 
@@ -41,7 +42,7 @@ namespace cl
 			mLookPosition.y -= 100.0f * Time::DeltaTime();
 
 		if (Input::GetKey(eKeyCode::DOWN))
-			mLookPosition.y += 100.0f * Time::DeltaTime();
+			mLookPosition.y += 100.0f * Time::DeltaTime();*/
 
 		if (mTarget != nullptr&& !mIsShaking)
 		{
