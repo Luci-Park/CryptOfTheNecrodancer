@@ -263,6 +263,8 @@ namespace cl
 	void Map::CreatePlayer(Scene* sc)
 	{
 		Cadence* cadence = object::Instantiate<Cadence>(sc, mPlayerIndex*UNITLENGTH, eLayerType::Player);
+		if (mTileObjects[mPlayerIndex.y][mPlayerIndex.x] != nullptr)
+			mTileObjects[mPlayerIndex.y][mPlayerIndex.x]->Destroy();
 		mTileObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
 		BeatManager::AddCharacters(cadence);
