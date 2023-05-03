@@ -168,9 +168,6 @@ namespace cl
 		Vector2 player = MapManager::GetPlayerIndex();
 		if (player.x == mIndex.x || player.y == mIndex.y)
 			return (player - mIndex).TileNormalize();
-		Vector2 prevPlayer = player - MapManager::GetPlayer(player)->GetInput();
-		if (Vector2::IsCardinal((prevPlayer - mIndex).TileNormalize()))
-			return (prevPlayer - mIndex).TileNormalize();
 		else
 		{
 			if (mPrevDir == Vector2::Zero)
