@@ -34,9 +34,10 @@ namespace cl
 		mLightSource = nullptr;
 	}
 	void King::Initialize()
-	{
+	{	
 		Monster::Initialize();
 		mSprite = object::Instantiate<KingSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		MapManager::SetKey(this);
 	}
 	void King::Update()
 	{

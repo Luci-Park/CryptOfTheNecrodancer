@@ -50,8 +50,4 @@ namespace cl
 	{
 		return false;
 	}
-	void WallTorch::OnDestroy()
-	{
-		MapManager::DestroyTileObject(mIndex);
-	}
 }

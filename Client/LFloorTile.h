@@ -102,6 +102,7 @@ namespace cl
 		void SetDestination(eSceneType type) { mMoveScene = type; }
 		void SetLock(bool isLocked) { mIsLocked = isLocked; }
 		bool IsLocked() { return mIsLocked; }
+
 	private:
 		eSceneType mMoveScene;
 		bool mIsLocked;

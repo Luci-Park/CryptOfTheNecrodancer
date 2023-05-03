@@ -17,7 +17,6 @@ namespace cl
 		virtual void Sink(){}
 		virtual bool OnAttacked(float attackPower, Vector2 dir);
 		virtual bool TryMove() { return false; }
-		virtual void OnDestroy();
 
 	private:
 		Animator* mAnimator;

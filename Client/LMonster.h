@@ -19,7 +19,7 @@ namespace cl
 
 		virtual bool OnAttacked(float attackPower, Vector2 dir) override;
 		virtual void OnAggroed(){};
-		virtual void OnDestroy();
+		virtual void OnDestroy() override;
 
 		virtual void OnBeat() override;
 		virtual void OnLateBeat() override;

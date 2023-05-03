@@ -1,4 +1,9 @@
 #include "LDeepBluesMap.h"
+#include "LWallTile.h"
+#include "LSceneManager.h"
+#include "LCamera.h"
+#include "LAudioClip.h"
+#include "LResources.h"
 namespace cl
 {
 	DeepBluesMap::DeepBluesMap()
@@ -8,12 +13,26 @@ namespace cl
 		topY = 5;
 		arenaY = topY + 10 - 1;
 		bottomY = arenaY + 10 - 1;
+		mClip = Resources::Load<AudioClip>(L"boss_zone1_walls", L"..\\Assets\\Audio\\SoundEffects\\Enemies\\Boss\\boss_zone1_walls.wav");
 	}
 	DeepBluesMap::~DeepBluesMap()
 	{
 	}
 	void DeepBluesMap::Update()
 	{
+		if (!mbEntered && GetPlayerPos().y < arenaY)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				if (mWall[arenaY][j] == nullptr)
+				{
+					mWall[arenaY][j] = WallTile::CreateWall(eWallTypes::BossWall, Vector2(j, arenaY), SceneManager::GetActiveScene());
+				}
+			}
+			mbEntered = true;
+			Camera::StartShake();
+			mClip->Play(false);
+		}
 		Map::Update();
 	}
 	void DeepBluesMap::CreateMapBluePrint()
@@ -25,6 +44,14 @@ namespace cl
 		SetBottom();
 		mPlayerIndex = Vector2(4, bottomY - 3);
 		mMonsterBluePrint[topY + 1][1] = eMonsterTypes::DeepBlues;
+	}
+	void DeepBluesMap::OnKeyOpen()
+	{
+		for (int j = 2; j <= 6; j++)
+		{
+			Map::DestroyWallObject(Vector2(j, topY));
+			mClip->Play(false);
+		}
 	}
 	void DeepBluesMap::SetTop()
 	{

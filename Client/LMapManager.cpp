@@ -28,6 +28,11 @@ namespace cl
 		}
 		_Map->CreateMap(sc);
 	}
+	void MapManager::SetKey(TileObject* object)
+	{
+		if (_Map != nullptr)
+			_Map->SetKey(object);
+	}
 	void MapManager::DestroyMap()
 	{
 		if (_Map != nullptr)
@@ -36,10 +41,10 @@ namespace cl
 			_Map = nullptr;
 		}
 	}
-	void MapManager::DestroyTileObject(Vector2 index)
+	void MapManager::DestroyTileObject(Vector2 index, TileObject* object)
 	{
 		if(_Map != nullptr)
-			_Map->DestroyTileObject(index);
+			_Map->DestroyTileObject(index, object);
 	}
 	void MapManager::DestroyWallObject(Vector2 index)
 	{
@@ -109,7 +114,7 @@ namespace cl
 	Vector2 MapManager::GetPlayerIndex()
 	{
 		if (_Map != nullptr)
-			return _Map->GetPlayerIndex();
+			return _Map->GetPlayerPos();
 		return Vector2();
 	}
 	Item* MapManager::GetItem(Vector2 index)

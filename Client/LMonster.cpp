@@ -55,8 +55,8 @@ namespace cl
 	}
 	void Monster::OnDestroy()
 	{
-		MapManager::DestroyTileObject(mIndex);
 		//LeaveGold
+		TileObject::OnDestroy();
 	}
 	void Monster::OnBeat()
 	{

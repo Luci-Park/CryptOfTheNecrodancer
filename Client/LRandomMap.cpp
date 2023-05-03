@@ -1,6 +1,7 @@
 #include "LRandomMap.h"
 #include "LRoom.h"
 #include "LSceneManager.h"
+#include "LFloorTile.h"
 namespace cl
 {
 	RandomMap::RandomMap(int zone)
@@ -9,6 +10,13 @@ namespace cl
 	}
 	RandomMap::~RandomMap()
 	{
+	}
+	void RandomMap::OnKeyOpen()
+	{
+		Vector2 pos = mStairPos[0].first;
+		StairTile* tile = dynamic_cast<StairTile*>(mFloor[pos.y][pos.x]);
+		if (tile != nullptr)
+			tile->SetLock(false);
 	}
 	void RandomMap::CreateMapBluePrint()
 	{

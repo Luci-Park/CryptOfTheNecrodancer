@@ -16,11 +16,9 @@ namespace cl
 		Map();
 		virtual ~Map();
 
-		void DestroyTileObject(Vector2 index);
-		void DestroyWallObject(Vector2 index);
-
 		virtual void Update();
 		void Render(HDC hdc);
+
 		
 		void AddLightSource(LightSource* light);
 		void RemoveLightSource(LightSource* light);
@@ -33,7 +31,7 @@ namespace cl
 		TileObject* GetEnemy(Vector2 index);
 		TileObject* GetTileObject(Vector2 index);
 		Cadence* GetPlayer(Vector2 index);
-		Vector2 GetPlayerIndex() { return mPlayerIndex; }
+		Vector2 GetPlayerPos() { return mPlayerIndex; }
 		Item* GetItem(Vector2 index);
 		Vector2 SetItem(Item* item, Vector2 pos);
 
@@ -43,12 +41,19 @@ namespace cl
 		bool IndexIsValid(Vector2 index);
 		
 		void CreateMap(Scene* sc);
-		Vector2 GetPlayerPos() { return mPlayerIndex; }
+		void SetKey(TileObject* key);
 
 		static Vector2 GetTilePosOfIndex(Vector2 pos) { return pos * UNITLENGTH; }
+		
+		void DestroyTileObject(Vector2 index, TileObject* object);
+		void DestroyWallObject(Vector2 index);
 	protected:
 		virtual void CreateMapBluePrint() = 0;
+		virtual void OnKeyOpen() {};
+		void CalculateLight();
+
 		void Initialize(Vector2 size);
+
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
 
@@ -57,9 +62,7 @@ namespace cl
 		std::vector<std::vector<eMonsterTypes>> mMonsterBluePrint;
 		std::vector<std::pair<Vector2, eSceneType>> mStairPos;
 		std::vector<Vector2> mLightPos;
-		
-	private:
-		void CalculateLight();
+		std::vector<TileObject*>mKeyMonsters;
 
 		void CreateFloor(Scene* sc);
 		void CreateWall(Scene* sc);

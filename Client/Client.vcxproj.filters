@@ -554,7 +554,7 @@
       <Filter>Contents\Scene</Filter>
     </ClInclude>
     <ClInclude Include="LDeepBluesFactory.h">
-      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -926,7 +926,7 @@
       <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="LDeepBluesFactory.cpp">
-      <Filter>Contents\Objects\GameCharacters\Monsters</Filter>
+      <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

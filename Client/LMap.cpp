@@ -26,12 +26,26 @@ namespace cl
 	}
 
 #pragma region MapInteraction
-	void Map::DestroyTileObject(Vector2 index)
+	void Map::DestroyTileObject(Vector2 index, TileObject* object)
 	{
-		if (mTileObjects[index.y][index.x] != nullptr)
+		if (object != nullptr)
 		{
-			mTileObjects[index.y][index.x]->Destroy();
-			mTileObjects[index.y][index.x] = nullptr;
+			auto it = find(mKeyMonsters.begin(), mKeyMonsters.end(), object);
+			if (it != mKeyMonsters.end())
+			{
+				mKeyMonsters.erase(it);
+				if (mKeyMonsters.empty())
+					OnKeyOpen();
+			}
+			if (mTileObjects[index.y][index.x] == object)
+			{
+				mTileObjects[index.y][index.x]->Destroy();
+				mTileObjects[index.y][index.x] = nullptr;
+			}
+			else
+			{
+				object->Destroy();
+			}
 		}
 	}
 	void Map::DestroyWallObject(Vector2 index)
@@ -175,6 +189,11 @@ namespace cl
 		CreateItems(sc);
 		CreateLight(sc);
 		CreateLightInfo();
+	}
+
+	void Map::SetKey(TileObject* key)
+	{
+		mKeyMonsters.push_back(key);
 	}
 
 	void Map::Initialize(Vector2 size)

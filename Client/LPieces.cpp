@@ -1,5 +1,6 @@
 #include "LPieces.h"
 #include "LPiecesSprite.h"
+#include "LMapManager.h"
 namespace cl
 {
 	Pieces::Pieces(Scene* sc)
@@ -17,6 +18,7 @@ namespace cl
 			mDeathSounds[i] = Resources::Load<AudioClip>(nKey, path + nKey + extend);
 		}
 		mLightSource = new LightSource(mTransform, 0.0, 2.0);
+		MapManager::SetKey(this);
 	}
 	Pieces::~Pieces()
 	{

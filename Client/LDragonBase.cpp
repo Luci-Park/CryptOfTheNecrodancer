@@ -37,6 +37,7 @@ namespace cl
 	void DragonBase::Initialize()
 	{
 		Monster::Initialize();
+		MapManager::SetKey(this);
 	}
 	void DragonBase::OnAggroed()
 	{

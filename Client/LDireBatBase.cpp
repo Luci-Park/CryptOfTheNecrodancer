@@ -32,7 +32,7 @@ namespace cl
 		DireBatSprite* sprite = object::Instantiate<DireBatSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = sprite;
 		sprite->SetY(GetY());
-		
+		MapManager::SetKey(this);
 	}
 	void DireBatBase::OnAggroed()
 	{

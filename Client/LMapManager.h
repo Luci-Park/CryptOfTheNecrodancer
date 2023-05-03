@@ -24,8 +24,9 @@ namespace cl
 			DeepBlues
 		};
 		static void CreateMap(MapType type, Scene* sc);
+		static void SetKey(TileObject* object);
 		static void DestroyMap();
-		static void DestroyTileObject(Vector2 index);
+		static void DestroyTileObject(Vector2 index, TileObject* object);
 		static void DestroyWallObject(Vector2 index);
 		 
 		static void Update();

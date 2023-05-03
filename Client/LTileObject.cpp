@@ -19,4 +19,8 @@ namespace cl
 	{
 		GameObject::Render(hdc);
 	}
+	void TileObject::OnDestroy()
+	{
+		MapManager::DestroyTileObject(mIndex, this);
+	}
 }

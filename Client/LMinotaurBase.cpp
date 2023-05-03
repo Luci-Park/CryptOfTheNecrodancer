@@ -38,6 +38,7 @@ namespace cl
 		mMinoSprite = object::Instantiate<MinotaurSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mMinoSprite->SetY(GetY());
 		mSprite = mMinoSprite;
+		MapManager::SetKey(this);
 	}
 	void MinotaurBase::OnAggroed()
 	{

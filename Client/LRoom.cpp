@@ -223,7 +223,7 @@ namespace cl
 			if (mWalls[randy][randx] == eWallTypes::None
 				&& mMonsters[randy][randx] == eMonsterTypes::None)
 			{
-				mFloors[randy][randx] = eFloorTypes::OpenedStairs;
+				mFloors[randy][randx] = eFloorTypes::ClosedStairs;
 				mStairPos.push_back(std::make_pair(Vector2(randx, randy), eSceneType((int)eSceneType::Depth1 + mZone)));
 				break;
 			}

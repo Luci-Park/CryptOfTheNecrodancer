@@ -25,7 +25,7 @@ namespace cl
 			Queen* q = object::Instantiate<Queen>(mTransform->GetPos(), eLayerType::Monster);
 			q->SetIndex(mIndex);
 			MapManager::Move(q, Vector2::Zero, mIndex);
-			Destroy();
+			OnDestroy();
 		}
 		else
 		{

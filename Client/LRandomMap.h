@@ -12,7 +12,9 @@ namespace cl
 		RandomMap(int zone);
 		virtual ~RandomMap();
 	private:
+		virtual void OnKeyOpen() override;
 		virtual void CreateMapBluePrint() override;
+
 		void InitializeWall();
 		void CreateRoom();
 		void CreateRooms(Room* parent);

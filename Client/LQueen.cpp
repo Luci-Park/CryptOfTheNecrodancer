@@ -31,6 +31,7 @@ namespace cl
 	{
 		Monster::Initialize();
 		mSprite = object::Instantiate<QueenSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
+		MapManager::SetKey(this);
 	}
 	void Queen::OnLateBeat()
 	{
