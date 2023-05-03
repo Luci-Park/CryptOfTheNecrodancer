@@ -49,7 +49,7 @@ namespace cl
 		void DestroyWallObject(Vector2 index);
 	protected:
 		virtual void CreateMapBluePrint() = 0;
-		virtual void OnKeyOpen() {};
+		virtual void OnKeyOpen();
 		void CalculateLight();
 
 		void Initialize(Vector2 size);

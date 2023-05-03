@@ -89,6 +89,10 @@ namespace cl
 		if (it != mLightSources.end())
 			mLightSources.erase(it);
 	}
+	void Map::OnKeyOpen()
+	{
+		GetPlayer(GetPlayerPos())->PlayVictory();
+	}
 	void Map::CalculateLight()
 	{
 		for (int i = 0; i < mMapSize.y; ++i)

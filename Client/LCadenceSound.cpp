@@ -12,34 +12,39 @@ namespace cl
 	}
 	void CadenceSound::PlayOnDigSound()
 	{
-		int random = GetRandomInt(0, mDigVoice.size() - 1);
-		mDigVoice[random]->SetVolume(25.f);
-		mDigVoice[random]->Play(false);
+		int random = GetRandomInt(0, mDigVoices.size() - 1);
+		mDigVoices[random]->SetVolume(25.f);
+		mDigVoices[random]->Play(false);
 	}
 	void CadenceSound::PlayMeleeSound(int hits)
 	{
-		if (hits >= mMeleeHitVoice.size()) 
-			hits = mMeleeHitVoice.size() - 1;
-		int random = GetRandomInt(0, mMeleeHitVoice[0].size() - 1);
+		if (hits >= mMeleeHitVoices.size()) 
+			hits = mMeleeHitVoices.size() - 1;
+		int random = GetRandomInt(0, mMeleeHitVoices[0].size() - 1);
 
-		mMeleeHitVoice[hits][random]->Play(false);
+		mMeleeHitVoices[hits][random]->Play(false);
 	}
 	void CadenceSound::PlayRangedSound()
 	{
-		int random = GetRandomInt(0, mRangedHitVoice.size() - 1);
-		mRangedHitVoice[random]->Play(false);
+		int random = GetRandomInt(0, mRangedHitVoices.size() - 1);
+		mRangedHitVoices[random]->Play(false);
 	}
 	void CadenceSound::PlayOnHitSound()
 	{
 		mHitSFX->Play(false);
-		int random = GetRandomInt(0, mOnAttackedVoice.size() - 1);
-		mOnAttackedVoice[random]->Play(false);
+		int random = GetRandomInt(0, mOnAttackedVoices.size() - 1);
+		mOnAttackedVoices[random]->Play(false);
 	}
 	void CadenceSound::PlayOnDeathSound()
 	{
 		mDeathSFX->Play(false);
-		int random = GetRandomInt(0, mDeathVoice.size() - 1);
-		mDeathVoice[random]->Play(false);
+		int random = GetRandomInt(0, mDeathVoices.size() - 1);
+		mDeathVoices[random]->Play(false);
+	}
+	void CadenceSound::PlayVictorySound()
+	{
+		int random = GetRandomInt(0, mVictoryVoices.size() - 1);
+		mVictoryVoices[random]->Play(false);
 	}
 	void CadenceSound::SetAudioClip()
 	{
@@ -52,71 +57,85 @@ namespace cl
 	}
 	void CadenceSound::SetDigSound()
 	{
-		mDigVoice.resize(6);
+		mDigVoices.resize(6);
 		std::wstring cad = L"vo_cad_";
 		std::wstring key = cad + L"dig_0";
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
 
-		for (int i = 0; i < mDigVoice.size(); ++i)
+		for (int i = 0; i < mDigVoices.size(); ++i)
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
-			mDigVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+			mDigVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 	void CadenceSound::SetAttackSound()
 	{
-		mMeleeHitVoice.resize(4);
+		mMeleeHitVoices.resize(4);
 		std::wstring cad = L"vo_cad_";
 		std::wstring key = cad + L"melee_";
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
-		for (int i = 0; i < mMeleeHitVoice.size(); ++i)
+		for (int i = 0; i < mMeleeHitVoices.size(); ++i)
 		{
-			mMeleeHitVoice[i].resize(4);
+			mMeleeHitVoices[i].resize(4);
 			std::wstring number = std::to_wstring(i + 1) + L"_0";
-			for (int j = 0; j < mMeleeHitVoice[i].size(); j++)
+			for (int j = 0; j < mMeleeHitVoices[i].size(); j++)
 			{
 				std::wstring newKey = key + number + std::to_wstring(j + 1);
 				std::wstring newPath = path + newKey + L".wav";
-				mMeleeHitVoice[i][j] = Resources::Load<AudioClip>(newKey, newPath);
+				mMeleeHitVoices[i][j] = Resources::Load<AudioClip>(newKey, newPath);
 			}
 		}
 
-		mRangedHitVoice.resize(7);
+		mRangedHitVoices.resize(7);
 		key = cad + L"ranged_0";
-		for (int i = 0; i < mRangedHitVoice.size(); ++i)
+		for (int i = 0; i < mRangedHitVoices.size(); ++i)
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
-			mRangedHitVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+			mRangedHitVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 	void CadenceSound::SetDeathSound()
 	{
-		mDeathVoice.resize(3);
+		mDeathVoices.resize(3);
 		std::wstring cad = L"vo_cad_";
 		std::wstring key = cad + L"death_0";
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
 
-		for (int i = 0; i < mDeathVoice.size(); ++i)
+		for (int i = 0; i < mDeathVoices.size(); ++i)
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
-			mDeathVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+			mDeathVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 	void CadenceSound::SetOnHitSound()
 	{
-		mOnAttackedVoice.resize(3);
+		mOnAttackedVoices.resize(3);
 		std::wstring cad = L"vo_cad_";
 		std::wstring key = cad + L"hurt_0";
 		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
 
-		for (int i = 0; i < mOnAttackedVoice.size(); ++i)
+		for (int i = 0; i < mOnAttackedVoices.size(); ++i)
 		{
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
-			mOnAttackedVoice[i] = Resources::Load<AudioClip>(newKey, newPath);
+			mOnAttackedVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void CadenceSound::SetVictorySound()
+	{
+		mVictoryVoices.resize(5);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"yeah_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+
+		for (int i = 0; i < mVictoryVoices.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mOnAttackedVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 }

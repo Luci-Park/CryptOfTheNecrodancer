@@ -163,6 +163,11 @@ namespace cl
 		mMoved = true;
 	}
 
+	void Cadence::PlayVictory()
+	{
+		mSound->PlayVictorySound();
+	}
+
 	bool Cadence::TryAttack(Vector2 direction)
 	{
 		if (mWeapon() == nullptr)

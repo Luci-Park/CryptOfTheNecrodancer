@@ -17,6 +17,7 @@ namespace cl
 		StairTile* tile = dynamic_cast<StairTile*>(mFloor[pos.y][pos.x]);
 		if (tile != nullptr)
 			tile->SetLock(false);
+		Map::OnKeyOpen();
 	}
 	void RandomMap::CreateMapBluePrint()
 	{

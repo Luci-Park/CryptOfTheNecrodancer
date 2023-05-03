@@ -30,6 +30,8 @@ namespace cl
 		Vector2 GetPos() { return mIndex; }
 		Vector2 GetInput() { return mInput; }
 
+		void PlayVictory();
+
 	protected:
 		virtual bool TryAttack(Vector2 direction)	override;
 		//Returns true if InteractedWithDig;

@@ -52,6 +52,7 @@ namespace cl
 			Map::DestroyWallObject(Vector2(j, topY));
 			mClip->Play(false);
 		}
+		Map::OnKeyOpen();
 	}
 	void DeepBluesMap::SetTop()
 	{
