@@ -93,7 +93,8 @@ namespace cl
 		{
 			TryMove();
 			mSprite->Turn(mNextDir);
-			mPrevDir = mNextDir;
+			if(mNextDir != Vector2::Zero)
+				mPrevDir = mNextDir;
 		}
 	}
 	void Monster::OnBeatChanged()
@@ -166,22 +167,31 @@ namespace cl
 	Vector2 Monster::CardinalMoveTowards()
 	{
 		Vector2 player = MapManager::GetPlayerIndex();
-		if (player.x == mIndex.x || player.y == mIndex.y)
-			return (player - mIndex).TileNormalize();
-		Vector2 prevPlayer = player - MapManager::GetPlayer(player)->GetInput();
-		if (Vector2::IsCardinal((prevPlayer - mIndex).TileNormalize()))
-			return (prevPlayer - mIndex).TileNormalize();
+		Vector2 playerPrevPos = player - MapManager::GetPlayer(player)->GetInput();
+		Vector2 dir = (player - mIndex).TileNormalize();
+		if (Vector2::IsCardinal(dir))
+			return dir;
+		Vector2 dir2 = (playerPrevPos - mIndex).TileNormalize();
+		if (Vector2::IsCardinal(dir2))
+			return dir2;
+		if (mPrevDir != Vector2::Zero)
+		{
+			Vector2 rslt = mIndex + mPrevDir;
+			if (MapManager::GetWall(rslt)== nullptr && MapManager::GetEnemy(rslt) == nullptr)
+				return mPrevDir;
+			if (mPrevDir.x == 0)
+				dir.y = 0;
+			else
+				dir.x = 0;
+			return dir;
+		}
 		else
 		{
-			if (mPrevDir == Vector2::Zero)
-			{
-				if (abs(player.x - mIndex.x) >= abs(player.y - mIndex.y))
-					return Vector2(player.x - mIndex.x, 0.0f).TileNormalize();
-				else
-					return Vector2(0.0f, player.y - mIndex.y).TileNormalize();
-			}
+			if (abs(player.x - mIndex.x) >= abs(player.y - mIndex.y))
+				return Vector2(player.x - mIndex.x, 0.0f).TileNormalize();
+			else
+				return Vector2(0.0f, player.y - mIndex.y).TileNormalize();
 		}
-		return mPrevDir;
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{

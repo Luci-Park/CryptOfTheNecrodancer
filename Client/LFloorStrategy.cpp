@@ -41,10 +41,14 @@ namespace cl
 		return mSprites[mIndex];
 	}
 
+	void ActiveDirtStrategy::Update()
+	{
+		ChangeToFlash();
+	}
+
 	void ActiveDirtStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
-		ChangeToFlash();
 	}
 
 	void ActiveDirtStrategy::ChangeToFlash()
@@ -73,10 +77,14 @@ namespace cl
 		return mSprites[mIndex];
 	}
 
+	void FlashStrategy::Update()
+	{
+		ChangeToDefault();
+	}
+
 	void FlashStrategy::OnBeat()
 	{
 		mIndex = !mIndex;
-		ChangeToDefault();
 	}
 
 	void FlashStrategy::ChangeToDefault()

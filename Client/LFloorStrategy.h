@@ -12,6 +12,7 @@ namespace cl
 		FloorStrategy(FloorTile* tile);
 		virtual ~FloorStrategy(){}
 		virtual Sprite GetSprite() = 0;
+		virtual void Update() = 0;
 		virtual void OnBeat() = 0;
 		virtual void OnInteract(TileObject* object) = 0;
 	protected:
@@ -25,6 +26,7 @@ namespace cl
 		InactiveDirtStrategy(FloorTile* tile);
 		virtual ~InactiveDirtStrategy() {}
 		Sprite GetSprite(){return mSprite;}
+		virtual void Update() {};
 		virtual void OnBeat() {}
 		virtual void OnInteract(TileObject* object) {}
 	private:
@@ -36,7 +38,8 @@ namespace cl
 	public:
 		ActiveDirtStrategy(FloorTile* tile);
 		virtual ~ActiveDirtStrategy(){}
-		virtual Sprite GetSprite(); 
+		virtual Sprite GetSprite();
+		virtual void Update();
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object){}
 
@@ -52,6 +55,7 @@ namespace cl
 		FlashStrategy(FloorTile* tile);
 		virtual ~FlashStrategy(){}
 		virtual Sprite GetSprite();
+		virtual void Update();
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object) {}
 
@@ -65,8 +69,9 @@ namespace cl
 	{
 	public:
 		WaterStrategy(FloorTile* tile);
-		virtual ~WaterStrategy(){}
+		virtual ~WaterStrategy() {}
 		virtual Sprite GetSprite() { return mSprite; }
+		virtual void Update() {}
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object);
 	private:
@@ -82,6 +87,7 @@ namespace cl
 		StairStrategy(StairTile* tile);
 		virtual ~StairStrategy();
 		virtual Sprite GetSprite();
+		virtual void Update() {}
 		virtual void OnBeat();
 		virtual void OnInteract(TileObject* object);
 	private:

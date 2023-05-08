@@ -71,7 +71,8 @@ namespace cl
 		virtual void SetFloorType(eFloorTypes type) { mType = type; }
 		eFloorTypes GetFloorType() { return mType; }
 	protected:
-		Sprite GetSprite();
+		void GetSprite();
+
 		FloorStrategy* mCurrStrategy;
 		SpriteRenderer* mFloorRenderer;
 		FloorShadow* mFloorShadow;

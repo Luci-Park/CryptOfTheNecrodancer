@@ -37,7 +37,6 @@ namespace cl
 		mSkelSprite = object::Instantiate<SkeletonSprite>(GameObject::GetScene(), mTransform, mTransform->GetPos(), eLayerType::Monster);
 		mSprite = mSkelSprite;
 		mSkelSprite->SetSkeleY(GetY());
-		mSkelSprite->Turn(CardinalMoveTowards());
 		mSkelSprite->RaiseHand();
 	}
 	void SkeletonBase::Update()

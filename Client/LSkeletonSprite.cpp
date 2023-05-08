@@ -39,6 +39,7 @@ namespace cl
 
         mAnimator->CreateAnimation(mNoHead, L"skeletons", path, 17, 6, 16, skeleY, 1, -Vector2(12, 24), BeatManager::BeatDuration());
         mAnimator->CreateAnimation(mNoHeadShadow, L"skeletons", path, 17, 6, 16, skeleY + 1, 1, -Vector2(12, 24), BeatManager::BeatDuration());
+        RaiseHand();
     }
     void SkeletonSprite::Turn(Vector2 dir)
     {

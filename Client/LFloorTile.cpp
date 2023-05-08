@@ -122,11 +122,9 @@ namespace cl
 
 	void FloorTile::Update()
 	{
-		Sprite newSprite = GetSprite();
-		if (mFloorRenderer->GetSprite() != newSprite)
-		{
-			mFloorRenderer->SetSprite(newSprite);
-		}
+		GetSprite();
+		if (mCurrStrategy != nullptr)
+			mCurrStrategy->Update();
 		GameObject::Update();
 	}
 
@@ -147,10 +145,13 @@ namespace cl
 			mCurrStrategy->OnInteract(object);
 	}
 
-	Sprite FloorTile::GetSprite()
+	void FloorTile::GetSprite()
 	{
-		if (mCurrStrategy != nullptr)
-			return mCurrStrategy->GetSprite();
+		if (mCurrStrategy != nullptr 
+			&& mFloorRenderer->GetSprite() != mCurrStrategy->GetSprite())
+		{
+			mFloorRenderer->SetSprite(mCurrStrategy->GetSprite());
+		}
 	}
 #pragma endregion
 
