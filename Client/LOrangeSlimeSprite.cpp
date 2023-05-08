@@ -19,10 +19,10 @@ namespace cl
 		std::wstring leftPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Right.bmp";
 
-		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 6, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 6, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 6, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 6, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 7, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
 		mAnimator->Play(L"LeftJump", Animator::PlaySetting::Loop, false);
 	}
 	void OrangeSlimeSprite::Update()
@@ -41,7 +41,7 @@ namespace cl
 	}
 	void OrangeSlimeSprite::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::BeatDuration());
+		mAnimator->SetDuration(BeatManager::SecondsPerBeat());
 	}
 	void OrangeSlimeSprite::JumpAnimation()
 	{

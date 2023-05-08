@@ -25,8 +25,8 @@ namespace cl
 		{
 			mRightAnim[i] = L"FireballRight " + std::to_wstring(i);
 			mLeftAnim[i] = L"FireballLeft" + std::to_wstring(i);
-			mAnimator->CreateAnimation(mRightAnim[i], L"FireballRight", rightPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::BeatDuration());
-			mAnimator->CreateAnimation(mLeftAnim[i], L"FireballLeft", leftPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::BeatDuration());
+			mAnimator->CreateAnimation(mRightAnim[i], L"FireballRight", rightPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::SecondsPerBeat());
+			mAnimator->CreateAnimation(mLeftAnim[i], L"FireballLeft", leftPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::SecondsPerBeat());
 		}
 	}
 	void FireballEffect::Update()

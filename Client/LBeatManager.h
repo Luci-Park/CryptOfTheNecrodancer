@@ -9,7 +9,7 @@ namespace cl
 		static void SetBPM(int bpm);
 		static int BPM() { return _bpm; }
 		static float MoveSpeed() { return _speedPerTile; }
-		static float BeatDuration() { return _beatDuration; }
+		static float SecondPerBeat() { return _spb; }
 		static bool IsMovable() { return _movable; }
 
 		static void Update();
@@ -23,7 +23,7 @@ namespace cl
 		
 		static int _bpm;
 		static float _speedPerTile;
-		static float _beatDuration;
+		static float _spb;
 		static bool _movable;
 	};
 }

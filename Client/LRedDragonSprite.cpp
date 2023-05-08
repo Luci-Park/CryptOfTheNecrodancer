@@ -32,20 +32,20 @@ namespace cl
 		mAnimator = AddComponent<Animator>();
 		CharacterSprite::Initialize();
 		std::wstring path = L"..\\Assets\\Arts\\Miniboss\\Dragon\\RedDragon.bmp";
-		mAnimator->CreateAnimation(mAnimations[0][0], L"RedDragon", path, 18, 2, 0, 0, 4, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mAnimations[1][0], L"RedDragon", path, 18, 2, 4, 0, 3, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mAnimations[2][0], L"RedDragon", path, 18, 2, 7, 0, 2, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mAnimations[2][1], L"RedDragon", path, 18, 2, 9, 0, 2, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mAnimations[1][1], L"RedDragon", path, 18, 2, 11, 0, 3, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mAnimations[0][1], L"RedDragon", path, 18, 2, 14, 0, 4, Vector2(-30, -51), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mAnimations[0][0], L"RedDragon", path, 18, 2, 0, 0, 4, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[1][0], L"RedDragon", path, 18, 2, 4, 0, 3, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[2][0], L"RedDragon", path, 18, 2, 7, 0, 2, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[2][1], L"RedDragon", path, 18, 2, 9, 0, 2, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[1][1], L"RedDragon", path, 18, 2, 11, 0, 3, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[0][1], L"RedDragon", path, 18, 2, 14, 0, 4, Vector2(-30, -51), BeatManager::SecondsPerBeat());
 
 
-		mAnimator->CreateAnimation(mShadowAnimations[0][0], L"RedDragon", path, 18, 2, 0, 1, 4, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mShadowAnimations[1][0], L"RedDragon", path, 18, 2, 4, 1, 3, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mShadowAnimations[2][0], L"RedDragon", path, 18, 2, 7, 1, 2, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mShadowAnimations[2][1], L"RedDragon", path, 18, 2, 9, 1, 2, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mShadowAnimations[1][1], L"RedDragon", path, 18, 2, 11, 1, 3, Vector2(-30, -51), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mShadowAnimations[0][1], L"RedDragon", path, 18, 2, 14, 1, 4, Vector2(-30, -51), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mShadowAnimations[0][0], L"RedDragon", path, 18, 2, 0, 1, 4, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[1][0], L"RedDragon", path, 18, 2, 4, 1, 3, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[2][0], L"RedDragon", path, 18, 2, 7, 1, 2, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[2][1], L"RedDragon", path, 18, 2, 9, 1, 2, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[1][1], L"RedDragon", path, 18, 2, 11, 1, 3, Vector2(-30, -51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[0][1], L"RedDragon", path, 18, 2, 14, 1, 4, Vector2(-30, -51), BeatManager::SecondsPerBeat());
 	}
 	void RedDragonSprite::Turn(Vector2 dir)
 	{

@@ -28,7 +28,7 @@ namespace cl
 		Vector2 offset;
 		offset.x = -6;
 		offset.y = -19 - 15;
-		mAnimator->CreateAnimation(L"Idle", L"WallTorch", path, 4, 1, 0, 0, 4, offset, BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(L"Idle", L"WallTorch", path, 4, 1, 0, 0, 4, offset, BeatManager::SecondsPerBeat());
 		mAnimator->Play(L"Idle", Animator::PlaySetting::Loop, false);
 	}
 	void WallTorch::Update()

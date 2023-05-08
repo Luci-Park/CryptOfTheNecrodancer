@@ -36,7 +36,7 @@ namespace cl
 	}
 	void CadenceShovelEffect::Show()
 	{
-		showTime = BeatManager::BeatDuration()*0.75;
+		showTime = BeatManager::SecondsPerBeat()*0.75;
 		timer += Time::DeltaTime();
 		if (showTime <= timer)
 		{

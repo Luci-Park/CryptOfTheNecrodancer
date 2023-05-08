@@ -559,6 +559,9 @@
     <ClInclude Include="LBeatingHeartUI.h">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClInclude>
+    <ClInclude Include="LBeatBar.h">
+      <Filter>Contents\UI\Rhythm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -932,6 +935,9 @@
       <Filter>Contents\Objects\GameCharacters\Monsters\Bosses\DeepBlues</Filter>
     </ClCompile>
     <ClCompile Include="LBeatingHeartUI.cpp">
+      <Filter>Contents\UI\Rhythm</Filter>
+    </ClCompile>
+    <ClCompile Include="LBeatBar.cpp">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClCompile>
   </ItemGroup>

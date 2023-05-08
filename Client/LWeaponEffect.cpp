@@ -36,6 +36,6 @@ namespace cl
 	}
 	void WeaponEffect::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::BeatDuration() * 0.25);
+		mAnimator->SetDuration(BeatManager::SecondsPerBeat() * 0.25);
 	}
 }

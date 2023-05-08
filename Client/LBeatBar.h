@@ -1,5 +1,6 @@
 #pragma once
 #include "LGameObject.h"
+#include "LSprite.h"
 namespace cl
 {
 	class SpriteRenderer;
@@ -8,8 +9,11 @@ namespace cl
 	public:
 		BeatBar(Scene* sc);
 		~BeatBar();
+		void SetToUrgent();
 	private:
 		SpriteRenderer* mSpriteRenderer;
+		Sprite mNormalBeat;
+		Sprite mUrgentBeat;
 	};
 }
 

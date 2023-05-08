@@ -39,7 +39,7 @@ namespace cl
 	}
 	void CharacterSprite::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::BeatDuration());
+		mAnimator->SetDuration(BeatManager::SecondsPerBeat());
 	}
 	void CharacterSprite::Jump()
 	{
@@ -72,7 +72,7 @@ namespace cl
 		if (!mbIsFlashing)
 		{
 			mbIsFlashing = true;
-			mFlashDuration = BeatManager::BeatDuration()/4.0f;
+			mFlashDuration = BeatManager::SecondsPerBeat()/4.0f;
 			mFlashTimer = 0.0f;
 			mAnimator->SwitchShow();
 			return;
@@ -83,7 +83,7 @@ namespace cl
 			mFlashDuration += mFlashDuration;
 			mAnimator->SwitchShow();
 		}
-		if (BeatManager::BeatDuration() <= mFlashDuration)
+		if (BeatManager::SecondsPerBeat() <= mFlashDuration)
 		{
 			mbIsFlashing = false;
 			mAnimator->SetShow(true);

@@ -17,14 +17,14 @@ namespace cl
 		std::wstring leftPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Monsters\\Slimes\\Slimes_Right.bmp";
 
-		mAnimator->CreateAnimation(L"LeftIdle", L"Slime_Left", leftPath, 4, 8, 0, 0, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 2, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 4, 8, 0, 0, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 2, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"LeftIdleShadow", L"Slime_Left", leftPath, 4, 8, 0, 1, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 3, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightIdleShadow", L"Slime_Right", rightPath, 4, 8, 0, 1, 4, -Vector2(13, 22), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 3, 4, -Vector2(13, 22), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(L"LeftIdle", L"Slime_Left", leftPath, 4, 8, 0, 0, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"LeftJump", L"Slime_Left", leftPath, 4, 8, 0, 2, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightIdle", L"Slime_Right", rightPath, 4, 8, 0, 0, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightJump", L"Slime_Right", rightPath, 4, 8, 0, 2, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"LeftIdleShadow", L"Slime_Left", leftPath, 4, 8, 0, 1, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"LeftJumpShadow", L"Slime_Left", leftPath, 4, 8, 0, 3, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightIdleShadow", L"Slime_Right", rightPath, 4, 8, 0, 1, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(L"RightJumpShadow", L"Slime_Right", rightPath, 4, 8, 0, 3, 4, -Vector2(13, 22), BeatManager::SecondsPerBeat());
 
 		Turn(GetRandomInt(0, 1) ? Vector2::Left : Vector2::Right);
 		Idle();
@@ -48,7 +48,7 @@ namespace cl
 	}
 	void BlueSlimeSprite::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::BeatDuration());
+		mAnimator->SetDuration(BeatManager::SecondsPerBeat());
 	}
 	void BlueSlimeSprite::Idle()
 	{

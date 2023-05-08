@@ -9,14 +9,14 @@ namespace cl
 	float BeatManager::mGameTimer = 0.0f;
 	int BeatManager::_bpm = 1;
 	float BeatManager::_speedPerTile = 0.0f;
-	float BeatManager::_beatDuration = 0.0f;
+	float BeatManager::_spb = 0.0f;
 
 	void BeatManager::SetBPM(int bpm)
 	{
 		_bpm = bpm;
 		float bps = bpm / 60.0f;
-		_beatDuration = 1 / bps;
-		_speedPerTile = UNITLENGTH / _beatDuration;
+		_spb = 1 / bps;
+		_speedPerTile = UNITLENGTH / _spb;
 		for (int i = 0; i < mCharacters.size(); ++i)
 			mCharacters[i]->OnBeatChanged();
 	}

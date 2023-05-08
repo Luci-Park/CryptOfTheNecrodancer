@@ -18,11 +18,11 @@ namespace cl
 		mLeftShadowAnimation = L"Bat_Left_Shadow";
 		mRightShadowAnimation = L"Bat_Right_Shadow";
 
-		mAnimator->CreateAnimation(mLeftAnimation, mLeftAnimation, leftPath, 4, 8, 0, 0, 4, -Vector2(12, 24), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mRightAnimation, mRightAnimation, rightPath, 4, 8, 0, 0, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mLeftAnimation, mLeftAnimation, leftPath, 4, 8, 0, 0, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightAnimation, mRightAnimation, rightPath, 4, 8, 0, 0, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
 
-		mAnimator->CreateAnimation(mLeftShadowAnimation, mLeftAnimation, leftPath, 4, 8, 0, 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
-		mAnimator->CreateAnimation(mRightShadowAnimation, mRightAnimation, rightPath, 4, 8, 0, 1, 4, -Vector2(12, 24), BeatManager::BeatDuration());
+		mAnimator->CreateAnimation(mLeftShadowAnimation, mLeftAnimation, leftPath, 4, 8, 0, 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightShadowAnimation, mRightAnimation, rightPath, 4, 8, 0, 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
 		Turn(Vector2::Right);
 	}
 	void BatSprite::Turn(Vector2 dir)
