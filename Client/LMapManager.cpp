@@ -105,6 +105,12 @@ namespace cl
 			return _Map->GetTileObject(index);
 		return nullptr;
 	}
+	bool MapManager::IsTileEmptyExceptPlayer(Vector2 index)
+	{
+		if (GetEnemy(index) == nullptr && GetWall(index) == nullptr)
+			return true;
+		return false;
+	}
 	Cadence* MapManager::GetPlayer(Vector2 index)
 	{
 		if (_Map != nullptr)

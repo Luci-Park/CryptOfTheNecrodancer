@@ -176,14 +176,20 @@ namespace cl
 			return dir2;
 		if (mPrevDir != Vector2::Zero)
 		{
-			Vector2 rslt = mIndex + mPrevDir;
-			if (MapManager::GetWall(rslt)== nullptr && MapManager::GetEnemy(rslt) == nullptr)
-				return mPrevDir;
-			if (mPrevDir.x == 0)
-				dir.y = 0;
-			else
+			if (mPrevDir.x != 0)
+			{
+				if (mPrevDir.x == dir.x && MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir));
+					return mPrevDir;
 				dir.x = 0;
-			return dir;
+				return dir;
+			}
+			if (mPrevDir.y != 0)
+			{
+				if (mPrevDir.y == dir.y && MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir))
+					return mPrevDir;
+				dir.y = 0;
+				return dir;
+			}
 		}
 		else
 		{

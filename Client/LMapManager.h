@@ -43,6 +43,7 @@ namespace cl
 		static WallTile* GetWall(Vector2 index);
 		static TileObject* GetEnemy(Vector2 index);
 		static TileObject* GetTileObject(Vector2 index);
+		static bool IsTileEmptyExceptPlayer(Vector2 index);
 		static Cadence* GetPlayer(Vector2 index);
 		static Vector2 GetPlayerIndex();
 		static Item* GetItem(Vector2 index);
