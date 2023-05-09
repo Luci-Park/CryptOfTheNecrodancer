@@ -65,6 +65,7 @@ namespace cl
 		if (mCurrentLeftBeat == bar)
 		{
 			GrooveChainManager::Instance().LooseGroove();
+			Conductor::Instance().OnPlayerMove();
 			mCurrentLeftBeat = nullptr;
 		}
 	}
@@ -72,11 +73,10 @@ namespace cl
 	{
 		if (mCurrentRightBeat == bar)
 		{
-			GrooveChainManager::Instance().LooseGroove();
 			mCurrentRightBeat = nullptr;
 		}
 	}
-	void BeatUI::DespawnCurrentBar()
+	void BeatUI::DespawnCurrentBeat()
 	{
 		if (mCurrentLeftBeat != nullptr)
 		{
@@ -89,5 +89,9 @@ namespace cl
 			mCurrentRightBeat->Destroy();
 			mCurrentRightBeat = nullptr;
 		}
+	}
+	bool BeatUI::IsInBeat()
+	{
+		return (mCurrentLeftBeat && mCurrentRightBeat);
 	}
 }

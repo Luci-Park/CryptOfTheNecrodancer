@@ -8,7 +8,7 @@ namespace cl
 	class CadenceSound;
 	class LightSource;
 	class Health;
-	class BeatingHeartUI;
+	class BeatUI;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -40,7 +40,7 @@ namespace cl
 		virtual bool TryDig(Vector2 direction)		override;
 	private:
 		void OnMove(Vector2 direction);
-		void SetInput();
+		Vector2 CheckInput();
 		void SetSprite();
 
 		Tool* mShovel() { return (Tool*)mItems[(int)eItemTypes::Tool]; }
@@ -53,6 +53,7 @@ namespace cl
 	private:
 		Health* mHealth;
 		Item* mItems[(int)eItemTypes::Size];
+		BeatUI* mJudge;
 		LightSource* mLightSource;
 		CadenceShovelEffect* mShovelEffect;
 		CadenceSound* mSound;

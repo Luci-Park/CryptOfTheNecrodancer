@@ -28,6 +28,7 @@ namespace cl
 		: GameCharacter(scene, true)
 		, consecutiveHits(0)
 		, mMoved(false)
+		, mInput(Vector2::Zero)
 	{
 		Camera::SetTarget(this);
 		mHealth = new Health(this);
@@ -59,7 +60,7 @@ namespace cl
 		mSound = new CadenceSound();
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		object::Instantiate<BeatUI>(eLayerType::UI);
+		mJudge = object::Instantiate<BeatUI>(eLayerType::System);
 		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		
@@ -82,9 +83,10 @@ namespace cl
 			}
 			else
 			{
-				SetInput();
-				if (mInput != Vector2::One)
+				Vector2 input = CheckInput();
+				if (Vector2::IsCardinal(input))
 				{
+
 					SetSprite();
 					if (!UnSink())
 						OnMove(mInput);
@@ -220,29 +222,30 @@ namespace cl
 		return false;
 	}
 
-	void Cadence::SetInput()
+	Vector2 Cadence::CheckInput()
 	{
 		mMoved = false;
-		mInput = Vector2::One;
+		Vector2 input = Vector2::One;
 		if (Input::GetKeyDown(eKeyCode::LEFT))
 		{
-			mInput = Vector2::Left;
+			input = Vector2::Left;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::RIGHT))
 		{
-			mInput = Vector2::Right;
+			input = Vector2::Right;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::UP))
 		{
-			mInput = Vector2::Up;
+			input = Vector2::Up;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::DOWN))
 		{
-			mInput = Vector2::Down;
+			input = Vector2::Down;
 		}
+		return input;
 	}
 
 	void Cadence::SetSprite()

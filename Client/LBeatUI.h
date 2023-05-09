@@ -18,6 +18,7 @@ namespace cl
 		void RightBeatExit(BeatBar* bar);
 
 		void DespawnCurrentBeat();
+		bool IsInBeat();
 	private:
 		int mBeatsShownInAdvance;
 		int mNextBeatToShow;
