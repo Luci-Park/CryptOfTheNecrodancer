@@ -12,9 +12,12 @@ namespace cl
 		virtual void Initialize() override;
 		virtual void Update() override;
 
-		void SetCurrentBar(BeatBar* bar);
-		void UnsetCurrentBar(BeatBar* bar);
-		void DespawnCurrentBar();
+		void LeftBeatEnter(BeatBar* bar);
+		void RightBeatEnter(BeatBar* bar);
+		void LeftBeatExit(BeatBar* bar);
+		void RightBeatExit(BeatBar* bar);
+
+		void DespawnCurrentBeat();
 	private:
 		int mBeatsShownInAdvance;
 		int mNextBeatToShow;
@@ -22,7 +25,10 @@ namespace cl
 		Vector2 mLeftSpawn;
 		Vector2 mDespawnPoint;
 
-		BeatBar* mCurrentBeat;
+		BeatBar* mCurrentLeftBeat;
+		BeatBar* mCurrentRightBeat;
+
+
 	};
 }
 

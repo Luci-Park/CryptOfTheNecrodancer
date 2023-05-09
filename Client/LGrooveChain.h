@@ -7,18 +7,24 @@ namespace cl
 	class GrooveChainManager
 	{
 	public:
-		static void Initialize();
-		static int GrooveChain() { return _GrooveChain; }
-		static void LooseGroove();
-		static void IncreaseGroove();
-		static void SetGroove(int groove);
-		static void IncreaseKillCount();
+		static GrooveChainManager& Instance()
+		{
+			static GrooveChainManager instance;
+			return instance;
+		}
+		void Initialize();
+		void Reset();
+		int GrooveChain() { return _GrooveChain; }
+		void LooseGroove();
+		void IncreaseGroove();
+		void SetGroove(int groove);
+		void IncreaseKillCount();
 	private:
-		static int _GrooveChain;
-		static AudioClip* _ChainStartSound;
-		static AudioClip* _ChainLooseSound;
+		int _GrooveChain;
+		AudioClip* _ChainStartSound;
+		AudioClip* _ChainLooseSound;
 
-		static int _KillCount;
+		int _KillCount;
 	};
 }
 

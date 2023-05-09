@@ -35,10 +35,18 @@ namespace cl
 	{
 		if (!Conductor::Instance().IsPlaying())return;
 		if (IsOnBeat())
-			mMaster->SetCurrentBar(this);
+		{
+			if (mDirection == Vector2::Left)
+				mMaster->LeftBeatEnter(this);
+			else
+				mMaster->RightBeatEnter(this);
+		}
 		if (CheckIfDespawn())
 		{
-			mMaster->UnsetCurrentBar(this);
+			if (mDirection == Vector2::Left)
+				mMaster->LeftBeatExit(this);
+			else
+				mMaster->RightBeatExit(this);
 			Destroy();
 			return;
 		}
@@ -58,15 +66,15 @@ namespace cl
 	bool BeatBar::IsOnBeat()
 	{
 		float currBeat = Conductor::Instance().SongPositionBeats();
-		if (mMyBeat - 0.25 <= currBeat
-			&& currBeat <= mMyBeat + 0.5)
+		if (mMyBeat - 0.4 <= currBeat
+			&& currBeat <= mMyBeat + 0.4)
 			return true;
 		return false;
 	}
 
 	void BeatBar::Move()
 	{
-		float t = (mBeatsInAdvance - (mMyBeat + .25 - Conductor::Instance().SongPositionBeats())) / mBeatsInAdvance;
+		float t = (mBeatsInAdvance - (mMyBeat + .4 - Conductor::Instance().SongPositionBeats())) / mBeatsInAdvance;
 		Vector2 pos = Vector2::Lerp(mSpawnPos, mDespawnPos, t);
 		mTransform->SetPos(pos);
 	}

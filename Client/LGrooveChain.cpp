@@ -10,10 +10,13 @@ namespace cl
 	int GrooveChainManager::_KillCount = 0;
 
 	void GrooveChainManager::Initialize()
-	{
-		_GrooveChain = MINGROOVE;
+	{		
 		_ChainStartSound = Resources::Load<AudioClip>(L"sfx_chain_groove_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_groove_ST.wav");
 		_ChainLooseSound = Resources::Load<AudioClip>(L"sfx_chain_break_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_break_ST.wav");
+	}
+	void GrooveChainManager::Reset()
+	{
+		_GrooveChain = MINGROOVE;
 		_KillCount = 0;
 	}
 	void GrooveChainManager::LooseGroove()

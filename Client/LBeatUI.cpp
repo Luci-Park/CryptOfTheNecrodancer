@@ -4,6 +4,7 @@
 #include "LBeatingHeartUI.h"
 #include "LBeatBar.h"
 #include "LApplication.h"
+#include "LGrooveChain.h"
 
 extern::cl::Application application;
 namespace cl
@@ -49,22 +50,44 @@ namespace cl
 			mNextBeatToShow++;
 		}
 	}
-	void BeatUI::SetCurrentBar(BeatBar* bar)
+	void BeatUI::LeftBeatEnter(BeatBar* bar)
 	{
-		if (mCurrentBeat != bar)
-			mCurrentBeat = bar;
+		if (mCurrentLeftBeat != bar)
+			mCurrentLeftBeat = bar;
 	}
-	void BeatUI::UnsetCurrentBar(BeatBar* bar)
+	void BeatUI::RightBeatEnter(BeatBar* bar)
 	{
-		if (mCurrentBeat == bar)
-			mCurrentBeat = nullptr;
+		if (mCurrentRightBeat != bar)
+			mCurrentRightBeat = bar;
+	}
+	void BeatUI::LeftBeatExit(BeatBar* bar)
+	{
+		if (mCurrentLeftBeat == bar)
+		{
+			GrooveChainManager::Instance().LooseGroove();
+			mCurrentLeftBeat = nullptr;
+		}
+	}
+	void BeatUI::RightBeatExit(BeatBar* bar)
+	{
+		if (mCurrentRightBeat == bar)
+		{
+			GrooveChainManager::Instance().LooseGroove();
+			mCurrentRightBeat = nullptr;
+		}
 	}
 	void BeatUI::DespawnCurrentBar()
 	{
-		if (mCurrentBeat != nullptr)
+		if (mCurrentLeftBeat != nullptr)
 		{
-			mCurrentBeat->Destroy();
-			mCurrentBeat = nullptr;
+			mCurrentLeftBeat->Destroy();
+			mCurrentLeftBeat = nullptr;
+		}
+		
+		if (mCurrentRightBeat != nullptr)
+		{
+			mCurrentRightBeat->Destroy();
+			mCurrentRightBeat = nullptr;
 		}
 	}
 }
