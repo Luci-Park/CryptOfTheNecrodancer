@@ -39,9 +39,9 @@ namespace cl
 			return Vector2::Down * 2;
 		else if (mBeatCount > 0 && mBeatCount % mMoveBeat == 0)
 		{
-			if (MapManager::GetPlayer(mIndex + Vector2::DownLeft) != nullptr)
+			if (MapManager::GetPlayerOnIndex(mIndex + Vector2::DownLeft) != nullptr)
 				return Vector2::DownLeft;
-			else if (MapManager::GetPlayer(mIndex + Vector2::DownRight) != nullptr)
+			else if (MapManager::GetPlayerOnIndex(mIndex + Vector2::DownRight) != nullptr)
 				return Vector2::DownRight;
 			else if (MapManager::GetTileObject(mIndex + Vector2::Down) == nullptr)
 				return Vector2::Down;

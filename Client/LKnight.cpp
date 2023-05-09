@@ -38,7 +38,7 @@ namespace cl
 	{
 		for (int i = 0; i < ((int)AttackDir::Size); i++)
 		{
-			if (MapManager::GetPlayer(mIndex + _AttackDirections[i]) != nullptr)
+			if (MapManager::GetPlayerOnIndex(mIndex + _AttackDirections[i]) != nullptr)
 				return _AttackDirections[i];
 		}
 		return Vector2::Zero;

@@ -65,7 +65,7 @@ namespace cl
 	}
 	bool MinotaurBase::TryAttack(Vector2 direction)
 	{
-		Cadence* player = MapManager::GetPlayer(mIndex + direction);
+		Cadence* player = MapManager::GetPlayerOnIndex(mIndex + direction);
 		if (player)
 		{
 			mWeapon->Attack(mIndex, direction);

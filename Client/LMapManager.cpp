@@ -111,10 +111,16 @@ namespace cl
 			return true;
 		return false;
 	}
-	Cadence* MapManager::GetPlayer(Vector2 index)
+	Cadence* MapManager::GetPlayerOnIndex(Vector2 index)
 	{
 		if (_Map != nullptr)
-			return _Map->GetPlayer(index);
+			return _Map->GetPlayerOnIndex(index);
+		return nullptr;
+	}
+	Cadence* MapManager::GetPlayer()
+	{
+		if (_Map != nullptr)
+			return _Map->GetPlayer();
 		return nullptr;
 	}
 	Vector2 MapManager::GetPlayerIndex()

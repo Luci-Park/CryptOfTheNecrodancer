@@ -110,3 +110,4 @@ WindowAPI Project (2/14 ~ )
 * Procedurally generated map
 * Stairs are now locked and opened by killing minibosses
 * `Deep Blues` done.
+* There is now a `BeatJudge` that limits player movement

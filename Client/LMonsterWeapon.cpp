@@ -34,7 +34,7 @@ namespace cl
 	bool MonsterWeapon::TryAttack(Vector2 srcIdx, Vector2 input)
 	{
 		Vector2 dest = srcIdx + input;
-		Cadence* enemy = MapManager::GetPlayer(dest);
+		Cadence* enemy = MapManager::GetPlayerOnIndex(dest);
 		if (enemy != nullptr)
 		{
 			enemy->OnAttacked(mPower, input);
