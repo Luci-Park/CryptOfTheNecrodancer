@@ -47,7 +47,7 @@ namespace cl
 		Scene::OnEnter();
 		Cadence::Reset();
 		Conductor::Instance().SetSong(mBGM, 130);
-		GrooveChainManager::Initialize();
+		GrooveChainManager::Instance().Reset();
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
 	}
 	void LobbyScene::OnExit()

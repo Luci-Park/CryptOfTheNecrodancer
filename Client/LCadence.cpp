@@ -111,7 +111,7 @@ namespace cl
 		{
 			Camera::StartShake();
 			PlayOnHitSound();
-			GrooveChainManager::LooseGroove();
+			GrooveChainManager::Instance().LooseGroove();
 			//mSprite->Flash
 		}
 		return true;
@@ -179,7 +179,7 @@ namespace cl
 	{
 		if (mWeapon() == nullptr)
 		{
-			GrooveChainManager::LooseGroove();
+			GrooveChainManager::Instance().LooseGroove();
 			return false;
 		}
 		bool didAttack = mWeapon()->Attack(mIndex, direction);
@@ -189,7 +189,7 @@ namespace cl
 			Camera::StartShake();
 			if (MapManager::GetEnemy(mIndex + direction) == nullptr)
 			{
-				GrooveChainManager::IncreaseKillCount();
+				GrooveChainManager::Instance().IncreaseKillCount();
 				//Items killcount here
 			}
 		}
@@ -212,7 +212,7 @@ namespace cl
 				}
 				else
 				{
-					GrooveChainManager::LooseGroove();
+					GrooveChainManager::Instance().LooseGroove();
 				}
 			}
 			return true;//I tried dig

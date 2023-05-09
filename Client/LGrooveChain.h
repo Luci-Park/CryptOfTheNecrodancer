@@ -12,19 +12,21 @@ namespace cl
 			static GrooveChainManager instance;
 			return instance;
 		}
-		void Initialize();
 		void Reset();
-		int GrooveChain() { return _GrooveChain; }
+		int GrooveChain() { return mGrooveChain; }
 		void LooseGroove();
 		void IncreaseGroove();
 		void SetGroove(int groove);
 		void IncreaseKillCount();
 	private:
-		int _GrooveChain;
-		AudioClip* _ChainStartSound;
-		AudioClip* _ChainLooseSound;
+		GrooveChainManager();
+		GrooveChainManager(const GrooveChainManager&) = delete; //disable operator
+		GrooveChainManager* operator =(const GrooveChainManager&) = delete; // disable operator
+		int mGrooveChain;
+		AudioClip* mChainStartSound;
+		AudioClip* mChainLooseSound;
 
-		int _KillCount;
+		int mKillCount;
 	};
 }
 

@@ -3,7 +3,6 @@
 #include "LConductor.h"
 #include "LResources.h"
 #include "LAudioClip.h"
-#include "LGrooveChain.h"
 namespace cl
 {
 	Depth1Scene::Depth1Scene()
@@ -43,7 +42,6 @@ namespace cl
 	{
 		Scene::OnEnter();
 		Conductor::Instance().SetSong(mBGM, 115);
-		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::Random1, this);
 	}
 	void Depth1Scene::OnExit()

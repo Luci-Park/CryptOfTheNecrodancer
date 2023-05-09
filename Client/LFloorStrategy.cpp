@@ -55,7 +55,7 @@ namespace cl
 	{
 		if (mTile->GetFloorType() == eFloorTypes::ActiveDirt)
 		{
-			if (GrooveChainManager::GrooveChain() > MINGROOVE)
+			if (GrooveChainManager::Instance().GrooveChain() > MINGROOVE)
 				mTile->SetFloorType(eFloorTypes::Flash);
 		}
 	}
@@ -91,7 +91,7 @@ namespace cl
 	{
 		if (mTile->GetFloorType() == eFloorTypes::Flash)
 		{
-			if (GrooveChainManager::GrooveChain() == MINGROOVE)
+			if (GrooveChainManager::Instance().GrooveChain() == MINGROOVE)
 				mTile->SetFloorType(eFloorTypes::ActiveDirt);
 		}
 	}

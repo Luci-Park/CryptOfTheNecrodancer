@@ -4,48 +4,45 @@
 #include "LResources.h"
 namespace cl
 {
-	int GrooveChainManager::_GrooveChain = MINGROOVE;
-	AudioClip* GrooveChainManager::_ChainStartSound = nullptr;
-	AudioClip* GrooveChainManager::_ChainLooseSound = nullptr;
-	int GrooveChainManager::_KillCount = 0;
-
-	void GrooveChainManager::Initialize()
-	{		
-		_ChainStartSound = Resources::Load<AudioClip>(L"sfx_chain_groove_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_groove_ST.wav");
-		_ChainLooseSound = Resources::Load<AudioClip>(L"sfx_chain_break_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_break_ST.wav");
+	GrooveChainManager::GrooveChainManager()
+		: mGrooveChain(MINGROOVE)
+		, mKillCount(0)
+	{
+		mChainStartSound = Resources::Load<AudioClip>(L"sfx_chain_groove_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_groove_ST.wav");
+		mChainLooseSound = Resources::Load<AudioClip>(L"sfx_chain_break_ST", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_chain_break_ST.wav");
 	}
 	void GrooveChainManager::Reset()
 	{
-		_GrooveChain = MINGROOVE;
-		_KillCount = 0;
+		mGrooveChain = MINGROOVE;
+		mKillCount = 0;
 	}
 	void GrooveChainManager::LooseGroove()
 	{
-		if (_GrooveChain > MINGROOVE)
-			_ChainLooseSound->Play(false);
-		_GrooveChain = MINGROOVE;
-		_KillCount = 0;
+		if (mGrooveChain > MINGROOVE)
+			mChainLooseSound->Play(false);
+		mGrooveChain = MINGROOVE;
+		mKillCount = 0;
 	}
 	void GrooveChainManager::IncreaseGroove()
 	{
-		if (_GrooveChain == MINGROOVE)
-			_ChainStartSound->Play(false);
-		_GrooveChain = std::clamp(_GrooveChain + 1, MINGROOVE, MAXGROOVE);
+		if (mGrooveChain == MINGROOVE)
+			mChainStartSound->Play(false);
+		mGrooveChain = std::clamp(mGrooveChain + 1, MINGROOVE, MAXGROOVE);
 	}
 	void GrooveChainManager::SetGroove(int groove)
 	{
-		if (_GrooveChain == MINGROOVE)
-			_ChainStartSound->Play(false);
-		_GrooveChain = std::clamp(groove, MINGROOVE, MAXGROOVE);
+		if (mGrooveChain == MINGROOVE)
+			mChainStartSound->Play(false);
+		mGrooveChain = std::clamp(groove, MINGROOVE, MAXGROOVE);
 	}
 	void GrooveChainManager::IncreaseKillCount()
 	{
-		if (_GrooveChain == MAXGROOVE)
+		if (mGrooveChain == MAXGROOVE)
 			return;
-		_KillCount++;
-		if (_GrooveChain == MINGROOVE)
+		mKillCount++;
+		if (mGrooveChain == MINGROOVE)
 			IncreaseGroove();
-		if (_GrooveChain > MINGROOVE && _KillCount >= 5)
+		if (mGrooveChain > MINGROOVE && mKillCount >= 5)
 			IncreaseGroove();
 	}
 }
