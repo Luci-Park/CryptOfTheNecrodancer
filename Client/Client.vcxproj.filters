@@ -562,7 +562,7 @@
     <ClInclude Include="LConductor.h">
       <Filter>Contents\SystemObjects</Filter>
     </ClInclude>
-    <ClInclude Include="LBeatUI.h">
+    <ClInclude Include="LBeatJudge.h">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClInclude>
   </ItemGroup>
@@ -943,7 +943,7 @@
     <ClCompile Include="LConductor.cpp">
       <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
-    <ClCompile Include="LBeatUI.cpp">
+    <ClCompile Include="LBeatJudge.cpp">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClCompile>
   </ItemGroup>

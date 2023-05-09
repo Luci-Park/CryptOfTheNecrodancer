@@ -141,7 +141,7 @@
     <ClInclude Include="LBeatBar.h" />
     <ClInclude Include="LBeatingHeartUI.h" />
     <ClInclude Include="LBeatObject.h" />
-    <ClInclude Include="LBeatUI.h" />
+    <ClInclude Include="LBeatJudge.h" />
     <ClInclude Include="LBishop.h" />
     <ClInclude Include="LBishopSprite.h" />
     <ClInclude Include="LBlueSlime.h" />
@@ -272,7 +272,7 @@
     <ClCompile Include="LBatSprite.cpp" />
     <ClCompile Include="LBeatBar.cpp" />
     <ClCompile Include="LBeatingHeartUI.cpp" />
-    <ClCompile Include="LBeatUI.cpp" />
+    <ClCompile Include="LBeatJudge.cpp" />
     <ClCompile Include="LBishop.cpp" />
     <ClCompile Include="LBishopSprite.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />

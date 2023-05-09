@@ -44,7 +44,8 @@ namespace cl
 		static TileObject* GetEnemy(Vector2 index);
 		static TileObject* GetTileObject(Vector2 index);
 		static bool IsTileEmptyExceptPlayer(Vector2 index);
-		static Cadence* GetPlayer(Vector2 index);
+		static Cadence* GetPlayerOnIndex(Vector2 index);
+		static Cadence* GetPlayer();
 		static Vector2 GetPlayerIndex();
 		static Item* GetItem(Vector2 index);
 		static Vector2 SetItem(Item* item, Vector2 pos);

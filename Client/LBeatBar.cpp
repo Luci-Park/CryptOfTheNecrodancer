@@ -1,5 +1,5 @@
 #include "LBeatBar.h"
-#include "LBeatUI.h"
+#include "LBeatJudge.h"
 #include "LSpriteRenderer.h"
 #include "LConductor.h"
 #include "LTime.h"
@@ -17,7 +17,7 @@ namespace cl
 	BeatBar::~BeatBar()
 	{
 	}
-	void BeatBar::SetBar(BeatUI* ui, Vector2 spawnPos, Vector2 despawnPos, Vector2 direction, int beat, int prevBeat)
+	void BeatBar::SetBar(BeatJudge* ui, Vector2 spawnPos, Vector2 despawnPos, Vector2 direction, int beat, int prevBeat)
 	{
 		mMaster = ui;
 		mSpawnPos = spawnPos;
@@ -66,15 +66,15 @@ namespace cl
 	bool BeatBar::IsOnBeat()
 	{
 		float currBeat = Conductor::Instance().SongPositionBeats();
-		if (mMyBeat - 0.4 <= currBeat
-			&& currBeat <= mMyBeat + 0.4)
+		if (mMyBeat - BEATPERCENT*.01 <= currBeat
+			&& currBeat <= mMyBeat + BEATPERCENT * .01)
 			return true;
 		return false;
 	}
 
 	void BeatBar::Move()
 	{
-		float t = (mBeatsInAdvance - (mMyBeat + .4 - Conductor::Instance().SongPositionBeats())) / mBeatsInAdvance;
+		float t = (mBeatsInAdvance - (mMyBeat + BEATPERCENT * .01 - Conductor::Instance().SongPositionBeats())) / mBeatsInAdvance;
 		Vector2 pos = Vector2::Lerp(mSpawnPos, mDespawnPos, t);
 		mTransform->SetPos(pos);
 	}

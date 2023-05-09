@@ -30,7 +30,8 @@ namespace cl
 		WallTile* GetWall(Vector2 index);
 		TileObject* GetEnemy(Vector2 index);
 		TileObject* GetTileObject(Vector2 index);
-		Cadence* GetPlayer(Vector2 index);
+		Cadence* GetPlayerOnIndex(Vector2 index);
+		Cadence* GetPlayer();
 		Vector2 GetPlayerPos() { return mPlayerIndex; }
 		Item* GetItem(Vector2 index);
 		Vector2 SetItem(Item* item, Vector2 pos);

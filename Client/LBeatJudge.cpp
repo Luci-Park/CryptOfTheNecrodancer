@@ -1,31 +1,33 @@
-#include "LBeatUI.h"
+#include "LBeatJudge.h"
 #include "LObject.h"
 #include "LConductor.h"
 #include "LBeatingHeartUI.h"
 #include "LBeatBar.h"
 #include "LApplication.h"
 #include "LGrooveChain.h"
+#include "LMapManager.h"
+#include "LCadence.h"
 
 extern::cl::Application application;
 namespace cl
 {
-	BeatUI::BeatUI(Scene* sc)
+	BeatJudge::BeatJudge(Scene* sc)
 		: GameObject(sc, true)
 		, mBeatsShownInAdvance(4)
 		, mNextBeatToShow(1)
 	{
 		mTransform->SetScale(Vector2::One * UNITSCALE);
-		//mTransform->SetPos(Vector2(application.GetCenter().x, application.GetCenter().y * 1.7));
-		mTransform->SetPos(Vector2(application.GetCenter().x, 0.0));
+		mTransform->SetPos(Vector2(application.GetCenter().x, application.GetCenter().y * 1.7));
+		//mTransform->SetPos(Vector2(application.GetCenter().x, 0.0));
 		mDespawnPoint = mTransform->GetPos();
 		int percent = application.GetWidth() / 10;
 		mRightSpawn = Vector2(application.GetWidth() - percent, mTransform->GetPos().y);
 		mLeftSpawn = Vector2((int)percent, (int)mTransform->GetPos().y);		
 	}
-	BeatUI::~BeatUI()
+	BeatJudge::~BeatJudge()
 	{
 	}
-	void BeatUI::Initialize()
+	void BeatJudge::Initialize()
 	{
 		GameObject::Initialize();
 		object::Instantiate<BeatingHeartUI>(mTransform, mTransform->GetPos(), eLayerType::UI);
@@ -38,7 +40,7 @@ namespace cl
 			mNextBeatToShow++;
 		}
 	}
-	void BeatUI::Update()
+	void BeatJudge::Update()
 	{
 		if (!Conductor::Instance().IsPlaying()) return;
 		if (mNextBeatToShow < Conductor::Instance().SongPositionBeats() + mBeatsShownInAdvance)
@@ -50,33 +52,36 @@ namespace cl
 			mNextBeatToShow++;
 		}
 	}
-	void BeatUI::LeftBeatEnter(BeatBar* bar)
+	void BeatJudge::LeftBeatEnter(BeatBar* bar)
 	{
 		if (mCurrentLeftBeat != bar)
 			mCurrentLeftBeat = bar;
 	}
-	void BeatUI::RightBeatEnter(BeatBar* bar)
+	void BeatJudge::RightBeatEnter(BeatBar* bar)
 	{
 		if (mCurrentRightBeat != bar)
 			mCurrentRightBeat = bar;
 	}
-	void BeatUI::LeftBeatExit(BeatBar* bar)
+	void BeatJudge::LeftBeatExit(BeatBar* bar)
 	{
 		if (mCurrentLeftBeat == bar)
 		{
-			GrooveChainManager::Instance().LooseGroove();
-			Conductor::Instance().OnPlayerMove();
+			if (MapManager::GetPlayer()->HasMoved())
+			{
+				GrooveChainManager::Instance().LooseGroove();
+				Conductor::Instance().OnPlayerMove();
+			}
 			mCurrentLeftBeat = nullptr;
 		}
 	}
-	void BeatUI::RightBeatExit(BeatBar* bar)
+	void BeatJudge::RightBeatExit(BeatBar* bar)
 	{
 		if (mCurrentRightBeat == bar)
 		{
 			mCurrentRightBeat = nullptr;
 		}
 	}
-	void BeatUI::DespawnCurrentBeat()
+	void BeatJudge::OnValidInput()
 	{
 		if (mCurrentLeftBeat != nullptr)
 		{
@@ -90,7 +95,7 @@ namespace cl
 			mCurrentRightBeat = nullptr;
 		}
 	}
-	bool BeatUI::IsInBeat()
+	bool BeatJudge::IsInBeat()
 	{
 		return (mCurrentLeftBeat && mCurrentRightBeat);
 	}

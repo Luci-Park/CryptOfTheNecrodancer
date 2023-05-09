@@ -91,7 +91,7 @@ namespace cl
 	}
 	void Map::OnKeyOpen()
 	{
-		GetPlayer(GetPlayerPos())->PlayVictory();
+		GetPlayerOnIndex(GetPlayerPos())->PlayVictory();
 	}
 	void Map::CalculateLight()
 	{
@@ -153,12 +153,16 @@ namespace cl
 		if (!IndexIsValid(index)) return nullptr;
 		return mTileObjects[index.y][index.x];
 	}
-	Cadence* Map::GetPlayer(Vector2 index)
+	Cadence* Map::GetPlayerOnIndex(Vector2 index)
 	{
 		if (!IndexIsValid(index)) return nullptr;
 		if (index == mPlayerIndex)
 			return (Cadence*)mTileObjects[index.y][index.x];
 		return nullptr;
+	}
+	Cadence* Map::GetPlayer()
+	{
+		return (Cadence*)mTileObjects[mPlayerIndex.y][mPlayerIndex.x];
 	}
 	Item* Map::GetItem(Vector2 index)
 	{

@@ -108,7 +108,7 @@ namespace cl
 	}
 	bool Monster::TryAttack(Vector2 direction)
 	{
-		Cadence* player = MapManager::GetPlayer(mIndex + direction);
+		Cadence* player = MapManager::GetPlayerOnIndex(mIndex + direction);
 		if (player)
 		{
 			mWeapon->Attack(mIndex, direction);
@@ -167,7 +167,7 @@ namespace cl
 	Vector2 Monster::CardinalMoveTowards()
 	{
 		Vector2 player = MapManager::GetPlayerIndex();
-		Vector2 playerPrevPos = player - MapManager::GetPlayer(player)->GetInput();
+		Vector2 playerPrevPos = MapManager::GetPlayer()->GetPrevPos();
 		Vector2 dir = (player - mIndex).TileNormalize();
 		if (Vector2::IsCardinal(dir))
 			return dir;

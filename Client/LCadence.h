@@ -8,7 +8,7 @@ namespace cl
 	class CadenceSound;
 	class LightSource;
 	class Health;
-	class BeatUI;
+	class BeatJudge;
 	class Cadence : public GameCharacter
 	{
 	public:
@@ -30,8 +30,8 @@ namespace cl
 
 		void SwitchItem(Item* item, eItemTypes type);
 		Vector2 GetPos() { return mIndex; }
-		Vector2 GetInput() { return mInput; }
-
+		Vector2 GetPrevPos() { return mPrevPos; }
+		bool HasMoved() { return mInput != Vector2::Zero; }
 		void PlayVictory();
 
 	protected:
@@ -53,11 +53,12 @@ namespace cl
 	private:
 		Health* mHealth;
 		Item* mItems[(int)eItemTypes::Size];
-		BeatUI* mJudge;
+		BeatJudge* mJudge;
 		LightSource* mLightSource;
 		CadenceShovelEffect* mShovelEffect;
 		CadenceSound* mSound;
 		Vector2 mInput;
+		Vector2 mPrevPos;
 		int consecutiveHits;
 		bool mMoved;
 	};

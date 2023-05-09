@@ -3,7 +3,7 @@
 #include "LCadenceSprite.h"
 #include "LLightSource.h"
 #include "LCadenceShovelEffect.h"
-#include "LBeatUI.h"
+#include "LBeatJudge.h"
 #include "LHealth.h"
 #include "LMapManager.h"
 #include "LConductor.h"
@@ -29,6 +29,7 @@ namespace cl
 		, consecutiveHits(0)
 		, mMoved(false)
 		, mInput(Vector2::Zero)
+		, mJudge(nullptr)
 	{
 		Camera::SetTarget(this);
 		mHealth = new Health(this);
@@ -60,11 +61,13 @@ namespace cl
 		mSound = new CadenceSound();
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mJudge = object::Instantiate<BeatUI>(eLayerType::System);
 		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
+		if(SceneManager::GetActiveScene()->GetSceneType() != eSceneType::Lobby)
+			mJudge = object::Instantiate<BeatJudge>(eLayerType::System);
+		mPrevPos = mIndex;
 	}
 	void Cadence::Update()
 	{
@@ -86,11 +89,22 @@ namespace cl
 				Vector2 input = CheckInput();
 				if (Vector2::IsCardinal(input))
 				{
-
-					SetSprite();
-					if (!UnSink())
-						OnMove(mInput);
-					Conductor::Instance().OnPlayerMove();
+					if (mJudge == nullptr || mJudge->IsInBeat())
+					{
+						if(mJudge != nullptr) mJudge->OnValidInput();
+						mInput = input;
+						SetSprite();
+						if (!UnSink())
+						{
+							mPrevPos = mIndex;
+							OnMove(mInput);
+						}
+						Conductor::Instance().OnPlayerMove();
+					}
+					else
+					{
+						GrooveChainManager::Instance().LooseGroove();
+					}
 				}
 			}
 		}
@@ -225,7 +239,7 @@ namespace cl
 	Vector2 Cadence::CheckInput()
 	{
 		mMoved = false;
-		Vector2 input = Vector2::One;
+		Vector2 input = Vector2::Zero;
 		if (Input::GetKeyDown(eKeyCode::LEFT))
 		{
 			input = Vector2::Left;

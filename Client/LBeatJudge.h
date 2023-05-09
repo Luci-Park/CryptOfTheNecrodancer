@@ -3,11 +3,11 @@
 namespace cl
 {
 	class BeatBar;
-	class BeatUI : public GameObject
+	class BeatJudge : public GameObject
 	{
 	public:
-		BeatUI(Scene* sc);
-		~BeatUI();
+		BeatJudge(Scene* sc);
+		~BeatJudge();
 		
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -17,7 +17,7 @@ namespace cl
 		void LeftBeatExit(BeatBar* bar);
 		void RightBeatExit(BeatBar* bar);
 
-		void DespawnCurrentBeat();
+		void OnValidInput();
 		bool IsInBeat();
 	private:
 		int mBeatsShownInAdvance;
@@ -28,8 +28,6 @@ namespace cl
 
 		BeatBar* mCurrentLeftBeat;
 		BeatBar* mCurrentRightBeat;
-
-
 	};
 }
 

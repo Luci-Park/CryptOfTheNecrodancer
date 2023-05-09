@@ -28,7 +28,7 @@ namespace cl
 				return dir;
 			else
 			{
-				Vector2 prevPlayerPos = playerIndex - MapManager::GetPlayer(playerIndex)->GetInput();
+				Vector2 prevPlayerPos = MapManager::GetPlayer()->GetPrevPos();
 				Vector2 prevDir = (prevPlayerPos - mIndex).TileNormalize();
 				if (Vector2::IsDiagonal(prevDir))
 					return prevDir;
