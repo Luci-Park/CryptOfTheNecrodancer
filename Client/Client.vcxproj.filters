@@ -562,6 +562,12 @@
     <ClInclude Include="LBeatBar.h">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClInclude>
+    <ClInclude Include="LConductor.h">
+      <Filter>Contents\SystemObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="LBeatUI.h">
+      <Filter>Contents\UI\Rhythm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -938,6 +944,12 @@
       <Filter>Contents\UI\Rhythm</Filter>
     </ClCompile>
     <ClCompile Include="LBeatBar.cpp">
+      <Filter>Contents\UI\Rhythm</Filter>
+    </ClCompile>
+    <ClCompile Include="LConductor.cpp">
+      <Filter>Contents\SystemObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="LBeatUI.cpp">
       <Filter>Contents\UI\Rhythm</Filter>
     </ClCompile>
   </ItemGroup>

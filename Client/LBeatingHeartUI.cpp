@@ -11,8 +11,6 @@ namespace cl
 		, mbIsBeating(false)
 		, mTimer(0.0)
 	{
-		mTransform->SetScale(Vector2::One * UNITSCALE);
-		mTransform->SetPos(Vector2(application.GetCenter().x, application.GetCenter().y * 1.7));
 		mSpriteRenderer = GameObject::AddComponent<SpriteRenderer>();
 		mSpriteRenderer->SetImage(L"HUD", L"..\\Assets\\Arts\\Effects\\HUD.bmp");
 		mSmallHeart = Sprite(Vector2(117, 4), Vector2(34, 44), -Vector2(17, 22));

@@ -141,6 +141,7 @@
     <ClInclude Include="LBeatBar.h" />
     <ClInclude Include="LBeatingHeartUI.h" />
     <ClInclude Include="LBeatObject.h" />
+    <ClInclude Include="LBeatUI.h" />
     <ClInclude Include="LBishop.h" />
     <ClInclude Include="LBishopSprite.h" />
     <ClInclude Include="LBlueSlime.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="LCollider.h" />
     <ClInclude Include="LCollisionManager.h" />
     <ClInclude Include="LComponent.h" />
+    <ClInclude Include="LConductor.h" />
     <ClInclude Include="LDagger.h" />
     <ClInclude Include="LDeepBluesFactory.h" />
     <ClInclude Include="LDeepBluesMap.h" />
@@ -271,6 +273,7 @@
     <ClCompile Include="LBatSprite.cpp" />
     <ClCompile Include="LBeatBar.cpp" />
     <ClCompile Include="LBeatingHeartUI.cpp" />
+    <ClCompile Include="LBeatUI.cpp" />
     <ClCompile Include="LBishop.cpp" />
     <ClCompile Include="LBishopSprite.cpp" />
     <ClCompile Include="LBlueSlime.cpp" />
@@ -288,6 +291,7 @@
     <ClCompile Include="LCollider.cpp" />
     <ClCompile Include="LCollisionManager.cpp" />
     <ClCompile Include="LComponent.cpp" />
+    <ClCompile Include="LConductor.cpp" />
     <ClCompile Include="LDagger.cpp" />
     <ClCompile Include="LDeepBluesFactory.cpp" />
     <ClCompile Include="LDeepBluesMap.cpp" />

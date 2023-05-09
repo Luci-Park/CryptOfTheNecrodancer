@@ -183,6 +183,7 @@ struct Vector2
     }
 
     static Vector2 MoveTowards(Vector2 src, Vector2 dest, float distance);
+    static Vector2 Lerp(const Vector2& start, const Vector2& end, float t);
   
     static float Distance(Vector2 src, Vector2 dest);
     static bool IsCardinal(Vector2 vect);

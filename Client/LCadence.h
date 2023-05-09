@@ -56,7 +56,6 @@ namespace cl
 		LightSource* mLightSource;
 		CadenceShovelEffect* mShovelEffect;
 		CadenceSound* mSound;
-		BeatingHeartUI* mBeatUI;
 		Vector2 mInput;
 		int consecutiveHits;
 		bool mMoved;

@@ -3,7 +3,7 @@
 #include "LCadenceSprite.h"
 #include "LLightSource.h"
 #include "LCadenceShovelEffect.h"
-#include "LBeatingHeartUI.h"
+#include "LBeatUI.h"
 #include "LHealth.h"
 #include "LMapManager.h"
 #include "LBeatManager.h"
@@ -58,7 +58,7 @@ namespace cl
 		mSound = new CadenceSound();
 
 		mSprite = object::Instantiate<CadenceSprite>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Player);
-		mBeatUI = object::Instantiate<BeatingHeartUI>(eLayerType::UI);
+		object::Instantiate<BeatUI>(eLayerType::UI);
 		mItems[(int)eItemTypes::Weapon] = object::Instantiate<Dagger>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		

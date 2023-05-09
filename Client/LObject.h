@@ -57,4 +57,26 @@ namespace cl::object
 		gameObj->Initialize();
 		return gameObj;
 	}
+	template <typename T>
+	static inline T* Instantiate(Transform* parent, Vector2 pos, eLayerType type)
+	{
+		Scene* scene = SceneManager::GetActiveScene();
+		T* gameObj = new T(scene);
+		gameObj->mTransform->SetParent(parent);
+		scene->AddGameObject(gameObj, type);
+		gameObj->mTransform->SetPos(pos);
+		gameObj->Initialize();
+		return gameObj;
+	}
+	template <typename T>
+	static inline T* Instantiate(Transform* parent, eLayerType type)
+	{
+		Scene* scene = SceneManager::GetActiveScene();
+		T* gameObj = new T(scene);
+		gameObj->mTransform->SetParent(parent);
+		scene->AddGameObject(gameObj, type);
+		gameObj->mTransform->SetLocalPos(Vector2::Zero);
+		gameObj->Initialize();
+		return gameObj;
+	}
 }

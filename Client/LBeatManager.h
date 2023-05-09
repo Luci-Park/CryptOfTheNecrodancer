@@ -9,7 +9,7 @@ namespace cl
 		static void SetBPM(int bpm);
 		static int BPM() { return _bpm; }
 		static float MoveSpeed() { return _speedPerTile; }
-		static float SecondPerBeat() { return _spb; }
+		static float SecondsPerBeat() { return _spb; }
 		static bool IsMovable() { return _movable; }
 
 		static void Update();

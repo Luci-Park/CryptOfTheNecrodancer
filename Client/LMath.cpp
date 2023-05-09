@@ -24,6 +24,12 @@ Vector2 Vector2::MoveTowards(Vector2 src, Vector2 dest, float distance)
         return dest;
     return result;
 }
+Vector2 Vector2::Lerp(const Vector2& start, const Vector2& end, float t)
+{
+    float x = start.x + (end.x - start.x) * t;
+    float y = start.y + (end.y - start.y) * t;
+    return Vector2(x, y);
+}
 float Vector2::Distance(Vector2 src, Vector2 dest)
 {
     float dx = dest.x - src.x;
