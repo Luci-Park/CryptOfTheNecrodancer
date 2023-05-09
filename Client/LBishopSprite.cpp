@@ -11,15 +11,15 @@ namespace cl
 	{
 		PiecesSprite::Initialize();
 		std::wstring path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Bishop.bmp";
-		mAnimator->CreateAnimation(mIdle, L"Bishop", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 32), BeatManager::SecondsPerBeat() * 2);
-		mAnimator->CreateAnimation(mShadowIdle, L"Bishop", path, 4, 2, 0, 1, 4, -Vector2(13 * 0.5, 32), BeatManager::SecondsPerBeat() * 2);
+		mAnimator->CreateAnimation(mIdle, L"Bishop", path, 4, 2, 0, 0, 4, -Vector2(13 * 0.5, 32), Conductor::Instance().SecondsPerBeat() * 2);
+		mAnimator->CreateAnimation(mShadowIdle, L"Bishop", path, 4, 2, 0, 1, 4, -Vector2(13 * 0.5, 32), Conductor::Instance().SecondsPerBeat() * 2);
 		path = L"..\\Assets\\Arts\\Boss\\Deep Blues\\Bishop_Ready.bmp";
-		mAnimator->CreateAnimation(mReady, L"Bishop_Ready", path, 1, 2, 0, 0, 1, -Vector2(17 *0.5, 32), BeatManager::SecondsPerBeat() * 2);
-		mAnimator->CreateAnimation(mShadowReady, L"Bishop_Ready", path, 1, 2, 0, 1, 1, -Vector2(17 *0.5, 32), BeatManager::SecondsPerBeat() * 2);
+		mAnimator->CreateAnimation(mReady, L"Bishop_Ready", path, 1, 2, 0, 0, 1, -Vector2(17 *0.5, 32), Conductor::Instance().SecondsPerBeat() * 2);
+		mAnimator->CreateAnimation(mShadowReady, L"Bishop_Ready", path, 1, 2, 0, 1, 1, -Vector2(17 *0.5, 32), Conductor::Instance().SecondsPerBeat() * 2);
 		Idle();
 	}
 	void BishopSprite::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::SecondsPerBeat() * 2);
+		mAnimator->SetDuration(Conductor::Instance().SecondsPerBeat() * 2);
 	}
 }

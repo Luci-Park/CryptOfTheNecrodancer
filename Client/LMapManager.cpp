@@ -1,6 +1,6 @@
 #include "LMapManager.h"
 #include "LMapIncludes.h"
-#include "LBeatManager.h"
+
 namespace cl
 {
 #pragma region MapManager

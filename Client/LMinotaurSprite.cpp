@@ -30,20 +30,20 @@ namespace cl
 	void MinotaurSprite::SetY(int y)
 	{
 		std::wstring path = L"..\\Assets\\Arts\\Miniboss\\Minotaurs\\";
-		mAnimator->CreateAnimation(mAnimations[0][0], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 0, y * 2, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mAnimations[0][1], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 4, y * 2, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[0][0], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 0, y * 2 + 1, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[0][1], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 4, y * 2 + 1, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[0][0], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 0, y * 2, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[0][1], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 4, y * 2, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[0][0], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 0, y * 2 + 1, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[0][1], L"MinotaursIdle", path + L"MinotaursIdle.bmp", 8, 4, 4, y * 2 + 1, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
 
-		mAnimator->CreateAnimation(mAnimations[1][0], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 0, y * 2, 1, Vector2(-21, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mAnimations[1][1], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 1, y * 2, 1, Vector2(-21, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[1][0], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 0, y * 2 + 1, 1, Vector2(-21, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[1][1], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 1, y * 2 + 1, 1, Vector2(-21, -49), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[1][0], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 0, y * 2, 1, Vector2(-21, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[1][1], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 1, y * 2, 1, Vector2(-21, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[1][0], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 0, y * 2 + 1, 1, Vector2(-21, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[1][1], L"MinotaursCharge", path + L"MinotaursCharge.bmp", 2, 4, 1, y * 2 + 1, 1, Vector2(-21, -49), Conductor::Instance().SecondsPerBeat());
 
-		mAnimator->CreateAnimation(mAnimations[2][0], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 0, y * 2, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mAnimations[2][1], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 4, y * 2, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[2][0], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 0, y * 2 + 1, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mShadowAnimations[2][1], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 4, y * 2 + 1, 4, Vector2(-25, -49), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[2][0], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 0, y * 2, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mAnimations[2][1], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 4, y * 2, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[2][0], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 0, y * 2 + 1, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mShadowAnimations[2][1], L"MinotaursFaint", path + L"MinotaursFaint.bmp", 8, 4, 4, y * 2 + 1, 4, Vector2(-25, -49), Conductor::Instance().SecondsPerBeat());
 	}
 	void MinotaurSprite::Initialize()
 	{

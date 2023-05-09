@@ -18,7 +18,7 @@
 //	void TutorialScene::Initialize()
 //	{
 //		Scene::Initialize();
-//		BeatManager::SetBPM(100);
+//		Conductor::Instance().SetBPM(100);
 //		mGameManager = object::Instantiate<BeatManager>(this, Vector2::Zero, eLayerType::System);
 //		Cadence* cadence = object::Instantiate<Cadence>(this, application.GetCenter(), eLayerType::Player);
 //		mGameManager->AddCharacters(cadence);
@@ -27,7 +27,7 @@
 //	{
 //		if (Input::GetKeyDown(eKeyCode::O))
 //		{
-//			BeatManager::SetBPM(BeatManager::BPM() + 50);
+//			Conductor::Instance().SetBPM(Conductor::Instance().BPM() + 50);
 //		}
 //		Scene::Update();
 //	}

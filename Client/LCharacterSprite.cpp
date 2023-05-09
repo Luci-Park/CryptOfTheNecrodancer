@@ -39,7 +39,7 @@ namespace cl
 	}
 	void CharacterSprite::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::SecondsPerBeat());
+		mAnimator->SetDuration(Conductor::Instance().SecondsPerBeat());
 	}
 	void CharacterSprite::Jump()
 	{
@@ -55,7 +55,7 @@ namespace cl
 			mbDirIsUp = !mbDirIsUp;
 			if (mbDirIsUp) mbIsJumping = false;
 		}
-		mTransform->SetLocalPos(Vector2::MoveTowards(mTransform->GetLocalPos(), target, BeatManager::MoveSpeed() * 2 * Time::DeltaTime()));
+		mTransform->SetLocalPos(Vector2::MoveTowards(mTransform->GetLocalPos(), target, Conductor::Instance().MoveSpeed() * 2 * Time::DeltaTime()));
 	}
 	void CharacterSprite::Sink()
 	{
@@ -72,7 +72,7 @@ namespace cl
 		if (!mbIsFlashing)
 		{
 			mbIsFlashing = true;
-			mFlashDuration = BeatManager::SecondsPerBeat()/4.0f;
+			mFlashDuration = Conductor::Instance().SecondsPerBeat()/4.0f;
 			mFlashTimer = 0.0f;
 			mAnimator->SwitchShow();
 			return;
@@ -83,7 +83,7 @@ namespace cl
 			mFlashDuration += mFlashDuration;
 			mAnimator->SwitchShow();
 		}
-		if (BeatManager::SecondsPerBeat() <= mFlashDuration)
+		if (Conductor::Instance().SecondsPerBeat() <= mFlashDuration)
 		{
 			mbIsFlashing = false;
 			mAnimator->SetShow(true);

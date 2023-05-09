@@ -250,9 +250,6 @@
     <ClInclude Include="LSceneManager.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="LBeatManager.h">
-      <Filter>Contents\SystemObjects</Filter>
-    </ClInclude>
     <ClInclude Include="LGameObject.h">
       <Filter>Engine\GameObject</Filter>
     </ClInclude>
@@ -645,9 +642,6 @@
     </ClCompile>
     <ClCompile Include="LSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="LBeatManager.cpp">
-      <Filter>Contents\SystemObjects</Filter>
     </ClCompile>
     <ClCompile Include="LGameObject.cpp">
       <Filter>Engine\GameObject</Filter>

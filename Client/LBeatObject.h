@@ -1,5 +1,5 @@
 #pragma once
-#include "LBeatManager.h"
+#include "LConductor.h"
 namespace cl
 {
 	class BeatObject
@@ -7,11 +7,11 @@ namespace cl
 	public:
 		BeatObject()
 		{
-			BeatManager::AddCharacters(this);
+			Conductor::Instance().AddCharacters(this);
 		}
 		virtual ~BeatObject()
 		{
-			BeatManager::RemoveCharacters(this);
+			Conductor::Instance().RemoveCharacters(this);
 		}
 		virtual void OnBeat() = 0;
 		virtual void OnLateBeat() = 0;

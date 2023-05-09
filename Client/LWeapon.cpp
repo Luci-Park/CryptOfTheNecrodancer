@@ -1,6 +1,6 @@
 #include "LWeapon.h"
 #include "LAnimator.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LCadence.h"
 #include "LResources.h"
 #include "LAudioClip.h"

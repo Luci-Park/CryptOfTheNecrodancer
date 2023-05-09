@@ -1,6 +1,6 @@
 #include "LFireballEffect.h"
 #include "LAnimator.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LLightSource.h"
 namespace cl
 {
@@ -25,8 +25,8 @@ namespace cl
 		{
 			mRightAnim[i] = L"FireballRight " + std::to_wstring(i);
 			mLeftAnim[i] = L"FireballLeft" + std::to_wstring(i);
-			mAnimator->CreateAnimation(mRightAnim[i], L"FireballRight", rightPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::SecondsPerBeat());
-			mAnimator->CreateAnimation(mLeftAnim[i], L"FireballLeft", leftPath, 7, 5, 0, i, 7, Vector2::Zero, BeatManager::SecondsPerBeat());
+			mAnimator->CreateAnimation(mRightAnim[i], L"FireballRight", rightPath, 7, 5, 0, i, 7, Vector2::Zero, Conductor::Instance().SecondsPerBeat());
+			mAnimator->CreateAnimation(mLeftAnim[i], L"FireballLeft", leftPath, 7, 5, 0, i, 7, Vector2::Zero, Conductor::Instance().SecondsPerBeat());
 		}
 	}
 	void FireballEffect::Update()

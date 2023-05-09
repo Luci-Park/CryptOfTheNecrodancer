@@ -28,12 +28,12 @@ namespace cl
 	{
 		GameObject::Initialize();
 		object::Instantiate<BeatingHeartUI>(mTransform, mTransform->GetPos(), eLayerType::UI);
-		for (int i = 0; i < mBeatsShownInAdvance; i++)
+		for (int i = 0; i <= mBeatsShownInAdvance; i++)
 		{
-			BeatBar* left = object::Instantiate<BeatBar>(mTransform, eLayerType::UI);
-			left->SetBar(mLeftSpawn, mDespawnPoint, Vector2::Left, mNextBeatToShow, mBeatsShownInAdvance);
-			BeatBar* right = object::Instantiate<BeatBar>(mTransform, eLayerType::UI);
-			right->SetBar(mRightSpawn, mDespawnPoint, Vector2::Right, mNextBeatToShow, mBeatsShownInAdvance);
+			BeatBar* left = object::Instantiate<BeatBar>(mTransform, eLayerType::Effects);
+			left->SetBar(this, mLeftSpawn, mDespawnPoint, Vector2::Left, mNextBeatToShow, mBeatsShownInAdvance);
+			BeatBar* right = object::Instantiate<BeatBar>(mTransform, eLayerType::Effects);
+			right->SetBar(this, mRightSpawn, mDespawnPoint, Vector2::Right, mNextBeatToShow, mBeatsShownInAdvance);
 			mNextBeatToShow++;
 		}
 	}
@@ -42,11 +42,29 @@ namespace cl
 		if (!Conductor::Instance().IsPlaying()) return;
 		if (mNextBeatToShow < Conductor::Instance().SongPositionBeats() + mBeatsShownInAdvance)
 		{
-			BeatBar* left = object::Instantiate<BeatBar>(mTransform, eLayerType::UI);
-			left->SetBar(mLeftSpawn, mDespawnPoint, Vector2::Left, mNextBeatToShow, mBeatsShownInAdvance);
-			BeatBar* right = object::Instantiate<BeatBar>(mTransform, eLayerType::UI);
-			right->SetBar(mRightSpawn, mDespawnPoint, Vector2::Right, mNextBeatToShow, mBeatsShownInAdvance);
+			BeatBar* left = object::Instantiate<BeatBar>(mTransform, eLayerType::Effects);
+			left->SetBar(this, mLeftSpawn, mDespawnPoint, Vector2::Left, mNextBeatToShow, mBeatsShownInAdvance);
+			BeatBar* right = object::Instantiate<BeatBar>(mTransform, eLayerType::Effects);
+			right->SetBar(this, mRightSpawn, mDespawnPoint, Vector2::Right, mNextBeatToShow, mBeatsShownInAdvance);
 			mNextBeatToShow++;
+		}
+	}
+	void BeatUI::SetCurrentBar(BeatBar* bar)
+	{
+		if (mCurrentBeat != bar)
+			mCurrentBeat = bar;
+	}
+	void BeatUI::UnsetCurrentBar(BeatBar* bar)
+	{
+		if (mCurrentBeat == bar)
+			mCurrentBeat = nullptr;
+	}
+	void BeatUI::DespawnCurrentBar()
+	{
+		if (mCurrentBeat != nullptr)
+		{
+			mCurrentBeat->Destroy();
+			mCurrentBeat = nullptr;
 		}
 	}
 }

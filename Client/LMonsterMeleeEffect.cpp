@@ -1,6 +1,6 @@
 #include "LMonsterMeleeEffect.h"
 #include "LAnimator.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 namespace cl
 {
 	
@@ -19,13 +19,13 @@ namespace cl
 		mRightAnim = L"Enemy_Right";
 		mLeftAnim = L"Enemy_Left";
 		mAnimator->CreateAnimation(mRightAnim, mRightAnim, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Right.bmp",
-			5, 1, 0, 0, 3, Vector2::Zero, BeatManager::SecondsPerBeat() * 0.25);
+			5, 1, 0, 0, 3, Vector2::Zero, Conductor::Instance().SecondsPerBeat() * 0.25);
 		mAnimator->CreateAnimation(mLeftAnim, mLeftAnim, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Left.bmp",
-			5, 1, 0, 0, 3, Vector2::Zero, BeatManager::SecondsPerBeat() * 0.25);
+			5, 1, 0, 0, 3, Vector2::Zero, Conductor::Instance().SecondsPerBeat() * 0.25);
 		mAnimator->CreateAnimation(mUpAnim, mUpAnim, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Up.bmp",
-			1, 5, 0, 0, 3, Vector2::Zero, BeatManager::SecondsPerBeat() * 0.25);
+			1, 5, 0, 0, 3, Vector2::Zero, Conductor::Instance().SecondsPerBeat() * 0.25);
 		mAnimator->CreateAnimation(mDownAnim, mDownAnim, L"..\\Assets\\Arts\\Effects\\AttackSwipes\\Enemy\\Enemy_Down.bmp",
-			1, 5, 0, 0, 3, Vector2::Zero, BeatManager::SecondsPerBeat() * 0.25);
+			1, 5, 0, 0, 3, Vector2::Zero, Conductor::Instance().SecondsPerBeat() * 0.25);
 	}
 
 	void MonsterMeleeEffect::PlayUp()

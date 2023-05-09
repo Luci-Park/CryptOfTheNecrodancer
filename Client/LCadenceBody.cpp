@@ -1,6 +1,7 @@
 #include "LCadenceBody.h"
 #include "LAnimator.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
+
 namespace cl
 {
 	const std::wstring CadenceBody::mLeftAnimation = L"CadenceLeftBody";
@@ -22,8 +23,8 @@ namespace cl
 
 		std::wstring leftPath = L"..\\Assets\\Arts\\Player\\Cadence_Left.bmp";
 		std::wstring rightPath = L"..\\Assets\\Arts\\Player\\Cadence_Right.bmp";
-		mAnimator->CreateAnimation(mLeftAnimation, L"CadenceLeft", leftPath, 16, 16, 12, 2, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mLeftAnimation, L"CadenceLeft", leftPath, 16, 16, 12, 2, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightAnimation, L"CadenceRight", rightPath, 16, 16,0, 2, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
 	
 		PlayRight();
 	}

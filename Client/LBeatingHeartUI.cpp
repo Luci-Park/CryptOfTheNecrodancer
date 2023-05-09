@@ -46,7 +46,7 @@ namespace cl
 	{
 		if (mbIsBeating) return;
 		mbIsBeating = true;
-		mBeatTime = BeatManager::SecondsPerBeat() * 0.25;
+		mBeatTime = Conductor::Instance().SecondsPerBeat() * 0.25;
 		mTimer = 0.0f;
 	}
 }

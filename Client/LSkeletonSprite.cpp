@@ -27,18 +27,18 @@ namespace cl
         mNoHead = L"NoHead";
         mNoHeadShadow = L"ShadowNoHead";
         std::wstring path = L"..\\Assets\\Arts\\Monsters\\Skeleton\\skeletons.bmp";
-        mAnimator->CreateAnimation(mIdleAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 12, skeleY, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mIdleShadowAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 12, skeleY + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mRaiseHandAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 8, skeleY, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mHandShadowAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 8, skeleY + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+        mAnimator->CreateAnimation(mIdleAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 12, skeleY, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mIdleShadowAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 12, skeleY + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mRaiseHandAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 8, skeleY, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mHandShadowAnimation[GetIndex(Vector2::Right)], L"skeletons", path, 17, 6, 8, skeleY + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
 
-        mAnimator->CreateAnimation(mIdleAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 0, skeleY, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mIdleShadowAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 0, skeleY + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mRaiseHandAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 4, skeleY, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mHandShadowAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 4, skeleY + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+        mAnimator->CreateAnimation(mIdleAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 0, skeleY, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mIdleShadowAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 0, skeleY + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mRaiseHandAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 4, skeleY, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mHandShadowAnimation[GetIndex(Vector2::Left)], L"skeletons", path, 17, 6, 4, skeleY + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
 
-        mAnimator->CreateAnimation(mNoHead, L"skeletons", path, 17, 6, 16, skeleY, 1, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-        mAnimator->CreateAnimation(mNoHeadShadow, L"skeletons", path, 17, 6, 16, skeleY + 1, 1, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+        mAnimator->CreateAnimation(mNoHead, L"skeletons", path, 17, 6, 16, skeleY, 1, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+        mAnimator->CreateAnimation(mNoHeadShadow, L"skeletons", path, 17, 6, 16, skeleY + 1, 1, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
         RaiseHand();
     }
     void SkeletonSprite::Turn(Vector2 dir)

@@ -1,6 +1,6 @@
 #include "LWeaponEffect.h"
 #include "LAnimator.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 namespace cl
 {
 	WeaponEffect::WeaponEffect(Scene* sc)
@@ -36,6 +36,6 @@ namespace cl
 	}
 	void WeaponEffect::OnBeatChanged()
 	{
-		mAnimator->SetDuration(BeatManager::SecondsPerBeat() * 0.25);
+		mAnimator->SetDuration(Conductor::Instance().SecondsPerBeat() * 0.25);
 	}
 }

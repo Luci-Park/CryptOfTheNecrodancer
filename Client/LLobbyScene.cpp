@@ -1,6 +1,6 @@
 #include "LLobbyScene.h"
 #include "LMapManager.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LConductor.h"
 #include "LResources.h"
 #include "LAudioClip.h"
@@ -26,7 +26,6 @@ namespace cl
 	{
 		if (!Conductor::Instance().IsPlaying())	Conductor::Instance().Play();
 		Conductor::Instance().Update();
-		BeatManager::Update();
 		MapManager::Update();
 		Scene::Update();
 	}
@@ -47,20 +46,13 @@ namespace cl
 	{
 		Scene::OnEnter();
 		Cadence::Reset();
-		BeatManager::Reset();
-		BeatManager::SetBPM(130);
 		Conductor::Instance().SetSong(mBGM, 130);
-
 		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::Lobby, this);
-
-		//mBGM->Play(true);
 	}
 	void LobbyScene::OnExit()
 	{
-		MapManager::DestroyMap();
 		Conductor::Instance().Stop();
-		//mBGM->Stop(true);
 		Scene::OnExit();
 	}
 }

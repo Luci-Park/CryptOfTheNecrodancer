@@ -17,7 +17,6 @@ namespace cl
 		SetWall();
 		SetLights();
 		mPlayerIndex = Vector2(6, 3);
-		mMonsterBluePrint[2][2] = eMonsterTypes::YellowSkeleton;
 	}
 
 	void LobbyMap::SetFloor()

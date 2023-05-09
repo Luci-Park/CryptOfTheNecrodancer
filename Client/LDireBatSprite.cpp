@@ -41,11 +41,11 @@ namespace cl
 		mLeftShadowAnimation = L"Dire_Left_Shadow";
 		mRightShadowAnimation = L"Dire_Right_Shadow";
 
-		mAnimator->CreateAnimation(mRightAnimation, L"DireBat", path, 8, 4, 0, y * 2, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mLeftAnimation, L"DireBat", path, 8, 4, 4, y * 2, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightAnimation, L"DireBat", path, 8, 4, 0, y * 2, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mLeftAnimation, L"DireBat", path, 8, 4, 4, y * 2, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
 
-		mAnimator->CreateAnimation(mRightShadowAnimation, L"DireBat", path, 8, 4, 0, y * 2 + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mLeftShadowAnimation, L"DireBat", path, 8, 4, 4, y * 2 + 1, 4, -Vector2(12, 24), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightShadowAnimation, L"DireBat", path, 8, 4, 0, y * 2 + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mLeftShadowAnimation, L"DireBat", path, 8, 4, 4, y * 2 + 1, 4, -Vector2(12, 24), Conductor::Instance().SecondsPerBeat());
 		Turn(Vector2::Right);
 	}
 }

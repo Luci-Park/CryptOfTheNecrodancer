@@ -178,7 +178,6 @@
     <ClInclude Include="LFloorStrategy.h" />
     <ClInclude Include="LFloorTile.h" />
     <ClInclude Include="LGameCharacter.h" />
-    <ClInclude Include="LBeatManager.h" />
     <ClInclude Include="LGameObject.h" />
     <ClInclude Include="LDragon.h" />
     <ClInclude Include="LGreenDragonSprite.h" />
@@ -309,7 +308,6 @@
     <ClCompile Include="LFloorStrategy.cpp" />
     <ClCompile Include="LFloorTile.cpp" />
     <ClCompile Include="LGameCharacter.cpp" />
-    <ClCompile Include="LBeatManager.cpp" />
     <ClCompile Include="LGameObject.cpp" />
     <ClCompile Include="LDragon.cpp" />
     <ClCompile Include="LGreenDragonSprite.cpp" />

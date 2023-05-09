@@ -1,5 +1,5 @@
 #include "LMap.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LObject.h"
 #include "LLightSource.h"
 #include "LCadence.h"
@@ -224,7 +224,7 @@ namespace cl
 			{
 				mFloor[i][j] = FloorTile::CreateFloor(mFloorBluePrint[i][j], Vector2(j, i), sc);
 				if (mFloor[i][j] != nullptr)
-					BeatManager::AddCharacters(mFloor[i][j]);
+					Conductor::Instance().AddCharacters(mFloor[i][j]);
 			}
 		}
 
@@ -267,7 +267,7 @@ namespace cl
 			mTileObjects[mPlayerIndex.y][mPlayerIndex.x]->Destroy();
 		mTileObjects[mPlayerIndex.y][mPlayerIndex.x] = cadence;
 		cadence->SetIndex(mPlayerIndex);
-		BeatManager::AddCharacters(cadence);
+		Conductor::Instance().AddCharacters(cadence);
 	}
 
 	void Map::CreateMonsters(Scene* sc)

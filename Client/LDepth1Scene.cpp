@@ -1,6 +1,6 @@
 #include "LDepth1Scene.h"
 #include "LMapManager.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LGrooveChain.h"
@@ -22,7 +22,8 @@ namespace cl
 	}
 	void Depth1Scene::Update()
 	{
-		BeatManager::Update();
+		if (!Conductor::Instance().IsPlaying())	Conductor::Instance().Play();
+		Conductor::Instance().Update();
 		MapManager::Update();
 		Scene::Update();
 	}
@@ -41,15 +42,13 @@ namespace cl
 	void Depth1Scene::OnEnter()
 	{
 		Scene::OnEnter();
-		BeatManager::Reset();
-		BeatManager::SetBPM(115);
+		Conductor::Instance().SetSong(mBGM, 115);
 		GrooveChainManager::Initialize();
 		MapManager::CreateMap(MapManager::MapType::Random1, this);
-		mBGM->Play(true);
 	}
 	void Depth1Scene::OnExit()
 	{
-		mBGM->Stop(true);
+		Conductor::Instance().Stop();
 		Scene::OnExit();
 	}
 }

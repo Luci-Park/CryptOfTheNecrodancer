@@ -4,27 +4,30 @@
 namespace cl
 {
 	class SpriteRenderer;
+	class BeatUI;
 	class BeatBar : public GameObject
 	{
 	public:
 		BeatBar(Scene* sc);
 		~BeatBar();
-		void SetBar(Vector2 spawnPos, Vector2 despawnPos, Vector2 direction, int beat, int prevBeat);
+		void SetBar(BeatUI* ui, Vector2 spawnPos, Vector2 despawnPos, Vector2 direction, int beat, int prevBeat);
 		void SetToUrgent();
 
 		virtual void Update() override;
 	private:
 		bool CheckIfDespawn();
+		bool IsOnBeat();
 		void Move();
 
 		SpriteRenderer* mSpriteRenderer;
 		Sprite mNormalBeat;
 		Sprite mUrgentBeat;
 				
+		BeatUI* mMaster;
 		Vector2 mSpawnPos;
 		Vector2 mDespawnPos;
 		Vector2 mDirection;
-		int mMyBeat;
+		float mMyBeat;
 		int mBeatsInAdvance;
 	};
 }

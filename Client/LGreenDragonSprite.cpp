@@ -19,10 +19,10 @@ namespace cl
 		mLeftShadowAnimation = L"Shadow";
 		mRightShadowAnimation = L"Shadow";
 
-		mAnimator->CreateAnimation(mLeftAnimation, L"GreenDragon", path, 8, 2, 0, 0, 4, -Vector2(27, 51), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mRightAnimation, L"GreenDragon", path, 8, 2, 4, 0, 4, -Vector2(27, 51), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mLeftShadowAnimation, L"GreenDragon", path, 8, 2, 0, 1, 4, -Vector2(27, 51), BeatManager::SecondsPerBeat());
-		mAnimator->CreateAnimation(mRightShadowAnimation, L"GreenDragon", path, 8, 2, 4, 1, 4, -Vector2(27, 51), BeatManager::SecondsPerBeat());
+		mAnimator->CreateAnimation(mLeftAnimation, L"GreenDragon", path, 8, 2, 0, 0, 4, -Vector2(27, 51), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightAnimation, L"GreenDragon", path, 8, 2, 4, 0, 4, -Vector2(27, 51), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mLeftShadowAnimation, L"GreenDragon", path, 8, 2, 0, 1, 4, -Vector2(27, 51), Conductor::Instance().SecondsPerBeat());
+		mAnimator->CreateAnimation(mRightShadowAnimation, L"GreenDragon", path, 8, 2, 4, 1, 4, -Vector2(27, 51), Conductor::Instance().SecondsPerBeat());
 		Turn(Vector2::Right);
 	}
 	void GreenDragonSprite::Turn(Vector2 dir)

@@ -1,6 +1,6 @@
 #include "LCadenceShovelEffect.h"
 #include "LSpriteRenderer.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LTime.h"
 namespace cl
 {
@@ -36,7 +36,7 @@ namespace cl
 	}
 	void CadenceShovelEffect::Show()
 	{
-		showTime = BeatManager::SecondsPerBeat()*0.75;
+		showTime = Conductor::Instance().SecondsPerBeat()*0.75;
 		timer += Time::DeltaTime();
 		if (showTime <= timer)
 		{

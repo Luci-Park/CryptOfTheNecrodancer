@@ -24,7 +24,7 @@ namespace cl
 		for (int i = 0; i < (int)Knight::AttackDir::Size; ++i)
 		{
 			mAnimator->CreateAnimation(mAttackAnimation[i], L"Knight" + mAttackAnimation[i]
-				, path + mAttackAnimation[i] + L".bmp", 1, 1, 0, 0, 1, Vector2::Zero, BeatManager::SecondsPerBeat() * 0.25);
+				, path + mAttackAnimation[i] + L".bmp", 1, 1, 0, 0, 1, Vector2::Zero, Conductor::Instance().SecondsPerBeat() * 0.25);
 		}
 	}
 	void KnightEffect::PlayEffect(Vector2 direction)

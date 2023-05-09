@@ -6,8 +6,9 @@
 #include "LBeatUI.h"
 #include "LHealth.h"
 #include "LMapManager.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LGrooveChain.h"
+#include "LSceneManager.h"
 #include "LObject.h"
 #include "LCamera.h"
 #include "LInput.h"
@@ -66,7 +67,7 @@ namespace cl
 	}
 	void Cadence::Update()
 	{
-		mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
+		mMoveSpeed = Conductor::Instance().MoveSpeed() * 2 * Time::DeltaTime();
 		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mMoveSpeed));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
@@ -87,7 +88,7 @@ namespace cl
 					SetSprite();
 					if (!UnSink())
 						OnMove(mInput);
-					BeatManager::OnPlayerMove();
+					Conductor::Instance().OnPlayerMove();
 				}
 			}
 		}
@@ -96,7 +97,7 @@ namespace cl
 		}
 		TileObject::Update();
 		if (Input::GetKeyDown(eKeyCode::O))
-			BeatManager::OnPlayerMove();
+			Conductor::Instance().OnPlayerMove();
 	}
 	void Cadence::Render(HDC hdc)
 	{
@@ -130,6 +131,7 @@ namespace cl
 	void Cadence::OnDestroy()
 	{
 		PlayOnDeathSound();
+		SceneManager::LoadScene(eSceneType::Lobby);
 	}
 
 	void Cadence::OnBeat()

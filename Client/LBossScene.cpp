@@ -1,6 +1,6 @@
 #include "LBossScene.h"
 #include "LMapManager.h"
-#include "LBeatManager.h"
+#include "LConductor.h"
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LGrooveChain.h"
@@ -22,7 +22,8 @@ namespace cl
 	}
 	void BossScene::Update()
 	{
-		BeatManager::Update();
+		if (!Conductor::Instance().IsPlaying())	Conductor::Instance().Play();
+		Conductor::Instance().Update();
 		MapManager::Update();
 		Scene::Update();
 	}
@@ -41,15 +42,12 @@ namespace cl
 	void BossScene::OnEnter()
 	{
 		Scene::OnEnter();
-		BeatManager::Reset();
-		BeatManager::SetBPM(123);
-		GrooveChainManager::Initialize();
+		Conductor::Instance().SetSong(mBGM, 123);
 		MapManager::CreateMap(MapManager::MapType::DeepBlues, this);
-		mBGM->Play(true);
 	}
 	void BossScene::OnExit()
 	{
-		mBGM->Stop(true);
+		Conductor::Instance().Stop();
 		Scene::OnExit();
 	}
 }

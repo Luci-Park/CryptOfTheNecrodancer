@@ -1,5 +1,4 @@
 #include "LGameCharacter.h"
-#include "LBeatManager.h"
 #include "LMapManager.h"
 #include "LCharacterSprite.h"
 #include "LTime.h"
@@ -14,7 +13,7 @@ namespace cl
 		, mbMoveFailed(false)
 		, mSize(1)
 	{
-		mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
+		mMoveSpeed = Conductor::Instance().MoveSpeed() * 2 * Time::DeltaTime();
 	}
 	GameCharacter::~GameCharacter()
 	{
@@ -64,7 +63,7 @@ namespace cl
 	void GameCharacter::Recoil(Vector2 dir)
 	{
 		if (dir == Vector2::Zero) return;
-		mMoveSpeed = BeatManager::MoveSpeed() * 2 * Time::DeltaTime();
+		mMoveSpeed = Conductor::Instance().MoveSpeed() * 2 * Time::DeltaTime();
 		if (!mbMoveFailed)
 		{
 			mMoveTarget += dir * UNITLENGTH / 2;
