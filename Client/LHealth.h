@@ -7,11 +7,12 @@ namespace cl
 	class Health
 	{
 	public:
+		static void Reset();
+
 		Health(Cadence* player);
 		~Health();
 		void OnDamage(float damage);
 		void OnHeal(float heal);
-		void Reset();
 		float CurrentHealth() { return mHealth; }
 	private:
 		void SetHeart();

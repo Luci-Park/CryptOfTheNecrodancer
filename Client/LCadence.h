@@ -12,6 +12,7 @@ namespace cl
 	class Cadence : public GameCharacter
 	{
 	public:
+		static void Reset();
 		Cadence(Scene* scene);
 		~Cadence();
 

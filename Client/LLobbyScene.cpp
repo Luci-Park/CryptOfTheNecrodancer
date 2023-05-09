@@ -4,6 +4,7 @@
 #include "LResources.h"
 #include "LAudioClip.h"
 #include "LGrooveChain.h"
+#include "LCadence.h"
 namespace cl
 {
 	LobbyScene::LobbyScene()
@@ -42,6 +43,7 @@ namespace cl
 	void LobbyScene::OnEnter()
 	{
 		Scene::OnEnter();
+		Cadence::Reset();
 		BeatManager::Reset();
 		BeatManager::SetBPM(130);
 		GrooveChainManager::Initialize();

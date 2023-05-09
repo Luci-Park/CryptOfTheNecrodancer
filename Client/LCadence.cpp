@@ -19,6 +19,10 @@
 #include "LItem.h"
 namespace cl
 {
+	void Cadence::Reset()
+	{
+		Health::Reset();
+	}
 	Cadence::Cadence(Scene* scene)
 		: GameCharacter(scene, true)
 		, consecutiveHits(0)

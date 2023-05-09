@@ -7,6 +7,11 @@ namespace cl
 	float Health::_defaultMaxHealth = 5;
 	float Health::_currentMaxHealth = 5;
 	float Health::_currentHealth = 5;
+	void Health::Reset()
+	{
+		_currentMaxHealth = _defaultMaxHealth;
+		_currentHealth = _defaultMaxHealth;
+	}
 
 	Health::Health(Cadence* player)
 		: mPlayer(player)
@@ -66,13 +71,5 @@ namespace cl
 	void Health::OnHealthIsZero()
 	{
 		mPlayer->OnDestroy();
-	}
-	void Health::Reset()
-	{
-		mMaxHealth = _defaultMaxHealth;
-		mHealth = mMaxHealth;
-		_currentMaxHealth = _defaultMaxHealth;
-		_currentHealth = _defaultMaxHealth;
-
 	}
 }
