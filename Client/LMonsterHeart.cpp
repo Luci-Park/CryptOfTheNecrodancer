@@ -33,13 +33,16 @@ namespace cl
 		GameObject::Render(hdc);
 		Vector2 startPos = mStartPos + mTransform->GetPos();
 		startPos = Camera::CaluatePos(startPos);
-		for (int i = mMaxHeart; i > 0; --i)
+		if (Camera::IsDrawable(Sprite(startPos, Vector2(mSpriteSize.x * UNITSCALE * mMaxHeart, mSpriteSize.y * UNITSCALE), Vector2::Zero)))
 		{
-			if (i <= mCurrHeart)
-				DrawHeart(hdc, startPos, mFullHeart);
-			else
-				DrawHeart(hdc, startPos, mEmptyHeart);
-			startPos.x += mSpriteSize.x * UNITSCALE;
+			for (int i = mMaxHeart; i > 0; --i)
+			{
+				if (i <= mCurrHeart)
+					DrawHeart(hdc, startPos, mFullHeart);
+				else
+					DrawHeart(hdc, startPos, mEmptyHeart);
+				startPos.x += mSpriteSize.x * UNITSCALE;
+			}
 		}
 	}
 

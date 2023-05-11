@@ -122,9 +122,9 @@ namespace cl
 
 	void FloorTile::Update()
 	{
-		GetSprite();
 		if (mCurrStrategy != nullptr)
 			mCurrStrategy->Update();
+		GetSprite();
 		GameObject::Update();
 	}
 
@@ -147,8 +147,7 @@ namespace cl
 
 	void FloorTile::GetSprite()
 	{
-		if (mCurrStrategy != nullptr 
-			&& mFloorRenderer->GetSprite() != mCurrStrategy->GetSprite())
+		if (mCurrStrategy != nullptr)
 		{
 			mFloorRenderer->SetSprite(mCurrStrategy->GetSprite());
 		}

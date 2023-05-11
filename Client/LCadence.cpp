@@ -65,8 +65,8 @@ namespace cl
 		mItems[(int)eItemTypes::Tool] = object::Instantiate<Shovel>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Items);
 		
 		mShovelEffect = object::Instantiate<CadenceShovelEffect>(GameObject::GetScene(), GameObject::mTransform, GameObject::mTransform->GetPos(), eLayerType::Effects);
-		if(SceneManager::GetActiveScene()->GetSceneType() != eSceneType::Lobby)
-			mJudge = object::Instantiate<BeatJudge>(eLayerType::System);
+		/*if(SceneManager::GetActiveScene()->GetSceneType() != eSceneType::Lobby)
+			mJudge = object::Instantiate<BeatJudge>(eLayerType::System);*/
 		mPrevPos = mIndex;
 	}
 	void Cadence::Update()
