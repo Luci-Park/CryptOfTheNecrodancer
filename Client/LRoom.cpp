@@ -169,7 +169,7 @@ namespace cl
 	}
 	void RandomRoom::CreateRandomFloors()
 	{
-		int rand = GetRandomInt(1, 10);
+		int rand = GetRandomInt(1, 5);
 		if (rand > 1)
 			return;
 		for (int i = 0; i < mSize.y; ++i)
