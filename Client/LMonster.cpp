@@ -26,6 +26,7 @@ namespace cl
 	}
 	Monster::~Monster()
 	{
+		mHeart->Destroy();
 	}
 	void Monster::Initialize()
 	{
@@ -166,38 +167,27 @@ namespace cl
 	}
 	Vector2 Monster::CardinalMoveTowards()
 	{
-		Vector2 player = MapManager::GetPlayerIndex();
-		Vector2 playerPrevPos = MapManager::GetPlayer()->GetPrevPos();
-		Vector2 dir = (player - mIndex).TileNormalize();
+		Vector2 playerPos = MapManager::GetPlayerIndex();
+		Vector2 dir = (playerPos - mIndex).TileNormalize();
 		if (Vector2::IsCardinal(dir))
 			return dir;
-		Vector2 dir2 = (playerPrevPos - mIndex).TileNormalize();
-		if (Vector2::IsCardinal(dir2))
-			return dir2;
-		if (mPrevDir != Vector2::Zero)
+		std::vector<Vector2> direction = {
+			{1, 0}, {0, 1}, {-1, 0}, {0, -1} };
+		std::vector<std::pair<float, int>> distances(direction.size());
+
+		for (int i = 0; i < direction.size(); ++i)
 		{
-			if (mPrevDir.x != 0)
-			{
-				if (mPrevDir.x == dir.x && MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir));
-					return mPrevDir;
-				dir.x = 0;
-				return dir;
-			}
-			if (mPrevDir.y != 0)
-			{
-				if (mPrevDir.y == dir.y && MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir))
-					return mPrevDir;
-				dir.y = 0;
-				return dir;
-			}
+			float distance = Vector2::Distance(mIndex + direction[i], playerPos);
+			distances[i] = (std::make_pair(distance, i));
 		}
-		else
+		std::sort(distances.begin(), distances.end());
+		for (auto it = distances.begin(); it != distances.end(); ++it)
 		{
-			if (abs(player.x - mIndex.x) >= abs(player.y - mIndex.y))
-				return Vector2(player.x - mIndex.x, 0.0f).TileNormalize();
-			else
-				return Vector2(0.0f, player.y - mIndex.y).TileNormalize();
+			Vector2 dest = mIndex + direction[it->second];
+			if (dest == playerPos || MapManager::IsTileEmptyExceptPlayer(dest))
+				return direction[it->second];
 		}
+		return direction[distances.begin()->second];
 	}
 	Vector2 Monster::DiagonalMoveTowards()
 	{
@@ -216,7 +206,7 @@ namespace cl
 		for (auto it = distances.begin(); it != distances.end(); ++it)
 		{
 			Vector2 dest = mIndex + direction[it->second];
-			if (dest == playerPos || (MapManager::GetEnemy(dest) == nullptr && MapManager::GetWall(dest) == nullptr))
+			if (dest == playerPos || MapManager::IsTileEmptyExceptPlayer(dest))
 				return direction[it->second];
 		}
 		return direction[distances.begin()->second];
