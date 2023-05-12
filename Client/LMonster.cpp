@@ -171,6 +171,13 @@ namespace cl
 		Vector2 dir = (playerPos - mIndex).TileNormalize();
 		if (Vector2::IsCardinal(dir))
 			return dir;
+		if (mPrevDir.x != 0 && mPrevDir.x == dir.x
+			&& MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir))
+			return mPrevDir;
+		if (mPrevDir.y != 0 && mPrevDir.y == dir.y
+			&& MapManager::IsTileEmptyExceptPlayer(mIndex + mPrevDir))
+			return mPrevDir;
+
 		std::vector<Vector2> direction = {
 			{1, 0}, {0, 1}, {-1, 0}, {0, -1} };
 		std::vector<std::pair<float, int>> distances(direction.size());
