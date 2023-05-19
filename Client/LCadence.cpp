@@ -113,7 +113,9 @@ namespace cl
 		}
 		TileObject::Update();
 		if (Input::GetKeyDown(eKeyCode::O))
-			Conductor::Instance().OnPlayerMove();
+		{
+			mHealth->OnHeal(10);
+		}
 	}
 	void Cadence::Render(HDC hdc)
 	{
