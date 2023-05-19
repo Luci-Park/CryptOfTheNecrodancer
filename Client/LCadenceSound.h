@@ -14,6 +14,7 @@ namespace cl
 		void PlayOnHitSound();
 		void PlayOnDeathSound();
 		void PlayVictorySound();
+		void PlayHealSound();
 
 		void SetAudioClip();
 		void SetDigSound();
@@ -21,6 +22,7 @@ namespace cl
 		void SetDeathSound();
 		void SetOnHitSound();
 		void SetVictorySound();
+		void SetHealSound();
 	private:
 		std::vector<AudioClip*> mDigVoices;
 		std::vector<std::vector<AudioClip*>>mMeleeHitVoices;
@@ -28,6 +30,7 @@ namespace cl
 		std::vector<AudioClip*>mDeathVoices;
 		std::vector<AudioClip*>mOnAttackedVoices;
 		std::vector<AudioClip*>mVictoryVoices;
+		std::vector<AudioClip*>mHealVoices;
 		AudioClip* mHitSFX;
 		AudioClip* mDeathSFX;
 	};

@@ -46,6 +46,11 @@ namespace cl
 		int random = GetRandomInt(0, mVictoryVoices.size() - 1);
 		mVictoryVoices[random]->Play(false);
 	}
+	void CadenceSound::PlayHealSound()
+	{
+		int random = GetRandomInt(0, mHealVoices.size() - 1);
+		mHealVoices[random]->Play(false);
+	}
 	void CadenceSound::SetAudioClip()
 	{
 		SetDigSound();
@@ -137,6 +142,20 @@ namespace cl
 			std::wstring newKey = key + std::to_wstring(i + 1);
 			std::wstring newPath = path + newKey + L".wav";
 			mVictoryVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
+		}
+	}
+	void CadenceSound::SetHealSound()
+	{
+		mHealVoices.resize(3);
+		std::wstring cad = L"vo_cad_";
+		std::wstring key = cad + L"heal_0";
+		std::wstring path = L"..\\Assets\\Audio\\SoundEffects\\CadenceVoice\\";
+
+		for (int i = 0; i < mHealVoices.size(); ++i)
+		{
+			std::wstring newKey = key + std::to_wstring(i + 1);
+			std::wstring newPath = path + newKey + L".wav";
+			mHealVoices[i] = Resources::Load<AudioClip>(newKey, newPath);
 		}
 	}
 }

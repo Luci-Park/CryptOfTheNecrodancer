@@ -114,7 +114,7 @@ namespace cl
 		TileObject::Update();
 		if (Input::GetKeyDown(eKeyCode::O))
 		{
-			mHealth->OnHeal(10);
+			Heal(10);
 		}
 	}
 	void Cadence::Render(HDC hdc)
@@ -172,6 +172,12 @@ namespace cl
 		
 		}
 		mItems[idx] = item;
+	}
+
+	void Cadence::Heal(int amount)
+	{
+		mHealth->OnHeal(amount);
+		mSound->PlayHealSound();
 	}
 
 	void Cadence::OnMove(Vector2 direction)

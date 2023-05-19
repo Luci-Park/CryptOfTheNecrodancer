@@ -29,6 +29,7 @@ namespace cl
 		virtual void OnBeatChanged()				override;
 
 		void SwitchItem(Item* item, eItemTypes type);
+		void Heal(int amount);
 		Vector2 GetPos() { return mIndex; }
 		Vector2 GetPrevPos() { return mPrevPos; }
 		bool HasMoved() { return mInput != Vector2::Zero; }
