@@ -58,6 +58,7 @@ namespace cl
 		SetDeathSound();
 		SetOnHitSound();
 		SetVictorySound();
+		SetHealSound();
 		mDeathSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_death_ST.wav");
 		mHitSFX = Resources::Load<AudioClip>(L"PlayerHit", L"..\\Assets\\Audio\\SoundEffects\\SFX\\sfx_player_hit_ST.wav");	
 	}
