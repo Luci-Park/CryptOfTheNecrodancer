@@ -27,4 +27,4 @@
 #define DEFAULTUNIT 24
 #define UNITSCALE 3
 #define UNITLENGTH 72 
-#define BEATPERCENT 40
+#define BEATPERCENT 50
