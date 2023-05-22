@@ -93,9 +93,20 @@ torches = start는 1 ~ 4
 
 corridors are connected by the maze generation algorithm
 
+(영상 예상)
+warning -> main(3초)
+[Crypt of the Necrodancer 모작자 박수민입니다]
 
+lobby(12초)
+[Crypt of the Necrodancer는 로그라이크 리듬 던전 크롤러로 
+매판 랜덤으로 만들어지는 던전을 비트에 맞춰서 탐험하는 게임입니다.
 
+계단으로 내려가 게임을 진행할 수 있습니다.]
 
+floor 1
+-> 몹 죽이기 -> groove multiplier 에게 공격 당하기
 
+exit 발견시 잠깐 머무르기, 보스몹 죽이고 진행
 
-
+boss floor
+pawn 한 번 씩 보여줄 것
