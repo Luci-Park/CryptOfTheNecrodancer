@@ -71,41 +71,41 @@ namespace cl
 	}
 	void Cadence::Update()
 	{
+		Vector2 input = CheckInput();
+		if (Vector2::IsCardinal(input))
+		{
+			if (mJudge == nullptr || mJudge->IsInBeat())
+			{
+				if (mJudge != nullptr) 
+					mJudge->OnValidInput();
+
+				mTransform->SetPos(mMoveTarget);
+
+				if (mbIsMoving)
+					OnDestReached();
+
+				mInput = input;
+				SetSprite();
+				if (!UnSink())
+				{
+					mPrevPos = mIndex;
+					OnMove(mInput);
+				}
+				Conductor::Instance().OnPlayerMove();
+				return;
+			}
+			else
+			{
+				GrooveChainManager::Instance().LooseGroove();
+			}
+		}
 		mMoveSpeed = Conductor::Instance().MoveSpeed() * 2 * Time::DeltaTime();
 		mTransform->SetPos(Vector2::MoveTowards(mTransform->GetPos(), mMoveTarget, mMoveSpeed));
 		if (Vector2::Distance(mTransform->GetPos(), mMoveTarget) <= 0.01f)
 		{
 			if (mbIsMoving)
 			{
-				mbIsMoving = false;
-				mSprite->Reset();
-				if (mbIsTouchingGround)
-					MapManager::OnTileStep(this, mIndex);
-				Item* item = MapManager::GetItem(mIndex);
-				if (item != nullptr) item->PickUpItem(this);
-			}
-			else
-			{
-				Vector2 input = CheckInput();
-				if (Vector2::IsCardinal(input))
-				{
-					if (mJudge == nullptr || mJudge->IsInBeat())
-					{
-						if(mJudge != nullptr) mJudge->OnValidInput();
-						mInput = input;
-						SetSprite();
-						if (!UnSink())
-						{
-							mPrevPos = mIndex;
-							OnMove(mInput);
-						}
-						Conductor::Instance().OnPlayerMove();
-					}
-					else
-					{
-						GrooveChainManager::Instance().LooseGroove();
-					}
-				}
+				OnDestReached();
 			}
 		}
 		else {
@@ -192,6 +192,16 @@ namespace cl
 				TryMove();
 		}
 		mMoved = true;
+	}
+
+	void Cadence::OnDestReached()
+	{
+		mbIsMoving = false;
+		mSprite->Reset();
+		if (mbIsTouchingGround)
+			MapManager::OnTileStep(this, mIndex);
+		Item* item = MapManager::GetItem(mIndex);
+		if (item != nullptr) item->PickUpItem(this);
 	}
 
 	void Cadence::PlayVictory()

@@ -41,6 +41,7 @@ namespace cl
 		virtual bool TryDig(Vector2 direction)		override;
 	private:
 		void OnMove(Vector2 direction);
+		void OnDestReached();
 		Vector2 CheckInput();
 		void SetSprite();
 
