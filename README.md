@@ -1,3 +1,10 @@
+# Crypt of the Necrodancer 모작
+- 개발 기간 : 2023.02.14 ~ 2023.05.08
+- 스택 : C++ , WinAPI
+- 개발인원 : 1
+- 대상 플랫폼 : Windows
+
+
 # 📜프로젝트 설명
 
 이 프로젝트는 Window API 공부하기 위해 만든 Crypt of the Necrodancer 모작입니다. 
