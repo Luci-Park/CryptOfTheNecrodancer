@@ -197,6 +197,7 @@ namespace cl
 		CreateItems(sc);
 		CreateLight(sc);
 		CreateLightInfo();
+		PrintMap();
 	}
 
 	void Map::SetKey(TileObject* key)
@@ -305,6 +306,24 @@ namespace cl
 			}
 		}
 		CalculateLight();
+	}
+	void Map::PrintMap()
+	{
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			std::string mapline = "";
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				if (mWallBluePrint[i][j] == eWallTypes::Border)
+					mapline += "2 ";
+				else if (mWallBluePrint[i][j] == eWallTypes::None)
+					mapline = "0 ";
+				else
+					mapline += "1 ";
+			}
+			mapline += "\n";
+			OutputDebugStringA(mapline.c_str());
+		}
 	}
 #pragma endregion
 #pragma endregion
