@@ -189,7 +189,13 @@ struct Vector2
     static bool IsCardinal(Vector2 vect);
     static bool IsDiagonal(Vector2 vect);
 };
-
+struct Color
+{
+    UINT r;
+    UINT g;
+    UINT b;
+    UINT a;
+};
 int GetRandomInt(int min, int max)
 {
     if (min >= max) return min;

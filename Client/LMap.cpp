@@ -78,8 +78,18 @@ namespace cl
 	}
 	void Map::RenderMinimap(HDC hdc)
 	{
-		const Vector2 startPos = {};
-		const Vector2 endPos = {};
+		Vector2 startPos, endPos;
+		for (int i = 0; i < mMapSize.y; ++i)
+		{
+			for (int j = 0; j < mMapSize.x; ++j)
+			{
+				Color color = mTileObjects[i][j]->GetMapColor();
+				RECT rect = { startPos.x, startPos.y, endPos.x, endPos.y };
+				HBRUSH hBrush = CreateSolidBrush(RGB(color.r, color.g, color.b));
+				FillRect(hdc, &rect, hBrush);
+				DeleteObject(hBrush);
+			}
+		}
 	}
 	void Map::AddLightSource(LightSource* light)
 	{
