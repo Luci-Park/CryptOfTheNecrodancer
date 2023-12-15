@@ -54,6 +54,7 @@ namespace cl
 		void CalculateLight();
 
 		void Initialize(Vector2 size);
+		void RenderMinimap(HDC hdc);
 
 		Vector2 mMapSize;
 		Vector2 mPlayerIndex;
@@ -73,8 +74,6 @@ namespace cl
 		void CreateMonsters(Scene* sc);
 		void CreateLight(Scene* sc);
 		void CreateLightInfo();
-		
-		void PrintMap();
 
 		std::vector<std::vector<FloorTile*>> mFloor;
 		std::vector<std::vector<WallTile*>> mWall;

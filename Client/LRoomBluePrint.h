@@ -2,10 +2,10 @@
 #include "LuciEngine.h"
 namespace cl
 {
-	struct Room
+	struct RoomBluePrint
 	{
-		Room(int zone);
-		virtual ~Room();
+		RoomBluePrint(int zone);
+		virtual ~RoomBluePrint();
 
 		void Reset();
 		void SetWall(eWallTypes type);
@@ -26,15 +26,15 @@ namespace cl
 		Vector2 mOffset;
 		int mZone;
 
-		Room* mParent;
-		std::vector<Room*> mChildren;
+		RoomBluePrint* mParent;
+		std::vector<RoomBluePrint*> mChildren;
 	};
-	struct StartRoom : public Room
+	struct StartRoom : public RoomBluePrint
 	{
 		StartRoom(int zone);
 		~StartRoom();
 	};
-	struct RandomRoom : public Room
+	struct RandomRoom : public RoomBluePrint
 	{
 		RandomRoom(int zone);
 		RandomRoom(int zone, int XMaxSize, int YMaxSize);

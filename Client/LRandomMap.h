@@ -5,7 +5,7 @@
 #define STARTIDX 4
 namespace cl
 {
-	class Room;
+	class RoomBluePrint;
 	class RandomMap : public Map
 	{
 	public:
@@ -16,21 +16,21 @@ namespace cl
 		virtual void CreateMapBluePrint() override;
 
 		void InitializeWall();
-		void CreateRoom();
-		void CreateRooms(Room* parent);
-		bool IsDirPossible(Vector2 dir, Room* parent, Room* child);
-		bool SetRoomY(int x, Room* parent, Room* child);
-		bool SetRoomX(int y, Room* parent, Room* child);
-		void CopyRooms();
-		void CopyRoom(Room* room);
+		void CreateRoomBluePrint();
+		void CreateRoomBluePrint(RoomBluePrint* parent);
+		bool IsDirPossible(Vector2 dir, RoomBluePrint* parent, RoomBluePrint* child);
+		bool SetRoomY(int x, RoomBluePrint* parent, RoomBluePrint* child);
+		bool SetRoomX(int y, RoomBluePrint* parent, RoomBluePrint* child);
+		void CopyRoomsToFullBluePrint();
+		void CopyRoom(RoomBluePrint* room);
 		void CreateCorridor();
-		void CreateCorridor(Room* parent, Room* child, Vector2 dir);
+		void CreateCorridor(RoomBluePrint* parent, RoomBluePrint* child, Vector2 dir);
 		void DeleteRooms();
 		bool DoesRoomOverlap(Vector2 l1, Vector2 r1, Vector2 l2, Vector2 r2);
-		bool IsIndexInRoom(Vector2 pos, Room* room);
-		bool IsOnBoundary(Vector2 pos, Room* room);
+		bool IsIndexInRoom(Vector2 pos, RoomBluePrint* room);
+		bool IsOnBoundary(Vector2 pos, RoomBluePrint* room);
 		bool IsDigIndexValid(Vector2 index);
-		std::vector<Room*>mRooms;
+		std::vector<RoomBluePrint*>mRooms;
 
 		int mZone; 
 	};

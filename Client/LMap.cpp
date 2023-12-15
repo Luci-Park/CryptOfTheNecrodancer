@@ -5,7 +5,6 @@
 #include "LCadence.h"
 #include "LMonsterFactory.h"
 #include "LWallTorch.h"
-#include "LKing.h"
 namespace cl
 {
 #pragma region Parent - Map Class
@@ -72,11 +71,15 @@ namespace cl
 				{
 					TileObject* t = mTileObjects[i][j];
 					mTileObjects[i][j]->Render(hdc);
-					if (dynamic_cast<King*> (mTileObjects[i][j]) != nullptr)
-						int p = 0;
 				}
 			}
 		}
+		RenderMinimap(hdc);
+	}
+	void Map::RenderMinimap(HDC hdc)
+	{
+		const Vector2 startPos = {};
+		const Vector2 endPos = {};
 	}
 	void Map::AddLightSource(LightSource* light)
 	{
@@ -197,7 +200,6 @@ namespace cl
 		CreateItems(sc);
 		CreateLight(sc);
 		CreateLightInfo();
-		PrintMap();
 	}
 
 	void Map::SetKey(TileObject* key)
@@ -211,6 +213,7 @@ namespace cl
 		mWallBluePrint = std::vector<std::vector<eWallTypes>>(size.y, std::vector<eWallTypes>(size.x, eWallTypes::Border));
 		mMonsterBluePrint = std::vector<std::vector<eMonsterTypes>>(size.y, std::vector<eMonsterTypes>(size.x, eMonsterTypes::None));
 	}
+
 
 	bool Map::IndexIsValid(Vector2 index)
 	{
@@ -307,24 +310,7 @@ namespace cl
 		}
 		CalculateLight();
 	}
-	void Map::PrintMap()
-	{
-		for (int i = 0; i < mMapSize.y; ++i)
-		{
-			std::string mapline = "";
-			for (int j = 0; j < mMapSize.x; ++j)
-			{
-				if (mWallBluePrint[i][j] == eWallTypes::Border)
-					mapline += "2 ";
-				else if (mWallBluePrint[i][j] == eWallTypes::None)
-					mapline = "0 ";
-				else
-					mapline += "1 ";
-			}
-			mapline += "\n";
-			OutputDebugStringA(mapline.c_str());
-		}
-	}
+	
 #pragma endregion
 #pragma endregion
 }

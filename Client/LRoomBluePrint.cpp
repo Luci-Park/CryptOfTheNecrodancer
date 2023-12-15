@@ -1,25 +1,25 @@
-#include "LRoom.h"
+#include "LRoomBluePrint.h"
 #include "LMonsterFactory.h"
 #define MINROOMSIZE 6
 #define MAXROOMSIZE 9
 namespace cl
 {
-	Room::Room(int zone)
+	RoomBluePrint::RoomBluePrint(int zone)
 		: mZone(zone)
 	{
 		mParent = nullptr;
-		mChildren = std::vector<Room*>(4, nullptr);
+		mChildren = std::vector<RoomBluePrint*>(4, nullptr);
 	}
-	Room::~Room()
+	RoomBluePrint::~RoomBluePrint()
 	{
 	}
-	void Room::Reset()
+	void RoomBluePrint::Reset()
 	{
 		mFloors = std::vector<std::vector<eFloorTypes>>(mSize.y, std::vector<eFloorTypes>(mSize.x, eFloorTypes::ActiveDirt));
 		mWalls = std::vector<std::vector<eWallTypes>>(mSize.y, std::vector<eWallTypes>(mSize.x, eWallTypes::None));
 		mMonsters = std::vector<std::vector<eMonsterTypes>>(mSize.y, std::vector<eMonsterTypes>(mSize.x, eMonsterTypes::None));
 	}
-	void Room::SetWall(eWallTypes type)
+	void RoomBluePrint::SetWall(eWallTypes type)
 	{
 		for (int i = 0; i < mSize.y; ++i)
 		{
@@ -38,7 +38,7 @@ namespace cl
 			}
 		}
 	}
-	void Room::SetColumn(eWallTypes type)
+	void RoomBluePrint::SetColumn(eWallTypes type)
 	{
 		if (mSize.x <= 6 || mSize.y <= 6) return;
 		if (eWallTypes::None == type)return;
@@ -52,7 +52,7 @@ namespace cl
 		mWalls[mSize.y - 3][2] = types[2];
 		mWalls[mSize.y - 3][mSize.x - 3] = types[3];
 	}
-	void Room::SetCorner(eWallTypes type)
+	void RoomBluePrint::SetCorner(eWallTypes type)
 	{
 		if (eWallTypes::None == type) return;
 		eWallTypes types[4];
@@ -64,7 +64,7 @@ namespace cl
 		mWalls[mSize.y - 2][1] = types[2];
 		mWalls[mSize.y - 2][mSize.x - 2] = types[3];
 	}
-	void Room::SetLights(int numbers)
+	void RoomBluePrint::SetLights(int numbers)
 	{
 		bool light[4] = { false, false, false, false };
 		for (int i = 0; i < numbers; ++i)
@@ -85,7 +85,7 @@ namespace cl
 				mLights.push_back(Vector2((int)mSize.x -1, GetRandomInt(1, mSize.y - 2)));
 		}
 	}
-	int Room::GetIndexFromDirection(Vector2 dir)
+	int RoomBluePrint::GetIndexFromDirection(Vector2 dir)
 	{
 		if (dir == Vector2::Left)
 			return 0;
@@ -95,20 +95,20 @@ namespace cl
 			return 2;
 		return 3;
 	}
-	Vector2 Room::GetDirectionFromIndex(int idx)
+	Vector2 RoomBluePrint::GetDirectionFromIndex(int idx)
 	{
 		if (idx == 0) return Vector2::Left;
 		if (idx == 1) return Vector2::Right;
 		if (idx == 2) return Vector2::Up;
 		return Vector2::Down;
 	}
-	eWallTypes Room::GetRandomDirtWall()
+	eWallTypes RoomBluePrint::GetRandomDirtWall()
 	{
 		int rand = GetRandomInt(1, 10);
 		return rand < 9 ? eWallTypes::DirtWall : eWallTypes::StoneWall;
 	}
 	StartRoom::StartRoom(int zone)
-		: Room(zone)
+		: RoomBluePrint(zone)
 	{
 		mSize = Vector2(7, 7);
 		Reset();
@@ -120,14 +120,14 @@ namespace cl
 	{
 	}
 	RandomRoom::RandomRoom(int zone)
-		: Room(zone)
+		: RoomBluePrint(zone)
 	{
 		mSize.x = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
 		mSize.y = GetRandomInt(MINROOMSIZE, MAXROOMSIZE);
 		SetRoom();
 	}
 	RandomRoom::RandomRoom(int zone, int XMaxSize, int YMaxSize)
-		:Room(zone)
+		:RoomBluePrint(zone)
 	{
 		int maxRoomX = XMaxSize < MAXROOMSIZE ? XMaxSize : MAXROOMSIZE;
 		int maxRoomY = YMaxSize < MAXROOMSIZE ? YMaxSize : MAXROOMSIZE;

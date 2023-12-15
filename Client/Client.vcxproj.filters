@@ -520,7 +520,7 @@
     <ClInclude Include="LLobbyMap.h">
       <Filter>Contents\SystemObjects\Map</Filter>
     </ClInclude>
-    <ClInclude Include="LRoom.h">
+    <ClInclude Include="LRoomBluePrint.h">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
     </ClInclude>
     <ClInclude Include="LKnightWeapon.h">
@@ -901,7 +901,7 @@
     <ClCompile Include="LLobbyMap.cpp">
       <Filter>Contents\SystemObjects\Map</Filter>
     </ClCompile>
-    <ClCompile Include="LRoom.cpp">
+    <ClCompile Include="LRoomBluePrint.cpp">
       <Filter>Contents\SystemObjects\Map\Random</Filter>
     </ClCompile>
     <ClCompile Include="LKnightWeapon.cpp">

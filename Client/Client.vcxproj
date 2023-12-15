@@ -228,7 +228,7 @@
     <ClInclude Include="LResources.h" />
     <ClInclude Include="LRook.h" />
     <ClInclude Include="LRookSprite.h" />
-    <ClInclude Include="LRoom.h" />
+    <ClInclude Include="LRoomBluePrint.h" />
     <ClInclude Include="LScene.h" />
     <ClInclude Include="LSceneManager.h" />
     <ClInclude Include="LAudioClip.h" />
@@ -355,7 +355,7 @@
     <ClCompile Include="LResources.cpp" />
     <ClCompile Include="LRook.cpp" />
     <ClCompile Include="LRookSprite.cpp" />
-    <ClCompile Include="LRoom.cpp" />
+    <ClCompile Include="LRoomBluePrint.cpp" />
     <ClCompile Include="LScene.cpp" />
     <ClCompile Include="LSceneManager.cpp" />
     <ClCompile Include="LAudioClip.cpp" />

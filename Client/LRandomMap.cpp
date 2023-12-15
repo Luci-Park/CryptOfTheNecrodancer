@@ -1,5 +1,5 @@
 #include "LRandomMap.h"
-#include "LRoom.h"
+#include "LRoomBluePrint.h"
 #include "LSceneManager.h"
 #include "LFloorTile.h"
 namespace cl
@@ -24,8 +24,8 @@ namespace cl
 		mMapSize = Vector2(MAPSIZE, MAPSIZE);
 		Map::Initialize(mMapSize);
 		InitializeWall();
-		CreateRoom();
-		CopyRooms();
+		CreateRoomBluePrint();
+		CopyRoomsToFullBluePrint();
 		CreateCorridor();
 		DeleteRooms();
 	}
@@ -38,7 +38,7 @@ namespace cl
 				if (MARGIN <= i && i <= MAPSIZE - MARGIN
 					&& MARGIN <= j && j <= MAPSIZE - MARGIN)
 				{
-					mWallBluePrint[i][j] = Room::GetRandomDirtWall();
+					mWallBluePrint[i][j] = RoomBluePrint::GetRandomDirtWall();
 				}
 				else
 				{
@@ -47,16 +47,16 @@ namespace cl
 			}
 		}
 	}
-	void RandomMap::CreateRoom()
+	void RandomMap::CreateRoomBluePrint()
 	{
-		CreateRooms(nullptr);
+		CreateRoomBluePrint(nullptr);
 	}
-	void RandomMap::CreateRooms(Room* parent)
+	void RandomMap::CreateRoomBluePrint(RoomBluePrint* parent)
 	{
 		bool set = false;
 		if (mRooms.size() >= 6)
 			return;
-		Room* newRoom = nullptr;
+		RoomBluePrint* newRoom = nullptr;
 		if (mRooms.size() == 0)
 		{			
 			newRoom = new ExitRoom(mZone);
@@ -83,7 +83,7 @@ namespace cl
 				{
 					if (IsDirPossible(v[i], parent, newRoom))
 					{
-						parent->mChildren[Room::GetIndexFromDirection(v[i])] = newRoom;
+						parent->mChildren[RoomBluePrint::GetIndexFromDirection(v[i])] = newRoom;
 						newRoom->mParent = parent;
 						set = true;
 						break;
@@ -105,7 +105,7 @@ namespace cl
 					{
 						if (IsDirPossible(v[i], parent, newRoom))
 						{
-							parent->mChildren[Room::GetIndexFromDirection(v[i])] = newRoom;
+							parent->mChildren[RoomBluePrint::GetIndexFromDirection(v[i])] = newRoom;
 							newRoom->mParent = parent;
 							set = true;
 							break;
@@ -118,14 +118,14 @@ namespace cl
 		if (set && newRoom != nullptr)
 		{
 			mRooms.push_back(newRoom);
-			CreateRooms(newRoom);
+			CreateRoomBluePrint(newRoom);
 		}
 		if (!set && newRoom != nullptr)
 			delete newRoom;
 	}
-	bool RandomMap::IsDirPossible(Vector2 dir, Room* parent, Room* child)
+	bool RandomMap::IsDirPossible(Vector2 dir, RoomBluePrint* parent, RoomBluePrint* child)
 	{
-		if (parent->mChildren[Room::GetIndexFromDirection(dir)] != nullptr)
+		if (parent->mChildren[RoomBluePrint::GetIndexFromDirection(dir)] != nullptr)
 			return false;
 		if (dir == Vector2::Left)
 		{
@@ -166,7 +166,7 @@ namespace cl
 			return SetRoomX(y, parent, child);
 		}
 	}
-	bool RandomMap::SetRoomY(int x, Room* parent, Room* child)
+	bool RandomMap::SetRoomY(int x, RoomBluePrint* parent, RoomBluePrint* child)
 	{
 		int min =parent->mOffset.y -child->mSize.y;
 		int max =parent->mOffset.y +parent->mSize.y;
@@ -197,7 +197,7 @@ namespace cl
 		child->mOffset = Vector2(x, y);
 		return true;
 	}
-	bool RandomMap::SetRoomX(int y, Room* parent, Room* child)
+	bool RandomMap::SetRoomX(int y, RoomBluePrint* parent, RoomBluePrint* child)
 	{
 		int min =parent->mOffset.x -child->mSize.x;
 		int max =parent->mOffset.x +parent->mSize.x;
@@ -229,7 +229,7 @@ namespace cl
 		return true;
 	}
 
-	void RandomMap::CopyRooms()
+	void RandomMap::CopyRoomsToFullBluePrint()
 	{
 		for (int i = 0; i < mRooms.size(); ++i)
 		{
@@ -241,7 +241,7 @@ namespace cl
 			}
 		}
 	}
-	void RandomMap::CopyRoom(Room* room)
+	void RandomMap::CopyRoom(RoomBluePrint* room)
 	{
 		Vector2 startPos = room->mOffset;
 		for (int i = 0; i < room->mSize.y; ++i)
@@ -265,15 +265,15 @@ namespace cl
 	{
 		for (int i = 0; i < mRooms.size(); ++i)
 		{
-			Room* room = mRooms[i];
+			RoomBluePrint* room = mRooms[i];
 			for (int j = 0; j < room->mChildren.size(); j++)
 			{
 				if (room->mChildren[j] != nullptr)
-					CreateCorridor(room, room->mChildren[j], Room::GetDirectionFromIndex(j));
+					CreateCorridor(room, room->mChildren[j], RoomBluePrint::GetDirectionFromIndex(j));
 			}
 		}
 	}
-	void RandomMap::CreateCorridor(Room* parent, Room* child, Vector2 dir)
+	void RandomMap::CreateCorridor(RoomBluePrint* parent, RoomBluePrint* child, Vector2 dir)
 	{
 		Vector2 parentCenter = parent->mOffset + parent->mCenter;
 		Vector2 childCenter = child->mOffset + child->mCenter;
@@ -322,7 +322,7 @@ namespace cl
 			{
 				Vector2 v = { cursorX + dx[i], cursorY + dy[i] };
 				if (IsDigIndexValid(v) && mWallBluePrint[v.y][v.x] == eWallTypes::Border)
-					mWallBluePrint[v.y][v.x] = Room::GetRandomDirtWall();
+					mWallBluePrint[v.y][v.x] = RoomBluePrint::GetRandomDirtWall();
 			}
 		}
 	}
@@ -350,7 +350,7 @@ namespace cl
 
 		return true;
 	}
-	bool RandomMap::IsIndexInRoom(Vector2 pos, Room* room)
+	bool RandomMap::IsIndexInRoom(Vector2 pos, RoomBluePrint* room)
 	{
 		Vector2 r1 = room->mOffset + room->mSize - Vector2::Zero;
 		if (room->mOffset.x < pos.x && pos.x < r1.x
@@ -358,7 +358,7 @@ namespace cl
 			return true;
 		return false;
 	}
-	bool RandomMap::IsOnBoundary(Vector2 pos, Room* room)
+	bool RandomMap::IsOnBoundary(Vector2 pos, RoomBluePrint* room)
 	{
 		Vector2 r1 = room->mOffset + room->mSize - Vector2::One;
 		if (pos.y == room->mOffset.y && room->mOffset.x < pos.x && pos.x < r1.x)

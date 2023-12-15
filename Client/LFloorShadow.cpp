@@ -24,11 +24,11 @@ namespace cl
 		TileLight* light = MapManager::GetLight(mIndex);
 		if (light != nullptr)
 		{
-			if (light->IsInSight())
+			if (light->IsInSight()) //there is a line between player and tile without obstruction
 			{
 				mShadow->SetAlpha(255 * (1 - light->Illumination()));
 			}
-			else if (light->IsRevealed())
+			else if (light->IsRevealed())//has been in sight before
 			{
 				mShadow->SetAlpha(255 * 0.7);
 			}
