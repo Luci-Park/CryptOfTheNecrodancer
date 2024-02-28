@@ -86,13 +86,12 @@ namespace cl
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				Color color = GetColor(i, j);// Calculate the coordinates of the current cell
+				Color color = GetColor(i, j);
 				float startX = _startPos.x + j * cellWidth;
 				float startY = _startPos.y + i * cellHeight;
 				float endX = startX + cellWidth;
 				float endY = startY + cellHeight;
 
-				// Create and fill the rectangle for the current cell
 				RECT rect = { startX, startY, endX, endY };
 				HBRUSH hBrush = CreateSolidBrush(RGB(color.r, color.g, color.b));
 				FillRect(hdc, &rect, hBrush);
@@ -332,7 +331,21 @@ namespace cl
 
 	Color Map::GetColor(int y, int x)
 	{
-		return Color(GetRandomInt(0, 255), GetRandomInt(0, 255), GetRandomInt(0, 255));
+		if (mWall[y][x] != nullptr)
+		{
+			if(eWallTypes::Border == mWall[y][x]->GetWallType()) return Color(0, 0, 0, 255);
+			return Color(150, 126, 104, 255);
+		}
+		if (y == mPlayerIndex.y && x == mPlayerIndex.x) return Color(33, 181, 94, 255);
+		if (mTileObjects[y][x] != nullptr) return Color(255, 0, 0, 255);
+		if (mFloor[y][x])
+		{
+			if (mFloor[y][x]->GetFloorType() == eFloorTypes::Water) return Color(0, 0, 255, 255);
+			if (mFloor[y][x]->GetFloorType() == eFloorTypes::ClosedStairs) return Color(247, 59, 150);
+			if (mFloor[y][x]->GetFloorType() == eFloorTypes::OpenedStairs) return Color(247, 59, 150);
+			return Color(186, 175, 145, 255);
+		}
+		return Color(0, 0, 0, 255);
 	}
 	
 #pragma endregion
