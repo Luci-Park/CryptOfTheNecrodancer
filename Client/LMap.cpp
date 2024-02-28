@@ -78,13 +78,22 @@ namespace cl
 	}
 	void Map::RenderMinimap(HDC hdc)
 	{
-		Vector2 startPos, endPos;
+		const float cellWidth = 15;
+		const float cellHeight = 15;
+
+		Vector2 _startPos(0, 0);
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
 			{
-				Color color = mTileObjects[i][j]->GetMapColor();
-				RECT rect = { startPos.x, startPos.y, endPos.x, endPos.y };
+				Color color = GetColor(i, j);// Calculate the coordinates of the current cell
+				float startX = _startPos.x + j * cellWidth;
+				float startY = _startPos.y + i * cellHeight;
+				float endX = startX + cellWidth;
+				float endY = startY + cellHeight;
+
+				// Create and fill the rectangle for the current cell
+				RECT rect = { startX, startY, endX, endY };
 				HBRUSH hBrush = CreateSolidBrush(RGB(color.r, color.g, color.b));
 				FillRect(hdc, &rect, hBrush);
 				DeleteObject(hBrush);
@@ -319,6 +328,11 @@ namespace cl
 			}
 		}
 		CalculateLight();
+	}
+
+	Color Map::GetColor(int y, int x)
+	{
+		return Color(GetRandomInt(0, 255), GetRandomInt(0, 255), GetRandomInt(0, 255));
 	}
 	
 #pragma endregion

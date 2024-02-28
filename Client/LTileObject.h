@@ -18,9 +18,7 @@ namespace cl
 		virtual void OnDestroy();
 
 		void SetIndex(Vector2 index) { mIndex = index; }
-		Color GetMapColor() { return mMinimapColor; }
 	protected:
-		Color mMinimapColor;
 		Vector2 mIndex;
 		float mInnerRadius;
 		float mOuterRadius;

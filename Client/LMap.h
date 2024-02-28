@@ -81,5 +81,8 @@ namespace cl
 		std::vector<std::vector<TileObject*>> mTileObjects;
 		std::vector<std::vector<TileLight*>> mLightStatus;
 		std::vector<LightSource*>mLightSources;
+
+	private:
+		Color GetColor(int y, int x);
 	};
 }
