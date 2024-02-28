@@ -35,7 +35,6 @@ namespace cl
 		{
 			if (GetAsyncKeyState(ASCII[i]) & 0x8000)
 			{
-				// ���� �����ӿ��� ���� �־���
 				if (mKeys[i].bPressed)
 					mKeys[i].state = eKeyState::Pressed;
 				else
@@ -43,9 +42,8 @@ namespace cl
 				
 				mKeys[i].bPressed = true;
 			}
-			else // ���� �����ӿ� Ű�� �������� �ʴ�.
+			else
 			{
-				// ���� �����ӿ� ��Ű�� �����־���.
 				if (mKeys[i].bPressed)
 					mKeys[i].state = eKeyState::Up;
 				else
