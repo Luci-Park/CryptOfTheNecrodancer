@@ -7,6 +7,7 @@ namespace cl
 		:FloorTile(sc)
 		, mbIsLocked(false)
 	{
+		SetFloorType(eFloorTypes::OpenedStairs);
 	}
 
 	StairTile::~StairTile()
@@ -30,6 +31,7 @@ namespace cl
 	void StairTile::SetLock(bool isLocked)
 	{
 		mbIsLocked = isLocked;
+		SetFloorType(mbIsLocked ? eFloorTypes::ClosedStairs : eFloorTypes::OpenedStairs);
 		if(mCurrStrategy != nullptr)
 			mCurrStrategy->OnBeat();
 	}

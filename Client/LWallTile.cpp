@@ -250,6 +250,7 @@ namespace cl
 	{
 		mbIsBreakable = false;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::BossWall);
+		mWallType = eWallTypes::BossWall;
 	}
 
 	bool BossWall::OnDig(int digPower)
@@ -292,6 +293,7 @@ namespace cl
 		mbIsBreakable = false;
 		mHardness = 100;
 		mWallSprite = WallTile::GetWallSprite(eWallTypes::Border);
+		mWallType = eWallTypes::Border;
 	}
 
 	bool Border::OnDig(int digPower)

@@ -78,10 +78,12 @@ namespace cl
 	}
 	void Map::RenderMinimap(HDC hdc)
 	{
-		const float cellWidth = 15;
-		const float cellHeight = 15;
-
+		const float cellWidth = 10;
+		const float cellHeight = 10;
+		const Vector2 _endPos(700, 400);
 		Vector2 _startPos(0, 0);
+		//Vector2 _startPos(_endPos.x - mMapSize.x * cellWidth, _endPos.y - mMapSize.y * cellHeight);
+
 		for (int i = 0; i < mMapSize.y; ++i)
 		{
 			for (int j = 0; j < mMapSize.x; ++j)
@@ -334,9 +336,12 @@ namespace cl
 		if (mWall[y][x] != nullptr)
 		{
 			if(eWallTypes::Border == mWall[y][x]->GetWallType()) return Color(0, 0, 0, 255);
+			if (eWallTypes::HorizontalDoor == mWall[y][x]->GetWallType()
+				|| eWallTypes::VerticalDoor == mWall[y][x]->GetWallType())
+				return Color(0, 255, 0, 255);
 			return Color(150, 126, 104, 255);
 		}
-		if (y == mPlayerIndex.y && x == mPlayerIndex.x) return Color(33, 181, 94, 255);
+		if (y == mPlayerIndex.y && x == mPlayerIndex.x) return Color(255, 255, 255, 255);
 		if (mTileObjects[y][x] != nullptr) return Color(255, 0, 0, 255);
 		if (mFloor[y][x])
 		{

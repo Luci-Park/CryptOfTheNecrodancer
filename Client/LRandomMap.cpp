@@ -285,39 +285,24 @@ namespace cl
 		int dy[] = { 1, 0, -1, 0, 1, -1, 1, -1 };
 		while (!IsIndexInRoom({cursorX, cursorY}, child))
 		{
-			//if (IsOnBoundary({ cursorX, cursorY }, parent))
-			//{
-			//	if (mWallBluePrint[cursorY][cursorX - 1] != eWallTypes::None
-			//		&& mWallBluePrint[cursorY][cursorX + 1] != eWallTypes::None)
-			//	{
-			//		mWallBluePrint[cursorY][cursorX] = eWallTypes::HorizontalDoor;
-			//		cursorY += (childCenter.y > cursorY) ? 1 : -1;
-			//	}
-			//	else
-			//	{
-			//		mWallBluePrint[cursorY][cursorX] = eWallTypes::VerticalDoor;
-			//		cursorX += (childCenter.x > cursorX) ? 1 : -1;
-			//	}
-			//}
-			//else
-			//{
-				int xDiff = abs(childCenter.x - cursorX);
-				int yDiff = abs(childCenter.y - cursorY);
-				if (xDiff > 0 && yDiff > 0)
-				{
-					if (GetRandomInt(0, 1))
-						cursorX += (childCenter.x > cursorX) ? 1 : -1;
-					else
-						cursorY += (childCenter.y > cursorY) ? 1 : -1;
-				}
-				else if (xDiff > 0)
+			int xDiff = abs(childCenter.x - cursorX);
+			int yDiff = abs(childCenter.y - cursorY);
+			if (xDiff > 0 && yDiff > 0)
+			{
+				if (GetRandomInt(0, 1))
 					cursorX += (childCenter.x > cursorX) ? 1 : -1;
-				else if (yDiff > 0)
+				else
 					cursorY += (childCenter.y > cursorY) ? 1 : -1;
-//			}
+			}
+			else if (xDiff > 0)
+				cursorX += (childCenter.x > cursorX) ? 1 : -1;
+			else if (yDiff > 0)
+				cursorY += (childCenter.y > cursorY) ? 1 : -1;
 			if (!IsDigIndexValid({ cursorX, cursorY }))
 				break;
+
 			mWallBluePrint[cursorY][cursorX] = eWallTypes::None;
+			
 			for (int i = 0; i < 8; ++i)
 			{
 				Vector2 v = { cursorX + dx[i], cursorY + dy[i] };
@@ -325,6 +310,11 @@ namespace cl
 					mWallBluePrint[v.y][v.x] = RoomBluePrint::GetRandomDirtWall();
 			}
 		}
+		Vector2 left = Vector2( cursorX, cursorY ) + Vector2::Left;
+		if (mWallBluePrint[left.y][left.x] == eWallTypes::None)
+			mWallBluePrint[cursorY][cursorX] = eWallTypes::VerticalDoor;
+		else
+			mWallBluePrint[cursorY][cursorX] = eWallTypes::HorizontalDoor;
 	}
 	void RandomMap::DeleteRooms()
 	{
