@@ -111,4 +111,3 @@ namespace cl
 		bool mbIsLocked;
 	};
 }
-

@@ -80,9 +80,9 @@ namespace cl
 	{
 		const float cellWidth = 10;
 		const float cellHeight = 10;
-		const Vector2 _endPos(700, 400);
-		Vector2 _startPos(0, 0);
-		//Vector2 _startPos(_endPos.x - mMapSize.x * cellWidth, _endPos.y - mMapSize.y * cellHeight);
+		const Vector2 _endPos(1300, 700);
+		// Vector2 _startPos(0, 0);
+		Vector2 _startPos(_endPos.x - mMapSize.x * cellWidth, _endPos.y - mMapSize.y * cellHeight);
 
 		for (int i = 0; i < mMapSize.y; ++i)
 		{

@@ -27,31 +27,22 @@ namespace cl
 	}
 	void TileLight::CheckIfInSight(Vector2 playerPos)
 	{		
-		//
-		//mbIsInSightLine = true;
-		//mbIllumination = 1.0f;
-		//mbIsRevealed = true;
-		//return;
 		if (!mbIsInSightLine)
 		{
-			int x0 = playerPos.x;
-			int y0 = playerPos.y;
-			int x1 = mIndex.x;
-			int y1 = mIndex.y;
-			int dx = abs(x1 - x0);
-			int dy = abs(y1 - y0);
-			int sx = x0 < x1 ? 1 : -1;
-			int sy = y0 < y1 ? 1 : -1;
+			int x0 = playerPos.x, y0 = playerPos.y;
+			int x1 = mIndex.x, y1 = mIndex.y;
+			int dx = abs(x1 - x0), dy = abs(y1 - y0);
+			int sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
 			int err = dx - dy;
 			while (true)
 			{
-				// Check if the end of the line has been reached
 				if (x0 == x1 && y0 == y1) {
 					mbIsInSightLine = true;
 					break;
 				}
+				//중복 방지
 				MapManager::GetLight(Vector2(x0, y0))->InSight();
-				// Check if the current tile is a wall
+
 				if (MapManager::GetWall(Vector2(x0, y0)) != nullptr) {
 					mbIsInSightLine = false;
 					break;
